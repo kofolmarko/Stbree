@@ -10,25 +10,64 @@
 
     <style>
         .navbar a:hover {
-            border-bottom: 3px solid black;
+            border-bottom: 3px solid white;
         }
         .navbar span.active {
-            border-bottom: 3px solid black;
+            border-bottom: 3px solid white;
+        }
+        h1 {
+            padding-top: 100px;
+        }
+        .btn {
+            margin-top: 5px;
+            color: black;
+            background-color: #EBEBEB;
+        }
+        .checkbox{
+            padding-top: 10px;
+        }
+        .center {
+            text-align: center;
         }
     </style>
 
     <!--navBar-->
-    <div class="navbar navbar-light bg-light">
-        <div class="col-sm offset-sm-8">
-            <span class="navbar-brand mb-0 h1 active">Prijava</span>
-            <a class="navbar-brand" href="./signup.html">Registriraj novega uporabnika</a>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="col-auto">
+            <img src="./pics/logo.png" href="./index.html" width="30" height="30">
+        </a>
+        </div>
+        <div class="col-auto">
+            <span class="navbar-brand ml-md-auto h1 active">Prijava</span>
+            <a class="navbar-brand" href="./signup.html">Registracija</a>
         </div> 
-    </div>
+    </nav>
     
     <body>  
         
-        <div class="container">
-            <h1>Prijavna stran</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <form action="#">
+                        <h1>Prijava</h1>
+                        <div class="form-group">
+                            <label for="ime"></label>
+                            <input type="text" class="form-control" id="ime" placeholder="Uporabniško ime" name="ime">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="geslo" placeholder="Geslo" name="geslo">
+                        </div>
+                        <a href="#">Pozabljeno geslo?</a>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="remember"> Zapomni si me</label>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Prijava</button>
+                        <hr>
+                        <button type="button" class="btn btn-google btn-secondary btn-block"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
