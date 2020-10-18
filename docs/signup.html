@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     </head>
     
     <style>
@@ -15,22 +16,45 @@
         .navbar span.active {
             border-bottom: 3px solid white;
         }
-        h1 {
-            padding-top: 100px;
-            padding-bottom: 20px;
-        }
-        .btn {
-            margin-top: 5px;
-            color: black;
-            background-color: #EBEBEB;
-        }
         .checkbox{
             padding-top: 10px;
         }
-        
+        .google {
+            color:#666;
+            width:100%;
+            height:40px;
+            text-align:center;
+            outline:none;
+            border: 1px solid lightgrey;
+        }
+        body{
+		    background-image: url("pics/bg.jpg");
+        }
+        .formSign{
+            margin-top: 50px;
+		    position: relative;
+    		display: -ms-flexbox;
+	    	display: flex;
+    		padding: 1rem;
+    		-ms-flex-direction: column;
+    		flex-direction: column;
+    		width: 100%;
+    		pointer-events: auto;
+    		background-color: #fff;
+    		background-clip: padding-box;
+    		border: 2px solid rgba(0,0,0,.2);
+    		border-radius: 1.1rem;
+    		outline: 0;
+    		max-width: 500px;
+		}
+        .mybtn{
+            border-radius:50px;
+            color: black;
+            background-color: #EBEBEB;
+        }
     </style>
 
-
+    <!--navBar-->
     <nav class="navbar navbar-dark bg-dark">
         <div class="col-auto">
             <img src="./pics/logo.png" href="./index.html" width="30" height="30">
@@ -44,43 +68,56 @@
 
     <body>
         
+        <!--Signin Form-->
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <form action="#">
-                        <h1>Registracija</h1>
-                        <div class="row">
-                            <div class="col">
-                                <label for="ime">Ime</label>
-                                <input type="text" id="ime" class="form-control">
-                            </div>
-                            <div class="col">
-                                <label for="priimek">Priimek</label>
-                                <input type="text" id="priimek" class="form-control">
+                <div class="col-md-6 mx-auto">
+                    <div class="formSign form" data-aos="zoom-in">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                               <h1>Registracija uporabnika</h1>
                             </div>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="uporabnik@domena.si">
-                            </div>
+                            <form action="" name="signup">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="email">Ime</label>
+                                        <input type="text" name="ime" class="form-control" id="ime">
+                                    </div>
+                                    <div class="col">
+                                        <label for="email">Priimek</label>
+                                        <input type="text" name="priimek" class="form-control" id="priimek">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="uporabnik@domena.si">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="password">Geslo</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Geslo mora biti dolgo vsaj 8 znakov">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Potrdi geslo</label>
+                                    <input type="password" name="password" id="password" class="form-control">
+                                </div>
+                                <div class="col-md-12 text-center ">
+                                    <button type="submit" class="btn btn-block mybtn btn-primary">Registriraj</button>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <hr>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <button type="button" class="btn btn-block mybtn btn-secondary"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> 
+                                </div>
+                                <div class="form-group">
+                                    <p class="text-center">Že registriran? <a href="./signin.html" id="signin">Prijavi se tukaj.</a></p>
+                                </div>
+                            </form>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-4">
-                                <label for="geslo">Geslo</label>
-                                <input type="password" id="password" class="form-control" placeholder="Geslo mora biti dolgo vsaj 8 znakov.">
-                                <br>
-                                <label for="geslo">Potrdi geslo</label>
-                                <input type="password" id="password" class="form-control">
-                            </div>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-secondary">Registriraj</button>
-                        <hr>
-                        <button type="button" class="btn btn-google btn-secondary btn-block"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,6 +125,8 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script> AOS.init(); </script>
 
     </body>
 
