@@ -5,9 +5,66 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <style type="text/css">
+    #naslov{
+      margin-top: 3%;
+      margin-left: 3%;
+    }
+    #filter{
+      margin-left: 6%;
+      margin-top: 3%;
+    }
+    
+    .myBtn{
+      margin: 0px 6px;
+      border-radius: 90px;
+      font-size: 13px;
+      padding-left: 19px;
+      padding-right: 19px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    
+  </style>
+
 </head>
 <body>
-    
+    <h1 id="naslov">
+    </h1>
+    <div id="filter">
+      Nivo:
+      <button type="button" class="btn btn-outline-dark myBtn">Osnovna šola</button>
+      <button type="button" class="btn btn-outline-dark myBtn">Srednja šola</button>
+      <button type="button" class="btn btn-outline-dark myBtn">Univerza</button>
+    </div>
 </body>
 
 </html>
+
+<script type="text/javascript">
+  window.onload = function(){
+    var predmet = window.location.search.substring(1).split('=')[1];
+    switch(predmet){
+      case "matematika":
+        document.getElementById("naslov").innerHTML = "Matematika"
+        break;
+      case "fizika":
+        document.getElementById("naslov").innerHTML = "Fizika"
+        break;
+      case "kemija":
+        document.getElementById("naslov").innerHTML = "Kemija"
+        break;
+      case "programiranje":
+        document.getElementById("naslov").innerHTML = "Programiranje"
+        break;
+      case "slovenscina":
+        document.getElementById("naslov").innerHTML = "Slovenščina"
+        break;
+      case "anglescina":
+        document.getElementById("naslov").innerHTML = "Angleščina"
+        break;  
+        
+    }
+  }
+</script>
