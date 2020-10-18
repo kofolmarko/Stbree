@@ -5,27 +5,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/index_styles.css">
 </head>
 
-<style>
-  .bg-welcome {
-    background-color: rgb(121, 230, 121);
-    padding: 30px;
-    text-align: center;
-  }
-</style>
-
 <!--navBar-->
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand bg-transparent fixed-top">
 
-  <a class="navbar-brand mr-auto" href="#">Logotip</a>
+  <img class="mr-auto" src="./pics/logo.png" href="./index.html" width="30" height="30">
 
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-        <a class="nav-link" href="./signup.html">Registracija</a>
+      <a class="nav-link text-light" href="./signin.html">Prijava</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="./signin.html">Prijava</a>
+    <li class="nav-item nav-item-signup">
+        <a class="nav-link text-light" href="./signup.html">Registracija</a>
     </li>
   </ul>
 
@@ -33,49 +26,69 @@
 
 <!--body-->
 <body>
-  <div class="bg-welcome container-fluid">
-      <h1>Povežimo znanje</h1>
-      <h5>Ne dovoli trenutnemu epidemiološkem stanju, da te spravi na kolena. Poveži se s kolegi in razširi obseg znanja.</br>
-     </br>Pridi do zaslužka na področju tvojega študija in pomagaj sovrstnikom doseči svoje cilje.</h5>
-  </div>
+    <div id="hero">
 
-  <div class="container-fluid bg-dark text-light text-center" style="padding: 10px">
+      <video loop muted autoplay poster="">
+        <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
+      </video>
 
-      <p>Potrebuješ inštrukcije? Preveri seznam dosegljivih inštruktorjev in se dogovori za pomoč.</p>
-      <button type="button" class="btn btn-info" href="./instructors.html">Inštrukcije</button>
+      <div class="content d-flex align-items-center">
+        <div class="container text-light text-center">
+          <h1>Povežimo znanje</h1>
+          <h5>Ne dovoli trenutnemu epidemiološkem stanju, da te spravi na kolena. Poveži se s kolegi in razširi obseg znanja.</br>
+         </br>Pridi do zaslužka na področju tvojega študija in pomagaj sovrstnikom doseči svoje cilje.</h5>
+        </div> 
+      </div>
 
-      <p>Iščeš zaslužek ali želiš pomagati s svojim znanjem? Preglej si ponudbo del in dogovori se s ponudnikom.</p>
-      <button type="button" class="btn btn-info" href="./jobs.html">Ponudba del</button>
+    </div>
 
+  <div class="container-fluid text-light text-center middle-content" style="padding: 10px">
+
+    <div class="row">
+      <div class="col-12 col-sm">
+        <p>Potrebuješ pomoč pri učenju težjega predmeta? Preveri seznam dosegljivih inštruktorjev in se dogovori za pomoč.</p>
+        <a href="./instrukcije.html"><button type="button" class="btn btn-info">Inštrukcije</button></a>
+      </div>
+        
+      <div class="col-12 col-sm">
+        <p>Iščeš zaslužek ali želiš pomagati s svojim znanjem? Preglej si ponudbo del in dogovori se s ponudnikom.</p>
+        <a href="./jobs.html"><button type="button" class="btn btn-info">Ponudba del</button></a>
+      </div>
+    
+    </div>
+      
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <script>
+    $(window).scroll(function(){
+	    $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+  </script>
 </body>
 
-<!-- footer -->
-<footer class="page-footer font-small blue pt-4">
+<!--footer-->
+<footer class="page-footer font-small pt-4 text-light">
 
   <div class="container-fluid text-center">
 
-        <h6 class="text-uppercase">Skupina 27</h6>
-        <p>Multimedijska skupina predstavlja rešitev študijskega življenja na daljavo.</p>
-
-        <h6 class="text-uppercase">Kontaktirajte nas</h6>
+        <h6 class="text-uppercase" style="margin-bottom: 25px;">Kontaktirajte nas</h6>
 
         <ul class="list-unstyled">
-          <li>
-            <a href="#!">Facebook</a>
+          <li class="d-inline">
+            <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px" src="./assets/logos/facebook_logo.png" alt="facebook_logo"></a>
           </li>
-          <li>
-            <a href="#!">Instagram</a>
+          <li class="d-inline">
+            <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px" src="./assets/logos/instagram_logo.png" alt="instagram_logo"></a>
           </li>
-          <li>
-            <a href="#!">Twitter</a>
+          <li class="d-inline">
+            <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px" src="./assets/logos/twitter_logo.png" alt="twitter_logo"></a>
           </li>
-          <li>
-            <a href="#!">LinkedIn</a>
+          <li class="d-inline">
+            <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px" src="./assets/logos/linkedin_logo.png" alt="linkedin_logo"></a>
           </li>
         </ul>
   </div>
