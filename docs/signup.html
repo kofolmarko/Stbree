@@ -2,7 +2,7 @@
 <html lang="en">
     
     <head>
-        <title>Rrgistracija</title>
+        <title>Registracija</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -10,25 +10,79 @@
     
     <style>
         .navbar a:hover {
-            border-bottom: 3px solid black;
+            border-bottom: 3px solid white;
         }
         .navbar span.active {
-            border-bottom: 3px solid black;
+            border-bottom: 3px solid white;
         }
+        h1 {
+            padding-top: 100px;
+            padding-bottom: 20px;
+        }
+        .btn {
+            margin-top: 5px;
+            color: black;
+            background-color: #EBEBEB;
+        }
+        .checkbox{
+            padding-top: 10px;
+        }
+        
     </style>
 
-    <!--navBar-->
-    <div class="navbar navbar-light bg-light">
-        <div class="col-sm offset-sm-8">
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="col-auto">
+            <img src="./pics/logo.png" href="./index.html" width="30" height="30">
+        </a>
+        </div>
+        <div class="col-auto">
             <a class="navbar-brand" href="./signin.html">Prijava</a>
-            <span class="navbar-brand mb-0 h1 active">Registriraj novega uporabnika</span>
+            <span class="navbar-brand ml-md-auto h1 active">Registracija</span>
         </div> 
-    </div>
+    </nav>
 
     <body>
         
         <div class="container">
-            <h1>Registracijska stran</h1>
+            <div class="row">
+                <div class="col">
+                    <form action="#">
+                        <h1>Registracija</h1>
+                        <div class="row">
+                            <div class="col">
+                                <label for="ime">Ime</label>
+                                <input type="text" id="ime" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label for="priimek">Priimek</label>
+                                <input type="text" id="priimek" class="form-control">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="uporabnik@domena.si">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="geslo">Geslo</label>
+                                <input type="password" id="password" class="form-control" placeholder="Geslo mora biti dolgo vsaj 8 znakov.">
+                                <br>
+                                <label for="geslo">Potrdi geslo</label>
+                                <input type="password" id="password" class="form-control">
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-secondary">Registriraj</button>
+                        <hr>
+                        <button type="button" class="btn btn-google btn-secondary btn-block"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
