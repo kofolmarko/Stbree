@@ -1,19 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
+    
+    <head>
+        <title>Prijava</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
 
-<div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This is some text.</p>
-</div>
+    <style>
+        .navbar a:hover {
+            border-bottom: 3px solid white;
+        }
+        .navbar span.active {
+            border-bottom: 3px solid white;
+        }
+        h1 {
+            padding-top: 100px;
+        }
+        .btn {
+            margin-top: 5px;
+            color: black;
+            background-color: #EBEBEB;
+        }
+        .checkbox{
+            padding-top: 10px;
+        }
+    </style>
 
-</body>
+    <!--navBar-->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="col-auto">
+            <img src="./pics/logo.png" href="./index.html" width="30" height="30">
+        </a>
+        </div>
+        <div class="col-auto">
+            <span class="navbar-brand ml-md-auto h1 active">Prijava</span>
+            <a class="navbar-brand" href="./signup.html">Registracija</a>
+        </div> 
+    </nav>
+    
+    <body>  
+        
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form action="#">
+                        <h1>Prijava</h1>
+                        <div class="form-group">
+                            <label for="email"></label>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="geslo" placeholder="Geslo" name="geslo">
+                        </div>
+                        <a href="#">Pozabljeno geslo?</a>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="remember"> Zapomni si me</label>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Prijavi</button>
+                        <hr>
+                        <button type="button" class="btn btn-google btn-secondary btn-block"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    </body>
+
 </html>

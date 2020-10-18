@@ -1,19 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Welcome page</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+
+<style>
+  .bg-welcome {
+    background-color: rgb(121, 230, 121);
+    padding: 30px;
+    text-align: center;
+  }
+</style>
+
+<!--navBar-->
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+
+  <a class="navbar-brand mr-auto" href="#">Logotip</a>
+
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="./signup.html">Registracija</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="./signin.html">Prijava</a>
+    </li>
+  </ul>
+
+</nav>
+
+<!--body-->
 <body>
+  <div class="bg-welcome container-fluid">
+      <h1>Povežimo znanje</h1>
+      <h5>Ne dovoli trenutnemu epidemiološkem stanju, da te spravi na kolena. Poveži se s kolegi in razširi obseg znanja.</br>
+     </br>Pridi do zaslužka na področju tvojega študija in pomagaj sovrstnikom doseči svoje cilje.</h5>
+  </div>
 
-<div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This is some text.</p>
-</div>
+  <div class="container-fluid bg-dark text-light text-center" style="padding: 10px">
 
+      <p>Potrebuješ inštrukcije? Preveri seznam dosegljivih inštruktorjev in se dogovori za pomoč.</p>
+      <button type="button" class="btn btn-info" href="./instructors.html">Inštrukcije</button>
+
+      <p>Iščeš zaslužek ali želiš pomagati s svojim znanjem? Preglej si ponudbo del in dogovori se s ponudnikom.</p>
+      <button type="button" class="btn btn-info" href="./jobs.html">Ponudba del</button>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
+
+<!-- footer -->
+<footer class="page-footer font-small blue pt-4">
+
+  <div class="container-fluid text-center">
+
+        <h6 class="text-uppercase">Skupina 27</h6>
+        <p>Multimedijska skupina predstavlja rešitev študijskega življenja na daljavo.</p>
+
+        <h6 class="text-uppercase">Kontaktirajte nas</h6>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Facebook</a>
+          </li>
+          <li>
+            <a href="#!">Instagram</a>
+          </li>
+          <li>
+            <a href="#!">Twitter</a>
+          </li>
+          <li>
+            <a href="#!">LinkedIn</a>
+          </li>
+        </ul>
+  </div>
+
+  <hr class="clearfix pb-3">
+
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#">https://skupina-27.com</a>
+  </div>
+</footer>
+
 </html>
