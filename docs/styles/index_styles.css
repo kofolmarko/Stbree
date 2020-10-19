@@ -1,0 +1,67 @@
+#hero {
+    position: relative;
+    height: 100vh;
+}
+
+#hero video {
+    height: 100vh;
+    width: 100%;
+    background-position: absolute;
+    z-index: 1;
+    object-fit: cover;
+}
+
+#hero .content {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.navbar {
+    transition: 750ms ease;
+    z-index: 3;
+}
+
+.navbar.scrolled {
+  background:rgb(43, 17, 33) !important;
+}
+
+.nav-item-signup {
+    border: 1.5px rgba(255, 255, 255, 0.6) solid;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.middle-content {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(43,17,33,1) 50%, rgba(18,70,83,1) 100%);
+}
+
+.d-inline {
+    margin: 10px;
+}
+
+body {
+    
+}
+
+footer {
+    background-color: rgb(34, 6, 6);
+}
+
+footer p{
+    margin-bottom: 0;
+}
+
+.row {
+    padding: 10px;
+    margin: 0px;
+}
+
+.row p, button {
+    margin: 20px;
+}
