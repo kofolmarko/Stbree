@@ -1,3 +1,31 @@
-.container{
-    
+body{
+    background-color: #eaece5;
+}
+
+nav {
+    background-color: grey;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    list-style: none;
+}
+
+.carousel-item{
+    height: 20rem;
+    background: grey;
+    color: white;
+    position: relative;
+}
+
+.container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom:20px;
 }
