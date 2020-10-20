@@ -1,0 +1,43 @@
+.row p, button {
+    margin: 5px;
+}
+
+.btn {
+    margin-left: 15px;
+    padding: 5px, 0px;
+    align-items: center;
+}
+
+.dropdown-menu {
+    left: auto;
+    right: 5px;
+}
+
+#navbarDropdown a:hover {
+    background-color: white;
+}
+
+.navbar-nav .nav-link {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.bg-custom {
+    background: linear-gradient(90deg, rgb(218, 131, 0) 0%, rgba(18,70,83,1) 100%);
+}
+
+#user_icon {
+    filter: invert(1);
+}
+
+.mx-auto {
+    margin: auto;
+}
+
+.dropdown-menu {
+    background-color: #124653;
+}
+
+.dropdown-menu a {
+    color: #f7f7f7;
+}
