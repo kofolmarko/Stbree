@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <title>Welcome page</title>
   <meta charset="utf-8">
@@ -10,8 +10,7 @@
 
 <!--navBar-->
 <nav class="navbar navbar-expand bg-transparent fixed-top">
-
-  <img class="mr-auto" src="./pics/logo.png" href="./index.html" width="30" height="30">
+  <a href="#top"><img class="mr-auto" src="./pics/logo.png" width="30" height="30"></a>
 
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
@@ -21,18 +20,16 @@
         <a class="nav-link text-light" href="./signup.html">Registracija</a>
     </li>
   </ul>
-
 </nav>
 
 <!--body-->
 <body>
     <div id="hero">
-
-      <video loop muted autoplay poster="">
+      <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
         <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
       </video>
 
-      <div class="content d-flex align-items-center">
+      <div class="welcome-content d-flex align-items-center">
         <div class="container text-light text-center">
           <h1>Povežimo znanje</h1>
           <h5>Ne dovoli trenutnemu epidemiološkem stanju, da te spravi na kolena. Poveži se s kolegi in razširi obseg znanja.</br>
@@ -43,7 +40,6 @@
     </div>
 
   <div class="container-fluid text-light text-center middle-content" style="padding: 10px">
-
     <div class="row">
       <div class="col-12 col-sm">
         <p>Potrebuješ pomoč pri učenju težjega predmeta? Preveri seznam dosegljivih inštruktorjev in se dogovori za pomoč.</p>
@@ -54,9 +50,7 @@
         <p>Iščeš zaslužek ali želiš pomagati s svojim znanjem? Preglej si ponudbo del in dogovori se s ponudnikom.</p>
         <a href="./jobs.html"><button type="button" class="btn btn-info">Ponudba del</button></a>
       </div>
-    
-    </div>
-      
+    </div> 
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -72,10 +66,8 @@
 
 <!--footer-->
 <footer class="page-footer font-small pt-4 text-light">
-
   <div class="container-fluid text-center">
-
-        <h6 class="text-uppercase" style="margin-bottom: 25px;">Kontaktirajte nas</h6>
+        <h6 class="text-uppercase">Kontaktirajte nas</h6>
 
         <ul class="list-unstyled">
           <li class="d-inline">
@@ -93,10 +85,8 @@
         </ul>
   </div>
 
-  <hr class="clearfix pb-3">
-
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="#">https://skupina-27.com</a>
+  <div class="footer-copyright text-center py-3">
+    © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
   </div>
 </footer>
 

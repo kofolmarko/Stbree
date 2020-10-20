@@ -1,3 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* HERO */
+
 #hero {
     position: relative;
     height: 100vh;
@@ -11,7 +23,9 @@
     object-fit: cover;
 }
 
-#hero .content {
+/* CONTENT */
+
+.welcome-content {
     background: rgba(0, 0, 0, 0.5);
     height: 100vh;
     width: 100%;
@@ -20,6 +34,13 @@
     top: 0;
     left: 0;
 }
+
+.middle-content {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(43,17,33,1) 50%, rgba(18,70,83,1) 100%);
+}
+
+/* NAVBAR */
 
 .navbar {
     transition: 750ms ease;
@@ -36,18 +57,7 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-.middle-content {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(43,17,33,1) 50%, rgba(18,70,83,1) 100%);
-}
-
-.d-inline {
-    margin: 10px;
-}
-
-body {
-    
-}
+/* FOOTER */
 
 footer {
     background-color: rgb(34, 6, 6);
@@ -57,6 +67,12 @@ footer p{
     margin-bottom: 0;
 }
 
+/* MODIFIED BOOTSTRAP */
+
+.d-inline {
+    margin: 10px;
+}
+
 .row {
     padding: 10px;
     margin: 0px;
@@ -64,4 +80,8 @@ footer p{
 
 .row p, button {
     margin: 20px;
+}
+
+.text-uppercase {
+    margin-bottom: 25px;
 }
