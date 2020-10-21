@@ -7,102 +7,83 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="icon" type="image/png" href="assets/icons/stbree_logo.png"/>
+        <link rel="stylesheet" href="./styles/sign_styles.css">
     </head>
 
-    <style>
-        .navbar a:hover {
-            border-bottom: 3px solid white;
-        }
-        .navbar span.active {
-            border-bottom: 3px solid white;
-        }
-        .checkbox{
-            padding-top: 10px;
-        }
-        .google {
-            color:#666;
-            width:100%;
-            height:40px;
-            text-align:center;
-            outline:none;
-            border: 1px solid lightgrey;
-        }
-        body{
-		    background-image: url("pics/bg.jpg");
-        }
-        .formSign{
-            margin-top: 50px;
-		    position: relative;
-    		display: -ms-flexbox;
-	    	display: flex;
-    		padding: 1rem;
-    		-ms-flex-direction: column;
-    		flex-direction: column;
-    		width: 100%;
-    		pointer-events: auto;
-    		background-color: #fff;
-    		background-clip: padding-box;
-    		border: 2px solid rgba(0,0,0,.2);
-    		border-radius: 1.1rem;
-    		outline: 0;
-    		max-width: 500px;
-		}
-        .mybtn{
-            border-radius:50px;
-            color: black;
-            background-color: #EBEBEB;
-        }
-    </style>
-
     <!--navBar-->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="col-auto">
-            <img src="./pics/logo.png" href="./index.html" width="30" height="30">
+    <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+        <a class="navbar-brand mr-auto" href="./index.html"><img src="./assets/icons/stbree_logo.png" height="40"  alt="stbree_logo"></a>
+    
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-auto active">
+                        <a class="nav-link text-light" style="border-bottom: 1px solid white; color: white !important">Prijava</a>
+                    </li>
+                    <li class="nav-item mx-auto">
+                        <a class="nav-link text-light" href="./signup.html">Registracija</a>
+                    </li>
+                    <li class="nav-item mx-auto">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item">Profil</a>
+                            <a class="dropdown-item" href="./signup.html">Registracija</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </a>
-        </div>
-        <div class="col-auto">
-            <span class="navbar-brand ml-md-auto h1 active">Prijava</span>
-            <a class="navbar-brand" href="./signup.html">Registracija</a>
-        </div> 
     </nav>
     
-    <body>  
-        
-        <!--Login Form-->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="formSign form" data-aos="zoom-in">
-                        <div class="logo mb-3">
-                            <div class="col-md-12 text-center">
-                               <h1>Prijava</h1>
+    <body>
+        <div id="hero">
+            <!--VideoBG-->
+            <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
+                <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
+            </video>
+
+            <!--Overlay-->
+            <div id="overlay"></div>
+            
+            <!--Login Form-->
+            <div class="container form-container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="formSign form" data-aos="zoom-in">
+                            <div class="logo mb-3">
+                                <div class="col-md-12 text-center">
+                                   <h1>Prijava</h1>
+                                </div>
                             </div>
-                        </div>
-                            <form action="" name="login">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Geslo</label>
-                                    <input type="password" name="password" id="password" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <p class="text-center"><a href="#" data-target="#resetPass" data-toggle="modal">Pozabljeno geslo?</a></p>
-                                </div>
-                                <div class="col-md-12 text-center ">
-                                    <button type="submit" class="btn btn-block mybtn btn-primary">Prijava</button>
-                                </div>
-                                <div class="col-md-12 ">
-                                    <hr>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <button type="button" class="btn btn-block mybtn btn-secondary"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> 
-                                </div>
-                                <div class="form-group">
-                                    <p class="text-center">Še nisi registriran? <a href="./signup.html" id="signup">Pridruži se zdaj!</a></p>
-                                </div>
-                            </form>
+                                <form action="" name="login">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Geslo</label>
+                                        <input type="password" name="password" id="password" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text-center"><a href="#" data-target="#resetPass" data-toggle="modal">Pozabljeno geslo?</a></p>
+                                    </div>
+                                    <div class="col-md-12 text-center ">
+                                        <button type="submit" class="btn btn-block mybtn btn-primary">Prijava</button>
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button type="button" class="btn btn-block mybtn btn-secondary"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> 
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text-center">Še nisi registriran? <a href="./signup.html" id="signup">Pridruži se zdaj!</a></p>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
