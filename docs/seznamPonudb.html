@@ -16,6 +16,13 @@
       margin-top: 3%;
     }
     
+    #ponudnikDiv{
+    border-width: 1px;
+    border-radius: 30px;
+    border-style: solid;
+    padding: 33px 21px
+    }
+    
     .myBtn{
       margin: 0px 6px;
       border-radius: 90px;
@@ -25,6 +32,21 @@
       padding-top: 12px;
       padding-bottom: 12px;
     }
+    
+    
+    #ovojnica{
+    width: 70%;
+    margin: 4% auto;
+    }
+    
+    #slika{
+      width: 20%;
+    }
+    
+    p{
+      width: 70%;
+    }
+    
     
   </style>
 
@@ -37,6 +59,20 @@
       <button type="button" class="btn btn-outline-dark myBtn">Osnovna šola</button>
       <button type="button" class="btn btn-outline-dark myBtn">Srednja šola</button>
       <button type="button" class="btn btn-outline-dark myBtn">Univerza</button>
+    </div>
+    
+    <div id="ovojnica">
+      <div id="ponudnikDiv">
+        <h5>
+        Mark Zuki
+        </h5>
+        <p>
+          Nudim inštrukcije matematike in fizike za osnovno šolo. Rad imam otroke, ampak nisem pedo. Končal sem srednjo frizersko šolo in v prostem času sem predan igralec namiznega tenisa.
+          <div id="slikaWrapper">
+            <img src="pics/instruktor1.jpg" id="slika"></img>
+          </div>
+        </p>
+      </div>
     </div>
 </body>
 
@@ -63,8 +99,17 @@
         break;
       case "anglescina":
         document.getElementById("naslov").innerHTML = "Angleščina"
-        break;  
-        
+        break;
+      case "pisanje":
+        document.getElementById("naslov").innerHTML = "Pisanje"
+        break;
+      case "oblikovanje":
+        document.getElementById("naslov").innerHTML = "Oblikovanje"
+        break;
+      case "video":
+        document.getElementById("naslov").innerHTML = "Video"
+        break;
     }
+    
   }
 </script>
