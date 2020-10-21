@@ -1,6 +1,5 @@
 <!DOCTYPE html> 
-
-<html>
+<html lang="en" id="top">
 
  <head>
         <title>Profil</title>
@@ -54,7 +53,47 @@
 
 <body>
     
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<div class="back">
+    
+    <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="image" height="250" width="250">
+    
+	<div class="podatki"> 
+	    <div class="naslov"> Ime Priimek <hr> </div>
+	    
+            <form action="" method ="">Opis:<br>
+                    <textarea class="text-box" rows="3" cols="55"></textarea></br>
+    	            <input type="submit" value="Dodaj">
+            </form>
+             
+            
+            <div class="glavne">
+                <div class="pod_dva">imepriimek@gmail.com</div>
+    	    	<div>Email naslov:</div>
+    	    	 <div class="pod_dva">030 723 418</div>
+    		    <div>Telefonska številka:</div>
+    		     <div class="pod_dva">26.10.2020</div>
+    		    <div>Datum vpisa:</div>
+    		    
+    	    </div>
+	    
+	        <button type="button">Spremeni podatke</button>
+	        
+	        <div class="bar_divi">
+            <ul class="bar">	
+            
+            <li class="bar_el"><a href="#">Dosežki</a></li>
+            <li class="bar_el"><a href="./profile_kronologija.html">Kronologija</a></li>
+            <li class="bar_el"><a href="#">Moje ponudbe del</a></li>
+            <li class="bar_el"><a href="#">Moje inštrukcije</a></li>
+            <li class="bar_el"><a href="./password.html">Spremeni geslo</a></li>
+            
+            </ul>
+            </div>   
+    
+        </div>
+    </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
@@ -64,43 +103,9 @@
     });
   </script>
   
-
-    <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="image" height="250" width="250">
-    
-	<div class="podatki text-light"> 
-	    <div class="naslov"> Ime Priimek <hr> </div>
-	    
-        <form action="" method ="">Opis:<br>
-                <textarea class="text-box" rows="3" cols="55"></textarea></br>
-	            <input type="submit" value="Dodaj">
-        </form>
-         
-        
-        <div class="glavne">
-            <div class="pod_dva">imepriimek@gmail.com</div>
-	    	<div>Email naslov:</div>
-	    	 <div class="pod_dva">030 723 418</div>
-		    <div>Telefonska številka:</div>
-		     <div class="pod_dva">26.10.2020</div>
-		    <div>Datum vpisa:</div>
-		    
-	    </div>
-	    
-	    <button style:="float:right"type="button">Spremeni podatke</button>
-	</div>
+</body>	
 	
-	
-
-</form>
-	</div>
-	
-
-<div class="geslo">
-		<form action="password.html">
-   		 <input style="margin-left: 15px" type="submit" value="Spremeni geslo" />
-
-	
-<footer class="page-footer font-small blue pt-4">
+<footer class="ftr page-footer font-small blue pt-4">
 
   	<div class="container-fluid text-center">
 
@@ -122,7 +127,5 @@
   	</div>
 </footer>
 
-
-</body>
 
 </html>
