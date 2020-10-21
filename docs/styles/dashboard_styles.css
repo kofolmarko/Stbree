@@ -114,13 +114,10 @@ h1{
 
 footer img {
     height: 2.5rem;
-    margin: 1rem auto;
 }
 
 footer {
     background-color: #212529;
-    padding: 1rem 2rem 1rem; /*top, left-right, bottom*/
-    max-height: 5rem;
 }
 
 footer p {
