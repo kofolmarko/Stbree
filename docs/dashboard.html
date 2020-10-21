@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sturbee</title>
+    <title>Stbree</title>
     <link rel="icon" href="./pics/logo.png"> <!--80 by 80 or 40 by 40 pixels-->
     <link rel="stylesheet" href="./styles/dashboard_styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -12,10 +12,11 @@
 
 <body>
     
+    <!--NAVIGATION BAR STARTS-->
     <nav class="navbar bg-dark navbar-dark navbar-expand-sm"> <!--separate class, navigation bar--> 
         <div class="container"> <!--container: for max width of content inside navigation-->
             <a href="index.html" class="navbar-brand">
-                <img src="./pics/logo.png" alt="Logo" title="Logo">
+                <img src="./assets/icons/stbree_logo.png" alt="Logo" title="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon">
@@ -37,29 +38,100 @@
             </div>
         </div>
     </nav>
+    <!--NAVIGATION BAR ENDS-->
 
-    <!--JOBS-->
+    <!--CALENDAR STARTS-->
+    <div class="fixed-background">
+        <div class="row text-light py-5">
+            <div class="col-12 text-center">
+                <h1>Moj Koledar</h1><!--<a href="./koledar.html">Moj Koledar</a>-->
+                <h3>poglej svoj koledar</h3>
+            </div>
+        </div>
+        <div class="fixed-wrap">
+            <div class="fixed"></div>
+        </div>
+    </div>
+    <!--CALENDAR ENDS-->
+
+    <!--JOBS STARTS-->
+    <div class="col-12 text-center mt-5">
+        <h1 class="text-dark pt-4">Službe</h1>
+        <div class="border-top border-primary w-25 mx-auto my-3"></div>
+        <p class="lead">Najdi Služba</p>
+    </div>
+
+    <div class="container">
+        <div class="row my-5">
+
+            <div class="col-md-4 my-4">
+                <img src="./pics/oblikovanje.png" alt="" class="w-100">
+                <h4 class="my-4">Instruktor 1</h4>
+                <p>Instrukcije za oblikovanje</p>
+                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+            </div>
+
+            <div class="col-md-4 my-4">
+                <img src="./pics/pisanje.jpg" alt="" class="w-100">
+                <h4 class="my-4">Instruktor 1</h4>
+                <p>Instrukcije za pisanje</p>
+                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+            </div>
+
+            <div class="col-md-4 my-4">
+                <img src="./pics/programiranje.png" alt="" class="w-100">
+                <h4 class="my-4">Instruktor 1</h4>
+                <p>Instrukcije za programiranje</p>
+                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+            </div>
+
+        </div>
+    </div>
+    <!--JOBS ENDS-->
+
+    <!--INSTRUCTIONS STARTS-->
+    <div class="col-12 text-center mt-5">
+        <h1 class="text-dark pt-4">Inštrukcije</h1>
+        <div class="border-top border-primary w-25 mx-auto my-3"></div>
+        <p class="lead">Najdi inštruktor</p>
+    </div>
+    
+    <div class="container">
+        <div class="row my-5">
+
+            <div class="col-md-4 my-4">
+                <img src="./pics/video.png" alt="" class="w-100">
+                <h4 class="my-4">Instruktor 1</h4>
+                <p>Instrukcije za snemanje</p>
+                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Koledar</a>
+            </div>
+
+            <div class="col-md-4 my-4">
+                <img src="./pics/programiranje.png" alt="" class="w-100">
+                <h4 class="my-4">Instruktor 2</h4>
+                <p>Instrukcije za programiranje</p>
+                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Koledar</a>
+            </div>
+
+            <div class="col-md-4 my-4">
+                <img src="./pics/oblikovanje.png" alt="" class="w-100">
+                <h4 class="my-4">Instruktor 3</h4>
+                <p>Instrukcije za oblikovanje</p>
+                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Koledar</a>
+            </div>
+
+        </div>
+    </div>
+    <!--INSTRUCTIONS ENDS-->
+
+    <!--CAROUSEL STARTS-->
     <!--carousel--> <!--idk if i want it to scroll on its own (data interval)-->
-    <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="600000">  
+    <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000">  
         <div class="carousel-inner">
             <div class="carousel-item active">
+                <!--<div class="container">
+                    i would rather put boxes here, also what is the class width thing-->
                     <img src="./pics/oblikovanje.png" alt="Tečaj oblikovanja" class="w-100">
-                    <div class="carousel-caption">
-                        <div class="container"> <!--so we can place content on top of the image-->
-                            <div class="row justify-content-centre text-centre">
-                                <div class="col-6 bg-custom d-none d-lg-block py-4 px-0 pr-3"> <!--display, vertical padding 1.5 rem-->
-                                    <h1>Oblikovanje</h1>
-                                    <div class="border-top border-primary w-60 mx-auto my-2"></div> <!--margin 0 auto-->
-                                    <h3 class="pb-0">Petek ob 15:00</h3>
-                                    <p class="lead">Adobe Premiere Pro</p>
-                                    <a href="" class="btn btn-secondary btn-lg">Shrani</a>
-                                    <a href="./jobs.html" class="btn btn-info btn-lg">Več o tem</a>
-                                    <a href="" class="btn btn-success btn-lg">Apliciraj</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
             </div>
             <div class="carousel-item">
                 <!--<div class="container">
@@ -87,59 +159,23 @@
             <!--font awesomes class fa-5x to make it 5x bigger-->
             <span class="fas fa-chevron-right fa-5x"></span>
         </a>
-
     </div>
+    <!--CAROUSEL ENDS-->
 
-    <div class="col-12 text-center mt-5">
-        <h1 class="text-dark pt-4">Moj Koledar</h1>
-        <p class="lead">Poglej si koledar</p>
-    </div>
-
-    <div class="container">
-        <div class="row my-5">
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/oblikovanje.png" alt="" class="w-100">
-                <h4 class="my-4">Instruktor 1</h4>
-                <p>Instrukcije za oklikovanje</p>
-                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Moj Koledar</a>
-            </div>
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/oblikovanje.png" alt="" class="w-100">
-                <h4 class="my-4">Instruktor 1</h4>
-                <p>Instrukcije za oklikovanje</p>
-                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Moj Koledar</a>
-            </div>
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/oblikovanje.png" alt="" class="w-100">
-                <h4 class="my-4">Instruktor 1</h4>
-                <p>Instrukcije za oklikovanje</p>
-                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Moj Koledar</a>
-            </div>
-
-        </div>
-    </div>
-
-        <div> <!--MY TASKS--> 
-            <h2>Moje naloge</h2>
-            <ol>
-                <li>Matematika</li>
-                <li>Kemija</li>
-                <li>Geografija</li>
-            </ol>
-        </div>
-
-        <br></br>
-
-    <!--</div>-->
-    
+    <!--FOOTER STARTS-->
     <footer> <!--separate class, footer-->
-        <a href="index.html">Za nas</a>
-        <p>Pogosta vprašanja</p> <!--<a href="???">Pogosta vprašanja</a>-->
-        <p>Kontakt</p>
+        <div class="container">
+            <div class="row text-light text-center py-4 justify-content-center">
+                <div class="col-sm-10 col-md 8 col-lg-6">
+                    <img src="./assets/icons/stbree_logo.png" alt="logo"></div>
+                    <ul class="ftr-txt">
+                        <li><p>Kontakt</p></li>
+                        <li><p>Pogosta vprašanja</p></li>
+                    </ul>        
+            </div>
+        </div>
     </footer>
+    <!--FOOTER ENDS-->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
