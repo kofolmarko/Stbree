@@ -1,31 +1,66 @@
-body{
-    background-color: #eaece5;
+body {
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: #616971;
 }
 
-nav {
-    background-color: grey;
+.navbar-brand img {
+    height: 2.2rem; /*3rem - 48px*/
 }
 
-nav ul {
-    list-style: none;
+.navbar{
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: .13rem;
+    text-transform: uppercase;
+    /*box-shadow: z-index:*/
 }
 
-nav li {
-    display: inline-block;
-    list-style: none;
+.nav-item {
+    padding: 0 .3rem; /*8px*/
 }
 
-.carousel-item{
-    height: 20rem;
-    background: grey;
+.nav-link.active, .nav-link:hover {
+    color: #bfb1c1 !important;
+}
+
+#carousel {
+    /*box-shadow: z-index:*/
+}
+
+.carousel-inner{
+    /*it overrides height css already added to the bootstrap carousel*/
+    max-height: 38rem!important;
+}
+
+.carousel-item-next, 
+.carousel-item-previous, 
+.carousel-item-active {
+    transition: transform 1.2s ease;
+}
+
+.carousel-caption{
+    position: absolute; /*so we can place it wherever we want on the page*/
+    top: 50%; /*from the top of the element its inside of*/
+    transform: translateY(-50%); /*that its in the middle of the %age bar, not beneath it*/
+}
+
+.bg-custom{
+    max-height: 30rem;
+    background-color: #212529;
     color: white;
-    position: relative;
+    border-radius: 1rem;
 }
 
-.container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-bottom:20px;
+.carousel-caption h1{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.carousel-caption h3{
+    font-size: 1.2rem;
+}
+
+.border-primary { /*ne dela*/
+    border-top: .2rem solid #bfb1c1!important;
 }
