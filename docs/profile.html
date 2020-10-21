@@ -6,48 +6,98 @@
         <title>Profil</title>
          <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    </head>
-	
-	<style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/		css/bootstrap.min.css" integrity="sha384-						JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 			crossorigin="anonymous">   
+		<link rel="stylesheet" href="./styles/profile_styles.css">
+		<link rel="stylesheet" href="./styles/navbar_styles.css">
 
-	.bg-body {
-	background-color: rgb(151,245,255);
-	padding: 30px;
-	text-align: left;
-	}
-	</style>
-	
-	
-	<!-- navigation -->
-	<nav class="navbar navbar-dark bg-dark">
+</head>
 
-		<a class="navbar-brand mr-auto" href="index.html">Home</a>
+<!--navBar-->
+<nav class="navbar navbar-expand-md navbar-dark bg-custom">
+    <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
 
-			
-		<ul class="navbar-nav ml-auto">
-   			<li class="nav-item"> <a class="nav-link" href="./signout.html">Odjavi se</a> 			</li>
- 		</ul>
-	</nav>
-
-
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./messages.html">Sporočila</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./jobs.html">Delo</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./opravila.html">Moja opravila</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
+                        <img height="30px" width="30px" src="./assets/icons/user.png" alt="user_icon" id="user_icon">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./profile.html">Profil</a>
+                        <a class="dropdown-item" href="./settings.html">Nastavitve</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+</nav>
 
 <body>
-    	
-	<div class="bg-body container-fluid">
+    
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-	<h1> Moj Profil </h1> <hr> <hr> <br>
+  <script>
+    $(window).scroll(function(){
+	$('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+  </script>
+  
 
-	&nbsp<a href="podatki.html" style="color:rgb(69,70,71)" target="ouriframe">Osebni 		podatki</a>
-	&nbsp&nbsp
-	<a href="pass.html" style="color:rgb(74,74,74)" target="ouriframe">Spremeni geslo</a> <br><br>
-
-	<iframe frameborder="1" width="980" height="232" src="podatki.html" name="ouriframe" 			id="ouriframe">
-	</iframe><br/>
-
-
-
-		<br><br><br><br><br><br><br><br><br>
+    <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="image" height="250" width="250">
+    
+	<div class="podatki text-light"> 
+	    <div class="naslov"> Ime Priimek <hr> </div>
+	    
+        <form action="" method ="">Opis:<br>
+                <textarea class="text-box" rows="3" cols="55"></textarea></br>
+	            <input type="submit" value="Dodaj">
+        </form>
+         
+        
+        <div class="glavne">
+            <div class="pod_dva">imepriimek@gmail.com</div>
+	    	<div>Email naslov:</div>
+	    	 <div class="pod_dva">030 723 418</div>
+		    <div>Telefonska številka:</div>
+		     <div class="pod_dva">26.10.2020</div>
+		    <div>Datum vpisa:</div>
+		    
+	    </div>
+	    
+	    <button style:="float:right"type="button">Spremeni podatke</button>
 	</div>
+	
+	
+
+</form>
+	</div>
+	
+
+<div class="geslo">
+		<form action="password.html">
+   		 <input style="margin-left: 15px" type="submit" value="Spremeni geslo" />
 
 	
 <footer class="page-footer font-small blue pt-4">
