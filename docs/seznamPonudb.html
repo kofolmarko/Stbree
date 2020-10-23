@@ -16,37 +16,53 @@
       margin-top: 3%;
     }
     
-    #ponudnikDiv{
-    border-width: 1px;
-    border-radius: 30px;
-    border-style: solid;
-    padding: 33px 21px
+    #mainRow{
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 30px;
+      padding: 5vh 0vh 5vh 0vh;
+      transition: 0.17s;
     }
     
     .myBtn{
       margin: 0px 6px;
       border-radius: 90px;
       font-size: 13px;
-      padding-left: 19px;
-      padding-right: 19px;
-      padding-top: 12px;
-      padding-bottom: 12px;
+      padding:12px 19px;
     }
     
     
-    #ovojnica{
+    .myContainer{
     width: 70%;
-    margin: 4% auto;
+    margin: 3% auto;
+    
+    }
+    #mainRow:hover{
+      box-shadow: 0 0 12px 3px #CCCCCC;
+      
     }
     
+    .col-md-3{
+      /*background-image: url(pics/instruktor1.jpg);
+      background-size: contain;
+      background-repeat: no-repeat;*/
+      padding: 0px;
+    }
+    
+    .col-md-9{
+      padding-bottom: 2vh;
+    }
+    
+    .myRow{
+      padding-right: 1vw;
+      padding-left: 3vw;
+    }
     #slika{
-      width: 20%;
+      /*height: 167px;*/
+      max-width: 55%;
+      height: auto;
+      border-radius: 15px;
     }
-    
-    p{
-      width: 70%;
-    }
-    
     
   </style>
 
@@ -61,19 +77,81 @@
       <button type="button" class="btn btn-outline-dark myBtn">Univerza</button>
     </div>
     
-    <div id="ovojnica">
-      <div id="ponudnikDiv">
-        <h5>
-        Mark Zuki
-        </h5>
-        <p>
-          Nudim inštrukcije matematike in fizike za osnovno šolo. Rad imam otroke, ampak nisem pedo. Končal sem srednjo frizersko šolo in v prostem času sem predan igralec namiznega tenisa.
-          <div id="slikaWrapper">
-            <img src="pics/instruktor1.jpg" id="slika"></img>
+    <!--i n s t r u k t o r  1-->
+    <div class="container myContainer">
+      <div class="row" id="mainRow">
+        <div class="col-md-9">
+          <div class="row myRow">
+            <h4>
+            Mark Zuki
+            </h4>
           </div>
-        </p>
+          <div class="row myRow">
+            Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.  
+          </div>
+        </div>
+        <div class="col-md-3 center-block">
+          <img src="pics/instruktor1.jpg" id="slika" class="img-fluid center-block d-block mx-auto"></img> 
+        </div>
+      </div>
+    </div>  
+    <!--i n s t r u k t o r  2-->
+    <div class="container myContainer">
+      <div class="row" id="mainRow">
+        <div class="col-md-9">
+          <div class="row myRow">
+            <h4>
+            Špela Jenko
+            </h4>
+          </div>
+          <div class="row myRow">
+            Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.  
+          </div>
+        </div>
+        <div class="col-md-3 center-block">
+          <img src="pics/instruktor2.jpg" id="slika" class="img-fluid center-block d-block mx-auto"></img> 
+        </div>
       </div>
     </div>
+    <!--i n s t r u k t o r  3-->
+    <div class="container myContainer">
+      <div class="row" id="mainRow">
+        <div class="col-md-9">
+          <div class="row myRow">
+            <h4>
+            Manca Štucin
+            </h4>
+          </div>
+          <div class="row myRow">
+            Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.   
+          </div>
+        </div>
+        <div class="col-md-3 center-block">
+          <img src="pics/instruktor3.jpg" id="slika" class="img-fluid center-block d-block mx-auto"></img> 
+        </div>
+      </div>
+    </div>
+    <!--i n s t r u k t o r  4-->
+    <div class="container myContainer">
+      <div class="row" id="mainRow">
+        <div class="col-md-9">
+          <div class="row myRow">
+            <h4>
+            Simon Pogačnik
+            </h4>
+          </div>
+          <div class="row myRow">
+            Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.
+          </div>
+        </div>
+        <div class="col-md-3 center-block">
+          <img src="pics/instruktor4.jpg" id="slika" class="img-fluid center-block d-block mx-auto"></img> 
+        </div>
+      </div>
+    </div>
+      
+    
+    
 </body>
 
 </html>
