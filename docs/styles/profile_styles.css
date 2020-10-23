@@ -104,7 +104,8 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(41,31,94,1) 100%)
 .image{
     float: right;
     margin-right: 150px;
-    margin-top: 70px;
+    margin-top: 80px;
+    border-radius: 25px;
 }
 
 
