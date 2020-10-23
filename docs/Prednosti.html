@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>Prednosti</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="icon" type="image/png" href="assets/icons/stbree_logo.png"/>
+        <link rel="stylesheet" href="./styles/sign_styles.css">
+    </head>
+
+    <!--navBar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+        <a class="navbar-brand mr-auto" href="./index.html"><img src="./assets/icons/stbree_logo.png" height="40"  alt="stbree_logo"></a>
+    
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-auto active">
+                        <a class="nav-link text-light" href="./signin.html">Prijava</a>
+                    </li>
+                    <li class="nav-item mx-auto">
+                        <a class="nav-link text-light" href="./signup.html">Registracija</a>
+                    </li>
+                    <li class="nav-item mx-auto active">
+                        <a class="nav-link text-light" style="border-bottom: 1px solid white; color: white !important">Prednosti</a>
+                    </li>
+                    <li class="nav-item mx-auto">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="./signin.html">Prijava</a>
+                            <a class="dropdown-item" href="./signup.html">Registracija</a>
+                            <a class="dropdown-item">Prednosti</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </a>
+    </nav>
+    
+    <body>
+        <div id="hero">
+            <!--VideoBG-->
+            <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
+                <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
+            </video>
+
+            <!--Overlay-->
+            <div id="overlay"></div>
+            
+            <!--Oblačka prednosti-->
+            <div class="container form-container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto" style="padding-bottom: 30px;">
+                        <div class="formSign form" data-aos="zoom-in">
+                            <div class="logo mb-3">
+                                <div class="col-md-12 text-center">
+                                    <h1>Postani inštruktor</h1>
+                                    <p>Obvladaš katerega izmed šolskih predmetov, si pripravljen deliti svoje znanje ter pomagati drugim?</p>
+                                    <hr>
+                                    <img src="assets/pics/instruktor.png" class="mx-auto d-block" style="width: 50%; padding-bottom: 15px;">
+                                    <p>Vse kar moraš narediti je, da se registriraš (označiš da želiš biti inštruktor) in si urediš svoj profil,
+                                        da bodo ostali lahko videli katere predmete obvladaš. Nato objaviš ponudbo, v katero
+                                        dodaš link do svoje Zoom konference in počakaš učence, da se prijavijo
+                                        na tvojo inštrukcijo. Na svoji ponudbi lahko nastaviš ceno, seveda pa lahko pomagaš brezplačno.
+                                    </p>
+                                    <hr>
+                                    <p>Bi se rad preizkusil v vlogi inštruktorja oziroma si že stari znanec inštuiranja? <a href="./signup.html" id="signup">Pridruži se zdaj!</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mx-auto">
+                        <div class="formSign form">
+                            <div class="logo mb-3">
+                                <div class="col-md-12 text-center">
+                                    <h1>Postani učenec</h1>
+                                    <p>Imaš težave v šoli in bi rad dobil dodatno razlago snovi, ali želiš izvedeti še več o tem področju?</p>
+                                    <hr>
+                                    <img src="assets/pics/ucenec.png" class="mx-auto d-block" style="width: 50%; padding-bottom: 15px;">
+                                    <p>Si zaradi aktualnega virusa zaostal za snovjo v šoli? So ti Arnesove težave s serverji zmešale štrene?
+                                        Ustvarili smo portal, da te težave odpravimo. Bi rad poiskal pomoč pri inštruktorjih, pa zaradi 
+                                        najnovejših ukrepov ne smeš zapustiti lastne hiše? Pri nas vse poteka brezstično in na daljavo.
+                                        Registriraj se in preveri ponudbo.
+                                    </p>
+                                    <hr>
+                                    <p>Se najdeš v zgornjem poklicu in želiš razširi znanje? <br><a href="./signup.html" id="signup">Pridruži se zdaj!</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script> AOS.init(); </script>
+
+    </body>
+
+</html>

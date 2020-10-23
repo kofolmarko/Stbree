@@ -28,9 +28,13 @@
                         <a class="nav-link text-light" style="border-bottom: 1px solid white; color: white!important">Registracija</a>
                     </li>
                     <li class="nav-item mx-auto">
+                        <a class="nav-link text-light" href="./prednosti.html">Prednosti</a>
+                    </li>
+                    <li class="nav-item mx-auto">
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item">Profil</a>
-                            <a class="dropdown-item" href="./signup.html">Registracija</a>
+                            <a class="dropdown-item" href="./signin.html">Prijava</a>
+                            <a class="dropdown-item">Registracija</a>
+                            <a class="dropdown-item" href="./prednosti.html">Prednosti</a>
                         </div>
                     </li>
                 </ul>
@@ -83,6 +87,26 @@
                                         <label for="password">Potrdi geslo</label>
                                         <input type="password" name="password" id="password" class="form-control">
                                     </div>
+                                    <hr>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudim" value="option1">
+                                        <label class="form-check-label" for="izbiraStoritve">
+                                        Nudim inštrukcije
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="izbiraStoritve" id="iscem" value="option2">
+                                        <label class="form-check-label" for="izbiraStoritve">
+                                        Iščem inštrukcije
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudimiscem" value="option3">
+                                        <label class="form-check-label" for="izbiraStoritve">
+                                        Nudim in iščem inštrukcije
+                                        </label>
+                                    </div>
+                                    <hr>
                                     <div class="col-md-12 text-center ">
                                         <button type="submit" class="btn btn-block mybtn btn-primary">Registriraj</button>
                                     </div>
