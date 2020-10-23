@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.chatbox {
+    background-color: #e4d0a5;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: -1;
+}
+
+#message-box {
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    transform: translate(-50%);
+    width: 70%;
+    height: 60%;
+    border: solid 1px black;
+    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.59);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background:#9bdcec;
+}
+
+#messages {
+    overflow-y: auto;
+    margin-bottom: 0;
+}
+
+#messages li {
+    margin: 5px;
+    text-align: end;
+}
+
+#type {
+    position: absolute;
+    left: 50%;
+    bottom: 2%;
+    transform: translate(-50%);
+    width: 70%;
+    background-color: #9bdcec;
+    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.59);
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#textbox {
+    width: 80%;
+    margin: 3%;
+}
+
+.btn {
+    width: 20%;
+    margin: 2%;
+}
+
+svg {
+    transform: translateY(-15%);
+}
+
+.contacts-web {
+    flex-grow: 1;
+}
+
+html {
+    background-color: rgb(235, 235, 235);
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    z-index: 4;
+}
+
+.contacts-mobile {
+    height: 50px;
+}
+
+#contactbox img {
+    height: 50px;
+    margin: 10px;
+}
+
+.contact-list {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-list-mobile {
+    
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+#contactbox ul li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+    background: rgb(192, 204, 255);
+}
+
+.podatki {
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.list-item-mobile {
+
+}
+
+input {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #ececec;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.59);
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-button {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #9d97a5;
+  border: 2px none #ffffff;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #535353;
+}
+::-webkit-scrollbar-track {
+  background: #c9c9c9;
+  border: 0px none #ffffff;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
