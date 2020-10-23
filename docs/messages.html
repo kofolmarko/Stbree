@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-dark bg-custom">
         <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px"
                 src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
@@ -53,9 +54,11 @@
             </ul>
         </div>
     </nav>
+
+    <!--Contacts-->
     <div class="col-md-2 contacts-web" id="contactbox">
-        <ul class="contact-list list-unstyled" id="contact-list">
-            <li class="list-item" style="margin-right:auto;">
+        <ul class="contact-list list-unstyled " id="contact-list">
+            <li class="list-item" >
                 <a href="#"><img src="./assets/profiles/message_thumbnail_L.png" alt=""></a>
                 <h6 class="podatki">Linda</h6>
             </li>
@@ -67,17 +70,21 @@
                 <a href="#"><img src="./assets/profiles/message_thumbnail_T.png" alt=""></a>
                 <h6 class="podatki">Tepig Firepig</h6>
             </li>
+            <li id="add-friend" class="">
+                dodaj prijatelja
+            </li>
         </ul>
     </div>
 
+    <!--Chat-->
     <div class="chatbox col-md-8 offset-md-2">
-        <div id="message-box" class="">
+        <div id="message-box" class="message-box-mobile">
             <ul id="messages" class="list-unstyled"></ul>
         </div>
 
         <div id="type">
             <input id="textbox" type="text" name="message" placeholder="Vnesite sporočilo">
-            <button id="send-button" class="btn btn-success">
+            <button id="send-button" class="btn btn-info">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -107,20 +114,45 @@
         const podatki = document.getElementsByClassName("podatki");
         let contact_list = document.getElementById("contact-list");
         let list_items = document.getElementsByClassName("list-item");
+        let message_box = document.getElementById("meeesage-box");
+        let lonely_counter = 0;
+        let add_friend = document.getElementById("add-friend");
 
         send_button.addEventListener("click", function () {
             if (textbox.value != "") { //še za presledke potrebno
                 let newMessage = document.createElement("li");
+                newMessage.classList.add("message");
                 newMessage.innerHTML = textbox.value;
                 messages.appendChild(newMessage);
+                add_response(lonely_counter);
+                lonely_counter++;
                 textbox.value = "";
                 scroll.scrollTop = scroll.scrollHeight;
             }
         });
 
+        function add_response(cond) {
+            if(cond == 2) {
+                lonely_counter = -1;
+                let newResponse = document.createElement("li");
+                newResponse.classList.add("responses");
+                newResponse.innerHTML = "Zakaj govoriš sam s sabo?";
+                messages.appendChild(newResponse);
+            }
+        }
+
         window.onload = function() {resize()}
 
         window.addEventListener("resize", function() {resize()});
+
+        add_friend.addEventListener("click", function() {add_f()});
+
+        function add_f() {
+            let newFriend = document.createElement("li");
+            newFriend.classList.add("list-item");
+            newFriend.innerHTML = "Nikogar ne boš našel/a :("
+            contact_list.insertBefore(newFriend, add_friend);
+        }
 
         function resize() {
             if(window.innerWidth < 767) {

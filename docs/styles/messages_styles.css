@@ -5,61 +5,111 @@
 }
 
 .chatbox {
-    background-color: #e4d0a5;
+    background-color: #15001b;
     position: absolute;
-    top: 0;
+    top: 0px;
     height: 100%;
     z-index: -1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
 }
 
 #message-box {
-    position: absolute;
-    left: 50%;
-    bottom: 15%;
-    transform: translate(-50%);
-    width: 70%;
-    height: 60%;
-    border: solid 1px black;
-    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.59);
-    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    margin-top: 70px;
+    border: solid 2px black;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background:#9bdcec;
+    align-items: flex-end;
 }
 
 #messages {
     overflow-y: auto;
     margin-bottom: 0;
+    width: 100%;
 }
 
-#messages li {
-    margin: 5px;
-    text-align: end;
+@media only screen and (max-width: 768px) {
+    #message-box {
+        margin-top: 150px;
+    }
+    #messages {
+        width: 100%;
+    }
 }
+
+#messages .message {
+    align-self: flex-end;
+    justify-self: flex-end;
+    margin: 10px;
+    text-align: end;
+    background-color: #a6edffdc;
+    border: 1.5px solid rgba(230, 230, 230, 0.651);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    margin-left: 49%;
+    margin-right: 5px;
+
+    animation-name: message;
+    animation-duration: 1s;
+}
+
+@keyframes message{
+    from {background-color: #dcffbbdc; border-radius: 20px;}
+    to {background-color: #a6edffdc; border-radius: 5px;}
+  }
+
+#messages .responses {
+    width: 50%;
+    align-self: flex-start;
+    margin: 10px;
+    text-align: start;
+    background-color: #ffffffdc;
+    border: 1.5px solid rgba(230, 230, 230, 0.651);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+
+    animation-name: response;
+    animation-duration: 1s;
+}
+
+@keyframes response{
+    from {background-color: #ffbbbbdc; border-radius: 20px;}
+    to {background-color: #ffffffdc; border-radius: 5px;}
+  }
+
 
 #type {
-    position: absolute;
-    left: 50%;
-    bottom: 2%;
-    transform: translate(-50%);
-    width: 70%;
-    background-color: #9bdcec;
-    box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.59);
-    border: solid 1px black;
+    width: 100%;
     display: flex;
     justify-content: center;
     border-radius: 10px;
+    height: 50px;
+    margin-bottom: 5px;
 }
 
 #textbox {
     width: 80%;
-    margin: 3%;
+    margin:0%;
+    height: 100%;
+    border-radius: 0;
+    outline: white solid 1px;
 }
 
-.btn {
+.btn-info {
+    margin: 0;
     width: 20%;
-    margin: 2%;
+    height: 100%;
+    border-radius: 0;
+    outline: white solid 1px;
+    background-color: #7a009c;
 }
 
 svg {
@@ -71,7 +121,7 @@ svg {
 }
 
 html {
-    background-color: rgb(235, 235, 235);
+    background-color: #9ecbd1;
 }
 
 body {
@@ -98,36 +148,44 @@ body {
 }
 
 .contact-list-mobile {
-    
     flex-direction: row;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 
 #contactbox ul li {
     display: flex;
     align-items: center;
     width: 100%;
-    margin-bottom: 5px;
-    background: rgb(192, 204, 255);
+    background-color: #9ecbd1;
+    height: 60px;
+}
+
+#contactbox ul li:hover {
+    cursor: pointer;
+    background-color: rgba(181, 207, 255, 0.849);
 }
 
 .podatki {
     overflow: hidden;
+    display: flex;
+    justify-self: flex-end;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
+#add-friend {
+    justify-self: flex-end;
+}
+
+/*za skrit imena v mobile načinu*/
 .hide {
-    display: none;
+    
 }
 
 .list-item-mobile {
 
-}
-
-input {
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: #ececec;
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.59);
 }
 
 ::-webkit-scrollbar {

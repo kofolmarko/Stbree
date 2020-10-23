@@ -26,8 +26,16 @@
     background: #272727;
 }
 
-#user_icon {
+.user_icon {
+    height: 50px;
+    width: 50px;
     filter: invert(1);
+}
+
+@media only screen and (max-width: 768px) {
+    .user_icon {
+        padding: 10px;
+    }
 }
 
 .mx-auto {
