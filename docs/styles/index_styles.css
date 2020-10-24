@@ -63,7 +63,7 @@ h1 {
 /* FOOTER */
 
 footer {
-    background-color: rgb(34, 6, 6);
+    background-color: black;
 }
 
 footer p{
@@ -87,4 +87,22 @@ footer p{
 
 .text-uppercase {
     margin-bottom: 25px;
+}
+
+.formSign{
+    margin: auto;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.6);
+    border-radius: 0.9rem;
+    outline: 0;
+    max-width: 500px;
 }
