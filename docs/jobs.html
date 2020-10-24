@@ -3,12 +3,22 @@
 <head>
   <title></title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/navbar_styles.css">
+  <link rel="favicon" type="image/jpg" href=”assets/icons/stbree_logo.png”/>
   
   <style>
+  
+    h2{
+        margin-top: 3%;
+        text-align: center;
+      }
+      
     .myCol{
       text-align: center;
       cursor: pointer;
@@ -16,24 +26,101 @@
     }
     
     .mySearchBar{
-      margin: 5% 30%;
+      margin: 2% 30%;
     }
     
     .img-responsive{
       width: 100%;
       height: 15vw;
       object-fit: cover;
+      transition: 0.2s ease-in-out;
+      transform: scale(1.00);
     }
     
     .row{
       margin-right: 8vw;
       margin-left: 8vw;
     }
+    
+    a{
+      display: inline-flex; 
+      position:relative;
+      overflow: hidden;
+    }
+    
+    .predmetText{
+      display: inline-block; 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%,-50%);
+      padding: 0px 5px;
+      background-color: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      font-size: 27px;
+      color: black;
+      font-family: 'Work Sans', sans-serif;
+      }
+      
+    a:hover img {
+      transition: 0.2s ease-in-out;
+      transform: scale(1.05);
+    }
+    
+    a:hover .predmetText{
+      background-color: rgba(255,255,255,0.2);
+      transition: 0.2s ease-in-out;
+    }
+    
   </style>
+  
+  <!--N a v b a r-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-custom">
+      <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
+  
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item mx-auto">
+                      <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
+                  </li>
+                  <li class="nav-item mx-auto">
+                      <a class="nav-link text-light" href="./messages.html">Sporočila</a>
+                  </li>
+                  <li class="nav-item mx-auto">
+                      <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
+                  </li>
+                  <li class="nav-item mx-auto">
+                      <a class="nav-link text-light" href="./jobs.html">Delo</a>
+                  </li>
+                  <li class="nav-item mx-auto">
+                      <a class="nav-link text-light" href="./opravila.html">Moja opravila</a>
+                  </li>
+                  <li class="nav-item mx-auto">
+                      <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
+                          <img height="30px" width="30px" src="./assets/icons/user.png" alt="user_icon" id="user_icon">
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="./profile.html">Profil</a>
+                          <a class="dropdown-item" href="./settings.html">Nastavitve</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+  </nav>
+  
 </head>
 <body>
 <!--J o b s  p a g e-->
-
+<div class="container">
+  <h2>Ponudbe del</h2>
+</div>
 <!--S e a r c h  b a r-->
 <div class="mySearchBar">
   <input class="form-control" type="text" placeholder="Search" aria-label="Search">
@@ -45,25 +132,33 @@
     <div class="col-sm-3 myCol">
       <a href="seznamPonudb.html?predmet=programiranje">
         <img src="pics/programiranje.png" class="img-responsive"></img>
-        Programiranje
+        <div class="predmetText">
+          Programiranje
+        </div>
       </a>
     </div>
     <div class="col-sm-3 myCol">
       <a href="seznamPonudb.html?predmet=pisanje">
         <img src="pics/pisanje.jpg" class="img-responsive"></img>
+        <div class="predmetText">
         Pisanje
+        </div>
        </a>
     </div>
     <div class="col-sm-3 myCol">
       <a href="seznamPonudb.html?predmet=oblikovanje">
         <img src="pics/oblikovanje.png" class="img-responsive"></img>
+        <div class="predmetText">
         Oblikovanje
+        </div>
        </a>
     </div>
     <div class="col-sm-3 myCol">
       <a href="seznamPonudb.html?predmet=video">
         <img src="pics/video.png" class="img-responsive"></img>
+       <div class="predmetText">
         Video
+       </div>
       </a>
     </div>
   </div>
