@@ -17,14 +17,15 @@
 /* CONTACTS */
 
 #contacts {
-    background-color: red;
     width: 20%;
     display: flex;
     flex-direction: column;
+    background-color: #e6aaff;
 }
 
 #contacts-header {
     text-align: center;
+    margin-top: 5px;
 }
 
 #search {
@@ -32,54 +33,109 @@
 }
 
 #contacts-body {
-    background-color: rgb(135, 196, 250);
     overflow-y: auto;
 }
 
+#contact-list {
+    margin-top: 5px;
+}
+
 #contact-list li{
-    
+    height: 55px;
+    margin: 0px 5px;
+    border-radius: 5px;
+    display: flex;
+}
+
+#contact-list li h6 {
+    align-self: center;
+    margin-left: 5px;
 }
 
 /* MESSAGING */
 
 #messaging {
-    background-color: blue;
     width: 60%;
     display: flex;
     flex-direction: column;
 }
 
 #active-contact {
-    background-color: aliceblue;
     height: 100px;
+    text-align: center;
+    border-bottom: solid 1px rgb(83, 83, 83);
 }
 
 #chatbox {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 100%;
+    height: 90%;
 }
 
 #messages {
-    background-color: aqua;
     overflow-y: auto;
     height: 100%;
+    width: 99%;
+    margin: auto;
+    display: flex;
+    align-items: flex-end;
+}
+
+#message-list {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#message-list li {
+    margin: 10px;
+}
+
+#message-list li p span{
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.sent {
+    width: 60%;
+    align-self: flex-end;
+    justify-self: flex-end;
+    text-align: end;
+}
+
+.recieved {
+    width: 60%;
+    align-self: flex-start;
+    justify-self: flex-start;
+    text-align: start;
+}
+
+.sent-span {
+    background-color: aqua;
+}
+
+.recieved-span {
+    background-color: rgb(216, 179, 250);
 }
 
 #messages-bottom {
-    background-color: azure;
     position: relative;
-    height: 50px;
+    height: 20%;
 }
 
 #send {
     display: flex;
     position: absolute;
-    bottom: 3px;
-    width: 80%;
+    bottom: 10px;
+    width: 99%;
     left: 50%;
     transform: translate(-50%);
+}
+
+#send input {
+    margin: 0px 3px;
 }
 
 .btn {
@@ -89,18 +145,29 @@
 /* SHARED */
 
 #shared {
-    background-color: yellow;
     width: 20%;
     display: flex;
     flex-direction: column;
+    background-color: #d6f4ff;
 }
 
 #active-contact-profile {
     height: 50%;
     margin: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
+    width: 100%;
+}
+
+#active-contact-profile img {
+    margin: 30px 0px;
+}
+
+#active-contact-profile svg {
+    margin: 0px 5px;
 }
 
 #shared-files {
@@ -108,10 +175,30 @@
     overflow-y: auto;
 }
 
+#file-list li p {
+    background-color: #a8c4ff;
+    margin: 5px 0px;
+    padding: 5px;
+}
+
+/* OTHER */
+
+svg {
+    cursor: pointer;
+    background-color: rgb(243, 243, 243);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+svg:hover {
+    color: rgb(212, 103, 255);
+    background-color: whitesmoke;
+}
+
 
 /*
 
-********************
+*********************
 
    MOBILE STYLING
 
@@ -155,6 +242,18 @@
 
     #contact-list li {
         display: inline;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    #contact-list li img {
+        height: 45px;
+        width: 45px;
+    }
+
+    #contact-list li h6 {
+        display: inline;
+        /*display: none;*/
     }
 
     /* MESSAGING */
@@ -164,17 +263,90 @@
         height: 80%;
     }
 
+    #active-contact {
+        border-bottom: solid 1px rgb(83, 83, 83);
+        text-align: center;
+    }
+
+    #messages {
+        width: 95%;
+    }
+
+    #send :nth-child(3) {
+        order: 3;
+    }
+
     /* SHARED */
 
     #shared {
         width: 100%;
         height: 10%;
         flex-direction: row;
+        
+    }
+
+    #active-contact-profile {
+        flex-direction: row;
+        height: 100%;
+        justify-content: flex-start;
+    }
+
+    #active-contact-profile img {
+        height: 50px;
+        width: 50px;
+        margin: 0px 10px;
+    }
+
+    #active-contact-profile svg {
+        align-self: center;
+        margin: 0px 10px;
     }
 
     #shared-files {
         width: 60%;
         height: 100%;
+        border-left: 1px solid black;
     }
 
+    /* OTHER */
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    }
+    ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+    }
+    ::-webkit-scrollbar-thumb {
+    background: #5c5c5c;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: #757575;
+    }
+    ::-webkit-scrollbar-thumb:active {
+    background: #858585;
+    }
+    ::-webkit-scrollbar-track {
+    background: #d9d9d9;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+    }
+    ::-webkit-scrollbar-track:hover {
+    background: #d9d9d9;
+    }
+    ::-webkit-scrollbar-track:active {
+    background: #d9d9d9;
+    }
+    ::-webkit-scrollbar-corner {
+    background: transparent;
+    }
+
+html {
+    overflow: hidden;
 }
