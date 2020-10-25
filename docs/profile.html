@@ -54,196 +54,166 @@
 
 <body>
     
-<div class="back">
     
-    <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="image" height="250" width="250">
-    
-	<div class="podatki"> 
+	<div class="container podatki"> 
+       
 	    <div class="naslov"> Ime Priimek <hr> </div>
 	    
-            <form action="" method ="">Opis:<br>
-                    <textarea class="text-box" rows="3" cols="50"></textarea></br>
-    	            <input style="margin-top: 10px" class="clikn" type="submit" value="Dodaj">
-            </form>
-             
-            
-            <div class="glavne">
-                <div class="pod_dva">imepriimek@gmail.com</div>
-    	    	<div>Email naslov:</div>
-    	    	 <div class="pod_dva">030 723 418</div>
-    		    <div>Telefonska številka:</div>
-    		     <div class="pod_dva">26.10.2020</div>
-    		    <div>Datum vpisa:</div>
-    		    
-    	    </div>
+	     <!-- i n p u t  t e k s t  f o r m -->
+        <div class="row">
+            <div class="col-md-8">
+                <form action="" method ="">
+                    <div class="form-group">
+                        <label for="textarea">Opis:</label><br>
+                            <textarea class="text-box" rows="3" cols="50"></textarea></br>
+            	            <input style="margin-top: 10px" class="clikn" type="submit" value="Dodaj">
+            	    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="img-responsive image">
+            </div>
+        </div>            
+                    
+                    
+        
+        <!-- t a b e l a  p o d a t k o v -->
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <th class="thPodatki" scope="row">Email naslov</th>
+                        <td>imepriimek@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <th class="thPodatki" scope="row">Telefonska številka</th>
+                        <td>030 723 418</td>
+                    </tr>
+                    <tr>
+                        <th class="thPodatki" scope="row">Datum vpisa</th>
+                        <td>26.10.2020</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>       
+        <!-- g u m b e k  -->
+	   <button class="clikn" style="margin-top: 20px" type="button">Spremeni podatke</button>
 	    
-	        <button class="clikn" style="margin-top: 20px" type="button">Spremeni podatke</button>
-	        
-	        <div style="margin-top: 40px">
-	            
-                <div class="tab">
-                  <button class="tablinks" onclick="openCity(event, 'Dosežki')">Dosežki</button>
-                  <button class="tablinks" onclick="openCity(event, 'Kronologija')">Kronologija</button>
-                  <button class="tablinks" onclick="openCity(event, 'Moje ponudbe del')">Moje ponudbe del</button>
-                  <button class="tablinks" onclick="openCity(event, 'Moje inštrukcije')">Moje inštrukcije</button>
-                  <button class="tablinks" onclick="openCity(event, 'Spremeni geslo')">Spremeni geslo</button>
+	    <!-- t a b s  -->    
+	   <ul class="nav nav-tabs mojClass" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Dosežki</a>
+             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Kronologija</a>
+             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Moje ponudbe del</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="instrkucije-tab" data-toggle="tab" href="#instrukcije" role="tab" aria-controls="instrukcije" aria-selected="false">Moje inštrukcije</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="geslo-tab" data-toggle="tab" href="#geslo" role="tab" aria-controls="geslo" aria-selected="false">Spremeni geslo</a>
+            </li>
+        </ul>
+        
+        <!-- t a b s  k o  s e  o d p r e j o -->   
+        <div class="tab-content" id="myTabContent">
+        <!-- d o s e z k i -->   
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          </div>
+          <!-- K r o n o l o g i j a  -->   
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="table-responsive">
+                    <table class="table table-borderless"> 
+                        <thead>
+                            <tr class="trTabelaKrono">
+                                <th scope="col" class="thTabelaKrono">Naloga</th>
+                                <th scope="col">Oddano</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML stran, projekt Spletnega Programiranja</td>
+                                <td>26.10.2020</td>
+                            </tr>
+                            <tr>
+                                <td>Logo za projekt SP</td>
+                                <td>15.10.2020</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                    
-                <div id="Dosežki" class="tabcontent">
-                      <p></p>
+          </div>
+          
+          <!-- M o j e  p o n u d b e  d e l  -->
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              
+              <div class="table-responsive">
+                    <table class="table table-borderless"> 
+                        <thead>
+                            <tr class="trTabelaKrono">
+                                <th scope="col" class="thTabelaKrono">Naloga</th>
+                                <th scope="col">Rok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                    
-                <div id="Kronologija" class="tabcontent">
-                      <p>
-                        <div class="dodatne">
-                            <table width="670">
+            </div>
+        <!-- M o j e  i n s t r u k c i j e  -->  
+            <div class="tab-pane fade" id="instrukcije" role="tabpanel" aria-labelledby="instrukcije">
             
-                            <tr> 	<!-- in bald -->
-                            	<th> Naloga </th>
-                            	<th style="text-align: right"> Oddano </th>
+            <div class="table-responsive">
+                    <table class="table table-borderless"> 
+                        <thead>
+                            <tr class="trTabelaKrono">
+                                <th scope="col" class="thTabelaKrono">Naloga</th>
+                                <th scope="col">Rok</th>
                             </tr>
-                            
-                            
-                            <tr>	<!-- not in bald -->
-                            	<td> HTML stran, projekt Spletnega Programiranja </td>
-                            	<td style="text-align: right"> 26.10.2020 </td>
-                            	
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
                             </tr>
-                            
-                            <tr>	
-                            	<td> Logo za projekt SP </td>
-                            	<td style="text-align: right"> 15.10.2020 </td>
-                            
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
                             </tr>
-                            
-                            </table>
-            
-                        </div> 
-                          
-                      </p> 
-                </div>
-            
-                    
-                <div id="Moje ponudbe del" class="tabcontent">
-                      <p>
-                          
-                          <div class="dodatne">
-                            <table width="670">
-            
-                            <tr> 	<!-- in bald -->
-                            	<th> Naloga </th>
-                            	<th style="text-align: right"> Rok </th>
-                            </tr>
-                            
-                            
-                            <tr>	<!-- not in bald -->
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            	
-                            </tr>
-                            
-                            <tr>	
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            
-                            </tr>
-                            
-                             <tr>	
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            
-                            </tr>
-                            
-                             <tr>	
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            
-                            </tr>
-                            
-                             <tr>	
-                            	<td> <a href="./dodajDelo.html" class="clikn" style="margin-left: -5px"type="button">Dodaj</a> </td>
-                            	
-                            
-                            </tr>
-                            </table>
-            
-                        </div> 
-                      </p>
-                </div>
-                
-                <div id="Moje inštrukcije" class="tabcontent">
-                    <p>
-                          
-                        <div class="dodatne">
-                            <table width="670">
-            
-                            <tr> 	<!-- in bald -->
-                            	<th> Naloga </th>
-                            	<th style="text-align: right"> Rok </th>
-                            </tr>
-                            
-                            
-                            <tr>	<!-- not in bald -->
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            	
-                            </tr>
-                            
-                            <tr>	
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            
-                            </tr>
-                            
-                             <tr>	
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            
-                            </tr>
-                            
-                             <tr>	
-                            	<td> - </td>
-                            	<td style="text-align: right"> - </td>
-                            
-                            </tr>
-                            
-                             <tr>	
-                            	<td> <a href="./dodajInstrukcijo.html" class="clikn" style="margin-left: -5px"type="button">Dodaj</a> </td>
-                            	
-                            
-                            </tr>
-                            </table>
-            
-                        </div> 
-                    </p>
-                </div>
-                
-                <div id="Spremeni geslo" class="tabcontent">
-                      <p>
-                        	 <div class="dodatne"> <strong>Izberite si novo geslo. Naj bo dolgo vsaj 8 znakov.</strong>
-                    			<div style="padding: 25px"> 
-                    				<form action="" method ="">
-                    				<label for="name">Novo geslo &nbsp&nbsp&nbsp </label>
-                    				<input type="password" id="firstname" name="" size="25"> <br> <br> 
-                    	
-                    				<label for="surname">Ponovi geslo: </label>
-                    				<input type="password" id="surname" name="" size="25">
-                    				</form> 
-                    					
-                    			</div>
-                    			<div style="text-align: right">
-                    			<button type="submit" class="clikn btn btn-secondary">Potrdi</button> 
-                            	</div>
-                    		</div>
-                      </p>
+                        </tbody>
+                    </table>
                 </div>
             
             </div>
-
-        </div>
-        
-        
-    </div>
+         <!-- S p r e m e n i  g e s l o  --> 
+          <div class="tab-pane" id="geslo" role="tabpanel" aria-labelledby="geslo">
+          
+            <form action="" method ="">
+                <p>Izberite si novo geslo. Naj bo dolgo vsaj 8 znakov.<br> </p>
+                <div class="form-group gesloForm">
+    				<label for="name">Novo geslo &nbsp&nbsp&nbsp </label>
+    				<input type="password" id="firstname" name="" size="25"> <br> <br> 
+    	
+    				<label for="surname">Ponovi geslo: </label>
+    				<input type="password" id="surname" name="" size="25">
+    			</div>
+			</form>
+          </div>
+            
+        </div> <!-- k o n e c  t a b s o v  --> 
+    </div>   <!-- k o n e c  p o d a t k o v  --> 
+	       
 </div>
 
  <script>
