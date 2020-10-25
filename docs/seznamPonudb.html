@@ -80,6 +80,10 @@
     text-decoration: none;
   }
   
+  #linkiZaNazaj{
+    margin-left: 2vw;
+    margin-top: 2vh;
+  }
     
   </style>
   
@@ -127,6 +131,9 @@
 
 
 <body>
+    <div id="linkiZaNazaj">
+    </div>
+    
     <h2 id="naslov">
     </h2>
     <div id="filter">
@@ -179,6 +186,14 @@
     
   }
   
+  function narediLink(povezava, imeLinka){
+    var a1 = document.createElement('a');
+    a1.href = povezava;
+    var linkTekst = document.createTextNode(imeLinka);
+    a1.appendChild(linkTekst);
+    document.getElementById('linkiZaNazaj').appendChild(a1);
+  }
+  
   window.onload = function(){
     
   // c a s e  z a  s e s t a v i t i  o s e b e  g l e d e  n a  p r e d m e t e
@@ -187,6 +202,9 @@
     switch(predmet){
       
       case "matematika":
+        narediLink("instrukcije.html","Inštrukcije /");
+        narediLink("seznamPonudb.html?predmet=matematika.html"," Matematika");
+        
         document.getElementById("naslov").innerHTML = "Matematika";
         izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
         izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
@@ -195,6 +213,9 @@
         break;
         
       case "fizika":
+        narediLink("instrukcije.html","Inštrukcije /");
+        narediLink("seznamPonudb.html?predmet=fizika.html"," Fizika");
+        
         document.getElementById("naslov").innerHTML = "Fizika";
          izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
         izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
@@ -203,6 +224,10 @@
         break;
         
       case "kemija":
+        narediLink("instrukcije.html","Inštrukcije /");
+        narediLink("seznamPonudb.html?predmet=kemija.html"," Kemija");
+        
+        
         document.getElementById("naslov").innerHTML = "Kemija";
          izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
         izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
@@ -211,6 +236,9 @@
         break;
         
       case "programiranje":
+        narediLink("instrukcije.html","Inštrukcije /");
+        narediLink("seznamPonudb.html?predmet=programiranje.html"," Programiranje");
+        
         document.getElementById("naslov").innerHTML = "Programiranje";
          izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
         izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
@@ -219,6 +247,9 @@
         break;
         
       case "slovenscina":
+        narediLink("instrukcije.html","Inštrukcije /");
+        narediLink("seznamPonudb.html?predmet=slovenscina.html"," Slovenščina");
+    
         document.getElementById("naslov").innerHTML = "Slovenščina";
          izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
         izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
@@ -227,6 +258,9 @@
         break;
         
       case "anglescina":
+        narediLink("instrukcije.html","Inštrukcije /");
+        narediLink("seznamPonudb.html?predmet=anglescina.html"," Angleščina");
+        
         document.getElementById("naslov").innerHTML = "Angleščina";
          izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
         izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
@@ -235,6 +269,9 @@
         break;
         
       case "programiranje2":
+        narediLink("jobs.html","Dela /");
+        narediLink("seznamPonudb.html?predmet=programiranje2.html"," Programiranje");
+        
         document.getElementById("naslov").innerHTML = "Programiranje";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
         izdelajPonudbo("Urejanje virov za seminarsko", "Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči.", "pics/jobOffer2.jpg");
@@ -242,6 +279,9 @@
         break;
         
       case "pisanje":
+        narediLink("jobs.html","Dela /");
+        narediLink("seznamPonudb.html?predmet=pisanje.html"," Pisanje");
+        
         document.getElementById("naslov").innerHTML = "Pisanje";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
         izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.","pics/jobOffer3.jpg");
@@ -249,6 +289,9 @@
         break;
         
       case "oblikovanje":
+        narediLink("jobs.html","Dela /");
+        narediLink("seznamPonudb.html?predmet=oblikovanje.html"," Oblikovanje");
+        
         document.getElementById("naslov").innerHTML = "Oblikovanje";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
         izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.","pics/jobOffer3.jpg");
@@ -256,6 +299,9 @@
         break;
         
       case "video":
+        narediLink("jobs.html","Dela /");
+        narediLink("seznamPonudb.html?predmet=video.html"," Video");
+        
         document.getElementById("naslov").innerHTML = "Video";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
         izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.","pics/jobOffer3.jpg");
