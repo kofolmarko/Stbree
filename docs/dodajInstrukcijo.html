@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-        <link rel="icon" type="image/png" href="assets/icons/stbree_logo.png"/>
+        <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
         <link rel="stylesheet" href="./styles/job_page_styles.css">
     </head>
 
@@ -75,10 +75,23 @@
                             <label for="cenaDela">Datum inštrukcije</label>
                             <input type="text" class="form-control" placeholder="Izberi datum (manjka javascript)">
                         </div>
+                        <div class="form-group">
+                            <label for="inputState">Tip instrukcije</label>
+                            <select id="inputState" class="form-control">
+                              <option>Matematika</option>
+                              <option>Fizika</option>
+                              <option>Kemija</option>
+                              <option>Ostalo</option>
+                            </select>
+                          </div>                         
+                        <div class="form-group">
+                            <label for="naslovnaSlikaInstrukcije">Dodaj naslovno fotografijo (neobvezno)</label>
+                            <input type="file" class="form-control-file" id="naslovnaSlikaInstrukcije">
+                        </div>
                         <button type="submit" class="btn btn-primary">Objavi</button>
                         <hr>
                         <div id="relevant-jobs">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding-bottom: 30px;">
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -130,5 +143,30 @@
         <script> AOS.init(); </script>
 
     </body>
+
+    <!--footer-->
+    <footer class="page-footer font-small pt-4 text-light" style="background-color: #292b2c;">
+        <div class="container-fluid text-center">
+            <h6 class="text-uppercase">Kontaktirajte nas</h6>
+    
+            <ul class="list-unstyled">
+                <li class="d-inline">
+                <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
+                </li>
+                <li class="d-inline">
+                <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
+                </li>
+                <li class="d-inline">
+                <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
+                </li>
+                <li class="d-inline">
+                <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-copyright text-center py-3">
+        © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
+        </div>
+    </footer>
 
 </html>

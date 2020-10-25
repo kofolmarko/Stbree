@@ -21,19 +21,19 @@
 
 #about-job {
     width: 100%;
-    background-image: url(../pics/ang.jpg);
-    background-color: black;
+    background-image: url(../assets/backgrounds/job_thumbnail.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
 }
 
 #category {
-    margin: 15px;
+    margin: 20px;
 }
 
 #category a {
     display: inline;
-    color: rgb(0, 68, 255);
 }
 
 #category p {
@@ -43,6 +43,7 @@
 #title {
     align-self: center;
     margin: 30px;
+    color: rgb(236, 236, 236);
 }
 
 #joball {
@@ -87,15 +88,17 @@
 }
 
 #offer {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin: 20px;
+    margin: 10px 0px;
 }
 
 #delivery-time {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -125,8 +128,9 @@
 }
 
 #star-rating {
-    align-self: center;
+    align-self: flex-start;
     margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 .checked {
@@ -152,6 +156,17 @@
     background-color: rgb(228, 228, 228);
     padding: 5px;
     border-radius: 3px;
+}
+
+svg {
+    cursor: pointer;
+    background-color: rgb(243, 243, 243);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+svg:hover {
+    color: rgb(0, 12, 66);
 }
 
 #relevant-jobs {
