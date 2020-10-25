@@ -51,7 +51,7 @@ h1 {
 }
 
 .navbar.scrolled {
-  background:rgb(43, 17, 33) !important;
+  background: #292b2c !important;
 }
 
 .nav-item-signup {
@@ -63,7 +63,7 @@ h1 {
 /* FOOTER */
 
 footer {
-    background-color: black;
+    background-color: #292b2c;
 }
 
 footer p{
