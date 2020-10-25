@@ -20,12 +20,13 @@
     width: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #e6aaff;
+    border-right: 1px solid rgb(212, 212, 212);
 }
 
 #contacts-header {
     text-align: center;
     margin-top: 5px;
+    border-bottom: 1px solid rgb(212, 212, 212);
 }
 
 #search {
@@ -63,7 +64,8 @@
 #active-contact {
     height: 100px;
     text-align: center;
-    border-bottom: solid 1px rgb(83, 83, 83);
+    border-bottom: solid 1px rgb(212, 212, 212);
+    border-right: 1px solid rgb(212, 212, 212);
 }
 
 #chatbox {
@@ -71,6 +73,7 @@
     flex-direction: column;
     justify-content: flex-end;
     height: 90%;
+    border-right: 1px solid rgb(212, 212, 212);
 }
 
 #messages {
@@ -113,11 +116,11 @@
 }
 
 .sent-span {
-    background-color: aqua;
+    background-color: rgb(247, 247, 247);
 }
 
 .recieved-span {
-    background-color: rgb(216, 179, 250);
+    background-color: rgb(177, 172, 255);
 }
 
 #messages-bottom {
@@ -148,7 +151,6 @@
     width: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #d6f4ff;
 }
 
 #active-contact-profile {
@@ -160,6 +162,7 @@
     align-items: center;
     overflow-y: auto;
     width: 100%;
+    border-bottom: 1px solid rgb(212, 212, 212);
 }
 
 #active-contact-profile img {
@@ -176,7 +179,7 @@
 }
 
 #file-list li p {
-    background-color: #a8c4ff;
+    background-color: #fffd9e;
     margin: 5px 0px;
     padding: 5px;
 }
@@ -191,8 +194,7 @@ svg {
 }
 
 svg:hover {
-    color: rgb(212, 103, 255);
-    background-color: whitesmoke;
+    color: rgb(0, 12, 66);
 }
 
 
@@ -264,7 +266,7 @@ svg:hover {
     }
 
     #active-contact {
-        border-bottom: solid 1px rgb(83, 83, 83);
+        border-bottom: solid 1px rgb(212, 212, 212);
         text-align: center;
     }
 
@@ -305,7 +307,7 @@ svg:hover {
     #shared-files {
         width: 60%;
         height: 100%;
-        border-left: 1px solid black;
+        border-left: 1px solid rgb(212, 212, 212);
     }
 
     /* OTHER */
