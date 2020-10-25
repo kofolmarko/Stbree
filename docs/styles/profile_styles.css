@@ -1,66 +1,11 @@
 .back{
-   background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(41,31,94,1) 100%);
+   background: rgb(18,70,83);
+background: linear-gradient(0deg, rgba(18,70,83,1) 0%, rgba(41,17,34,1) 100%);
    padding-top: 65px;
-    
-}
-.row p, button {
-    margin: 5px;
+   padding-bottom: 80px;
+
 }
 
-.btn {
-    margin-left: 15px;
-    padding: 5px, 0px;
-    align-items: center;
-}
-
-.dropdown-menu {
-    left: auto;
-    right: 5px;
-}
-
-#navbarDropdown A.navi:hover {
-    background-color: white;
-}
-
-.navbar-nav .nav-link {
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-.bg-custom {
-    background: #291f5e;
-}
-
-#user_icon {
-    filter: invert(1);
-}
-
-.mx-auto {
-    margin: auto;
-}
-
-.dropdown-menu {
-    background-color: #124653;
-}
-
-.dropdown-menu A.navi {
-    color: #f7f7f7;
-}
-.navbar {
-    transition: 750ms ease;
-    z-index: 3;
-}
-
-.navbar.scrolled {
-  background:rgb(43, 17, 33) !important;
-}
-
-.nav-item-signup {
-    border: 1.5px rgba(255, 255, 255, 0.6) solid;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.5);
-}
 .podatki{
     margin-top: 50px;
     margin-left: 80px;
@@ -84,6 +29,7 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(41,31,94,1) 100%)
 }
 .text-box{
     margin-top: 10px;
+    padding: 15px;
     background-color: grey;
     background-color: #cdcdcd;
     border-radius: 25px;
@@ -91,7 +37,7 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(41,31,94,1) 100%)
 .glavne{
     padding: 15px;
     margin-top: 15px;
-    border: 5px solid #43aa8b;
+    border: 5px solid #291122;
     border-radius: 25px;
     margin-right: -370px;
     
@@ -104,14 +50,15 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(41,31,94,1) 100%)
 .image{
     float: right;
     margin-right: 150px;
-    margin-top: 80px;
+    margin-top: 110px;
     border-radius: 25px;
 }
 
 
 .dodatne{
     padding: 15px;
-    background-color: #534B7C;
+    color: white;
+    background-color: #52818c;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     margin-right: -370px;
@@ -127,7 +74,7 @@ th{
   overflow: hidden;
   outline: none;
   border: none;
-  background-color: rgba(41,31,94,1);
+  background-color: rgba(18,70,83,1);
   display: flex;
   justify-content: space-between;
   margin-right: -370px;
@@ -152,12 +99,12 @@ th{
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #181237;
+  background-color: #0d333c;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #181237;
+  background-color: #0d333c;
 }
 
 /* Style the tab content */
@@ -165,6 +112,48 @@ th{
   display: none;
   padding: 6px 12px;
   border-top: none;
+}
+
+.clikn{
+    background-color: #4ec5e0;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 17px;
+    padding: 5px;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: rgb(34, 6, 6);
+}
+
+footer p{
+    margin-bottom: 0;
+}
+
+/* MODIFIED BOOTSTRAP */
+
+.d-inline {
+    margin: 10px;
+}
+
+.row {
+    padding: 10px;
+    margin: 0px;
+}
+
+.row p, button {
+    margin: 20px;
+}
+
+.text-uppercase {
+    margin-bottom: 25px;
+}
+
+.checked {
+  color: orange;
 }
 
 
