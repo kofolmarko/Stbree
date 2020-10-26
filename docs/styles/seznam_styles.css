@@ -55,6 +55,13 @@ h2{
     transition: 0.2s ease-in-out;
   }
 
+<<<<<<< HEAD
   .navbar {
     padding: 0.5rem;
+=======
+  footer {
+    background-color: #292b2c;
+    padding-bottom: 20px;
+    width: 100%;
+>>>>>>> 23636b5748fbc29242f9d6425b172a0e0a9014ff
   }
