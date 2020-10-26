@@ -120,7 +120,7 @@
 }
 
 .recieved-span {
-    background-color: rgb(177, 172, 255);
+    background-color: rgb(140, 177, 255);
 }
 
 #messages-bottom {
@@ -179,7 +179,7 @@
 }
 
 #file-list li p {
-    background-color: #fffd9e;
+    background-color: #9eb0ff;
     margin: 5px 0px;
     padding: 5px;
 }
