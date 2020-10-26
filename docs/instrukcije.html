@@ -1,97 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title></title>
   <meta charset="utf-8">
-  
+  <title>Inštrukcije</title>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/navbar_styles.css">
+  <link rel="stylesheet" href="./styles/seznam_styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="favicon" type="image/jpg" href=”assets/icons/stbree_logo.png”/>
-  <style>
-  
-    h2{
-      margin-top: 3%;
-      text-align: center;
-    }
-    .container{
-      margin-bottom: 3vh;
-    }
-    .mySearchBar{
-      margin: 2% 30%;
-    }
-    
-    .myCol{
-      text-align: center;
-      cursor: pointer;
-      padding: 0px;
-    }
-    
-    .img-responsive{
-      width: 100%;
-      height: 15vw;
-      object-fit: cover;
-      transition: 0.2s ease-in-out;
-      transform: scale(1.00);
-    }
-    
-    .row{
-      margin-right: 8vw;
-      margin-left: 8vw;
-    }
-    
-    a{
-      display: inline-flex; 
-      position:relative;
-      overflow: hidden;
-    }
-    
-    .predmetText{
-      display: inline-block; 
-      position: absolute; 
-      top: 50%; 
-      left: 50%; 
-      transform: translate(-50%,-50%);
-      padding: 0px 5px;
-      background-color: rgba(255,255,255,0.5);
-      backdrop-filter: blur(10px);
-      border-radius: 8px;
-      font-size: 27px;
-      color: black;
-      font-family: 'Work Sans', sans-serif;
-      }
-      
-    a:hover img {
-      transition: 0.2s ease-in-out;
-      transform: scale(1.05);
-    }
-    
-    a:hover .predmetText{
-      background-color: rgba(255,255,255,0.2);
-      transition: 0.2s ease-in-out;
-    }
-    
-  #linkiZaNazaj{
-    margin-left: 2vw;
-    margin-top: 2vh;
-  }
-  
-  a{
-    color: black; 
-  } 
-  a:hover{
-    color: black; 
-  }
-    
-    
-    
-  </style>
+  <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
+
   <!--N a v b a r-->
     <nav class="navbar navbar-expand-md navbar-dark bg-custom">
-      <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
+      <a class="navbar-brand mr-auto" href="./index.html"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
   
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
               <span class="navbar-toggler-icon"></span>
@@ -130,77 +53,99 @@
   </nav>
 </head>
 
-<body>
-  <div id="linkiZaNazaj">
-    <a href="instrukcije.html">Inštrukcije</a>
-  </div>
+  <body>
+    <!--J o b s  p a g e-->
+    <div class="container" style="padding-bottom: 30px;">
+      <div class="col">
+        <h2>Inštrukcije</h2>
+        <hr>
+        <p class="text-center"><a href="./seznamPonudb.html" id="signin">Preveri seznam vseh inštrukcij</a></p>  
+      </div>
     
-<!--N a s l o v-->
-<div class="container">
-  <h2>Inštrukcije</h2>
-</div>
-<!--S e a r c h  b a r-->
-<div class="mySearchBar">
-  <input class="form-control" type="text" placeholder="Poišči inštruktorja" aria-label="Search">
-</div>
+    <!--S e a r c h  b a r-->
+      <input class="form-control" type="text" placeholder="Poišči inštruktorja" aria-label="Search">
+    </div>
 
-<!--P r e d m e t i  o p c i j e-->
-<div class="container">
-  <div class="row">
-        <div class="col-sm-4 myCol">
-          <a href="seznamPonudb.html?predmet=matematika">
-             <img src="pics/mat.jpg" class="img-responsive"></img>
-             <div class="predmetText">
-                Matematika
-             </div>
-          </a>
-        </div>
-        <div class="col-sm-4 myCol">
-          <a href="seznamPonudb.html?predmet=fizika">
-            <img src="pics/fiz.jpg" class="img-responsive"></img>
-            <div class="predmetText">
-              Fizika
+    <!--P r e d m e t i  o p c i j e-->
+    <div class="container-fluid">
+      <div class="row">
+            <div class="col-sm-4 myCol" data-aos="fade-down-right" data-aos-duration="800">
+              <a href="seznamPonudb.html?predmet=matematika">
+                <img src="pics/mat.jpg" class="img-responsive"></img>
+                <div class="predmetText">
+                    Matematika
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
-        <div class="col-sm-4 myCol">
-          <a href="seznamPonudb.html?predmet=kemija">
-            <img src="pics/kem.jpg" class="img-responsive"></img>
-            <div class="predmetText">
-              Kemija
+            <div class="col-sm-4 myCol" data-aos="fade-down" data-aos-duration="800">
+              <a href="seznamPonudb.html?predmet=fizika">
+                <img src="pics/fiz.jpg" class="img-responsive"></img>
+                <div class="predmetText">
+                  Fizika
+                </div>
+              </a>
             </div>
-          </a>
+            <div class="col-sm-4 myCol" data-aos="fade-down-left" data-aos-duration="800">
+              <a href="seznamPonudb.html?predmet=kemija">
+                <img src="pics/kem.jpg" class="img-responsive"></img>
+                <div class="predmetText">
+                  Kemija
+                </div>
+              </a>
+            </div>
+        </div>
+        
+        <div class="row" style="padding-bottom: 50px;">
+            <div class="col-sm-4 myCol" data-aos="fade-up-right" data-aos-duration="800">
+              <a href="seznamPonudb.html?predmet=programiranje">
+                <img src="pics/prog.jpg" class="img-responsive"></img>
+                <div class="predmetText">
+                Programiranje
+                </div>
+                </a>
+            </div>
+            <div class="col-sm-4 myCol" data-aos="fade-up" data-aos-duration="800">
+              <a href="seznamPonudb.html?predmet=slovenscina">
+                <img src="pics/slo.jpg" class="img-responsive"></img>
+                <div class="predmetText">
+                Slovenščina
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-4 myCol" data-aos="fade-up-left" data-aos-duration="800">
+              <a href="seznamPonudb.html?predmet=anglescina">
+                <img src="pics/ang.jpg" class="img-responsive"></img>
+                <div class="predmetText">
+                  Angleščina
+                </div>
+              </a>
+            </div>
         </div>
     </div>
-    
-    <div class="row">
-         <div class="col-sm-4 myCol">
-          <a href="seznamPonudb.html?predmet=programiranje">
-            <img src="pics/prog.jpg" class="img-responsive"></img>
-            <div class="predmetText">
-            Programiranje
-            </div>
-            </a>
-        </div>
-        <div class="col-sm-4 myCol">
-          <a href="seznamPonudb.html?predmet=slovenscina">
-            <img src="pics/slo.jpg" class="img-responsive"></img>
-            <div class="predmetText">
-            Slovenščina
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-4 myCol">
-          <a href="seznamPonudb.html?predmet=anglescina">
-             <img src="pics/ang.jpg" class="img-responsive"></img>
-             <div class="predmetText">
-              Angleščina
-             </div>
-          </a>
-        </div>
-    </div>
-</div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script> AOS.init(); </script>
+  </body>
 
-</body>
+  <!--footer-->
+  <footer class="page-footer font-small pt-4 text-light" style="background-color: #292b2c; padding-bottom: 20px;">
+    <div class="container-fluid text-center">
+        <h6 class="text-uppercase">Kontaktirajte nas</h6>
+
+        <ul class="list-unstyled">
+            <li class="d-inline">
+            <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
+            </li>
+            <li class="d-inline">
+            <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
+            </li>
+            <li class="d-inline">
+            <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
+            </li>
+            <li class="d-inline">
+            <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
+            </li>
+        </ul>
+    </div>
+  </footer>
 
 </html>
