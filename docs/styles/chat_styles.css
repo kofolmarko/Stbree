@@ -186,15 +186,16 @@
 
 /* OTHER */
 
-svg {
+#send svg, #shared-buttons svg {
     cursor: pointer;
     background-color: rgb(243, 243, 243);
     border-radius: 3px;
     padding: 5px;
 }
 
-svg:hover {
+#send svg:hover {
     color: rgb(0, 12, 66);
+    background-color: #b8b8b8;
 }
 
 

@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.dropdown-menu {
+#dropdown-menu {
     left: auto;
     right: 5px;
 }
@@ -42,10 +42,20 @@
     margin: auto;
 }
 
-.dropdown-menu {
+#dropdown-menu {
     background-color: #124653;
 }
 
 .dropdown-menu a {
     color: #f7f7f7;
+}
+
+.dropdown-menu {
+    right: 5px !important;
+    left: auto;
+    background-color: #124653;
+}
+
+.navbar {
+    padding: 0.5rem;
 }

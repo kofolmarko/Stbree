@@ -1,125 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <title>Prijava</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-        <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
-        <link rel="stylesheet" href="./styles/sign_styles.css">
-    </head>
 
-    <!--navBar-->
-    <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
-        <a class="navbar-brand mr-auto" href="./index.html"><img src="./assets/icons/stbree_logo.png" height="40"  alt="stbree_logo"></a>
-    
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="navbar-collapse collapse w-100 menu-collapse order-0">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-auto active">
-                        <a class="nav-link text-light" style="border-bottom: 1px solid white; color: white !important">Prijava</a>
-                    </li>
-                    <li class="nav-item mx-auto">
-                        <a class="nav-link text-light" href="./signup.html">Registracija</a>
-                    </li>
-                    <li class="nav-item mx-auto">
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item">Prijava</a>
-                            <a class="dropdown-item" href="./signup.html">Registracija</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </a>
-    </nav>
-    
-    <body>
-        <div id="hero">
-            <!--VideoBG-->
-            <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
-                <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
-            </video>
+<head>
+    <title>Prijava</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
+    <link rel="stylesheet" href="./styles/sign_styles.css">
+</head>
 
-            <!--Overlay-->
-            <div id="overlay"></div>
-            
-            <!--Login Form-->
-            <div class="container form-container">
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="formSign form" data-aos="zoom-in">
-                            <div class="logo mb-3">
-                                <div class="col-md-12 text-center">
-                                   <h1>Prijava</h1>
-                                </div>
-                            </div>
-                                <form action="" name="login">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Geslo</label>
-                                        <input type="password" name="password" id="password" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="text-center"><a href="#" data-target="#resetPass" data-toggle="modal">Pozabljeno geslo?</a></p>
-                                    </div>
-                                    <div class="col-md-12 text-center ">
-                                        <button type="submit" class="btn btn-block mybtn btn-primary">Prijava</button>
-                                    </div>
-                                    <div class="col-md-12 ">
-                                        <hr>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <button type="button" class="btn btn-block mybtn btn-secondary"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google računom</a> 
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="text-center">Še nisi registriran? <a href="./signup.html" id="signup">Pridruži se zdaj!</a></p>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+<!--navBar-->
+<nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+    <a class="navbar-brand mr-auto" href="./index.html"><img src="./assets/icons/stbree_2.png" height="20px"
+            width="125px" alt="stbree_logo"></a>
+
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-auto active">
+                <a class="nav-link text-light"
+                    style="border-bottom: 1px solid white; color: white !important">Prijava</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" href="./signup.html">Registracija</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item">Prijava</a>
+                    <a class="dropdown-item" href="./signup.html">Registracija</a>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
+    </div>
+    </a>
+</nav>
 
-        <!--ForgotPassword modal-->
-        <div class="modal fade" id="resetPass" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalnoOkno">Pozabljeno geslo</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Vnesite email s katerim ste se registrirali. Navodila za spremembo gesla vam bodo poslana na email.</p>
-                        <form action="" name="passReset">
+<body>
+    <div id="hero">
+        <!--VideoBG-->
+        <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
+            <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
+        </video>
+
+        <!--Overlay-->
+        <div id="overlay"></div>
+
+        <!--Login Form-->
+        <div class="container form-container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="formSign form" data-aos="zoom-in">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>Prijava</h1>
+                            </div>
+                        </div>
+                        <form action="" name="login">
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Email" class="form-control" id="email" aria-describedby="emailHelp">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    aria-describedby="emailHelp">
                             </div>
-                            <button type="submit" class="btn mybtn btn-secondary">Pošlji</button>
-                        </form> 
+                            <div class="form-group">
+                                <label for="password">Geslo</label>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <p class="text-center"><a href="#" data-target="#resetPass"
+                                        data-toggle="modal">Pozabljeno geslo?</a></p>
+                            </div>
+                            <div class="col-md-12 text-center ">
+                                <button type="submit" class="btn btn-block mybtn btn-primary">Prijava</button>
+                            </div>
+                            <div class="col-md-12 ">
+                                <hr>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <button type="button" class="btn btn-block mybtn btn-secondary"><img
+                                        src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google
+                                    računom</a>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-center">Še nisi registriran? <a href="./signup.html" id="signup">Pridruži
+                                        se zdaj!</a></p>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+
+    <!--ForgotPassword modal-->
+    <div class="modal fade" id="resetPass" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalnoOkno">Pozabljeno geslo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Vnesite email s katerim ste se registrirali. Navodila za spremembo gesla vam bodo poslana na
+                        email.</p>
+                    <form action="" name="passReset">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" class="form-control" id="email"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <button type="submit" class="btn mybtn btn-secondary">Pošlji</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script> AOS.init(); </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script> AOS.init(); </script>
 
-    </body>
+</body>
 
 </html>
