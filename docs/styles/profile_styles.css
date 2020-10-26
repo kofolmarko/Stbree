@@ -146,6 +146,21 @@ p{
     margin-top: 2vh;
 }
 
+footer {
+    background-color: #292b2c;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+  footer p{
+    margin-bottom: 0;
+  }
+  #footer-icons {
+    margin-top: 20px;
+  }
+  #footer-icons li{
+    margin: 10px;
+  }
 
 /* MODIFIED BOOTSTRAP */
 
