@@ -1,16 +1,8 @@
-body{
-   background: rgb(18,70,83);
-background: linear-gradient(0deg, rgba(18,70,83,1) 0%, rgba(41,17,34,1) 100%);
-  padding-bottom: 3vh;
-
-}
-
 .podatki{
     margin-top: 5vh;
-    background-color: grey;
     background-color: #ebebeb;
     font-size: 20px;
-    border-radius: 50px;
+    border-radius: 15px;
     padding: 3vh 4vw;
 }
 
@@ -19,21 +11,12 @@ background: linear-gradient(0deg, rgba(18,70,83,1) 0%, rgba(41,17,34,1) 100%);
     font-size: 40px;
     
 }
-.text-box{
+.form-control{
     padding: 15px;
-    background-color: grey;
-    background-color: #cdcdcd;
-    border-radius: 25px;
+    background-color: lightgrey;
+    border-radius: 15px;
     width: 70%;
 }
-
-.table-responsive{
-    border: 2px solid #291122;
-    border-radius: 25px;
-    margin-top: 2vh;
-}
-
-
 
 .glavne{
     padding: 15px;
@@ -41,16 +24,7 @@ background: linear-gradient(0deg, rgba(18,70,83,1) 0%, rgba(41,17,34,1) 100%);
     border: 5px solid #291122;
     border-radius: 25px;
     margin-right: -370px;
-    
 }
-
-
-
-.image{
-    max-width: 55%;
-    height: auto;
-}
-
 
 .dodatne{
     padding: 15px;
@@ -65,7 +39,6 @@ background: linear-gradient(0deg, rgba(18,70,83,1) 0%, rgba(41,17,34,1) 100%);
 .thPodatki{
   border-bottom: 1px solid black;
 }
-
 
 .mojClass{
     overflow: hidden;
@@ -171,31 +144,14 @@ p{
     border: none;
     color: white;
     font-size: 17px;
-    padding: 5px;
     margin-top: 2vh;
 }
 
-/* FOOTER */
-
-footer {
-    padding-top: 5vh;
-    /* background-color: rgb(34, 6, 6); */
-    
-}
-
-footer p{
-    margin-bottom: 0;
-}
 
 /* MODIFIED BOOTSTRAP */
 
 .d-inline {
     margin: 10px;
-}
-
-.row {
-    padding: 10px;
-    margin: 0px;
 }
 
 .row p, button {
@@ -209,10 +165,3 @@ footer p{
 .checked {
   color: orange;
 }
-
-
-
-
-
-
-

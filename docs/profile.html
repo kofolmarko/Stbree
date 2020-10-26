@@ -53,51 +53,51 @@
 </nav>
 
 <body>
-    
-    
+
 	<div class="container podatki"> 
        
 	    <div class="naslov"> Ime Priimek <hr> </div>
 	    
 	     <!-- i n p u t  t e k s t  f o r m -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-xs-12">
                 <form action="" method ="">
                     <div class="form-group">
-                        <label for="textarea">Opis:</label><br>
-                            <textarea class="text-box" rows="3" cols="50"></textarea></br>
-            	            <input style="margin-top: 10px" class="clikn" type="submit" value="Dodaj">
-            	    </div>
+                        <label for="opisProfila ">Opis:</label>
+                        <textarea class="form-control" rows="3" id="opisProfila" placeholder="Napiši nekaj o sebi..."></textarea>   
+                    </div>
+                    <button type="button" class="btn btn-primary">Spremeni opis</button>    
                 </form>
             </div>
-            <div class="col-md-4">
-                <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="img-responsive image">
+            <div class="col-md-4 col-xs-12 ">
+                <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="img-responsive" style="height: 200px;">
             </div>
-        </div>            
-                    
-                    
+        </div>     
         
         <!-- t a b e l a  p o d a t k o v -->
-        <div class="table-responsive">
-            <table class="table table-borderless">
-                <tbody>
-                    <tr>
-                        <th class="thPodatki" scope="row">Email naslov</th>
-                        <td>imepriimek@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <th class="thPodatki" scope="row">Telefonska številka</th>
-                        <td>030 723 418</td>
-                    </tr>
-                    <tr>
-                        <th class="thPodatki" scope="row">Datum vpisa</th>
-                        <td>26.10.2020</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>       
+        <div class="row">
+            <div class="table-responsive">
+                <hr>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th class="thPodatki" scope="row">Email naslov</th>
+                            <td>imepriimek@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th class="thPodatki" scope="row">Telefonska številka</th>
+                            <td>030 723 418</td>
+                        </tr>
+                        <tr>
+                            <th class="thPodatki" scope="row">Datum vpisa</th>
+                            <td>26.10.2020</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-primary">Spremeni podatke</button>
+            </div> 
+        </div>      
         <!-- g u m b e k  -->
-	   <button class="clikn" style="margin-top: 20px" type="button">Spremeni podatke</button>
 	    
 	    <!-- t a b s  -->    
 	   <ul class="nav nav-tabs mojClass" id="myTab" role="tablist">

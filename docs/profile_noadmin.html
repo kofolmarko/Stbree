@@ -54,27 +54,46 @@
 
 <body>
     
-<div class="back">
+<div class="container">
     
-    <img src="pics/instruktor1.jpg" id="slika" class="image" style="margin-top: 100px" height="330" width="285">
+  <div class="naslov"> Mark Zuki <hr> </div>
     
-	<div class="podatki"> 
-	    <div class="naslov"> Mark Zuki <hr> </div>
-	    
-            <div class="text-box">
-                Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.  
+	<div class="row">
+      <div class="col-md-8 col-xs-12">
+        <form action="" method ="">
+            <div class="form-group">
+                <label for="opisProfila ">Opis:</label>
+                <textarea class="form-control" rows="5" id="opisProfila" placeholder="Napiši nekaj o sebi..." readonly>Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.</textarea>   
             </div>
-             
-            
-            <div class="glavne">
-                <div class="pod_dva">markzuki@gmail.com</div>
-    	    	<div>Email naslov:</div>
-    	    	 <div class="pod_dva">070 402 547</div>
-    		    <div>Telefonska številka:</div>
-    		     <div class="pod_dva">25.10.2020</div>
-    		    <div>Datum vpisa:</div>
-    		    
-    	    </div>
+        </form>
+    </div>
+    <div class="col-md-4 col-xs-12 ">
+        <img src="./pics/instruktor1.jpg" alt="Dodaj sliko" class="img-responsive" style="height: 200px;">
+    </div>
+
+    <div class="row">
+      <div class="table-responsive">
+          <hr>
+          <table class="table table-borderless">
+              <tbody>
+                  <tr>
+                      <th class="thPodatki" scope="row">Email naslov</th>
+                      <td>imepriimek@gmail.com</td>
+                  </tr>
+                  <tr>
+                      <th class="thPodatki" scope="row">Telefonska številka</th>
+                      <td>030 723 418</td>
+                  </tr>
+                  <tr>
+                      <th class="thPodatki" scope="row">Datum vpisa</th>
+                      <td>26.10.2020</td>
+                  </tr>
+              </tbody>
+          </table>
+          <button type="button" class="btn btn-primary">Spremeni podatke</button>
+      </div> 
+    </div>
+    
 	   
 	        
 	        <div style="margin-top: 40px">
