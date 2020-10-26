@@ -1,180 +1,397 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--shrink-to-fit=no-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Stbree</title>
-    <link rel="icon" href="./assets/icons/stbree_icon_tr.png"> <!--80 by 80 or 40 by 40 pixels-->
+    <link rel="icon" href="./assets/icons/stbree_logo.png"> <!--80 by 80 or 40 by 40 pixels-->
+    <link rel="favicon" type="image/jpg" href=”assets/icons/stbree_logo.png”/>
+    <link rel="stylesheet" href="./styles/navbar_styles.css">
     <link rel="stylesheet" href="./styles/dashboard_styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;700&display=swap" >
 </head>
 
 <body>
     
-    <!--NAVIGATION BAR STARTS-->
-    <nav class="navbar bg-dark navbar-dark navbar-expand-sm"> <!--separate class, navigation bar--> 
-        <div class="container"> <!--container: for max width of content inside navigation-->
-            <a href="index.html" class="navbar-brand">
-                <img src="./assets/icons/stbree_logo.png" alt="Logo" title="Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon">
-                </span>
-            </button>
+<!--NAVIGATION BAR STARTS-->
+<!--navBar-->
+<nav class="navbar navbar-expand-md navbar-dark bg-custom">
+    <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <nav-link></nav-link>
-                    </li>
-                    <li class="nav-item">
-                        <a href="profile.html" class="nav-link active">Profil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Odjavi se</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--NAVIGATION BAR ENDS-->
-
-    <!--CALENDAR STARTS-->
-    <div class="fixed-background">
-        <div class="row text-light py-5">
-            <div class="col-12 text-center">
-                <h1>Moj Koledar</h1><!--<a href="./koledar.html">Moj Koledar</a>-->
-                <h4>otprite svoj koledar</h4>
-            </div>
-        </div>
-        <div class="fixed-wrap">
-            <div class="fixed"></div>
-        </div>
-    </div>
-    <!--CALENDAR ENDS-->
-
-    <!--JOBS STARTS-->
-    <div class="col-12 text-center mt-5">
-        <h1 class="text-dark pt-4">Službe</h1>
-        <div class="border-top border-primary w-25 mx-auto my-3"></div>
-        <p class="lead">Poišči službo</p>
-    </div>
-
-    <div class="container">
-        <div class="row my-5">
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/oblikovanje.png" alt="" class="w-100">
-                <h4 class="my-4">Oblikovanje</h4>
-                <p>Instrukcije za oblikovanje</p>
-                <a href="./jobs.html" class="btn btn-outline-dark btn-md">Več o tem</a>
-            </div>
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/pisanje.jpg" alt="" class="w-100">
-                <h4 class="my-4">Pisanje</h4>
-                <p>Instrukcije za pisanje</p>
-                <a href="./jobs.html" class="btn btn-outline-dark btn-md">Več o tem</a>
-            </div>
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/programiranje.png" alt="" class="w-100">
-                <h4 class="my-4">Programiranje</h4>
-                <p>Instrukcije za programiranje</p>
-                <a href="./jobs.html" class="btn btn-outline-dark btn-md">Več o tem</a>
-            </div>
-
-        </div>
-    </div>
-    <!--JOBS ENDS-->
-
-    <!--INSTRUCTIONS STARTS-->
-    <div class="col-12 text-center mt-5">
-        <h1 class="text-dark pt-4">Inštrukcije</h1>
-        <div class="border-top border-primary w-25 mx-auto my-3"></div>
-        <p class="lead">Poišči inštruktorja</p>
-    </div>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     
-    <div class="container">
-        <div class="row my-5">
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/video.png" alt="" class="w-100">
-                <h4 class="my-4">Instruktor 1</h4>
-                <p>Instrukcije za snemanje</p>
-                <a href="./instrukcije.html" class="btn btn-outline-dark btn-md">Več o tem</a>
-                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Koledar</a>
-            </div>
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/programiranje.png" alt="" class="w-100">
-                <h4 class="my-4">Instruktor 2</h4>
-                <p>Instrukcije za programiranje</p>
-                <a href="./instrukcije.html" class="btn btn-outline-dark btn-md">Več o tem</a>
-                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Koledar</a>
-            </div>
-
-            <div class="col-md-4 my-4">
-                <img src="./pics/oblikovanje.png" alt="" class="w-100">
-                <h4 class="my-4">Instruktor 3</h4>
-                <p>Instrukcije za oblikovanje</p>
-                <a href="./instrukcije.html" class="btn btn-outline-dark btn-md">Več o tem</a>
-                <a href="./koledar.html" class="btn btn-outline-dark btn-md">Koledar</a>
-            </div>
-
+        <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./messages.html">Sporočila</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./jobs.html">Delo</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-light" href="./opravila.html">Moja opravila</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
+                        <img height="30px" width="30px" src="./assets/icons/user.png" alt="user_icon" id="user_icon">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="./profile.html">Profil</a>
+                        <a class="dropdown-item" href="./settings.html">Nastavitve</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
-    <!--INSTRUCTIONS ENDS-->
+</nav>
+<!--NAVIGATION BAR ENDS-->
 
-    <!--CAROUSEL STARTS-->
-    <!--carousel--> <!--idk if i want it to scroll on its own (data interval)-->
-    <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000">  
+<!--CAROUSEL STARTS-->
+<div id="slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#slides" data-slide-to="0" class="active"></li>
+        <li data-target="#slides" data-slide-to="1"></li>
+        <li data-target="#slides" data-slide-to="2"></li>
+    </ul>
+
+    <div id="carousel0" class="carousel slide" data-ride="carousel" data-interval="65000" data-keyboard="true" data-pause="hover" data-touch="true">  
         <div class="carousel-inner">
+
             <div class="carousel-item active">
-                    <img src="./pics/oblikovanje.png" alt="Tečaj oblikovanja" class="w-100">
+                <img src="./pics/oblikovanje.png" alt="Tečaj oblikovanja" class="w-100">
+                <div class="carousel-caption">
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-8">
+                                <h1 class="text-dark font-weight-bolder">Moja Opravila</h1>
+                                <h3 class="text-dark">Kaj imam ta teden</h3>
+                                <a href="./todo.html" class="btn btn-outline-dark btn-md">Odpri</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
             <div class="carousel-item">
                     <img src="./pics/pisanje.jpg" alt="Tečaj pisanja" class="w-100">
+                    <div class="carousel-caption">
+
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-8">
+                                    <h1 class="text-dark font-weight-bolder">FRI</h1>
+                                    <h3 class="text-dark">Šolski obveznosti</h3>
+                                    <a href="https://ucilnica.fri.uni-lj.si/" class="btn btn-outline-dark btn-md">Odpri</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
             </div>
+
             <div class="carousel-item">
                     <img src="./pics/programiranje.png" alt="Tečaj programiranja" class="w-100">
-            </div>
-            <div class="carousel-item">
-                    <img src="./pics/video.png" alt="Tečaj videa" class="w-100">
-            </div>
-        </div>
-    
-        <a href="#carousel" class="carousel-control-prev" role="button" data-slide="prev">
-            <!--font awesomes class fa-5x to make it 5x bigger-->
-            <span class="fas fa-chevron-left fa-5x"></span>
-        </a>
+                    <div class="carousel-caption">
 
-        <a href="#carousel" class="carousel-control-next" role="button" data-slide="next">
-            <!--font awesomes class fa-5x to make it 5x bigger-->
-            <span class="fas fa-chevron-right fa-5x"></span>
-        </a>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-8">
+                                    <h1 class="text-dark font-weight-bolder">FE</h1>
+                                    <h3 class="text-dark">Šolski obveznosti</h3>
+                                    <a href="https://e.fe.uni-lj.si/login/index.php" class="btn btn-outline-dark btn-md">Odpri</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </div>
+
+        </div>
     </div>
-    <!--CAROUSEL ENDS-->
 
-    <!--FOOTER STARTS-->
-    <footer>
-        <div class="container">
-            <div class="row text-light text-center py-4 justify-content-center">
-                <div class="col-sm-10 col-md 8 col-lg-6">
-                    <img src="./assets/icons/stbree_logo.png" alt="logo"></div>
-                    <ul class="ftr-txt">
-                        <li><p>Kontakt</p></li>
-                        <li><p>Pogosta vprašanja</p></li>
-                    </ul>        
+    <a href="#carousel0" class="carousel-control-prev" role="button" data-slide="prev">
+        <!--font awesomes class fa-5x to make it 2x bigger-->
+        <span class="fas fa-chevron-left fa-2x"></span>
+    </a>
+
+    <a href="#carousel0" class="carousel-control-next" role="button" data-slide="next">
+        <!--font awesomes class fa-5x to make it 2x bigger-->
+        <span class="fas fa-chevron-right fa-2x"></span>
+    </a>
+</div>
+<!--CAROUSEL ENDS-->
+
+<!--CAROUSEL JOBS STARTS-->
+<!--title-->
+<div class="col-12 text-center mt-5">
+    <h1 class="text-dark pt-4">Službe</h1>
+    <div class="border-top border-secondary w-50 mx-auto my-3"></div>
+    <p class="lead">Tečaji ki ti pomagajo se še več naučiti</p>
+    <a href="./jobs.html" class="btn btn-outline-dark btn-tg">Poišči še več služb</a>
+    <a href="./dodajDelo.html" class="btn btn-outline-dark btn-tg">Naredi novo službo</a>
+</div>
+<!--content-->
+<div id="carousel1" class="carousel slide" data-ride="carousel" data-interval="6500" data-keyboard="true" data-pause="hover" data-touch="true">  
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row my-5 justify-content-center">
+                <div class="col-md-3 my-4">
+                    <img src="./pics/oblikovanje.png" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Oblikovanje</h4>
+                    <p>Instrukcije za oblikovanje</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/pisanje.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Pisanje</h4>
+                    <p>Instrukcije za pisanje</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/programiranje.png" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Programiranje</h4>
+                    <p>Instrukcije za programiranje</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
             </div>
         </div>
-    </footer>
-    <!--FOOTER ENDS-->
+        <div class="carousel-item">
+            <div class="row my-5 justify-content-center">   
+                <div class="col-md-3 my-4">
+                    <img src="./pics/fiz.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Fizika</h4>
+                    <p>Instrukcije za fiziko</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <!--Font Awesome: for icons-->
-    <script src="js/all.min.js"></script>
+                <div class="col-md-3 my-4">
+                    <img src="./pics/prog.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Programiranje</h4>
+                    <p>Instrukcije za programiranje</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/oblikovanje.png" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Oblikovanje</h4>
+                    <p>Instrukcije za oblikovanje</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row my-5 justify-content-center">
+                <div class="col-md-3 my-4">
+                    <img src="./pics/mat.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Matematika</h4>
+                    <p>Instrukcije za matematiko</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/ang.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Angleščina</h4>
+                    <p>Instrukcije za jezik</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/fiz.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Fizika</h4>
+                    <p>Instrukcije za fiziko</p>
+                    <a href="./job_page.html" class="btn btn-outline-dark btn-md">Več o tem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#carousel1" class="carousel-control-prev" role="button" data-slide="prev">
+        <!--font awesomes class fa-5x to make it 2x bigger-->
+        <span class="fas fa-chevron-left fa-2x"></span>
+    </a>
+
+    <a href="#carousel1" class="carousel-control-next" role="button" data-slide="next">
+        <!--font awesomes class fa-5x to make it 2x bigger-->
+        <span class="fas fa-chevron-right fa-2x"></span>
+    </a>
+</div>
+<!--CAROUSEL ENDS-->
+
+<!--CAROUSEL INSTRUCTION STARTS-->
+<!-- title -->
+<div class="col-12 text-center mt-5">
+    <h1 class="text-dark pt-4">Inštrukcije</h1>
+    <div class="border-top border-secondary w-50 mx-auto my-3"></div>
+    <p class="lead">Ljudi ki ti pomagajo se še več naučiti</p>
+    <a href="./instrukcije.html" class="btn btn-outline-dark btn-tg">Poišči še več inštruktorjev</a>
+    <a href="./dodajInstrukcijo.html" class="btn btn-outline-dark btn-tg">Bodi inštruktorja</a>
+</div>
+<!--content-->
+<div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="6500" data-keyboard="true" data-pause="hover" data-touch="true">  
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row my-5 justify-content-center">
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor1.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 1</h4>
+                    <p>Instrukcije za snemanje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor2.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 2</h4>
+                    <p>Instrukcije za programiranje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor3.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 3</h4>
+                    <p>Instrukcije za oblikovanje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row my-5 justify-content-center">
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor1.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 1</h4>
+                    <p>Instrukcije za snemanje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor2.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 2</h4>
+                    <p>Instrukcije za programiranje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor3.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 3</h4>
+                    <p>Instrukcije za oblikovanje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row my-5 justify-content-center">
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor1.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 1</h4>
+                    <p>Instrukcije za snemanje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor2.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 2</h4>
+                    <p>Instrukcije za programiranje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+    
+                <div class="col-md-3 my-4">
+                    <img src="./pics/instruktor3.jpg" alt="" class="w-100 img-responsive">
+                    <h4 class="my-4">Instruktor 3</h4>
+                    <p>Instrukcije za oblikovanje</p>
+                    <a href="./profile_noadmin.html" class="btn btn-outline-dark btn-md">Več</a>
+                    <a href="./todo.html" class="btn btn-outline-dark btn-md">Urnik</a>
+                    <a href="./messages.html" class="btn btn-outline-dark btn-md">Sporočilo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#carousel2" class="carousel-control-prev" role="button" data-slide="prev">
+        <!--font awesomes class fa-5x to make it 2x bigger-->
+        <span class="fas fa-chevron-left fa-2x"></span>
+    </a>
+
+    <a href="#carousel2" class="carousel-control-next" role="button" data-slide="next">
+        <!--font awesomes class fa-5x to make it 2x bigger-->
+        <span class="fas fa-chevron-right fa-2x"></span>
+    </a>
+</div>
+<!--CAROUSEL INSTRUCTIONS ENDS-->
+
+
+<!--FOOTER STARTS-->
+<footer class="page-footer font-small pt-4 text-light">
+    <div class="container-fluid text-center">
+          <h6 class="text-uppercase">Kontaktirajte nas</h6>
+  
+          <ul class="list-unstyled">
+            <li class="d-inline">
+              <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
+            </li>
+            <li class="d-inline">
+              <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
+            </li>
+            <li class="d-inline">
+              <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
+            </li>
+            <li class="d-inline">
+              <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
+            </li>
+          </ul>
+    </div>
+  
+    <div class="footer-copyright text-center py-3">
+      © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
+    </div>
+</footer>
+<!--FOOTER ENDS-->
+
+<!--NAVBAR JS STARTS-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script>
+    $(window).scroll(function(){
+        $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+</script>
+<!--NAVBAR JS ENDS-->
+
+<!--JS STARTS-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<!--Font Awesome: for icons-->
+<script src="js/all.min.js"></script>
+<!--JS ENDS-->
 </body>
 </html>
