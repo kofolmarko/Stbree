@@ -59,7 +59,7 @@
     <!--Contacts-->
     <div class="col-md-2 contacts-web" id="contactbox">
         <ul class="contact-list list-unstyled " id="contact-list">
-            <li class="list-item" >
+            <li class="list-item">
                 <a href="#"><img src="./assets/profiles/message_thumbnail_L.png" alt=""></a>
                 <h6 class="podatki">Linda</h6>
             </li>
@@ -133,7 +133,7 @@
         });
 
         function add_response(cond) {
-            if(cond == 2) {
+            if (cond == 2) {
                 lonely_counter = -1;
                 let newResponse = document.createElement("li");
                 newResponse.classList.add("responses");
@@ -142,11 +142,11 @@
             }
         }
 
-        window.onload = function() {resize()}
+        window.onload = function () { resize() }
 
-        window.addEventListener("resize", function() {resize()});
+        window.addEventListener("resize", function () { resize() });
 
-        add_friend.addEventListener("click", function() {add_f()});
+        add_friend.addEventListener("click", function () { add_f() });
 
         function add_f() {
             let newFriend = document.createElement("li");
@@ -156,30 +156,30 @@
         }
 
         function resize() {
-            if(window.innerWidth < 767) {
+            if (window.innerWidth < 767) {
                 contactbox.classList.remove("contacts-web");
                 contactbox.classList.add("contacts-mobile");
-                for(var i=0; i<podatki.length; i++) {
+                for (var i = 0; i < podatki.length; i++) {
                     podatki[i].classList.add("hide");
                 }
                 contact_list.classList.add("contact-list-mobile");
-                for(var i=0; i<list_items.length; i++) {
+                for (var i = 0; i < list_items.length; i++) {
                     list_items[i].classList.add("list-item-mobile");
                 }
             }
             else {
                 contactbox.classList.remove("contacts-mobile");
                 contactbox.classList.add("contacts-web");
-                for(var i=0; i<podatki.length; i++) {
+                for (var i = 0; i < podatki.length; i++) {
                     podatki[i].classList.remove("hide");
                 }
                 contact_list.classList.remove("contact-list-mobile");
-                for(var i=0; i<list_items.length; i++) {
+                for (var i = 0; i < list_items.length; i++) {
                     list_items[i].classList.remove("list-item-mobile");
                 }
             }
         }
-        
+
     </script>
 </body>
 

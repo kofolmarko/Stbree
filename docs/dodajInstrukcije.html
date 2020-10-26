@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Dodaj delo</title>
+    <title>Dodaj inštrukcije</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -64,28 +64,41 @@
     <div class="container">
         <div class="row" style="padding-top: 30px;">
             <div class="col">
-                <h1>Objavi oglas za delo</h1>
-                <p><i>Izpolni spodnje podatke in objavi oglas za delo, na katerega se bodo lahko prijavili ustrezni
-                        kandidati. </i></p>
+                <h1>Objavi oglas za inštrukcije</h1>
+                <p><i>Izpolni spodnje podatke in objavi oglas za inštrukcije, s katerimi lahko pomagaš učencem v
+                        težavah.</i></p>
                 <hr>
                 <form>
                     <div class="form-group">
-                        <label for="nazivDela">Naziv dela</label>
-                        <input type="text" class="form-control" placeholder="Kakšno delo ponujaš?">
+                        <label for="nazivInštrukcije">Naziv inštrukcij</label>
+                        <input type="text" class="form-control" placeholder="Kakšno inštrukcijo ponujaš?">
                     </div>
                     <div class="form-group">
-                        <label for="opisDela">Opis dela</label>
-                        <textarea class="form-control" id="opisDela" rows="5"
-                            placeholder="Napiši informacije o delu"></textarea>
+                        <label for="opis Inštrukcije">Opis inštrukcij</label>
+                        <textarea class="form-control" id="opisInštrukcije" rows="5"
+                            placeholder="Napiši informacije o inštrukciji"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="cenaDela">Cena dela</label>
+                        <label for="cenaDela">Cena inštrukcij</label>
                         <input type="text" class="form-control"
-                            placeholder="Če je delo brezplačno, pusti to polje prazno">
+                            placeholder="Če je inštrukcija brezplačna, pusti to polje prazno">
                     </div>
                     <div class="form-group">
-                        <label for="naslovnaSlikaDela">Dodaj naslovno fotografijo (neobvezno)</label>
-                        <input type="file" class="form-control-file" id="naslovnaSlikaDela">
+                        <label for="cenaDela">Datum inštrukcij</label>
+                        <input type="text" class="form-control" placeholder="Izberi datum (manjka javascript)">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputState">Tip instrukcij</label>
+                        <select id="inputState" class="form-control">
+                            <option>Matematika</option>
+                            <option>Fizika</option>
+                            <option>Kemija</option>
+                            <option>Ostalo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="naslovnaSlikaInstrukcije">Dodaj naslovno fotografijo (neobvezno)</label>
+                        <input type="file" class="form-control-file" id="naslovnaSlikaInstrukcije">
                     </div>
                     <button type="submit" class="btn btn-primary">Objavi</button>
                     <hr>
@@ -101,22 +114,22 @@
                                 <div class="carousel-item active">
                                     <img class="d-block w-100" src="./pics/ang.jpg" alt="First slide">
                                     <div class="carousel-caption d-none d-block">
-                                        <h4>Esej iz angleščine</h4>
-                                        <p>10€ do srede</p>
+                                        <h4>Inštrukcije iz angleščine</h4>
+                                        <p>10€, 20.1.2024</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="./pics/fiz.jpg" alt="Second slide">
                                     <div class="carousel-caption d-none d-block">
                                         <h4>Poročilo laboratorisjkih vaj</h4>
-                                        <p>20€ do jutri!</p>
+                                        <p>Brezplačno, jutri!</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="./pics/mat.jpg" alt="Third slide">
                                     <div class="carousel-caption d-none d-block">
-                                        <h4>Linearna algebra</h4>
-                                        <p>Potrebujem pomoč pri razlagi</p>
+                                        <h4>Seminar Linearna algebra</h4>
+                                        <p>30€, 17.-19.4.2018</p>
                                     </div>
                                 </div>
                             </div>
@@ -136,6 +149,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -1,132 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Dela</title>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles/navbar_styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
   <link rel="stylesheet" href="./styles/seznam_styles.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="favicon" type="image/jpg" href=”assets/icons/stbree_logo.png”/>
   <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
-  
-  <!--N a v b a r-->
-    <nav class="navbar navbar-expand-md navbar-dark bg-custom">
-      <a class="navbar-brand mr-auto" href="./index.html"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
-  
-          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-      
-          <div class="navbar-collapse collapse w-100 menu-collapse order-0">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./messages.html">Sporočila</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./jobs.html">Delo</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./opravila.html">Moja opravila</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
-                          <img height="30px" width="30px" src="./assets/icons/user.png" alt="user_icon" id="user_icon">
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="./profile.html">Profil</a>
-                          <a class="dropdown-item" href="./settings.html">Nastavitve</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
-                      </div>
-                  </li>
-              </ul>
-          </div>
-  </nav>
-  
+  <link rel="stylesheet" href="./styles/navbar_styles.css">
+
+
+
 </head>
-  <!--J o b s  p a g e-->
-  <div class="container" style="padding-bottom: 30px;">
-    <div class="col">
-      <h2>Dela</h2>
-      <hr>
-      <p class="text-center"><a href="./seznamPonudb.html" id="signin">Preveri seznam vseh del</a></p>  
-    </div>
-  
-  <!--S e a r c h  b a r-->
-    <input class="form-control" type="text" placeholder="Poišči delo" aria-label="Search">
+
+<!--N a v b a r-->
+<nav class="navbar navbar-expand-md navbar-dark bg-custom">
+  <a class="navbar-brand mr-auto" href="#top"><img width="125px" height="20px" src="./assets/icons/stbree_2.png"
+      alt="stbree_logo"></a>
+
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse menu-collapse order-0">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mx-auto">
+        <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
+      </li>
+      <li class="nav-item mx-auto">
+        <a class="nav-link text-light" href="./chat.html">Sporočanje</a>
+      </li>
+      <li class="nav-item mx-auto">
+        <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
+      </li>
+      <li class="nav-item mx-auto">
+        <a class="nav-link text-light" href="./jobs.html">Delo</a>
+      </li>
+      <li class="nav-item mx-auto">
+        <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
+          <svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+          </svg>
+        </button>
+        <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="./profile.html">Profil</a>
+          <a class="dropdown-item" href="./settings.html">Nastavitve</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--J o b s  p a g e-->
+<div class="container" style="padding-bottom: 30px;">
+  <div class="col">
+    <h2>Dela</h2>
+    <hr>
+    <p class="text-center"><a href="./seznamPonudb.html" id="signin">Preveri seznam vseh del</a></p>
   </div>
 
-    <!--J o b s  o p c i j e-->
-    <div class="container">
-      <div class="row">
-        <div class="col myCol" data-aos="fade-down-right" data-aos-duration="800">
-          <a href="seznamPonudb.html?predmet=programiranje2">
-            <img src="pics/programiranje.png" class="img-responsive"></img>
-            <div class="predmetText">
-              Programiranje
-            </div>
-          </a>
-        </div>
-        <div class="col myCol">
-          <a href="seznamPonudb.html?predmet=pisanje" data-aos="fade-down-left" data-aos-duration="800">
-            <img src="pics/pisanje.jpg" class="img-responsive"></img>
-            <div class="predmetText">
-            Pisanje
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 50px;">
-        <div class="col myCol" data-aos="fade-up-right" data-aos-duration="800">
-          <a href="seznamPonudb.html?predmet=oblikovanje">
-            <img src="pics/oblikovanje.png" class="img-responsive"></img>
-            <div class="predmetText">
-            Oblikovanje
-            </div>
-          </a>
-        </div>
-        <div class="col myCol" data-aos="fade-up-left" data-aos-duration="800">
-          <a href="seznamPonudb.html?predmet=video">
-            <img src="pics/video.png" class="img-responsive"></img>
-          <div class="predmetText">
-            Video
-          </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script> AOS.init(); </script>
-  </body>
+  <!--S e a r c h  b a r-->
+  <input class="form-control" type="text" placeholder="Poišči delo" aria-label="Search">
+</div>
 
-  <!--footer-->
-  <footer class="page-footer font-small pt-4 text-light" style="background-color: #292b2c; padding-bottom: 20px;">
-    <div class="container-fluid text-center">
-        <h6 class="text-uppercase">Kontaktirajte nas</h6>
-
-        <ul class="list-unstyled">
-            <li class="d-inline">
-            <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
-            </li>
-            <li class="d-inline">
-            <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
-            </li>
-            <li class="d-inline">
-            <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
-            </li>
-            <li class="d-inline">
-            <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
-            </li>
-        </ul>
+<!--J o b s  o p c i j e-->
+<div class="container">
+  <div class="row">
+    <div class="col myCol" data-aos="fade-down-right" data-aos-duration="800">
+      <a href="seznamPonudb.html?predmet=programiranje2">
+        <img src="pics/programiranje.png" class="img-responsive"></img>
+        <div class="predmetText">
+          Programiranje
+        </div>
+      </a>
     </div>
-  </footer>
+    <div class="col myCol">
+      <a href="seznamPonudb.html?predmet=pisanje" data-aos="fade-down-left" data-aos-duration="800">
+        <img src="pics/pisanje.jpg" class="img-responsive"></img>
+        <div class="predmetText">
+          Pisanje
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="row" style="padding-bottom: 50px;">
+    <div class="col myCol" data-aos="fade-up-right" data-aos-duration="800">
+      <a href="seznamPonudb.html?predmet=oblikovanje">
+        <img src="pics/oblikovanje.png" class="img-responsive"></img>
+        <div class="predmetText">
+          Oblikovanje
+        </div>
+      </a>
+    </div>
+    <div class="col myCol" data-aos="fade-up-left" data-aos-duration="800">
+      <a href="seznamPonudb.html?predmet=video">
+        <img src="pics/video.png" class="img-responsive"></img>
+        <div class="predmetText">
+          Video
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script> AOS.init(); </script>
+</body>
+
+<!--footer-->
+<footer class="page-footer font-small pt-4 text-light" style="background-color: #292b2c; padding-bottom: 20px;">
+  <div class="container-fluid text-center">
+    <h6 class="text-uppercase">Kontaktirajte nas</h6>
+
+    <ul class="list-unstyled">
+      <li class="d-inline">
+        <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px"
+            src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
+      </li>
+      <li class="d-inline">
+        <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px"
+            src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
+      </li>
+      <li class="d-inline">
+        <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px"
+            src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
+      </li>
+      <li class="d-inline">
+        <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px"
+            src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
 </html>

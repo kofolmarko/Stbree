@@ -1,141 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title></title>
   <meta charset="utf-8">
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/navbar_styles.css">
   <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
-  
+
   <style type="text/css">
-  
-  *{
-    font-family: 'Work Sans', sans-serif;
-  }
-    #naslov{
+    * {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    #naslov {
       margin-top: 3%;
       margin-left: 3%;
       margin-top: 3%;
       text-align: center;
     }
-    #filter{
+
+    #filter {
       margin-left: 6%;
       margin-top: 3%;
     }
-    
-    .mainRow{
+
+    .mainRow {
       border-width: 1px;
       border-style: solid;
       border-radius: 30px;
       padding: 5vh 0vh 5vh 0vh;
       transition: 0.10s;
     }
-    
-    .myBtn{
+
+    .myBtn {
       margin: 0px 6px;
       border-radius: 90px;
       font-size: 13px;
-      padding:12px 19px;
+      padding: 12px 19px;
     }
-    
-    .myContainer{
-    width: 70%;
-    margin: 3% auto;
-    
+
+    .myContainer {
+      width: 70%;
+      margin: 3% auto;
+
     }
-    
-    .mainRow:hover{
+
+    .mainRow:hover {
       box-shadow: 0 0 12px 3px #CCCCCC;
-      
+
     }
-    
-    .col-md-3{
+
+    .col-md-3 {
       padding: 0px;
     }
-    
-    .col-md-9{
+
+    .col-md-9 {
       padding-bottom: 2vh;
     }
-    
-    .myRow{
+
+    .myRow {
       padding-right: 1vw;
       padding-left: 3vw;
     }
-    .slika{
+
+    .slika {
       /*height: 167px;*/
       max-width: 55%;
       height: auto;
       border-radius: 15px;
     }
-    
-  a{
-    color: black; 
-  }
-  a:hover {
-    color: black; 
-    text-decoration: none;
-  }
-  
-    
+
+    a {
+      color: black;
+    }
+
+    a:hover {
+      color: black;
+      text-decoration: none;
+    }
   </style>
-  
-<!--N a v b a r-->
-    <nav class="navbar navbar-expand-md navbar-dark bg-custom">
-      <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
-  
-          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
-              <span class="navbar-toggler-icon"></span>
+
+  <!--N a v b a r-->
+  <nav class="navbar navbar-expand-md navbar-dark bg-custom">
+    <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px"
+        src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
+
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mx-auto">
+          <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
+        </li>
+        <li class="nav-item mx-auto">
+          <a class="nav-link text-light" href="./messages.html">Sporočila</a>
+        </li>
+        <li class="nav-item mx-auto">
+          <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
+        </li>
+        <li class="nav-item mx-auto">
+          <a class="nav-link text-light" href="./jobs.html">Delo</a>
+        </li>
+        <li class="nav-item mx-auto">
+          <a class="nav-link text-light" href="./opravila.html">Moja opravila</a>
+        </li>
+        <li class="nav-item mx-auto">
+          <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
+            <img height="30px" width="30px" src="./assets/icons/user.png" alt="user_icon" id="user_icon">
           </button>
-      
-          <div class="navbar-collapse collapse w-100 menu-collapse order-0">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./messages.html">Sporočila</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./jobs.html">Delo</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <a class="nav-link text-light" href="./opravila.html">Moja opravila</a>
-                  </li>
-                  <li class="nav-item mx-auto">
-                      <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
-                          <img height="30px" width="30px" src="./assets/icons/user.png" alt="user_icon" id="user_icon">
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="./profile.html">Profil</a>
-                          <a class="dropdown-item" href="./settings.html">Nastavitve</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
-                      </div>
-                  </li>
-              </ul>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="./profile.html">Profil</a>
+            <a class="dropdown-item" href="./settings.html">Nastavitve</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
           </div>
+        </li>
+      </ul>
+    </div>
   </nav>
 
 </head>
 
 
 <body>
-    <h2 id="naslov">
-    </h2>
-    <div id="filter">
-      Nivo:
-      <button type="button" class="btn btn-outline-dark myBtn">Osnovna šola</button>
-      <button type="button" class="btn btn-outline-dark myBtn">Srednja šola</button>
-      <button type="button" class="btn btn-outline-dark myBtn">Univerza</button>
-    </div>
-    
+  <h2 id="naslov">
+  </h2>
+  <div id="filter">
+    Nivo:
+    <button type="button" class="btn btn-outline-dark myBtn">Osnovna šola</button>
+    <button type="button" class="btn btn-outline-dark myBtn">Srednja šola</button>
+    <button type="button" class="btn btn-outline-dark myBtn">Univerza</button>
+  </div>
+
 </body>
 
 </html>
@@ -143,7 +148,7 @@
 <script type="text/javascript">
 
   //f u n k c i j a  z a  i z d e l a t  p o n u d b o / o s e b o
-  function izdelajPonudbo(naslov, opis, potka){
+  function izdelajPonudbo(naslov, opis, potka) {
     var cont = document.createElement('div');
     var a = document.createElement('a');
     var row1 = document.createElement('div');
@@ -153,20 +158,20 @@
     var row3 = document.createElement('div');
     var col3 = document.createElement('div');
     var img = document.createElement('img');
-    
+
     cont.classList.add("containter", "myContainer");
     row1.classList.add("row", "mainRow");
     col9.classList.add("col-md-9");
     row2.classList.add("row", "myRow");
     row3.classList.add("row", "myRow");
     col3.classList.add("col-md-3", "center-block");
-    img.classList.add("img-fluid", "center-block", "d-block","mx-auto","slika");
-    
+    img.classList.add("img-fluid", "center-block", "d-block", "mx-auto", "slika");
+
     h4.innerHTML = naslov;
     row3.innerHTML = opis;
     img.src = potka;
     a.href = "profile_noadmin.html";
-    
+
     document.getElementsByTagName('body')[0].appendChild(cont);
     cont.appendChild(a);
     a.appendChild(row1);
@@ -176,92 +181,92 @@
     row2.appendChild(h4);
     row1.appendChild(col3);
     col3.appendChild(img);
-    
+
   }
-  
-  window.onload = function(){
-    
-  // c a s e  z a  s e s t a v i t i  o s e b e  g l e d e  n a  p r e d m e t e
-  
+
+  window.onload = function () {
+
+    // c a s e  z a  s e s t a v i t i  o s e b e  g l e d e  n a  p r e d m e t e
+
     var predmet = window.location.search.substring(1).split('=')[1];
-    switch(predmet){
-      
+    switch (predmet) {
+
       case "matematika":
         document.getElementById("naslov").innerHTML = "Matematika";
-        izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
-        izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
-        izdelajPonudbo("Simon Pogačnik","Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.","pics/instruktor4.jpg");
-        izdelajPonudbo("Manca Štucin","Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.","pics/instruktor3.jpg");
+        izdelajPonudbo("Mark Novak", "Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.", "pics/instruktor1.jpg");
+        izdelajPonudbo("Špela Jenko", "Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.", "pics/instruktor2.jpg");
+        izdelajPonudbo("Simon Pogačnik", "Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.", "pics/instruktor4.jpg");
+        izdelajPonudbo("Manca Štucin", "Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.", "pics/instruktor3.jpg");
         break;
-        
+
       case "fizika":
         document.getElementById("naslov").innerHTML = "Fizika";
-         izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
-        izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
-        izdelajPonudbo("Simon Pogačnik","Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.","pics/instruktor4.jpg");
-        izdelajPonudbo("Manca Štucin","Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.","pics/instruktor3.jpg");
+        izdelajPonudbo("Mark Novak", "Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.", "pics/instruktor1.jpg");
+        izdelajPonudbo("Špela Jenko", "Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.", "pics/instruktor2.jpg");
+        izdelajPonudbo("Simon Pogačnik", "Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.", "pics/instruktor4.jpg");
+        izdelajPonudbo("Manca Štucin", "Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.", "pics/instruktor3.jpg");
         break;
-        
+
       case "kemija":
         document.getElementById("naslov").innerHTML = "Kemija";
-         izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
-        izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
-        izdelajPonudbo("Simon Pogačnik","Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.","pics/instruktor4.jpg");
-        izdelajPonudbo("Manca Štucin","Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.","pics/instruktor3.jpg");
+        izdelajPonudbo("Mark Novak", "Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.", "pics/instruktor1.jpg");
+        izdelajPonudbo("Špela Jenko", "Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.", "pics/instruktor2.jpg");
+        izdelajPonudbo("Simon Pogačnik", "Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.", "pics/instruktor4.jpg");
+        izdelajPonudbo("Manca Štucin", "Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.", "pics/instruktor3.jpg");
         break;
-        
+
       case "programiranje":
         document.getElementById("naslov").innerHTML = "Programiranje";
-         izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
-        izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
-        izdelajPonudbo("Simon Pogačnik","Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.","pics/instruktor4.jpg");
-        izdelajPonudbo("Manca Štucin","Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.","pics/instruktor3.jpg");
+        izdelajPonudbo("Mark Novak", "Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.", "pics/instruktor1.jpg");
+        izdelajPonudbo("Špela Jenko", "Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.", "pics/instruktor2.jpg");
+        izdelajPonudbo("Simon Pogačnik", "Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.", "pics/instruktor4.jpg");
+        izdelajPonudbo("Manca Štucin", "Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.", "pics/instruktor3.jpg");
         break;
-        
+
       case "slovenscina":
         document.getElementById("naslov").innerHTML = "Slovenščina";
-         izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
-        izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
-        izdelajPonudbo("Simon Pogačnik","Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.","pics/instruktor4.jpg");
-        izdelajPonudbo("Manca Štucin","Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.","pics/instruktor3.jpg");
+        izdelajPonudbo("Mark Novak", "Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.", "pics/instruktor1.jpg");
+        izdelajPonudbo("Špela Jenko", "Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.", "pics/instruktor2.jpg");
+        izdelajPonudbo("Simon Pogačnik", "Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.", "pics/instruktor4.jpg");
+        izdelajPonudbo("Manca Štucin", "Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.", "pics/instruktor3.jpg");
         break;
-        
+
       case "anglescina":
         document.getElementById("naslov").innerHTML = "Angleščina";
-         izdelajPonudbo("Mark Novak","Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.","pics/instruktor1.jpg");
-        izdelajPonudbo("Špela Jenko","Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.","pics/instruktor2.jpg");
-        izdelajPonudbo("Simon Pogačnik","Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.","pics/instruktor4.jpg");
-        izdelajPonudbo("Manca Štucin","Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.","pics/instruktor3.jpg");
+        izdelajPonudbo("Mark Novak", "Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.", "pics/instruktor1.jpg");
+        izdelajPonudbo("Špela Jenko", "Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj.", "pics/instruktor2.jpg");
+        izdelajPonudbo("Simon Pogačnik", "Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam.", "pics/instruktor4.jpg");
+        izdelajPonudbo("Manca Štucin", "Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev.", "pics/instruktor3.jpg");
         break;
-        
+
       case "programiranje2":
         document.getElementById("naslov").innerHTML = "Programiranje";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
         izdelajPonudbo("Urejanje virov za seminarsko", "Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči.", "pics/jobOffer2.jpg");
-        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.","pics/jobOffer3.jpg");
+        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.", "pics/jobOffer3.jpg");
         break;
-        
+
       case "pisanje":
         document.getElementById("naslov").innerHTML = "Pisanje";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
-        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.","pics/jobOffer3.jpg");
+        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.", "pics/jobOffer3.jpg");
         izdelajPonudbo("Urejanje virov za seminarsko", "Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči.", "pics/jobOffer2.jpg");
         break;
-        
+
       case "oblikovanje":
         document.getElementById("naslov").innerHTML = "Oblikovanje";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
-        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.","pics/jobOffer3.jpg");
+        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.", "pics/jobOffer3.jpg");
         izdelajPonudbo("Urejanje virov za seminarsko", "Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči.", "pics/jobOffer2.jpg");
         break;
-        
+
       case "video":
         document.getElementById("naslov").innerHTML = "Video";
         izdelajPonudbo("Editiranje videa", "Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek.", "pics/jobOffer1.jpeg");
-        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.","pics/jobOffer3.jpg");
+        izdelajPonudbo("Vnašanje podatkov v Excel", "Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel.", "pics/jobOffer3.jpg");
         izdelajPonudbo("Urejanje virov za seminarsko", "Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči.", "pics/jobOffer2.jpg");
         break;
     }
-    
+
   };
 </script>

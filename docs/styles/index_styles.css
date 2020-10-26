@@ -106,3 +106,7 @@ footer p{
     outline: 0;
     max-width: 500px;
 }
+
+html {
+    overflow-x: hidden;
+}

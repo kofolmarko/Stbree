@@ -1,82 +1,93 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en" id="top">
 
- <head>
-        <title>Moj Profil</title>
-         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/		css/bootstrap.min.css" integrity="sha384-						JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 			crossorigin="anonymous">   
-		<link rel="stylesheet" href="./styles/profile_styles.css">
-		<link rel="stylesheet" href="./styles/navbar_styles.css">
-		<link rel="icon" href="./assets/icons/stbree_icon_tr.png">
+<head>
+    <title>Moj Profil</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/		css/bootstrap.min.css"
+        integrity="sha384-						JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/profile_styles.css">
+    <link rel="stylesheet" href="./styles/navbar_styles.css">
+    <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
 
 </head>
 
 <!--navBar-->
 <nav class="navbar navbar-expand-md navbar-dark bg-custom">
-    <a class="navbar-brand mr-auto" href="#top"><img width="104.25px" height="39.125px" src="./assets/icons/stbree_logo.png" alt="stbree_logo"></a>
+    <a class="navbar-brand mr-auto" href="#top"><img width="125px" height="20px" src="./assets/icons/stbree_2.png"
+            alt="stbree_logo"></a>
 
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="navbar-collapse collapse w-100 menu-collapse order-0">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-auto">
-                    <a class="navi nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
-                </li>
-                <li class="nav-item mx-auto">
-                    <a class="navi nav-link text-light" href="./messages.html">Sporočila</a>
-                </li>
-                <li class="nav-item mx-auto">
-                    <a class="navi nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
-                </li>
-                <li class="nav-item mx-auto">
-                    <a class="navi nav-link text-light" href="./jobs.html">Delo</a>
-                </li>
-                <li class="nav-item mx-auto">
-                    <a class="navi nav-link text-light" href="./opravila.html">Moja opravila</a>
-                </li>
-                <li class="nav-item mx-auto">
-                    <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" data-toggle="collapse">
-                        <img height="30px" width="30px" src="./assets/icons/user.png" alt="user_icon" id="user_icon">
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="navi dropdown-item" href="./profile.html">Profil</a>
-                        <a class="navi dropdown-item" href="./settings.html">Nastavitve</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="navi dropdown-item text-danger" href="./index.html">Odjava</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" href="./dashboard.html">Pregledna plošča</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" href="./chat.html">Sporočanje</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" href="./instrukcije.html">Inštrukcije</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" href="./jobs.html">Delo</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <button class="nav-link btn mx-auto bg-transparent" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button"
+                    data-toggle="collapse">
+                    <svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        <path fill-rule="evenodd"
+                            d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                    </svg>
+                </button>
+                <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="./profile.html">Profil</a>
+                    <a class="dropdown-item" href="./settings.html">Nastavitve</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="./index.html">Odjava</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <body>
-    
-    
-	<div class="container podatki"> 
-       
-	    <div class="naslov"> Ime Priimek <hr> </div>
-	    
-	     <!-- i n p u t  t e k s t  f o r m -->
+
+
+    <div class="container podatki">
+
+        <div class="naslov"> Ime Priimek
+            <hr>
+        </div>
+
+        <!-- i n p u t  t e k s t  f o r m -->
         <div class="row">
             <div class="col-md-8">
-                <form action="" method ="">
+                <form action="" method="">
                     <div class="form-group">
                         <label for="textarea">Opis:</label><br>
-                            <textarea class="text-box" rows="3" cols="50"></textarea></br>
-            	            <input style="margin-top: 10px" class="clikn" type="submit" value="Dodaj">
-            	    </div>
+                        <textarea class="text-box" rows="3" cols="50"></textarea></br>
+                        <input style="margin-top: 10px" class="clikn" type="submit" value="Dodaj">
+                    </div>
                 </form>
             </div>
             <div class="col-md-4">
                 <img src="./pics/profile_picture.png" alt="Dodaj sliko" class="img-responsive image">
             </div>
-        </div>            
-                    
-                    
-        
+        </div>
+
+
+
         <!-- t a b e l a  p o d a t k o v -->
         <div class="table-responsive">
             <table class="table table-borderless">
@@ -95,38 +106,43 @@
                     </tr>
                 </tbody>
             </table>
-        </div>       
+        </div>
         <!-- g u m b e k  -->
-	   <button class="clikn" style="margin-top: 20px" type="button">Spremeni podatke</button>
-	    
-	    <!-- t a b s  -->    
-	   <ul class="nav nav-tabs mojClass" id="myTab" role="tablist">
+        <button class="clikn" style="margin-top: 20px" type="button">Spremeni podatke</button>
+
+        <!-- t a b s  -->
+        <ul class="nav nav-tabs mojClass" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Dosežki</a>
-             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Kronologija</a>
-             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Moje ponudbe del</a>
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Dosežki</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="instrkucije-tab" data-toggle="tab" href="#instrukcije" role="tab" aria-controls="instrukcije" aria-selected="false">Moje inštrukcije</a>
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Kronologija</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="geslo-tab" data-toggle="tab" href="#geslo" role="tab" aria-controls="geslo" aria-selected="false">Spremeni geslo</a>
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                    aria-controls="contact" aria-selected="false">Moje ponudbe del</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="instrkucije-tab" data-toggle="tab" href="#instrukcije" role="tab"
+                    aria-controls="instrukcije" aria-selected="false">Moje inštrukcije</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="geslo-tab" data-toggle="tab" href="#geslo" role="tab" aria-controls="geslo"
+                    aria-selected="false">Spremeni geslo</a>
             </li>
         </ul>
-        
-        <!-- t a b s  k o  s e  o d p r e j o -->   
+
+        <!-- t a b s  k o  s e  o d p r e j o -->
         <div class="tab-content" id="myTabContent">
-        <!-- d o s e z k i -->   
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          </div>
-          <!-- K r o n o l o g i j a  -->   
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <div class="table-responsive">
-                    <table class="table table-borderless"> 
+            <!-- d o s e z k i -->
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            </div>
+            <!-- K r o n o l o g i j a  -->
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="table-responsive">
+                    <table class="table table-borderless">
                         <thead>
                             <tr class="trTabelaKrono">
                                 <th scope="col" class="thTabelaKrono">Naloga</th>
@@ -145,13 +161,13 @@
                         </tbody>
                     </table>
                 </div>
-          </div>
-          
-          <!-- M o j e  p o n u d b e  d e l  -->
-          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              
-              <div class="table-responsive">
-                    <table class="table table-borderless"> 
+            </div>
+
+            <!-- M o j e  p o n u d b e  d e l  -->
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                <div class="table-responsive">
+                    <table class="table table-borderless">
                         <thead>
                             <tr class="trTabelaKrono">
                                 <th scope="col" class="thTabelaKrono">Naloga</th>
@@ -169,17 +185,17 @@
                             </tr>
                             <tr>
                                 <td> <a href="./dodajDelo.html" class="clikn">Dodaj</a></td>
-                                
+
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-        <!-- M o j e  i n s t r u k c i j e  -->  
+            <!-- M o j e  i n s t r u k c i j e  -->
             <div class="tab-pane fade" id="instrukcije" role="tabpanel" aria-labelledby="instrukcije">
-            
-            <div class="table-responsive">
-                    <table class="table table-borderless"> 
+
+                <div class="table-responsive">
+                    <table class="table table-borderless">
                         <thead>
                             <tr class="trTabelaKrono">
                                 <th scope="col" class="thTabelaKrono">Naloga</th>
@@ -197,90 +213,100 @@
                             </tr>
                             <tr>
                                 <td> <a href="./dodajInstrukcijo.html" class="clikn">Dodaj</a></td>
-                                
+
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            
+
             </div>
-         <!-- S p r e m e n i  g e s l o  --> 
-          <div class="tab-pane" id="geslo" role="tabpanel" aria-labelledby="geslo">
-          
-            <form action="" method ="">
-                <p>Izberite si novo geslo. Naj bo dolgo vsaj 8 znakov.<br> </p>
-                <div class="form-group gesloForm">
-    				<label for="name">Novo geslo &nbsp&nbsp&nbsp </label>
-    				<input type="password" id="firstname" name="" size="25"> <br> <br> 
-    	
-    				<label for="surname">Ponovi geslo: </label>
-    				<input type="password" id="surname" name="" size="25">
-    			</div>
-                <div style="text-align: right">
-                                <td> <a class="clikn">Potrdi</a></td>
-                                
-                            </div>
-			</form>
-          </div>
-            
-        </div> <!-- k o n e c  t a b s o v  --> 
-    </div>   <!-- k o n e c  p o d a t k o v  --> 
-	       
-</div>
+            <!-- S p r e m e n i  g e s l o  -->
+            <div class="tab-pane" id="geslo" role="tabpanel" aria-labelledby="geslo">
 
- <script>
-    function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-    }
-</script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                <form action="" method="">
+                    <p>Izberite si novo geslo. Naj bo dolgo vsaj 8 znakov.<br> </p>
+                    <div class="form-group gesloForm">
+                        <label for="name">Novo geslo &nbsp&nbsp&nbsp </label>
+                        <input type="password" id="firstname" name="" size="25"> <br> <br>
 
-  <script>
-    $(window).scroll(function(){
-	$('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
-    });
-  </script>
-  
-</body>	
+                        <label for="surname">Ponovi geslo: </label>
+                        <input type="password" id="surname" name="" size="25">
+                    </div>
+                    <div style="text-align: right">
+                        <td> <a class="clikn">Potrdi</a></td>
+
+                    </div>
+                </form>
+            </div>
+
+        </div> <!-- k o n e c  t a b s o v  -->
+    </div> <!-- k o n e c  p o d a t k o v  -->
+
+    </div>
+
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(window).scroll(function () {
+            $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+        });
+    </script>
+
+</body>
 
 <!--footer-->
 <footer class="page-footer font-small pt-4 text-light">
-  <div class="container-fluid text-center">
+    <div class="container-fluid text-center">
         <h6 class="text-uppercase">Kontaktirajte nas</h6>
 
         <ul class="list-unstyled">
-          <li class="d-inline">
-            <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
-          </li>
-          <li class="d-inline">
-            <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
-          </li>
-          <li class="d-inline">
-            <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
-          </li>
-          <li class="d-inline">
-            <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px" src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
-          </li>
+            <li class="d-inline">
+                <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px"
+                        src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
+            </li>
+            <li class="d-inline">
+                <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px"
+                        src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
+            </li>
+            <li class="d-inline">
+                <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px"
+                        src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
+            </li>
+            <li class="d-inline">
+                <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px"
+                        src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
+            </li>
         </ul>
-  </div>
+    </div>
 
-  <div class="footer-copyright text-center py-3">
-    © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
-  </div>
+    <div class="footer-copyright text-center py-3">
+        © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
+    </div>
 </footer>
-	
+
 
 
 </html>

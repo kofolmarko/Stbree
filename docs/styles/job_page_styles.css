@@ -7,10 +7,11 @@
 #page-content {
     display: flex;
     height: 100vh;
+    flex-direction: column;
 }
 
 #job-content {
-    margin-top: 65px;
+    margin-top: 0;
     width: 100%;
 }
 
@@ -158,14 +159,14 @@
     border-radius: 3px;
 }
 
-svg {
+#contact-icons svg {
     cursor: pointer;
     background-color: rgb(243, 243, 243);
     border-radius: 3px;
     padding: 5px;
 }
 
-svg:hover {
+#contact-icons svg:hover {
     color: rgb(0, 12, 66);
 }
 
