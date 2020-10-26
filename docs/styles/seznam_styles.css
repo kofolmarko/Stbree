@@ -58,8 +58,23 @@ h2{
   .navbar {
     padding: 0.5rem;
   }
+
+
   footer {
     background-color: #292b2c;
-    padding-bottom: 20px;
+    position:absolute, fixed;
     width: 100%;
+    bottom: 0;
+  }
+  
+  footer p{
+    margin-bottom: 0;
+  }
+
+  #footer-icons {
+    margin-top: 20px;
+  }
+
+  #footer-icons li{
+    margin: 10px;
   }

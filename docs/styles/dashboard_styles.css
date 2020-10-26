@@ -70,5 +70,13 @@ footer {
   footer p{
     margin-bottom: 0;
   }
+
+  #footer-icons {
+    margin-top: 20px;
+  }
+
+  #footer-icons li{
+    margin: 10px;
+  }
   
   /*FOOTER MODIFICATIONS END*/
