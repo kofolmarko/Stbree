@@ -14,6 +14,24 @@ h1{
 .carousel-item-active {
     transition: transform 1.5s ease;
 }
+.carousel-item h3{
+  text-transform: uppercase;
+  margin-top: 1rem!important;
+  margin-bottom: 0!important;
+}
+
+.carousel-item .border-secondary{
+  margin-top: 0.7rem!important;
+  margin-bottom: 0.7rem!important;
+}
+
+#carousel1 .carousel-control-prev,
+#carousel1 .carousel-control-next,
+#carousel2 .carousel-control-prev,
+#carousel2 .carousel-control-next {
+    width: 10%!important;
+}
+
 
 #carousel0 .carousel-inner .carousel-item img,
 #carousel0 .carousel-inner .carousel-item-next img, 
