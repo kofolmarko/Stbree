@@ -69,123 +69,110 @@
     </nav>
     <!--NAVIGATION BAR ENDS-->
 
-    <!--VIDEO BACKGROUND STARTS-->
+    <!--VIDEO BACKGROUND STARTS
     <div id="hero">
         <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
             <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
         </video>
-        <div id="overlay"></div>
-        <!--TO DO LIST STARTS-->
-        <div class="container form-container ctnbod mt-5">
-            <h1>To-Do List<i class="fa fa-plus"></i></h1>
-            <input type="text" placeholder="Add new">
-            <!-- Class 'sortable' enables sorting with jQuery UI method .sortable() -->
-            <ul class="sortable">
-                <li><span><i class="fa fa-trash"></i></span>Work on projects for one hour</li>
-                <li><span><i class="fa fa-trash"></i></span>Go for a walk</li>
-                <li><span><i class="fa fa-trash"></i></span>Meditate</li>
-                <li><span><i class="fa fa-trash"></i></span>Stretch</li>
-            </ul>
-        </div>
-        <!--TO DO LIST ENDS-->
+        <div id="overlay"></div>-->
+
+    <!--TITLE STARTS-->
+    <div class="col-12 text-center mt-5">
+        <h1 class="text-dark pt-4">Ime Priimek</h1>
+        <div class="border-top border-secondary w-50 mx-auto my-3"></div>
+        <p class="lead">Izberite določen datum:</p>
     </div>
+    <!--TITLE ENDS-->
+        
+    <!--expirement starts-->
+
+    <p class="text-center"><input type="date"/> <input type="submit" value="Potrdi"/> </p>
+
+    <!--<div class="container pt-3">-->
+        <div class="container pt-3 pb-3 table-responsive-sm">
+            <table class="table text-center">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" colspan="7">Prihajajoči dogodki</th>
+                    <!--
+                    <th scope="col">Čas</th>
+                    <th scope="col">Naziv</th>
+                    <th scope="col">Tip</th>
+                    <th scope="col">Vlogo</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Koš</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td scope="row"><label for="datumDela">11.12.2020</label></td> 
+                    <td><label for="časDela">18:15</label></td>
+                    <td><label for="nazivDela">Programiranje P1</label></td>
+                    <td><label for="tipDela">Programiranje</label></td>
+                    <td><label for="tipVloga">Inštruktor</label></td>
+                    <td><label for="cenaDela">5</label></td>
+                    <td><i class="fas fa-trash"></i></td>
+                </tr>
+                <tr>
+                    <td scope="row"><label for="datumDela">19.12.2020</label></td> 
+                    <td><label for="časDela">10:15</label></td>
+                    <td><label for="nazivDela">Linearna Algebra</label></td>
+                    <td><label for="tipDela">Matematika</label></td>
+                    <td><label for="tipVloga">Inštruktor</label></td>
+                    <td><label for="cenaDela">8</label></td>
+                    <td><i class="fas fa-trash"></i></td>
+                </tr>
+                <tr>
+                    <td scope="row"><label for="datumDela">19.12.2020</label></td> 
+                    <td><label for="časDela">11:15</label></td>
+                    <td><label for="nazivDela">OMA</label></td>
+                    <td><label for="tipDela">Matematika</label></td>
+                    <td><label for="tipVloga">Student</label></td>
+                    <td><label for="cenaDela">8</label></td>
+                    <td><i class="fas fa-trash"></i></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row" colspan="7">
+                            <!-- MODAL START -->
+                            <button type="button" class="btn fas fa-plus" data-toggle="modal" data-target="#exampleModalCenter"></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Izberi</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Objavite oglas
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                    <a href="./dodajDelo.html" class="btn btn-outline-dark btn-tg">Za delo</a>
+                                    <a href="./dodajInstrukcije.html" class="btn btn-outline-dark btn-tg">Za inštrukcijo</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- MODAL END -->
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    <!--</div>-->
+    <!--expirement ends-->
+
+
+    
     <!--VIDEO BACKGROUND ENDS-->
 
 
-    <!--FOOTER STARTS-->
-    <footer class="page-footer for-container font-small pt-4 text-light">
-        <div class="container-fluid text-center">
-            <h6 class="text-uppercase">Kontaktirajte nas</h6>
-
-            <ul class="list-unstyled">
-                <li class="d-inline">
-                    <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px"
-                            src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
-                </li>
-                <li class="d-inline">
-                    <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px"
-                            src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
-                </li>
-                <li class="d-inline">
-                    <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px"
-                            src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
-                </li>
-                <li class="d-inline">
-                    <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px"
-                            src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="footer-copyright text-center py-3">
-            © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
-        </div>
-    </footer>
-    <!--FOOTER ENDS-->
 
 
-    <!--TO DO LIST JAVA SCRIPT STARTS-->
-    <script>
-        $(function () {
-
-            let degree = 90;
-
-            // Rotates '+' and drops down or recloses input box on click
-            $('.fa-plus').on('click', function () {
-                if (degree === 135) {
-                    degree = 45;
-                }
-                // Sets CSS transform properties. Selector 'this' refers to '+' (with class '.fa-plus') being clicked
-                $(this).css({
-                    '-webkit-transform': 'rotate(' + degree + 'deg)',
-                    '-moz-transform': 'rotate(' + degree + 'deg)',
-                    '-ms-transform': 'rotate(' + degree + 'deg)',
-                    '-o-transform': 'rotate(' + degree + 'deg)',
-                    'transform': 'rotate(' + degree + 'deg)',
-                    'transition': '0.2s linear'
-                });
-                degree += 45;
-                // Animates opacity of text box, setting its display style property to none once its opacity reaches 0 if it's visible, or the inverse if already hidden
-                $('input[type="text"]').fadeToggle();
-            });
-
-            // Upon clicking on list items, adds to class 'completed' (CSS adds strike-through for class)
-            $('ul').on('click', 'li', function () {
-                $(this).toggleClass('completed');
-            });
-
-            // Click to delete
-            $('ul').on('click', 'span', function (e) {
-                // fadeOut() hides element by setting it to transparent
-                $(this).parent().fadeOut(500, function () {
-                    // Removes element along with its data and events
-                    $(this).remove();
-                });
-                // Prevents event from bubbling up DOM tree, notifying any parent handlers of it
-                e.stopPropagation();
-            });
-
-            $('input[type="text"]').on('keypress', function (e) {
-                // If user hits enter...
-                if (e.which === 13) {
-                    // Grabs new to-do list item from input
-                    let itemText = $(this).val();
-                    // If nothing in input box, ceases function execution
-                    if (itemText === '') return;
-                    // Clears input box
-                    $(this).val('');
-                    // Creates new li from input and adds to beginning of ul
-                    $('ul').prepend('<li><span><i class="fa fa-trash"></i></span> ' + itemText + '</li>');
-                }
-            });
-
-            // Enables drag reordering of list items (uses linked jQuery UI library)
-            $('.sortable').sortable();
-
-        });
-
-    </script>
-    <!--TO DO LIST JAVA SCRIPT ENDS-->
 
     <!--NAVBAR JS STARTS-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
@@ -213,5 +200,36 @@
     <script src="js/all.min.js"></script>
     <!--JS ENDS-->
 </body>
+
+<!--FOOTER STARTS-->
+<footer class="page-footer font-small pt-4 text-light">
+    <div class="container-fluid text-center">
+      <h6 class="text-uppercase">Kontaktirajte nas</h6>
+  
+      <ul class="list-unstyled">
+        <li class="d-inline">
+          <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
+        </li>
+        <li class="d-inline">
+          <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
+        </li>
+        <li class="d-inline">
+          <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
+        </li>
+        <li class="d-inline">
+          <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="footer-copyright text-center py-3">
+      © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
+    </div>
+  </footer>
+  <!--FOOTER ENDS-->
 
 </html>
