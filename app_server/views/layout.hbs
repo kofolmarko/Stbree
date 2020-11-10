@@ -1,18 +1,59 @@
 <!DOCTYPE html>
 <html lang="sl">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="/stylesheets/all.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </head>
-  <body>
-    <div class="container">
-      {{{body}}}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/stylesheets/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/navbar.css">
+  <link rel="stylesheet" href="/stylesheets/footer.css">
+  <link rel="stylesheet" href="/stylesheets/landing.css">
+</head>
+
+<body>
+  {{> navbar}}
+
+  <div class="">
+    {{{body}}}
+  </div>
+
+  <!--footer-->
+  <footer class="page-footer font-small pt-4 text-light">
+    <div class="container-fluid text-center">
+      <h6 class="text-uppercase">Kontaktirajte nas</h6>
+
+      <ul class="list-unstyled">
+        <li class="d-inline">
+          <a href="https://www.facebook.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/facebook_logo.png" alt="facebook_logo"></a>
+        </li>
+        <li class="d-inline">
+          <a href="https://www.instagram.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/instagram_logo.png" alt="instagram_logo"></a>
+        </li>
+        <li class="d-inline">
+          <a href="https://www.twitter.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/twitter_logo.png" alt="twitter_logo"></a>
+        </li>
+        <li class="d-inline">
+          <a href="https://www.linkedin.com" target="_blank"><img widht="30px" height="30px"
+              src="./assets/icons/linkedin_logo.png" alt="linkedin_logo"></a>
+        </li>
+      </ul>
     </div>
-    <script src="/javascripts/jquery-3.5.1.min.js"></script>
-    <script src="/javascripts/popper.min.js"></script>
-    <script src="/javascripts/bootstrap.min.js"></script>
-  </body>
+
+    <div class="footer-copyright text-center py-3">
+      © 2020 Copyright: <a href="#" class="text-info">https://skupina-27.com</a>
+    </div>
+  </footer>
+
+  <script src="/javascripts/jquery-3.5.1.min.js"></script>
+  <script src="/javascripts/popper.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <script src="/javascripts/navbar-scroll.js"></script>
+</body>
+
 </html>

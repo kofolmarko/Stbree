@@ -13,6 +13,7 @@
     "cookie-parser": "*",
     "debug": "*",
     "express": "*",
+    "handlebars": "*",
     "hbs": "*",
     "http-errors": "*",
     "morgan": "*"
