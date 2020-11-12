@@ -8,44 +8,66 @@ h1{
     text-transform: uppercase;
 }
 
+.btn {
+  margin-left: 0rem;
+}
+
+.card{
+  transition: 0.5s ease;
+  cursor: pointer;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
+  margin: 3.5px;
+}
+/*CARD*/
+.card:hover{
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+}
+/*CARD*/
+
 /*CAROUSEL MODIFICATIONS START*/
 .carousel-item-next, 
 .carousel-item-previous, 
 .carousel-item-active {
     transition: transform 1.5s ease;
 }
-.carousel-item h3{
+.carousel-item h3, .carousel-item h4{
   text-transform: uppercase;
   margin-top: 1rem!important;
   margin-bottom: 0!important;
 }
-
+.carousel-item img{
+  border-radius: 0.2rem;
+}
 .carousel-item .border-secondary{
   margin-top: 0.7rem!important;
   margin-bottom: 0.7rem!important;
 }
-
-#carousel1 .carousel-control-prev,
-#carousel1 .carousel-control-next,
-#carousel2 .carousel-control-prev,
-#carousel2 .carousel-control-next {
-    width: 10%!important;
-}
-
 
 #carousel0 .carousel-inner .carousel-item img,
 #carousel0 .carousel-inner .carousel-item-next img, 
 #carousel0 .carousel-inner .carousel-item-previous img, 
 #carousel0 .carousel-inner .carousel-item-active img{
      /* Add the blur effect */
-  filter: blur(4px);
-  -webkit-filter: blur(3px);
-  max-height: 43rem!important;
+  max-height: 42rem!important;
 }
 
+/*#carousel1 .container-fluid,
+#carousel2 .container-fluid{
+   Add the blur effect 
+  border-style:solid;
+  border-color: #292b2c;
+ border-width:0.05rem;
+ padding-top: 1.5rem;
+ padding-bottom: 1.5rem;
+ border-radius: 0.5rem;
+ margin-left: 2rem;
+ 
+}
+*/
 .carousel-caption{
     position: absolute; /*so we can place it wherever we want on the page*/
-    top: 35%; /*from the top of the element its inside of*/
+    top: 45%; /*from the top of the element its inside of*/
     transform: translateY(-45%); /*that its in the middle of the %age bar, not beneath it*/
 }
 
@@ -54,7 +76,7 @@ h1{
     text-shadow: .1rem .1rem .3 rem rgba(0, 0,0 , 1);
 }
 
-.carousel-caption h3{
+.carousel-caption h3 {
     font-size: 1.2rem;
 }
 
@@ -76,6 +98,7 @@ h1{
     transform: scale(1.00);
   }
   /*CAROUSEL MODIFICATIONS END START*/
+  
 
 /*FOOTER MODIFICATIONS START*/
 footer {
