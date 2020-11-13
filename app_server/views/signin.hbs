@@ -1,0 +1,82 @@
+<body>
+    <div id="hero">
+        <!--VideoBG-->
+        <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png" id="bg-video">
+            <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
+        </video>
+
+        <!--Overlay-->
+        <div id="overlay"></div>
+
+        <!--Login Form-->
+        <div class="container form-container" id="signing-form-container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="formSign form" data-aos="zoom-in">
+                        <div class="logo mb-3">
+                            <div class="col-md-12 text-center">
+                                <h1>Prijava</h1>
+                            </div>
+                        </div>
+                        <form action="" name="login">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Geslo</label>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <p class="text-center"><a href="#" data-target="#resetPass"
+                                        data-toggle="modal">Pozabljeno geslo?</a></p>
+                            </div>
+                            <div class="col-md-12 text-center ">
+                                <button type="submit" class="btn btn-block mybtn btn-primary">Prijava</button>
+                            </div>
+                            <div class="col-md-12 ">
+                                <hr>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <button type="button" class="btn btn-block mybtn btn-secondary"><img
+                                        src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google
+                                    računom</a>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-center">Še nisi registriran? <a href="./signup.html" id="signup">Pridruži
+                                        se zdaj!</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--ForgotPassword modal-->
+    <div class="modal fade" id="resetPass" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalnoOkno">Pozabljeno geslo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Vnesite email s katerim ste se registrirali. Navodila za spremembo gesla vam bodo poslana na
+                        email.</p>
+                    <form action="" name="passReset">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" class="form-control" id="email"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <button type="submit" class="btn mybtn btn-secondary">Pošlji</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

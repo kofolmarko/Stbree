@@ -1,0 +1,104 @@
+.podatki{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-color: #ebebeb;
+    font-size: 20px;
+    border-radius: 0px;
+    padding: 3vh 4vw;
+}
+
+.naslov{
+    padding-top: 50px;
+    font-size: 40px;
+    
+}
+
+.glavne{
+    padding: 15px;
+    margin-top: 15px;
+    border: 5px solid #291122;
+    border-radius: 25px;
+    margin-right: -370px;
+}
+
+.dodatne{
+    padding: 15px;
+    color: white;
+    background-color: #52818c;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-right: -370px;
+    
+}
+
+.thPodatki{
+  border-bottom: 1px solid black;
+}
+
+.mojClass{
+    overflow: hidden;
+    background-color: rgba(18,70,83,1);
+    border-radius: 25px;
+    justify-content: space-between;
+    padding: 2vh;
+    margin-top: 3vh;
+}
+
+.thTabelaKrono{
+    width: 50%;
+}
+
+.trTabelaKrono{
+    text-align: left; 
+}
+
+.gesloForm{
+    font-size: 16px;
+    padding-top: 4vh;
+    padding-left: 5vw;
+}
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  outline: none;
+  border: none;
+  background-color: rgba(18,70,83,1);
+  display: flex;
+  justify-content: space-between;
+  margin-right: -370px;
+  border-radius: 25px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  padding: 10px 10px;
+  transition: 0.3s;
+  font-size: 17px;
+  margin: 10px 20px;
+  border-radius: 25px;
+  
+ 
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
+
+.clikn{
+    background-color: #4ec5e0;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 17px;
+    margin-top: 2vh;
+}

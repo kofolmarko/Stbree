@@ -1,0 +1,201 @@
+<body>
+
+    <div class="container podatki">
+
+        <div class="naslov"> Ime Priimek
+            <hr>
+        </div>
+
+        <!-- i n p u t  t e k s t  f o r m -->
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <form action="" method="">
+                    <div class="form-group">
+                        <label for="opisProfila ">Opis:</label>
+                        <textarea class="form-control" rows="3" id="opisProfila"
+                            placeholder="Napiši nekaj o sebi..."></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary">Spremeni opis</button>
+                </form>
+            </div>
+            <div class="col-md-4 col-xs-12 ">
+                <img src="./assets/pics/profile_picture.png" alt="Dodaj sliko" class="img-responsive" style="height: 200px;">
+            </div>
+        </div>
+
+        <!-- t a b e l a  p o d a t k o v -->
+        <div class="row">
+            <div class="table-responsive">
+                <hr>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th class="thPodatki" scope="row">Email naslov</th>
+                            <td>imepriimek@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th class="thPodatki" scope="row">Telefonska številka</th>
+                            <td>030 723 418</td>
+                        </tr>
+                        <tr>
+                            <th class="thPodatki" scope="row">Datum vpisa</th>
+                            <td>26.10.2020</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-primary">Spremeni podatke</button>
+            </div>
+        </div>
+        <!-- g u m b e k  -->
+        <!--  
+	      
+	   <ul class="nav nav-tabs mojClass" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Dosežki</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Kronologija</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                    aria-controls="contact" aria-selected="false">Moje ponudbe del</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="instrkucije-tab" data-toggle="tab" href="#instrukcije" role="tab"
+                    aria-controls="instrukcije" aria-selected="false">Moje inštrukcije</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="geslo-tab" data-toggle="tab" href="#geslo" role="tab" aria-controls="geslo"
+                    aria-selected="false">Spremeni geslo</a>
+            </li>
+        </ul>
+
+        
+        <div class="tab-content" id="myTabContent">
+            
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            </div>
+            
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr class="trTabelaKrono">
+                                <th scope="col" class="thTabelaKrono">Naloga</th>
+                                <th scope="col">Oddano</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML stran, projekt Spletnega Programiranja</td>
+                                <td>26.10.2020</td>
+                            </tr>
+                            <tr>
+                                <td>Logo za projekt SP</td>
+                                <td>15.10.2020</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+           
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr class="trTabelaKrono">
+                                <th scope="col" class="thTabelaKrono">Naloga</th>
+                                <th scope="col">Rok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td> <a href="./dodajDelo.html" class="clikn">Dodaj</a></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="instrukcije" role="tabpanel" aria-labelledby="instrukcije">
+
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr class="trTabelaKrono">
+                                <th scope="col" class="thTabelaKrono">Naloga</th>
+                                <th scope="col">Rok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td> <a href="./dodajInstrukcijo.html" class="clikn">Dodaj</a></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            
+            <div class="tab-pane" id="geslo" role="tabpanel" aria-labelledby="geslo">
+
+                <form action="" method="">
+                    <p>Izberite si novo geslo. Naj bo dolgo vsaj 8 znakov.<br> </p>
+                    <div class="form-group gesloForm">
+                        <label for="name">Novo geslo &nbsp&nbsp&nbsp </label>
+                        <input type="password" id="firstname" name="" size="25"> <br> <br>
+
+                        <label for="surname">Ponovi geslo: </label>
+                        <input type="password" id="surname" name="" size="25">
+                    </div>
+                    <div style="text-align: right">
+                        <td> <a class="clikn">Potrdi</a></td>
+
+                    </div>
+                </form>
+            </div>
+
+        </div> -->
+    </div> <!-- k o n e c  p o d a t k o v  -->
+
+    </div>
+
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>

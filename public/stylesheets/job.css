@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#page-content {
+    display: flex;
+
+    flex-direction: column;
+}
+
+#job-content {
+    margin-top: 0;
+    width: 100%;
+}
+
+#job {
+    background-color: beige;
+    display: flex;
+}
+
+#about-job {
+    width: 100%;
+    background-image: url(../assets/backgrounds/job_thumbnail.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+#category {
+    margin: 20px;
+}
+
+#category a {
+    display: inline;
+}
+
+#category p {
+    display: inline;
+}
+
+#title {
+    align-self: center;
+    margin: 30px;
+    color: rgb(236, 236, 236);
+}
+
+#joball {
+    display: flex;
+    margin: 20px 20px;
+    background-color: rgba(228, 228, 228, 0.74);
+}
+
+#desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 50%;
+    padding: 30px;
+}
+
+#job-thumbnail {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+#job-thumbnail img {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    margin: auto;
+}
+
+#apply {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 30px;
+    align-items: center;
+    flex-direction: column;
+}
+
+#offer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+#delivery-time {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#apply-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buyer {
+    display: flex;
+    background-color: rgb(243, 243, 243);
+}
+
+#about-buyer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#profil-opis {
+    margin: 20px;
+}
+
+#profil-opis p {
+    margin: 0;
+}
+
+#star-rating {
+    align-self: flex-start;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.checked {
+    color: orange;
+  }
+
+#contact {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contact-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact svg {
+    margin: 10px;
+    background-color: rgb(228, 228, 228);
+    padding: 5px;
+    border-radius: 3px;
+}
+
+#contact-icons svg {
+    cursor: pointer;
+    background-color: rgb(243, 243, 243);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+#contact-icons svg:hover {
+    color: rgb(0, 12, 66);
+}
+
+#relevant-jobs {
+}
+
+#car {
+    overflow: hidden;
+    border-radius: 10px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 200px;
+}
+
+.carousel-item {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.432);
+}
+
+@media only screen and (max-width: 576px) {
+    #joball {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #desc {
+        width: 100%;
+        border-bottom: solid black 1px;
+    }
+
+    #apply {
+        width: 100%;
+    }
+
+    #buyer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #star-rating {
+        justify-self: flex-start;
+        align-self: flex-start;
+        margin: 20px;
+    }
+
+    #about-buyer {
+        width: 100%;
+        border-bottom: solid black 1px;
+    }
+
+    #contact {
+        margin: 20px 0px;
+    }
+}

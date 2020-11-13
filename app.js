@@ -32,7 +32,7 @@ function set_navbar_partial(user_status) {
 }
 
 //pass true if user is logged-in, false if it's a guest
-set_navbar_partial(false);
+set_navbar_partial(true);
 
 app.use(logger('dev'));
 app.use(express.json());
