@@ -2,157 +2,151 @@
 <html lang="en">
 
 <head>
-    <title>Registracija</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
-    <link rel="stylesheet" href="./styles/sign_styles.css">
+  <title>Registracija</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="icon" href="./assets/icons/stbree_icon_tr.png">
+  <link rel="stylesheet" href="./styles/sign_styles.css">
 </head>
 
 <!--navBar-->
 <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
-    <a class="navbar-brand mr-auto" href="./index.html"><img src="./assets/icons/stbree_2.png" height="20px"
-            width="125px" alt="stbree_logo"></a>
+  <a class="navbar-brand mr-auto" href="./index.html"><img src="./assets/icons/stbree_2.png" height="20px" width="125px"
+      alt="stbree_logo"></a>
 
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="navbar-collapse collapse w-100 menu-collapse order-0">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-auto">
-                <a class="nav-link text-light" href="./signin.html">Prijava</a>
-            </li>
-            <li class="nav-item mx-auto active">
-                <a class="nav-link text-light"
-                    style="border-bottom: 1px solid white; color: white!important">Registracija</a>
-            </li>
-            <li class="nav-item mx-auto">
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="./signin.html">Prijava</a>
-                    <a class="dropdown-item">Registracija</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-    </a>
+  <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mx-auto">
+        <a class="nav-link text-light" href="./signin.html">Prijava</a>
+      </li>
+      <li class="nav-item mx-auto active">
+        <a class="nav-link text-light" style="border-bottom: 1px solid white; color: white!important">Registracija</a>
+      </li>
+      <li class="nav-item mx-auto">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="./signin.html">Prijava</a>
+          <a class="dropdown-item">Registracija</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </a>
 </nav>
 
 <body>
-    <div id="hero">
-        <!--VideoBG-->
-        <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
-            <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
-        </video>
+  <div id="hero">
+    <!--VideoBG-->
+    <video loop muted autoplay poster="./assets/backgrounds/welcome_poster.png">
+      <source src="./assets/backgrounds/welcome_video.mp4" type="video/mp4">
+    </video>
 
-        <!--Overlay-->
-        <div id="overlay"></div>
+    <!--Overlay-->
+    <div id="overlay"></div>
 
-        <!--Signin Form-->
-        <div class="container form-container">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="formSign form" data-aos="zoom-in">
-                        <div class="logo mb-3">
-                            <div class="col-md-12 text-center">
-                                <h1>Registracija uporabnika</h1>
-                            </div>
-                        </div>
-                        <form action="" name="signup">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="email">Ime</label>
-                                    <input type="text" name="ime" class="form-control" id="ime">
-                                </div>
-                                <div class="col">
-                                    <label for="email">Priimek</label>
-                                    <input type="text" name="priimek" class="form-control" id="priimek">
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" id="email"
-                                    aria-describedby="emailHelp" placeholder="uporabnik@domena.si">
-                            </div>
-                            <hr>
-                            <div class="form-group">
-                                <label for="password">Geslo</label>
-                                <input type="password" name="password" id="password" class="form-control"
-                                    placeholder="Geslo mora biti dolgo vsaj 8 znakov">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Potrdi geslo</label>
-                                <input type="password" name="password" id="password" class="form-control">
-                            </div>
-                            <hr>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudim"
-                                    value="option1">
-                                <label class="form-check-label" for="izbiraStoritve">
-                                    Nudim inštrukcije
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="izbiraStoritve" id="iscem"
-                                    value="option2">
-                                <label class="form-check-label" for="izbiraStoritve">
-                                    Iščem inštrukcije
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudimiscem"
-                                    value="option3">
-                                <label class="form-check-label" for="izbiraStoritve">
-                                    Nudim in iščem inštrukcije
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudimiscem"
-                                    value="option3">
-                                <label class="form-check-label" for="izbiraStoritve">
-                                    Nudim ali iščem delo
-                                </label>
-                            </div>
-                            <hr>
-                            <div class="col-md-12 text-center ">
-                                <button type="submit" class="btn btn-block mybtn btn-primary">Registriraj</button>
-                            </div>
-                            <div class="col-md-12 ">
-                                <hr>
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <button type="button" class="btn btn-block mybtn btn-secondary"><img
-                                        src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google
-                                    računom</a>
-                            </div>
-                            <div class="form-group">
-                                <p class="text-center">Že registriran? <a href="./signin.html" id="signin">Prijavi se
-                                        tukaj.</a></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <!--Signin Form-->
+    <div class="container form-container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="formSign form" data-aos="zoom-in">
+            <div class="logo mb-3">
+              <div class="col-md-12 text-center">
+                <h1>Registracija uporabnika</h1>
+              </div>
             </div>
+            <form id="registrationFrom">
+              <div class="row">
+                <div class="col">
+                  <label for="ime">Ime</label>
+                  <input type="text" name="ime" class="form-control" id="ime">
+                </div>
+                <div class="col">
+                  <label for="priimek">Priimek</label>
+                  <input type="text" name="priimek" class="form-control" id="priimek">
+                </div>
+              </div>
+              <hr>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                  placeholder="uporabnik@domena.si">
+              </div>
+              <hr>
+              <div class="form-group">
+                <label for="password">Geslo</label>
+                <input type="password" name="password" id="password" class="form-control"
+                  placeholder="Geslo mora biti dolgo vsaj 8 znakov">
+              </div>
+              <div class="form-group">
+                <label for="password">Potrdi geslo</label>
+                <input type="password" name="password" id="password" class="form-control">
+              </div>
+              <hr>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudim" value="option1">
+                <label class="form-check-label" for="izbiraStoritve">
+                  Nudim inštrukcije
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="izbiraStoritve" id="iscem" value="option2">
+                <label class="form-check-label" for="izbiraStoritve">
+                  Iščem inštrukcije
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudimiscem" value="option3">
+                <label class="form-check-label" for="izbiraStoritve">
+                  Nudim in iščem inštrukcije
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="izbiraStoritve" id="nudimiscem" value="option3">
+                <label class="form-check-label" for="izbiraStoritve">
+                  Nudim ali iščem delo
+                </label>
+              </div>
+              <hr>
+              <div class="col-md-12 text-center ">
+                <button type="submit" id="registriraj" class="btn btn-block mybtn btn-primary">Registriraj</button>
+              </div>
+              <div class="col-md-12 ">
+                <hr>
+              </div>
+              <div class="col-md-12 mb-3">
+                <button type="button" class="btn btn-block mybtn btn-secondary"><img
+                    src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google
+                  računom</a>
+              </div>
+              <div class="form-group">
+                <p class="text-center">Že registriran? <a href="./signin.html" id="signin">Prijavi se
+                    tukaj.</a></p>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init(); </script>
+  <script src="../../public/javascripts/sign-validation.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script> AOS.init(); </script>
 
 </body>
 
