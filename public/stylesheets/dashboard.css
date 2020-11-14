@@ -1,69 +1,6 @@
-.card{
-transition: 0.5s ease;
-cursor: pointer;
-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
-margin: 3.5px;
-}
-/*CARD*/
-.card:hover{
-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
-}
-/*CARD*/
 
 /*CAROUSEL MODIFICATIONS START*/
-.carousel-item-next, 
-.carousel-item-previous, 
-.carousel-item-active {
-  transition: transform 1.5s ease;
-}
-.carousel-item h3, .carousel-item h4{
-text-transform: uppercase;
-margin-top: 1rem!important;
-margin-bottom: 0!important;
-}
-.carousel-item img{
-border-radius: 0.2rem;
-}
-.carousel-item .border-secondary{
-margin-top: 0.7rem!important;
-margin-bottom: 0.7rem!important;
-}
 
-#carousel0 .carousel-inner .carousel-item img,
-#carousel0 .carousel-inner .carousel-item-next img, 
-#carousel0 .carousel-inner .carousel-item-previous img, 
-#carousel0 .carousel-inner .carousel-item-active img{
-   /* Add the blur effect */
-max-height: 42rem!important;
-}
-
-/*#carousel1 .container-fluid,
-#carousel2 .container-fluid{
- Add the blur effect 
-border-style:solid;
-border-color: #292b2c;
-border-width:0.05rem;
-padding-top: 1.5rem;
-padding-bottom: 1.5rem;
-border-radius: 0.5rem;
-margin-left: 2rem;
-
-}
-*/
-.carousel-caption{
-  position: absolute; /*so we can place it wherever we want on the page*/
-  top: 45%; /*from the top of the element its inside of*/
-  transform: translateY(-45%); /*that its in the middle of the %age bar, not beneath it*/
-}
-
-.carousel-caption h1{
-  font-size: 2.5rem;
-  text-shadow: .1rem .1rem .3 rem rgba(0, 0,0 , 1);
-}
-
-.carousel-caption h3 {
-  font-size: 1.2rem;
-}
 
 /*mobile gutter fix, like overflow on cellphones*/
 .row, .container-fluid{

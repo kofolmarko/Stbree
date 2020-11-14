@@ -17,6 +17,10 @@ app.set('view engine', 'hbs');
 // helpers setup
 require('./app_server/views/helpers/hbsh.js');
 
+// carousel partial setup
+carousel = require('./app_server/views/partials/carousel.hbs');
+hbs.registerPartial('carousel', carousel);
+
 // navbar partial setter
 function set_navbar_partial(user_status) {
   var navbar;

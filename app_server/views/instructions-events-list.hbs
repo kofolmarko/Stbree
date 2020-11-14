@@ -1,0 +1,153 @@
+<body>
+
+  <ul class="nav container" id="ins-nav">
+    <li class="nav-item nav-item-left-border nav-item-inactive-bg">
+      <a class="nav-link active" href="/instruktorji">Inštruktorji</a>
+    </li>
+    <li class="nav-item bg-info nav-item-right-border">
+      <a class="nav-link" href="/instrukcije-dogodki">Dogodki</a>
+  </ul>
+
+  <!--F i l t e r-->
+  <div class="container" id="filter-bar">
+    <form action="#">
+
+      <div class="filter-item">
+        <label for="predmeti">Predmet:</label>
+        <select name="predmeti" id="predmeti" class="form-control">
+          <option value="all">Vsi</option>
+          <option value="mathematics">Matematika</option>
+          <option value="physics">Fizika</option>
+          <option value="chemistry">Kemija</option>
+          <option value="programming">Programiranje</option>
+          <option value="slovene">Slovenščina</option>
+          <option value="english">Angleščina</option>
+          <option value="other">Ostalo</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label for="stopnja">Stopnja:</label>
+        <select name="stopnja" id="stopnja" class="form-control">
+          <option value="all">Vsi</option>
+          <option value="primary">Osnovna šola</option>
+          <option value="high">Srednja šola</option>
+          <option value="university">Univerza / Visoka šola</option>
+          <option value="other">Ostalo</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label for="razvrsti">Razvrsti po:</label>
+        <select name="razvrsti" id="razvrsti" class="form-control">
+          <option value="new-first">Datumu (najnovejši najprej)</option>
+          <option value="old-first">Datumu (najstarejši najprej)</option>
+          <option value="free-space">Številu prostih mest</option>
+          <option value="rating">Oceni</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" id="coming-up" name="coming-up" value="coming-up">
+        <label for="coming-up"> Prikaži samo prihajajoče dogodke</label>
+      </div>
+
+      <input type="submit" value="Filtriraj" class="btn btn-info">
+    </form>
+  </div>
+
+  <!--S e a r c h  b a r-->
+  <div class="input-group mb-3 container">
+    <input type="text" class="form-control" placeholder="Vpiši želeno iskanje" aria-label="Iskanje"
+      aria-describedby="search-button">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary btn-info" type="button" id="search-button">Išči</button>
+    </div>
+  </div>
+
+  <!--N e w-->
+  <div class="new-job container">
+    <a href="/instrukcije-dogodki/dodaj" class="btn btn-success">Ustvari nov dogodek</a>
+  </div>
+
+  <!--I n s t r u c t o r s-->
+  <div id="instructors" class="container">
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/pisanje.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/programiranje.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/mat.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/video.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/prog.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/kem.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="load-more text-primary">
+    <h3>Naloži več...</h3>
+  </div>
+
+  <hr>
+
+  {{> carousel}}
+</body>

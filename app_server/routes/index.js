@@ -28,7 +28,7 @@ router.get('/ponudba-del/dodaj', ctrlJob.jobNew);
 router.get('/instruktorji', ctrlInstructions.instructorsList);
 router.get('/instrukcije-dogodki', ctrlInstructions.instructionsEventList);
 router.get('/instrukcije-dogodki/dogodek', ctrlInstructions.instructionsEvent);
-router.get('/instrukcije-dogodki/dogodek/dodaj', ctrlInstructions.instructionsEventNew);
+router.get('/instrukcije-dogodki/dodaj', ctrlInstructions.instructionsEventNew);
 
 /* GET user profile page */
 router.get('/profil/uporabnik', ctrlMain.userProfile);

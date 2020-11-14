@@ -1,0 +1,41 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100%, 100%;
+  color: black;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  z-index: 50;
+}
+
+/* za dat puščice v črno: filter: invert(100%); */
+.carousel-item {
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.432);
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#car {
+  overflow: hidden;
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 200px;
+}
+
+.carousel-caption a {
+  color: white;
+}

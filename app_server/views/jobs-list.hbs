@@ -1,53 +1,156 @@
 <body>
-    <!--J o b s  p a g e-->
-    <div class="container" style="padding-bottom: 30px;">
-        <div class="col">
-            <h2>Dela</h2>
-            <hr>
-            <p class="text-center"><a href="./seznamPonudb.html" id="signin">Preveri seznam vseh del</a></p>
-        </div>
 
-        <!--S e a r c h  b a r-->
-        <input class="form-control" type="text" placeholder="Poišči delo" aria-label="Search">
+  <div id="job-header" class="container">
+    <h2 class="bg-info">Seznam ponudbe del</h2>
+  </div>
+
+
+
+  <!--F i l t e r-->
+  <div class="container" id="filter-bar">
+    <form action="#">
+
+      <div class="filter-item">
+        <label for="predmeti">Predmet:</label>
+        <select name="predmeti" id="predmeti" class="form-control">
+          <option value="all">Vsi</option>
+          <option value="mathematics">Matematika</option>
+          <option value="physics">Fizika</option>
+          <option value="chemistry">Kemija</option>
+          <option value="programming">Programiranje</option>
+          <option value="slovene">Slovenščina</option>
+          <option value="english">Angleščina</option>
+          <option value="other">Ostalo</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label for="stopnja">Stopnja:</label>
+        <select name="stopnja" id="stopnja" class="form-control">
+          <option value="all">Vsi</option>
+          <option value="primary">Osnovna šola</option>
+          <option value="high">Srednja šola</option>
+          <option value="university">Univerza / Visoka šola</option>
+          <option value="other">Ostalo</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label for="razvrsti">Razvrsti po:</label>
+        <select name="razvrsti" id="razvrsti" class="form-control">
+          <option value="new-first">Datumu (najnovejši najprej)</option>
+          <option value="old-first">Datumu (najstarejši najprej)</option>
+          <option value="applies-min">Številu prijav (najmanj najprej)</option>
+          <option value="applies-max">Številu prijav (največ najprej)</option>
+          <option value="payment-high">Plačilu (največ najprej)</option>
+          <option value="payment-low">Plačilu (najmanj najprej)</option>
+          <option value="due-date-first">Roku opravila (najprej)</option>
+          <option value="due-date-last">Roku opravila (najkasneje)</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" id="coming-up" name="coming-up" value="coming-up">
+        <label for="undone"> Prikaži samo neopravljene ponudbe</label>
+      </div>
+
+      <input type="submit" value="Filtriraj" class="btn btn-info">
+    </form>
+  </div>
+
+  <!--S e a r c h  b a r-->
+  <div class="input-group mb-3 container">
+    <input type="text" class="form-control" placeholder="Vpiši želeno iskanje" aria-label="Iskanje"
+      aria-describedby="search-button">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary btn-info" type="button" id="search-button">Išči</button>
+    </div>
+  </div>
+
+  <!--N e w-->
+  <div class="new-job container">
+    <a href="/ponudba-del/dodaj" class="btn btn-success">Objavi novo ponudbo</a>
+  </div>
+
+  <!--I n s t r u c t o r s-->
+  <div id="instructors" class="container">
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
 
-    <!--J o b s  o p c i j e-->
-    <div class="container">
-        <div class="row">
-            <div class="col myCol">
-                <a href="seznamPonudb.html?predmet=programiranje2">
-                    <img src="./assets/pics/programiranje.png" class="img-responsive list-thumbnail"></img>
-                    <div class="predmetText">
-                        Programiranje
-                    </div>
-                </a>
-            </div>
-            <div class="col myCol">
-                <a href="seznamPonudb.html?predmet=pisanje">
-                    <img src="./assets/pics/pisanje.jpg" class="img-responsive list-thumbnail"></img>
-                    <div class="predmetText">
-                        Pisanje
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 50px;">
-            <div class="col myCol">
-                <a href="seznamPonudb.html?predmet=oblikovanje">
-                    <img src="./assets/pics/oblikovanje.png" class="img-responsive list-thumbnail"></img>
-                    <div class="predmetText">
-                        Oblikovanje
-                    </div>
-                </a>
-            </div>
-            <div class="col myCol">
-                <a href="seznamPonudb.html?predmet=video">
-                    <img src="./assets/pics/video.png" class="img-responsive list-thumbnail"></img>
-                    <div class="predmetText">
-                        Video
-                    </div>
-                </a>
-            </div>
-        </div>
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/pisanje.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/programiranje.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/mat.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/video.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/prog.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    <div class="card instructor" style="width: 18rem;">
+      <img class="card-img-top" src="./assets/pics/kem.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="load-more text-primary">
+    <h3>Naloži več...</h3>
+  </div>
+
+  <hr>
+
+  {{> carousel}}
+
 </body>

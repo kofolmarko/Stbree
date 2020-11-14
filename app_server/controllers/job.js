@@ -5,7 +5,7 @@ const jobsList = (req, res) => {
 
 /* GET job page */
 const job = (req, res) => {
-    res.render('job');
+    res.render('job2');
 };
 
 /* GET new job page */
