@@ -1,18 +1,19 @@
-
-/*CAROUSEL MODIFICATIONS START*/
-
-
-/*mobile gutter fix, like overflow on cellphones*/
-.row, .container-fluid{
-  margin-left: 0px!important;
-  margin-right: 0px!important;
+#moja-opravila {
+    width: 100%;
+    margin-top: 1rem;
+    
 }
 
-.img-responsive{
-  width: 100%;
-  height: 15em;
-  object-fit: cover;
-  transition: 0.2s ease-in-out;
-  transform: scale(1.00);
+#moja-opravila h1 {
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: 0;
 }
-/*CAROUSEL MODIFICATIONS END START*/
+
+#api-container {
+    background-color: antiquewhite;
+    width: 20%;
+    height: 100%;
+    top: 0;
+}

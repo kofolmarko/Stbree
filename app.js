@@ -24,6 +24,9 @@ hbs.registerPartial('carousel', carousel);
 carousel_featured = require('./app_server/views/partials/carousel_featured.hbs');
 hbs.registerPartial('carousel_featured', carousel_featured);
 
+carousel_getstarted = require('./app_server/views/partials/carousel_getstarted.hbs');
+hbs.registerPartial('carousel_getstarted', carousel_getstarted);
+
 // navbar partial setter
 function set_navbar_partial(user_status) {
   var navbar;

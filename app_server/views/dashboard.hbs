@@ -1,34 +1,39 @@
 <body>
-    <table class="table table-primary table-hover container" id="todo-list">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Ura</th>
-                <th scope="col">Opravilo</th>
-                <th scope="col">Izvajalec / Delodajalec</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">19. 11. 2020</th>
-                <th scope="row">17:00</th>
-                <td><a href="/instrukcije-dogodki/dogodek">Inštrukcije Matematike</a></td>
-                <td><a href="/profil/ogled">Mark Zuki</a></td>
-            </tr>
-            <tr>
-                <th scope="row">12. 12. 2020</th>
-                <th scope="row">-</th>
-                <td><a href="/ponudba-del/delo">Program v javi</a></td>
-                <td><a href="/profil/ogled">Katarina Štanta</a></td>
-            </tr>
-            <tr>
-                <th scope="row">3. 1. 2021</th>
-                <th scope="row">20:00</th>
-                <td><a href="/instrukcije-dogodki/dogodek">Photoshop tečaj</a></td>
-                <td><a href="/profil/ogled"></a>Stanislava Radosavljević</td>
-            </tr>
-        </tbody>
-    </table>
+    <div id="moja-opravila">
+        <h1 class="container text-light bg-dark">Moja opravila</h1>
+        <table class="table table-primary table-hover container" id="todo-list">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col" class="hour-column">Ura</th>
+                    <th scope="col">Opravilo</th>
+                    <th scope="col">Izvajalec / Delodajalec</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">19. 11. 2020</th>
+                    <th scope="row" class="hour-column">17:00</th>
+                    <td><a href="/instrukcije-dogodki/dogodek">Inštrukcije Matematike</a></td>
+                    <td><a href="/profil/ogled">Mark Zuki</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">12. 12. 2020</th>
+                    <th scope="row" class="hour-column">-</th>
+                    <td><a href="/ponudba-del/delo">Program v javi</a></td>
+                    <td><a href="/profil/ogled">Katarina Štanta</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">3. 1. 2021</th>
+                    <th scope="row" class="hour-column">20:00</th>
+                    <td><a href="/instrukcije-dogodki/dogodek">Photoshop tečaj</a></td>
+                    <td><a href="/profil/ogled">Stanislava Radosavljević</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {{> carousel_getstarted}}
 
     {{> carousel_featured}}
 

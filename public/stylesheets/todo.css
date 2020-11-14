@@ -1,9 +1,13 @@
 #todo-list {
-    border: 2px solid black;
-    width: 50%;
-    margin: 2rem;
+    width: 100%;
 }
 
 #todo-list a {
     color: black;
 }
+
+@media only screen and (max-width: 992px) {
+    .hour-column {
+        display: none;
+    }
+  }
