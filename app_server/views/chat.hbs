@@ -1,185 +1,169 @@
-<head>
-    <style>
-        footer {
-            display: none;
-        }
-    </style>
-</head>
+<div class="container" id="contacts">
+    <ul id="contact-list" class="bg-dark">
+        <li class="bg-info text-light">
+                <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
+                <h5>Luis Capaldi</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/instruktor3.jpg" alt="" class="text-profile">
+            <h5>Katarina Štanta</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/instruktor1.jpg" alt="" class="text-profile">
+            <h5>Mark Zuki</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/instruktor2.jpg" alt="" class="text-profile">
+            <h5>Stanislava Radosavljević</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
+            <h5>Peter Zlobec</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/ang.jpg" alt="" class="text-profile">
+            <h5>Dani Pedrosa</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/slo.jpg" alt="" class="text-profile">
+            <h5>Alfred Danes</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/video.png" alt="" class="text-profile">
+            <h5>The G</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/instruktor4.jpg" alt="" class="text-profile">
+            <h5>dunklord420</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
+            <h5>Luka Fuerst</h5>
+        </li>
+        <li class="bg-info text-light">
+            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
+            <h5>Maček Lavbi</h5>
+        </li>
+    </ul>
+</div>
 
-<body>
-    <div id="chat" class="flex-fill">
-        <div id="contacts">
-            <div id="contacts-header">
+<div class="container bg-dark" id="chatbox">
+    <div class="container-fluid bg-info" id="contact-name">
+        <a href="/profil/ogled" style="text-decoration: none;">
+            <h2 class="text-light">Luis Capaldi</h2>
+        </a>
+    </div>
 
-                <h3>Kontakti</h3>
+    <div class="container-fluid" id="messages">
 
-                <div id="search">
-                    <input type="text" class="form-control" placeholder="Išči...">
+        <div class="message-recieved">
+            <div class="message-wrap container-fluid">
+                <div class="sender-profile">
+                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
+                    <h6>Luis Capaldi</h6>
                 </div>
 
-            </div>
-
-            <div id="contacts-body">
-                <ul id="contact-list" class="list-unstyled">
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 2</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-                    <li><img width="50px" height="50px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                        <h6><span>Oseba 1</span></h6>
-                    </li>
-
-                </ul>
+                <span>
+                    <p>
+                        Hello, my name is Luis and i would like to have a conversation.
+                    </p>
+                </span>
+                <div class="timestamp">
+                    16:20 | Nov 15
+                </div>
             </div>
         </div>
 
-        <div id="messaging">
-            <div id="active-contact">
-                <h4><span class="align-middle">Oseba 1</span></h4>
-            </div>
-
-            <div id="chatbox">
-                <div id="messages">
-                    <ul id="message-list" class="list-unstyled">
-                        <li class="sent">
-                            <p><span class="sent-span">prvi</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">tretji</span></p>
-                        </li>
-                        <li class="sent">
-                            <p><span class="sent-span">četrti</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">peti</span></p>
-                        </li>
-                        <li class="sent">
-                            <p><span class="sent-span">šesti</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">sedmi</span></p>
-                        </li>
-                        <li class="recieved">
-                            <p><span class="recieved-span">zadnji?</span></p>
-                        </li>
-                    </ul>
+        <div class="message-recieved">
+            <div class="message-wrap sent container-fluid">
+                <div class="sender-profile">
+                    <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
+                    <h6>Uporabnik</h6>
                 </div>
 
-                <div id="messages-bottom">
-                    <div id="send">
-                        <svg width="55px" height="38px" viewBox="0 0 16 16" class="bi bi-paperclip" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
-                        </svg>
-                        <input type="text" class="form-control" placeholder="Vnesite sporočilo"></input>
-                        <svg width="70px" height="38px" viewBox="0 0 16 16" class="bi bi-arrow-right"
-                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                        </svg>
-                    </div>
+                <span>
+                    <p>
+                        Abla espanol?
+                    </p>
+                </span>
+                <div class="timestamp">
+                    16:22 | Nov 15
                 </div>
-
             </div>
         </div>
 
-        <div id="shared">
-            <div id="active-contact-profile">
-                <img heihgt="100px" width="100px" src="./assets/profiles/message_thumbnail_P.png" alt="profile">
-                <div id="shared-buttons">
-                    <a href="">
-                        <svg width="40px" height="40px" viewBox="0 0 16 16" class="bi bi-telephone-fill"
-                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
-                        </svg>
-                    </a>
-
-                    <a href="./profile_noadmin.html">
-                        <svg width="40px" height="40px" viewBox="0 0 16 16" class="bi bi-person-fill"
-                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        </svg>
-                    </a>
-
+        <div class="message-recieved">
+            <div class="message-wrap container-fluid">
+                <div class="sender-profile">
+                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
+                    <h6>Luis Capaldi</h6>
                 </div>
 
+                <span>
+                    <p>
+                        Siiiiiiii, vamonos!
+                    </p>
+                </span>
+                <div class="timestamp">
+                    16:23 | Nov 15
+                </div>
             </div>
+        </div>
 
-            <div id="shared-files" class="dropdown">
-                <ul id="file-list" class="list-unstyled">
-                    <li>
-                        <p>slika.png</p>
-                    </li>
-                    <li>
-                        <p>word.docx</p>
-                    </li>
-                    <li>
-                        <p>predstavitev.pptx</p>
-                    </li>
-                    <li>
-                        <p>naloge.zip</p>
-                    </li>
-                    <li>
-                        <p>lol.gif</p>
-                    </li>
-                    <li>
-                        <p>ok.blend</p>
-                    </li>
-                </ul>
+    </div>
+
+    <div class="container-fluid" id="input-bar">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-info" type="button" style="border-radius: 0;">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Napišite sporočilo..." aria-label=""
+                aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <button class="btn btn-info" type="button" style="border-radius: 0;">Pošlji</button>
             </div>
         </div>
     </div>
+</div>
 
-    <footer></footer>
+<div class="container bg-dark" id="files">
+    <div class="container-fluid text-light" style="padding: 0.5rem;">
+        <h2 style="margin-bottom: 0;">Deljene datoteke</h2>
     </div>
-</body>
+
+    <ul id="file-list">
+        <li class="bg-info text-light">
+            <a href="#">slika.jpg <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">predstavitev.pptx <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">spis.docx <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">slika.png <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">program.c <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">program.c <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">program.c <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">program.c <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">program.c <i class="fas fa-download"></i></a>
+        </li>
+        <li class="bg-info text-light">
+            <a href="#">program.c <i class="fas fa-download"></i></a>
+        </li>
+
+    </ul>
+</div>

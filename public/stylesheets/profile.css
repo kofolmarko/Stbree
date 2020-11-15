@@ -30,6 +30,10 @@ h1{
     background-color: white;
     border: none;
   }
+
+  #resetPassword {
+    margin-bottom: 1rem;
+  }
   
   /* Change background color of buttons on hover */
   .tab button:hover {
