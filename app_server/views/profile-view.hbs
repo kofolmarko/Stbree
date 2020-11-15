@@ -1,18 +1,20 @@
 <body>
   <div class="container">
-    <h1>Mark Zuki</h1>
+    <h1 id="profile-naslov">Mark Zuki</h1>
     <hr>
     <div class="row">
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
         <form>
           <div class="form-group">
             <label for="opisProfila">Opis:</label>
-            <textarea class="form-control" readonly id="opisProfila" rows="5">Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.</textarea>
+            <textarea class="form-control" readonly id="opisProfila"
+              rows="5">Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.</textarea>
           </div>
         </form>
       </div>
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
-        <img src="./pics/instruktor1.jpg" alt="ProfilnaSlika" class="img-responsive" style="height: 200px;">
+        <img src="/assets/pics/instruktor1.jpg" alt="ProfilnaSlika" class="img-responsive"
+          style="width: 200px; height:200px">
       </div>
     </div>
 
@@ -21,7 +23,7 @@
         <hr>
         <table class="table table-borderless">
           <tbody>
-            <h4>Podatki:</h4>
+            <h4 id="profile-podnaslov">Podatki:</h4>
             <tr>
               <th class="thPodatki" scope="row">Email naslov:</th>
               <td>imepriimek@gmail.com</td>
@@ -37,7 +39,7 @@
           </tbody>
         </table>
         <hr>
-        <h4>Dodatno:</h4>
+        <h4 id="profile-podnaslov">Dodatno:</h4>
       </div>
     </div>
 
@@ -58,11 +60,55 @@
     </div>
 
     <div id="moja-dela" class="tabcontent">
-      <p><b>Seznam mojih del:</b></p>
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Delo</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Delo 1</td>
+              <td>26.10.2020</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Delo 2</td>
+              <td>15.10.2020</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div id="moje-instrukcije" class="tabcontent">
-      <p><b>Seznam mojih inštrukcij:</b></p>
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Inštrukcije</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Inštrukcija 1</td>
+              <td>26.10.2020</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Inštrukcija 2</td>
+              <td>15.10.2020</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div id="oceni-me" class="tabcontent">
@@ -111,4 +157,5 @@
   </script>
 
 </body>
+
 </html>
