@@ -23,12 +23,14 @@ router.get('/my', ctrlMain.dashboard);
 router.get('/ponudba-del', ctrlJob.jobsList);
 router.get('/ponudba-del/delo', ctrlJob.job);
 router.get('/ponudba-del/dodaj', ctrlJob.jobNew);
+router.get('/ponudba-del/delo-user', ctrlJob.jobUser);
 
 /* GET instructions related pages */
 router.get('/instruktorji', ctrlInstructions.instructorsList);
 router.get('/instrukcije-dogodki', ctrlInstructions.instructionsEventList);
 router.get('/instrukcije-dogodki/dogodek', ctrlInstructions.instructionsEvent);
 router.get('/instrukcije-dogodki/dodaj', ctrlInstructions.instructionsEventNew);
+router.get('/instrukcije-dogodki/dogodek-user', ctrlInstructions.instructionsUser);
 
 /* GET user profile page */
 router.get('/profil/uporabnik', ctrlMain.userProfile);

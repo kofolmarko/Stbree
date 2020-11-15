@@ -1,0 +1,96 @@
+<body>
+  <div class="return container-fluid" style="margin-top: 1rem;">
+    <a href="/ponudba-del" class="btn btn-info">Nazaj na ponudbo del</a>
+  </div>
+
+  <div class="card event">
+    <img class="card-img-top event-header" src="/assets/pics/oblikovanje.png" alt="Card image cap">
+    <div class="card-body event-body">
+      <table class="table table-borderless" id="tabela-podatkov">
+        <tbody>
+          <h4 id="profile-podnaslov">Podrobnosti</h4>
+          <tr>
+            <th class="thPodatki" scope="row">Naslov:</th>
+            <td id="naslov">Programiranje v Javi</td>
+          </tr>
+          <tr>
+            <th class="thPodatki" scope="row">Opis:</th>
+            <td id="opis">Prosim nrdi mi to piramido iz številk, ti dam 5€ samo da dobim 6.</td>
+          </tr>
+          <tr>
+            <th class="thPodatki" scope="row">Cena:</th>
+            <td id="cena">5€</td>
+          </tr>
+          <tr>
+            <th class="thPodatki" scope="row">Rok:</th>
+            <td id="datum">2020-03-21</td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <button type="button" id="edit-button" value="edit" class="btn btn-success" onclick="uredi()">Uredi</a>
+        <button type="button" id="save-button" value="save" class="btn btn-danger" onclick="shrani()"
+          style="display: none;">Shrani spremembe</a>
+    </div>
+  </div>
+
+  <div class="card profile">
+
+    <div class="card-body profile-body">
+      <img class="profile-thumbnail profile-body-item" src="/assets/pics/instruktor3.jpg" alt="Card image cap">
+      <a href="/profil/ogled">
+        <h3 class="profile-body-item">Katarina Štanta</h3>
+      </a>
+      <hr>
+      <h4>Opis uporabnika</h4>
+      <p>Živjo! Sem študentka na FRI in bom hmali obupala nad življenjem. lp:)</p>
+      <hr>
+      <div id="star-rating">
+        <h4>Ocena uporabnika:</h4>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </div>
+    </div>
+  </div>
+
+  {{> carousel}}
+
+  <script>
+    function uredi() {
+      document.getElementById("edit-button").style.display = "none";
+      document.getElementById("save-button").style.display = "block";
+
+      var naslov = document.getElementById("naslov");
+      var opis = document.getElementById("opis");
+      var cena = document.getElementById("cena");
+      var datum = document.getElementById("datum");
+
+      var naslov_data = naslov.innerHTML;
+      var opis_data = opis.innerHTML;
+      var cena_data = cena.innerHTML;
+      var datum_data = datum.innerHTML;
+
+      naslov.innerHTML = "<input type='text' class='form-control' id='naslov_text' value='" + naslov_data + "'>";
+      opis.innerHTML = "<input type='text' class='form-control' id='opis_text' value='" + opis_data + "'>";
+      cena.innerHTML = "<input type='text' class='form-control' id = 'cena_text' value = '" + cena_data + "'>";
+      datum.innerHTML = "<input type='date' class='form-control' id='datum_value' value='datum_data'>";
+    }
+    function shrani() {
+      var naslov_novi = document.getElementById("naslov_text").value;
+      var opis_novi = document.getElementById("opis_text").value;
+      var cena_novi = document.getElementById("cena_text").value;
+      var datum_novi = document.getElementById("datum_value").value;
+
+      document.getElementById("naslov").innerHTML = naslov_novi;
+      document.getElementById("opis").innerHTML = opis_novi;
+      document.getElementById("cena").innerHTML = cena_novi;
+      document.getElementById("datum").innerHTML = datum_novi;
+
+      document.getElementById("edit-button").style.display = "block";
+      document.getElementById("save-button").style.display = "none";
+    }
+  </script>
+</body>
