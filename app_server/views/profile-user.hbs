@@ -1,46 +1,69 @@
 <body>
   <div class="container">
-    <h1>Ime Priimek</h1>
+    <h1 id="profile-naslov">Ime Priimek</h1>
     <hr>
     <div class="row">
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
         <form>
           <div class="form-group">
-            <label for="opisProfila ">Opis:</label>
-            <textarea class="form-control" rows="5" id="opisProfila" placeholder="Napiši nekaj o sebi..." readonly
-              style="resize: none; width: 100%;"></textarea>
+            <label for="opis">Opis:</label>
+            <textarea class="form-control" rows="5" id="opis" readonly
+              style="resize: none; width: 100%;">Uporabnikov opis...</textarea>
           </div>
         </form>
-        <button type="button" class="btn btn-primary" style="width: 30%">Spremeni</button>
+        <button type="button" id="uredi-opis" value="edit" class="btn btn-primary" onclick="urediOpis()"
+          style="width: 30%">Spremeni opis</button>
+        <button type="button" id="shrani-opis" value="save" class="btn btn-danger" onclick="shraniOpis()"
+          style="width: 30%; display: none">Shrani</button>
+        <br>
       </div>
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
-        <img src="/assets/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive" style="height: 250px;">
+        <img src="/assets/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
+          style="width: 200px; height: 200px;">
       </div>
     </div>
 
     <div class="row">
       <div class="table-responsive">
         <hr>
-        <table class="table table-borderless">
+        <table class="table table-borderless" id="tabela-podatkov">
           <tbody>
-            <h4>Podatki:</h4>
+            <h4 id="profile-podnaslov">Podatki:</h4>
             <tr>
               <th class="thPodatki" scope="row">Email naslov:</th>
-              <td>imepriimek@gmail.com</td>
+              <td id="email">imepriimek@gmail.com</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Telefonska številka:</th>
-              <td>030 723 418</td>
+              <td id="phone">030 723 418</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Datum vpisa:</th>
               <td>26.10.2020</td>
             </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Status:</th>
+              <td id="status">Učenec, Inštruktor</td>
+            </tr>
+            <tr id="spremeni-sliko" style="display: none;">
+              <th class="thPodatki" scope="row">Spremeni profilno sliko:</th>
+              <td>
+                <form>
+                  <div class="form-group">
+                    <input type="file" class="form-control-file" id="profilna-slika">
+                  </div>
+                </form>
+              </td>
+            </tr>
           </tbody>
         </table>
-        <button type="button" class="btn btn-primary">Spremeni podatke</button>
+        <button type="button" id="edit-button" value="edit" class="btn btn-primary" onclick="urediPodatke()">Spremeni
+          podatke</button>
+        <button type="button" id="save-button" value="save" class="btn btn-danger" onclick="shraniPodatke()"
+          style="display: none;">
+          Shrani</button>
         <hr>
-        <h4>Dodatno:</h4>
+        <h4 id="profile-podnaslov">Dodatno:</h4>
       </div>
     </div>
 
@@ -52,26 +75,31 @@
     </div>
 
     <div id="kronologija" class="tabcontent">
-      <p><b>Moja kronologija:</b></p>
-      <table class="table table-borderless">
-        <thead>
-          <tr class="trTabelaKrono">
-            <th scope="col" class="thTabelaKrono">Projekt</th>
-            <th scope="col">Datum zaključka</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>HTML stran, projekt Spletnega Programiranja</td>
-            <td>26.10.2020</td>
-          </tr>
-          <tr>
-            <td>Logo za projekt SP</td>
-            <td>15.10.2020</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Projekt</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>HTML stran, projekt Spletnega Programiranja</td>
+              <td>26.10.2020</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Logo za projekt SP</td>
+              <td>15.10.2020</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
 
     <div id="obvestila" class="tabcontent">
       <div class="col d-flex justify-content-center">
@@ -86,7 +114,9 @@
           <tbody>
             <tr class="table-danger">
               <th scope="row">1</th>
-              <td><a href="./job_page.html">Anže Vtičnik je spremenil datum inštrukcije - Programiranje 1: rekurzija.</a></td>
+              <td><a href="./job_page.html">Anže Vtičnik je spremenil datum inštrukcije - Programiranje 1:
+                  rekurzija.</a>
+              </td>
               <td>14.11.2020</td>
             </tr>
             <tr>
@@ -123,11 +153,11 @@
           <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
           <div class="form-group">
             <label for="name">Novo geslo:</label>
-            <input type="password" id="passwordReset">
+            <input type="password" id="passwordReset"><br>
             <label for="surname">Potrdi novo geslo: </label>
-            <input type="password" id="passwordReset">
+            <input type="password" id="passwordResetConfirm">
           </div>
-          <button class="btn btn-success" id="resetPassword" type="submit">Potrdi</button>
+          <button class="btn btn-danger" id="resetPassword" type="submit" onclick="novoGeslo()">Potrdi</button>
         </form>
       </div>
     </div>
@@ -135,6 +165,61 @@
   </div>
 
   <script>
+    function novoGeslo() {
+      var password1 = document.getElementById("passwordReset");
+      var password2 = document.getElementById("passwordResetConfirm");
+
+      if (password1.value != password2.value) {
+        alert("Gesli se ne ujemata!")
+        return false;
+      } else if (password1.value.length < 8) {
+        alert("Geslo mora biti dolgo vsaj 8 znakov!")
+        return false;
+      } else {
+        alert("Geslo je bilo uspešno spremenjeno!")
+        return true;
+      }
+    }
+
+    function urediOpis() {
+      document.getElementById("uredi-opis").style.display = "none";
+      document.getElementById("shrani-opis").style.display = "block";
+      document.getElementById("opis").removeAttribute("readonly");
+
+    }
+    function shraniOpis() {
+      document.getElementById("uredi-opis").style.display = "block";
+      document.getElementById("shrani-opis").style.display = "none";
+      document.getElementById("opis").setAttribute("readonly", true);
+
+    }
+
+    function urediPodatke() {
+      document.getElementById("edit-button").style.display = "none";
+      document.getElementById("save-button").style.display = "block";
+      document.getElementById("spremeni-sliko").style.display = "block";
+
+      var email = document.getElementById("email");
+      var phone = document.getElementById("phone");
+
+      var email_data = email.innerHTML;
+      var phone_data = phone.innerHTML;
+
+      email.innerHTML = "<input type='text' id='email_text' value='" + email_data + "'>";
+      phone.innerHTML = "<input type='text' id='phone_text' value='" + phone_data + "'>";
+    }
+    function shraniPodatke() {
+      var email_novi = document.getElementById("email_text").value;
+      var phone_novi = document.getElementById("phone_text").value;
+
+      document.getElementById("email").innerHTML = email_novi;
+      document.getElementById("phone").innerHTML = phone_novi;
+
+      document.getElementById("edit-button").style.display = "block";
+      document.getElementById("save-button").style.display = "none";
+      document.getElementById("spremeni-sliko").style.display = "none";
+    }
+
     function openCity(evt, cityName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -166,4 +251,5 @@
   </script>
 
 </body>
+
 </html>
