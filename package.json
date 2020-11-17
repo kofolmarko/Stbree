@@ -10,12 +10,14 @@
     "npm": ">=6.14.8"
   },
   "dependencies": {
+    "axios": "*",
     "cookie-parser": "*",
     "debug": "*",
     "express": "*",
     "handlebars": "*",
     "hbs": "*",
     "http-errors": "*",
+    "mongoose": "*",
     "morgan": "*"
   }
 }
