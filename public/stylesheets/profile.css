@@ -29,7 +29,6 @@
     justify-content: space-between;
     display: flex;
   }
-  
   /* Style the buttons inside the tab */
   .tab button {
     padding: 10px 10px;
@@ -38,26 +37,21 @@
     background-color: white;
     border: none;
   }
-
   #resetPassword {
     margin-bottom: 1rem;
   }
-  
   /* Change background color of buttons on hover */
   .tab button:hover {
     border-bottom: solid black;
   }
-  
   /* Create an active/current tablink class */
   .tab button.active {
     border-bottom: solid black;
   }
-  
   /* Style the tab content */
   .tabcontent {
     display: none;
   }
-  
   /* Značka */
   .znacka {
     font-size: 12px;
@@ -68,8 +62,6 @@
     background: red;
     color: white;
   }
-  
-  
   /* Footer style*/
   footer {
     background-color: #292b2c;
@@ -77,33 +69,26 @@
     margin-top: 100px;
     width: 100%;
   }
-  
-  footer p{
+  footer p {
     margin-bottom: 0;
   }
-  
   #footer-icons {
     margin-top: 20px;
   }
-  
-  #footer-icons li{
+  #footer-icons li {
     margin: 10px;
   }
-  
-  
   /* MODIFIED BOOTSTRAP */
   .d-inline {
-      margin: 10px;
+    margin: 10px;
   }
-  
-  .pb-5, .py-5 {
+  .pb-5,
+  .py-5 {
     padding-bottom: 1rem!important;
   }
-  
   .text-uppercase {
-      margin-bottom: 25px;
+    margin-bottom: 25px;
   }
-  
   .checked {
     color: orange;
     display: block;

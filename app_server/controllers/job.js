@@ -18,7 +18,6 @@ const jobUser = (req, res) => {
   res.render('job-edit')
 }
 
-
 module.exports = {
   jobsList,
   job,

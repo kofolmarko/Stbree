@@ -42,8 +42,8 @@
               <td>26.10.2020</td>
             </tr>
             <tr>
-              <th class="thPodatki" scope="row">Status:</th>
-              <td id="status">Učenec, Inštruktor</td>
+              <th class="thPodatki" scope="row">Status inštruktorja:</th>
+              <td id="status">Neaktiven</td>
             </tr>
             <tr id="spremeni-sliko" style="display: none;">
               <th class="thPodatki" scope="row">Spremeni profilno sliko:</th>
@@ -90,13 +90,15 @@
               <th scope="row">1</th>
               <td>HTML stran, projekt Spletnega Programiranja</td>
               <td>26.10.2020</td>
-              <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a> <a href="#"><i class="far fa-trash-alt"></i></a></td>
+              <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a> <a href="#"><i
+                    class="far fa-trash-alt"></i></a></td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>Logo za projekt SP</td>
               <td>15.10.2020</td>
-              <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a> <a href="#"><i class="far fa-trash-alt"></i></a></td>
+              <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a> <a href="#"><i
+                    class="far fa-trash-alt"></i></a></td>
             </tr>
           </tbody>
         </table>
@@ -145,7 +147,12 @@
     <div id="moja-ocena" class="tabcontent">
       <div class="row">
         <div class="col d-flex justify-content-center">
-          <p><b>Moja ocena:</b></p>
+          <p style="margin: 0;">Moja ocena:</p>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
         </div>
       </div>
     </div>
@@ -204,16 +211,29 @@
 
       var email = document.getElementById("email");
       var phone = document.getElementById("phone");
+      var status = document.getElementById("status");
 
       var email_data = email.innerHTML;
       var phone_data = phone.innerHTML;
+      var status_data = status.innerHTML;
 
       email.innerHTML = "<input type='text' class='form-control' id='email_text' value='" + email_data + "'>";
       phone.innerHTML = "<input type='text' class='form-control' id='phone_text' value='" + phone_data + "'>";
+      if (status_data == "Neaktiven") {
+        status.innerHTML = "<input type='checkbox' class='form-check-input' id='statusInstruktorja'><label class='form-check-label' for='status-instruktorja'>Aktiviraj status inštruktorja</label>";
+      } else {
+        status.innerHTML = "<input type='checkbox' class='form-check-input' id='statusInstruktorja' checked><label class='form-check-label' for='status-instruktorja'>Aktiviraj status inštruktorja</label>";
+      }
     }
     function shraniPodatke() {
       var email_novi = document.getElementById("email_text").value;
       var phone_novi = document.getElementById("phone_text").value;
+
+      if (statusInstruktorja.checked == true) {
+        document.getElementById("status").innerHTML = "Aktiven";
+      } else {
+        document.getElementById("status").innerHTML = "Neaktiven";
+      }
 
       document.getElementById("email").innerHTML = email_novi;
       document.getElementById("phone").innerHTML = phone_novi;

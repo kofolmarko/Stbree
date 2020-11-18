@@ -36,6 +36,16 @@
               <th class="thPodatki" scope="row">Datum vpisa:</th>
               <td>26.10.2020</td>
             </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Ocena uporabnika:</th>
+              <td>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </td>
+            </tr>
           </tbody>
         </table>
         <hr>
@@ -113,13 +123,22 @@
 
     <div id="oceni-me" class="tabcontent">
       <div class="row">
-        <div class="col-6 d-flex justify-content-center">
-          <p class="ocena"><b>Ocena uporabnika:</b></p>
-        </div>
-        <div class="col-6 d-flex justify-content-center">
-          <p class="ocena">Dodaj oceno:</p>
-          <span class="btn btn-success" id="addGrade" type="submit">Dodaj</span>
-          <br>
+        <div class="col d-flex justify-content-center">
+          <table>
+            <tr>
+              <th scope="row">Dodaj oceno:</th>
+              <td>
+                <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </td>
+              <td><button class="btn btn-success" style="margin-left: 20px;">Potrdi</button></td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>

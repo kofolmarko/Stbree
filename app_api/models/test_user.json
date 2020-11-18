@@ -1,0 +1,36 @@
+[
+  {
+    "ime": "Janez",
+    "priimek": "Novak",
+    "email": "janez.novak@gmail.com",
+    "geslo": "password123",
+    "statusInstruktorja": false,
+    "datumVpisa": {
+      "$date": "2019-11-07T00:00:00Z"
+    },
+    "dodatniPodatki": [
+      {
+        "Opis": "Sem Janez in obožujem številke!",
+        "telefonskaStevilka": "041 532 234",
+        "ocena": 4
+      }
+    ]
+  },
+  {
+    "ime": "Andreja",
+    "priimek": "Horvat",
+    "email": "andreja.horvat@gmail.com",
+    "geslo": "123password",
+    "statusInstruktorja": true,
+    "datumVpisa": {
+      "$date": "2019-14-02T00:00:00Z"
+    },
+    "dodatniPodatki": [
+      {
+        "Opis": "Sem Andreja in rada ustvarjam!",
+        "telefonskaStevilka": "030 421 692",
+        "ocena": 3
+      }
+    ]
+  }
+]

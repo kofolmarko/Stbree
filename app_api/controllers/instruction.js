@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Delo = mongoose.model('Job');
+const Instrukcija = mongoose.model('Instruction');
 
 
 module.exports = {
