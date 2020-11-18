@@ -48,5 +48,3 @@ process.on('SIGTERM', () => {
     });
 });
 
-
-require('./job');

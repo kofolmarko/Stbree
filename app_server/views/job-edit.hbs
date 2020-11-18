@@ -28,9 +28,11 @@
         </tbody>
       </table>
       <hr>
-      <button type="button" id="edit-button" value="edit" class="btn btn-success" onclick="uredi()">Uredi</a>
-        <button type="button" id="save-button" value="save" class="btn btn-danger" onclick="shrani()"
-          style="display: none;">Shrani spremembe</a>
+      <button type="button" id="edit-button" value="edit" class="btn btn-success" onclick="uredi()">Uredi</button>
+      <button type="button" id="save-button" value="save" class="btn btn-success" onclick="shrani()"
+        style="display: none;">Shrani spremembe</button>
+      <button type="button" id="delete-button" value="delete" class="btn btn-danger" onclick="shrani()"
+        style="display: none; margin-top: 20px;">Izbriši</button>
     </div>
   </div>
 
@@ -62,6 +64,7 @@
     function uredi() {
       document.getElementById("edit-button").style.display = "none";
       document.getElementById("save-button").style.display = "block";
+      document.getElementById("delete-button").style.display = "block";
 
       var naslov = document.getElementById("naslov");
       var opis = document.getElementById("opis");
@@ -91,6 +94,7 @@
 
       document.getElementById("edit-button").style.display = "block";
       document.getElementById("save-button").style.display = "none";
+      document.getElementById("delete-button").style.display = "none";
     }
   </script>
 </body>
