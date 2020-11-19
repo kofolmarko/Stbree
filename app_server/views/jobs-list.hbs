@@ -4,8 +4,6 @@
     <h2 class="bg-info">Seznam ponudbe del</h2>
   </div>
 
-
-
   <!--F i l t e r-->
   <div class="container" id="filter-bar">
     <form action="#">
@@ -73,76 +71,16 @@
 
   <!--I n s t r u c t o r s-->
   <div id="instructors" class="container">
+    {{#each dela as |delo|}}
     <div class="card instructor" style="width: 18rem;">
       <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <h5 class="card-title">{{delo.naziv}}</h5>
+        <p class="card-text">{{delo.opis}}</p>
         <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/pisanje.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/programiranje.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/mat.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/video.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/prog.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/kem.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
+    {{/each}}
   </div>
 
   <div class="load-more text-primary">

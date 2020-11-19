@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>seznamPonudb.html</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "docs\\zaslonske_maske\\seznamPonudb.html";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>seznamPonudb.html</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/css2?family=Work+Sans&amp;display=swap"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1, shrink-to-fit=no"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"</span>
+    <span class="hljs-attr">integrity</span>=<span class="hljs-string">"sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">"anonymous"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./styles/navbar_styles.css"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./assets/icons/stbree_icon_tr.png"</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span><span class="css">
+    * {}
+
+    <span class="hljs-selector-id">#naslov</span> {
+      <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">3%</span>;
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">3%</span>;
+      <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">3%</span>;
+      <span class="hljs-attribute">text-align</span>: center;
+    }
+
+    <span class="hljs-selector-id">#filter</span> {
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">6%</span>;
+      <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">3%</span>;
+    }
+
+    <span class="hljs-selector-class">.mainRow</span> {
+      <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span>;
+      <span class="hljs-attribute">border-style</span>: solid;
+      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">30px</span>;
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">5vh</span> <span class="hljs-number">0vh</span> <span class="hljs-number">5vh</span> <span class="hljs-number">0vh</span>;
+      <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.10s</span>;
+    }
+
+    <span class="hljs-selector-class">.myBtn</span> {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span>;
+      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">90px</span>;
+      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">13px</span>;
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span> <span class="hljs-number">19px</span>;
+    }
+
+    <span class="hljs-selector-class">.myContainer</span> {
+      <span class="hljs-attribute">width</span>: <span class="hljs-number">70%</span>;
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">3%</span> auto;
+
+    }
+
+    <span class="hljs-selector-class">.mainRow</span><span class="hljs-selector-pseudo">:hover</span> {
+      <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">12px</span> <span class="hljs-number">3px</span> <span class="hljs-number">#CCCCCC</span>;
+
+    }
+
+    <span class="hljs-selector-class">.col-md-3</span> {
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0px</span>;
+    }
+
+    <span class="hljs-selector-class">.col-md-9</span> {
+      <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">2vh</span>;
+    }
+
+    <span class="hljs-selector-class">.myRow</span> {
+      <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">1vw</span>;
+      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">3vw</span>;
+    }
+
+    <span class="hljs-selector-class">.slika</span> {
+      <span class="hljs-comment">/*height: 167px;*/</span>
+      <span class="hljs-attribute">max-width</span>: <span class="hljs-number">55%</span>;
+      <span class="hljs-attribute">height</span>: auto;
+      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">15px</span>;
+    }
+
+    <span class="hljs-selector-tag">a</span> {
+      <span class="hljs-attribute">color</span>: black;
+    }
+
+    <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+      <span class="hljs-attribute">color</span>: black;
+      <span class="hljs-attribute">text-decoration</span>: none;
+    }
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!--N a v b a r--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar navbar-expand-md navbar-dark bg-custom"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar-brand mr-auto"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#top"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"125px"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"20px"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./assets/icons/stbree_2.png"</span>
+        <span class="hljs-attr">alt</span>=<span class="hljs-string">"stbree_logo"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar-toggler ml-auto"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">"collapse"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">".menu-collapse"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar-toggler-icon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar-collapse collapse w-100 menu-collapse order-0"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"navbar-nav ml-auto"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-item mx-auto"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-link text-light"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./dashboard.html"</span>&gt;</span>Pregledna plošča<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-item mx-auto"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-link text-light"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./chat.html"</span>&gt;</span>Sporočanje<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-item mx-auto"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-link text-light"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./instrukcije.html"</span>&gt;</span>Inštrukcije<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-item mx-auto"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-link text-light"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./jobs.html"</span>&gt;</span>Delo<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-item mx-auto"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-link btn mx-auto bg-transparent"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"navbarDropdown"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">"dropdown"</span>
+            <span class="hljs-attr">aria-haspopup</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">"collapse"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"30px"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"30px"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 16 16"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bi bi-person-circle"</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"currentColor"</span>
+              <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">path</span>
+                <span class="hljs-attr">d</span>=<span class="hljs-string">"M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">fill-rule</span>=<span class="hljs-string">"evenodd"</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">fill-rule</span>=<span class="hljs-string">"evenodd"</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dropdown-menu"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropdown-menu"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"navbarDropdown"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropdown-item"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./profile.html"</span>&gt;</span>Profil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropdown-item"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./settings.html"</span>&gt;</span>Nastavitve<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropdown-divider"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"dropdown-item text-danger"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./index.html"</span>&gt;</span>Odjava<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"naslov"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"filter"</span>&gt;</span>
+    Nivo:
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-outline-dark myBtn"</span>&gt;</span>Osnovna šola<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-outline-dark myBtn"</span>&gt;</span>Srednja šola<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-outline-dark myBtn"</span>&gt;</span>Univerza<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-left: 10%; width: 15%;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"filterCena"</span>&gt;</span>
+    
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
+
+  <span class="hljs-comment">//f u n k c i j a  z a  i z d e l a t  p o n u d b o / o s e b o</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">izdelajPonudbo</span>(<span class="hljs-params">naslov, opis, potka</span>) </span>{
+    <span class="hljs-keyword">var</span> cont = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+    <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>);
+    <span class="hljs-keyword">var</span> row1 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+    <span class="hljs-keyword">var</span> col9 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+    <span class="hljs-keyword">var</span> row2 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+    <span class="hljs-keyword">var</span> h4 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'h4'</span>);
+    <span class="hljs-keyword">var</span> row3 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+    <span class="hljs-keyword">var</span> col3 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+    <span class="hljs-keyword">var</span> img = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'img'</span>);
+
+    cont.classList.add(<span class="hljs-string">"containter"</span>, <span class="hljs-string">"myContainer"</span>);
+    row1.classList.add(<span class="hljs-string">"row"</span>, <span class="hljs-string">"mainRow"</span>);
+    col9.classList.add(<span class="hljs-string">"col-md-9"</span>);
+    row2.classList.add(<span class="hljs-string">"row"</span>, <span class="hljs-string">"myRow"</span>);
+    row3.classList.add(<span class="hljs-string">"row"</span>, <span class="hljs-string">"myRow"</span>);
+    col3.classList.add(<span class="hljs-string">"col-md-3"</span>, <span class="hljs-string">"center-block"</span>);
+    img.classList.add(<span class="hljs-string">"img-fluid"</span>, <span class="hljs-string">"center-block"</span>, <span class="hljs-string">"d-block"</span>, <span class="hljs-string">"mx-auto"</span>, <span class="hljs-string">"slika"</span>);
+
+    h4.innerHTML = naslov;
+    row3.innerHTML = opis;
+    img.src = potka;
+    a.href = <span class="hljs-string">"profile_noadmin.html"</span>;
+
+    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>].appendChild(cont);
+    cont.appendChild(a);
+    a.appendChild(row1);
+    row1.appendChild(col9);
+    col9.appendChild(row2);
+    col9.appendChild(row3);
+    row2.appendChild(h4);
+    row1.appendChild(col3);
+    col3.appendChild(img);
+
+  }
+
+  <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+
+    <span class="hljs-comment">// c a s e  z a  s e s t a v i t i  o s e b e  g l e d e  n a  p r e d m e t e</span>
+
+    <span class="hljs-keyword">var</span> predmet = <span class="hljs-built_in">window</span>.location.search.substring(<span class="hljs-number">1</span>).split(<span class="hljs-string">'='</span>)[<span class="hljs-number">1</span>];
+    <span class="hljs-keyword">switch</span> (predmet) {
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"matematika"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Matematika"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Mark Novak"</span>, <span class="hljs-string">"Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen."</span>, <span class="hljs-string">"pics/instruktor1.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Špela Jenko"</span>, <span class="hljs-string">"Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj."</span>, <span class="hljs-string">"pics/instruktor2.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Simon Pogačnik"</span>, <span class="hljs-string">"Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam."</span>, <span class="hljs-string">"pics/instruktor4.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Manca Štucin"</span>, <span class="hljs-string">"Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev."</span>, <span class="hljs-string">"pics/instruktor3.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"fizika"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Fizika"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Mark Novak"</span>, <span class="hljs-string">"Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen."</span>, <span class="hljs-string">"pics/instruktor1.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Špela Jenko"</span>, <span class="hljs-string">"Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj."</span>, <span class="hljs-string">"pics/instruktor2.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Simon Pogačnik"</span>, <span class="hljs-string">"Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam."</span>, <span class="hljs-string">"pics/instruktor4.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Manca Štucin"</span>, <span class="hljs-string">"Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev."</span>, <span class="hljs-string">"pics/instruktor3.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"kemija"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Kemija"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Mark Novak"</span>, <span class="hljs-string">"Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen."</span>, <span class="hljs-string">"pics/instruktor1.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Špela Jenko"</span>, <span class="hljs-string">"Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj."</span>, <span class="hljs-string">"pics/instruktor2.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Simon Pogačnik"</span>, <span class="hljs-string">"Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam."</span>, <span class="hljs-string">"pics/instruktor4.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Manca Štucin"</span>, <span class="hljs-string">"Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev."</span>, <span class="hljs-string">"pics/instruktor3.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"programiranje"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Programiranje"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Mark Novak"</span>, <span class="hljs-string">"Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen."</span>, <span class="hljs-string">"pics/instruktor1.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Špela Jenko"</span>, <span class="hljs-string">"Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj."</span>, <span class="hljs-string">"pics/instruktor2.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Simon Pogačnik"</span>, <span class="hljs-string">"Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam."</span>, <span class="hljs-string">"pics/instruktor4.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Manca Štucin"</span>, <span class="hljs-string">"Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev."</span>, <span class="hljs-string">"pics/instruktor3.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"slovenscina"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Slovenščina"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Mark Novak"</span>, <span class="hljs-string">"Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen."</span>, <span class="hljs-string">"pics/instruktor1.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Špela Jenko"</span>, <span class="hljs-string">"Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj."</span>, <span class="hljs-string">"pics/instruktor2.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Simon Pogačnik"</span>, <span class="hljs-string">"Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam."</span>, <span class="hljs-string">"pics/instruktor4.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Manca Štucin"</span>, <span class="hljs-string">"Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev."</span>, <span class="hljs-string">"pics/instruktor3.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"anglescina"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Angleščina"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Mark Novak"</span>, <span class="hljs-string">"Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen."</span>, <span class="hljs-string">"pics/instruktor1.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Špela Jenko"</span>, <span class="hljs-string">"Če vam kemija povzroča težave ali pa bi vas zanimalo kaj več in nimate nikogar za vprašati, se lahko obrnete name. Tukaj sem, da vam pomagam razložiti tako teoretični kot praktični vidik tega predmeta, saj verjamem, da je kemija zelo zabaven predmet, ki je na žalost večkrat predstavljen na napačen način. Poučujem osnovnošolce in dijake srednjih šol ter gimnazij. Prvo uro nudim zastonj."</span>, <span class="hljs-string">"pics/instruktor2.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Simon Pogačnik"</span>, <span class="hljs-string">"Sem študent elektrotehnike in ponujam inštrukcije matematike dijakom in osnovnošolcem. Ker verjamem, da zna biti iskanje inštruktorja dokaj zoperno opravilo, sem ti na voljo tudi preko chata, kjer me lahko bolje spoznaš ali pa vprašanje zastaviš kar tam."</span>, <span class="hljs-string">"pics/instruktor4.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Manca Štucin"</span>, <span class="hljs-string">"Sem Manca in nudim inštrukcije angleščine za osnovno šolo in gimnazijo. Študiram anglistiko na Filozofski fakulteti, kjer sem tudi tutorka in nudim pomoč študentom. V tem negotovem času bi rada na karkšenkoli način pomagala drugim in deljenje znanja se mi zdi odlična rešitev."</span>, <span class="hljs-string">"pics/instruktor3.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"programiranje2"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Programiranje"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Editiranje videa"</span>, <span class="hljs-string">"Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek."</span>, <span class="hljs-string">"pics/jobOffer1.jpeg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Urejanje virov za seminarsko"</span>, <span class="hljs-string">"Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči."</span>, <span class="hljs-string">"pics/jobOffer2.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Vnašanje podatkov v Excel"</span>, <span class="hljs-string">"Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel."</span>, <span class="hljs-string">"pics/jobOffer3.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"pisanje"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Pisanje"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Editiranje videa"</span>, <span class="hljs-string">"Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek."</span>, <span class="hljs-string">"pics/jobOffer1.jpeg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Vnašanje podatkov v Excel"</span>, <span class="hljs-string">"Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel."</span>, <span class="hljs-string">"pics/jobOffer3.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Urejanje virov za seminarsko"</span>, <span class="hljs-string">"Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči."</span>, <span class="hljs-string">"pics/jobOffer2.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"oblikovanje"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Oblikovanje"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Editiranje videa"</span>, <span class="hljs-string">"Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek."</span>, <span class="hljs-string">"pics/jobOffer1.jpeg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Vnašanje podatkov v Excel"</span>, <span class="hljs-string">"Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel."</span>, <span class="hljs-string">"pics/jobOffer3.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Urejanje virov za seminarsko"</span>, <span class="hljs-string">"Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči."</span>, <span class="hljs-string">"pics/jobOffer2.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"video"</span>:
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"naslov"</span>).innerHTML = <span class="hljs-string">"Video"</span>;
+        izdelajPonudbo(<span class="hljs-string">"Editiranje videa"</span>, <span class="hljs-string">"Živjo, potrebujem nekoga, ki bi bil pripravljen editirati video o potovanju. Posnetke že imam, potreboval bi samo prehode in naslove. Video je del projekta za gimazijski krožek."</span>, <span class="hljs-string">"pics/jobOffer1.jpeg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Vnašanje podatkov v Excel"</span>, <span class="hljs-string">"Študiram biokemijo, kjer moramo za končni projekt pri Kemijskem praktikumu narediti graf iz naših opazovanj poskusov. Podatkov je kar precej in potrebujem nekoga, ki bi mi jih pomagal vnesti v Excel."</span>, <span class="hljs-string">"pics/jobOffer3.jpg"</span>);
+        izdelajPonudbo(<span class="hljs-string">"Urejanje virov za seminarsko"</span>, <span class="hljs-string">"Plačam 20€ osebi, ki bi mi uredila vire pri maturitetni seminarski za sociologijo. Vire imam naštete, ampak ne ustrezajo vsem kriterijem, ki jih zahtevajo. Zelo bi bil hvaležen kakršnekoli pomoči."</span>, <span class="hljs-string">"pics/jobOffer2.jpg"</span>);
+        <span class="hljs-keyword">break</span>;
+    }
+
+  };
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

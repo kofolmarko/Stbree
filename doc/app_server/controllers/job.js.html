@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>job.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "app_server\\controllers\\job.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>job.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* GET jobs list page */</span>
+<span class="hljs-keyword">const</span> jobsList = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'jobs-list'</span>, {
+    <span class="hljs-attr">title</span>: <span class="hljs-string">"Dela"</span>,
+    <span class="hljs-attr">dela</span>: [{
+      <span class="hljs-attr">naziv</span>: <span class="hljs-string">"Seminarska naloga pri biologiji"</span>,
+      <span class="hljs-attr">opis</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor dapibus orci, nec finibus risus scelerisque in. Vivamus auctor nisl et ex ornare, quis efficitur dui iaculis"</span>,
+    }, {
+      <span class="hljs-attr">naziv</span>: <span class="hljs-string">"Domača naloga v Javi"</span>,
+      <span class="hljs-attr">opis</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor dapibus orci, nec finibus risus scelerisque in. Vivamus auctor nisl et ex ornare, quis efficitur dui iaculis"</span>,
+    }, {
+      <span class="hljs-attr">naziv</span>: <span class="hljs-string">"Projekt - informatika"</span>,
+      <span class="hljs-attr">opis</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor dapibus orci, nec finibus risus scelerisque in. Vivamus auctor nisl et ex ornare, quis efficitur dui iaculis"</span>,
+    }]
+  });
+};
+
+<span class="hljs-comment">/* GET job page */</span>
+<span class="hljs-keyword">const</span> job = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'job'</span>, {
+    <span class="hljs-attr">title</span>: <span class="hljs-string">"Domača naloga v Javi"</span>,
+    <span class="hljs-attr">naziv</span>: <span class="hljs-string">"Domača naloga v Javi"</span>,
+    <span class="hljs-attr">opis</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor dapibus orci, nec finibus risus scelerisque in. Vivamus auctor nisl et ex ornare, quis efficitur dui iaculis"</span>,
+    <span class="hljs-attr">cena</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">datum</span>: {
+      <span class="hljs-attr">$date</span>: <span class="hljs-string">"2021-02-24T12:00:00Z"</span>
+    },
+    <span class="hljs-attr">ponudnik</span>: {
+      <span class="hljs-attr">ime</span>: <span class="hljs-string">"Janez"</span>,
+      <span class="hljs-attr">priimek</span>: <span class="hljs-string">"Novak"</span>,
+      <span class="hljs-attr">opis</span>: <span class="hljs-string">"Sem Janez in obožujem številke!"</span>,
+      <span class="hljs-attr">ocena</span>: <span class="hljs-number">4</span>,
+    }
+  });
+};
+
+<span class="hljs-comment">/* GET new job page */</span>
+<span class="hljs-keyword">const</span> jobNew = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'job-new'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Dodaj"</span> });
+};
+
+<span class="hljs-comment">/* GET edit job page */</span>
+<span class="hljs-keyword">const</span> jobUser = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'job-edit'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Uredi"</span> })
+}
+
+<span class="hljs-built_in">module</span>.exports = {
+  jobsList,
+  job,
+  jobNew,
+  jobUser
+};
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

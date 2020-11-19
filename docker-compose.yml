@@ -24,7 +24,7 @@ services:
       - "27017-27019:27017-27019"
     networks:
       - sp-network
-
+      
 networks:
   sp-network:
     name: sp-network

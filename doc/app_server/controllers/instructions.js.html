@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>instructions.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "app_server\\controllers\\instructions.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>instructions.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* GET instructors list page */</span>
+<span class="hljs-keyword">const</span> instructorsList = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'instructors-list'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Inštruktorji"</span> });
+};
+
+<span class="hljs-comment">/* GET instructions events list page */</span>
+<span class="hljs-keyword">const</span> instructionsEventList = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'instructions-events-list'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Instrukcije"</span> });
+};
+
+<span class="hljs-comment">/* GET instructions event page */</span>
+<span class="hljs-keyword">const</span> instructionsEvent = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'instructions-event'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"IME DOGODKA"</span> });
+};
+
+<span class="hljs-comment">/* GET new instructions page */</span>
+<span class="hljs-keyword">const</span> instructionsEventNew = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'instructions-event-new'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Dodaj"</span> });
+};
+
+<span class="hljs-comment">/* GET edit instructions page */</span>
+<span class="hljs-keyword">const</span> instructionsUser = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'instructions-event-edit'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Uredi"</span> })
+};
+
+<span class="hljs-built_in">module</span>.exports = {
+  instructorsList,
+  instructionsEventList,
+  instructionsEvent,
+  instructionsEventNew,
+  instructionsUser
+};
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

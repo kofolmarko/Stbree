@@ -1,6 +1,6 @@
 <body>
   <div class="container">
-    <h1 id="profile-naslov">Mark Zuki</h1>
+    <h1 id="profile-naslov">{{ime}} {{priimek}}</h1>
     <hr>
     <div class="row">
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
@@ -8,7 +8,7 @@
           <div class="form-group">
             <label for="opisProfila">Opis:</label>
             <textarea class="form-control" readonly id="opisProfila"
-              rows="5">Nudim inštrukcije matematike in fizike za osnovno šolo. Končujem pedagoško fakulteto, dvopredmetni študij matematike in fizike. Inštrukcije sem svojim vrstnikom nudil že v gimnazijskih letih, v času globalne pandemije pa bi želel pomagati tudi drugim ljudem, ki jim je položaj otežen.</textarea>
+              rows="5">{{dodatniPodatki.opis}}</textarea>
           </div>
         </form>
       </div>
@@ -26,24 +26,20 @@
             <h4 id="profile-podnaslov">Podatki:</h4>
             <tr>
               <th class="thPodatki" scope="row">Email naslov:</th>
-              <td>imepriimek@gmail.com</td>
+              <td>{{email}}</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Telefonska številka:</th>
-              <td>030 723 418</td>
+              <td>{{dodatniPodatki.telefonskaStevilka}}</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Datum vpisa:</th>
-              <td>26.10.2020</td>
+              <td>{{datumVpisa}}</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Ocena uporabnika:</th>
               <td>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                {{{zvezdice dodatniPodatki.ocena}}}
               </td>
             </tr>
           </tbody>

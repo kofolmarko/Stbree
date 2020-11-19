@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jobs.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "app_api\\models\\jobs.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>jobs.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+
+<span class="hljs-keyword">const</span> deloShema = <span class="hljs-keyword">new</span> mongoose.Schema({
+  <span class="hljs-attr">naziv</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">String</span>, <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span> },
+  <span class="hljs-attr">opis</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">String</span>, <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span> },
+  <span class="hljs-attr">cena</span>: <span class="hljs-built_in">Number</span>,
+  <span class="hljs-attr">datum</span>: { <span class="hljs-attr">type</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span> }
+});
+
+mongoose.model(<span class="hljs-string">'Job'</span>, deloShema, <span class="hljs-string">'Jobs'</span>);
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

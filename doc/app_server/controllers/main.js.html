@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>main.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "app_server\\controllers\\main.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>main.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-comment">/* GET dashboard */</span>
+<span class="hljs-keyword">const</span> dashboard = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'dashboard'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Nadzorna plošča"</span> });
+};
+
+<span class="hljs-comment">/* GET user profile */</span>
+<span class="hljs-keyword">const</span> userProfile = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'profile-user'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Moj profil"</span> });
+};
+
+<span class="hljs-comment">/* GET profile for viewers */</span>
+<span class="hljs-keyword">const</span> viewProfile = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'profile-view'</span>, {
+    <span class="hljs-attr">ime</span>: <span class="hljs-string">'Janez'</span>,
+    <span class="hljs-attr">priimek</span>: <span class="hljs-string">"Novak"</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">"janez.novak@gmail.com"</span>,
+    <span class="hljs-attr">geslo</span>: <span class="hljs-string">"password123"</span>,
+    <span class="hljs-attr">statusInstruktorja</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">datumVpisa</span>: {
+      <span class="hljs-attr">$date</span>: <span class="hljs-string">"2019-11-07T00:00:00Z"</span>
+    },
+    <span class="hljs-attr">dodatniPodatki</span>: {
+      <span class="hljs-attr">opis</span>: <span class="hljs-string">"Sem Janez in obožujem številke!"</span>,
+      <span class="hljs-attr">telefonskaStevilka</span>: <span class="hljs-string">"041 532 234"</span>,
+      <span class="hljs-attr">ocena</span>: <span class="hljs-number">4</span>
+    }
+  });
+};
+
+<span class="hljs-comment">/* GET chat page */</span>
+<span class="hljs-keyword">const</span> chat = <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.render(<span class="hljs-string">'chat'</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">"Sporočila"</span> });
+};
+
+<span class="hljs-built_in">module</span>.exports = {
+  dashboard,
+  userProfile,
+  viewProfile,
+  chat
+};
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
