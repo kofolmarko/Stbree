@@ -10,6 +10,7 @@ mongoose.connect(dbURI, {
 
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose je povezan na ${dbURI}.`);
+
 });
 
 mongoose.connection.on('error', napaka => {
@@ -48,3 +49,4 @@ process.on('SIGTERM', () => {
     });
 });
 
+require('./instructions');

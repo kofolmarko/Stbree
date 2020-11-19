@@ -3,6 +3,11 @@ const router = express.Router();
 //const ctrlLokacije = require('../controllers/lokacije');
 //const ctrlKomentarji = require('../controllers/komentarji');
 
+ctrlInstructions = require('../controllers/instructions');
+
+router.post('/instrukcije-dogodki', ctrlInstructions.instrukcijeDogodekKreiraj);
+
+
 /* POPRAVI NA SVOJE 
 
 router.get('/lokacije', 
