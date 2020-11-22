@@ -1,12 +1,21 @@
 const mongoose = require('mongoose');
 
-const dbURI = 'mongodb://localhost/stbree';
+
+var dbURI = 'mongodb://mongo-db/stbree';
+
+
+if (process.env.NODE_ENV === 'production') {
+    dbURI = process.env.MONGODB_CLOUD_URI;
+}
+
+
 mongoose.connect(dbURI, { 
   useNewUrlParser: true, 
   useCreateIndex: true,
   useUnifiedTopology: true,
   useFindAndModify: false
 });
+
 
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose je povezan na ${dbURI}.`);

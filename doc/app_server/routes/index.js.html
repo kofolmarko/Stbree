@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>index.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "app_server\\routes\\index.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>index.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">var</span> router = express.Router();
+
+<span class="hljs-keyword">var</span> ctrlLanding = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/landing'</span>);
+<span class="hljs-keyword">var</span> ctrlSigning = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/signing'</span>);
+<span class="hljs-keyword">var</span> ctrlMain = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/main'</span>);
+<span class="hljs-keyword">var</span> ctrlJob = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/job'</span>);
+<span class="hljs-keyword">var</span> ctrlInstructions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../controllers/instructions'</span>);
+
+<span class="hljs-comment">/* GET home page. */</span>
+router.get(<span class="hljs-string">'/'</span>, ctrlLanding.landing);
+
+<span class="hljs-comment">/* GET signin page */</span>
+router.get(<span class="hljs-string">'/prijava'</span>, ctrlSigning.signin);
+
+<span class="hljs-comment">/* GET signup page */</span>
+router.get(<span class="hljs-string">'/registracija'</span>, ctrlSigning.signup);
+
+<span class="hljs-comment">/* GET dashboard */</span>
+router.get(<span class="hljs-string">'/my'</span>, ctrlMain.dashboard);
+
+<span class="hljs-comment">/* GET job related pages */</span>
+router.get(<span class="hljs-string">'/ponudba-del'</span>, ctrlJob.jobsList);
+router.get(<span class="hljs-string">'/ponudba-del/delo'</span>, ctrlJob.job);
+router.get(<span class="hljs-string">'/ponudba-del/dodaj'</span>, ctrlJob.jobNew);
+router.get(<span class="hljs-string">'/ponudba-del/delo/uredi'</span>, ctrlJob.jobUser);
+
+<span class="hljs-comment">/* GET instructions related pages */</span>
+router.get(<span class="hljs-string">'/instruktorji'</span>, ctrlInstructions.instructorsList);
+router.get(<span class="hljs-string">'/instrukcije-dogodki'</span>, ctrlInstructions.instructionsEventList);
+router.get(<span class="hljs-string">'/instrukcije-dogodki/dogodek'</span>, ctrlInstructions.instructionsEvent);
+router.get(<span class="hljs-string">'/instrukcije-dogodki/dodaj'</span>, ctrlInstructions.instructionsEventNew);
+router.get(<span class="hljs-string">'/instrukcije-dogodki/dogodek/uredi'</span>, ctrlInstructions.instructionsUser);
+
+<span class="hljs-comment">/* GET user profile page */</span>
+router.get(<span class="hljs-string">'/profil/uporabnik'</span>, ctrlMain.userProfile);
+
+<span class="hljs-comment">/* GET view-only profile page */</span>
+router.get(<span class="hljs-string">'/profil/ogled'</span>, ctrlMain.viewProfile);
+
+<span class="hljs-comment">/* GET chat page */</span>
+router.get(<span class="hljs-string">'/sporocanje'</span>, ctrlMain.chat);
+
+<span class="hljs-built_in">module</span>.exports = router;
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

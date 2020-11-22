@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-var ctrlLanding = require('../controllers/landing');
-var ctrlSigning = require('../controllers/signing');
-var ctrlMain = require('../controllers/main');
-var ctrlJob = require('../controllers/job');
-var ctrlInstructions = require('../controllers/instructions');
+const ctrlLanding = require('../controllers/landing');
+const ctrlSigning = require('../controllers/signing');
+const ctrlMain = require('../controllers/main');
+const ctrlJob = require('../controllers/job');
+const ctrlInstructions = require('../controllers/instructions');
 
 /* GET home page. */
 router.get('/', ctrlLanding.landing);
@@ -29,8 +29,15 @@ router.get('/ponudba-del/delo/uredi', ctrlJob.jobUser);
 router.get('/instruktorji', ctrlInstructions.instructorsList);
 router.get('/instrukcije-dogodki', ctrlInstructions.instructionsEventList);
 router.get('/instrukcije-dogodki/dogodek', ctrlInstructions.instructionsEvent);
-router.get('/instrukcije-dogodki/dodaj', ctrlInstructions.instructionsEventNew);
+//router.get('/instrukcije-dogodki/dodaj', ctrlInstructions.instructionsEventNew);
 router.get('/instrukcije-dogodki/dogodek/uredi', ctrlInstructions.instructionsUser);
+
+/* POST instructions event */
+
+router
+    .route('/instrukcije-dogodki/dodaj')
+    .get(ctrlInstructions.instructionsEventNew)
+    .post(ctrlInstructions.instructionsEventNewPost);
 
 /* GET user profile page */
 router.get('/profil/uporabnik', ctrlMain.userProfile);

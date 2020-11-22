@@ -1,29 +1,58 @@
 const mongoose = require('mongoose');
-
-//let InstrukcijeDogodek = require('../models/instructions');
-
 const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 
 const instrukcijeDogodekKreiraj = (req, res) => {
-  console.log(req);
-    InstrukcijeDogodek.create({
-        naziv: req.body.naziv,
-        opis: req.body.opis,
-        cena: req.body.cena,
-        datum: req.body.datum.$date,
-        ura: req.body.ura,
-        prostaMesta: req.body.prostaMesta
-    }, (napaka, instrukcijeDogodek) => {
-        /*if(napaka) {
-            res.status(400).json(napaka);
-        } else {
-            res.status(201).json(namig);
-        }*/
+  console.log(req.body);
+  res.status(200).json({ "status": "uspešno" });
+  InstrukcijeDogodek.create({
+    naziv: req.body.naziv,
+    opis: req.body.opis,
+    cena: req.body.cena,
+    datum: req.body.datum,
+    steviloProstihMest: req.body.steviloProstihMest
+  }, (napaka, instrukcijeDogodek) => {
+    /*
+    if (napaka) {
+      res.status(400).json(napaka);
+    } else {
+      res.status(201).json(instrukcijeDogodek);
+    }
+    */
+  });
+};
 
-        console.log(napaka);
+const instrukcijeDogodki = (req, res) => {
+  res.status(200).json({ "status": "uspešno" });
+};
+
+const instrukcijeDogodekPreberi = (req, res) => {
+  InstrukcijeDogodek
+    .findById(req.params.idDogodka)
+    .exec((napaka, instrukcijeDogodek) => {
+      if (!instrukcijeDogodek) {
+        return res.status(404).json({
+          "sporočilo":
+            "Ne najdem dogodka s podanim enoličnim identifikatorjem idLokacije."
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      res.status(200).json(instrukcijeDogodek);
     });
 };
 
+const instrukcijeDogodekPosodobi = (req, res) => {
+  res.status(200).json({ "status": "uspešno" });
+};
+
+const instrukcijeDogodekIzbrisi = (req, res) => {
+  res.status(200).json({ "status": "uspešno" });
+};
+
 module.exports = {
-  instrukcijeDogodekKreiraj
+  instrukcijeDogodekKreiraj,
+  instrukcijeDogodki,
+  instrukcijeDogodekPreberi,
+  instrukcijeDogodekPosodobi,
+  instrukcijeDogodekIzbrisi
 };
