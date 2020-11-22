@@ -3,43 +3,50 @@
     <div class="container">
         <div class="row" style="padding-top: 30px;">
             <div class="col">
-                <h1>Objavi oglas za inštrukcije</h1>
-                <p><i>Izpolni spodnje podatke in objavi oglas za inštrukcije, s katerimi lahko pomagaš učencem v
-                        težavah.</i></p>
+                <h1>Objavi oglas za inštrukcijski dogodek</h1>
+                <p><i>Izpolnite spodnje podatke in objavite oglas za inštrukcije, s katerimi lahko širite svoje
+                        znanje.</i></p>
                 <hr>
-                <form>
+                <form id="instructionsEventNewPost" action="" method="post" role="form">
+                    {{#ujemanjeNiza napaka "vrednost"}}
+                        <div class="alert alert-danger">Prosim izpolnite polja!</div>
+                    {{/ujemanjeNiza}}
                     <div class="form-group">
-                        <label for="nazivInštrukcije">Naziv inštrukcij</label>
-                        <input type="text" class="form-control" placeholder="Kakšno inštrukcijo ponujaš?">
+                        <label for="naziv">Ime dogodka</label>
+                        <input id="naziv" name="naziv" type="text" class="form-control"
+                            placeholder="Poimenujte vaš dogodek...">
                     </div>
                     <div class="form-group">
-                        <label for="opis Inštrukcije">Opis inštrukcij</label>
-                        <textarea class="form-control" id="opisInštrukcije" rows="5"
-                            placeholder="Napiši informacije o inštrukciji"></textarea>
+                        <label for="opis">Opis dogodka</label>
+                        <textarea class="form-control" id="opis" name="opis" rows="5"
+                            placeholder="Vnesite dodatne informacije o dogodku..."></textarea>
+                    </div>
+
+                    <label for="cena">Cena dogodka</label>
+                    <div class="form-group input-group">
+                        <input id="cena" name="cena" type="number" class="form-control" value="0" step="any" min="0">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">€</span>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="cenaDela">Cena inštrukcij</label>
-                        <input type="text" class="form-control"
-                            placeholder="Če je inštrukcija brezplačna, pusti to polje prazno">
+                        <label for="datum">Datum dogodka</label>
+                        <input type="date" class="form-control" id="datum" name="datum">
                     </div>
+
                     <div class="form-group">
-                        <label for="cenaDela">Datum inštrukcij</label>
-                        <input type="date" class="form-control" id="datum_value">
+                        <label for="steviloProstihMest">Maksimalno število udeležencev</label>
+                        <input id="steviloProstihMest" name="steviloProstihMest" type="number" class="form-control"
+                            placeholder="Vnesite celo število" step="1" min="1" value="1"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     </div>
-                    <div class="form-group">
-                        <label for="inputState">Tip instrukcij</label>
-                        <select id="inputState" class="form-control">
-                            <option>Matematika</option>
-                            <option>Fizika</option>
-                            <option>Kemija</option>
-                            <option>Ostalo</option>
-                        </select>
-                    </div>
+
                     <div class="form-group">
                         <label for="naslovnaSlikaInstrukcije">Dodaj naslovno fotografijo (neobvezno)</label>
                         <input type="file" class="form-control-file" id="naslovnaSlikaInstrukcije">
                     </div>
-                    <button type="submit" class="btn btn-primary">Objavi</button>
+
+                    <button class="btn btn-primary">Objavi</button>
                     <hr>
                 </form>
             </div>

@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const instrukcijaShema = new mongoose.Schema({
+const instrukcijeDogodekShema = new mongoose.Schema({
   naziv: { type: String, required: true },
   opis: { type: String, required: true },
   cena: Number,
-  datum: { type: Date, required: true },
-  tip: { type: String, required: true }
+  datum: { type: String, required: true },
+  steviloProstihMest: Number
 });
 
-mongoose.model('Instruction', instrukcijaShema, 'Instructions');
+mongoose.model('InstrukcijeDogodek', instrukcijeDogodekShema, 'InstrukcijeDogdki');

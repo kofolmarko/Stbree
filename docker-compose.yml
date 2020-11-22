@@ -13,9 +13,11 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+    depends_on:
+      - "mongo-db"
     command: "npm start"
     networks:
-      - sp-network
+      - stbree-network
 
   mongo-db:
     image: mongo
@@ -23,9 +25,9 @@ services:
     ports:
       - "27017-27019:27017-27019"
     networks:
-      - sp-network
+      - stbree-network
       
 networks:
-  sp-network:
-    name: sp-network
+  stbree-network:
+    name: stbree-network
     driver: bridge
