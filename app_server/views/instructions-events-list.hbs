@@ -69,79 +69,24 @@
     <a href="/instrukcije-dogodki/dodaj" class="btn btn-success">Ustvari nov dogodek</a>
   </div>
 
-  <!--I n s t r u c t o r s-->
-  
+  <!--E v e n t s-->
+
+  {{#if sporocilo}}
+  <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
+  {{/if}}
+
+
   <div id="instructors" class="container">
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/instrukcije-dogodki/dogodek" class="btn btn-primary">Go somewhere</a>
+    {{#each instrukcijeDogodki as |instrukcijeDogodek|}}
+      <div class="card instructor" style="width: 18rem;">
+        <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{instrukcijeDogodek.naziv}}</h5>
+          <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{instrukcijeDogodek.opis}}</p>
+          <a href="/instrukcije-dogodki/dogodek/{{instrukcijeDogodek._id}}" class="btn btn-primary">Podrobnosti</a>
+        </div>
       </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/pisanje.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/instrukcije-dogodki/dogodek" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/programiranje.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/instrukcije-dogodki/dogodek" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/mat.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/instrukcije-dogodki/dogodek" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/video.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/instrukcije-dogodki/dogodek" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/prog.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/instrukcije-dogodki/dogodek" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/kem.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="/instrukcije-dogodki/dogodek" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
+    {{/each}}
   </div>
 
   <div class="load-more text-primary">

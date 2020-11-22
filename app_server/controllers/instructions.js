@@ -5,6 +5,7 @@ var apiParametri = {
   streznik: 'http://localhost:' + (process.env.PORT || 3000)
 };
 
+
 if (process.env.NODE_ENV === 'production') {
   apiParametri.streznik = 'https://stbree.herokuapp.com';
 }
@@ -14,14 +15,50 @@ const instructorsList = (req, res) => {
   res.render('instructors-list', { title: "Inštruktorji" });
 };
 
+/* GET event list object */
+const eventList = (req, res) => {
+  axios
+    .get('http://localhost:3000/api/instrukcije-dogodki')
+    .then((odgovor) => {
+      console.log(odgovor.data);
+      let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega dogodka :(";
+      instructionsEventList(req, res, odgovor.data, sporocilo);
+    })
+    .catch((err) => {
+      instructionsEventList(req, res, [], "Napaka API-ja pri iskanju dogodkov.");
+      console.error(err);
+    });
+};
+
 /* GET instructions events list page */
-const instructionsEventList = (req, res) => {
-  res.render('instructions-events-list', { title: "Instrukcije" });
+const instructionsEventList = (req, res, instrukcijeDogodki, sporocilo) => {
+  console.log(instrukcijeDogodki);
+  res.render('instructions-events-list', {
+    instrukcijeDogodki: instrukcijeDogodki,
+    sporocilo: sporocilo
+  });
 };
 
 /* GET instructions event page */
 const instructionsEvent = (req, res) => {
-  res.render('instructions-event', { title: "IME DOGODKA" });
+  axios
+    .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
+    .then((odgovor) => {
+      renderInstructionsEvent(req, res, odgovor.data);
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
+};
+
+const renderInstructionsEvent = (req, res, dogodek) => {
+  res.render('instructions-event', {
+    naziv: dogodek.naziv,
+    opis: dogodek.opis,
+    cena: dogodek.cena,
+    datum: dogodek.datum,
+    steviloProstihMest: dogodek.steviloProstihMest
+  });
 };
 
 /* GET new instructions page */
@@ -31,12 +68,12 @@ const instructionsEventNew = (req, res) => {
 
 const instructionsEventNewPost = (req, res) => {
   if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum || !req.body.steviloProstihMest) {
-    res.redirect('/instrukcije-dogodki/dodaj?napaka=vrednost');
     console.log("izpolni vsa polja");
   } else {
+    console.log("posting to: " + apiParametri.streznik);
     axios({
       method: 'post',
-      url: apiParametri.streznik + '/api/instrukcije-dogodki',
+      url: 'http://localhost:3000/api/instrukcije-dogodki',
       data: {
         naziv: req.body.naziv,
         opis: req.body.opis,
@@ -44,8 +81,9 @@ const instructionsEventNewPost = (req, res) => {
         datum: req.body.datum,
         steviloProstihMest: req.body.steviloProstihMest
       }
-    }).then(() => {
+    }).then((dogodek) => {
       console.log("posted");
+      console.log(dogodek.data);
       res.redirect('/instrukcije-dogodki');
       
     }).catch((napaka) => {
@@ -54,6 +92,19 @@ const instructionsEventNewPost = (req, res) => {
   }
 };
 
+/* DELETE instructions event */
+const instructionsEventDelete = (req, res) => {
+  axios
+    .delete('http://localhost:3000/api/instrukcije-dogodki/' + idDogodka)
+    .then((dogodek) => {
+      console.log("Deleted the following event:");
+      console.log(dogodek.data);
+      res.redirect('/instrukcije-dogodki');
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
+};
 
 /* GET edit instructions page */
 const instructionsUser = (req, res) => {
@@ -85,9 +136,11 @@ const prikaziNapako = (req, res, napaka) => {
 
 module.exports = {
   instructorsList,
-  instructionsEventList,
+  eventList,
+  //instructionsEventList,
   instructionsEvent,
   instructionsEventNew,
   instructionsEventNewPost,
+  instructionsEventDelete,
   instructionsUser
 };

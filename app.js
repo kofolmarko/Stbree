@@ -4,8 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-console.log("LEPI NIK");
-
 require('./app_api/models/db');
 
 var indexRouter = require('./app_server/routes/index');
@@ -13,23 +11,6 @@ var indexApi = require('./app_api/routes/index');
 
 var hbs = require('hbs');
 var app = express();
-
-const {instrukcijeDogodekKreiraj} = require('./app_api/controllers/instructions');
-
-//test
-instrukcijeDogodekKreiraj({body: {
-  "naziv": "Uvod v python",
-  "opis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor dapibus orci, nec finibus risus scelerisque in. Vivamus auctor nisl et ex ornare, quis efficitur dui iaculis",
-  "cena": 5,
-  "datum": {
-    "$date": "2020-12-24T12:00:00Z"
-  },
-  "ura": "17:00",
-  "prostaMesta": 10
-}}
-);
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));

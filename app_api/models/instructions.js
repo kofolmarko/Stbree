@@ -5,10 +5,9 @@ const instrukcijeDogodekShema = new mongoose.Schema({
   opis: { type: String, required: true },
   cena: Number,
   datum: { type: Date, required: true },
-  ura: { type: mongoose.Schema.Types.Mixed, required: true },
-  prostaMesta: Number
+  steviloProstihMest: Number
 });
 
 mongoose.model('InstrukcijeDogodek', instrukcijeDogodekShema, 'InstrukcijeDogodki');
 
-module.exports = mongoose.model('InstrukcijeDogodek', instrukcijeDogodekShema, 'InstrukcijeDogodki');
+
