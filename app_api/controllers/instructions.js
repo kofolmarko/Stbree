@@ -1,6 +1,11 @@
+//IMPORT mongoose
 const mongoose = require('mongoose');
+
+//IMPORT object model
 const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 
+
+//CREATE new instructions event
 const instrukcijeDogodekKreiraj = (req, res) => {
   console.log("pridem do kreacije");
   console.log(req.body);
@@ -24,8 +29,8 @@ const instrukcijeDogodekKreiraj = (req, res) => {
   });
 };
 
+//GET instructions events list
 const instrukcijeDogodki = (req, res) => {
-
   InstrukcijeDogodek
     .aggregate()
     .limit(10)
@@ -49,6 +54,7 @@ const instrukcijeDogodki = (req, res) => {
     });
 };
 
+//GET instructions event by id
 const instrukcijeDogodekPreberi = (req, res) => {
   InstrukcijeDogodek
     .findById(req.params.idDogodka)
@@ -65,40 +71,43 @@ const instrukcijeDogodekPreberi = (req, res) => {
     });
 };
 
+//PUT update instructions event (CURRENTLY NOT IN USE)
 const instrukcijeDogodekPosodobi = (req, res) => {
   res.status(200).json({ "status": "uspešno" });
 };
 
+//DELETE instructons event by id
 const instrukcijeDogodekIzbrisi = (req, res) => {
-  const {idDogodka} = req.params;
+  console.log("izbris");
+  const { idDogodka } = req.params;
+  console.log(idDogodka);
   if (!idDogodka) {
     return res.status(404).json({
-      "sporočilo": 
-        "Ne najdem Dogodka " + 
+      "sporočilo":
+        "Ne najdem Dogodka " +
         "idDogodka in idDogodka sta obvezna parametra."
     });
   }
   InstrukcijeDogodek
     .findByIdAndDelete(idDogodka)
-    .select('instrukcije-dogodki')
+    /*
+    .then((dogodek) => {
+      console.log(dogodek);
+    });
+    */
     .exec((napaka, dogodek) => {
+      console.log("tukaj dogodek:" + dogodek, " tukaj napaka: " + napaka);
       if (!dogodek) {
-        return res.status(404).json({"sporočilo": "Ne najdem Dogodka."});
+        return res.status(404).json({ "sporočilo": "Ne najdem Dogodka." });
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
-      if (dogodek.length > 0) {
-        if (!dogodek.id(idDogodka)) {
-          return res.status(404).json({"sporočilo": "Ne najdem dogodka."});
-        } else {
-          dogodek.id(idDogodka).remove();
-        }
-      } else {
-        res.status(404).json({"sporočilo": "Ni Dogodka za brisanje."});
-      }
+      res.status(200).json(dogodek);
     });
 };
 
+
+//EXPORT functions
 module.exports = {
   instrukcijeDogodekKreiraj,
   instrukcijeDogodki,

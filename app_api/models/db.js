@@ -9,11 +9,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-mongoose.connect(dbURI, { 
-  useNewUrlParser: true, 
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
+mongoose.connect(dbURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 
@@ -59,3 +59,4 @@ process.on('SIGTERM', () => {
 });
 
 require('./instructions');
+require('./users');

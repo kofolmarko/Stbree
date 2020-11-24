@@ -1,26 +1,28 @@
-/* API CONNECTION */
+//API connection
 const axios = require('axios');
 
+//API local parameters
 var apiParametri = {
   streznik: 'http://localhost:' + (process.env.PORT || 3000)
 };
 
-
+//API Mogno Atlas parameters
 if (process.env.NODE_ENV === 'production') {
   apiParametri.streznik = 'https://stbree.herokuapp.com';
 }
 
-/* GET instructors list page */
+
+//RENDER instructors
 const instructorsList = (req, res) => {
-  res.render('instructors-list', { title: "Inštruktorji" });
+  res.render('instructors-list');
 };
 
-/* GET event list object */
+//GET instructions events list
 const eventList = (req, res) => {
   axios
     .get('http://localhost:3000/api/instrukcije-dogodki')
     .then((odgovor) => {
-      console.log(odgovor.data);
+      //console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega dogodka :(";
       instructionsEventList(req, res, odgovor.data, sporocilo);
     })
@@ -30,27 +32,36 @@ const eventList = (req, res) => {
     });
 };
 
-/* GET instructions events list page */
+//RENDER instructions event list
 const instructionsEventList = (req, res, instrukcijeDogodki, sporocilo) => {
-  console.log(instrukcijeDogodki);
+  //console.log(instrukcijeDogodki);
   res.render('instructions-events-list', {
     instrukcijeDogodki: instrukcijeDogodki,
     sporocilo: sporocilo
   });
 };
 
-/* GET instructions event page */
+//GET instructions event page with id - MAIN FUNCTION
 const instructionsEvent = (req, res) => {
+  getInstructionsEvent(req, res, (req, res, vsebina) => {
+    renderInstructionsEvent(req, res, vsebina);
+  });
+  //var instruktor = getInstructor(req, res);
+};
+
+//GET instructions event page with id - API COMMUNICATION
+const getInstructionsEvent = (req, res, povratniKlic) => {
   axios
     .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .then((odgovor) => {
-      renderInstructionsEvent(req, res, odgovor.data);
+      povratniKlic(req, res, odgovor.data);
     })
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
 };
 
+//RENDER instructions event page with id
 const renderInstructionsEvent = (req, res, dogodek) => {
   res.render('instructions-event', {
     naziv: dogodek.naziv,
@@ -61,16 +72,29 @@ const renderInstructionsEvent = (req, res, dogodek) => {
   });
 };
 
-/* GET new instructions page */
-const instructionsEventNew = (req, res) => {
-  res.render('instructions-event-new', { title: "Dodaj" });
+//GET instructor data (NOT WORKING YET)
+const getInstructor = (req, res) => {
+  axios
+    .get()
+    .then((odgovor) => {
+      return odgovor;
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
 };
 
+//GET instructions event new post page
+const instructionsEventNew = (req, res) => {
+  res.render('instructions-event-new');
+};
+
+//POST a new instructions event
 const instructionsEventNewPost = (req, res) => {
   if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum || !req.body.steviloProstihMest) {
     console.log("izpolni vsa polja");
   } else {
-    console.log("posting to: " + apiParametri.streznik);
+    //console.log("posting to: " + apiParametri.streznik);
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/instrukcije-dogodki',
@@ -82,20 +106,21 @@ const instructionsEventNewPost = (req, res) => {
         steviloProstihMest: req.body.steviloProstihMest
       }
     }).then((dogodek) => {
-      console.log("posted");
-      console.log(dogodek.data);
+      //console.log("posted");
+      //console.log(dogodek.data);
       res.redirect('/instrukcije-dogodki');
-      
+
     }).catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
   }
 };
 
-/* DELETE instructions event */
+//DELETE an instructions event page by id
 const instructionsEventDelete = (req, res) => {
+  //console.log("Using axios to access local database...");
   axios
-    .delete('http://localhost:3000/api/instrukcije-dogodki/' + idDogodka)
+    .delete('http://localhost:3000/api/instrukcije-dogodki/' + req.params.idDogodka)
     .then((dogodek) => {
       console.log("Deleted the following event:");
       console.log(dogodek.data);
@@ -106,10 +131,11 @@ const instructionsEventDelete = (req, res) => {
     });
 };
 
-/* GET edit instructions page */
+/* OBSOLETE
 const instructionsUser = (req, res) => {
   res.render('instructions-event-edit', { title: "Uredi" });
 };
+*/
 
 /* ERROR MESSAGE */
 const prikaziNapako = (req, res, napaka) => {
@@ -119,7 +145,7 @@ const prikaziNapako = (req, res, napaka) => {
       napaka.response.data["message"] : "Nekaj nekje očitno ne deluje.");
   if (napaka.response.data["_message"] == "Lokacija validation failed") {
     //res.redirect(
-      //'/instrukcije-dogodki/dodaj?napaka=vrednost'
+    //'/instrukcije-dogodki/dodaj?napaka=vrednost'
     //);
     console.log("izpolni vsa polja");
   } else {
@@ -134,13 +160,13 @@ const prikaziNapako = (req, res, napaka) => {
 };
 
 
+//EXPORT functions
 module.exports = {
   instructorsList,
   eventList,
-  //instructionsEventList,
   instructionsEvent,
   instructionsEventNew,
   instructionsEventNewPost,
-  instructionsEventDelete,
-  instructionsUser
+  instructionsEventDelete
+  //instructionsUser
 };

@@ -9,5 +9,3 @@ const instrukcijeDogodekShema = new mongoose.Schema({
 });
 
 mongoose.model('InstrukcijeDogodek', instrukcijeDogodekShema, 'InstrukcijeDogodki');
-
-
