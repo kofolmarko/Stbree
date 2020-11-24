@@ -6,6 +6,7 @@ var ctrlSigning = require('../controllers/signing');
 var ctrlMain = require('../controllers/main');
 var ctrlJob = require('../controllers/job');
 var ctrlInstructions = require('../controllers/instructions');
+//var ctrlUserProfile = require('../controllers/userProfile');
 
 /* GET home page. */
 router.get('/', ctrlLanding.landing);
