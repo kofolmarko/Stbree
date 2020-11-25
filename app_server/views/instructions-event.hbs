@@ -1,9 +1,8 @@
 <body>
     <div class="return container-fluid" style="margin-top: 1rem;">
-        <a href="/instrukcije-dogodki" class="btn btn-info">Nazaj na seznam dogodkov</a>
-        <form id="instructionsEventDelete" action="" method="post" role="form">
-            <button class="btn btn-secondary">Izbriši objavo</button>
-        </form>
+        <a href="/instrukcije-dogodki" class="btn btn-info d-inline">Nazaj na seznam dogodkov</a>
+
+        <button class="btn btn-secondary d-inline" id="delete-btn">Izbriši objavo</button>
     </div>
 
     <div class="card event">
@@ -51,6 +50,40 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Stran je odprta");
+
+            var deleteBtn = document.getElementById('delete-btn');
+            deleteBtn.addEventListener('click', () => {
+
+                console.log("Delete button has been clicked!")
+
+                var asinhronaZahteva = new XMLHttpRequest();
+
+                asinhronaZahteva.open(
+                    "DELETE",
+                    window.location.href, //current url
+                    true
+                )
+                /*
+                .then((odgovor) => odgovor.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
+                */
+                asinhronaZahteva.addEventListener("load", function () {
+                    var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
+                    console.log(jsonRezultati);
+                });
+
+                window.location = "/instrukcije-dogodki";
+
+                asinhronaZahteva.send(null);
+
+            });
+        });
+    </script>
 
     {{> carousel}}
 </body>

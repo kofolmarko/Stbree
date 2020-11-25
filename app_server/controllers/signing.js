@@ -14,7 +14,10 @@ if (process.env.NODE_ENV === 'production') {
 
 //RENDER signup page
 const signup = (req, res, sporocilo) => {
-  res.render('signup')
+  res.render('signup', 
+  {
+    sporocilo: sporocilo
+  });
 };
 
 //POST REGISTER a new user
@@ -22,8 +25,12 @@ const registerNewUser = (req, res) => {
   //const {ime, priimek} = req.body; -deconstruction
   if (!req.body.ime || !req.body.priimek || !req.body.email || !req.body.geslo || !req.body.gesloPotrdi) {
     console.log("Please complete the whole form.");
+    var messageone = "Prosim izpolnite vsa polja.";
+    signup(req, res, messageone);
   } else if (req.body.geslo != req.body.gesloPotrdi) {
     console.log("Passwords do not match!");
+    var messagetwo = "Gesli se ne ujemata.";
+    signup(req, res, messagetwo);
   } else {
     //console.log("Registering a new User to the database...");
     axios({
@@ -41,8 +48,10 @@ const registerNewUser = (req, res) => {
       console.log(user.data);
       res.redirect('/prijava');
     }).catch((napaka) => {
-      console.log("here is the error");
-      prikaziNapako(req, res, napaka);
+      console.log("Neuspešna registracija");
+      var message = "Uporabnik s podanim e-naslovom že obstaja.";
+      signup(req, res, message);
+      //prikaziNapako(req, res, napaka);
     });
   }
 };
@@ -87,7 +96,7 @@ const loginUser = (req, res) => {
           navbarToggle(loginStatus);
           res.redirect('/my');
         } else {
-          var message = "Vnesena e-pošta ali geslo nista pravilna";
+          var message = "Vnesena e-pošta ali geslo nista pravilna.";
           signin(req, res, message);
         }
       })
@@ -95,7 +104,7 @@ const loginUser = (req, res) => {
         //console.log("IZVEDBA CATCH");
         //console.log(napaka.data);
         if (napaka) {
-          napaka = "Vnesena e-pošta ali geslo nista pravilna";
+          napaka = "Vnesena e-pošta ali geslo nista pravilna.";
           signin(req, res, napaka);
           //prikaziNapako(req, res, napaka);
         } else {

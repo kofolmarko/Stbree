@@ -54,9 +54,18 @@ const instructionsEvent = (req, res) => {
 
 //GET instructions event page with id - API COMMUNICATION
 const getInstructionsEvent = async (req, res, povratniKlic) => {
-  const result = await axios.get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka);
-  console.log(result.data);
-  povratniKlic(req, res, result.data);
+  const result = await axios
+  .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
+  .catch((napaka) => {
+    prikaziNapako(req, res, napaka);
+  });
+
+  if(result) {
+    console.log(result.data);
+    povratniKlic(req, res, result.data);
+  } else {
+    prikaziNapako(req, res, result);
+  }
 
 
   /*
@@ -131,11 +140,15 @@ const instructionsEventNewPost = (req, res) => {
 const instructionsEventDelete = (req, res) => {
   //console.log("Using axios to access local database...");
   axios
-    .delete('http://localhost:3000/api/instrukcije-dogodki/' + req.params.idDogodka)
+    .delete('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .then((dogodek) => {
       console.log("Deleted the following event:");
       console.log(dogodek.data);
-      res.redirect('/instrukcije-dogodki');
+
+      res.json({ redirect: '/instrukcije-dogodki' });
+      //Set HTTP method to GET
+      //res.method = 'GET';
+      //res.redirect('/instrukcije-dogodki');
     })
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
