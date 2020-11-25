@@ -58,7 +58,7 @@ const registerNewUser = (req, res) => {
 
 //GLOBAL LOGIN VARIABLES
 let loginStatus = false;
-let loginID = {val: "logged_out"};
+let loginID = {val: null};
 
 //IMPORT navbar switcher
 const navbarToggle = require('../../public/javascripts/navbar-toggle');

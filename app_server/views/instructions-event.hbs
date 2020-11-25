@@ -2,27 +2,34 @@
     <div class="return container-fluid" style="margin-top: 1rem;">
         <a href="/instrukcije-dogodki" class="btn btn-info d-inline">Nazaj na seznam dogodkov</a>
 
-        <button class="btn btn-secondary d-inline" id="delete-btn">Izbriši objavo</button>
+        {{#if admin}}
+
+        <button class="btn btn-warning" style="display: inline;" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button>
+        <button id="save-btn" value="save" class="btn btn-success d-inline"
+        style="display: none !important;"><i class="fas fa-check"></i></button>
+        <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
+      
+        {{/if}}
     </div>
 
     <div class="card event">
         <img class="card-img-top event-header" src="/assets/pics/oblikovanje.png" alt="Card image cap">
         <div class="card-body event-body">
-            <h5 class="card-title">{{naziv}}</h5>
+            <h5 class="card-title" id="naziv">{{naziv}}</h5>
             <hr>
-            <p class="card-text">{{opis}}</p>
+            <p class="card-text" id="opis">{{opis}}</p>
             <hr>
             <h6>Datum</h6>
-            <p>{{datum}}</p>
+            <p id="datum">{{datum}}</p>
             <hr>
             <h6>Čas</h6>
-            <p>{{ura}}</p>
+            <p id="ura">{{ura}}</p>
             <hr>
             <h6>Število prostih mest</h6>
-            <p>{{steviloProstihMest}}</p>
+            <p id="steviloProstihMest">{{steviloProstihMest}}</p>
             <hr>
             <h6>Cena</h6>
-            <p>{{cena}}</p>
+            <p id="cena">{{cena}}</p>
             <hr>
             <h6>Prijavi se na dogodek</h6>
             <a href="/ponudba-del/delo" class="btn btn-success">Prijava</a>
@@ -82,7 +89,98 @@
                 asinhronaZahteva.send(null);
 
             });
+
+            var saveBtn = document.getElementById('save-btn');
+            saveBtn.addEventListener('click', () => {
+
+                console.log("Save button has been clicked!")
+
+                var asinhronaZahteva = new XMLHttpRequest();
+
+                asinhronaZahteva.open(
+                    "PUT",
+                    window.location.href, //current url
+                    true
+                )
+                /*
+                .then((odgovor) => odgovor.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
+                */
+                asinhronaZahteva.addEventListener("load", function () {
+                    //var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
+                    //console.log(jsonRezultati);
+                });
+                
+                //window.location = "/instrukcije-dogodki";
+
+                asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                asinhronaZahteva.send(JSON.stringify(shrani()));
+
+
+
+            });
         });
+
+        function uredi() {
+            document.getElementById("edit-btn").style.display = "none !important";
+            document.getElementById("save-btn").style.display = "block";
+            //document.getElementById("delete-button").style.display = "block";
+
+            var naziv = document.getElementById("naziv");
+            var opis = document.getElementById("opis");
+            var cena = document.getElementById("cena");
+            var datum = document.getElementById("datum");
+            var ura = document.getElementById("ura");
+            var steviloProstihMest = document.getElementById("steviloProstihMest");
+
+            var naziv_data = naziv.innerHTML;
+            var opis_data = opis.innerHTML;
+            var cena_data = cena.innerHTML;
+            var datum_data = datum.innerHTML;
+            var ura_data = ura.innerHTML;
+            var steviloProstihMest_data = steviloProstihMest.innerHTML;
+
+            console.log(naziv.innerHTML);
+
+            
+            naziv.innerHTML = "<input type='text' class='form-control' id='naziv_text' value='" + naziv_data + "'>";
+            opis.innerHTML = "<input type='text' class='form-control' id='opis_text' value='" + opis_data + "'>";
+            cena.innerHTML = "<input type='text' class='form-control' id = 'cena_text' value = '" + cena_data + "'>";
+            datum.innerHTML = "<input type='datetime-local' class='form-control' id='datum_value' value='2020-12-16T18:00:00'>";
+            ura.innerHTML = "<input type='text' class='form-control' id='ura_text' value='" + ura_data + "'>";
+            steviloProstihMest.innerHTML = "<input type='text' class='form-control' id = 'steviloProstihMest_text' value = '" + steviloProstihMest_data + "'>";
+            
+        
+        }
+        function shrani() {
+            var naziv_novi = document.getElementById("naziv_text").value;
+            var opis_novi = document.getElementById("opis_text").value;
+            var cena_novi = document.getElementById("cena_text").value;
+            var datum_novi = document.getElementById("datum_value").value;
+            var ura_novi = document.getElementById("ura_text").value;
+            var steviloProstihMest_novi = document.getElementById("steviloProstihMest_text").value;
+
+            document.getElementById("naziv").innerHTML = naziv_novi;
+            document.getElementById("opis").innerHTML = opis_novi;
+            document.getElementById("cena").innerHTML = cena_novi;
+            document.getElementById("datum").innerHTML = datum_novi;
+            document.getElementById("ura").innerHTML = ura_novi;
+            document.getElementById("steviloProstihMest").innerHTML = steviloProstihMest_novi;
+
+            //document.getElementById("edit-btn").style.display = "block";
+            document.getElementById("save-btn").style.display = "none";
+
+            return {
+                naziv: naziv_novi,
+                opis: opis_novi,
+                cena: cena_novi,
+                datum: datum_novi,
+                ura: ura_novi,
+                steviloProstihMest: steviloProstihMest_novi
+            };
+        }
     </script>
 
     {{> carousel}}

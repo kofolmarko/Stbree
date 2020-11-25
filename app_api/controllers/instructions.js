@@ -78,7 +78,32 @@ const instrukcijeDogodekPreberi = (req, res) => {
 
 //PUT update instructions event (CURRENTLY NOT IN USE)
 const instrukcijeDogodekPosodobi = (req, res) => {
-  res.status(200).json({ "status": "uspešno" });
+  console.log("Inside controllers on the API!");
+  InstrukcijeDogodek
+    .findByIdAndUpdate(req.params.idDogodka,
+      {
+        naziv: req.body.naziv,
+        opis: req.body.opis,
+        cena: req.body.cena,
+        datum: req.body.datum,
+        ura: req.body.ura,
+        steviloProstihMest: req.body.steviloProstihMest,
+        idInstruktorja: req.body.idInstruktorja
+
+      })
+    .exec((napaka, instrukcijeDogodek) => {
+      if (!instrukcijeDogodek) {
+        return res.status(404).json({
+          "sporočilo":
+            "Dogodek ne obstaja."
+        });
+      } else if (napaka) {
+        console.log(napaka.data);
+        return res.status(500).json(napaka);
+      }
+      console.log(instrukcijeDogodek.data);
+      res.status(200).json(instrukcijeDogodek);
+    });
 };
 
 //DELETE instructons event by id

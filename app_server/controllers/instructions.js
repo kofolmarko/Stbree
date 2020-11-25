@@ -55,33 +55,28 @@ const instructionsEvent = (req, res) => {
 //GET instructions event page with id - API COMMUNICATION
 const getInstructionsEvent = async (req, res, povratniKlic) => {
   const result = await axios
-  .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
-  .catch((napaka) => {
-    prikaziNapako(req, res, napaka);
-  });
+    .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
 
-  if(result) {
+  if (result) {
     console.log(result.data);
     povratniKlic(req, res, result.data);
   } else {
     prikaziNapako(req, res, result);
   }
-
-
-  /*
-  axios
-    .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
-    .then((odgovor) => {
-      povratniKlic(req, res, odgovor.data);
-    })
-    .catch((napaka) => {
-      prikaziNapako(req, res, napaka);
-    });
-  */
 };
 
 //RENDER instructions event page with id
 const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
+  var isAdmin = false;
+  var loginID = require('./signing').loginID.val;
+  if (loginID == dogodek.idInstruktorja)
+    isAdmin = true;
+  // console.log(isAdmin);
+  // console.log(loginID);
+  // console.log(dogodek.idInstruktorja);
   res.render('instructions-event', {
     naziv: dogodek.naziv,
     opis: dogodek.opis,
@@ -89,7 +84,8 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
     datum: dogodek.datum,
     ura: dogodek.ura,
     steviloProstihMest: dogodek.steviloProstihMest,
-    ime: instruktor.ime + " " + instruktor.priimek
+    ime: instruktor.ime + " " + instruktor.priimek,
+    admin: isAdmin
   });
 };
 
@@ -136,6 +132,32 @@ const instructionsEventNewPost = (req, res) => {
   }
 };
 
+//PUT edit instructions event
+const instructionsEventEdit = (req, res) => {
+  console.log("Inside controllers on server-side!");
+  console.log(req.body);
+  axios
+    .put('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka,
+      {
+        naziv: req.body.naziv,
+        opis: req.body.opis,
+        cena: req.body.cena,
+        datum: req.body.datum,
+        ura: req.body.ura,
+        steviloProstihMest: req.body.steviloProstihMest,
+        idInstruktorja: require('./signing').loginID.val
+      }
+    )
+    .then((dogodek) => {
+      console.log(dogodek);
+      res.status(200).json(dogodek);
+    })
+    .catch((napaka) => {
+      console.log(napaka);
+      prikaziNapako(req, res, napaka);
+    });
+};
+
 //DELETE an instructions event page by id
 const instructionsEventDelete = (req, res) => {
   //console.log("Using axios to access local database...");
@@ -145,7 +167,8 @@ const instructionsEventDelete = (req, res) => {
       console.log("Deleted the following event:");
       console.log(dogodek.data);
 
-      res.json({ redirect: '/instrukcije-dogodki' });
+      res.status(200).json(dogodek);
+      //res.json({ redirect: '/instrukcije-dogodki' });
       //Set HTTP method to GET
       //res.method = 'GET';
       //res.redirect('/instrukcije-dogodki');
@@ -191,6 +214,7 @@ module.exports = {
   instructionsEvent,
   instructionsEventNew,
   instructionsEventNewPost,
+  instructionsEventEdit,
   instructionsEventDelete
   //instructionsUser
 };

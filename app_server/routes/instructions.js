@@ -13,10 +13,6 @@ router.get('/instruktorji', ctrlInstructions.instructorsList);
 //GET instructions events list
 router.get('/instrukcije-dogodki', ctrlInstructions.eventList);
 
-/*OBSOLETE
-router.get('/instrukcije-dogodki/dogodek/uredi', ctrlInstructions.instructionsUser);
-*/
-
 //GET instructions event info
 router.get('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructionsEvent);
 
@@ -25,6 +21,9 @@ router
     .route('/instrukcije-dogodki/dodaj')
     .get(ctrlInstructions.instructionsEventNew)
     .post(ctrlInstructions.instructionsEventNewPost);
+
+//PUT edit instructions event info
+router.put('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructionsEventEdit);
 
 //DELETE instructions event
 router.delete('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructionsEventDelete);
