@@ -15,7 +15,9 @@ const instrukcijeDogodekKreiraj = (req, res) => {
     opis: req.body.opis,
     cena: req.body.cena,
     datum: req.body.datum,
-    steviloProstihMest: req.body.steviloProstihMest
+    ura: req.body.ura,
+    steviloProstihMest: req.body.steviloProstihMest,
+    idInstruktorja: req.body.idInstruktorja
   }, (napaka, instrukcijeDogodek) => {
     console.log(napaka);
     console.log(instrukcijeDogodek);
@@ -46,7 +48,9 @@ const instrukcijeDogodki = (req, res) => {
               "opis": instrukcijeDogodek.opis,
               "cena": instrukcijeDogodek.cena,
               "datum": instrukcijeDogodek.datum,
-              "steviloProstihMest": instrukcijeDogodek.steviloProstihMest
+              "ura": instrukcijeDogodek.ura,
+              "steviloProstihMest": instrukcijeDogodek.steviloProstihMest,
+              "idInstruktorja": instrukcijeDogodek.idInstruktorja
             };
           })
         );
@@ -62,11 +66,12 @@ const instrukcijeDogodekPreberi = (req, res) => {
       if (!instrukcijeDogodek) {
         return res.status(404).json({
           "sporočilo":
-            "Ne najdem dogodka s podanim enoličnim identifikatorjem idDogodka."
+            "Dogodek ne obstaja."
         });
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
+      console.log(instrukcijeDogodek.data);
       res.status(200).json(instrukcijeDogodek);
     });
 };

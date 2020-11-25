@@ -13,6 +13,9 @@ router.post('/uporabniki/', ctrlUporabniki.registrirajUporabnika);
 //GET get user info for login authentication
 router.get('/uporabniki/:email', ctrlUporabniki.prijaviUporabnika);
 
+//GET get user by id
+router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
+
 //GET list of all registered users
 router.get('/uporabniki', ctrlUporabniki.uporabniki);
 

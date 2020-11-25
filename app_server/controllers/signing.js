@@ -13,8 +13,8 @@ if (process.env.NODE_ENV === 'production') {
 
 
 //RENDER signup page
-const signup = (req, res) => {
-  res.render('signup');
+const signup = (req, res, sporocilo) => {
+  res.render('signup')
 };
 
 //POST REGISTER a new user
@@ -47,15 +47,19 @@ const registerNewUser = (req, res) => {
   }
 };
 
-//GLOBAL VARIABLE LOGIN STATUS
+//GLOBAL LOGIN VARIABLES
 let loginStatus = false;
+let loginID = {val: "logged_out"};
 
 //IMPORT navbar switcher
 const navbarToggle = require('../../public/javascripts/navbar-toggle');
 
 //RENDER signin page
-const signin = (req, res) => {
-  res.render('signin');
+const signin = (req, res, sporocilo) => {
+  res.render('signin',
+  {
+    sporocilo: sporocilo
+  });
 };
 
 //GET LOGIN a registered user
@@ -74,16 +78,26 @@ const loginUser = (req, res) => {
       .then((user) => {
         //console.log("NAZAJ NA SERVERJU");
         //console.log(user.data);
-        loginStatus = true;
-        console.log("Login status set to " + loginStatus);
-        navbarToggle(loginStatus);
-        res.redirect('/my');
+        
+        if (user.data.geslo == reqData.geslo) {
+          //console.log(user.data._id);
+          console.log(user.data.id);
+          loginStatus = true;
+          loginID.val = user.data._id;
+          navbarToggle(loginStatus);
+          res.redirect('/my');
+        } else {
+          var message = "Vnesena e-pošta ali geslo nista pravilna";
+          signin(req, res, message);
+        }
       })
       .catch((napaka) => {
         //console.log("IZVEDBA CATCH");
         //console.log(napaka.data);
         if (napaka) {
-          prikaziNapako(req, res, napaka);
+          napaka = "Vnesena e-pošta ali geslo nista pravilna";
+          signin(req, res, napaka);
+          //prikaziNapako(req, res, napaka);
         } else {
           console.log("cant find error");
         }
@@ -135,5 +149,6 @@ module.exports = {
   registerNewUser,
   loginUser,
   users,
-  loginStatus
+  loginStatus,
+  loginID
 };

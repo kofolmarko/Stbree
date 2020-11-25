@@ -31,6 +31,26 @@ const uporabniki = (req, res) => {
     });
 };
 
+//GET user by id
+const najdiUporabnika = (req, res) => {
+  //console.log("API IŠČE INŠTRUUKTORJAAAA");
+  Uporabnik
+    .findById(req.params.idUporabnika)
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Uporabnik ne obstaja."
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      //console.log("API je našel uporabnika s podanim ID-jem: " + JSON.stringify(uporabnik));
+      //var uporabnikOBJ = JSON.parse(JSON.stringify(uporabnik));
+      res.status(200).json(uporabnik);
+    });
+};
+
 //POST register a new user
 const registrirajUporabnika = (req, res) => {
   console.log("Creating user JS object with the following data:");
@@ -103,6 +123,7 @@ const nastaviStatus = (req, res) => {
 //EXPORT functions
 module.exports = {
   uporabniki,
+  najdiUporabnika,
   registrirajUporabnika,
   prijaviUporabnika,
   //nastaviStatus,

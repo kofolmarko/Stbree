@@ -28,12 +28,19 @@
                                 <label for="geslo">Geslo</label>
                                 <input type="password" name="geslo" id="geslo" class="form-control">
                             </div>
+
+                            <!--Warning-->
+                            {{#if sporocilo}}
+                            <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
+                            {{/if}}
+
                             <div class="form-group">
                                 <p class="text-center"><a href="#" data-target="#resetPass"
                                         data-toggle="modal">Pozabljeno geslo?</a></p>
                             </div>
                             <div class="col-md-12 text-center ">
-                                <button id="login-button" type="" class="btn btn-block mybtn btn-primary">Prijava</button>
+                                <button id="login-button" type=""
+                                    class="btn btn-block mybtn btn-primary">Prijava</button>
                             </div>
                             <div class="col-md-12 ">
                                 <hr>
@@ -70,8 +77,8 @@
                         email.</p>
                     <form action="" name="passReset">
                         <div class="form-group">
-                            <input type="email" name="help-email" placeholder="Email" class="form-control" id="help-email"
-                                aria-describedby="emailHelp">
+                            <input type="email" name="help-email" placeholder="Email" class="form-control"
+                                id="help-email" aria-describedby="emailHelp">
                         </div>
                         <button type="submit" class="btn mybtn btn-secondary">Pošlji</button>
                     </form>

@@ -43,14 +43,23 @@ const instructionsEventList = (req, res, instrukcijeDogodki, sporocilo) => {
 
 //GET instructions event page with id - MAIN FUNCTION
 const instructionsEvent = (req, res) => {
-  getInstructionsEvent(req, res, (req, res, vsebina) => {
-    renderInstructionsEvent(req, res, vsebina);
+  getInstructionsEvent(req, res, (req, res, event) => {
+    getInstructor(req, res, event, (req, res, instructor) => {
+      renderInstructionsEvent(req, res, event, instructor);
+      //console.log("Tukaj Dogodek -------->  " + event);
+      //console.log("Tukaj Inštruktor -------->  " + instructor);
+    });
   });
-  //var instruktor = getInstructor(req, res);
 };
 
 //GET instructions event page with id - API COMMUNICATION
-const getInstructionsEvent = (req, res, povratniKlic) => {
+const getInstructionsEvent = async (req, res, povratniKlic) => {
+  const result = await axios.get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka);
+  console.log(result.data);
+  povratniKlic(req, res, result.data);
+
+
+  /*
   axios
     .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .then((odgovor) => {
@@ -59,29 +68,27 @@ const getInstructionsEvent = (req, res, povratniKlic) => {
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
+  */
 };
 
 //RENDER instructions event page with id
-const renderInstructionsEvent = (req, res, dogodek) => {
+const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
   res.render('instructions-event', {
     naziv: dogodek.naziv,
     opis: dogodek.opis,
     cena: dogodek.cena,
     datum: dogodek.datum,
-    steviloProstihMest: dogodek.steviloProstihMest
+    ura: dogodek.ura,
+    steviloProstihMest: dogodek.steviloProstihMest,
+    ime: instruktor.ime + " " + instruktor.priimek
   });
 };
 
-//GET instructor data (NOT WORKING YET)
-const getInstructor = (req, res) => {
-  axios
-    .get()
-    .then((odgovor) => {
-      return odgovor;
-    })
-    .catch((napaka) => {
-      prikaziNapako(req, res, napaka);
-    });
+//GET instructor data
+const getInstructor = async (req, res, dogodek, povratniKlic) => {
+  const result = await axios.get('http://localhost:3000/api/uporabnik/' + dogodek.idInstruktorja);
+  console.log(result.data);
+  povratniKlic(req, res, result.data);
 };
 
 //GET instructions event new post page
@@ -91,10 +98,12 @@ const instructionsEventNew = (req, res) => {
 
 //POST a new instructions event
 const instructionsEventNewPost = (req, res) => {
-  if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum || !req.body.steviloProstihMest) {
+  if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum || !req.body.ura || !req.body.steviloProstihMest) {
     console.log("izpolni vsa polja");
   } else {
     //console.log("posting to: " + apiParametri.streznik);
+    const idPrijavljenega = require('./signing').loginID.val;
+    console.log("idPrijavljenega: " + idPrijavljenega);
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/instrukcije-dogodki',
@@ -103,7 +112,9 @@ const instructionsEventNewPost = (req, res) => {
         opis: req.body.opis,
         cena: req.body.cena,
         datum: req.body.datum,
-        steviloProstihMest: req.body.steviloProstihMest
+        ura: req.body.ura,
+        steviloProstihMest: req.body.steviloProstihMest,
+        idInstruktorja: idPrijavljenega
       }
     }).then((dogodek) => {
       //console.log("posted");
