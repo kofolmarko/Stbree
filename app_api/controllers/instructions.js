@@ -27,9 +27,9 @@ const instrukcijeDogodki = (req, res) => {
 
 const instrukcijeDogodekPreberi = (req, res) => {
   InstrukcijeDogodek
-    .findById(req.params.idDogodka)
-    .exec((napaka, instrukcijeDogodek) => {
-      if (!instrukcijeDogodek) {
+    .findById(req.params.idDela)
+    .exec((napaka, delo) => {
+      if (!delo) {
         return res.status(404).json({
           "sporočilo":
             "Ne najdem dogodka s podanim enoličnim identifikatorjem idLokacije."
@@ -37,7 +37,7 @@ const instrukcijeDogodekPreberi = (req, res) => {
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
-      res.status(200).json(instrukcijeDogodek);
+      res.status(200).json(delo);
     });
 };
 
