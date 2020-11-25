@@ -1,19 +1,18 @@
 <body>
   <div class="container">
-    <h1 id="profile-naslov">{{ime}} {{priimek}}</h1>
+    <h1 id="profile-naslov">{{glavniPodatki.ime}} {{glavniPodatki.priimek}}</h1>
     <hr>
     <div class="row">
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
         <form>
           <div class="form-group">
             <label for="opisProfila">Opis:</label>
-            <textarea class="form-control" readonly id="opisProfila"
-              rows="5">{{dodatniPodatki.opis}}</textarea>
+            <textarea class="form-control" readonly id="opisProfila" rows="5">{{dodatniPodatki.opis}}</textarea>
           </div>
         </form>
       </div>
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
-        <img src="/assets/pics/instruktor1.jpg" alt="ProfilnaSlika" class="img-responsive"
+        <img src="{{dodatniPodatki.slika}}" alt="ProfilnaSlika" class="img-responsive"
           style="width: 200px; height:200px">
       </div>
     </div>
@@ -26,7 +25,7 @@
             <h4 id="profile-podnaslov">Podatki:</h4>
             <tr>
               <th class="thPodatki" scope="row">Email naslov:</th>
-              <td>{{email}}</td>
+              <td>{{glavniPodatki.email}}</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Telefonska številka:</th>
@@ -34,7 +33,7 @@
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Datum vpisa:</th>
-              <td>{{datumVpisa}}</td>
+              <td>{{glavniPodatki.datumVpisa}}</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Ocena uporabnika:</th>
@@ -60,7 +59,7 @@
       <p><b>Kontaktiraj me preko:</b></p>
       <ul class="list-unstyled">
         <li class="d-inline">
-          <a class="fa fa-comment" href="./chat.html" target="_blank" id="moznostiKontakta"> Privatnega sporočila</a>
+          <a class="fa fa-comment" href="/sporocanje" target="_blank" id="moznostiKontakta"> Privatnega sporočila</a>
         </li>
       </ul>
     </div>
@@ -75,18 +74,15 @@
               <th scope="col">Datum</th>
             </tr>
           </thead>
+          {{#each dela as |delo|}}
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>Delo 1</td>
+              <th scope="row">{{delo.stevilka}}</th>
+              <td>{{delo.ime}}</td>
               <td>26.10.2020</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Delo 2</td>
-              <td>15.10.2020</td>
-            </tr>
           </tbody>
+          {{/each}}
         </table>
       </div>
     </div>
@@ -101,18 +97,15 @@
               <th scope="col">Datum</th>
             </tr>
           </thead>
+          {{#each instrukcije as |instrukcija|}}
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>Inštrukcija 1</td>
+              <th scope="row">{{instrukcija.stevilka}}</th>
+              <td>{{instrukcija.ime}}</td>
               <td>26.10.2020</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Inštrukcija 2</td>
-              <td>15.10.2020</td>
-            </tr>
           </tbody>
+          {{/each}}
         </table>
       </div>
     </div>

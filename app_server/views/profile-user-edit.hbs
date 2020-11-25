@@ -1,6 +1,6 @@
 <body>
   <div class="container">
-    <h1 id="profile-naslov">{{glavniPodatki.ime}} {{glavniPodatki.priimek}}</h1>
+    <h1 id="profile-naslov">Ime Priimek</h1>
     <hr>
     <div class="row">
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
@@ -8,17 +8,17 @@
           <div class="form-group">
             <label for="opis">Opis:</label>
             <textarea class="form-control" rows="5" id="opis" readonly
-              style="resize: none; width: 100%;">{{dodatniPodatki.opis}}</textarea>
+              style="resize: none; width: 100%;">Uporabnikov opis...</textarea>
           </div>
         </form>
-        {{!--<button type="button" id="uredi-opis" value="edit" class="btn btn-primary" onclick="urediOpis()"
+        <button type="button" id="uredi-opis" value="edit" class="btn btn-primary" onclick="urediOpis()"
           style="width: 30%">Spremeni opis</button>
         <button type="button" id="shrani-opis" value="save" class="btn btn-danger" onclick="shraniOpis()"
           style="width: 30%; display: none">Shrani</button>
-        <br> --}}
+        <br>
       </div>
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
-        <img src="{{dodatniPodatki.slika}}" alt="ProfilnaSlika" class="img-responsive"
+        <img src="/assets/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
           style="width: 200px; height: 200px;">
       </div>
     </div>
@@ -31,11 +31,11 @@
             <h4 id="profile-podnaslov">Podatki:</h4>
             <tr>
               <th class="thPodatki" scope="row">Email naslov:</th>
-              <td id="email">{{glavniPodatki.ime}}</td>
+              <td id="email">imepriimek@gmail.com</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Telefonska številka:</th>
-              <td id="phone">{{dodatniPodatki.telefonskaStevilka}}</td>
+              <td id="phone">030 723 418</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Datum vpisa:</th>
@@ -43,7 +43,7 @@
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Status inštruktorja:</th>
-              <td id="status">{{glavniPodatki.statusInstruktorja}}</td>
+              <td id="status">Neaktiven</td>
             </tr>
             <tr id="spremeni-sliko" style="display: none;">
               <th class="thPodatki" scope="row">Spremeni profilno sliko:</th>
@@ -57,91 +57,12 @@
             </tr>
           </tbody>
         </table>
-        <a class="btn btn-primary" href="/profil/uporabnik/uredi" role="button">Spremeni podatke</a>
+        <button type="button" id="edit-button" value="edit" class="btn btn-primary" onclick="urediPodatke()">Spremeni
+          podatke</button>
+        <button type="button" id="save-button" value="save" class="btn btn-danger" onclick="shraniPodatke()"
+          style="display: none;">
+          Shrani</button>
         <hr>
-        <h4 id="profile-podnaslov">Dodatno:</h4>
-      </div>
-    </div>
-
-    <div class="tab pb-5">
-      <button class="tablinks" onclick="openCity(event, 'kronologija')">Moje Objave</button>
-      <button class="tablinks" onclick="openCity(event, 'obvestila')">Obvestila<span class="znacka">1</span></button>
-      <button class="tablinks" onclick="openCity(event, 'moja-ocena')">Moja ocena</button>
-      <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
-    </div>
-
-    <div id="kronologija" class="tabcontent">
-      <div class="col d-flex justify-content-center">
-        <table class="table">
-          <thead>
-            <tr class="trTabelaKrono">
-              <th scope="col">#</th>
-              <th scope="col">Projekt</th>
-              <th scope="col">Datum</th>
-              <th scope="col">Uredi</th>
-            </tr>
-          </thead>
-          {{#each objave as |objava|}}
-            <tbody>
-              <tr>
-                <th scope="row">{{objava.stevilo}}</th>
-                <td>{{objava.projekt}}</td>
-                <td>26.10.2020</td>
-                <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a> <a href="#"><i
-                      class="far fa-trash-alt"></i></a></td>
-              </tr>
-            </tbody>
-          {{/each}}
-        </table>
-      </div>
-    </div>
-
-
-    <div id="obvestila" class="tabcontent">
-      <div class="col d-flex justify-content-center">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nedavna obvestila</th>
-              <th scope="col">Datum</th>
-            </tr>
-          </thead>
-          {{#each obvestila as |obvestilo|}}
-            <tbody>
-              <tr class="table-danger">
-                <th scope="row">{{obvestilo.stevilo}}</th>
-                <td><a href="{{obvestilo.povezava}}">{{obvestilo.nenavadno}}</a>
-                </td>
-                <td>14.11.2020</td>
-              </tr>
-            </tbody>
-          {{/each}}
-        </table>
-      </div>
-    </div>
-
-    <div id="moja-ocena" class="tabcontent">
-      <div class="row">
-        <div class="col d-flex justify-content-center">
-          <p style="margin: 0;">Moja ocena:</p>
-          {{{zvezdice dodatniPodatki.ocena}}}
-        </div>
-      </div>
-    </div>
-
-    <div id="spremeni-geslo" class="tabcontent">
-      <div class="col d-flex justify-content-center">
-        <form>
-          <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
-          <div class="form-group">
-            <label for="name">Novo geslo:</label>
-            <input type="password" id="passwordReset"><br>
-            <label for="surname">Potrdi novo geslo: </label>
-            <input type="password" id="passwordResetConfirm">
-          </div>
-          <button class="btn btn-danger" id="resetPassword" type="submit" onclick="novoGeslo()">Potrdi</button>
-        </form>
       </div>
     </div>
 
