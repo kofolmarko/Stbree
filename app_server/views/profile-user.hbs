@@ -11,11 +11,11 @@
               style="resize: none; width: 100%;">{{dodatniPodatki.opis}}</textarea>
           </div>
         </form>
-        {{!--<button type="button" id="uredi-opis" value="edit" class="btn btn-primary" onclick="urediOpis()"
+        <button type="button" id="uredi-opis" value="edit" class="btn btn-primary" onclick="urediOpis()"
           style="width: 30%">Spremeni opis</button>
         <button type="button" id="shrani-opis" value="save" class="btn btn-danger" onclick="shraniOpis()"
           style="width: 30%; display: none">Shrani</button>
-        <br> --}}
+        <br> 
       </div>
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
         <img src="{{dodatniPodatki.slika}}" alt="ProfilnaSlika" class="img-responsive"
@@ -31,7 +31,7 @@
             <h4 id="profile-podnaslov">Podatki:</h4>
             <tr>
               <th class="thPodatki" scope="row">Email naslov:</th>
-              <td id="email">{{glavniPodatki.ime}}</td>
+              <td id="email">{{glavniPodatki.email}}</td>
             </tr>
             <tr>
               <th class="thPodatki" scope="row">Telefonska številka:</th>
@@ -57,7 +57,11 @@
             </tr>
           </tbody>
         </table>
-        <a class="btn btn-primary" href="/profil/uporabnik/uredi" role="button">Spremeni podatke</a>
+        <button type="button" id="edit-button" value="edit" class="btn btn-primary" onclick="urediPodatke()">Spremeni
+          podatke</button>
+        <button type="button" id="save-button" value="save" class="btn btn-danger" onclick="shraniPodatke()"
+          style="display: none;">
+          Shrani</button>
         <hr>
         <h4 id="profile-podnaslov">Dodatno:</h4>
       </div>

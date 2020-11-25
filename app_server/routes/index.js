@@ -6,7 +6,7 @@ var ctrlSigning = require('../controllers/signing');
 var ctrlMain = require('../controllers/main');
 var ctrlJob = require('../controllers/job');
 var ctrlInstructions = require('../controllers/instructions');
-var ctrlUserProfile = require('../controllers/userProfile');
+var ctrlProfile = require('../controllers/profile');
 
 /* GET home page. */
 router.get('/', ctrlLanding.landing);
@@ -34,12 +34,10 @@ router.get('/instrukcije-dogodki/dodaj', ctrlInstructions.instructionsEventNew);
 router.get('/instrukcije-dogodki/dogodek/uredi', ctrlInstructions.instructionsUser);
 
 /* GET user profile page */
-router.get('/profil/uporabnik', ctrlUserProfile.userProfile);
-router.get('/profil/uporabnik/uredi', ctrlUserProfile.userProfileEdit);
-//router.get('/profil/uporabnik/uredi-podatke', ctrlUserProfile.userProfileInfoUser);
+router.get('/profil/uporabnik', ctrlProfile.userProfile);
 
 /* GET view-only profile page */
-router.get('/profil/ogled', ctrlMain.viewProfile);
+router.get('/profil/ogled', ctrlProfile.viewProfile);
 
 /* GET chat page */
 router.get('/sporocanje', ctrlMain.chat);
