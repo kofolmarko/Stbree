@@ -4,9 +4,8 @@
 
         {{#if admin}}
 
-        <button class="btn btn-warning" style="display: inline;" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button>
-        <button id="save-btn" value="save" class="btn btn-success d-inline"
-        style="display: none !important;"><i class="fas fa-check"></i></button>
+        <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button>
+        <button id="save-btn" value="save" class="btn btn-success d-none"><i class="fas fa-check"></i></button>
         <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
       
         {{/if}}
@@ -30,9 +29,14 @@
             <hr>
             <h6>Cena</h6>
             <p id="cena">{{cena}}</p>
+
+            {{#if admin}}
+            {{else}}
             <hr>
             <h6>Prijavi se na dogodek</h6>
             <a href="/ponudba-del/delo" class="btn btn-success">Prijava</a>
+            {{/if}}
+        
         </div>
     </div>
 
@@ -124,8 +128,10 @@
         });
 
         function uredi() {
-            document.getElementById("edit-btn").style.display = "none !important";
-            document.getElementById("save-btn").style.display = "block";
+            document.getElementById("edit-btn").classList.remove("d-ilblock");
+            document.getElementById("edit-btn").classList.add("d-none");
+            document.getElementById("save-btn").classList.remove("d-none");
+            document.getElementById("save-btn").classList.add("d-ilblock");
             //document.getElementById("delete-button").style.display = "block";
 
             var naziv = document.getElementById("naziv");
@@ -169,8 +175,10 @@
             document.getElementById("ura").innerHTML = ura_novi;
             document.getElementById("steviloProstihMest").innerHTML = steviloProstihMest_novi;
 
-            //document.getElementById("edit-btn").style.display = "block";
-            document.getElementById("save-btn").style.display = "none";
+            document.getElementById("edit-btn").classList.remove("d-none");
+            document.getElementById("edit-btn").classList.add("d-ilblock");
+            document.getElementById("save-btn").classList.remove("d-ilblock");
+            document.getElementById("save-btn").classList.add("d-none");
 
             return {
                 naziv: naziv_novi,

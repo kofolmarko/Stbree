@@ -22,6 +22,7 @@ const signup = (req, res, sporocilo) => {
 
 //POST REGISTER a new user
 const registerNewUser = (req, res) => {
+  //console.log(req.body.instruktor.value);
   //const {ime, priimek} = req.body; -deconstruction
   if (!req.body.ime || !req.body.priimek || !req.body.email || !req.body.geslo || !req.body.gesloPotrdi) {
     console.log("Please complete the whole form.");
@@ -69,6 +70,13 @@ const signin = (req, res, sporocilo) => {
   {
     sporocilo: sporocilo
   });
+};
+
+//SIGNOUT and RENDER landing
+const signout = () => {
+  loginStatus = false;
+  loginID.val = null;
+  navbarToggle(loginStatus);
 };
 
 //GET LOGIN a registered user
@@ -159,5 +167,6 @@ module.exports = {
   loginUser,
   users,
   loginStatus,
-  loginID
+  loginID,
+  signout
 };

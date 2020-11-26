@@ -3,7 +3,32 @@ const mongoose = require('mongoose');
 
 //IMPORT object model
 const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
+const User = mongoose.model('User');
 
+//GET instructors list
+const instruktorji = (req, res) => {
+  User
+    .aggregate()
+    .limit(10)
+    .exec((napaka, instruktorji) => {
+      if (napaka) {
+        res.status(500).json(napaka);
+      } else {
+        res.status(200).json(instruktorji.map(instruktor => {
+          return {
+            "_id": instruktor._id,
+            "statusInstruktorja": instruktor.statusInstruktorja,
+            "ime": instruktor.ime,
+            "priimek": instruktor.priimek,
+            "opis": instruktor.opis,
+            "email": instruktor.email,
+            "geslo": instruktor.geslo,
+            "datumVpisa": instruktor.datumVpisa
+          };
+        }));
+      }
+    });
+};
 
 //CREATE new instructions event
 const instrukcijeDogodekKreiraj = (req, res) => {
@@ -139,6 +164,7 @@ const instrukcijeDogodekIzbrisi = (req, res) => {
 
 //EXPORT functions
 module.exports = {
+  instruktorji,
   instrukcijeDogodekKreiraj,
   instrukcijeDogodki,
   instrukcijeDogodekPreberi,

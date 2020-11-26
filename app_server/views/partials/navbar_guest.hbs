@@ -1,5 +1,5 @@
 <!--navBar-->
-<nav class="navbar navbar-expand bg-transparent fixed-top">
+<nav id="fixing-navbar" class="navbar navbar-expand bg-transparent fixed-top">
   <a href="/"><img class="mr-auto" src="/assets/icons/stbree_logo_white.png" height="53px" width="94px"></a>
 
   <ul class="navbar-nav ml-auto">
@@ -11,3 +11,20 @@
     </li>
   </ul>
 </nav>
+
+<script>
+  window.onload = function() {
+    console.log(window.location.href);
+    if(window.location.href != 'http://localhost:3000/' && window.location.href != 'http://localhost:3000/prijava' && window.location.href != 'http://localhost:3000/registracija') {
+      document.getElementById('fixing-navbar').classList.remove("fixed-top");
+      document.getElementById('fixing-navbar').classList.remove("bg-transparent");
+      document.getElementById('fixing-navbar').classList.add("bg-dark");
+      console.log("removed");
+    } else {
+      document.getElementById('fixing-navbar').classList.add("fixed-top");
+      document.getElementById('fixing-navbar').classList.remove("bg-dark");
+      document.getElementById('fixing-navbar').classList.add("bg-transparent");
+      console.log("added");
+    }
+  };
+</script>

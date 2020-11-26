@@ -6,6 +6,8 @@ const router = express.Router();
 //Controller constant to access functions
 const ctrlInstrukcije = require('../controllers/instructions');
 
+//GET instructors list
+router.get('/instruktorji', ctrlInstrukcije.instruktorji);
 
 //GET instructions events list
 router.get('/instrukcije-dogodki', ctrlInstrukcije.instrukcijeDogodki);

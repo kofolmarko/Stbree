@@ -11,10 +11,29 @@ if (process.env.NODE_ENV === 'production') {
   apiParametri.streznik = 'https://stbree.herokuapp.com';
 }
 
+//GET instructors list
+const instructorsList = (req, res) => {
+  axios
+    .get('http://localhost:3000/api/instruktorji')
+    .then((odgovor) => {
+      //console.log(odgovor.data);
+      let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega inštruktorja :(";
+      renderInstructorsList(req, res, odgovor.data, sporocilo);
+    })
+    .catch((err) => {
+      renderInstructorsList(req, res, [], "Napaka API-ja pri iskanju inštruktorjev.");
+      console.error(err);
+    });
+};
 
 //RENDER instructors
-const instructorsList = (req, res) => {
-  res.render('instructors-list');
+const renderInstructorsList = (req, res, instruktorji, sporocilo) => {
+  console.log("rendering....");
+  console.log(instruktorji);
+  res.render('instructors-list', {
+    instruktorji: instruktorji,
+    sporocilo: sporocilo
+  });
 };
 
 //GET instructions events list
@@ -34,7 +53,7 @@ const eventList = (req, res) => {
 
 //RENDER instructions event list
 const instructionsEventList = (req, res, instrukcijeDogodki, sporocilo) => {
-  //console.log(instrukcijeDogodki);
+  console.log(instrukcijeDogodki);
   res.render('instructions-events-list', {
     instrukcijeDogodki: instrukcijeDogodki,
     sporocilo: sporocilo
