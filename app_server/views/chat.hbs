@@ -1,116 +1,64 @@
 <div class="container" id="contacts">
     <ul id="contact-list" class="bg-dark">
+
+        {{#each contacts as |contact| }}
         <li class="bg-info text-light">
-                <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                <h5>Luis Capaldi</h5>
+                <img src="{{contact.slika}}" alt="" class="text-profile">
+                <h5>{{contact.ime}}</h5>
         </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor3.jpg" alt="" class="text-profile">
-            <h5>Katarina Štanta</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor1.jpg" alt="" class="text-profile">
-            <h5>Mark Zuki</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor2.jpg" alt="" class="text-profile">
-            <h5>Stanislava Radosavljević</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
-            <h5>Peter Zlobec</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/ang.jpg" alt="" class="text-profile">
-            <h5>Dani Pedrosa</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/slo.jpg" alt="" class="text-profile">
-            <h5>Alfred Danes</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/video.png" alt="" class="text-profile">
-            <h5>The G</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor4.jpg" alt="" class="text-profile">
-            <h5>dunklord420</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
-            <h5>Luka Fuerst</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
-            <h5>Maček Lavbi</h5>
-        </li>
+        {{/each}}
     </ul>
 </div>
 
 <div class="container bg-dark" id="chatbox">
     <div class="container-fluid bg-info" id="contact-name">
         <a href="/profil/ogled" style="text-decoration: none;">
-            <h2 class="text-light">Luis Capaldi</h2>
+            <h2 class="text-light">{{contactChosen.sporocila.1.ime}}</h2>
         </a>
     </div>
 
     <div class="container-fluid" id="messages">
 
         <div class="message-recieved">
+            {{#each contactChosen.sporocila}}
+            
             <div class="message-wrap container-fluid">
                 <div class="sender-profile">
-                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                    <h6>Luis Capaldi</h6>
+                    <img src="{{this.slika}}" alt="" class="text-profile">
+                    <h6>{{this.ime}}</h6>
                 </div>
 
                 <span>
                     <p>
-                        Hello, my name is Luis and i would like to have a conversation.
+                       {{this.besedilo}}
                     </p>
                 </span>
                 <div class="timestamp">
-                    16:20 | Nov 15
+                    {{this.cas}}
                 </div>
             </div>
+            {{/each}}
         </div>
 
         <div class="message-recieved">
-            <div class="message-wrap sent container-fluid">
-                <div class="sender-profile">
-                    <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
-                    <h6>Uporabnik</h6>
-                </div>
-
-                <span>
-                    <p>
-                        Abla espanol?
-                    </p>
-                </span>
-                <div class="timestamp">
-                    16:22 | Nov 15
-                </div>
-            </div>
-        </div>
-
-        <div class="message-recieved">
+            {{#each mojaSporocila as |mojeSporocilo|}}
             <div class="message-wrap container-fluid">
                 <div class="sender-profile">
-                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                    <h6>Luis Capaldi</h6>
+                    <img src="{{mojeSporocilo.slika}}" alt="" class="text-profile">
+                    <h6>{{mojeSporocilo.ime}}</h6>
                 </div>
 
                 <span>
                     <p>
-                        Siiiiiiii, vamonos!
+                       {{mojeSporocilo.besedilo}}
                     </p>
                 </span>
                 <div class="timestamp">
-                    16:23 | Nov 15
+                    {{mojeSporocilo.cas}}
                 </div>
             </div>
+            {{/each}}
         </div>
-
-    </div>
 
     <div class="container-fluid" id="input-bar">
         <div class="input-group mb-3">
@@ -132,38 +80,13 @@
     <div class="container-fluid text-light" style="padding: 0.5rem;">
         <h2 style="margin-bottom: 0;">Deljene datoteke</h2>
     </div>
-
     <ul id="file-list">
+    {{#each contactChosen.datoteke}}
         <li class="bg-info text-light">
-            <a href="#">slika.jpg <i class="fas fa-download"></i></a>
+            <a href="#">{{this.imeDatoteke}} <i class="fas fa-download"></i></a>
         </li>
-        <li class="bg-info text-light">
-            <a href="#">predstavitev.pptx <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">spis.docx <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">slika.png <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
+    {{/each}}
+       
 
     </ul>
 </div>
