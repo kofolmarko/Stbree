@@ -27,3 +27,29 @@ const uporabnikZacetnoShema = new mongoose.Schema({
 
 
 mongoose.model('User', uporabnikZacetnoShema, 'Users');
+
+
+// db.Users.save({
+//     ime : "Sara",
+//     priimek : "Alesi",
+//     email : "sara@gmail.com",
+//     geslo : "sara123",
+//     poslanaSporocila : [{
+//             "_id" : ObjectId("5fc0ccb0e20cb147bcfb0a39"),
+//             "avtorSporocila" : "Sara",
+//             "prejemnikSporocila" : "Mato",
+//             "besedilo" : "zivjo mato, jaz sem sara"
+//     },{
+//       "_id" : ObjectId("5fc0ccb0e20cb147bcfb0a39"),
+//             "avtorSporocila" : "Sara",
+//             "prejemnikSporocila" : "Domen",
+//             "besedilo" : "zivjo domen, jaz sem sara"
+//     },{
+//       "_id" : ObjectId("5fc0ccb0e20cb147bcfb0a39"),
+//             "avtorSporocila" : "Sara",
+//             "prejemnikSporocila" : "Petra",
+//             "besedilo" : "zivjo petra, jaz sem sara in te ljubim"
+//     }
+//   ]
+//   }
+// )
