@@ -52,6 +52,4 @@ process.on('SIGTERM', () => {
     });
 });
 
-require('./instructions');
-require('./jobs');
 require('./users');
