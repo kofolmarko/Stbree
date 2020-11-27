@@ -100,30 +100,34 @@
       </div>
     </div>
 
-
-    <div id="obvestila" class="tabcontent">
-      <div class="col d-flex justify-content-center">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nedavna obvestila</th>
-              <th scope="col">Datum</th>
-            </tr>
-          </thead>
-          {{#each obvestila as |obvestilo|}}
-            <tbody>
-              <tr class="table-danger">
-                <th scope="row">{{obvestilo.stevilo}}</th>
-                <td><a href="{{obvestilo.povezava}}">{{obvestilo.nenavadno}}</a>
-                </td>
-                <td>14.11.2020</td>
+    {{!--{{#if sporocilo}}
+    <div class="alert alert-warning">{{sporocilo}}</div>
+    {{else}}--}}
+      <div id="obvestila" class="tabcontent">
+        <div class="col d-flex justify-content-center">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nedavna obvestila</th>
+                <th scope="col">Datum</th>
               </tr>
-            </tbody>
-          {{/each}}
-        </table>
+            </thead>
+            {{#each obvestila as |obvestilo|}}
+              <tbody>
+                <tr class="table-danger">
+                  <th scope="row">{{obvestilo.stevilo}}</th>
+                  <td><a href="{{obvestilo.povezava}}">{{obvestilo.nenavadno}}</a>
+                  </td>
+                  <td>14.11.2020</td>
+                </tr>
+              </tbody>
+            {{/each}}
+          </table>
+        </div>
       </div>
-    </div>
+    {{!--{{/else}} --}}
+
 
     <div id="moja-ocena" class="tabcontent">
       <div class="row">

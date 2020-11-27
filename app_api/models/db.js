@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const dbURI = 'mongodb://localhost/stbree';
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGODB_CLOUD_URI;
+} else if (process.env.NODE_ENV === 'docker') {
+    dbURI = 'mongodb://stbree-mongodb/Stbree';
 }
 
 mongoose.connect(dbURI, { 

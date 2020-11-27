@@ -1,36 +1,43 @@
-[
+[ 
   {
-    "ime": "Janez",
-    "priimek": "Novak",
-    "email": "janez.novak@gmail.com",
-    "geslo": "password123",
-    "statusInstruktorja": false,
-    "datumVpisa": {
-      "$date": "2019-11-07T00:00:00Z"
+  "ime": "Petra",
+  "priimek": "Kuralt",
+  "email": "pk@gmail.com",
+  "geslo": "password123",
+  "statusInstruktorja": false,
+
+  "mojProfil": {
+    "objava": {
+    "stevilka": 1,
+      "dogodek": "sp party",
+      "datum": "27.11" 
     },
-    "dodatniPodatki": [
-      {
-        "Opis": "Sem Janez in obožujem številke!",
-        "telefonskaStevilka": "041 532 234",
-        "ocena": 4
-      }
-    ]
-  },
-  {
-    "ime": "Andreja",
-    "priimek": "Horvat",
-    "email": "andreja.horvat@gmail.com",
-    "geslo": "123password",
-    "statusInstruktorja": true,
-    "datumVpisa": {
-      "$date": "2019-14-02T00:00:00Z"
-    },
-    "dodatniPodatki": [
-      {
-        "Opis": "Sem Andreja in rada ustvarjam!",
-        "telefonskaStevilka": "030 421 692",
-        "ocena": 3
-      }
-    ]
+    "obvestila": {
+    "stevilka": 1,
+      "dogodek": "imas sporocilo od myonelovesara",
+      "povezava": "#"
+    }
   }
+},
+
+  {
+  "ime": "Mirko",
+  "priimek": "Markocev",
+  "email": "mm@gmail.com",
+  "geslo": "password123",
+  "statusInstruktorja": false,
+
+  "mojProfil": {
+    "objava": {
+    "stevilka": 1,
+      "dogodek": "Oblikovanje",
+      "datum": "28.11" 
+    },
+    "obvestila": {
+    "stevilka": 1,
+      "dogodek": "Imaš sporočilo od Ena",
+      "povezava": "#"
+    }
+  }
+}
 ]

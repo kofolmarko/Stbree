@@ -34,10 +34,10 @@ router.get('/instrukcije-dogodki/dodaj', ctrlInstructions.instructionsEventNew);
 router.get('/instrukcije-dogodki/dogodek/uredi', ctrlInstructions.instructionsUser);
 
 /* GET user profile page */
-router.get('/profil/uporabnik', ctrlProfile.userProfile);
+router.get('/profil/uporabnik/:idUporabnika', ctrlProfile.userProfile);
 
 /* GET view-only profile page */
-router.get('/profil/ogled', ctrlProfile.viewProfile);
+router.get('/profil/ogled/:idUporabnika', ctrlProfile.viewProfile);
 
 /* GET chat page */
 router.get('/sporocanje', ctrlMain.chat);
