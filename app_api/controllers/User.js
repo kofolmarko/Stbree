@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const Uporabnik = mongoose.model('User');
+// const mongoose = require('mongoose');
+// const Uporabnik = mongoose.model('User');
 
 
-module.exports = {
+// module.exports = {
 
-};
+// };
