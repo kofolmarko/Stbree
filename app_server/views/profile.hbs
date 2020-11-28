@@ -1,0 +1,278 @@
+<body>
+
+    {{!--{{#if sporocilo}}
+      <div class="alert alert-warning">{{sporocilo}}</div>
+    {{else}}--}}
+    <div class="container">
+    <h1 id="profile-naslov">{{ime}} {{priimek}}</h1>
+    <hr>
+    <div class="row">
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
+        <form>
+          <div class="form-group">
+            <label for="opisProfila">Opis:</label>
+            <textarea class="form-control" readonly id="opisProfila"
+              rows="5">{{dodatniPodatki.opis}}</textarea>
+          </div>
+        </form>
+      {{#if admin}}
+        <button type="button" id="uredi-opis" value="edit" class="btn btn-primary" onclick="urediOpis()"
+          style="width: 30%">Spremeni opis</button>
+        <button type="button" id="shrani-opis" value="save" class="btn btn-danger" onclick="shraniOpis()"
+          style="width: 30%; display: none">Shrani</button>
+        <br>
+      {{/if}}
+      </div>
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
+        <img src="/assets/pics/instruktor1.jpg" alt="ProfilnaSlika" class="img-responsive"
+          style="width: 200px; height:200px">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="table-responsive">
+        <hr>
+        <table class="table table-borderless">
+          <tbody>
+            <h4 id="profile-podnaslov">Podatki:</h4>
+            <tr>
+              <th class="thPodatki" scope="row">Email naslov:</th>
+              <td>{{email}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Telefonska številka:</th>
+              <td>{{dodatniPodatki.telefonskaStevilka}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Ocena uporabnika:</th>
+              <td>
+                {{{zvezdice dodatniPodatki.ocena}}}
+              </td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Status inštruktorja:</th>
+              <td id="status">{{statusInstruktorja}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Datum vpisa:</th>
+              <td>{{datumVpisa}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        {{#if admin}}
+        <button type="button" id="edit-button" value="edit" class="btn btn-primary" onclick="urediPodatke()">Spremeni
+          podatke</button>
+        <button type="button" id="save-button" value="save" class="btn btn-danger" onclick="shraniPodatke()"
+          style="display: none;">
+          Shrani</button>
+        {{/if}}
+
+        <hr>
+        <h4 id="profile-podnaslov">Dodatno:</h4>
+      </div>
+    </div>
+    {{#if admin}}
+    <div class="tab pb-5">
+      <button class="tablinks" onclick="openCity(event, 'kronologija')">Moje Objave</button>
+      <button class="tablinks" onclick="openCity(event, 'obvestila')">Obvestila<span class="znacka">1</span></button>
+      <button class="tablinks" onclick="openCity(event, 'moja-ocena')">Moja ocena</button>
+      <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
+    </div>
+
+    <div id="kronologija" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Projekt</th>
+              <th scope="col">Datum</th>
+              <th scope="col">Uredi</th>
+            </tr>
+          </thead>
+          {{#each objave as |objava|}}
+            <tbody>
+              <tr>
+                <th scope="row">{{objava.stevilo}}</th>
+                <td>{{objava.projekt}}</td>
+                <td>{{objava.datum}}</td>
+                <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a> <a href="#"><i
+                      class="far fa-trash-alt"></i></a></td>
+              </tr>
+            </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+
+    <div id="obvestila" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nedavna obvestila</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          {{#each obvestila as |obvestilo|}}
+              <tbody>
+                <tr class="table-danger">
+                  <th scope="row">{{obvestilo.stevilo}}</th>
+                  <td><a href="{{obvestilo.povezava}}">{{obvestilo.nenavadno}}</a>
+                  </td>
+                  <td>{{obvestilo.datum}}</td>
+                </tr>
+              </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div id="moja-ocena" class="tabcontent">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <p style="margin: 0;">Moja ocena:</p>
+          {{{zvezdice dodatniPodatki.ocena}}}
+        </div>
+      </div>
+    </div>
+
+    <div id="spremeni-geslo" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <form>
+          <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
+          <div class="form-group">
+            <label for="name">Novo geslo:</label>
+            <input type="password" id="passwordReset"><br>
+            <label for="surname">Potrdi novo geslo: </label>
+            <input type="password" id="passwordResetConfirm">
+          </div>
+          <button class="btn btn-danger" id="resetPassword" type="submit" onclick="novoGeslo()">Potrdi</button>
+        </form>
+      </div>
+    </div>
+
+    {{else}}
+    <div class="tab pb-5">
+      <button class="tablinks" onclick="openCity(event, 'kontakt')">Kontakt</button>
+      <button class="tablinks" onclick="openCity(event, 'moja-dela')">Moja dela</button>
+      <button class="tablinks" onclick="openCity(event, 'moje-instrukcije')">Moje inštrukcije</button>
+      <button class="tablinks" onclick="openCity(event, 'oceni-me')">Oceni me!</button>
+    </div>
+    
+
+    <div id="kontakt" class="tabcontent">
+      <p><b>Kontaktiraj me preko:</b></p>
+      <ul class="list-unstyled">
+        <li class="d-inline">
+          <a class="fa fa-comment" href="./chat.html" target="_blank" id="moznostiKontakta"> Privatnega sporočila</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="moja-dela" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Delo</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          {{#each dela as |delo|}}
+          <tbody>
+            <tr>
+              <th scope="row">{{delo.stevilka}}</th>
+              <td>{{delo.ime}}</td>
+              <td>{{delo.datum}}</td>
+            </tr>
+          </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div id="moje-instrukcije" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Inštrukcije</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          {{#each instrukcije as |instrukcija|}}
+          <tbody>
+            <tr>
+              <th scope="row">{{instrukcija.stevilka}}</th>
+              <td>{{instrukcija.ime}}</td>
+              <td>{{instukcija.datum}}</td>
+            </tr>
+          </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div id="oceni-me" class="tabcontent">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <table>
+            <tr>
+              <th scope="row">Dodaj oceno:</th>
+              <td>
+                <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </td>
+              <td><button class="btn btn-success" style="margin-left: 20px;">Potrdi</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  </div>
+
+  <script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(window).scroll(function () {
+      $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+  </script>
+</body>
+
+</html>
