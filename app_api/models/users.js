@@ -7,8 +7,8 @@ const uporabnikDodatnoShema = new mongoose.Schema({
 });
 
 const sporocilaShema = new mongoose.Schema({
-  avtorSporocila: { type: String, required: true },
-  prejemnikSporocila: { type: String, required: true },
+  avtorSporocila: { type: String},
+  prejemnikSporocila: { type: String},
   besedilo: "String",
   cas: { type: Date, "default": Date.now }
 });    
@@ -53,3 +53,16 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 //   ]
 //   }
 // )
+
+
+// curl -X POST \
+//        -d "naziv=Donald Trump&ocena=4&komentar=Najbolje je, da v puščavi tudi prespite in si v beduinskem kampu privoščite pravo gostijo ob večernem ognju." \
+//        -H "Content-Type: application/x-www-form-urlencoded" \
+//        http://localhost:3000/api/lokacije/5facd832e8a71e43d2895abb/komentarji
+
+
+
+// curl -X POST \
+//         -d "avtorSporocila=Sara&prejemnikSporocila=Tinna&besedilo=danes je pa lep soncek" \
+//         -H "Content-Type: application/x-www-form-urlencoded" \
+//         http://localhost:3000/api/chat/5fc14f9daf2e68b8e78909e7

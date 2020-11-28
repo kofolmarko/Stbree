@@ -32,9 +32,56 @@ const naloziSporocilo = (req, res) => {
     });
 };
 
+
+
+const dodajSporocilo = (req, res, uporabnik) => {
+  if (!uporabnik) {
+    res.status(404).json({"sporočilo": "Ne najdem uporabnika."});
+  } else {
+    uporabnik.poslanaSporocila.push({
+      avtorSporocila: req.body.avtor,
+      prejemnikSporocila: req.body.prejemnik,
+      besedilo: req.body.besedilo
+    });
+    uporabnik.save((napaka, uporabnik) => {
+      if (napaka) {
+        res.status(400).json(napaka);
+      } else {
+        const dodanoSporocilo = uporabnik.poslanaSporocila.slice(-1).pop();
+        res.status(201).json(dodanoSporocilo);
+      }
+    });
+  }
+};
+
+
+
+
   const kreirajSporocilo = (req, res) => {
-    res.status(200).json({"status": "uspešno"});
+    const idUporabnika = req.params.idUserja;
+    console.log(idUporabnika)
+    if (idUporabnika) {
+      modelUserja
+        .findById(idUporabnika)
+         .select('poslanaSporocila')
+        .exec((napaka, uporabnik) => {
+          if (napaka) {
+            res.status(400).json(napaka);
+          } else {
+            dodajSporocilo(req, res, uporabnik);
+          }
+        });
+    } else {
+      res.status(400).json({
+        "sporočilo": 
+          "Ne najdem uporabnika, idUporabnika je obvezen parameter."
+      });
+    }
   };
+
+
+
+
 
 module.exports = {
     naloziSporocilo,
