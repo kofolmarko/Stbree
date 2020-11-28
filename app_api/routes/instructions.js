@@ -12,6 +12,9 @@ router.get('/instruktorji', ctrlInstrukcije.instruktorji);
 //GET instructions events list
 router.get('/instrukcije-dogodki', ctrlInstrukcije.instrukcijeDogodki);
 
+//GET ordered by params
+router.get('/instrukcije-dogodki/:parameter', ctrlInstrukcije.instrukcijeDogodkiOrder);
+
 //POST new instructions event
 router.post('/instrukcije-dogodki', ctrlInstrukcije.instrukcijeDogodekKreiraj);
 
@@ -23,6 +26,9 @@ router.put('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstrukcije.instrukcij
 
 //DELETE instructions event by id
 router.delete('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstrukcije.instrukcijeDogodekIzbrisi);
+
+//POST filter
+//router.post('/instrukcije-dogodki/:filter', ctrlInstrukcije.instrukcijeDogodki);
 
 
 //ROUTER export

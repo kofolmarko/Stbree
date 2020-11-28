@@ -23,7 +23,7 @@ router.post('/prijava', ctrlSigning.loginUser);
 router.post('/odjava', ctrlSigning.signout);
 
 //GET all registered users (only available via API)
-router.get('/uporabniki', ctrlSigning.users);
+//router.get('/uporabniki', ctrlSigning.users);
 
 
 //ROUTER export

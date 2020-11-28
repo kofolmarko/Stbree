@@ -83,6 +83,50 @@ const instrukcijeDogodki = (req, res) => {
     });
 };
 
+//ORDER BY PARAMETER
+const instrukcijeDogodkiOrder = (req, res) => {
+  console.log("INSIDE API");
+  console.log(req.params.parameter);
+
+  let {parameter} = req.params;
+  console.log(parameter.substring(0,3));
+  console.log(parameter.substring(3));
+
+  if(parameter.substring(0,3) == "REV") {
+    console.log("We have a reverse!");
+    parameter = parameter.substring(3);
+  }
+
+  console.log(parameter);
+
+    InstrukcijeDogodek
+    .aggregate()
+    .limit(10)
+    .sort(parameter)
+    .exec((napaka, instrukcijeDogodki) => {
+      if (napaka) {
+        res.status(500).json(napaka);
+      } else {
+        console.log("RETURNING OBJECTS FROM API");
+        res.status(200).json(
+          instrukcijeDogodki.map(instrukcijeDogodek => {
+            return {
+              "_id": instrukcijeDogodek._id,
+              "naziv": instrukcijeDogodek.naziv,
+              "opis": instrukcijeDogodek.opis,
+              "cena": instrukcijeDogodek.cena,
+              "datum": instrukcijeDogodek.datum,
+              "ura": instrukcijeDogodek.ura,
+              "steviloProstihMest": instrukcijeDogodek.steviloProstihMest,
+              "idInstruktorja": instrukcijeDogodek.idInstruktorja
+            };
+          })
+        );
+      }
+    });
+  
+};
+
 //GET instructions event by id
 const instrukcijeDogodekPreberi = (req, res) => {
   InstrukcijeDogodek
@@ -161,12 +205,12 @@ const instrukcijeDogodekIzbrisi = (req, res) => {
     });
 };
 
-
 //EXPORT functions
 module.exports = {
   instruktorji,
   instrukcijeDogodekKreiraj,
   instrukcijeDogodki,
+  instrukcijeDogodkiOrder,
   instrukcijeDogodekPreberi,
   instrukcijeDogodekPosodobi,
   instrukcijeDogodekIzbrisi

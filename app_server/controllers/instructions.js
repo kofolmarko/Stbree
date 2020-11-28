@@ -53,7 +53,7 @@ const eventList = (req, res) => {
 
 //RENDER instructions event list
 const instructionsEventList = (req, res, instrukcijeDogodki, sporocilo) => {
-  console.log(instrukcijeDogodki);
+  console.log("RENDERING..." + instrukcijeDogodki);
   res.render('instructions-events-list', {
     instrukcijeDogodki: instrukcijeDogodki,
     sporocilo: sporocilo
@@ -87,6 +87,50 @@ const getInstructionsEvent = async (req, res, povratniKlic) => {
   }
 };
 
+//POST filter
+const filter = (req, res) => {
+  console.log("filtriram dogodke v app server");
+  //console.log(req.body);
+  console.log(req.params.parameter);
+  axios
+  .get('http://localhost:3000/api/instrukcije-dogodki/' + req.params.parameter)
+  .then((dogodki) => {
+    console.log("filtering by " + req.params.parameter);
+    //console.log(dogodki.data);
+
+    
+    if (req.params.parameter.substring(0,3) == "REV") {
+      dogodki.data = dogodki.data.reverse();
+    }
+    
+
+    console.log(dogodki.data);
+
+    //instructionsEventList(req, res, dogodki.data);
+    //console.log(res);
+    
+    res.render('instructions-events-list', {
+      instrukcijeDogodki: dogodki.data
+    });
+
+    //res.redirect('/instrukcije-dogodki/' + req.params.parameter);
+
+    //sortDates(dogodki);
+
+    /*
+    var datumi = [];
+    for (i = 0; i < dogodki.data.length; i++) {
+      console.log(i);
+      console.log(dogodki.data[i]);
+    }
+    console.log("Tabela datumov: ", datumi);
+    */
+  })
+  .catch((napaka) => {
+    prikaziNapako(req, res, napaka);
+  });
+};
+
 //RENDER instructions event page with id
 const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
   var isAdmin = false;
@@ -110,20 +154,22 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
 
 //GET instructor data
 const getInstructor = async (req, res, dogodek, povratniKlic) => {
+  console.log("Getting the instructor for the event");
   const result = await axios.get('http://localhost:3000/api/uporabnik/' + dogodek.idInstruktorja);
   console.log(result.data);
   povratniKlic(req, res, result.data);
 };
 
 //GET instructions event new post page
-const instructionsEventNew = (req, res) => {
-  res.render('instructions-event-new');
+const instructionsEventNew = (req, res, sporocilo) => {
+  res.render('instructions-event-new', {sporocilo: sporocilo});
 };
 
 //POST a new instructions event
 const instructionsEventNewPost = (req, res) => {
   if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum || !req.body.ura || !req.body.steviloProstihMest) {
     console.log("izpolni vsa polja");
+    instructionsEventNew(req, res, "Prosim izpolnite vsa polja.");
   } else {
     //console.log("posting to: " + apiParametri.streznik);
     const idPrijavljenega = require('./signing').loginID.val;
@@ -206,10 +252,8 @@ const instructionsUser = (req, res) => {
 /* ERROR MESSAGE */
 const prikaziNapako = (req, res, napaka) => {
   let naslov = "Nekaj je šlo narobe!";
-  let vsebina = napaka.response.data["sporočilo"] ?
-    napaka.response.data["sporočilo"] : (napaka.response.data["message"] ?
-      napaka.response.data["message"] : "Nekaj nekje očitno ne deluje.");
-  if (napaka.response.data["_message"] == "Lokacija validation failed") {
+  let vsebina = "Nekaj ne deluje pravilno";
+  if (!napaka) {
     //res.redirect(
     //'/instrukcije-dogodki/dodaj?napaka=vrednost'
     //);
@@ -234,6 +278,7 @@ module.exports = {
   instructionsEventNew,
   instructionsEventNewPost,
   instructionsEventEdit,
-  instructionsEventDelete
+  instructionsEventDelete,
+  filter
   //instructionsUser
 };

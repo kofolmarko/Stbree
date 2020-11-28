@@ -63,12 +63,13 @@ const registrirajUporabnika = (req, res) => {
         if (uporabnik != null) {
           res.status(409).json(uporabnik);
         } else {
+          console.log(req.body.statusInstruktorja);
           Uporabnik.create({
             ime: req.body.ime,
             priimek: req.body.priimek,
             email: req.body.email,
             geslo: req.body.geslo,
-            instruktor: req.body.instruktor,
+            statusInstruktorja: req.body.statusInstruktorja,
             datumVpisa: req.body.datumVpisa
           }, (napaka, uporabnik) => {
             if (uporabnik) {

@@ -34,6 +34,7 @@ const registerNewUser = (req, res) => {
     signup(req, res, messagetwo);
   } else {
     //console.log("Registering a new User to the database...");
+    console.log(req.body);
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/uporabniki',
@@ -42,7 +43,7 @@ const registerNewUser = (req, res) => {
         priimek: req.body.priimek,
         email: req.body.email,
         geslo: req.body.geslo,
-        instruktor: req.body.instruktor
+        statusInstruktorja: req.body.statusInstruktorja
       }
     }).then((user) => {
       console.log("New user registered:");
@@ -123,6 +124,7 @@ const loginUser = (req, res) => {
   }
 };
 
+/*
 //API GET list of all registered users
 const users = (req, res) => {
   axios
@@ -135,6 +137,7 @@ const users = (req, res) => {
       console.error(err);
     });
 };
+*/
 
 //ERROR handling
 const prikaziNapako = (req, res, napaka) => {
@@ -165,7 +168,6 @@ module.exports = {
   signin,
   registerNewUser,
   loginUser,
-  users,
   loginStatus,
   loginID,
   signout

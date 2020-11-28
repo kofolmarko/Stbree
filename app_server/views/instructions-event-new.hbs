@@ -8,9 +8,9 @@
                         znanje.</i></p>
                 <hr>
                 <form id="instructionsEventNewPost" action="" method="post" role="form">
-                    {{#ujemanjeNiza napaka "vrednost"}}
-                        <div class="alert alert-danger">Prosim izpolnite polja!</div>
-                    {{/ujemanjeNiza}}
+                    {{#if sporocilo}}
+                    <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
+                    {{/if}}
                     <div class="form-group">
                         <label for="naziv">Ime dogodka</label>
                         <input id="naziv" name="naziv" type="text" class="form-control"

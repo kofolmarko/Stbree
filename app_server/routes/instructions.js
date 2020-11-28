@@ -28,6 +28,9 @@ router.put('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructi
 //DELETE instructions event
 router.delete('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructionsEventDelete);
 
+//POST filter
+router.get('/instrukcije-dogodki/:parameter', ctrlInstructions.filter);
+
 
 //ROUTER export
 module.exports = router;
