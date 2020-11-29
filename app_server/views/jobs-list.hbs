@@ -47,7 +47,7 @@
   <div id="instructors" class="container">
     {{#each dela as |delo|}}
     <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="../../assets/pics/delo.png" alt="Card image cap">
+      <img class="card-img-top" src="../../assets/thumbnails/red.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{delo.naziv}}</h5>
         <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -60,7 +60,7 @@
 
   <hr>
 
-  {{> carousel}}
+  {{> carousel_getstarted}}
 
   <script>
     let filterBtn = document.getElementById("filter-btn");

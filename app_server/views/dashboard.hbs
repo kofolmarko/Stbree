@@ -1,7 +1,8 @@
 <body>
-    <div id="moja-opravila">
-        <h1 class="container text-light bg-dark">Moja opravila</h1>
-        <table class="table table-primary table-hover container" id="todo-list">
+    <h1 class="container" id="welcome-sign"><strong>Pozdravljeni, {{imePrijavljenega}}</strong></h1>
+    <div id="moja-opravila" class="container" style="padding: 0;">
+        <h1 class="container-fluid text-light bg-dark">Moja opravila</h1>
+        <table class="table table-primary table-hover container-fluid" id="todo-list">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Datum</th>
@@ -10,6 +11,7 @@
                 </tr>
             </thead>
             <tbody>
+                {{#if dogodki}}
                 {{#each dogodki as |dogodek|}}
                 <tr>
                     <th scope="row">{{pretvoriDatum dogodek.datum}}</th>
@@ -17,6 +19,9 @@
                     <th>{{{generirajPovezavoZaDogodek dogodek}}}</th>
                 </tr>
                 {{/each}}
+                {{else}}
+                    <th scope="row">Nimate še obveznosti. Prijavite se na dogodek ali delo.</th>
+                {{/if}}
                 
                 {{#each dela as |delo|}}
                 <tr>
@@ -39,7 +44,7 @@
                 <h4 class="text-light">Novi inštruktorji</h4>
                 <div class="carousel-item active">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/instruktor2.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/blue.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f3.ime}}</h5>
                             <p class="card-text">{{f3.predmeti}}</p>
@@ -49,7 +54,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/instruktor3.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/blue.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f2.ime}}</h5>
                             <p class="card-text">{{f2.predmeti}}</p>
@@ -59,7 +64,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/instruktor1.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/blue.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f1.ime}}</h5>
                             <p class="card-text">{{f1.predmeti}}</p>
@@ -85,7 +90,7 @@
                 <h4 class="text-light">Prihajajoči dogodki</h4>
                 <div class="carousel-item active">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/mat.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/green.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f6.ime}}</h5>
                             <p class="card-text">{{f6.predmeti}}</p>
@@ -95,7 +100,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/fiz.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/green.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f5.ime}}</h5>
                             <p class="card-text">{{f5.predmeti}}</p>
@@ -105,7 +110,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/prog.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/green.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f4.ime}}</h5>
                             <p class="card-text">{{f4.predmeti}}</p>
@@ -132,7 +137,7 @@
                 <h4 class="text-light">Promovirane ponudbe</h4>
                 <div class="carousel-item active">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/prog.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/red.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f9.ime}}</h5>
                             <p class="card-text">{{f9.predmeti}}</p>
@@ -142,7 +147,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/slo.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/red.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f8.ime}}</h5>
                             <p class="card-text">{{f8.predmeti}}</p>
@@ -152,7 +157,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="card featured-instructor">
-                        <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
+                        <img class="card-img-top" src="../../assets/thumbnails/red.png" alt="Card image cap">
                         <div class="card-body featured-card-body">
                             <h5 class="card-title">{{f7.ime}}</h5>
                             <p class="card-text">{{f7.predmeti}}</p>

@@ -17,3 +17,13 @@
     height: 100%;
     top: 0;
 }
+
+#welcome-sign {
+    text-align: center;
+    margin: auto; 
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 2rem; 
+    border-radius: 0.5rem; 
+    background-image: url('../assets/thumbnails/white.png');
+}

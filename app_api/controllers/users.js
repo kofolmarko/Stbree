@@ -12,7 +12,7 @@ const Delo = mongoose.model('Delo');
 const uporabniki = (req, res) => {
   Uporabnik
     .aggregate()
-    .limit(10)
+    .limit(99)
     .exec((napaka, uporabniki) => {
       if (napaka) {
         res.status(500).json(napaka);

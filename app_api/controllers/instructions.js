@@ -9,7 +9,7 @@ const User = mongoose.model('User');
 const instruktorji = (req, res) => {
   User
     .aggregate()
-    .limit(10)
+    .limit(99)
     .exec((napaka, instruktorji) => {
       if (napaka) {
         res.status(500).json(napaka);
@@ -60,7 +60,7 @@ const instrukcijeDogodekKreiraj = (req, res) => {
 const instrukcijeDogodki = (req, res) => {
   InstrukcijeDogodek
     .aggregate()
-    .limit(10)
+    .limit(99)
     .exec((napaka, instrukcijeDogodki) => {
       if (napaka) {
         res.status(500).json(napaka);
@@ -101,7 +101,7 @@ const instrukcijeDogodkiOrder = (req, res) => {
 
     InstrukcijeDogodek
     .aggregate()
-    .limit(10)
+    .limit(99)
     .sort(parameter)
     .exec((napaka, instrukcijeDogodki) => {
       if (napaka) {

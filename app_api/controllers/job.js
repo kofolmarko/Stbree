@@ -33,7 +33,7 @@ const deloKreiraj = (req, res) => {
 const dela = (req, res) => {
   Delo
     .aggregate()
-    .limit(10)
+    .limit(99)
     .exec((napaka, dela) => {
       if (napaka) {
         res.status(500).json(napaka);
@@ -148,7 +148,7 @@ const delaOrder = (req, res) => {
 
     Delo
     .aggregate()
-    .limit(10)
+    .limit(99)
     .sort(parameter)
     .exec((napaka, dela) => {
       if (napaka) {

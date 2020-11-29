@@ -61,6 +61,7 @@ const registerNewUser = (req, res) => {
 //GLOBAL LOGIN VARIABLES
 let loginStatus = false;
 let loginID = {val: null};
+let loginName = {val: null};
 
 //IMPORT navbar switcher
 const navbarToggle = require('../../public/javascripts/navbar-toggle');
@@ -77,6 +78,7 @@ const signin = (req, res, sporocilo) => {
 const signout = () => {
   loginStatus = false;
   loginID.val = null;
+  loginName.val = null;
   navbarToggle(loginStatus);
 };
 
@@ -100,8 +102,10 @@ const loginUser = (req, res) => {
         if (user.data.geslo == reqData.geslo) {
           //console.log(user.data._id);
           console.log(user.data.id);
+          console.log(user.data.ime);
           loginStatus = true;
           loginID.val = user.data._id;
+          loginName.val = user.data.ime;
           navbarToggle(loginStatus);
           res.redirect('/my');
         } else {
@@ -170,5 +174,6 @@ module.exports = {
   loginUser,
   loginStatus,
   loginID,
+  loginName,
   signout
 };

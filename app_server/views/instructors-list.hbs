@@ -8,7 +8,7 @@
       <a class="nav-link" href="/instrukcije-dogodki">Dogodki</a>
   </ul>
 
-  <!--F i l t e r-->
+  <!--F i l t e r
   <div class="container" id="filter-bar">
     <form action="#">
 
@@ -54,11 +54,11 @@
       <input type="submit" value="Filtriraj" class="btn btn-info">
     </form>
   </div>
-
+-->
   <!--S e a r c h  b a r-->
   <div class="input-group mb-3 container">
-    <input type="text" class="form-control" placeholder="Vpiši želeno iskanje" aria-label="Iskanje"
-      aria-describedby="search-button">
+    <input id="search" onkeyup="isci()" type="text" class="form-control" placeholder="Poišči inštruktorja..."
+      aria-label="Iskanje" aria-describedby="search-button">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary btn-info" type="button" id="search-button">Išči</button>
     </div>
@@ -74,7 +74,7 @@
     {{#each instruktorji as |instruktor|}}
     {{#if statusInstruktorja}}
     <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/instruktor1.jpg" alt="Card image cap">
+      <img class="card-img-top" src="../../assets/thumbnails/blue.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{instruktor.ime}} {{instruktor.priimek}}</h5>
         <p class="card-text">{{instruktor.opis}}</p>
@@ -88,6 +88,34 @@
 
   <hr>
 
-  {{> carousel}}
+  {{> carousel_getstarted}}
+
+<script>
+  function isci() {
+    // Declare variables
+    var filter, list, a, txtValue, search;
+
+
+    //ul = document.getElementById("myUL");
+    //li = ul.getElementsByTagName('li');
+
+    search = document.getElementById("search");
+    list = document.getElementsByClassName("card");
+
+    filter = search.value.toUpperCase();
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < list.length; i++) {
+      a = list[i].getElementsByClassName("card-title")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        list[i].style.display = "";
+      } else {
+        list[i].style.display = "none";
+      }
+    }
+  }
+</script>
+
 
 </body>

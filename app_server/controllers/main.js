@@ -56,6 +56,9 @@ const dashboard = async (req, res) => {
                 dela.data.unshift({ ime: "Ne najdem ničesar :(", opis: "Ni novih ponudb..." });
               }
 
+              var loginName = require('./signing').loginName.val;
+              console.log(loginName);
+
               res.render('dashboard', {
                 f1: { ime: uporabniki.data[uporabniki.data.length - 1].ime, predmeti: uporabniki.data[uporabniki.data.length - 1].email, u1: uporabniki.data[uporabniki.data.length - 1] },
                 f2: { ime: uporabniki.data[uporabniki.data.length - 2].ime, predmeti: uporabniki.data[uporabniki.data.length - 2].email, u2: uporabniki.data[uporabniki.data.length - 2] },
@@ -69,7 +72,8 @@ const dashboard = async (req, res) => {
                 f8: { ime: dela.data[dela.data.length - 2].naziv, predmeti: dela.data[dela.data.length - 2].opis, d2: dela.data[dela.data.length - 2] },
                 f9: { ime: dela.data[dela.data.length - 3].naziv, predmeti: dela.data[dela.data.length - 3].opis, d3: dela.data[dela.data.length - 3] },
 
-                dogodki: loggedInUser.dogodki
+                dogodki: loggedInUser.dogodki,
+                imePrijavljenega: loginName
                 //dela: uporabnik.data.dela
               });
 
