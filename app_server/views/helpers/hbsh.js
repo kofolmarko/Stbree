@@ -35,3 +35,14 @@ hbs.registerHelper('pretvoriDatum', function(date) {
   
   return dateFormat(date, "slovenski");
 });
+
+
+hbs.registerHelper('generirajPovezavoZaDogodek', function(dogodek) {
+  var povezava = '<a href="http://localhost:3000/instrukcije-dogodki/dogodek/' + dogodek._id + '">' + dogodek.naziv + "</a>";
+  return povezava;
+});
+
+hbs.registerHelper('generirajPovezavoZaDelo', function(delo) {
+  var povezava = '<a href="http://localhost:3000/ponudba-del/' + delo._id + '">' + delo.naziv + "</a>";
+  return povezava;
+});

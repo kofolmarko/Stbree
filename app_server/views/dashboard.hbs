@@ -7,25 +7,22 @@
                     <th scope="col">Datum</th>
                     <th scope="col" class="hour-column">Ura</th>
                     <th scope="col">Opravilo</th>
-                    <th scope="col">Izvajalec / Delodajalec</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each dogodki as |dogodek|}}
                 <tr>
-                    <th scope="row">{{dogodek.datum}}</th>
+                    <th scope="row">{{pretvoriDatum dogodek.datum}}</th>
                     <th scope="row" class="hour-column">{{dogodek.ura}}</th>
-                    <td><a href="/instrukcije-dogodki/dogodek">{{dogodek.naziv}}</a></td>
-                    <td><a href="/profil/ogled">Ime Inštruktorja</a></td>
+                    <th>{{{generirajPovezavoZaDogodek dogodek}}}</th>
                 </tr>
                 {{/each}}
                 
                 {{#each dela as |delo|}}
                 <tr>
-                    <th scope="row">{{delo.datum}}</th>
+                    <th scope="row">{{pretvoriDatum delo.datum}}</th>
                     <th scope="row" class="hour-column">{{delo.ura}}</th>
-                    <td><a href="/instrukcije-dogodki/dogodek">{{delo.naziv}}</a></td>
-                    <td><a href="/profil/ogled">Ime Inštruktorja</a></td>
+                    <th>{{{generirajPovezavoZaDelo delo}}}</th>
                 </tr>
                 {{/each}}
             </tbody>
@@ -177,5 +174,11 @@
         </div>
 
     </div>
+
+<script>
+    function pojdi(objekt) {
+        window.location = "/instrukcije-dogodki/dogodek/" + objekt._id
+    }
+</script>
 
 </body>
