@@ -1,5 +1,6 @@
 //API connection
 const axios = require('axios');
+const { uporabniki } = require('../../app_api/controllers/users');
 
 //API local parameters
 var apiParametri = {
@@ -12,22 +13,64 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 /* GET dashboard */
-const dashboard = (req, res) => {
+const dashboard = async (req, res) => {
   let uporabnikID = require('./signing').loginID.val;
   console.log(uporabnikID);
+  let loggedInUser;
   axios
     .get('http://localhost:3000/api/uporabnik/' + uporabnikID)
     .then((uporabnik) => {
-      console.log(uporabnik);
+      //console.log(uporabnik);
+      loggedInUser = uporabnik.data;
+      console.log(loggedInUser);
     })
     .catch((napaka) => {
       console.log(napaka);
     });
 
-  res.render('dashboard', { 
-    //dogodki: uporabnik.data.dogodki,
-    //dela: uporabnik.data.dela
-   });
+  axios
+    .get('http://localhost:3000/api/instruktorji')
+    .then((uporabniki) => {
+
+
+      axios
+        .get('http://localhost:3000/api/instrukcije-dogodki')
+        .then((dogodki) => {
+          console.log("NAJDEM UPORABNIKE ======> " + uporabniki.data);
+          console.log("NAJDEM DOGODKE =======> " + dogodki.data);
+
+          for (i = uporabniki.data.length; i < 3; i++) {
+            uporabniki.data.unshift({ ime: "Ne najdem ničesar :(", email: "Ni zanimivih inštruktorjev..." });
+          }
+
+          for (i = dogodki.data.length; i < 3; i++) {
+            dogodki.data.unshift({ ime: "Ne najdem ničesar :(", opis: "Ni novih dogodkov..." });
+          }
+
+          res.render('dashboard', {
+            f1: { ime: uporabniki.data[uporabniki.data.length - 1].ime, predmeti: uporabniki.data[uporabniki.data.length - 1].email },
+            f2: { ime: uporabniki.data[uporabniki.data.length - 2].ime, predmeti: uporabniki.data[uporabniki.data.length - 2].email },
+            f3: { ime: uporabniki.data[uporabniki.data.length - 3].ime, predmeti: uporabniki.data[uporabniki.data.length - 3].email },
+
+            f4: { ime: dogodki.data[dogodki.data.length - 1].naziv, predmeti: dogodki.data[dogodki.data.length - 1].opis },
+            f5: { ime: dogodki.data[dogodki.data.length - 2].naziv, predmeti: dogodki.data[dogodki.data.length - 2].opis },
+            f6: { ime: dogodki.data[dogodki.data.length - 3].naziv, predmeti: dogodki.data[dogodki.data.length - 3].opis },
+
+            dogodki: loggedInUser.dogodki
+            //dela: uporabnik.data.dela
+          });
+
+
+        })
+        .catch((err) => {
+          console.log("err in dogodki search " + err);
+        });
+
+
+
+    });
+
+
 
 };
 

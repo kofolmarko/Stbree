@@ -149,8 +149,12 @@ const odjavaOdDogodka = (req, res) => {
     console.log("Api najde dogodek: " + dogodek);
     Uporabnik
       .findByIdAndUpdate(req.params.loginID, {
-        $pull: { dogodki: dogodek }
-      })
+        $pull: { dogodki: { dogodek: dogodek._id } }}, { safe: true, multi:true }, function(err, obj) {
+         //console.log(dogodki);
+          console.log(obj.dogodki);
+         
+         console.log(err);
+        })
       .exec((uporabnik) => {
         console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
         res.status(200).json(uporabnik);
