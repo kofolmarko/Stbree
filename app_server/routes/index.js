@@ -24,6 +24,9 @@ router.get('/ponudba-del/delo/uredi', ctrlJob.jobUser);
 /* GET user profile page */
 router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
 
+/* GET user profile page */
+router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
+
 /* GET chat page */
 router.get('/sporocanje', ctrlMain.chat);
 
