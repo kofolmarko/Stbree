@@ -1,21 +1,16 @@
+//ROUTER import
 var express = require('express');
 var router = express.Router();
 
-var ctrlLanding = require('../controllers/landing');
-var ctrlSigning = require('../controllers/signing');
-var ctrlMain = require('../controllers/main');
-var ctrlJob = require('../controllers/job');
-var ctrlInstructions = require('../controllers/instructions');
-var ctrlProfile = require('../controllers/profile');
+//Controllers constants to access functions
+const ctrlLanding = require('../controllers/landing');
+const ctrlMain = require('../controllers/main');
+const ctrlJob = require('../controllers/job');
+const ctrlProfile = require('../controllers/profile')
+
 
 /* GET home page. */
 router.get('/', ctrlLanding.landing);
-
-/* GET signin page */
-router.get('/prijava', ctrlSigning.signin);
-
-/* GET signup page */
-router.get('/registracija', ctrlSigning.signup);
 
 /* GET dashboard */
 router.get('/my', ctrlMain.dashboard);
@@ -26,20 +21,12 @@ router.get('/ponudba-del/delo', ctrlJob.job);
 router.get('/ponudba-del/dodaj', ctrlJob.jobNew);
 router.get('/ponudba-del/delo/uredi', ctrlJob.jobUser);
 
-/* GET instructions related pages */
-router.get('/instruktorji', ctrlInstructions.instructorsList);
-router.get('/instrukcije-dogodki', ctrlInstructions.instructionsEventList);
-router.get('/instrukcije-dogodki/dogodek', ctrlInstructions.instructionsEvent);
-router.get('/instrukcije-dogodki/dodaj', ctrlInstructions.instructionsEventNew);
-router.get('/instrukcije-dogodki/dogodek/uredi', ctrlInstructions.instructionsUser);
-
 /* GET user profile page */
-router.get('/profil/uporabnik/:idUporabnika', ctrlProfile.userProfile);
-
-/* GET view-only profile page */
-router.get('/profil/ogled/:idUporabnika', ctrlProfile.viewProfile);
+router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
 
 /* GET chat page */
 router.get('/sporocanje', ctrlMain.chat);
 
+
+//ROUTER export
 module.exports = router;
