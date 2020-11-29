@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
-const uporabnikObveznostViewShema = new mongoose.Schema({
-  stevilka: {type: Number, required: true},
-  dogodek: {type: String, required: true},
-  datum: {type: String, required: true}
+const uporabnikObveznostShema = new mongoose.Schema({
+  stevilka: {type: Number},
+  dogodek: {type: String},
+  datum: {type: String}
 });
 
 const uporabnikViewShema = new mongoose.Schema({
-  delo: [uporabnikObveznostViewShema],
-  instrukcija: [uporabnikObveznostViewShema]
+  delo: [uporabnikObveznostShema],
+  instrukcija: [uporabnikObveznostShema]
 });
 
 const uporabnikUserObvestiloShema = new mongoose.Schema({
-  stevilka: {type: Number, required: true},
-  dogodek: {type: String, required: true},
+  stevilka: {type: Number},
+  dogodek: {type: String},
   datum: {type: Date, "default": Date.now}, //datum spremembe ali?
-  povezava: {type: String, required: true} 
+  povezava: {type: String} 
 });
 
 const uporabnikUserShema = new mongoose.Schema({
-  objava: [uporabnikObveznostViewShema],
+  objava: [uporabnikObveznostShema],
   obvestila: [uporabnikUserObvestiloShema]
 });
 
@@ -30,7 +30,7 @@ const uporabnikShema = new mongoose.Schema({
   statusInstruktorja: { type: Boolean, "default": false },
   datumVpisa: { type: Date, "default": Date.now },
   opis: String,
-  slika: String, //slika: {type: Slika, "default": "/mapa"}
+  slika: String, 
   telefonskaStevilka: [Number],
   ocena: { type: Number, "default": 0, min: 0, max: 5 },
   mojProfil: {type: uporabnikUserShema},
@@ -40,11 +40,11 @@ const uporabnikShema = new mongoose.Schema({
 mongoose.model('User', uporabnikShema, 'Users');
 
 /*
-db.User.save({ 
-    ime: 'Petra',
-    priimek: 'Kuralt',
-    email: 'pk@gmail.com',
-    geslo: 'ljubimsaro888',
+db.Users.save({ 
+    ime: 'Petfddsra',
+    priimek: 'Kudsfralt',
+    email: 'pkfd@gmail.com',
+    geslo: 'ljubimsfdfaro888',
     statusInstruktorja: false,
     opis: 'ponavadi procrastinatam',
     telefonskaStevilka: 89767,
