@@ -25,6 +25,12 @@ router.put('/uporabniki/:loginID/dogodek/:idDogodka', ctrlUporabniki.prijavaNaDo
 //PUT leave event
 router.put('/uporabniki/:loginID/dogodek/odjava/:idDogodka', ctrlUporabniki.odjavaOdDogodka);
 
+//PUT new job signup
+router.put('/uporabniki/:loginID/delo/:idDela', ctrlUporabniki.prijavaNaDelo);
+
+//PUT leave job
+router.put('/uporabniki/:loginID/delo/odjava/:idDela', ctrlUporabniki.odjavaOdDela);
+
 /*OBSOLETE
 router.put('/uporabniki/:email', ctrlUporabniki.nastaviStatus);
 */

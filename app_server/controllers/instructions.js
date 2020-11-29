@@ -333,6 +333,7 @@ module.exports = {
   instructionsEventDelete,
   filter,
   instructionsEventSignup,
-  instructionsEventLeave
+  instructionsEventLeave,
+  getInstructor
   //instructionsUser
 };

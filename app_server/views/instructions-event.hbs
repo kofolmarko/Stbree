@@ -37,11 +37,12 @@
             {{else if prijavljen}}
             <hr>
             <!--
-            <h6>Prijavi se na dogodek</h6>
-            <button type="button" class="btn btn-success" disabled>Na dogodek ste prijavljeni</button>
-            -->
             <h6>Odjavi se od dogodka</h6>
             <a onclick="odjavi()" class="btn btn-danger">Odjava</a>
+            -->
+
+            <h6>Prijavi se na dogodek</h6>
+            <button type="button" class="btn btn-success" disabled>Na dogodek ste prijavljeni</button>
 
             {{else}}
             {{#zapolnjeno steviloProstihMest}}
@@ -123,7 +124,7 @@
                     window.location.href, //current url
                     true
                 )
-                
+
                 asinhronaZahteva.addEventListener("load", function () {
                     //var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
                     //console.log(jsonRezultati);

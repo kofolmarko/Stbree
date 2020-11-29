@@ -5,6 +5,7 @@ mongoose.set('returnOriginal', false);
 //IMPORT user model
 const Uporabnik = mongoose.model('User');
 const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
+const Delo = mongoose.model('Delo');
 
 
 //GET registered users list
@@ -163,6 +164,61 @@ const odjavaOdDogodka = (req, res) => {
   });
 };
 
+
+//PUT prijava na dogodek
+const prijavaNaDelo = (req, res) => {
+  console.log("We're inside API!" + req.body);
+  console.log("We're inside API!" + req.data);
+  console.log("REQUEST PARAMETERS -> " + req.params.loginID);
+  console.log("REQUEST PARAMETERS -> " + req.params.idDela);
+  let stProstih;
+
+  Delo
+    .findById(req.params.idDela)
+    .exec((napaka, delo) => {
+      Uporabnik
+        .findByIdAndUpdate(req.params.loginID, {
+          $addToSet: { dela: delo }
+        })
+        .exec((uporabnik) => {
+          //console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
+          
+        });
+
+    });
+  Delo
+    .findByIdAndUpdate(req.params.idDela, {
+      zasedeno: true
+    })
+    .exec((napaka, delo) => {
+      res.status(200).json(delo);
+    });
+};
+
+//PUT odjava od dogodka
+const odjavaOdDela = (req, res) => {
+  console.log("api odjava od dogodka");
+  console.log(req.params.loginID);
+  InstrukcijeDogodek
+  .findById(req.params.idDela)
+  .exec((napaka, delo) => {
+    console.log("Api najde dogodek: " + delo);
+    Uporabnik
+      .findByIdAndUpdate(req.params.loginID, {
+        $pull: { dela: { delo: delo._id } }}, { safe: true, multi:true }, function(err, obj) {
+         //console.log(dogodki);
+          console.log(obj.dela);
+         
+         console.log(err);
+        })
+      .exec((uporabnik) => {
+        console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
+        res.status(200).json(uporabnik);
+      });
+
+  });
+};
+
 /*OBSOLETE
 const nastaviStatus = (req, res) => {
   Uporabnik
@@ -196,6 +252,8 @@ module.exports = {
   registrirajUporabnika,
   prijaviUporabnika,
   prijavaNaDogodek,
-  odjavaOdDogodka
+  odjavaOdDogodka,
+  prijavaNaDelo,
+  odjavaOdDela
   //nastaviStatus,
 };

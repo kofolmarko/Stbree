@@ -3,7 +3,8 @@
     <a href="/ponudba-del" class="btn btn-info">Nazaj na ponudbo del</a>
 
     {{#if admin}}
-    <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="return uredi()"><i class="fas fa-edit"></i></button>
+    <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="return uredi()"><i
+        class="fas fa-edit"></i></button>
     <button id="save-btn" value="save" class="btn btn-success d-none"><i class="fas fa-check"></i></button>
     <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
     {{/if}}
@@ -26,10 +27,16 @@
       <p id="datum">{{pretvoriDatum datum}}</p>
 
       {{#if admin}}
+      {{else if prijavljen}}
+      <h6>Prijavi se na delo</h6>
+      <button type="button" class="btn btn-success" disabled>Na delo ste prijavljeni</button>
+      {{else if zasedeno}}
+      <h6>Prijavi se na delo</h6>
+      <button type="button" class="btn btn-success" disabled>Delo je že zasedeno</button>
       {{else}}
       <hr>
       <h6>Prijavi se na delo</h6>
-      <a href="/ponudba-del/delo" class="btn btn-success">Prijava</a>
+      <a onclick="prijavi()" class="btn btn-success">Prijava</a>
       {{/if}}
 
     </div>
@@ -150,6 +157,16 @@
         cena: cena_novi,
         datum: datum_novi,
       };
+    }
+
+    function prijavi() {
+      console.log(window.location.href);
+      window.location = window.location.href + "/prijava";
+    }
+
+    function odjavi() {
+      console.log(window.location.href);
+      window.location = window.location.href + "/odjava";
     }
   </script>
 

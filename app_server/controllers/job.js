@@ -67,6 +67,23 @@ const renderJob = (req, res, delo, ponudnik) => {
   if (loginID == delo.idPonudnika) {
     isAdmin = true;
   }
+
+  gettingInsID = { idInstruktorja: loginID };
+
+  require('./instructions').getInstructor(req, res, gettingInsID, (req, res, loggedInUser) => {
+
+  console.log("rendering");
+  console.log(delo);
+  console.log(loggedInUser);
+  var isSignedUp = false;
+  for(i = 0; i < loggedInUser.dela.length; i++) {
+    if(delo._id == loggedInUser.dela[i]._id) {
+      console.log("found a match");
+      isSignedUp = true;
+      break;
+    }
+  }
+
   res.render('job', {
     naziv: delo.naziv,
     opis: delo.opis,
@@ -75,8 +92,11 @@ const renderJob = (req, res, delo, ponudnik) => {
     ime: ponudnik.ime + ' ' + ponudnik.priimek,
     opisPonudnik: ponudnik.opis,
     ocena: ponudnik.ocena,
-    admin: isAdmin
+    admin: isAdmin,
+    prijavljen: isSignedUp,
+    zasedeno: delo.zasedeno
   });
+});
 };
 
 /* GET ponudnik data */
@@ -159,6 +179,39 @@ const jobDelete = (req, res) => {
     });
 };
 
+
+const jobSignup = (req, res) => {
+  var loginID = require('./signing').loginID.val;
+  console.log(loginID);
+  console.log(req.params);
+  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/delo/" + req.params.idDela)
+    .then((uporabnik) => {
+      console.log("Nazaj na serverju: " + uporabnik);
+      //console.log("List od user jobs: " + uporabnik.dela);
+      
+      res.redirect('/ponudba-del');
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
+};
+
+const jobLeave = (req, res) => {
+  var loginID = require('./signing').loginID.val;
+  console.log(loginID);
+  console.log(req.params);
+  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/delo/odjava/" + req.params.idDela)
+    .then((uporabnik) => {
+      console.log("Nazaj na serverju: " + uporabnik);
+      //console.log("List od user jobs: " + uporabnik.dela);
+      
+      res.redirect('/ponudba-del');
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
+};
+
 const prikaziNapako = (req, res, napaka) => {
   let naslov = "Nekaj je šlo narobe!";
   let vsebina = napaka.response.data["sporočilo"] ?
@@ -190,5 +243,7 @@ module.exports = {
   jobNewPost,
   jobEdit,
   jobDelete,
-  prikaziNapako
+  prikaziNapako,
+  jobSignup,
+  jobLeave
 };

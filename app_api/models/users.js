@@ -28,7 +28,7 @@ const uporabnikZacetnoShema = new mongoose.Schema({
   statusInstruktorja: { type: Boolean, "default": false },
   datumVpisa: { type: Date, "default": Date.now },
   dogodki: [instrukcijeDogodekShema],
-  Dela: [deloShema]
+  dela: [deloShema]
 });
 
 mongoose.model('User', uporabnikZacetnoShema, 'Users');
