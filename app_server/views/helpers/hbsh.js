@@ -17,3 +17,10 @@ hbs.registerHelper('zvezdice', (ocena) => {
 hbs.registerHelper('ujemanjeNiza', (vrednost1, vrednost2, moznosti) => {
   return (vrednost1 == vrednost2) ? moznosti.fn(this) : moznosti.inverse(this);
 });
+
+hbs.registerHelper('zapolnjeno', (steviloProstihMest, options) => {
+  if(steviloProstihMest <= 0)
+    return options.fn(this);
+  else
+    return options.inverse(this);
+});

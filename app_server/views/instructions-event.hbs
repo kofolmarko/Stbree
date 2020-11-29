@@ -31,10 +31,23 @@
             <p id="cena">{{cena}}</p>
 
             {{#if admin}}
+            {{else if prijavljen}}
+            <hr>
+            <!--
+            <h6>Odjavi se od dogodka</h6>
+            <a onclick="odjavi()" class="btn btn-danger">Odjava</a>
+            -->
+            <h6>Prijavi se na dogodek</h6>
+            <button type="button" class="btn btn-success" disabled>Na dogodek ste prijavljeni</button>
+            {{else}}
+            {{#zapolnjeno steviloProstihMest}}
+            <hr>
+            <div class="alert alert-warning container" style="margin-top: 2rem">Žal ni več razpoložljivih mest :(</div>
             {{else}}
             <hr>
             <h6>Prijavi se na dogodek</h6>
-            <a href="/ponudba-del/delo" class="btn btn-success">Prijava</a>
+            <a onclick="prijavi()" class="btn btn-success">Prijava</a>
+            {{/zapolnjeno}}
             {{/if}}
         
         </div>
@@ -189,6 +202,17 @@
                 steviloProstihMest: steviloProstihMest_novi
             };
         }
+
+        function prijavi() {
+            console.log(window.location.href);
+            window.location = window.location.href + "/prijava";
+        }
+
+        function odjavi() {
+            console.log(window.location.href);
+            window.location = window.location.href + "/odjava";
+        }
+
     </script>
 
     {{> carousel}}

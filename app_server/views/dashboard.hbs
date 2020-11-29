@@ -11,24 +11,23 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each dogodki as |dogodek|}}
                 <tr>
-                    <th scope="row">19. 11. 2020</th>
-                    <th scope="row" class="hour-column">17:00</th>
-                    <td><a href="/instrukcije-dogodki/dogodek">Inštrukcije Matematike</a></td>
-                    <td><a href="/profil/ogled">Mark Zuki</a></td>
+                    <th scope="row">{{dogodek.datum}}</th>
+                    <th scope="row" class="hour-column">{{dogodek.ura}}</th>
+                    <td><a href="/instrukcije-dogodki/dogodek">{{dogodek.naziv}}</a></td>
+                    <td><a href="/profil/ogled">Ime Inštruktorja</a></td>
                 </tr>
+                {{/each}}
+                
+                {{#each dela as |delo|}}
                 <tr>
-                    <th scope="row">12. 12. 2020</th>
-                    <th scope="row" class="hour-column">-</th>
-                    <td><a href="/ponudba-del/delo">Program v javi</a></td>
-                    <td><a href="/profil/ogled">Katarina Štanta</a></td>
+                    <th scope="row">{{delo.datum}}</th>
+                    <th scope="row" class="hour-column">{{delo.ura}}</th>
+                    <td><a href="/instrukcije-dogodki/dogodek">{{delo.naziv}}</a></td>
+                    <td><a href="/profil/ogled">Ime Inštruktorja</a></td>
                 </tr>
-                <tr>
-                    <th scope="row">3. 1. 2021</th>
-                    <th scope="row" class="hour-column">20:00</th>
-                    <td><a href="/instrukcije-dogodki/dogodek">Photoshop tečaj</a></td>
-                    <td><a href="/profil/ogled">Stanislava Radosavljević</a></td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>

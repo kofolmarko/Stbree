@@ -1,6 +1,34 @@
+//API connection
+const axios = require('axios');
+
+//API local parameters
+var apiParametri = {
+  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+};
+
+//API Mogno Atlas parameters
+if (process.env.NODE_ENV === 'production') {
+  apiParametri.streznik = 'https://stbree.herokuapp.com';
+}
+
 /* GET dashboard */
 const dashboard = (req, res) => {
-  res.render('dashboard', { title: "Nadzorna plošča" });
+  let uporabnikID = require('./signing').loginID.val;
+  console.log(uporabnikID);
+  axios
+    .get('http://localhost:3000/api/uporabnik/' + uporabnikID)
+    .then((uporabnik) => {
+      console.log(uporabnik);
+    })
+    .catch((napaka) => {
+      console.log(napaka);
+    });
+
+  res.render('dashboard', { 
+    //dogodki: uporabnik.data.dogodki,
+    //dela: uporabnik.data.dela
+   });
+
 };
 
 /* GET user profile */

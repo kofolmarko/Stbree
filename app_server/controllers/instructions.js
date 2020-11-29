@@ -133,8 +133,25 @@ const filter = (req, res) => {
 
 //RENDER instructions event page with id
 const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
-  var isAdmin = false;
   var loginID = require('./signing').loginID.val;
+  gettingInsID = { idInstruktorja: loginID };
+
+  getInstructor(req, res, gettingInsID, (req, res, loggedInUser) => {
+
+  console.log("rendering");
+  console.log(dogodek);
+  console.log(instruktor);
+  console.log(loggedInUser);
+  var isSignedUp = false;
+  for(i = 0; i < loggedInUser.dogodki.length; i++) {
+    if(dogodek._id == loggedInUser.dogodki[i]._id) {
+      console.log("found a match");
+      isSignedUp = true;
+      break;
+    }
+  }
+  var isAdmin = false;
+  //var loginID = require('./signing').loginID.val;
   if (loginID == dogodek.idInstruktorja)
     isAdmin = true;
   // console.log(isAdmin);
@@ -148,13 +165,16 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
     ura: dogodek.ura,
     steviloProstihMest: dogodek.steviloProstihMest,
     ime: instruktor.ime + " " + instruktor.priimek,
-    admin: isAdmin
+    admin: isAdmin,
+    prijavljen: isSignedUp
   });
+});
 };
 
 //GET instructor data
 const getInstructor = async (req, res, dogodek, povratniKlic) => {
   console.log("Getting the instructor for the event");
+  console.log(dogodek);
   const result = await axios.get('http://localhost:3000/api/uporabnik/' + dogodek.idInstruktorja);
   console.log(result.data);
   povratniKlic(req, res, result.data);
@@ -243,6 +263,38 @@ const instructionsEventDelete = (req, res) => {
     });
 };
 
+const instructionsEventSignup = (req, res) => {
+  var loginID = require('./signing').loginID.val;
+  console.log(loginID);
+  console.log(req.params);
+  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/dogodek/" + req.params.idDogodka)
+    .then((uporabnik) => {
+      console.log("Nazaj na serverju: " + uporabnik);
+      //console.log("List od user jobs: " + uporabnik.dela);
+      
+      res.redirect('/instrukcije-dogodki');
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
+};
+
+const instructionsEventLeave = (req, res) => {
+  var loginID = require('./signing').loginID.val;
+  console.log(loginID);
+  console.log(req.params);
+  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/dogodek/odjava/" + req.params.idDogodka)
+    .then((uporabnik) => {
+      console.log("Nazaj na serverju: " + uporabnik);
+      //console.log("List od user jobs: " + uporabnik.dela);
+      
+      res.redirect('/instrukcije-dogodki');
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
+};
+
 /* OBSOLETE
 const instructionsUser = (req, res) => {
   res.render('instructions-event-edit', { title: "Uredi" });
@@ -279,6 +331,8 @@ module.exports = {
   instructionsEventNewPost,
   instructionsEventEdit,
   instructionsEventDelete,
-  filter
+  filter,
+  instructionsEventSignup,
+  instructionsEventLeave
   //instructionsUser
 };
