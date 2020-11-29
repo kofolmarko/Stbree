@@ -1,6 +1,29 @@
 /* GET dashboard */
 const dashboard = (req, res) => {
-  res.render('dashboard', { title: "Nadzorna plošča" });
+  let uporabnikID = require('./signing').loginID.val;
+  console.log(uporabnikID);
+  axios
+    .get('http://localhost:3000/api/uporabnik/' + uporabnikID)
+    .then((uporabnik) => {
+      console.log(uporabnik);
+    })
+    .catch((napaka) => {
+      console.log(napaka);
+    });
+
+  /*
+    let arr = [];
+    arr.push(dogodek.naziv)
+    let idDogodka = uporabnik.data.dogodki.idDogodka;
+  axios
+    .get()
+  */
+
+  res.render('dashboard', { 
+    dogodki: uporabnik.data.dogodki,
+    dela: uporabnik.data.dela
+   });
+
 };
 
 /* GET user profile */
