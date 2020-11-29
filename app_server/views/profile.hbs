@@ -11,7 +11,7 @@
         <form>
           <div class="form-group">
             <label for="opisProfila">Opis:</label>
-            <p class="card-text" id="opis">{{opis}}</p>
+            <p class="card-text" id="opis">{{profileDetails.opis}}</p>
           </div>
         </form>
 
@@ -398,7 +398,8 @@ document.addEventListener('DOMContentLoaded', function () {
     return {
         email: email_novi,
         opis: opis_novi,
-        telefonskaStevilka: phone_novi
+        telefonskaStevilka: phone_novi,
+        statusInstruktorja: status_novi
       }
     }
 
