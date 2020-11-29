@@ -46,6 +46,30 @@ const renderProfile = (req, res) => {
     });
   };
 
+  /*PUT edit instructions event
+const editProfile = (req, res) => {
+  console.log("Inside controllers on server-side!");
+  console.log(req.body);
+  axios
+    .put('http://localhost:3000/api/uporabnik/' + req.params.idUporabnika,
+      {
+        email: req.body.email,
+        telefonskaStevilka: req.body.email,
+        opis: req.body.opis,
+        geslo: req.body.geslo,
+        statusInstruktorja: req.body.statusInstruktorja,
+        idInstruktorja: require('./signing').loginID.val
+      }
+    )
+    .then((dogodek) => {
+      console.log(dogodek);
+      res.status(200).json(dogodek);
+    })
+    .catch((napaka) => {
+      console.log(napaka);
+      prikaziNapako(req, res, napaka);
+    });
+};*/
   /*
   function editProfile(data) {
       axios.put("http://localhost:3000/api/uporabnik/posodobi/" + loginID, {
@@ -68,6 +92,5 @@ const renderProfile = (req, res) => {
 
   module.exports = {
     renderProfile,
-    //editProfile
   };
   
