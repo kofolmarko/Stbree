@@ -18,4 +18,7 @@ router.put('/ponudba-del/delo/:idDela', ctrlDela.deloUredi);
 /* DELETE job by ID */
 router.delete('/ponudba-del/delo/:idDela', ctrlDela.deloIzbrisi);
 
+//GET ordered by params
+router.get('/ponudba-del/:parameter', ctrlDela.delaOrder);
+
 module.exports = router;

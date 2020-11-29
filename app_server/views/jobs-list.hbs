@@ -6,59 +6,29 @@
 
   <!--F i l t e r-->
   <div class="container" id="filter-bar">
-    <form action="#">
-
-      <div class="filter-item">
-        <label for="predmeti">Predmet:</label>
-        <select name="predmeti" id="predmeti" class="form-control">
-          <option value="all">Vsi</option>
-          <option value="mathematics">Matematika</option>
-          <option value="physics">Fizika</option>
-          <option value="chemistry">Kemija</option>
-          <option value="programming">Programiranje</option>
-          <option value="slovene">Slovenščina</option>
-          <option value="english">Angleščina</option>
-          <option value="other">Ostalo</option>
-        </select>
-      </div>
-
-      <div class="filter-item">
-        <label for="stopnja">Stopnja:</label>
-        <select name="stopnja" id="stopnja" class="form-control">
-          <option value="all">Vsi</option>
-          <option value="primary">Osnovna šola</option>
-          <option value="high">Srednja šola</option>
-          <option value="university">Univerza / Visoka šola</option>
-          <option value="other">Ostalo</option>
-        </select>
-      </div>
 
       <div class="filter-item">
         <label for="razvrsti">Razvrsti po:</label>
         <select name="razvrsti" id="razvrsti" class="form-control">
-          <option value="new-first">Datumu (najnovejši najprej)</option>
-          <option value="old-first">Datumu (najstarejši najprej)</option>
-          <option value="applies-min">Številu prijav (najmanj najprej)</option>
-          <option value="applies-max">Številu prijav (največ najprej)</option>
-          <option value="payment-high">Plačilu (največ najprej)</option>
-          <option value="payment-low">Plačilu (najmanj najprej)</option>
-          <option value="due-date-first">Roku opravila (najprej)</option>
-          <option value="due-date-last">Roku opravila (najkasneje)</option>
+          <option value="">Izberi filter...</option>
+          <option value="datum">Datumu (bližnji najprej)</option>
+          <option value="REVdatum">Datumu (kasnejši najprej)</option>
+          <option value="steviloProstihMest">Številu prostih mest (najmanj najprej)</option>
+          <option value="REVsteviloProstihMest">Številu prostih mest (največ najprej)</option>
+          <option value="naziv">Imenu (A-Z)</option>
+          <option value="REVnaziv">Imenu (Z-A)</option>
+          <option value="cena">Ceni (cenejši najprej)</option>
+          <option value="REVcena">Ceni (dražji najprej)</option>
         </select>
       </div>
-      <div>
-        <input type="checkbox" id="coming-up" name="coming-up" value="coming-up">
-        <label for="undone"> Prikaži samo neopravljene ponudbe</label>
-      </div>
 
-      <input type="submit" value="Filtriraj" class="btn btn-info">
-    </form>
+      <button id="filter-btn" value="Filtriraj" class="btn btn-info">Filtriraj</button>
   </div>
 
   <!--S e a r c h  b a r-->
   <div class="input-group mb-3 container">
-    <input type="text" class="form-control" placeholder="Vpiši želeno iskanje" aria-label="Iskanje"
-      aria-describedby="search-button">
+    <input id="search" onkeyup="isci()" type="text" class="form-control" placeholder="Vpiši želeno iskanje"
+      aria-label="Iskanje" aria-describedby="search-button">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary btn-info" type="button" id="search-button">Išči</button>
     </div>
@@ -77,18 +47,58 @@
   <div id="instructors" class="container">
     {{#each dela as |delo|}}
     <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
+      <img class="card-img-top" src="../../assets/pics/delo.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{delo.naziv}}</h5>
-        <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{delo.opis}}</p>
+        <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          {{delo.opis}}</p>
         <a href="/ponudba-del/delo/{{delo._id}}" class="btn btn-primary">Podrobnosti</a>
       </div>
     </div>
     {{/each}}
   </div>
-  
+
   <hr>
 
   {{> carousel}}
+
+  <script>
+    let filterBtn = document.getElementById("filter-btn");
+    filterBtn.addEventListener('click', function () {
+      console.log("Filter button has been clicked!");
+
+      var razvrsti = document.getElementById("razvrsti").value;
+
+      console.log(razvrsti);
+
+      window.location = "/ponudba-del/" + razvrsti;
+
+    });
+
+    function isci() {
+      // Declare variables
+      var filter, list, a, txtValue, search;
+
+
+      //ul = document.getElementById("myUL");
+      //li = ul.getElementsByTagName('li');
+
+      search = document.getElementById("search");
+      list = document.getElementsByClassName("card");
+
+      filter = search.value.toUpperCase();
+
+      // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < list.length; i++) {
+        a = list[i].getElementsByClassName("card-title")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          list[i].style.display = "";
+        } else {
+          list[i].style.display = "none";
+        }
+      }
+    }
+  </script>
 
 </body>

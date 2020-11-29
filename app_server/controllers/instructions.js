@@ -87,7 +87,7 @@ const getInstructionsEvent = async (req, res, povratniKlic) => {
   }
 };
 
-//POST filter
+//GET filter
 const filter = (req, res) => {
   console.log("filtriram dogodke v app server");
   //console.log(req.body);
@@ -182,7 +182,12 @@ const getInstructor = async (req, res, dogodek, povratniKlic) => {
 
 //GET instructions event new post page
 const instructionsEventNew = (req, res, sporocilo) => {
-  res.render('instructions-event-new', {sporocilo: sporocilo});
+  if(require('./signing').loginStatus) {
+    res.render('instructions-event-new', {sporocilo: sporocilo});
+  } else {
+    res.redirect('/prijava');
+  }
+  
 };
 
 //POST a new instructions event

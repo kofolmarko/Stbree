@@ -212,6 +212,33 @@ const jobLeave = (req, res) => {
     });
 };
 
+//POST filter
+const filter = (req, res) => {
+  console.log("filtriram dela v app server");
+
+  console.log(req.params.parameter);
+  axios
+  .get('http://localhost:3000/api/ponudba-del/' + req.params.parameter)
+  .then((dela) => {
+    console.log("filtering by " + req.params.parameter);
+
+    
+    if (req.params.parameter.substring(0,3) == "REV") {
+      dela.data = dela.data.reverse();
+    }
+
+    console.log(dela.data);
+    
+    res.render('jobs-list', {
+      dela: dela.data
+    });
+
+  })
+  .catch((napaka) => {
+    prikaziNapako(req, res, napaka);
+  });
+};
+
 const prikaziNapako = (req, res, napaka) => {
   let naslov = "Nekaj je šlo narobe!";
   let vsebina = napaka.response.data["sporočilo"] ?
@@ -245,5 +272,6 @@ module.exports = {
   jobDelete,
   prikaziNapako,
   jobSignup,
-  jobLeave
+  jobLeave,
+  filter
 };

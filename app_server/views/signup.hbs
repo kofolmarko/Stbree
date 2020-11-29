@@ -24,7 +24,7 @@
                             <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
                             {{/if}}
                             
-                            <div class="row container-fluid" id="ime">
+                            <div class="row container-fluid">
                                 <div class="col">
                                     <label for="ime">Ime</label>
                                     <input id="ime" name="ime" type="text" class="form-control">
@@ -86,7 +86,7 @@
       var password2 = document.getElementById("gesloPotrdi").value;
 
       var crkeReg = new RegExp("^[a-zA-ZčžćšđČŽĆŠĐ\s]+$");
-      var gesloReg = new RegExp("^(?=.*\d).{8,20}$");
+      var gesloReg = new RegExp("^.{8,20}$");
 
       var odgovor = "";
 

@@ -82,5 +82,15 @@
             </div>
         </div>
     </div>
-    <script src="../../public/javascripts/login-cookies.js"></script>
+    <script>
+        function preveriFormo() {
+            var email = document.getElementById("email").value;
+            var geslo = document.getElementById("geslo").value;
+
+            if (email == "" || geslo == "") {
+                alert("Vsa polja so obvezna!")
+                return false;
+            }
+        }
+    </script>
 </body>

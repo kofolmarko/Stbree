@@ -36,29 +36,47 @@ const dashboard = async (req, res) => {
       axios
         .get('http://localhost:3000/api/instrukcije-dogodki')
         .then((dogodki) => {
-          console.log("NAJDEM UPORABNIKE ======> " + uporabniki.data);
-          console.log("NAJDEM DOGODKE =======> " + dogodki.data);
 
-          for (i = uporabniki.data.length; i < 3; i++) {
-            uporabniki.data.unshift({ ime: "Ne najdem ničesar :(", email: "Ni zanimivih inštruktorjev..." });
-          }
 
-          for (i = dogodki.data.length; i < 3; i++) {
-            dogodki.data.unshift({ ime: "Ne najdem ničesar :(", opis: "Ni novih dogodkov..." });
-          }
+          axios
+            .get('http://localhost:3000/api/ponudba-del')
+            .then((dela) => {
+              console.log("NAJDEM UPORABNIKE ======> " + uporabniki.data);
+              console.log("NAJDEM DOGODKE =======> " + dogodki.data);
 
-          res.render('dashboard', {
-            f1: { ime: uporabniki.data[uporabniki.data.length - 1].ime, predmeti: uporabniki.data[uporabniki.data.length - 1].email },
-            f2: { ime: uporabniki.data[uporabniki.data.length - 2].ime, predmeti: uporabniki.data[uporabniki.data.length - 2].email },
-            f3: { ime: uporabniki.data[uporabniki.data.length - 3].ime, predmeti: uporabniki.data[uporabniki.data.length - 3].email },
+              for (i = uporabniki.data.length; i < 3; i++) {
+                uporabniki.data.unshift({ ime: "Ne najdem ničesar :(", email: "Ni zanimivih inštruktorjev..." });
+              }
 
-            f4: { ime: dogodki.data[dogodki.data.length - 1].naziv, predmeti: dogodki.data[dogodki.data.length - 1].opis },
-            f5: { ime: dogodki.data[dogodki.data.length - 2].naziv, predmeti: dogodki.data[dogodki.data.length - 2].opis },
-            f6: { ime: dogodki.data[dogodki.data.length - 3].naziv, predmeti: dogodki.data[dogodki.data.length - 3].opis },
+              for (i = dogodki.data.length; i < 3; i++) {
+                dogodki.data.unshift({ ime: "Ne najdem ničesar :(", opis: "Ni novih dogodkov..." });
+              }
 
-            dogodki: loggedInUser.dogodki
-            //dela: uporabnik.data.dela
-          });
+              for (i = dela.data.length; i < 3; i++) {
+                dela.data.unshift({ ime: "Ne najdem ničesar :(", opis: "Ni novih ponudb..." });
+              }
+
+              res.render('dashboard', {
+                f1: { ime: uporabniki.data[uporabniki.data.length - 1].ime, predmeti: uporabniki.data[uporabniki.data.length - 1].email, u1: uporabniki.data[uporabniki.data.length - 1] },
+                f2: { ime: uporabniki.data[uporabniki.data.length - 2].ime, predmeti: uporabniki.data[uporabniki.data.length - 2].email, u2: uporabniki.data[uporabniki.data.length - 2] },
+                f3: { ime: uporabniki.data[uporabniki.data.length - 3].ime, predmeti: uporabniki.data[uporabniki.data.length - 3].email, u3: uporabniki.data[uporabniki.data.length - 3] },
+
+                f4: { ime: dogodki.data[dogodki.data.length - 1].naziv, predmeti: dogodki.data[dogodki.data.length - 1].opis, d1: dogodki.data[dogodki.data.length - 1] },
+                f5: { ime: dogodki.data[dogodki.data.length - 2].naziv, predmeti: dogodki.data[dogodki.data.length - 2].opis, d2: dogodki.data[dogodki.data.length - 2] },
+                f6: { ime: dogodki.data[dogodki.data.length - 3].naziv, predmeti: dogodki.data[dogodki.data.length - 3].opis, d3: dogodki.data[dogodki.data.length - 3] },
+
+                f7: { ime: dela.data[dela.data.length - 1].naziv, predmeti: dela.data[dela.data.length - 1].opis, d1: dela.data[dela.data.length - 1] },
+                f8: { ime: dela.data[dela.data.length - 2].naziv, predmeti: dela.data[dela.data.length - 2].opis, d2: dela.data[dela.data.length - 2] },
+                f9: { ime: dela.data[dela.data.length - 3].naziv, predmeti: dela.data[dela.data.length - 3].opis, d3: dela.data[dela.data.length - 3] },
+
+                dogodki: loggedInUser.dogodki
+                //dela: uporabnik.data.dela
+              });
+
+            })
+            .catch((err) => {
+              console.log("err in dela search " + err);
+            });
 
 
         })

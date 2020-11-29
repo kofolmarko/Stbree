@@ -23,9 +23,12 @@ router
     .post(ctrlJob.jobNewPost);
 
 /* PUT job (edit) */
-router.put('ponudba-del/delo/:idDela', ctrlJob.jobEdit);
+router.put('/ponudba-del/delo/:idDela', ctrlJob.jobEdit);
 
 /* DELETE job */
 router.delete('/ponudba-del/delo/:idDela', ctrlJob.jobDelete);
+
+//GET filter
+router.get('/ponudba-del/:parameter', ctrlJob.filter);
 
 module.exports = router;

@@ -23,7 +23,7 @@ const deloKreiraj = (req, res) => {
     if (napaka) {
       res.status(400).json(napaka);
     } else {
-      res.status(201).json(instrukcijeDogodek);
+      res.status(201).json(delo);
     }
     */
   });
@@ -91,7 +91,7 @@ const deloUredi = (req, res) => {
             "Delo ne obstaja"
         });
       } else if (napaka) {
-        console.log(napaka.data)
+        console.log(napaka.data);
         return res.status(500).json(napaka);
       }
       console.log(delo.data);
@@ -129,10 +129,55 @@ const deloIzbrisi = (req, res) => {
     });
 };
 
+
+//ORDER BY PARAMETER
+const delaOrder = (req, res) => {
+  console.log("INSIDE API");
+  console.log(req.params.parameter);
+
+  let {parameter} = req.params;
+  console.log(parameter.substring(0,3));
+  console.log(parameter.substring(3));
+
+  if(parameter.substring(0,3) == "REV") {
+    console.log("We have a reverse!");
+    parameter = parameter.substring(3);
+  }
+
+  console.log(parameter);
+
+    Delo
+    .aggregate()
+    .limit(10)
+    .sort(parameter)
+    .exec((napaka, dela) => {
+      if (napaka) {
+        res.status(500).json(napaka);
+      } else {
+        console.log("RETURNING OBJECTS FROM API");
+        res.status(200).json(
+          dela.map(delo => {
+            return {
+              "_id": delo._id,
+              "naziv": delo.naziv,
+              "opis": delo.opis,
+              "cena": delo.cena,
+              "datum": delo.datum,
+              "idPonudnika": delo.idInstruktorja,
+              "zasedeno": delo.zasedeno
+            };
+          })
+        );
+      }
+    });
+  
+};
+
 module.exports = {
   deloKreiraj,
   dela,
   deloPreberi,
   deloUredi,
-  deloIzbrisi
+  deloIzbrisi,
+  delaOrder
 };

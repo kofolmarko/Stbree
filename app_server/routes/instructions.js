@@ -34,7 +34,7 @@ router.put('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructi
 //DELETE instructions event
 router.delete('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructionsEventDelete);
 
-//POST filter
+//GET filter
 router.get('/instrukcije-dogodki/:parameter', ctrlInstructions.filter);
 
 
