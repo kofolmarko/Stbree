@@ -59,16 +59,12 @@
 
                             <hr>
                             <div class="col-md-12 text-center ">
-                                <button class="btn btn-block mybtn btn-primary">Registriraj</button>
+                                <button class="btn btn-block mybtn btn-primary" onclick="preveriFormo()">Registriraj</button>
                             </div>
                             <div class="col-md-12 ">
                                 <hr>
                             </div>
-                            <div class="col-md-12 mb-3">
-                                <button type="button" class="btn btn-block mybtn btn-secondary"><img
-                                        src="https://img.icons8.com/color/16/000000/google-logo.png"> Prijava z Google
-                                    računom</a>
-                            </div>
+                            
                             <div class="form-group">
                                 <p class="text-center">Že registriran? <a href="./signin.html" id="signin">Prijavi se
                                         tukaj.</a></p>
@@ -80,4 +76,38 @@
         </div>
     </div>
     </div>
+
+<script>
+    function preveriFormo() {
+    
+      var ime = document.getElementById('ime').value;
+      var priimek = document.getElementById('priimek').value;
+      var password1 = document.getElementById("geslo").value;
+      var password2 = document.getElementById("gesloPotrdi").value;
+
+      var crkeReg = new RegExp("^[a-zA-ZčžćšđČŽĆŠĐ\s]+$");
+      var gesloReg = new RegExp("^(?=.*\d).{8,20}$");
+
+      var odgovor = "";
+
+      var imeTest = crkeReg.test(ime);
+      var priimekTest = crkeReg.test(priimek);
+      if (!imeTest || !priimekTest) {
+        odgovor += "Ime in priimek lahko vsebujeta le črke!\n";
+      }
+
+      var gesloTest = gesloReg.test(password1);
+      if (!gesloTest) {
+        odgovor += "Geslo mora vsebovati 8 do 20 znakov!\n";
+      } else if (password1 != password2) {
+        odgovor += "Gesli se ne ujemata!\n";
+      }
+
+      if (!imeTest || !priimekTest || !gesloTest) {
+        alert(odgovor);
+        event.preventDefault();
+      }
+    }
+  </script>
+
 </body>

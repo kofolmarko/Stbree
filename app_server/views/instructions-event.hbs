@@ -7,7 +7,7 @@
         <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button>
         <button id="save-btn" value="save" class="btn btn-success d-none"><i class="fas fa-check"></i></button>
         <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
-      
+
         {{/if}}
     </div>
 
@@ -28,7 +28,10 @@
             <p id="steviloProstihMest">{{steviloProstihMest}}</p>
             <hr>
             <h6>Cena</h6>
-            <p id="cena">{{cena}}</p>
+            <p>
+                <scope id="cena">{{cena}}</scope>
+                <scope id="eur">€</scope>
+            </p>
 
             {{#if admin}}
             {{else if prijavljen}}
@@ -39,7 +42,7 @@
             -->
             <h6>Odjavi se od dogodka</h6>
             <a onclick="odjavi()" class="btn btn-danger">Odjava</a>
-            
+
             {{else}}
             {{#zapolnjeno steviloProstihMest}}
             <hr>
@@ -50,7 +53,7 @@
             <a onclick="prijavi()" class="btn btn-success">Prijava</a>
             {{/zapolnjeno}}
             {{/if}}
-        
+
         </div>
     </div>
 
@@ -120,24 +123,14 @@
                     window.location.href, //current url
                     true
                 )
-                /*
-                .then((odgovor) => odgovor.json())
-                .then((data) => console.log(data))
-                .catch((err) => console.log(err));
-                */
+                
                 asinhronaZahteva.addEventListener("load", function () {
                     //var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
                     //console.log(jsonRezultati);
                 });
-                
-                //window.location = "/instrukcije-dogodki";
 
                 asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
                 asinhronaZahteva.send(JSON.stringify(shrani()));
-
-
-
             });
         });
 
@@ -146,6 +139,7 @@
             document.getElementById("edit-btn").classList.add("d-none");
             document.getElementById("save-btn").classList.remove("d-none");
             document.getElementById("save-btn").classList.add("d-ilblock");
+            document.getElementById("eur").style.display = "none";
             //document.getElementById("delete-button").style.display = "block";
 
             var naziv = document.getElementById("naziv");
@@ -164,15 +158,12 @@
 
             console.log(naziv.innerHTML);
 
-            
             naziv.innerHTML = "<input type='text' class='form-control' id='naziv_text' value='" + naziv_data + "'>";
             opis.innerHTML = "<input type='text' class='form-control' id='opis_text' value='" + opis_data + "'>";
-            cena.innerHTML = "<input type='text' class='form-control' id = 'cena_text' value = '" + cena_data + "'>";
-            datum.innerHTML = "<input type='datetime-local' class='form-control' id='datum_value' value='2020-12-16T18:00:00'>";
-            ura.innerHTML = "<input type='text' class='form-control' id='ura_text' value='" + ura_data + "'>";
-            steviloProstihMest.innerHTML = "<input type='text' class='form-control' id = 'steviloProstihMest_text' value = '" + steviloProstihMest_data + "'>";
-            
-        
+            cena.innerHTML = "<input type='number' class='form-control' id='cena_text' value = '" + cena_data + "'>";
+            datum.innerHTML = "<input type='date' class='form-control' id='datum_value' value='2020-12-16'>";
+            ura.innerHTML = "<input type='time' class='form-control' id='ura_text' value='" + ura_data + "'>";
+            steviloProstihMest.innerHTML = "<input type='text' class='form-control' id='steviloProstihMest_text' value='" + steviloProstihMest_data + "'>";
         }
         function shrani() {
             var naziv_novi = document.getElementById("naziv_text").value;
@@ -181,6 +172,11 @@
             var datum_novi = document.getElementById("datum_value").value;
             var ura_novi = document.getElementById("ura_text").value;
             var steviloProstihMest_novi = document.getElementById("steviloProstihMest_text").value;
+
+            if (naziv_novi == "" || opis_novi == "" || cena_novi == "" || datum_novi == "" || ura_novi == "" || steviloProstihMest_novi == "") {
+                alert("Izpolnite vsa polja!")
+                return false;
+            }
 
             document.getElementById("naziv").innerHTML = naziv_novi;
             document.getElementById("opis").innerHTML = opis_novi;
@@ -193,6 +189,7 @@
             document.getElementById("edit-btn").classList.add("d-ilblock");
             document.getElementById("save-btn").classList.remove("d-ilblock");
             document.getElementById("save-btn").classList.add("d-none");
+            document.getElementById("eur").style.display = "inline";
 
             return {
                 naziv: naziv_novi,

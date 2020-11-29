@@ -11,9 +11,11 @@ require('./app_api/models/db');
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var instructionsRouter = require('./app_server/routes/instructions');
+var jobsRouter = require('./app_server/routes/jobs');
 var indexApi = require('./app_api/routes/index');
 var usersApi = require('./app_api/routes/users');
 var instructionsApi = require('./app_api/routes/instructions');
+var jobsApi = require('./app_api/routes/jobs');
 
 var hbs = require('hbs');
 var app = express();
@@ -50,9 +52,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 app.use('/', instructionsRouter);
+app.use('/', jobsRouter);
 app.use('/api', indexApi);
 app.use('/api', usersApi);
 app.use('/api', instructionsApi);
+app.use('/api', jobsApi);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

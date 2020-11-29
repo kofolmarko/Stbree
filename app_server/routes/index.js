@@ -14,11 +14,12 @@ router.get('/', ctrlLanding.landing);
 /* GET dashboard */
 router.get('/my', ctrlMain.dashboard);
 
-/* GET job related pages */
+/* GET job related pages */ /*
 router.get('/ponudba-del', ctrlJob.jobsList);
 router.get('/ponudba-del/delo', ctrlJob.job);
 router.get('/ponudba-del/dodaj', ctrlJob.jobNew);
 router.get('/ponudba-del/delo/uredi', ctrlJob.jobUser);
+*/
 
 /* GET user profile page */
 router.get('/profil/uporabnik', ctrlMain.userProfile);
