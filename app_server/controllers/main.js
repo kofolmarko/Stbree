@@ -1,3 +1,21 @@
+//API connection
+const axios = require('axios');
+
+//API local parameters
+var apiParametri = {
+  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+};
+
+//API Mogno Atlas parameters
+if (process.env.NODE_ENV === 'production') {
+  apiParametri.streznik = 'https://stbree.herokuapp.com';
+}
+
+
+
+
+
+
 /* GET dashboard */
 const dashboard = (req, res) => {
   res.render('dashboard', { title: "Nadzorna plošča" });
@@ -29,8 +47,31 @@ const viewProfile = (req, res) => {
 
 /* GET chat page */
 const chat = (req, res) => {
+  axios
+  .get('http://localhost:3000/api/chat/' +  req.params.idUserja)
+  .then((odgovor) => {
+    let nimasPogovora = (odgovor.data.komentar.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
+    console.log("nimaspogovora je:" + nimasPogovora);
+    
+    // f o r m a t i r a j  c a s
+    // odgovor.data.komentar.map(posameznoSporocilo => {
+      //   posameznoSporocilo.cas = formatirajCas(posameznoSporocilo.cas);
+      //   return posameznoSporocilo;
+      // });
+      prikaziChat(req, res, odgovor.data, nimasPogovora);
+    })
+    .catch((napaka) => {
+    prikaziNapako(req, res, napaka);
+  });
+};
+
+const prikaziChat = (req, res, pridobljeniPodatki, nimasPogovora) => {
   res.render('chat', { 
-    title: "Sporočila",
+    title: "",
+    mojaSporocila: pridobljeniPodatki.komentar,
+    pridobljenoIme: pridobljeniPodatki.ime,
+    nimasPogovora: nimasPogovora,
+
     contacts: [{
       ime: "Steve Gates",
       slika: "/assets/pics/instruktor1.jpg"
@@ -72,33 +113,66 @@ const chat = (req, res) => {
         {imeDatoteke: "seminarska.ppt"},
       ]
     },
-    mojaSporocila: [
-      {
-        ime: "Rozi Furst",
-        slika: "/assets/pics/instruktor2.jpg",
-        besedilo: "to sem poslal jaz 1",
-        cas: "16:21 | Nov 15"
-      },
-      {
-        ime: "Rozi Furst",
-        slika: "/assets/pics/instruktor2.jpg",
-        besedilo: "to sem poslal jaz 2",
-        cas: "16:24 | Nov 15"
-      },
-      {
-        ime: "Rozi Furst",
-        slika: "/assets/pics/instruktor2.jpg",
-        besedilo: "to sem poslal jaz 3",
-        cas: "16:26 | Nov 15"
-      }
-    ]
 
   });
 };
+
+
+// const formatirajCas = (ura) => {
+//   var novaUra = 
+//   console.log("DOBILI SMO:" + ura);
+// }
+
+const prikaziNapako = (req, res, napaka) => {
+  console.log("znotrajjjjj prikaziii napakaaa");
+  let naslov = "Nekaj je šlo narobe!";
+  let vsebina = napaka.isAxiosError ? 
+    "Napaka pri dostopu do oddaljenega vira preko REST API dostopa!" : 
+    undefined;
+  vsebina = (
+      vsebina != undefined && 
+      napaka.response && napaka.response.data["sporočilo"]
+    ) ? napaka.response.data["sporočilo"] : vsebina;
+  vsebina = (
+      vsebina != undefined && 
+      napaka.response && napaka.response.data["message"]
+    ) ? napaka.response.data["message"] : vsebina;
+  vsebina = (vsebina == undefined) ? 
+    "Nekaj nekje očitno ne deluje." : vsebina;
+  res.render('genericno-besedilo', {
+    title: naslov,
+    vsebina: vsebina
+  });
+};
+
+
+// shrani poslano sporocilo
+
+const shraniSporocilo = (req, res) => {
+  const idUserja = req.params.idUserja;
+  console.log("id userja je:"+ idUserja);
+  axios({
+    method: 'post',
+    url: 'http://localhost:3000/api/chat/' + idUserja,
+    data: {
+      besedilo: req.body.besedilo
+    }
+  })
+  .then(() => {
+    res.redirect('/sporocanje/' + idUserja);
+  })
+  .catch((napaka) => {
+    prikaziNapako(req, res, napaka);
+  });
+};
+
+
+
 
 module.exports = {
   dashboard,
   userProfile,
   viewProfile,
-  chat
+  chat,
+  shraniSporocilo
 };

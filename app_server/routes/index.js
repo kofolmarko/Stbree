@@ -46,6 +46,12 @@ router.get('/profil/uporabnik', ctrlMain.userProfile);
 router.get('/profil/ogled', ctrlMain.viewProfile);
 
 /* GET chat page */
-router.get('/sporocanje', ctrlMain.chat);
+router.get('/sporocanje/:idUserja', ctrlMain.chat);
+
+/* POST sporocilo */
+router
+  .route('/sporocanje/:idUserja')
+  .post(ctrlMain.shraniSporocilo);
+
 
 module.exports = router;

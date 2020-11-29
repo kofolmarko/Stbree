@@ -1,3 +1,4 @@
+    
 <div class="container" id="contacts">
     <ul id="contact-list" class="bg-dark">
 
@@ -16,64 +17,54 @@
             <h2 class="text-light">{{contactChosen.sporocila.1.ime}}</h2>
         </a>
     </div>
-
     <div class="container-fluid" id="messages">
 
         <div class="message-recieved">
-            {{#each contactChosen.sporocila}}
-            
-            <div class="message-wrap container-fluid">
-                <div class="sender-profile">
-                    <img src="{{this.slika}}" alt="" class="text-profile">
-                    <h6>{{this.ime}}</h6>
+            {{!-- c e  z  o s e b o  s e  n i m a s  p o g o v o r a --}}
+            {{#if nimasPogovora}}
+                <div class="message-wrap container-fluid">
+                    <h6>{{nimasPogovora}}</h6>
                 </div>
+            {{else}}
+            {{!-- c e  z e  i m a s --}}    
 
-                <span>
-                    <p>
-                       {{this.besedilo}}
-                    </p>
-                </span>
-                <div class="timestamp">
-                    {{this.cas}}
-                </div>
-            </div>
-            {{/each}}
-        </div>
-
-        <div class="message-recieved">
             {{#each mojaSporocila as |mojeSporocilo|}}
             <div class="message-wrap container-fluid">
                 <div class="sender-profile">
-                    <img src="{{mojeSporocilo.slika}}" alt="" class="text-profile">
-                    <h6>{{mojeSporocilo.ime}}</h6>
+                    {{!-- <img src="{{mojeSporocilo.slika}}" alt="" class="text-profile"> --}}
                 </div>
+                    <h8 style="font-size: 0.8rem; color: rgb(192, 192, 192); margin-bottom: 0rem; margin-left: 1.1rem;">{{../pridobljenoIme}}</h6>
 
                 <span>
-                    <p>
+                    <p class="posameznoSporocilo" style="font-size: 1rem; margin-top: 0; margin-bottom: 0.4rem; padding-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; border-radius: 30px; color: white; background-color: #18a2b8; box-shadow: 1px 3px 3px #7b7b7b">
                        {{mojeSporocilo.besedilo}}
                     </p>
                 </span>
-                <div class="timestamp">
+                <div class="timestamp" style="margin-top: 0rem; font-size: 0.7rem;">
                     {{mojeSporocilo.cas}}
                 </div>
             </div>
             {{/each}}
+       
+            {{/if}}
         </div>
 
-    <div class="container-fluid" id="input-bar">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button class="btn btn-info" type="button" style="border-radius: 0;">
-                    <i class="fas fa-paperclip"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Napišite sporočilo..." aria-label=""
-                aria-describedby="basic-addon1" name="besedilo">
-            <div class="input-group-append">
-                <button class="btn btn-info" type="button" style="border-radius: 0;">Pošlji</button>
+
+    <form action="" method="post" role="form" style="width: 100%;">
+        <div class="container-fluid" id="input-bar">
+            <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Napišite sporočilo..." autocomplete="off" aria-label=""
+                        aria-describedby="basic-addon1" name="besedilo">
+                <div class="input-group-append">
+                    <button class="btn btn-info" type="button" style="border-radius: 0; background-color: white; width: 3rem; border-color: #ced4da; ">
+                        <i class="fas fa-paperclip" style="color: #6d757d; " ></i>
+                    </button>
+                    <button type="submit" class="btn btn-info" type="button" style="border-radius: 0;">Pošlji</button>
+
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 <div class="container bg-dark" id="files">

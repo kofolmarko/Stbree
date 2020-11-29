@@ -31,26 +31,8 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 
 // db.Users.save({
 //     ime : "Sara",
-//     priimek : "Alesi",
 //     email : "sara@gmail.com",
-//     geslo : "sara123",
-//     poslanaSporocila : [{
-//             "_id" : ObjectId("5fc0ccb0e20cb147bcfb0a39"),
-//             "avtorSporocila" : "Sara",
-//             "prejemnikSporocila" : "Mato",
-//             "besedilo" : "zivjo mato, jaz sem sara"
-//     },{
-//       "_id" : ObjectId("5fc0ccb0e20cb147bcfb0a39"),
-//             "avtorSporocila" : "Sara",
-//             "prejemnikSporocila" : "Domen",
-//             "besedilo" : "zivjo domen, jaz sem sara"
-//     },{
-//       "_id" : ObjectId("5fc0ccb0e20cb147bcfb0a39"),
-//             "avtorSporocila" : "Sara",
-//             "prejemnikSporocila" : "Petra",
-//             "besedilo" : "zivjo petra, jaz sem sara in te ljubim"
-//     }
-//   ]
+//     geslo : "sara123"
 //   }
 // )
 
@@ -63,6 +45,45 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 
 
 // curl -X POST \
-//         -d "avtorSporocila=Sara&prejemnikSporocila=Tinna&besedilo=danes je pa lep soncek" \
+//         -d "avtorSporocila=Rihard&prejemnikSporocila=Tinna&besedilo=danes je oblacno" \
 //         -H "Content-Type: application/x-www-form-urlencoded" \
-//         http://localhost:3000/api/chat/5fc14f9daf2e68b8e78909e7
+//         http://localhost:3000/api/chat/5fc294d9d646ff1642bdeed3
+
+
+// db.Users.save(
+//   {
+//   ime: "Rihard",
+//   priimek: "Kuralt",
+//   email:  "rh@hgufg.com",
+//   geslo: "rihard"
+//   }
+// )
+
+
+
+// db.Users.deleteOne(
+//   { ime : "Mato" } 
+// )
+
+
+
+// const dodajKomentar = (req, res, lokacija) => {
+//   if (!lokacija) {
+//     res.status(404).json({"sporočilo": "Ne najdem lokacije."});
+//   } else {
+//     lokacija.komentarji.push({
+//       avtor: req.body.naziv,
+//       ocena: req.body.ocena,
+//       besediloKomentarja: req.body.komentar
+//     });
+//     lokacija.save((napaka, lokacija) => {
+//       if (napaka) {
+//         res.status(400).json(napaka);
+//       } else {
+//         posodobiPovprecnoOceno(lokacija._id);
+//         const dodaniKomentar = lokacija.komentarji.slice(-1).pop();
+//         res.status(201).json(dodaniKomentar);
+//       }
+//     });
+//   }
+// };

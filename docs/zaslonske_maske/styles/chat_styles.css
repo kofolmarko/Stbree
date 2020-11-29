@@ -266,6 +266,18 @@
         height: 80%;
     }
 
+
+    .posameznoSporocilo{
+        margin-top: 0;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-radius: 30px;
+        color: white;
+        background-color: #18a2b8;
+    }
+
     #active-contact {
         border-bottom: solid 1px rgb(212, 212, 212);
         text-align: center;
