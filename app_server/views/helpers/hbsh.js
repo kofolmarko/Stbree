@@ -24,7 +24,6 @@ hbs.registerHelper("inc", function(value, options)
     return parseInt(value) + 1;
 });
 
-
 /*
 hbs.registerHelper('posodobiProfil', (data) => {
   editProfile(data)
