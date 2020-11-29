@@ -1,14 +1,14 @@
 <body>
-  
-<ul class="nav container" id="ins-nav">
-  <li class="nav-item nav-item-left-border bg-info">
-    <a class="nav-link active" href="/instruktorji">Inštruktorji</a>
-  </li>
-  <li class="nav-item nav-item-inactive-bg nav-item-right-border">
-    <a class="nav-link" href="/instrukcije-dogodki">Dogodki</a>
-</ul>
 
-    <!--F i l t e r-->
+  <ul class="nav container" id="ins-nav">
+    <li class="nav-item nav-item-left-border bg-info">
+      <a class="nav-link active" href="/instruktorji">Inštruktorji</a>
+    </li>
+    <li class="nav-item nav-item-inactive-bg nav-item-right-border">
+      <a class="nav-link" href="/instrukcije-dogodki">Dogodki</a>
+  </ul>
+
+  <!--F i l t e r-->
   <div class="container" id="filter-bar">
     <form action="#">
 
@@ -66,80 +66,24 @@
 
   <!--I n s t r u c t o r s-->
   <div id="instructors" class="container">
+
+    {{#if sporocilo}}
+    <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
+    {{/if}}
+
+    {{#each instruktorji as |instruktor|}}
+    {{#if statusInstruktorja}}
     <div class="card instructor" style="width: 18rem;">
       <img class="card-img-top" src="./assets/pics/instruktor1.jpg" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{instruktor.ime}} {{instruktor.priimek}}</h5>
+        <p class="card-text">{{instruktor.opis}}</p>
+        <a href="#" class="btn btn-primary">Profil</a>
       </div>
     </div>
+    {{/if}}
+    {{/each}}
 
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/instruktor2.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/instruktor3.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/instruktor4.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/instruktor1.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/instruktor2.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card instructor" style="width: 18rem;">
-      <img class="card-img-top" src="./assets/pics/instruktor3.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="load-more text-primary">
-    <h3>Naloži več...</h3>
   </div>
 
   <hr>

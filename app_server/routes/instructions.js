@@ -16,6 +16,12 @@ router.get('/instrukcije-dogodki', ctrlInstructions.eventList);
 //GET instructions event info
 router.get('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructionsEvent);
 
+//PUT signup for an event
+router.get('/instrukcije-dogodki/dogodek/:idDogodka/prijava', ctrlInstructions.instructionsEventSignup);
+
+//PUT cancel event attendance
+router.get('/instrukcije-dogodki/dogodek/:idDogodka/odjava', ctrlInstructions.instructionsEventLeave);
+
 //POST new instructions event
 router
     .route('/instrukcije-dogodki/dodaj')
@@ -27,6 +33,9 @@ router.put('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructi
 
 //DELETE instructions event
 router.delete('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstructions.instructionsEventDelete);
+
+//POST filter
+router.get('/instrukcije-dogodki/:parameter', ctrlInstructions.filter);
 
 
 //ROUTER export

@@ -19,6 +19,12 @@ router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
 //GET list of all registered users
 router.get('/uporabniki', ctrlUporabniki.uporabniki);
 
+//PUT new event signup
+router.put('/uporabniki/:loginID/dogodek/:idDogodka', ctrlUporabniki.prijavaNaDogodek);
+
+//PUT leave event
+router.put('/uporabniki/:loginID/dogodek/odjava/:idDogodka', ctrlUporabniki.odjavaOdDogodka);
+
 /*OBSOLETE
 router.put('/uporabniki/:email', ctrlUporabniki.nastaviStatus);
 */

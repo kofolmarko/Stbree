@@ -4,10 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//const bodyParser = require("body-parser");
+
 require('./app_api/models/db');
 
 var indexRouter = require('./app_server/routes/index');
+var usersRouter = require('./app_server/routes/users');
+var instructionsRouter = require('./app_server/routes/instructions');
+var jobsRouter = require('./app_server/routes/jobs');
 var indexApi = require('./app_api/routes/index');
+var usersApi = require('./app_api/routes/users');
+var instructionsApi = require('./app_api/routes/instructions');
+var jobsApi = require('./app_api/routes/jobs');
 
 var hbs = require('hbs');
 var app = express();
@@ -30,21 +38,10 @@ carousel_getstarted = require('./app_server/views/partials/carousel_getstarted.h
 hbs.registerPartial('carousel_getstarted', carousel_getstarted);
 
 // navbar partial setter
-function set_navbar_partial(user_status) {
-  var navbar;
+var toggleNavbar = require('./public/javascripts/navbar-toggle');
 
-  //check if user is logged-in
-  if (user_status) {
-    navbar = require('./app_server/views/partials/navbar_user.hbs');
-  } else {
-    navbar = require('./app_server/views/partials/navbar_guest.hbs');
-  }
-
-  hbs.registerPartial('navbar', navbar);
-}
-
-//pass true if user is logged-in, false if it's a guest
-set_navbar_partial(true);
+//initial navbar set
+toggleNavbar(false);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -53,7 +50,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/', usersRouter);
+app.use('/', instructionsRouter);
+app.use('/', jobsRouter);
 app.use('/api', indexApi);
+app.use('/api', usersApi);
+app.use('/api', instructionsApi);
+app.use('/api', jobsApi);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

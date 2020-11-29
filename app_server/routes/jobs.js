@@ -19,11 +19,10 @@ router
     .get(ctrlJob.jobNew)
     .post(ctrlJob.jobNewPost);
 
-//PUT edit job event info
+/* PUT job (edit) */
 router.put('/ponudba-del/delo/:idDela', ctrlJob.jobEdit);
 
-//DELETE job event
+/* DELETE job */
 router.delete('/ponudba-del/delo/:idDela', ctrlJob.jobDelete);
 
-//ROUTER export
 module.exports = router;

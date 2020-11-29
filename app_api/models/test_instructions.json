@@ -6,7 +6,8 @@
       "datum": {
         "$date": "2021-02-24T12:00:00Z"
       },
-      "tip": "Matematika"
+      "ura": "12:30",
+      "prostaMesta": 16
     },
     {
       "naziv": "Newtonovi zakoni",
@@ -15,6 +16,7 @@
       "datum": {
         "$date": "2020-11-24T12:00:00Z"
       },
-      "tip": "Fizika"
+      "ura": "09:00",
+      "prostaMesta": 90
     }
   ]

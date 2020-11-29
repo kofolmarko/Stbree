@@ -8,9 +8,9 @@
                         znanje.</i></p>
                 <hr>
                 <form id="instructionsEventNewPost" action="" method="post" role="form">
-                    {{#ujemanjeNiza napaka "vrednost"}}
-                        <div class="alert alert-danger">Prosim izpolnite polja!</div>
-                    {{/ujemanjeNiza}}
+                    {{#if sporocilo}}
+                    <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
+                    {{/if}}
                     <div class="form-group">
                         <label for="naziv">Ime dogodka</label>
                         <input id="naziv" name="naziv" type="text" class="form-control"
@@ -35,6 +35,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="ura">Ura dogodka</label>
+                        <input type="time" class="form-control" id="ura" name="ura">
+                    </div>
+
+                    <div class="form-group">
                         <label for="steviloProstihMest">Maksimalno število udeležencev</label>
                         <input id="steviloProstihMest" name="steviloProstihMest" type="number" class="form-control"
                             placeholder="Vnesite celo število" step="1" min="1" value="1"
@@ -46,7 +51,7 @@
                         <input type="file" class="form-control-file" id="naslovnaSlikaInstrukcije">
                     </div>
 
-                    <button class="btn btn-primary">Objavi</button>
+                    <button class="btn btn-primary" onclick="return preveriFormo()">Objavi</button>
                     <hr>
                 </form>
             </div>
@@ -54,4 +59,21 @@
     </div>
 
     {{> carousel}}
+
+
+    <script>
+        function preveriFormo() {
+            var naziv = document.getElementById('naziv').value;
+            var opis = document.getElementById('opis').value;
+            var cena = document.getElementById('cena').value;
+            var datum = document.getElementById('datum').value;
+            var ura = document.getElementById('ura').value;
+            var steviloProstihMest = document.getElementById('steviloProstihMest').value;
+
+            if (naziv == "" || opis == "" || cena == "" || datum == "" || ura == "" || steviloProstihMest == "") {
+                alert("Izpolnite vsa polja!");
+                return false;
+            }
+        }
+    </script>
 </body>

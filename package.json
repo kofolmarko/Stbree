@@ -11,15 +11,20 @@
   },
   "dependencies": {
     "axios": "*",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "cookie-parser": "*",
+    "dateformat": "*",
     "debug": "*",
-    "express": "*",
+    "express": "^4.17.1",
+    "express-validator": "^6.7.0",
     "handlebars": "*",
     "hbs": "*",
     "heroku": "*",
     "highlight.js": "*",
     "http-errors": "*",
-    "mongoose": "*",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.15",
     "morgan": "*",
     "nodemon": "*"
   }

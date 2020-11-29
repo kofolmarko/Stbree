@@ -9,16 +9,17 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-mongoose.connect(dbURI, { 
-  useNewUrlParser: true, 
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
+mongoose.connect(dbURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose je povezan na ${dbURI}.`);
+
 });
 
 mongoose.connection.on('error', napaka => {
@@ -57,5 +58,6 @@ process.on('SIGTERM', () => {
     });
 });
 
-require('./jobs')
 require('./instructions');
+require('./jobs');
+require('./users');

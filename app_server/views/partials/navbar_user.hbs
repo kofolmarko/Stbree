@@ -37,9 +37,44 @@
                 <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/profil/uporabnik">Profil<span class="znacka">1</span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="/"><b>Odjava</b></a>
+                    <a id="logout-btn" class="dropdown-item text-danger"><b>Odjava</b></a>
                 </div>
             </li>
         </ul>
     </div>
 </nav>
+
+<style>
+    #logout-btn:hover {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    //console.log("odjava");
+    let logoutBtn = document.getElementById("logout-btn");
+    logoutBtn.addEventListener('click', function () {
+        console.log("Logout button has been clicked!")
+
+                var asinhronaZahteva = new XMLHttpRequest();
+
+                asinhronaZahteva.open(
+                    "POST",
+                    '/odjava', //current url
+                    true
+                )
+                /*
+                .then((odgovor) => odgovor.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
+                */
+                asinhronaZahteva.addEventListener("load", function () {
+                    var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
+                    console.log(jsonRezultati);
+                });
+
+                window.location = "/";
+
+                asinhronaZahteva.send(null);
+    });
+</script>

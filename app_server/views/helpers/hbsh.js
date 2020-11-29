@@ -17,3 +17,32 @@ hbs.registerHelper('zvezdice', (ocena) => {
 hbs.registerHelper('ujemanjeNiza', (vrednost1, vrednost2, moznosti) => {
   return (vrednost1 == vrednost2) ? moznosti.fn(this) : moznosti.inverse(this);
 });
+
+hbs.registerHelper('zapolnjeno', (steviloProstihMest, options) => {
+  if (steviloProstihMest <= 0)
+    return options.fn(this);
+  else
+    return options.inverse(this);
+});
+
+var dateFormat = require('dateformat');
+
+dateFormat.masks.slovenski = 'dd. mm. yyyy';
+
+
+
+hbs.registerHelper('pretvoriDatum', function(date) {
+  
+  return dateFormat(date, "slovenski");
+});
+
+
+hbs.registerHelper('generirajPovezavoZaDogodek', function(dogodek) {
+  var povezava = '<a href="http://localhost:3000/instrukcije-dogodki/dogodek/' + dogodek._id + '">' + dogodek.naziv + "</a>";
+  return povezava;
+});
+
+hbs.registerHelper('generirajPovezavoZaDelo', function(delo) {
+  var povezava = '<a href="http://localhost:3000/ponudba-del/' + delo._id + '">' + delo.naziv + "</a>";
+  return povezava;
+});

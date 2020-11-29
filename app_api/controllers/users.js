@@ -1,8 +1,10 @@
 //IMPORT mongoose
 const mongoose = require('mongoose');
+mongoose.set('returnOriginal', false);
 
 //IMPORT user model
 const Uporabnik = mongoose.model('User');
+const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 
 
 //GET registered users list
@@ -23,7 +25,9 @@ const uporabniki = (req, res) => {
               "email": uporabnik.email,
               "geslo": uporabnik.geslo,
               "statusInstruktorja": uporabnik.statusInstruktorja,
-              "statusPrijave": uporabnik.statusPrijave
+              "statusPrijave": uporabnik.statusPrijave,
+              "dogodki": uporabnik.dogodki,
+              "dela": uporabnik.dela
             };
           })
         );
@@ -63,12 +67,13 @@ const registrirajUporabnika = (req, res) => {
         if (uporabnik != null) {
           res.status(409).json(uporabnik);
         } else {
+          console.log(req.body.statusInstruktorja);
           Uporabnik.create({
             ime: req.body.ime,
             priimek: req.body.priimek,
             email: req.body.email,
             geslo: req.body.geslo,
-            instruktor: req.body.instruktor,
+            statusInstruktorja: req.body.statusInstruktorja,
             datumVpisa: req.body.datumVpisa
           }, (napaka, uporabnik) => {
             if (uporabnik) {
@@ -85,55 +90,112 @@ const registrirajUporabnika = (req, res) => {
   }
 };
 
-  //GET info for user login authentication
-  const prijaviUporabnika = (req, res) => {
-    console.log("params:" + req.params.email);
+//GET info for user login authentication
+const prijaviUporabnika = (req, res) => {
+  console.log("params:" + req.params.email);
+  Uporabnik
+    .findOne({ email: req.params.email })
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Uporabnik ne obstaja."
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      res.status(200).json(uporabnik);
+    });
+};
+
+
+//PUT prijava na dogodek
+const prijavaNaDogodek = (req, res) => {
+  console.log("We're inside API!" + req.body);
+  console.log("We're inside API!" + req.data);
+  console.log("REQUEST PARAMETERS -> " + req.params.loginID);
+  console.log("REQUEST PARAMETERS -> " + req.params.idDogodka);
+  let stProstih;
+
+  InstrukcijeDogodek
+    .findById(req.params.idDogodka)
+    .exec((napaka, dogodek) => {
+      Uporabnik
+        .findByIdAndUpdate(req.params.loginID, {
+          $addToSet: { dogodki: dogodek }
+        })
+        .exec((uporabnik) => {
+          //console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
+          
+        });
+
+    });
+  InstrukcijeDogodek
+    .findByIdAndUpdate(req.params.idDogodka, {
+      $inc: { steviloProstihMest: -1 } 
+    })
+    .exec((napaka, dogodek) => {
+      res.status(200).json(dogodek);
+    });
+};
+
+//PUT odjava od dogodka
+const odjavaOdDogodka = (req, res) => {
+  console.log("api odjava od dogodka");
+  console.log(req.params.loginID);
+  InstrukcijeDogodek
+  .findById(req.params.idDogodka)
+  .exec((napaka, dogodek) => {
+    console.log("Api najde dogodek: " + dogodek);
     Uporabnik
-      .findOne({ email: req.params.email })
-      .exec((napaka, uporabnik) => {
-        if (!uporabnik) {
-          return res.status(404).json({
-            "sporočilo":
-              "Uporabnik ne obstaja."
-          });
-        } else if (napaka) {
-          return res.status(500).json(napaka);
-        }
+      .findByIdAndUpdate(req.params.loginID, {
+        $pull: { dogodki: { dogodek: dogodek._id } }}, { safe: true, multi:true }, function(err, obj) {
+         //console.log(dogodki);
+          console.log(obj.dogodki);
+         
+         console.log(err);
+        })
+      .exec((uporabnik) => {
+        console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
         res.status(200).json(uporabnik);
       });
-  };
 
-  /*OBSOLETE
-  const nastaviStatus = (req, res) => {
-    Uporabnik
-      .findOne({email: req.params.email})
-      .exec((napaka, uporabnik) => {
-        console.log("najdem uporabnika za nastavit status: " + uporabnik);
-        if (!uporabnik) {
-          console.log("uporabnik ne obstaja");
-          return res.status(404).json({
-            "sporočilo":
-              "Uporabnik ne obstaja."
-          });
-        } else if (napaka) {
-          console.log("tukaj je napaka");
-          console.log(napaka.data);
-          return res.status(500).json(napaka);
-        }
-        console.log("iz statusa: " + uporabnik.statusPrijave);
-        uporabnik.statusPrijave = true;
-        console.log("na status: " + uporabnik.statusPrijave);
-        console.log(uporabnik);
-        res.status(200).json(uporabnik);
-      });
-  };
-  */
+  });
+};
 
-  //EXPORT functions
-  module.exports = {
-    uporabniki,
-    najdiUporabnika,
-    registrirajUporabnika,
-    prijaviUporabnika,
-    //nastaviStatus,
-  };
+/*OBSOLETE
+const nastaviStatus = (req, res) => {
+  Uporabnik
+    .findOne({email: req.params.email})
+    .exec((napaka, uporabnik) => {
+      console.log("najdem uporabnika za nastavit status: " + uporabnik);
+      if (!uporabnik) {
+        console.log("uporabnik ne obstaja");
+        return res.status(404).json({
+          "sporočilo":
+            "Uporabnik ne obstaja."
+        });
+      } else if (napaka) {
+        console.log("tukaj je napaka");
+        console.log(napaka.data);
+        return res.status(500).json(napaka);
+      }
+      console.log("iz statusa: " + uporabnik.statusPrijave);
+      uporabnik.statusPrijave = true;
+      console.log("na status: " + uporabnik.statusPrijave);
+      console.log(uporabnik);
+      res.status(200).json(uporabnik);
+    });
+};
+*/
+
+//EXPORT functions
+module.exports = {
+  uporabniki,
+  najdiUporabnika,
+  registrirajUporabnika,
+  prijaviUporabnika,
+  prijavaNaDogodek,
+  odjavaOdDogodka
+  //nastaviStatus,
+};

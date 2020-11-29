@@ -1,6 +1,11 @@
+/* Import Mongoose */
 const mongoose = require('mongoose');
-const Delo = mongoose.model('Job');
 
+/* Import object model */
+const Delo = mongoose.model('Delo');
+//const User = mongoose.model('User');
+
+/* Create new job */
 const deloKreiraj = (req, res) => {
   console.log("delo se kreira");
   console.log(req.body);
@@ -10,6 +15,7 @@ const deloKreiraj = (req, res) => {
     opis: req.body.opis,
     cena: req.body.cena,
     datum: req.body.datum,
+    idPonudnika: req.body.idPonudnika
   }, (napaka, delo) => {
     console.log(napaka);
     console.log(delo);
@@ -23,22 +29,24 @@ const deloKreiraj = (req, res) => {
   });
 };
 
+/* GET job list */
 const dela = (req, res) => {
   Delo
     .aggregate()
     .limit(10)
-    .exec((napaka, instrukcijeDogodki) => {
+    .exec((napaka, dela) => {
       if (napaka) {
         res.status(500).json(napaka);
       } else {
         res.status(200).json(
-          deloDogodki.map(instrukcijeDogodek => {
+          dela.map(delo => {
             return {
               "_id": delo._id,
               "naziv": delo.naziv,
               "opis": delo.opis,
               "cena": delo.cena,
               "datum": delo.datum,
+              "idPonudnika": delo.idPonudnika
             };
           })
         );
@@ -46,6 +54,7 @@ const dela = (req, res) => {
     });
 };
 
+/* GET job by ID */
 const deloPreberi = (req, res) => {
   Delo
     .findById(req.params.idDela)
@@ -53,8 +62,66 @@ const deloPreberi = (req, res) => {
       if (!delo) {
         return res.status(404).json({
           "sporočilo":
-            "Ne najdem dela s podanim enoličnim identifikatorjem idDela."
+            "Delo ne obstaja"
         });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      console.log(delo.data);
+      res.status(200).json(delo);
+    });
+};
+
+/* PUT update job */
+const deloUredi = (req, res) => {
+  console.log("Inside controllers on the API!");
+  Delo
+    .findByIdAndUpdate(req.params.idDela,
+      {
+        naziv: req.body.naziv,
+        opis: req.body.opis,
+        cena: req.body.cena,
+        datum: req.body.cena,
+        idPonudnika: req.body.idPonudnika
+      })
+    .exec((napaka, delo) => {
+      if (!delo) {
+        return res.status(404).json({
+          "sporočilo":
+            "Delo ne obstaja"
+        });
+      } else if (napaka) {
+        console.log(napaka.data)
+        return res.status(500).json(napaka);
+      }
+      console.log(delo.data);
+      res.status(200).json(delo);
+    });
+};
+
+/* DELETE job by ID */
+const deloIzbrisi = (req, res) => {
+  console.log("izbris");
+  const { idDela } = req.params;
+  console.log(idDela);
+  if (!idDela) {
+    return res.status(404).json({
+      "sporočilo":
+        "Ne najdem dela " +
+        "idDela je obvezen parameter."
+    });
+  }
+  Delo
+    .findByIdAndDelete(idDela)
+    /*
+    .then((delo) => {
+      console.log(delo);
+    });
+    */
+    .exec((napaka, delo) => {
+      console.log("tukaj dogodek:" + delo, " tukaj napaka: " + napaka);
+      if (!delo) {
+        return res.status(404).json({ "Sporočilo": "Ne najdem dela." });
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
@@ -62,44 +129,10 @@ const deloPreberi = (req, res) => {
     });
 };
 
-const deloPosodobi = (req, res) => {
-  res.status(200).json({ "status": "uspešno" });
-};
-
-const deloIzbrisi = (req, res) => {
-  const {idDela} = req.params;
-  if (!idDela) {
-    return res.status(404).json({
-      "sporočilo": 
-        "Ne najdem dela " + 
-        "idDela je obvezen parameter."
-    });
-  }
-  Dela
-    .findByIdAndDelete(idDela)
-    .select('dela')
-    .exec((napaka, delo) => {
-      if (!delo) {
-        return res.status(404).json({"sporočilo": "Ne najdem dela."});
-      } else if (napaka) {
-        return res.status(500).json(napaka);
-      }
-      if (delo.length > 0) {
-        if (!delo.id(idDelo)) {
-          return res.status(404).json({"sporočilo": "Ne najdem dela."});
-        } else {
-          delo.id(idDelo).remove();
-        }
-      } else {
-        res.status(404).json({"sporočilo": "Ni dela za brisanje."});
-      }
-    });
-};
-
 module.exports = {
   deloKreiraj,
   dela,
   deloPreberi,
-  deloPosodobi,
+  deloUredi,
   deloIzbrisi
 };

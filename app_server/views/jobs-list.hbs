@@ -69,24 +69,24 @@
     <a href="/ponudba-del/dodaj" class="btn btn-success">Objavi novo ponudbo</a>
   </div>
 
-  <!--I n s t r u c t o r s-->
+  <!--J o b s-->
+  {{#if sporocilo}}
+  <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
+  {{/if}}
+
   <div id="instructors" class="container">
     {{#each dela as |delo|}}
     <div class="card instructor" style="width: 18rem;">
       <img class="card-img-top" src="./assets/pics/oblikovanje.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{delo.naziv}}</h5>
-        <p class="card-text">{{delo.opis}}</p>
-        <a href="/ponudba-del/delo" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{delo.opis}}</p>
+        <a href="/ponudba-del/delo/{{delo._id}}" class="btn btn-primary">Podrobnosti</a>
       </div>
     </div>
     {{/each}}
   </div>
-
-  <div class="load-more text-primary">
-    <h3>Naloži več...</h3>
-  </div>
-
+  
   <hr>
 
   {{> carousel}}
