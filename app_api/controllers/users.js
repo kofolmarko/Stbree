@@ -111,18 +111,16 @@ const registrirajUporabnika = (req, res) => {
   };
 
 
-  //PUT update user
-  /*const posodobiUporabnika = (req, res) => {
+  /*PUT update user*/
+  const posodobiUporabnika = (req, res) => {
   console.log("Inside controllers on the API!");
   Uporabnik
     .findByIdAndUpdate(req.params.idUporabnika,
       {
         email: req.body.email,
         telefonskaStevilka: req.body.telefonskaStevilka,
-        statusInstruktorja: req.body.statusInstruktorja,
-        datumVpisa: req.body.datumVpisa,
         opis: req.body.opis,
-        geslo: req.body.geslo
+        statusInstruktorja: req.body.statusInstruktorja
       })
     .exec((napaka, uporabnik) => {
       if (!uporabnik) {
@@ -137,7 +135,7 @@ const registrirajUporabnika = (req, res) => {
       console.log(uporabnik.data);
       res.status(200).json(uporabnik);
     });
-};*/
+};
 
   /*OBSOLETE
   const nastaviStatus = (req, res) => {
@@ -171,7 +169,7 @@ const registrirajUporabnika = (req, res) => {
     najdiUporabnika,
     registrirajUporabnika,
     prijaviUporabnika,
-    //posodobiUporabnika
+    posodobiUporabnika
 
     //nastaviStatus,
   };
