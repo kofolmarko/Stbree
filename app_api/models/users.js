@@ -7,7 +7,6 @@ const uporabnikDodatnoShema = new mongoose.Schema({
 });
 
 const sporocilaShema = new mongoose.Schema({
-  avtorSporocila: { type: String},
   prejemnikSporocila: { type: String},
   besedilo: "String",
   cas: { type: Date, "default": Date.now }
@@ -52,10 +51,20 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 
 // db.Users.save(
 //   {
-//   ime: "Rihard",
-//   priimek: "Kuralt",
+//   ime: "Manca",
+//   priimek: "Zagar",
 //   email:  "rh@hgufg.com",
-//   geslo: "rihard"
+//   geslo: "mancabanana",
+//   poslanaSporocila:[
+//     {
+//       prejemnikSporocila: "Tine",
+//       besedilo: "zivjo tine manca tukii hihihihihihi",
+//     },
+//     {
+//       prejemnikSporocila: "Spela",
+//       besedilo: "zivjo spela manca tukii",
+//     }
+//   ]
 //   }
 // )
 
@@ -65,25 +74,15 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 //   { ime : "Mato" } 
 // )
 
+//db.inventory.deleteOne( { status: "D" } )
 
+// { item: "journal", 
+// instock: [ 
+//   { warehouse: "A", qty: 5 }, 
+//   { warehouse: "C", qty: 15 } 
+// ] 
+// },
+// find(  {  $and:[ { _id: imeUserja}, {"poslanaSporocila": {prejemnikSporocila:"imePrejemnika"}} ]  }) 
+// find( { "instock": { warehouse: "A", qty: 5 }         } )
 
-// const dodajKomentar = (req, res, lokacija) => {
-//   if (!lokacija) {
-//     res.status(404).json({"sporočilo": "Ne najdem lokacije."});
-//   } else {
-//     lokacija.komentarji.push({
-//       avtor: req.body.naziv,
-//       ocena: req.body.ocena,
-//       besediloKomentarja: req.body.komentar
-//     });
-//     lokacija.save((napaka, lokacija) => {
-//       if (napaka) {
-//         res.status(400).json(napaka);
-//       } else {
-//         posodobiPovprecnoOceno(lokacija._id);
-//         const dodaniKomentar = lokacija.komentarji.slice(-1).pop();
-//         res.status(201).json(dodaniKomentar);
-//       }
-//     });
-//   }
-// };
+// $or:[{region: "NA"},{sector:"Some Sector"}]

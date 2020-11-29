@@ -14,10 +14,10 @@
 <div class="container bg-dark" id="chatbox">
     <div class="container-fluid bg-info" id="contact-name">
         <a href="/profil/ogled" style="text-decoration: none;">
-            <h2 class="text-light">{{contactChosen.sporocila.1.ime}}</h2>
+            <h5 class="text-light" style="text-align: center;">{{contactChosen.sporocila.1.ime}}</h5>
         </a>
     </div>
-    <div class="container-fluid" id="messages">
+    <div class="container-fluid" id="messages" style="height: 60vh;">
 
         <div class="message-recieved">
             {{!-- c e  z  o s e b o  s e  n i m a s  p o g o v o r a --}}
@@ -28,13 +28,10 @@
             {{else}}
             {{!-- c e  z e  i m a s --}}    
 
-            {{#each mojaSporocila as |mojeSporocilo|}}
+            {{#each sortedSporocilaa as |mojeSporocilo|}}
             <div class="message-wrap container-fluid">
-                <div class="sender-profile">
-                    {{!-- <img src="{{mojeSporocilo.slika}}" alt="" class="text-profile"> --}}
-                </div>
-                    <h8 style="font-size: 0.8rem; color: rgb(192, 192, 192); margin-bottom: 0rem; margin-left: 1.1rem;">{{../pridobljenoIme}}</h6>
 
+                {{!-- <h8 style="font-size: 0.8rem; color: rgb(192, 192, 192); margin-bottom: 0rem; margin-left: 1.1rem;">{{../pridobljenoIme}}</h8> --}}
                 <span>
                     <p class="posameznoSporocilo" style="font-size: 1rem; margin-top: 0; margin-bottom: 0.4rem; padding-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; border-radius: 30px; color: white; background-color: #18a2b8; box-shadow: 1px 3px 3px #7b7b7b">
                        {{mojeSporocilo.besedilo}}
@@ -67,17 +64,7 @@
     </form>
 </div>
 
-<div class="container bg-dark" id="files">
-    <div class="container-fluid text-light" style="padding: 0.5rem;">
-        <h2 style="margin-bottom: 0;">Deljene datoteke</h2>
-    </div>
-    <ul id="file-list">
-    {{#each contactChosen.datoteke}}
-        <li class="bg-info text-light">
-            <a href="#">{{this.imeDatoteke}} <i class="fas fa-download"></i></a>
-        </li>
-    {{/each}}
+
        
 
-    </ul>
 </div>

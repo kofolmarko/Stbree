@@ -4,28 +4,38 @@ const User = mongoose.model('User');
 
 //////////////////////// g e t  s p o r o c i l a ////////////////////////
 const naloziSporocilo = (req, res) => {
+  console.log("req.params.idUserja::::" + req.params.idUserja);
+  console.log("req.query.imePrejemnika:::::" + req.query.idPrejemnika);
   User
-  .findById(req.params.idUserja)
-    //  .select('poslanaSporocila')
-  .exec((napaka, user) => {
-    if (!user) {
-      return res.status(404).json({
-        "sporočilo": 
+  .find({ $or:
+    [
+      { _id: req.params.idUserja},
+      { _id: req.query.idPrejemnika}
+    ]}, (napaka, users) => {
+      
+      if (!users) {
+        return res.status(404).json({
+          "sporočilo": 
           "Ne najdem uporabnika s podanim enoličnim identifikatorjem idUserja."
-      });
-    } else if (napaka) {
-      return res.status(500).json(napaka);
-    }
-    console.log("v napaki 200 ali pac ne napaki!!!!");   
-    console.log("posali smo user:" + user);
-    console.log("dolzina arraya:" + user.poslanaSporocila.length);
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      
+      // console.log("v bazi smo nasli:\n", users);
+      console.log("prvi user jeeeee:\n", users[0]);
+      console.log("drugi user jeeeee\n", users[1]);
+    res.status(200).json({
+      "mojeIme": users[0].ime,
+      "kolegovoIme": users[1].ime,
+      "prviUser":users[0],
+      "drugiUser": users[1]
+    });
 
-      res.status(200).json({
-        "ime":user.ime,
-        "komentar": user.poslanaSporocila
-      });
 
-  });
+
+  })
+
 };
 
 
@@ -36,7 +46,7 @@ const dodajSporocilo = (req, res, uporabnik) => {
   } else {
     uporabnik.poslanaSporocila.push({
       avtorSporocila: req.body.avtor,
-      prejemnikSporocila: req.body.prejemnik,
+      prejemnikSporocila: "Manca",
       besedilo: req.body.besedilo
     });
 
@@ -67,7 +77,6 @@ const dodajSporocilo = (req, res, uporabnik) => {
             res.status(400).json(napaka);
           } else {
             dodajSporocilo(req, res, uporabnik);
-            console.log("basically na koncu")
           }
         });
     } else {

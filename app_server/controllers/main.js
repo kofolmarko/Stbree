@@ -48,16 +48,16 @@ const viewProfile = (req, res) => {
 /* GET chat page */
 const chat = (req, res) => {
   axios
-  .get('http://localhost:3000/api/chat/' +  req.params.idUserja)
+  .get('http://localhost:3000/api/chat/' +  req.params.idUserja,{
+    params: {
+      idPrejemnika: "5fc3e195da536b84c1d35f8e",
+    }
+  })
   .then((odgovor) => {
-    let nimasPogovora = (odgovor.data.komentar.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
-    console.log("nimaspogovora je:" + nimasPogovora);
-    
-    // f o r m a t i r a j  c a s
-    // odgovor.data.komentar.map(posameznoSporocilo => {
-      //   posameznoSporocilo.cas = formatirajCas(posameznoSporocilo.cas);
-      //   return posameznoSporocilo;
-      // });
+    //let nimasPogovora = (odgovor.data.komentar.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
+    //console.log("nimaspogovora je:" + nimasPogovora);
+    let nimasPogovora;
+      console.log("znotraj then in podatki so" + odgovor.data);
       prikaziChat(req, res, odgovor.data, nimasPogovora);
     })
     .catch((napaka) => {
@@ -66,11 +66,35 @@ const chat = (req, res) => {
 };
 
 const prikaziChat = (req, res, pridobljeniPodatki, nimasPogovora) => {
+  console.log("dolzina podatkov" + pridobljeniPodatki.prviUser.poslanaSporocila.length);
+  console.log("premejemnik::" + pridobljeniPodatki.prviUser.poslanaSporocila[0].prejemnikSporocila);
+  
+  var matchingSporocila = new Array((pridobljeniPodatki.prviUser.poslanaSporocila.length + pridobljeniPodatki.drugiUser.poslanaSporocila.length));
+
+  var stevec = 0;
+  for(var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++){
+    if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser.ime){
+      matchingSporocila[stevec] = pridobljeniPodatki.prviUser.poslanaSporocila[i];
+      stevec++;
+    }
+  }
+  for(var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++){
+    if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser.ime){
+      matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
+      stevec++;
+    }
+  }
+
+  sortedSporocila = matchingSporocila.sort((a, b) => b.cas - a.cas);
+  for(var i = 0; i < sortedSporocila.length; i++) console.log(sortedSporocila[i]);
+  console.log("sortirali smo sporocila");
+
   res.render('chat', { 
     title: "",
-    mojaSporocila: pridobljeniPodatki.komentar,
-    pridobljenoIme: pridobljeniPodatki.ime,
-    nimasPogovora: nimasPogovora,
+    sortedSporocilaa: sortedSporocila,
+    // mojeeIme: mojeIme,
+    // kolegovooIme: kolegovoIme,
+    // nimasPogovora: nimasPogovora,
 
     contacts: [{
       ime: "Steve Gates",
@@ -118,11 +142,6 @@ const prikaziChat = (req, res, pridobljeniPodatki, nimasPogovora) => {
 };
 
 
-// const formatirajCas = (ura) => {
-//   var novaUra = 
-//   console.log("DOBILI SMO:" + ura);
-// }
-
 const prikaziNapako = (req, res, napaka) => {
   console.log("znotrajjjjj prikaziii napakaaa");
   let naslov = "Nekaj je šlo narobe!";
@@ -150,12 +169,14 @@ const prikaziNapako = (req, res, napaka) => {
 
 const shraniSporocilo = (req, res) => {
   const idUserja = req.params.idUserja;
-  console.log("id userja je:"+ idUserja);
+  console.log("v metodi shrani sporocilo sid userja je:"+ idUserja);
   axios({
     method: 'post',
     url: 'http://localhost:3000/api/chat/' + idUserja,
     data: {
-      besedilo: req.body.besedilo
+      besedilo: req.body.besedilo,
+      prejemnikSporocila: "Manca",
+      cas: Date.now()
     }
   })
   .then(() => {

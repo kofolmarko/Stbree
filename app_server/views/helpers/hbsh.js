@@ -17,3 +17,4 @@ hbs.registerHelper('zvezdice', (ocena) => {
 hbs.registerHelper('ujemanjeNiza', (vrednost1, vrednost2, moznosti) => {
   return (vrednost1 == vrednost2) ? moznosti.fn(this) : moznosti.inverse(this);
 });
+
