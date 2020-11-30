@@ -101,6 +101,7 @@ Dinamična spletna aplikacija s podatkovno bazo
 	
 12% Datoteka README.md vsebuje pravilna navodila in podatke za namestitev in zagon aplikacije.
 
+npm install
 docker-compose up
 
 
