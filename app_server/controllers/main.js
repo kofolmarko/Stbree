@@ -56,21 +56,18 @@ const chat = (req, res) => {
   .then((odgovor) => {
     //let nimasPogovora = (odgovor.data.komentar.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
     //console.log("nimaspogovora je:" + nimasPogovora);
-    let nimasPogovora;
       console.log("znotraj then in podatki so" + odgovor.data);
-      prikaziChat(req, res, odgovor.data, nimasPogovora);
+      prikaziChat(req, res, odgovor.data);
     })
     .catch((napaka) => {
     prikaziNapako(req, res, napaka);
   });
 };
 
-const prikaziChat = (req, res, pridobljeniPodatki, nimasPogovora) => {
-  console.log("dolzina podatkov" + pridobljeniPodatki.prviUser.poslanaSporocila.length);
-  console.log("premejemnik::" + pridobljeniPodatki.prviUser.poslanaSporocila[0].prejemnikSporocila);
+const prikaziChat = (req, res, pridobljeniPodatki) => {
   
   var matchingSporocila = new Array((pridobljeniPodatki.prviUser.poslanaSporocila.length + pridobljeniPodatki.drugiUser.poslanaSporocila.length));
-
+  
   var stevec = 0;
   for(var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++){
     if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser.ime){
@@ -78,23 +75,23 @@ const prikaziChat = (req, res, pridobljeniPodatki, nimasPogovora) => {
       stevec++;
     }
   }
+  var nimasPogovora = (matchingSporocila.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
+
   for(var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++){
     if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser.ime){
       matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
       stevec++;
     }
   }
-
+  
   sortedSporocila = matchingSporocila.sort((a, b) => b.cas - a.cas);
-  for(var i = 0; i < sortedSporocila.length; i++) console.log(sortedSporocila[i]);
-  console.log("sortirali smo sporocila");
-
+  
   res.render('chat', { 
     title: "",
     sortedSporocilaa: sortedSporocila,
-    // mojeeIme: mojeIme,
+    mojeIme: pridobljeniPodatki.mojeIme,
     // kolegovooIme: kolegovoIme,
-    // nimasPogovora: nimasPogovora,
+    nimasPogovora: nimasPogovora,
 
     contacts: [{
       ime: "Steve Gates",
@@ -130,11 +127,6 @@ const prikaziChat = (req, res, pridobljeniPodatki, nimasPogovora) => {
           besedilo: "besedilo sporocila 3",
           cas: "16:26 | Nov 15"
         }
-      ],
-      datoteke: [
-        {imeDatoteke: "program.c"},
-        {imeDatoteke: "slika.jpg"},
-        {imeDatoteke: "seminarska.ppt"},
       ]
     },
 

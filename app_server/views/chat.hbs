@@ -29,8 +29,8 @@
             {{!-- c e  z e  i m a s --}}    
 
             {{#each sortedSporocilaa as |mojeSporocilo|}}
+            {{!-- {{{#ujemanjeNiza mojeSporocilo.prejemnikSporocila mojeSporocilo.mojeIme true}} --}}
             <div class="message-wrap container-fluid">
-
                 {{!-- <h8 style="font-size: 0.8rem; color: rgb(192, 192, 192); margin-bottom: 0rem; margin-left: 1.1rem;">{{../pridobljenoIme}}</h8> --}}
                 <span>
                     <p class="posameznoSporocilo" style="font-size: 1rem; margin-top: 0; margin-bottom: 0.4rem; padding-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; border-radius: 30px; color: white; background-color: #18a2b8; box-shadow: 1px 3px 3px #7b7b7b">
@@ -41,6 +41,10 @@
                     {{mojeSporocilo.cas}}
                 </div>
             </div>
+
+            {{!-- {{else}} --}}
+            {{!-- {{/ujemanjeNiza}} --}}
+
             {{/each}}
        
             {{/if}}

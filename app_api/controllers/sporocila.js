@@ -4,8 +4,6 @@ const User = mongoose.model('User');
 
 //////////////////////// g e t  s p o r o c i l a ////////////////////////
 const naloziSporocilo = (req, res) => {
-  console.log("req.params.idUserja::::" + req.params.idUserja);
-  console.log("req.query.imePrejemnika:::::" + req.query.idPrejemnika);
   User
   .find({ $or:
     [
