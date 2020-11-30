@@ -1,169 +1,74 @@
+    
 <div class="container" id="contacts">
     <ul id="contact-list" class="bg-dark">
+
+        {{#each contacts as |contact| }}
         <li class="bg-info text-light">
-                <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                <h5>Luis Capaldi</h5>
+                <img src="{{contact.slika}}" alt="" class="text-profile">
+                <h5>{{contact.ime}}</h5>
         </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor3.jpg" alt="" class="text-profile">
-            <h5>Katarina Štanta</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor1.jpg" alt="" class="text-profile">
-            <h5>Mark Zuki</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor2.jpg" alt="" class="text-profile">
-            <h5>Stanislava Radosavljević</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
-            <h5>Peter Zlobec</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/ang.jpg" alt="" class="text-profile">
-            <h5>Dani Pedrosa</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/slo.jpg" alt="" class="text-profile">
-            <h5>Alfred Danes</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/video.png" alt="" class="text-profile">
-            <h5>The G</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor4.jpg" alt="" class="text-profile">
-            <h5>dunklord420</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
-            <h5>Luka Fuerst</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
-            <h5>Maček Lavbi</h5>
-        </li>
+        {{/each}}
     </ul>
 </div>
 
 <div class="container bg-dark" id="chatbox">
     <div class="container-fluid bg-info" id="contact-name">
         <a href="/profil/ogled" style="text-decoration: none;">
-            <h2 class="text-light">Luis Capaldi</h2>
+            <h5 class="text-light" style="text-align: center;">{{contactChosen.sporocila.1.ime}}</h5>
         </a>
     </div>
-
-    <div class="container-fluid" id="messages">
+    <div class="container-fluid" id="messages" style="height: 60vh;">
 
         <div class="message-recieved">
+            {{!-- c e  z  o s e b o  s e  n i m a s  p o g o v o r a --}}
+            {{#if nimasPogovora}}
+                <div class="message-wrap container-fluid">
+                    <h6>{{nimasPogovora}}</h6>
+                </div>
+            {{else}}
+            {{!-- c e  z e  i m a s --}}    
+
+            {{#each sortedSporocilaa as |mojeSporocilo|}}
+            {{!-- {{{#ujemanjeNiza mojeSporocilo.prejemnikSporocila mojeSporocilo.mojeIme true}} --}}
             <div class="message-wrap container-fluid">
-                <div class="sender-profile">
-                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                    <h6>Luis Capaldi</h6>
-                </div>
-
+                {{!-- <h8 style="font-size: 0.8rem; color: rgb(192, 192, 192); margin-bottom: 0rem; margin-left: 1.1rem;">{{../pridobljenoIme}}</h8> --}}
                 <span>
-                    <p>
-                        Hello, my name is Luis and i would like to have a conversation.
+                    <p class="posameznoSporocilo" style="font-size: 1rem; margin-top: 0; margin-bottom: 0.4rem; padding-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; border-radius: 30px; color: white; background-color: #18a2b8; box-shadow: 1px 3px 3px #7b7b7b">
+                       {{mojeSporocilo.besedilo}}
                     </p>
                 </span>
-                <div class="timestamp">
-                    16:20 | Nov 15
+                <div class="timestamp" style="margin-top: 0rem; font-size: 0.7rem;">
+                    {{mojeSporocilo.cas}}
+                </div>
+            </div>
+
+            {{!-- {{else}} --}}
+            {{!-- {{/ujemanjeNiza}} --}}
+
+            {{/each}}
+       
+            {{/if}}
+        </div>
+
+
+    <form action="" method="post" role="form" style="width: 100%;">
+        <div class="container-fluid" id="input-bar">
+            <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Napišite sporočilo..." autocomplete="off" aria-label=""
+                        aria-describedby="basic-addon1" name="besedilo">
+                <div class="input-group-append">
+                    <button class="btn btn-info" type="button" style="border-radius: 0; background-color: white; width: 3rem; border-color: #ced4da; ">
+                        <i class="fas fa-paperclip" style="color: #6d757d; " ></i>
+                    </button>
+                    <button type="submit" class="btn btn-info" type="button" style="border-radius: 0;">Pošlji</button>
+
                 </div>
             </div>
         </div>
-
-        <div class="message-recieved">
-            <div class="message-wrap sent container-fluid">
-                <div class="sender-profile">
-                    <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
-                    <h6>Uporabnik</h6>
-                </div>
-
-                <span>
-                    <p>
-                        Abla espanol?
-                    </p>
-                </span>
-                <div class="timestamp">
-                    16:22 | Nov 15
-                </div>
-            </div>
-        </div>
-
-        <div class="message-recieved">
-            <div class="message-wrap container-fluid">
-                <div class="sender-profile">
-                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                    <h6>Luis Capaldi</h6>
-                </div>
-
-                <span>
-                    <p>
-                        Siiiiiiii, vamonos!
-                    </p>
-                </span>
-                <div class="timestamp">
-                    16:23 | Nov 15
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container-fluid" id="input-bar">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button class="btn btn-info" type="button" style="border-radius: 0;">
-                    <i class="fas fa-paperclip"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Napišite sporočilo..." aria-label=""
-                aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <button class="btn btn-info" type="button" style="border-radius: 0;">Pošlji</button>
-            </div>
-        </div>
-    </div>
+    </form>
 </div>
 
-<div class="container bg-dark" id="files">
-    <div class="container-fluid text-light" style="padding: 0.5rem;">
-        <h2 style="margin-bottom: 0;">Deljene datoteke</h2>
-    </div>
 
-    <ul id="file-list">
-        <li class="bg-info text-light">
-            <a href="#">slika.jpg <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">predstavitev.pptx <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">spis.docx <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">slika.png <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
+       
 
-    </ul>
 </div>

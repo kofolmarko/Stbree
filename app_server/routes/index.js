@@ -6,6 +6,7 @@ var router = express.Router();
 const ctrlLanding = require('../controllers/landing');
 const ctrlMain = require('../controllers/main');
 const ctrlJob = require('../controllers/job');
+const ctrlProfile = require('../controllers/profile');
 
 
 /* GET home page. */
@@ -21,14 +22,26 @@ router.get('/ponudba-del/dodaj', ctrlJob.jobNew);
 router.get('/ponudba-del/delo/uredi', ctrlJob.jobUser);
 */
 
-/* GET user profile page */
-router.get('/profil/uporabnik', ctrlMain.userProfile);
+
 
 /* GET view-only profile page */
 router.get('/profil/ogled', ctrlMain.viewProfile);
 
 /* GET chat page */
-router.get('/sporocanje', ctrlMain.chat);
+router.get('/sporocanje/:idUserja', ctrlMain.chat);
+
+/* POST sporocilo */
+router
+  .route('/sporocanje/:idUserja')
+  .post(ctrlMain.shraniSporocilo);
+
+
+/* GET user profile page */
+router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
+
+/* GET user profile page */
+router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
+
 
 
 //ROUTER export

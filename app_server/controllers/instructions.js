@@ -182,11 +182,8 @@ const getInstructor = async (req, res, dogodek, povratniKlic) => {
 
 //GET instructions event new post page
 const instructionsEventNew = (req, res, sporocilo) => {
-  if(require('./signing').loginStatus) {
+
     res.render('instructions-event-new', {sporocilo: sporocilo});
-  } else {
-    res.redirect('/prijava');
-  }
   
 };
 

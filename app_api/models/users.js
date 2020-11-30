@@ -3,6 +3,13 @@ const mongoose = require('mongoose');
 //const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 //const Job = mongoose.model('Job');
 
+
+const sporocilaShema = new mongoose.Schema({
+  prejemnikSporocila: { type: String},
+  besedilo: "String",
+  cas: { type: Date, "default": Date.now }
+});
+
 const deloShema = new mongoose.Schema({
   naziv: { type: String, required: true },
   opis: { type: String, required: true },
@@ -28,7 +35,12 @@ const uporabnikZacetnoShema = new mongoose.Schema({
   statusInstruktorja: { type: Boolean, "default": false },
   datumVpisa: { type: Date, "default": Date.now },
   dogodki: [instrukcijeDogodekShema],
-  dela: [deloShema]
+  dela: [deloShema],
+  poslanaSporocila: [sporocilaShema],
+  opis: {type: String, "default": "Vnesite opis"},
+  telefonskaStevilka: {type: Number, "default": ""},
+  ocena: { type: Number, "default": 0, min: 0, max: 5 }
 });
+
 
 mongoose.model('User', uporabnikZacetnoShema, 'Users');

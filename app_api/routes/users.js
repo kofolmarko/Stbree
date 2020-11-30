@@ -16,6 +16,9 @@ router.get('/uporabniki/:email', ctrlUporabniki.prijaviUporabnika);
 //GET get user by id
 router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
 
+/*PUT registered users*/
+router.put('/uporabnik/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
+
 //GET list of all registered users
 router.get('/uporabniki', ctrlUporabniki.uporabniki);
 
@@ -35,6 +38,8 @@ router.put('/uporabniki/:loginID/delo/odjava/:idDela', ctrlUporabniki.odjavaOdDe
 router.put('/uporabniki/:email', ctrlUporabniki.nastaviStatus);
 */
 
+/*PUT geslo*/
+router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
 
 //ROUTER export
 module.exports = router;

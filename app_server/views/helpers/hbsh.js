@@ -31,18 +31,22 @@ dateFormat.masks.slovenski = 'dd. mm. yyyy';
 
 
 
-hbs.registerHelper('pretvoriDatum', function(date) {
-  
+hbs.registerHelper('pretvoriDatum', function (date) {
+
   return dateFormat(date, "slovenski");
 });
 
 
-hbs.registerHelper('generirajPovezavoZaDogodek', function(dogodek) {
+hbs.registerHelper('generirajPovezavoZaDogodek', function (dogodek) {
   var povezava = '<a href="http://localhost:3000/instrukcije-dogodki/dogodek/' + dogodek._id + '">' + dogodek.naziv + "</a>";
   return povezava;
 });
 
-hbs.registerHelper('generirajPovezavoZaDelo', function(delo) {
+hbs.registerHelper('generirajPovezavoZaDelo', function (delo) {
   var povezava = '<a href="http://localhost:3000/ponudba-del/' + delo._id + '">' + delo.naziv + "</a>";
   return povezava;
+});
+
+hbs.registerHelper("inc", function (value, options) {
+  return parseInt(value) + 1;
 });

@@ -28,7 +28,8 @@ const uporabniki = (req, res) => {
               "statusInstruktorja": uporabnik.statusInstruktorja,
               "statusPrijave": uporabnik.statusPrijave,
               "dogodki": uporabnik.dogodki,
-              "dela": uporabnik.dela
+              "dela": uporabnik.dela,
+              "poslanaSporocila": uporabnik.poslanaSporocila
             };
           })
         );
@@ -219,6 +220,54 @@ const odjavaOdDela = (req, res) => {
   });
 };
 
+ /*PUT update user*/
+ const posodobiUporabnika = (req, res) => {
+  console.log("Inside controllers on the API!");
+  Uporabnik
+    .findByIdAndUpdate(req.params.idUporabnika,
+      {
+        email: req.body.email,
+        telefonskaStevilka: req.body.telefonskaStevilka,
+        opis: req.body.opis,
+        statusInstruktorja: req.body.statusInstruktorja
+      })
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Dogodek ne obstaja."
+        });
+      } else if (napaka) {
+        console.log(napaka.data);
+        return res.status(500).json(napaka);
+      }
+      console.log(uporabnik.data);
+      res.status(200).json(uporabnik);
+    });
+};
+
+const posodobiGeslo = (req, res) => {
+  console.log("Inside controllers on the API!");
+  Uporabnik
+    .findByIdAndUpdate(req.params.idUporabnika,
+      {
+        geslo: req.body.geslo
+      })
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Dogodek ne obstaja."
+        });
+      } else if (napaka) {
+        console.log(napaka.data);
+        return res.status(500).json(napaka);
+      }
+      console.log(uporabnik.data);
+      res.status(200).json(uporabnik);
+    });
+};
+
 /*OBSOLETE
 const nastaviStatus = (req, res) => {
   Uporabnik
@@ -254,6 +303,8 @@ module.exports = {
   prijavaNaDogodek,
   odjavaOdDogodka,
   prijavaNaDelo,
-  odjavaOdDela
+  odjavaOdDela,
+  posodobiUporabnika,
+  posodobiGeslo
   //nastaviStatus,
 };

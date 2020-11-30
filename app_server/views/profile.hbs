@@ -1,0 +1,417 @@
+<body>
+  {{#if sporocilo}}
+  <div class="alert alert-warning">{{sporocilo}}</div>
+  {{else}}
+  <div class="container">
+    <h1 id="profile-naslov">{{profileDetails.ime}} {{profileDetails.priimek}}</h1>
+    <hr>
+    <div class="row">
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
+
+        <form>
+          <div class="form-group">
+            <label for="opisProfila">Opis:</label>
+            <p class="card-text" id="opis">{{profileDetails.opis}}</p>
+          </div>
+        </form>
+
+
+      </div>
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
+        <img src="/assets/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
+          style="width: 200px; height:200px">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="table-responsive">
+        <hr>
+        <table class="table table-borderless" id="tabela-podatkov">
+          <tbody>
+            <h4 id="profile-podnaslov">Podatki:</h4>
+            <tr>
+              <th class="thPodatki" scope="row">Email naslov:</th>
+              <td id="email">{{profileDetails.email}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Telefonska številka:</th>
+              <td id="phone">{{profileDetails.telefonskaStevilka}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Ocena uporabnika:</th>
+              <td>
+                {{{zvezdice profileDetails.ocena}}}
+              </td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Status inštruktorja:</th>
+              <td id="status">{{profileDetails.statusInstruktorja}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Datum vpisa:</th>
+              <td name="kdaj">{{profileDetails.datumVpisa}}</td>
+            </tr>
+
+            <tr id="spremeni-sliko" style="display: none;">
+              <th class="thPodatki" scope="row">Spremeni profilno sliko:</th>
+              <td>
+                <form>
+                  <div class="form-group">
+                    <input type="file" class="form-control-file" id="profilna-slika">
+                  </div>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        {{#if profileDetails.isAdmin}}
+        <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()">Spremeni</button>
+        <button id="save-btn" value="save" class="btn btn-success d-none">Shrani</i></button>
+        {{/if}}
+
+        <hr>
+        <h4 id="profile-podnaslov">Dodatno:</h4>
+      </div>
+    </div>
+    {{#if profileDetails.isAdmin}}
+    <div class="tab pb-5">
+      <button class="tablinks" onclick="openCity(event, 'kronologija')">Moje Objave</button>
+      <button class="tablinks" onclick="openCity(event, 'obvestila')">Obvestila<span class="znacka">1</span></button>
+      <button class="tablinks" onclick="openCity(event, 'moja-ocena')">Moja ocena</button>
+      <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
+    </div>
+
+    <div id="kronologija" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Projekt</th>
+              <th scope="col">Datum</th>
+              <th scope="col">Uredi</th>
+            </tr>
+          </thead>
+          {{#each profileDetails.dogodki as |dogodek|}}
+          <tbody>
+            <tr>
+              <th scope="row">{{inc @index}}</th>
+              <td>{{dogodek.naziv}}</td>
+              <td name="kdaj">{{dogodek.datum}}</td>
+              <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a>
+                <a href="#"><i class="far fa-trash-alt"></i></a></td> {{!--izbrisi direkt--}}
+            </tr>
+          </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+
+    <div id="obvestila" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nedavna obvestila</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          {{#each profileDetails.dela as |delo|}}
+          <tbody>
+            <tr class="table-danger">
+              <th scope="row">{{inc @index}}</th>
+              <td><a href="#">{{delo.naziv}}</a>
+              </td>
+              <td name="kdaj">{{delo.datum}}</td>
+            </tr>
+          </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div id="moja-ocena" class="tabcontent">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <p style="margin: 0;">Moja ocena:</p>
+          {{{zvezdice profileDetails.ocena}}}
+        </div>
+      </div>
+    </div>
+
+    <div id="spremeni-geslo" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <form>
+          <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
+          <div class="form-group">
+            <label for="name">Novo geslo:</label>
+            <input type="password" id="passwordReset"><br>
+            <label for="surname">Potrdi novo geslo: </label>
+            <input type="password" id="passwordResetConfirm">
+          </div>
+          <button class="btn btn-danger" id="resetPassword" type="submit" onclick="novoGeslo()">Potrdi</button>
+        </form>
+      </div>
+    </div>
+
+    {{else}}
+    <div class="tab pb-5">
+      <button class="tablinks" onclick="openCity(event, 'kontakt')">Kontakt</button>
+      <button class="tablinks" onclick="openCity(event, 'moja-dela')">Moja dela</button>
+      <button class="tablinks" onclick="openCity(event, 'moje-instrukcije')">Moje inštrukcije</button>
+      <button class="tablinks" onclick="openCity(event, 'oceni-me')">Oceni me!</button>
+    </div>
+
+
+    <div id="kontakt" class="tabcontent">
+      <p><b>Kontaktiraj me preko:</b></p>
+      <ul class="list-unstyled">
+        <li class="d-inline">
+          <a class="fa fa-comment" href="./sporocanje" target="_blank" id="moznostiKontakta"> Privatnega sporočila</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="moja-dela" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Delo</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          {{#each profileDetails.dela as |delo|}}
+          <tbody>
+            <tr>
+              <th scope="row">{{inc @index}}</th>
+              <td>{{delo.naziv}}</td>
+              <td name="kdaj">{{delo.datum}}</td>
+            </tr>
+          </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div id="moje-instrukcije" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+              <th scope="col">#</th>
+              <th scope="col">Inštrukcije</th>
+              <th scope="col">Ura</th>
+              <th scope="col">Datum</th>
+            </tr>
+          </thead>
+          {{#each profileDetails.dogodki as |dogodek|}}
+          <tbody>
+            <tr>
+              <th scope="row">{{inc @index}}</th>
+              <td>{{dogodek.naziv}}</td>
+              <td>{{dogodek.ura}}</td>
+              <td name="kdaj">{{dogodek.datum}}</td>
+            </tr>
+          </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+    <div id="oceni-me" class="tabcontent">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <table>
+            <tr>
+              <th class="thPodatki" scope="row">Dodaj oceno:</th>
+              <td>
+                <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </td>
+              <td><button id="add-button" class="btn btn-success" style="margin-left: 20px;"
+                  onclick="shraniOceno()">Potrdi</button></td>
+              <br><br><br>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  {{/if}}
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+            console.log("Stran je odprta");
+            var saveBtn = document.getElementById('save-btn');
+            saveBtn.addEventListener('click', () => {
+                console.log("Save button has been clicked!")
+                var url = window.location.href.split('/');
+                var id = url[url.length-1];
+                console.log(id);
+                var asinhronaZahteva = new XMLHttpRequest();
+                asinhronaZahteva.open(
+                    "PUT",
+                   "http://localhost:3000/api/uporabnik/" + id,//current url
+                    true
+                )
+                /*
+                .then((odgovor) => odgovor.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));*/
+                asinhronaZahteva.addEventListener("load", function () {
+                    //var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
+                    //console.log(jsonRezultati);
+                });
+                
+                //window.location = "/instrukcije-dogodki";
+                asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                asinhronaZahteva.send(JSON.stringify(shrani()));
+            });
+        });
+    var d = new Date();
+    var listOfEl = document.getElementsByName("kdaj")
+      .forEach(element => element.innerHTML = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear());
+    function shraniOceno() {
+      document.getElementById("add-button").style.display = "block";
+      var dodana = document.getElementById("ocena").innerHTML.value;
+      document.getElementById("ocena").innerHTML = dodana;
+      document.getElementById("add-button").style.display = "none";
+    }
+    function novoGeslo() {
+      var password1 = document.getElementById("passwordReset");
+      var password2 = document.getElementById("passwordResetConfirm");
+      if (password1.value != password2.value) {
+        alert("Gesli se ne ujemata!")
+        return false;
+      } else if (password1.value.length < 8) {
+        alert("Geslo mora biti dolgo vsaj 8 znakov!")
+        return false;
+      } else {
+        alert("Geslo je bilo uspešno spremenjeno!")
+        return true;
+      }
+    }
+    function uredi() {
+      document.getElementById("edit-btn").classList.remove("d-ilblock");
+      document.getElementById("edit-btn").classList.add("d-none");
+      document.getElementById("save-btn").classList.remove("d-none");
+      document.getElementById("save-btn").classList.add("d-ilblock");
+      //document.getElementById("opis").removeAttribute("readonly");
+      var email = document.getElementById("email");
+      var phone = document.getElementById("phone");
+      var opis = document.getElementById("opis");
+      var status = document.getElementById("status");
+      var email_data = email.innerHTML;
+      var phone_data = phone.innerHTML;
+      var status_data = status.innerHTML;
+      var opis_data = opis.innerHTML;
+      console.log(email.innerHTML);
+      email.innerHTML = "<input type='text' class='form-control' id='email_text' value='" + email_data + "'>";
+      phone.innerHTML = "<input type='text' class='form-control' id='phone_text' value='" + phone_data + "'>";
+      opis.innerHTML = "<input type='text' class='form-control' id='opis_text' value='" + opis_data + "'>";
+      //opis.innerHTML = "<input type = 'textarea' class='form-control' id='opis_text' value='" + opis_data + "'>";
+      if (status_data == "Neaktiven") {
+        status.innerHTML = "<input type='checkbox' class='form-check-input' id='statusInstruktorja'><label class='form-check-label' for='status-instruktorja'>Aktiviraj status inštruktorja</label>";
+      } else {
+        status.innerHTML = "<input type='checkbox' class='form-check-input' id='statusInstruktorja' checked><label class='form-check-label' for='status-instruktorja'>Aktiviraj status inštruktorja</label>";
+      }
+    }
+    function shrani() {
+      {{!-- var phone_novi = document.getElementById("phone_text").value;
+      var email_novi = document.getElementById("email_text").value;
+      var opis_novi = document.getElementById("opis_text").value;
+      //document.getElementById("opis").setAttribute("readonly", true);
+      if (status.checked == true) {
+        document.getElementById("statusInstruktorja").innerHTML = "Aktiven";
+      } else {
+        document.getElementById("statusInstruktorja").innerHTML = "Neaktiven";
+      } --}}
+      
+      var email_novi = "";
+      var email_element = document.getElementById("email").firstChild;
+      if(email_element != null){
+        console.log("Email1:" + email_element.value);
+        email_novi = email_element.value;
+      }
+      var phone_novi = "";
+      var phone_element = document.getElementById("phone").firstChild;
+      if(phone_element != null){
+        phone_novi = phone_element.value;
+      }
+      var opis_novi = "";
+      var opis_element = document.getElementById("opis").firstChild;
+      if(opis_element != null){
+        opis_novi = opis_element.value;
+      }
+      
+      var status_novi = "";
+      var status_element = document.getElementById("status").firstChild;
+      if(status_element != null){
+        status_novi = status_element.checked;
+      }
+      console.log("Phone:" + phone_novi);
+      console.log("Email:" + email_novi);
+      console.log("Opis:" + opis_novi);      
+      document.getElementById("email").innerHTML = email_novi;
+      document.getElementById("phone").innerHTML = phone_novi;
+      document.getElementById("opis").innerHTML = opis_novi;
+      document.getElementById("edit-btn").classList.remove("d-none");
+      document.getElementById("edit-btn").classList.add("d-ilblock");
+      document.getElementById("save-btn").classList.remove("d-ilblock");
+      document.getElementById("save-btn").classList.add("d-none");
+    console.log("telefonce:" + phone_novi);
+    return {
+        email: email_novi,
+        opis: opis_novi,
+        telefonskaStevilka: phone_novi,
+        statusInstruktorja: status_novi
+      }
+    }
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="../controllers/profile.js" type="text/javascript"></script>
+
+  <script>
+    $(window).scroll(function () {
+      $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+  </script>
+
+</body>
+
+</html>
