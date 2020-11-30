@@ -39,7 +39,6 @@ const uporabnikZacetnoShema = new mongoose.Schema({
   poslanaSporocila: [sporocilaShema],
   opis: {type: String, "default": "Vnesite opis"},
   telefonskaStevilka: {type: Number, "default": ""},
-  ocena: { type: Number, "default": 0, min: 0, max: 5 }
 });
 
 
