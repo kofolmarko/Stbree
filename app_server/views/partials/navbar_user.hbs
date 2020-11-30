@@ -12,11 +12,12 @@
             <li class="nav-item mx-auto">
                 <a class="nav-link text-light" href="/my">Pregledna plošča</a>
             </li>
-            <li class="nav-item mx-auto">
-                <a class="nav-link text-light" href="/sporocanje">Sporočanje</a>
-            </li>
+            
             <li class="nav-item mx-auto">
                 <a class="nav-link text-light" href="/instruktorji">Inštrukcije</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" href="/instrukcije-dogodki">Dogodki</a>
             </li>
             <li class="nav-item mx-auto">
                 <a class="nav-link text-light" href="/ponudba-del">Delo</a>
@@ -35,7 +36,7 @@
                     </svg>
                 </button>
                 <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/profil/uporabnik">Profil<span class="znacka">1</span></a>
+                    <a class="dropdown-item" id="profileBtn">Profil</a>
                     <div class="dropdown-divider"></div>
                     <a id="logout-btn" class="dropdown-item text-danger"><b>Odjava</b></a>
                 </div>
@@ -74,6 +75,31 @@
                 });
 
                 window.location = "/";
+
+                asinhronaZahteva.send(null);
+    });
+
+        let profileBtn = document.getElementById("profileBtn");
+    profileBtn.addEventListener('click', function () {
+        console.log("Logout button has been clicked!")
+
+                var asinhronaZahteva = new XMLHttpRequest();
+
+                asinhronaZahteva.open(
+                    "GET",
+                    '/profil/:my', //current url
+                    true
+                )
+                /*
+                .then((odgovor) => odgovor.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
+                */
+                asinhronaZahteva.addEventListener("load", function () {
+                    
+                });
+
+                
 
                 asinhronaZahteva.send(null);
     });

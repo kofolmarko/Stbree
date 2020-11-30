@@ -9,9 +9,9 @@
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
 
         <form>
-          <div class="form-group">
+          <div class="form-group" >
             <label for="opisProfila">Opis:</label>
-            <p class="card-text" id="opis">{{profileDetails.opis}}</p>
+            <p class="card-text" id="opis" >{{profileDetails.opis}}</p>
           </div>
         </form>
 
@@ -38,19 +38,21 @@
               <th class="thPodatki" scope="row">Telefonska številka:</th>
               <td id="phone">{{profileDetails.telefonskaStevilka}}</td>
             </tr>
+            <!--
             <tr>
               <th class="thPodatki" scope="row">Ocena uporabnika:</th>
               <td>
                 {{{zvezdice profileDetails.ocena}}}
               </td>
             </tr>
+            -->
             <tr>
               <th class="thPodatki" scope="row">Status inštruktorja:</th>
-              <td id="status">{{profileDetails.statusInstruktorja}}</td>
-            </tr>
-            <tr>
-              <th class="thPodatki" scope="row">Datum vpisa:</th>
-              <td name="kdaj">{{profileDetails.datumVpisa}}</td>
+              {{#if profileDetails.statusInstruktorja}}
+              <td id="status">Da</td>
+              {{else}}
+              <td id="status">Ne</td>
+              {{/if}}
             </tr>
 
             <tr id="spremeni-sliko" style="display: none;">
@@ -70,16 +72,19 @@
         <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()">Spremeni</button>
         <button id="save-btn" value="save" class="btn btn-success d-none">Shrani</i></button>
         {{/if}}
-
+        <!--
         <hr>
         <h4 id="profile-podnaslov">Dodatno:</h4>
+        -->
       </div>
     </div>
     {{#if profileDetails.isAdmin}}
     <div class="tab pb-5">
-      <button class="tablinks" onclick="openCity(event, 'kronologija')">Moje Objave</button>
+      <button class="tablinks" onclick="openCity(event, 'kronologija')">Seznam objav</button>
+      <!--
       <button class="tablinks" onclick="openCity(event, 'obvestila')">Obvestila<span class="znacka">1</span></button>
       <button class="tablinks" onclick="openCity(event, 'moja-ocena')">Moja ocena</button>
+      -->
       <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
     </div>
 
@@ -88,20 +93,15 @@
         <table class="table">
           <thead>
             <tr class="trTabelaKrono">
-              <th scope="col">#</th>
-              <th scope="col">Projekt</th>
-              <th scope="col">Datum</th>
-              <th scope="col">Uredi</th>
+
             </tr>
           </thead>
-          {{#each profileDetails.dogodki as |dogodek|}}
+          {{#each profileDetails.naziviObjav}}
           <tbody>
             <tr>
               <th scope="row">{{inc @index}}</th>
-              <td>{{dogodek.naziv}}</td>
-              <td name="kdaj">{{dogodek.datum}}</td>
-              <td><a href="/ponudba-del/delo/uredi"><i class="fas fa-edit"></i></a>
-                <a href="#"><i class="far fa-trash-alt"></i></a></td> {{!--izbrisi direkt--}}
+              <td>{{this}}</td>
+              
             </tr>
           </tbody>
           {{/each}}
@@ -113,20 +113,14 @@
     <div id="obvestila" class="tabcontent">
       <div class="col d-flex justify-content-center">
         <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nedavna obvestila</th>
-              <th scope="col">Datum</th>
-            </tr>
-          </thead>
-          {{#each profileDetails.dela as |delo|}}
+          
+          {{#each profileDetails.naziviObjav}}
           <tbody>
             <tr class="table-danger">
               <th scope="row">{{inc @index}}</th>
-              <td><a href="#">{{delo.naziv}}</a>
+              <td><a href="#">{{this}}</a>
               </td>
-              <td name="kdaj">{{delo.datum}}</td>
+              <td name="kdaj">{{this}}</td>
             </tr>
           </tbody>
           {{/each}}
@@ -134,18 +128,10 @@
       </div>
     </div>
 
-    <div id="moja-ocena" class="tabcontent">
-      <div class="row">
-        <div class="col d-flex justify-content-center">
-          <p style="margin: 0;">Moja ocena:</p>
-          {{{zvezdice profileDetails.ocena}}}
-        </div>
-      </div>
-    </div>
 
     <div id="spremeni-geslo" class="tabcontent">
       <div class="col d-flex justify-content-center">
-        <form>
+        
           <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
           <div class="form-group">
             <label for="name">Novo geslo:</label>
@@ -153,45 +139,33 @@
             <label for="surname">Potrdi novo geslo: </label>
             <input type="password" id="passwordResetConfirm">
           </div>
-          <button class="btn btn-danger" id="resetPassword" type="submit" onclick="novoGeslo()">Potrdi</button>
-        </form>
+          <button class="btn btn-danger" id="resetPassword" onclick="novoGeslo()">Potrdi</button>
+        
       </div>
     </div>
 
     {{else}}
+    
     <div class="tab pb-5">
-      <button class="tablinks" onclick="openCity(event, 'kontakt')">Kontakt</button>
-      <button class="tablinks" onclick="openCity(event, 'moja-dela')">Moja dela</button>
-      <button class="tablinks" onclick="openCity(event, 'moje-instrukcije')">Moje inštrukcije</button>
-      <button class="tablinks" onclick="openCity(event, 'oceni-me')">Oceni me!</button>
+      <button class="tablinks" onclick="openCity(event, 'moja-dela')">Seznam objav</button>
+
     </div>
 
 
-    <div id="kontakt" class="tabcontent">
-      <p><b>Kontaktiraj me preko:</b></p>
-      <ul class="list-unstyled">
-        <li class="d-inline">
-          <a class="fa fa-comment" href="./sporocanje" target="_blank" id="moznostiKontakta"> Privatnega sporočila</a>
-        </li>
-      </ul>
-    </div>
+
 
     <div id="moja-dela" class="tabcontent">
       <div class="col d-flex justify-content-center">
         <table class="table">
           <thead>
             <tr class="trTabelaKrono">
-              <th scope="col">#</th>
-              <th scope="col">Delo</th>
-              <th scope="col">Datum</th>
             </tr>
           </thead>
-          {{#each profileDetails.dela as |delo|}}
+          {{#each profileDetails.naziviObjav}}
           <tbody>
             <tr>
               <th scope="row">{{inc @index}}</th>
-              <td>{{delo.naziv}}</td>
-              <td name="kdaj">{{delo.datum}}</td>
+              <td>{{this}}</td>
             </tr>
           </tbody>
           {{/each}}
@@ -247,9 +221,11 @@
         </div>
       </div>
     </div>
+    
     {{/if}}
   </div>
   {{/if}}
+
 
 
   <script>
@@ -301,6 +277,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return false;
       } else {
         alert("Geslo je bilo uspešno spremenjeno!")
+
+
         return true;
       }
     }

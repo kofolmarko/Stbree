@@ -38,6 +38,7 @@ router
 
 /* GET user profile page */
 router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
+router.get('/profil/:my', ctrlProfile.renderProfileNav);
 
 /* GET user profile page */
 router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
