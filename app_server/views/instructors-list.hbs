@@ -76,9 +76,8 @@
     <div class="card instructor" style="width: 18rem;">
       <img class="card-img-top" src="../../assets/thumbnails/blue.png" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">{{instruktor.ime}} {{instruktor.priimek}}</h5>
-        <p class="card-text">{{instruktor.opis}}</p>
-        <a href="/uporabniki/{{instruktor._id}} class="btn btn-primary">Profil</a>
+        <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis;">{{instruktor.ime}} {{instruktor.priimek}}</h5>
+        <a href="/uporabniki/{{instruktor._id}}" class="btn btn-primary">Preveri profil</a>
       </div>
     </div>
     {{/if}}

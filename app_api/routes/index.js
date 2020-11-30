@@ -6,4 +6,6 @@ const ctrlChat = require('../controllers/sporocila');
 router.get('/chat/:idUserja', ctrlChat.naloziSporocilo);
 router.post('/chat/:idUserja', ctrlChat.kreirajSporocilo);
 
+
+
 module.exports = router;

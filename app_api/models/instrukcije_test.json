@@ -1,0 +1,47 @@
+[
+    {
+        "_id": {
+            "$oid": "5fc3f3076dd5980011c8984a"
+        },
+        "cena": 4,
+        "naziv": "Uvod v izdelovanje html spletnih strani",
+        "opis": "V tem izobraževanju bom predstavil kako se izdela preprosta spletna stran....",
+        "datum": {
+            "$date": "2020-12-16T00:00:00.000Z"
+        },
+        "ura": "19:00",
+        "steviloProstihMest": 15,
+        "idInstruktorja": "5fc42824761a11001107bf5e",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fc3f3076dd5980011c8984b"
+        },
+        "cena": 15,
+        "naziv": "Algebra 1",
+        "opis": "Hitra 5 urna ponovitev matrik",
+        "datum": {
+            "$date": "2020-12-25T00:00:00.000Z"
+        },
+        "ura": "16:00",
+        "steviloProstihMest": 20,
+        "idInstruktorja": "5fc428c2eaf3150011aae462",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fc3f3076dd5980011c8984c"
+        },
+        "cena": 20,
+        "naziv": "Individualne ure fizike",
+        "opis": "Dve uri intenzivnega učenja fizike po meri",
+        "datum": {
+            "$date": "2020-12-25T00:00:00.000Z"
+        },
+        "ura": "15:00",
+        "steviloProstihMest": 1,
+        "idInstruktorja": "5fc428c2eaf313d0011aae469",
+        "__v": 0
+    }
+]

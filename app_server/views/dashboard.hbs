@@ -35,7 +35,7 @@
     </div>
 
     <div id="covid" class="container">
-        <h2 id="covid-info">Skupno število okužb z Covid-19 v Sloveniji:   </h2>
+        <h2 id="covid-info">Skupno število okužb z Covid-19 v Sloveniji: </h2>
     </div>
 
     {{> carousel_getstarted}}
@@ -198,7 +198,7 @@
             "method": "GET",
             "timeout": 0,
         };
-        
+
         $.ajax(settings).done(function (response) {
             console.log(response[response.length - 1]);
             document.getElementById("covid-info").innerHTML += response[response.length - 1].Cases;
