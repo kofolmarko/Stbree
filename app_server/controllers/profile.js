@@ -22,7 +22,6 @@ const renderProfile = (req, res) => {
         priimek: data.priimek,
         opis: data.opis,
         telefonskaStevilka: data.telefonskaStevilka,
-        ocena: data.ocena,
         datumVpisa: data.datumVpisa,
         email: data.email,
         statusInstruktorja: data.statusInstruktorja,

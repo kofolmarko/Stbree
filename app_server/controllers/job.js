@@ -91,7 +91,6 @@ const renderJob = (req, res, delo, ponudnik) => {
     datum: delo.datum,
     ime: ponudnik.ime + ' ' + ponudnik.priimek,
     opisPonudnik: ponudnik.opis,
-    ocena: ponudnik.ocena,
     admin: isAdmin,
     prijavljen: isSignedUp,
     zasedeno: delo.zasedeno

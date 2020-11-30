@@ -14,10 +14,10 @@ if (process.env.NODE_ENV === 'production') {
 
 //RENDER signup page
 const signup = (req, res, sporocilo) => {
-  res.render('signup', 
-  {
-    sporocilo: sporocilo
-  });
+  res.render('signup',
+    {
+      sporocilo: sporocilo
+    });
 };
 
 //POST REGISTER a new user
@@ -59,9 +59,9 @@ const registerNewUser = (req, res) => {
 };
 
 //GLOBAL LOGIN VARIABLES
-let loginStatus = false;
-let loginID = {val: null};
-let loginName = {val: null};
+let loginStatus = { val: false };
+let loginID = { val: null };
+let loginName = { val: null };
 
 //IMPORT navbar switcher
 const navbarToggle = require('../../public/javascripts/navbar-toggle');
@@ -69,17 +69,17 @@ const navbarToggle = require('../../public/javascripts/navbar-toggle');
 //RENDER signin page
 const signin = (req, res, sporocilo) => {
   res.render('signin',
-  {
-    sporocilo: sporocilo
-  });
+    {
+      sporocilo: sporocilo
+    });
 };
 
 //SIGNOUT and RENDER landing
 const signout = () => {
-  loginStatus = false;
+  loginStatus.val = false;
   loginID.val = null;
   loginName.val = null;
-  navbarToggle(loginStatus);
+  navbarToggle(loginStatus.val);
 };
 
 //GET LOGIN a registered user
@@ -98,15 +98,14 @@ const loginUser = (req, res) => {
       .then((user) => {
         //console.log("NAZAJ NA SERVERJU");
         //console.log(user.data);
-        
+
         if (user.data.geslo == reqData.geslo) {
-          //console.log(user.data._id);
           console.log(user.data.id);
           console.log(user.data.ime);
-          loginStatus = true;
+          loginStatus.val = true;
           loginID.val = user.data._id;
           loginName.val = user.data.ime;
-          navbarToggle(loginStatus);
+          navbarToggle(loginStatus.val);
           res.redirect('/my');
         } else {
           var message = "Vnesena e-pošta ali geslo nista pravilna.";
