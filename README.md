@@ -101,8 +101,10 @@ Dinamična spletna aplikacija s podatkovno bazo
 	
 12% Datoteka README.md vsebuje pravilna navodila in podatke za namestitev in zagon aplikacije.
 
-npm install
-docker-compose up
+
+    npm install
+    npm install dateformat
+    docker-compose up
 
 
 ## 4. LP
