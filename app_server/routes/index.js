@@ -31,6 +31,12 @@ router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
 /* GET user profile page */
 router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
 
+router.get('/db', ctrlMain.db);
+
+router.delete('/db', ctrlMain.bazaIzbrisi);
+
+router.post('/db', ctrlMain.bazaNapolni)
+
 
 
 //ROUTER export

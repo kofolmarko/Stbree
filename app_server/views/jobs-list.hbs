@@ -13,8 +13,6 @@
           <option value="">Izberi filter...</option>
           <option value="datum">Datumu (bližnji najprej)</option>
           <option value="REVdatum">Datumu (kasnejši najprej)</option>
-          <option value="steviloProstihMest">Številu prostih mest (najmanj najprej)</option>
-          <option value="REVsteviloProstihMest">Številu prostih mest (največ najprej)</option>
           <option value="naziv">Imenu (A-Z)</option>
           <option value="REVnaziv">Imenu (Z-A)</option>
           <option value="cena">Ceni (cenejši najprej)</option>
@@ -49,7 +47,7 @@
     <div class="card instructor" style="width: 18rem;">
       <img class="card-img-top" src="../../assets/thumbnails/red.png" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">{{delo.naziv}}</h5>
+        <h5 class="card-title">{{krajsanjeBesedila delo.naziv}}</h5>
         <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
           {{delo.opis}}</p>
         <a href="/ponudba-del/delo/{{delo._id}}" class="btn btn-primary">Podrobnosti</a>

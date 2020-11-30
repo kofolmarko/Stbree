@@ -165,6 +165,7 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
     ura: dogodek.ura,
     steviloProstihMest: dogodek.steviloProstihMest,
     ime: instruktor.ime + " " + instruktor.priimek,
+    instruktorOpis: instruktor.opis,
     admin: isAdmin,
     prijavljen: isSignedUp
   });

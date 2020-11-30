@@ -53,7 +53,7 @@
             </a>
             <hr>
             <h5>Opis uporabnika</h5>
-            <h4>{{opisPonudnika}}</h4>
+            <h4>{{opisPonudnik}}</h4>
     </div>
   </div>
 
@@ -119,12 +119,13 @@
       var naziv_data = naziv.innerHTML;
       var opis_data = opis.innerHTML;
       var cena_data = cena.innerHTML;
-      var datum_data = datum.innerHTML;
+      var datum_dataSlab = datum.innerHTML;
+      var datum_data = datum_dataSlab[8] + datum_dataSlab[9] + datum_dataSlab[10] + datum_dataSlab[11] + "-" + datum_dataSlab[4] + datum_dataSlab[5] + "-" + datum_dataSlab[0] + datum_dataSlab[1]
 
       naziv.innerHTML = "<input type='text' class='form-control' id='naziv_text' value='" + naziv_data + "'>";
       opis.innerHTML = "<input type='text' class='form-control' id='opis_text' value='" + opis_data + "'>";
       cena.innerHTML = "<input type='number' class='form-control' id='cena_text' min='0' value='" + cena_data + "'>";
-      datum.innerHTML = "<input type='date' class='form-control' id='datum_value' value='2020-12-16'>";
+      datum.innerHTML = "<input type='date' class='form-control' id='datum_value' value='" + datum_data + "'>";
     }
     function shrani() {
       var naziv_novi = document.getElementById("naziv_text").value;
