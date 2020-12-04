@@ -5,7 +5,7 @@ var router = express.Router();
 //Controllers constants to access functions
 const ctrlLanding = require('../controllers/landing');
 const ctrlMain = require('../controllers/main');
-const ctrlProfile = require('../controllers/profile')
+const ctrlProfile = require('../controllers/profile');
 
 /* GET home page. */
 router.get('/', ctrlLanding.landing);
@@ -27,7 +27,10 @@ router
 
 /* GET user profile page */
 router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
-router.get('/profil/:my', ctrlProfile.renderProfileNav);
+//router.get('/profil/:my', ctrlProfile.renderProfileNav);
+
+//GET redirect to my profile page
+router.get('/profil-my', ctrlProfile.redirectMyProfile);
 
 /* GET user profile page */
 router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
@@ -36,7 +39,7 @@ router.get('/db', ctrlMain.db);
 
 router.delete('/db', ctrlMain.bazaIzbrisi);
 
-router.post('/db', ctrlMain.bazaNapolni)
+router.post('/db', ctrlMain.bazaNapolni);
 
 
 

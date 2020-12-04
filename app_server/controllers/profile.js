@@ -85,6 +85,11 @@ const renderProfileNav = (req, res) => {
     });
 };
 
+const redirectMyProfile = (req, res) => {
+  var profileID = require('./signing').loginID.val;
+  console.log("found profile id: " + profileID);
+  res.redirect("/profil/" + profileID);
+};
 
 const renderProfile = (req, res) => {
   axios.get("http://localhost:3000/api/uporabnik/" + req.params.idUporabnika)
@@ -204,5 +209,6 @@ function editProfile(data) {
 
 module.exports = {
   renderProfile,
-  renderProfileNav
+  renderProfileNav,
+  redirectMyProfile
 };
