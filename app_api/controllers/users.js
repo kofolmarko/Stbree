@@ -268,6 +268,52 @@ const posodobiGeslo = (req, res) => {
     });
 };
 
+ /*PUT update user grade*/
+ const posodobiOcena = (req, res) => {
+  console.log("Inside controllers on the API!");
+  var novaOcena = Number(req.body.ocena);//?
+  Uporabnik
+    .findById(req.params.idUporabnika)
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Uporabnik ne obstaja."
+        });
+      } else if (napaka) {
+        console.log(napaka.data);
+        return res.status(500).json(napaka);
+      }
+      var ocen = uporabnik.ocen;
+      ocen[ocen.length] = novaOcena;
+      var zbir = 0;
+      for(var i = 0 ; i < ocen.length; i++) {
+        zbir = zbir + ocen[i];
+      }
+      var ocena2 = zbir / ocen.length;
+      console.log("Ocena 2 je: " + ocena2);
+      Uporabnik
+      .findByIdAndUpdate(req.params.idUporabnika,
+        {
+          ocena: ocena2,
+          ocen: ocen
+        })
+      .exec((napaka, uporabnik) => {
+        if (!uporabnik) {
+          return res.status(404).json({
+            "sporočilo":
+              "Uporabnik ne obstaja."
+          });
+        } else if (napaka) {
+          console.log(napaka.data);
+          return res.status(500).json(napaka);
+        }
+        console.log(uporabnik.data);
+        res.status(200).json(uporabnik);
+      });
+    });
+};
+
 /*OBSOLETE
 const nastaviStatus = (req, res) => {
   Uporabnik
@@ -305,6 +351,7 @@ module.exports = {
   prijavaNaDelo,
   odjavaOdDela,
   posodobiUporabnika,
-  posodobiGeslo
+  posodobiGeslo,
+  posodobiOcena
   //nastaviStatus,
 };
