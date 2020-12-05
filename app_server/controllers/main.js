@@ -96,16 +96,6 @@ const dashboard = async (req, res) => {
 
 };
 
-/* GET user profile */
-const userProfile = (req, res) => {
-  res.render('profile-user', { title: "Moj profil" });
-};
-
-/* GET profile for viewers */
-const viewProfile = (req, res) => {
-  res.render('profile-view')
-};
-
 /* GET chat page */
 const chat = (req, res) => {
   axios
@@ -254,8 +244,6 @@ const bazaNapolni = (req, res) => {
 
 module.exports = {
   dashboard,
-  userProfile,
-  viewProfile,
   chat,
   shraniSporocilo,
   db,
