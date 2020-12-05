@@ -14,7 +14,7 @@ router.get('/', ctrlLanding.landing);
 router.get('/my', ctrlMain.dashboard);
 
 /* GET view-only profile page */
-router.get('/profil/ogled', ctrlMain.viewProfile);
+//router.get('/profil/ogled', ctrlMain.viewProfile);
 
 /* GET chat page */
 router.get('/sporocanje/:idUserja', ctrlMain.chat);
@@ -25,11 +25,11 @@ router
   .post(ctrlMain.shraniSporocilo);
 
 
-/* GET user profile page */
+/* GET info for user profile page */
 router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
 router.get('/profil/:my', ctrlProfile.renderProfileNav);
 
-/* GET user profile page */
+/* GET new info for user profile page */
 router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
 
 router.get('/db', ctrlMain.db);
