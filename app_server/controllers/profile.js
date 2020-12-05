@@ -85,6 +85,11 @@ const renderProfileNav = (req, res) => {
     });
 };
 
+const redirectMyProfile = (req, res) => {
+  var profileID = require('./signing').loginID.val;
+  console.log("found profile id: " + profileID);
+  res.redirect("/profil/" + profileID);
+};
 
 const renderProfile = (req, res) => {
   console.log(req.params.idUporabnika);
@@ -173,5 +178,6 @@ const renderProfile = (req, res) => {
 
 module.exports = {
   renderProfile,
-  renderProfileNav
+  renderProfileNav,
+  redirectMyProfile
 };

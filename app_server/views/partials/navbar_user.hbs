@@ -12,7 +12,7 @@
             <li class="nav-item mx-auto">
                 <a class="nav-link text-light" href="/my">Pregledna plošča</a>
             </li>
-            
+
             <li class="nav-item mx-auto">
                 <a class="nav-link text-light" href="/instruktorji">Inštrukcije</a>
             </li>
@@ -49,58 +49,52 @@
     #logout-btn:hover {
         cursor: pointer;
     }
+
+    #profileBtn:hover {
+        cursor: pointer;
+    }
 </style>
 
 <script>
-    //console.log("odjava");
+
+    // Changes the login variables and redirects to landing page
     let logoutBtn = document.getElementById("logout-btn");
     logoutBtn.addEventListener('click', function () {
-        console.log("Logout button has been clicked!")
 
-                var asinhronaZahteva = new XMLHttpRequest();
+        var asinhronaZahteva = new XMLHttpRequest();
 
-                asinhronaZahteva.open(
-                    "POST",
-                    '/odjava', //current url
-                    true
-                )
-                /*
-                .then((odgovor) => odgovor.json())
-                .then((data) => console.log(data))
-                .catch((err) => console.log(err));
-                */
+        asinhronaZahteva.open(
+            "PUT",
+            '/odjava',
+            true
+        )
+        /*
                 asinhronaZahteva.addEventListener("load", function () {
                     var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
                     console.log(jsonRezultati);
                 });
+        */
+        window.location = "/";
 
-                window.location = "/";
-
-                asinhronaZahteva.send(null);
+        asinhronaZahteva.send(null);
     });
 
-        let profileBtn = document.getElementById("profileBtn");
+
+    // Endpoint for getting loginID and redirecting to user profile
+    let profileBtn = document.getElementById("profileBtn");
     profileBtn.addEventListener('click', function () {
-        console.log("Logout button has been clicked!")
-
-                var asinhronaZahteva = new XMLHttpRequest();
-
-                asinhronaZahteva.open(
-                    "GET",
-                    '/profil/:my', //current url
-                    true
-                )
-                /*
-                .then((odgovor) => odgovor.json())
-                .then((data) => console.log(data))
-                .catch((err) => console.log(err));
-                */
-                asinhronaZahteva.addEventListener("load", function () {
-                    
-                });
-
-                
-
-                asinhronaZahteva.send(null);
+        window.location = "/profil-my";
     });
+
+    // Manual dropdown menu fix
+    let ddMenu = document.getElementById("dropdown-menu");
+    let ddBtn = document.getElementById("navbarDropdown");
+    ddBtn.addEventListener("click", function() {
+        if(ddMenu.classList.contains("show")) {
+            ddMenu.classList.remove("show");
+        } else {
+            ddMenu.classList.add("show");
+        }
+    });
+
 </script>

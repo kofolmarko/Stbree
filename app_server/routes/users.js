@@ -19,8 +19,8 @@ router.get('/prijava', ctrlSigning.signin);
 //POST login as a registered user
 router.post('/prijava', ctrlSigning.loginUser);
 
-//POST logout
-router.post('/odjava', ctrlSigning.signout);
+//PUT logout
+router.put('/odjava', ctrlSigning.signout);
 
 //GET all registered users (only available via API)
 //router.get('/uporabniki', ctrlSigning.users);
