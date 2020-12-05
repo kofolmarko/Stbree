@@ -9,9 +9,9 @@
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
 
         <form>
-          <div class="form-group" >
+          <div class="form-group">
             <label for="opisProfila">Opis:</label>
-            <p class="card-text" id="opis" >{{profileDetails.opis}}</p>
+            <p class="card-text" id="opis">{{profileDetails.opis}}</p>
           </div>
         </form>
 
@@ -38,14 +38,12 @@
               <th class="thPodatki" scope="row">Telefonska številka:</th>
               <td id="phone">{{profileDetails.telefonskaStevilka}}</td>
             </tr>
-            <!--
             <tr>
               <th class="thPodatki" scope="row">Ocena uporabnika:</th>
               <td>
                 {{{zvezdice profileDetails.ocena}}}
               </td>
             </tr>
-            -->
             <tr>
               <th class="thPodatki" scope="row">Status inštruktorja:</th>
               {{#if profileDetails.statusInstruktorja}}
@@ -83,8 +81,8 @@
       <button class="tablinks" onclick="openCity(event, 'kronologija')">Seznam objav</button>
       <!--
       <button class="tablinks" onclick="openCity(event, 'obvestila')">Obvestila<span class="znacka">1</span></button>
-      <button class="tablinks" onclick="openCity(event, 'moja-ocena')">Moja ocena</button>
-      -->
+      <button class="tablinks" onclick="openCity(event, 'moja-ocena')">Moja ocena</button>-->
+
       <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
     </div>
 
@@ -101,7 +99,7 @@
             <tr>
               <th scope="row">{{inc @index}}</th>
               <td>{{this}}</td>
-              
+
             </tr>
           </tbody>
           {{/each}}
@@ -109,11 +107,19 @@
       </div>
     </div>
 
+    <div id="moja-ocena" class="tabcontent">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <p style="margin: 0;">Moja ocena:</p>
+          {{{zvezdice profileDetails.ocena}}}
+        </div>
+      </div>
+    </div>
 
     <div id="obvestila" class="tabcontent">
       <div class="col d-flex justify-content-center">
         <table class="table">
-          
+
           {{#each profileDetails.naziviObjav}}
           <tbody>
             <tr class="table-danger">
@@ -131,27 +137,25 @@
 
     <div id="spremeni-geslo" class="tabcontent">
       <div class="col d-flex justify-content-center">
-        
-          <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
-          <div class="form-group">
-            <label for="name">Novo geslo:</label>
-            <input type="password" id="passwordReset"><br>
-            <label for="surname">Potrdi novo geslo: </label>
-            <input type="password" id="passwordResetConfirm">
-          </div>
-          <button class="btn btn-danger" id="resetPassword" onclick="novoGeslo()">Potrdi</button>
-        
+
+        <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
+        <div class="form-group">
+          <label for="name">Novo geslo:</label>
+          <input type="password" id="passwordReset"><br>
+          <label for="surname">Potrdi novo geslo: </label>
+          <input type="password" id="passwordResetConfirm">
+        </div>
+        <button id="resetPassword" class="btn btn-success">Potrdi</button>
+
       </div>
     </div>
 
     {{else}}
-    
+
     <div class="tab pb-5">
       <button class="tablinks" onclick="openCity(event, 'moja-dela')">Seznam objav</button>
-
+      <button class="tablinks" onclick="openCity(event, 'oceni-me')">Oceni me!</button>
     </div>
-
-
 
 
     <div id="moja-dela" class="tabcontent">
@@ -197,7 +201,7 @@
         </table>
       </div>
     </div>
-
+    
     <div id="oceni-me" class="tabcontent">
       <div class="row">
         <div class="col d-flex justify-content-center">
@@ -205,6 +209,7 @@
             <tr>
               <th class="thPodatki" scope="row">Dodaj oceno:</th>
               <td>
+                
                 <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
                   <option>5</option>
                   <option>4</option>
@@ -213,15 +218,19 @@
                   <option>1</option>
                 </select>
               </td>
-              <td><button id="add-button" class="btn btn-success" style="margin-left: 20px;"
-                  onclick="shraniOceno()">Potrdi</button></td>
+              <td>
+                <form>
+                  <button id="add-button" class="btn btn-success" style="margin-left: 20px;">Potrdi</button>
+                </form>
+                
+              </td>
               <br><br><br>
             </tr>
           </table>
         </div>
       </div>
     </div>
-    
+
     {{/if}}
   </div>
   {{/if}}
@@ -229,135 +238,187 @@
 
 
   <script>
-document.addEventListener('DOMContentLoaded', function () {
-            console.log("Stran je odprta");
-            var saveBtn = document.getElementById('save-btn');
-            saveBtn.addEventListener('click', () => {
-                console.log("Save button has been clicked!")
-                var url = window.location.href.split('/');
-                var id = url[url.length-1];
-                console.log(id);
-                var asinhronaZahteva = new XMLHttpRequest();
-                asinhronaZahteva.open(
-                    "PUT",
-                   "http://localhost:3000/api/uporabnik/" + id,//current url
-                    true
-                )
-                /*
-                .then((odgovor) => odgovor.json())
-                .then((data) => console.log(data))
-                .catch((err) => console.log(err));*/
-                asinhronaZahteva.addEventListener("load", function () {
-                    //var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
-                    //console.log(jsonRezultati);
-                });
-                
-                //window.location = "/instrukcije-dogodki";
-                asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                asinhronaZahteva.send(JSON.stringify(shrani()));
-            });
+    document.addEventListener('DOMContentLoaded', function () {
+
+      console.log("Stran je odprta");
+      var saveBtn = document.getElementById('save-btn');
+      if (saveBtn != null) {
+        saveBtn.addEventListener('click', () => {
+          console.log("Save button has been clicked!")
+          var url = window.location.href.split('/');
+          var id = url[url.length - 1];
+          console.log(id);
+          var asinhronaZahteva = new XMLHttpRequest();
+          asinhronaZahteva.open(
+            "PUT",
+            "http://localhost:3000/api/uporabnik/" + id,//current url
+            true
+          )
+
+          asinhronaZahteva.addEventListener("load", function () {
+          });
+
+          asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          asinhronaZahteva.send(JSON.stringify(shrani()));
         });
+      }
+
+
+      var savePass = document.getElementById('resetPassword');
+      if (savePass != null) {
+        savePass.addEventListener('click', () => {
+          console.log("Save button has been clicked!")
+          var url = window.location.href.split('/');
+          var id = url[url.length - 1];
+          console.log(id);
+          var asinhronaZahteva = new XMLHttpRequest();
+          asinhronaZahteva.open(
+            "PUT",
+            "http://localhost:3000/api/uporabnik/geslo/" + id,//current url
+            true
+          )
+
+          asinhronaZahteva.addEventListener("load", function () {
+
+          });
+
+          asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          var geslo = novoGeslo();
+          console.log("Geslo" + geslo);
+          if (geslo != "") {
+            asinhronaZahteva.send(JSON.stringify({ geslo: geslo }));
+          }
+        });
+      }
+
+      var saveGrade = document.getElementById('add-button');
+      if (saveGrade != null) {
+        saveGrade.addEventListener('click', () => {
+          console.log("Add grade button has been clicked!");
+          var url = window.location.href.split('/');
+          var id = url[url.length - 1];
+
+          var asinhronaZahteva = new XMLHttpRequest();
+          asinhronaZahteva.open(
+            "PUT",
+            "http://localhost:3000/api/uporabnik/ocena/" + id,//current url
+            true
+          )
+
+          asinhronaZahteva.addEventListener("load", function () {
+
+          });
+
+          asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          var ocena = shraniOceno();
+          console.log("ocena: " + ocena);
+          asinhronaZahteva.send(JSON.stringify({ ocena: ocena }));
+
+        });
+      }
+
+    });
+
     var d = new Date();
     var listOfEl = document.getElementsByName("kdaj")
       .forEach(element => element.innerHTML = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear());
+
     function shraniOceno() {
-      document.getElementById("add-button").style.display = "block";
-      var dodana = document.getElementById("ocena").innerHTML.value;
-      document.getElementById("ocena").innerHTML = dodana;
-      document.getElementById("add-button").style.display = "none";
+      var dodana = document.getElementById("ocena").value;
+      console.log("Ocena: " + dodana);
+
+      return dodana;
     }
+
     function novoGeslo() {
       var password1 = document.getElementById("passwordReset");
       var password2 = document.getElementById("passwordResetConfirm");
       if (password1.value != password2.value) {
         alert("Gesli se ne ujemata!")
-        return false;
+        return "";
       } else if (password1.value.length < 8) {
         alert("Geslo mora biti dolgo vsaj 8 znakov!")
-        return false;
+        return "";
       } else {
         alert("Geslo je bilo uspešno spremenjeno!")
-
-
-        return true;
+        return password1.value;
       }
     }
+
     function uredi() {
       document.getElementById("edit-btn").classList.remove("d-ilblock");
       document.getElementById("edit-btn").classList.add("d-none");
       document.getElementById("save-btn").classList.remove("d-none");
       document.getElementById("save-btn").classList.add("d-ilblock");
-      //document.getElementById("opis").removeAttribute("readonly");
+
       var email = document.getElementById("email");
       var phone = document.getElementById("phone");
       var opis = document.getElementById("opis");
       var status = document.getElementById("status");
+
       var email_data = email.innerHTML;
       var phone_data = phone.innerHTML;
       var status_data = status.innerHTML;
       var opis_data = opis.innerHTML;
       console.log(email.innerHTML);
+
       email.innerHTML = "<input type='text' class='form-control' id='email_text' value='" + email_data + "'>";
       phone.innerHTML = "<input type='text' class='form-control' id='phone_text' value='" + phone_data + "'>";
       opis.innerHTML = "<input type='text' class='form-control' id='opis_text' value='" + opis_data + "'>";
-      //opis.innerHTML = "<input type = 'textarea' class='form-control' id='opis_text' value='" + opis_data + "'>";
+
       if (status_data == "Neaktiven") {
         status.innerHTML = "<input type='checkbox' class='form-check-input' id='statusInstruktorja'><label class='form-check-label' for='status-instruktorja'>Aktiviraj status inštruktorja</label>";
       } else {
         status.innerHTML = "<input type='checkbox' class='form-check-input' id='statusInstruktorja' checked><label class='form-check-label' for='status-instruktorja'>Aktiviraj status inštruktorja</label>";
       }
     }
+
     function shrani() {
-      {{!-- var phone_novi = document.getElementById("phone_text").value;
-      var email_novi = document.getElementById("email_text").value;
-      var opis_novi = document.getElementById("opis_text").value;
-      //document.getElementById("opis").setAttribute("readonly", true);
-      if (status.checked == true) {
-        document.getElementById("statusInstruktorja").innerHTML = "Aktiven";
-      } else {
-        document.getElementById("statusInstruktorja").innerHTML = "Neaktiven";
-      } --}}
-      
+
       var email_novi = "";
       var email_element = document.getElementById("email").firstChild;
-      if(email_element != null){
+      if (email_element != null) {
         console.log("Email1:" + email_element.value);
         email_novi = email_element.value;
       }
       var phone_novi = "";
       var phone_element = document.getElementById("phone").firstChild;
-      if(phone_element != null){
+      if (phone_element != null) {
         phone_novi = phone_element.value;
       }
       var opis_novi = "";
       var opis_element = document.getElementById("opis").firstChild;
-      if(opis_element != null){
+      if (opis_element != null) {
         opis_novi = opis_element.value;
       }
-      
+
       var status_novi = "";
       var status_element = document.getElementById("status").firstChild;
-      if(status_element != null){
+      if (status_element != null) {
         status_novi = status_element.checked;
       }
       console.log("Phone:" + phone_novi);
       console.log("Email:" + email_novi);
-      console.log("Opis:" + opis_novi);      
+      console.log("Opis:" + opis_novi);
+
       document.getElementById("email").innerHTML = email_novi;
       document.getElementById("phone").innerHTML = phone_novi;
       document.getElementById("opis").innerHTML = opis_novi;
+
       document.getElementById("edit-btn").classList.remove("d-none");
       document.getElementById("edit-btn").classList.add("d-ilblock");
       document.getElementById("save-btn").classList.remove("d-ilblock");
       document.getElementById("save-btn").classList.add("d-none");
-    console.log("telefonce:" + phone_novi);
-    return {
+
+      console.log("telefonce:" + phone_novi);
+      return {
         email: email_novi,
         opis: opis_novi,
         telefonskaStevilka: phone_novi,
         statusInstruktorja: status_novi
       }
     }
+
     function openCity(evt, cityName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
