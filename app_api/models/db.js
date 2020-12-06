@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
 
-var dbURI = 'mongodb://mongo-db/stbree';
+//var dbURI = 'mongodb://mongo-db/stbree';
+var dbURI = 'mongodb+srv://app:geslo@stbree.jftw5.mongodb.net/admin';
 
 
 if (process.env.NODE_ENV === 'production') {
-    dbURI = process.env.MONGODB_CLOUD_URI;
+    //dbURI = process.env.MONGODB_CLOUD_URI;
 }
 
 

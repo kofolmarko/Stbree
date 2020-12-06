@@ -3,7 +3,7 @@ const axios = require('axios');
 
 /* API local parameters */
 var apiParametri = {
-  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+  streznik: 'http://localhost:3000'
 };
 
 /* API Mongo atlas parameters */
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 /* GET jobs list */
 const jobList = (req, res) => {
   axios
-    .get('http://localhost:3000/api/ponudba-del')
+    .get(apiParametri.streznik + '/api/ponudba-del')
     .then((odgovor) => {
       //console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega dela :(";
@@ -37,17 +37,21 @@ const jobsList = (req, res, dela, sporocilo) => {
 
 /* GET job page by ID */
 const job = (req, res) => {
-  getJob(req, res, (req, res, event) => {
-    getPonudnik(req, res, event, (req, res, ponudnik) => {
-      renderJob(req, res, event, ponudnik);
+  if (require('./signing').loginStatus.val == false) {
+    res.redirect('/prijava');
+  } else {
+    getJob(req, res, (req, res, event) => {
+      getPonudnik(req, res, event, (req, res, ponudnik) => {
+        renderJob(req, res, event, ponudnik);
+      });
     });
-  });
+  }
 };
 
 /* GET job page by id - API COMMUNICATION */
 const getJob = async (req, res, povratniKlic) => {
   const result = await axios
-    .get('http://localhost:3000/api/ponudba-del/delo/' + req.params.idDela)
+    .get(apiParametri.streznik + '/api/ponudba-del/delo/' + req.params.idDela)
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
@@ -72,35 +76,35 @@ const renderJob = (req, res, delo, ponudnik) => {
 
   require('./instructions').getInstructor(req, res, gettingInsID, (req, res, loggedInUser) => {
 
-  console.log("rendering");
-  console.log(delo);
-  console.log(loggedInUser);
-  var isSignedUp = false;
-  for(i = 0; i < loggedInUser.dela.length; i++) {
-    if(delo._id == loggedInUser.dela[i]._id) {
-      console.log("found a match");
-      isSignedUp = true;
-      break;
+    console.log("rendering");
+    console.log(delo);
+    console.log(loggedInUser);
+    var isSignedUp = false;
+    for (i = 0; i < loggedInUser.dela.length; i++) {
+      if (delo._id == loggedInUser.dela[i]._id) {
+        console.log("found a match");
+        isSignedUp = true;
+        break;
+      }
     }
-  }
 
-  res.render('job', {
-    naziv: delo.naziv,
-    opis: delo.opis,
-    cena: delo.cena,
-    datum: delo.datum,
-    ime: ponudnik.ime + ' ' + ponudnik.priimek,
-    opisPonudnik: ponudnik.opis,
-    admin: isAdmin,
-    prijavljen: isSignedUp,
-    zasedeno: delo.zasedeno
+    res.render('job', {
+      naziv: delo.naziv,
+      opis: delo.opis,
+      cena: delo.cena,
+      datum: delo.datum,
+      ime: ponudnik.ime + ' ' + ponudnik.priimek,
+      opisPonudnik: ponudnik.opis,
+      admin: isAdmin,
+      prijavljen: isSignedUp,
+      zasedeno: delo.zasedeno
+    });
   });
-});
 };
 
 /* GET ponudnik data */
 const getPonudnik = async (req, res, delo, povratniKlic) => {
-  const result = await axios.get('http://localhost:3000/api/uporabnik/' + delo.idPonudnika);
+  const result = await axios.get(apiParametri.streznik + '/api/uporabnik/' + delo.idPonudnika);
   console.log(result.data);
   povratniKlic(req, res, result.data);
 };
@@ -120,7 +124,7 @@ const jobNewPost = (req, res) => {
     console.log("idPrijavljenega: " + idPrijavljenega);
     axios({
       method: "post",
-      url: "http://localhost:3000/api/ponudba-del",
+      url: apiParametri.streznik + "/api/ponudba-del",
       data: {
         naziv: req.body.naziv,
         opis: req.body.opis,
@@ -143,7 +147,7 @@ const jobEdit = (req, res) => {
   console.log("Inside controllers on server-side!");
   console.log(req.body);
   axios
-    .put('http://localhost:3000/api/ponudba-del/delo/' + req.params.idDela,
+    .put(apiParametri.streznik + '/api/ponudba-del/delo/' + req.params.idDela,
       {
         naziv: req.body.naziv,
         opis: req.body.opis,
@@ -166,7 +170,7 @@ const jobEdit = (req, res) => {
 const jobDelete = (req, res) => {
   console.log("Using axios to access local database...");
   axios
-    .delete('http://localhost:3000/api/ponudba-del/delo/' + req.params.idDela)
+    .delete(apiParametri.streznik + '/api/ponudba-del/delo/' + req.params.idDela)
     .then((delo) => {
       console.log("Deleted the following event:");
       console.log(delo.data);
@@ -183,11 +187,11 @@ const jobSignup = (req, res) => {
   var loginID = require('./signing').loginID.val;
   console.log(loginID);
   console.log(req.params);
-  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/delo/" + req.params.idDela)
+  axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/delo/" + req.params.idDela)
     .then((uporabnik) => {
       console.log("Nazaj na serverju: " + uporabnik);
       //console.log("List od user jobs: " + uporabnik.dela);
-      
+
       res.redirect('/ponudba-del');
     })
     .catch((napaka) => {
@@ -199,11 +203,11 @@ const jobLeave = (req, res) => {
   var loginID = require('./signing').loginID.val;
   console.log(loginID);
   console.log(req.params);
-  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/delo/odjava/" + req.params.idDela)
+  axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/delo/odjava/" + req.params.idDela)
     .then((uporabnik) => {
       console.log("Nazaj na serverju: " + uporabnik);
       //console.log("List od user jobs: " + uporabnik.dela);
-      
+
       res.redirect('/ponudba-del');
     })
     .catch((napaka) => {
@@ -217,25 +221,25 @@ const filter = (req, res) => {
 
   console.log(req.params.parameter);
   axios
-  .get('http://localhost:3000/api/ponudba-del/' + req.params.parameter)
-  .then((dela) => {
-    console.log("filtering by " + req.params.parameter);
+    .get(apiParametri.streznik + '/api/ponudba-del/' + req.params.parameter)
+    .then((dela) => {
+      console.log("filtering by " + req.params.parameter);
 
-    
-    if (req.params.parameter.substring(0,3) == "REV") {
-      dela.data = dela.data.reverse();
-    }
 
-    console.log(dela.data);
-    
-    res.render('jobs-list', {
-      dela: dela.data
+      if (req.params.parameter.substring(0, 3) == "REV") {
+        dela.data = dela.data.reverse();
+      }
+
+      console.log(dela.data);
+
+      res.render('jobs-list', {
+        dela: dela.data
+      });
+
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
     });
-
-  })
-  .catch((napaka) => {
-    prikaziNapako(req, res, napaka);
-  });
 };
 
 const prikaziNapako = (req, res, napaka) => {

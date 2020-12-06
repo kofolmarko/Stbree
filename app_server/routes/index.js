@@ -37,9 +37,9 @@ router.put('/profil/:idUporabnika', ctrlProfile.renderProfile);
 
 router.get('/db', ctrlMain.db);
 
-router.delete('/db', ctrlMain.bazaIzbrisi);
+router.get('/db/delete', ctrlMain.bazaIzbrisi);
 
-router.post('/db', ctrlMain.bazaNapolni);
+router.get('/db/post', ctrlMain.bazaNapolni);
 
 
 

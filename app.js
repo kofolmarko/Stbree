@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 //const bodyParser = require("body-parser");
-
+console.log(process.env.MONGODB_CLOUD_URI);
 require('./app_api/models/db');
 
 var indexRouter = require('./app_server/routes/index');

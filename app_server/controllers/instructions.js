@@ -3,7 +3,7 @@ const axios = require('axios');
 
 //API local parameters
 var apiParametri = {
-  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+  streznik: 'http://localhost:3000'
 };
 
 //API Mogno Atlas parameters
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 //GET instructors list
 const instructorsList = (req, res) => {
   axios
-    .get('http://localhost:3000/api/instruktorji')
+    .get(apiPrametri.streznik + '/api/instruktorji')
     .then((odgovor) => {
       //console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega inštruktorja :(";
@@ -39,7 +39,7 @@ const renderInstructorsList = (req, res, instruktorji, sporocilo) => {
 //GET instructions events list
 const eventList = (req, res) => {
   axios
-    .get('http://localhost:3000/api/instrukcije-dogodki')
+    .get(apiPrametri.streznik + '/api/instrukcije-dogodki')
     .then((odgovor) => {
       //console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega dogodka :(";
@@ -62,19 +62,23 @@ const instructionsEventList = (req, res, instrukcijeDogodki, sporocilo) => {
 
 //GET instructions event page with id - MAIN FUNCTION
 const instructionsEvent = (req, res) => {
-  getInstructionsEvent(req, res, (req, res, event) => {
-    getInstructor(req, res, event, (req, res, instructor) => {
-      renderInstructionsEvent(req, res, event, instructor);
-      //console.log("Tukaj Dogodek -------->  " + event);
-      //console.log("Tukaj Inštruktor -------->  " + instructor);
+  if(require('./signing').loginStatus.val == false) {
+    res.redirect('/prijava');
+  } else {
+    getInstructionsEvent(req, res, (req, res, event) => {
+      getInstructor(req, res, event, (req, res, instructor) => {
+        renderInstructionsEvent(req, res, event, instructor);
+        //console.log("Tukaj Dogodek -------->  " + event);
+        //console.log("Tukaj Inštruktor -------->  " + instructor);
+      });
     });
-  });
+  }
 };
 
 //GET instructions event page with id - API COMMUNICATION
 const getInstructionsEvent = async (req, res, povratniKlic) => {
   const result = await axios
-    .get('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
+    .get(apiPrametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
@@ -93,7 +97,7 @@ const filter = (req, res) => {
   //console.log(req.body);
   console.log(req.params.parameter);
   axios
-  .get('http://localhost:3000/api/instrukcije-dogodki/' + req.params.parameter)
+  .get(apiPrametri.streznik + '/api/instrukcije-dogodki/' + req.params.parameter)
   .then((dogodki) => {
     console.log("filtering by " + req.params.parameter);
     //console.log(dogodki.data);
@@ -176,7 +180,7 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
 const getInstructor = async (req, res, dogodek, povratniKlic) => {
   console.log("Getting the instructor for the event");
   console.log(dogodek);
-  const result = await axios.get('http://localhost:3000/api/uporabnik/' + dogodek.idInstruktorja);
+  const result = await axios.get(apiPrametri.streznik + '/api/uporabnik/' + dogodek.idInstruktorja);
   console.log(result.data);
   povratniKlic(req, res, result.data);
 };
@@ -199,7 +203,7 @@ const instructionsEventNewPost = (req, res) => {
     console.log("idPrijavljenega: " + idPrijavljenega);
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/instrukcije-dogodki',
+      url: apiPrametri.streznik + '/api/instrukcije-dogodki',
       data: {
         naziv: req.body.naziv,
         opis: req.body.opis,
@@ -225,7 +229,7 @@ const instructionsEventEdit = (req, res) => {
   console.log("Inside controllers on server-side!");
   console.log(req.body);
   axios
-    .put('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka,
+    .put(apiPrametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka,
       {
         naziv: req.body.naziv,
         opis: req.body.opis,
@@ -250,7 +254,7 @@ const instructionsEventEdit = (req, res) => {
 const instructionsEventDelete = (req, res) => {
   //console.log("Using axios to access local database...");
   axios
-    .delete('http://localhost:3000/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
+    .delete(apiPrametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .then((dogodek) => {
       console.log("Deleted the following event:");
       console.log(dogodek.data);
@@ -270,7 +274,7 @@ const instructionsEventSignup = (req, res) => {
   var loginID = require('./signing').loginID.val;
   console.log(loginID);
   console.log(req.params);
-  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/dogodek/" + req.params.idDogodka)
+  axios.put(apiPrametri.streznik + '/api/uporabniki/' + loginID + "/dogodek/" + req.params.idDogodka)
     .then((uporabnik) => {
       console.log("Nazaj na serverju: " + uporabnik);
       //console.log("List od user jobs: " + uporabnik.dela);
@@ -286,7 +290,7 @@ const instructionsEventLeave = (req, res) => {
   var loginID = require('./signing').loginID.val;
   console.log(loginID);
   console.log(req.params);
-  axios.put('http://localhost:3000/api/uporabniki/' + loginID + "/dogodek/odjava/" + req.params.idDogodka)
+  axios.put(apiPrametri.streznik + '/api/uporabniki/' + loginID + "/dogodek/odjava/" + req.params.idDogodka)
     .then((uporabnik) => {
       console.log("Nazaj na serverju: " + uporabnik);
       //console.log("List od user jobs: " + uporabnik.dela);

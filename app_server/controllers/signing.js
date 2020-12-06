@@ -3,7 +3,7 @@ const axios = require('axios');
 
 //API local parameters
 var apiParametri = {
-  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+  streznik: 'http://localhost:3000'
 };
 
 //API Mogno Atlas parameters
@@ -37,7 +37,7 @@ const registerNewUser = (req, res) => {
     console.log(req.body);
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/uporabniki',
+      url: apiParametri.streznik + '/api/uporabniki',
       data: {
         ime: req.body.ime,
         priimek: req.body.priimek,
@@ -90,7 +90,7 @@ const loginUser = (req, res) => {
     const reqData = { email: req.body.email, geslo: req.body.geslo };
     //console.log(reqData);
     //console.log(reqData.email);
-    axios.get('http://localhost:3000/api/uporabniki/' + reqData.email,
+    axios.get(apiParametri.streznik + '/api/uporabniki/' + reqData.email,
       {
         email: reqData.email,
         geslo: reqData.geslo
@@ -131,7 +131,7 @@ const loginUser = (req, res) => {
 //API GET list of all registered users
 const users = (req, res) => {
   axios
-    .get('http://localhost:3000/api/instrukcije-dogodki')
+    .get(apiParametri.streznik + '/api/instrukcije-dogodki')
     .then((odgovor) => {
       prikaziNapako(req, res, odgovor);
     })

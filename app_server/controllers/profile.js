@@ -3,7 +3,7 @@ const axios = require('axios');
 
 //API local parameters
 var apiParametri = {
-  streznik: 'http://localhost:' + (process.env.PORT || 3000)
+  streznik: 'http://localhost:3000'
 };
 
 //API Mogno Atlas parameters
@@ -14,12 +14,12 @@ if (process.env.NODE_ENV === 'production') {
 const loginID = require('./signing').loginID;
 console.log("some juicy id: " + loginID);
 const renderProfileNav = (req, res) => {
-  axios.get("http://localhost:3000/api/uporabnik/" + loginID.val)
+  axios.get(apiParametri.streznik + "/api/uporabnik/" + loginID.val)
     .then(({ data }, err) => {
-      axios.get('http://localhost:3000/api/instrukcije-dogodki')
+      axios.get(apiParametri.streznik + '/api/instrukcije-dogodki')
         .then((dogodki) => {
           console.log("then po dogodkih");
-          axios.get('http://localhost:3000/api/ponudba-del')
+          axios.get(apiParametri.streznik + '/api/ponudba-del')
             .then((dela) => {
               var objave = [];
               console.log(dogodki.data[0]._id + dela.data + loginID.val);
@@ -92,12 +92,12 @@ const redirectMyProfile = (req, res) => {
 };
 
 const renderProfile = (req, res) => {
-  axios.get("http://localhost:3000/api/uporabnik/" + req.params.idUporabnika)
+  axios.get(apiParametri.streznik + "/api/uporabnik/" + req.params.idUporabnika)
     .then(({ data }, err) => {
-      axios.get('http://localhost:3000/api/instrukcije-dogodki')
+      axios.get(apiParametri.streznik + '/api/instrukcije-dogodki')
         .then((dogodki) => {
           console.log("then po dogodkih");
-          axios.get('http://localhost:3000/api/ponudba-del')
+          axios.get(apiParametri.streznik + '/api/ponudba-del')
             .then((dela) => {
               var objave = [];
               console.log(dogodki.data[0]._id + dela.data + req.params.idUporabnika);
@@ -168,7 +168,7 @@ const editProfile = (req, res) => {
 console.log("Inside controllers on server-side!");
 console.log(req.body);
 axios
-  .put('http://localhost:3000/api/uporabnik/' + req.params.idUporabnika,
+  .put(apiParametri.streznik + '/api/uporabnik/' + req.params.idUporabnika,
     {
       email: req.body.email,
       telefonskaStevilka: req.body.email,
@@ -189,7 +189,7 @@ axios
 };*/
 /*
 function editProfile(data) {
-    axios.put("http://localhost:3000/api/uporabnik/posodobi/" + loginID, {
+    axios.put(apiParametri.streznik + "/api/uporabnik/posodobi/" + loginID, {
       email: data.email,
       telefonskaStevilka: data.telefonskaStevilka,
       statusInstruktorja: data.statusInstruktorja,

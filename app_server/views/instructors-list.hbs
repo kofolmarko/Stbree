@@ -8,53 +8,6 @@
       <a class="nav-link" href="/instrukcije-dogodki">Dogodki</a>
   </ul>
 
-  <!--F i l t e r
-  <div class="container" id="filter-bar">
-    <form action="#">
-
-      <div class="filter-item">
-        <label for="predmeti">Predmet:</label>
-        <select name="predmeti" id="predmeti" class="form-control">
-          <option value="all">Vsi</option>
-          <option value="mathematics">Matematika</option>
-          <option value="physics">Fizika</option>
-          <option value="chemistry">Kemija</option>
-          <option value="programming">Programiranje</option>
-          <option value="slovene">Slovenščina</option>
-          <option value="english">Angleščina</option>
-          <option value="other">Ostalo</option>
-        </select>
-      </div>
-
-      <div class="filter-item">
-        <label for="stopnja">Stopnja:</label>
-        <select name="stopnja" id="stopnja" class="form-control">
-          <option value="all">Vsi</option>
-          <option value="primary">Osnovna šola</option>
-          <option value="high">Srednja šola</option>
-          <option value="university">Univerza / Visoka šola</option>
-          <option value="other">Ostalo</option>
-        </select>
-      </div>
-
-      <div class="filter-item">
-        <label for="razvrsti">Razvrsti po:</label>
-        <select name="razvrsti" id="razvrsti" class="form-control">
-          <option value="rating">Oceni</option>
-          <option value="exp">Izkušnjah</option>
-          <option value="price-low">Ceni (najcenejši najprej)</option>
-          <option value="price-high">Ceni (najdražji najprej)</option>
-        </select>
-      </div>
-      <div>
-        <input type="checkbox" id="available" name="available" value="available">
-        <label for="available"> Prikaži samo proste inštruktorje</label>
-      </div>
-
-      <input type="submit" value="Filtriraj" class="btn btn-info">
-    </form>
-  </div>
--->
   <!--S e a r c h  b a r-->
   <div class="input-group mb-3 container">
     <input id="search" onkeyup="isci()" type="text" class="form-control" placeholder="Poišči inštruktorja..."
@@ -76,7 +29,8 @@
     <div class="card instructor" style="width: 18rem;">
       <img class="card-img-top" src="../../assets/thumbnails/blue.png" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis;">{{instruktor.ime}} {{instruktor.priimek}}</h5>
+        <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis;">{{instruktor.ime}}
+          {{instruktor.priimek}}</h5>
         <a href="/profil/{{instruktor._id}}" class="btn btn-primary">Preveri profil</a>
       </div>
     </div>
@@ -89,32 +43,28 @@
 
   {{> carousel_getstarted}}
 
-<script>
-  function isci() {
-    // Declare variables
-    var filter, list, a, txtValue, search;
+  <script>
 
+    function isci() {
+      var filter, list, a, txtValue, search;
 
-    //ul = document.getElementById("myUL");
-    //li = ul.getElementsByTagName('li');
+      search = document.getElementById("search");
+      list = document.getElementsByClassName("card");
 
-    search = document.getElementById("search");
-    list = document.getElementsByClassName("card");
+      filter = search.value.toUpperCase();
 
-    filter = search.value.toUpperCase();
-
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < list.length; i++) {
-      a = list[i].getElementsByClassName("card-title")[0];
-      txtValue = a.textContent || a.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        list[i].style.display = "";
-      } else {
-        list[i].style.display = "none";
+      for (i = 0; i < list.length; i++) {
+        a = list[i].getElementsByClassName("card-title")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          list[i].style.display = "";
+        } else {
+          list[i].style.display = "none";
+        }
       }
     }
-  }
-</script>
+
+  </script>
 
 
 </body>
