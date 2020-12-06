@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 //GET instructors list
 const instructorsList = (req, res) => {
   axios
-    .get(apiPrametri.streznik + '/api/instruktorji')
+    .get(apiParametri.streznik + '/api/instruktorji')
     .then((odgovor) => {
       //console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega inštruktorja :(";
@@ -39,7 +39,7 @@ const renderInstructorsList = (req, res, instruktorji, sporocilo) => {
 //GET instructions events list
 const eventList = (req, res) => {
   axios
-    .get(apiPrametri.streznik + '/api/instrukcije-dogodki')
+    .get(apiParametri.streznik + '/api/instrukcije-dogodki')
     .then((odgovor) => {
       //console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega dogodka :(";
@@ -78,7 +78,7 @@ const instructionsEvent = (req, res) => {
 //GET instructions event page with id - API COMMUNICATION
 const getInstructionsEvent = async (req, res, povratniKlic) => {
   const result = await axios
-    .get(apiPrametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
+    .get(apiParametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
@@ -97,7 +97,7 @@ const filter = (req, res) => {
   //console.log(req.body);
   console.log(req.params.parameter);
   axios
-  .get(apiPrametri.streznik + '/api/instrukcije-dogodki/' + req.params.parameter)
+  .get(apiParametri.streznik + '/api/instrukcije-dogodki/' + req.params.parameter)
   .then((dogodki) => {
     console.log("filtering by " + req.params.parameter);
     //console.log(dogodki.data);
@@ -180,7 +180,7 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
 const getInstructor = async (req, res, dogodek, povratniKlic) => {
   console.log("Getting the instructor for the event");
   console.log(dogodek);
-  const result = await axios.get(apiPrametri.streznik + '/api/uporabnik/' + dogodek.idInstruktorja);
+  const result = await axios.get(apiParametri.streznik + '/api/uporabnik/' + dogodek.idInstruktorja);
   console.log(result.data);
   povratniKlic(req, res, result.data);
 };
@@ -203,7 +203,7 @@ const instructionsEventNewPost = (req, res) => {
     console.log("idPrijavljenega: " + idPrijavljenega);
     axios({
       method: 'post',
-      url: apiPrametri.streznik + '/api/instrukcije-dogodki',
+      url: apiParametri.streznik + '/api/instrukcije-dogodki',
       data: {
         naziv: req.body.naziv,
         opis: req.body.opis,
@@ -229,7 +229,7 @@ const instructionsEventEdit = (req, res) => {
   console.log("Inside controllers on server-side!");
   console.log(req.body);
   axios
-    .put(apiPrametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka,
+    .put(apiParametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka,
       {
         naziv: req.body.naziv,
         opis: req.body.opis,
@@ -254,7 +254,7 @@ const instructionsEventEdit = (req, res) => {
 const instructionsEventDelete = (req, res) => {
   //console.log("Using axios to access local database...");
   axios
-    .delete(apiPrametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
+    .delete(apiParametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .then((dogodek) => {
       console.log("Deleted the following event:");
       console.log(dogodek.data);
@@ -274,7 +274,7 @@ const instructionsEventSignup = (req, res) => {
   var loginID = require('./signing').loginID.val;
   console.log(loginID);
   console.log(req.params);
-  axios.put(apiPrametri.streznik + '/api/uporabniki/' + loginID + "/dogodek/" + req.params.idDogodka)
+  axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/dogodek/" + req.params.idDogodka)
     .then((uporabnik) => {
       console.log("Nazaj na serverju: " + uporabnik);
       //console.log("List od user jobs: " + uporabnik.dela);
@@ -290,7 +290,7 @@ const instructionsEventLeave = (req, res) => {
   var loginID = require('./signing').loginID.val;
   console.log(loginID);
   console.log(req.params);
-  axios.put(apiPrametri.streznik + '/api/uporabniki/' + loginID + "/dogodek/odjava/" + req.params.idDogodka)
+  axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/dogodek/odjava/" + req.params.idDogodka)
     .then((uporabnik) => {
       console.log("Nazaj na serverju: " + uporabnik);
       //console.log("List od user jobs: " + uporabnik.dela);

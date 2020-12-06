@@ -4,7 +4,7 @@ const { prikaziNapako } = require('./job');
 
 //API local parameters
 var apiParametri = {
-  streznik: 'http://localhost:3000'
+  streznik: 'https://stbree.herokuapp.com'
 };
 
 //API Mogno Atlas parameters
