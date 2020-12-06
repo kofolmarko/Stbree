@@ -223,6 +223,7 @@ const odjavaOdDela = (req, res) => {
  /*PUT update user*/
  const posodobiUporabnika = (req, res) => {
   console.log("Inside controllers on the API!");
+  console.log(req.body.email);
   Uporabnik
     .findByIdAndUpdate(req.params.idUporabnika,
       {
@@ -268,6 +269,76 @@ const posodobiGeslo = (req, res) => {
     });
 };
 
+ /*PUT update user grade*/
+ const posodobiOcena = (req, res) => {
+  console.log("Inside controllers on the API!");
+  var novaOcena = Number(req.body.ocena);//?
+  Uporabnik
+    .findById(req.params.idUporabnika)
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Uporabnik ne obstaja."
+        });
+      } else if (napaka) {
+        console.log(napaka.data);
+        return res.status(500).json(napaka);
+      }
+      var ocen = uporabnik.ocen;
+      ocen[ocen.length] = novaOcena;
+      var zbir = 0;
+      for(var i = 0 ; i < ocen.length; i++) {
+        zbir = zbir + ocen[i];
+      }
+      var ocena2 = zbir / ocen.length;
+      console.log("Ocena 2 je: " + ocena2);
+      Uporabnik
+      .findByIdAndUpdate(req.params.idUporabnika,
+        {
+          ocena: ocena2,
+          ocen: ocen
+        })
+      .exec((napaka, uporabnik) => {
+        if (!uporabnik) {
+          return res.status(404).json({
+            "sporočilo":
+              "Uporabnik ne obstaja."
+          });
+        } else if (napaka) {
+          console.log(napaka.data);
+          return res.status(500).json(napaka);
+        }
+        console.log(uporabnik.data);
+        res.status(200).json(uporabnik);
+      });
+    });
+};
+
+/*DELETE user*/
+const izbrisiUporabnika = (req, res) => {
+  console.log('izbrisi uporabnik v api');
+  const idUporabnika = req.params.idUporabnika;
+  console.log(idUporabnika);
+  if(!idUporabnika) {
+    return res.status(404).json({
+      "sporocilo": "Ne najdem identifikatorja"
+    });
+  } 
+  Uporabnik
+  .findByIdAndDelete(idUporabnika)
+  .exec((napaka, uporabnik) => {
+    if(!uporabnik) {
+      return res.status(404).json({
+        "sporocilo": "Ne najdem uporabnika"
+      });
+    } else if (napaka) {
+      return res.status(500).json(napaka);
+    }
+    res.status(204).json(uporabnik); //neli e 204
+  });
+};
+
 /*OBSOLETE
 const nastaviStatus = (req, res) => {
   Uporabnik
@@ -305,6 +376,8 @@ module.exports = {
   prijavaNaDelo,
   odjavaOdDela,
   posodobiUporabnika,
-  posodobiGeslo
+  posodobiGeslo,
+  posodobiOcena,
+  izbrisiUporabnika,
   //nastaviStatus,
 };

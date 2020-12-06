@@ -34,11 +34,13 @@ const uporabnikZacetnoShema = new mongoose.Schema({
   geslo: { type: String, required: true },
   statusInstruktorja: { type: Boolean, "default": false },
   datumVpisa: { type: Date, "default": Date.now },
+  opis: {type: String, "default": "Vnesite opis"},
+  telefonskaStevilka: {type: Number, "default": 0},
+  ocena: {type: Number, "default": 0},
+  ocen: {type: Array, "default": []},
   dogodki: [instrukcijeDogodekShema],
   dela: [deloShema],
   poslanaSporocila: [sporocilaShema],
-  opis: {type: String, "default": "Vnesite opis"},
-  telefonskaStevilka: {type: Number, "default": ""},
 });
 
 

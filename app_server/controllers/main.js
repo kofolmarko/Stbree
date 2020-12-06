@@ -260,8 +260,6 @@ const bazaNapolni = (req, res) => {
 
 module.exports = {
   dashboard,
-  userProfile,
-  viewProfile,
   chat,
   shraniSporocilo,
   db,

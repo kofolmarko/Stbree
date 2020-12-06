@@ -19,6 +19,15 @@ router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
 /*PUT registered users*/
 router.put('/uporabnik/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
 
+/*PUT geslo*/
+router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiGeslo);
+
+/*PUT ocena*/
+router.put('/uporabnik/ocena/:idUporabnika', ctrlUporabniki.posodobiOcena);
+
+/*DELETE user*/
+router.delete('/uporabnik/:idUporabnika', ctrlUporabniki.izbrisiUporabnika);
+
 //GET list of all registered users
 router.get('/uporabniki', ctrlUporabniki.uporabniki);
 
@@ -37,9 +46,6 @@ router.put('/uporabniki/:loginID/delo/odjava/:idDela', ctrlUporabniki.odjavaOdDe
 /*OBSOLETE
 router.put('/uporabniki/:email', ctrlUporabniki.nastaviStatus);
 */
-
-/*PUT geslo*/
-router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
 
 //ROUTER export
 module.exports = router;
