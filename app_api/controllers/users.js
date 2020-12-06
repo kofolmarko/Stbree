@@ -223,6 +223,7 @@ const odjavaOdDela = (req, res) => {
  /*PUT update user*/
  const posodobiUporabnika = (req, res) => {
   console.log("Inside controllers on the API!");
+  console.log(req.body.email);
   Uporabnik
     .findByIdAndUpdate(req.params.idUporabnika,
       {
@@ -314,6 +315,30 @@ const posodobiGeslo = (req, res) => {
     });
 };
 
+/*DELETE user*/
+const izbrisiUporabnika = (req, res) => {
+  console.log('izbrisi uporabnik v api');
+  const idUporabnika = req.params.idUporabnika;
+  console.log(idUporabnika);
+  if(!idUporabnika) {
+    return res.status(404).json({
+      "sporocilo": "Ne najdem identifikatorja"
+    });
+  } 
+  Uporabnik
+  .findByIdAndDelete(idUporabnika)
+  .exec((napaka, uporabnik) => {
+    if(!uporabnik) {
+      return res.status(404).json({
+        "sporocilo": "Ne najdem uporabnika"
+      });
+    } else if (napaka) {
+      return res.status(500).json(napaka);
+    }
+    res.status(204).json(uporabnik); //neli e 204
+  });
+};
+
 /*OBSOLETE
 const nastaviStatus = (req, res) => {
   Uporabnik
@@ -352,6 +377,7 @@ module.exports = {
   odjavaOdDela,
   posodobiUporabnika,
   posodobiGeslo,
-  posodobiOcena
+  posodobiOcena,
+  izbrisiUporabnika,
   //nastaviStatus,
 };

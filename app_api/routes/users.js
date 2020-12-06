@@ -25,6 +25,9 @@ router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiGeslo);
 /*PUT ocena*/
 router.put('/uporabnik/ocena/:idUporabnika', ctrlUporabniki.posodobiOcena);
 
+/*DELETE user*/
+router.delete('/uporabnik/:idUporabnika', ctrlUporabniki.izbrisiUporabnika);
+
 //GET list of all registered users
 router.get('/uporabniki', ctrlUporabniki.uporabniki);
 

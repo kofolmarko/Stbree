@@ -1,5 +1,6 @@
 //API connection
 const axios = require('axios');
+const { prikaziNapako } = require('./job');
 
 //API local parameters
 var apiParametri = {
@@ -175,9 +176,25 @@ const renderProfile = (req, res) => {
     });
 };
 
+/*DELETE user*/
+const deleteProfile = (res, req) => {
+  console.log('use axios to delete user');
+  axios
+    .delete('http://localhost:3000/api/uporabnik/' + req.params.idUporabnika)
+    .then((profil) => {
+      console.log("Deleted the following profile" + profil.data);
+      res.status(204).json(profil);
+      res.redirect('/');
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    });
+};
+
 
 module.exports = {
   renderProfile,
   renderProfileNav,
-  redirectMyProfile
+  redirectMyProfile,
+  deleteProfile,
 };

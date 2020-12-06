@@ -4,7 +4,12 @@
   {{else}}
   <div class="container">
     <h1 id="profile-naslov">{{profileDetails.ime}} {{profileDetails.priimek}}</h1>
+    {{#if profileDetails.isAdmin}}
+    <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
+    <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button>
+    {{/if}}
     <hr>
+
     <div class="row">
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
 
@@ -52,30 +57,33 @@
               <td id="status">Ne</td>
               {{/if}}
             </tr>
-
-            <tr id="spremeni-sliko" style="display: none;">
-              <th class="thPodatki" scope="row">Spremeni profilno sliko:</th>
-              <td>
-                <form>
-                  <div class="form-group">
-                    <input type="file" class="form-control-file" id="profilna-slika">
-                  </div>
-                </form>
-              </td>
-            </tr>
-          </tbody>
+              {{!-- <tr id="spremeni-sliko" style="display: none;">
+                <th class="thPodatki" scope="row">Spremeni profilno sliko:</th>
+                <td>
+                  <form>
+                    <div class="form-group">
+                      <input type="file" class="form-control-file" id="profilna-slika">
+                    </div>
+                  </form>
+                </td>
+                </tr> --}}
+            </tbody>
         </table>
+              
 
-        {{#if profileDetails.isAdmin}}
-        <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()">Spremeni</button>
-        <button id="save-btn" value="save" class="btn btn-success d-none">Shrani</i></button>
-        {{/if}}
-        <!--
+    {{#if profileDetails.isAdmin}}
+    {{!-- <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button> --}}
+    {{!-- <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button> --}}
+    {{!-- <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()">Spremeni</button> --}}
+    <button id="save-btn" value="save" class="btn btn-success d-none">Shrani</i></button>
+    {{/if}}
+    <!--
         <hr>
         <h4 id="profile-podnaslov">Dodatno:</h4>
         -->
-      </div>
+</div>
     </div>
+
     {{#if profileDetails.isAdmin}}
     <div class="tab pb-5">
       <button class="tablinks" onclick="openCity(event, 'kronologija')">Seznam objav</button>
@@ -201,7 +209,7 @@
         </table>
       </div>
     </div>
-    
+
     <div id="oceni-me" class="tabcontent">
       <div class="row">
         <div class="col d-flex justify-content-center">
@@ -209,7 +217,7 @@
             <tr>
               <th class="thPodatki" scope="row">Dodaj oceno:</th>
               <td>
-                
+
                 <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
                   <option>5</option>
                   <option>4</option>
@@ -222,7 +230,7 @@
                 <form>
                   <button id="add-button" class="btn btn-success" style="margin-left: 20px;">Potrdi</button>
                 </form>
-                
+
               </td>
               <br><br><br>
             </tr>
@@ -317,6 +325,35 @@
         });
       }
 
+      var deleteBtn = document.getElementById('delete-btn');
+      if(deleteBtn != null) {
+          deleteBtn.addEventListener('click', () => {
+            console.log('clicked');
+          console.log("Delete button has been clicked!")
+
+          var url = window.location.href.split('/');
+          var id = url[url.length - 1];
+
+          var asinhronaZahteva = new XMLHttpRequest();
+          asinhronaZahteva.open(
+            "DELETE",
+            "http://localhost:3000/api/uporabnik/" + id,
+            true
+          )
+          /*
+          .then((odgovor) => odgovor.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
+          */
+          asinhronaZahteva.addEventListener("load", function () {
+            //var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
+            //console.log("rez se" + jsonRezultati);
+          });
+          window.location = "/";
+          asinhronaZahteva.send(null);
+        });
+      }
+
     });
 
     var d = new Date();
@@ -329,6 +366,10 @@
 
       return dodana;
     }
+
+    {{!-- function izbrisiUporabnik() {
+
+    } --}}
 
     function novoGeslo() {
       var password1 = document.getElementById("passwordReset");

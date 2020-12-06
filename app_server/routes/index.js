@@ -35,6 +35,9 @@ router.get('/profil-my', ctrlProfile.redirectMyProfile);
 /* GET new info for user profile page */
 router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
 
+/*DELETE user*/
+router.delete('/profil/:idUporabnika', ctrlProfile.deleteProfile); 
+
 router.get('/db', ctrlMain.db);
 
 router.delete('/db', ctrlMain.bazaIzbrisi);
