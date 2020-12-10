@@ -1,0 +1,40 @@
+.event {
+    margin: 1rem;
+    border: none;
+}
+
+.event-header {
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.event-body {
+    background-color: rgb(172, 209, 231);
+}
+
+.profile {
+    margin: 1rem;
+    border: none;
+}
+
+.profile-thumbnail {
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-body {
+    background-color: rgb(172, 209, 231);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.profile-body-item {
+    display: inline-block;
+    color: black;
+}
+
+.offer {
+    width: 2rem;
+}
