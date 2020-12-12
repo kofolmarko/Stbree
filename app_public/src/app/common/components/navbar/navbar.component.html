@@ -1,0 +1,20 @@
+<!--navBar-->
+<nav id="fixing-navbar" class="navbar navbar-expand bg-transparent fixed-top scrolled">
+    <a routerLink=""><img class="mr-auto" src="../../../../assets/media/icons/stbree_logo_white.png" height="53px"
+            width="94px"></a>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link text-light" routerLink="prijava">Prijava</a>
+        </li>
+        <li class="nav-item nav-item-signup">
+            <a class="nav-link text-light" routerLink="registracija">Registracija</a>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    $(window).scroll(function () {
+        $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+</script>
