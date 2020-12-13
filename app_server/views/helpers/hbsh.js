@@ -24,7 +24,18 @@ hbs.registerHelper('zvezdice', (ocena) => {
   return zvezdice;
 });
 
+hbs.registerHelper('ujemanje', (niz1, niz2) => {
+  if(niz1 == niz2) return '<p class="posameznoSporocilo" style="font-size: 1rem; margin-top: 0; margin-bottom: 0.4rem; padding-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; border-radius: 30px; color: white; background-color: #18a2b8; box-shadow: 1px 3px 3px #7b7b7b">sporocilo si dobilod kolega </p>';  //sporocilo si dobilod kolega
+ //if(niz1 == niz2) return '<div>test</div>';  //sporocilo si dobilod kolega
+ else{
+    return '<p class="posameznoSporocilo" style="font-size: 1rem; margin-top: 0; margin-bottom: 0.4rem; padding-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; border-radius: 30px; color: white; background-color: red; box-shadow: 1px 3px 3px #7b7b7b">sporocilo </p>'; //sporocilo je moje
+   //return '<div> ' + niz1 + niz2 + ' </div>'; //sporocilo je moje
+ }
+});
+
+
 hbs.registerHelper('ujemanjeNiza', (vrednost1, vrednost2, moznosti) => {
+  console.log("smo v helper funkcijiiiiiiii");
   return (vrednost1 == vrednost2) ? moznosti.fn(this) : moznosti.inverse(this);
 });
 
