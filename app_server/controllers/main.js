@@ -50,7 +50,7 @@ const chat = (req, res) => {
   axios
   .get('http://localhost:3000/api/chat/' +  req.params.idUserja,{
     params: {
-      idPrejemnika: "5fc3e195da536b84c1d35f8e",
+      idPrejemnika: req.query.idPrejemnika,
     }
   })
   .then((odgovor) => {
@@ -66,11 +66,11 @@ const chat = (req, res) => {
 
 const prikaziChat = (req, res, pridobljeniPodatki) => {
   
-  var matchingSporocila = new Array((pridobljeniPodatki.prviUser.poslanaSporocila.length + pridobljeniPodatki.drugiUser.poslanaSporocila.length));
+  var matchingSporocila = new Array();
   
   var stevec = 0;
   for(var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++){
-    if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser.ime){
+    if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser._id){
       matchingSporocila[stevec] = pridobljeniPodatki.prviUser.poslanaSporocila[i];
       stevec++;
     }
@@ -78,7 +78,7 @@ const prikaziChat = (req, res, pridobljeniPodatki) => {
   var nimasPogovora = (matchingSporocila.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
 
   for(var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++){
-    if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser.ime){
+    if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser._id){
       matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
       stevec++;
     }
@@ -88,9 +88,10 @@ const prikaziChat = (req, res, pridobljeniPodatki) => {
   
   res.render('chat', { 
     title: "",
+    
     sortedSporocilaa: sortedSporocila,
-    mojeIme: pridobljeniPodatki.mojeIme,
-    // kolegovooIme: kolegovoIme,
+    mojId: pridobljeniPodatki.prviUser._id,
+    kolegovId: pridobljeniPodatki.drugiUser._id,
     nimasPogovora: nimasPogovora,
 
     contacts: [{
@@ -157,22 +158,48 @@ const prikaziNapako = (req, res, napaka) => {
 };
 
 
+JSON.safeStringify = (obj, indent = 2) => {
+  let cache = [];
+  const retVal = JSON.stringify(
+    obj,
+    (key, value) =>
+      typeof value === "object" && value !== null
+        ? cache.includes(value)
+          ? undefined // Duplicate reference found, discard key
+          : cache.push(value) && value // Store value in our collection
+        : value,
+    indent
+  );
+  cache = null;
+  return retVal;
+};
+
+
+
 // shrani poslano sporocilo
 
 const shraniSporocilo = (req, res) => {
   const idUserja = req.params.idUserja;
-  console.log("v metodi shrani sporocilo sid userja je:"+ idUserja);
+  //console.log("v metodi shrani sporocilo sid userja je:"+ idUserja);
+  console.log("v metodi shrani sporocilo id userja je:"+ idUserja);
+  console.log("v metodi shrani req je:"+ req.query.idPrejemnika);
+  //str = JSON.safeStringify(req);
+  // str = JSON.stringify(req, null, 4); // (Optional) beautiful indented output.
+  //console.log(str); // Logs output to dev tools console.
+  //alert(str); // Displays output using window.alert()
+
   axios({
     method: 'post',
     url: 'http://localhost:3000/api/chat/' + idUserja,
     data: {
       besedilo: req.body.besedilo,
-      prejemnikSporocila: "Manca",
+      prejemnikSporocila: req.query.idPrejemnika,
       cas: Date.now()
     }
   })
   .then(() => {
-    res.redirect('/sporocanje/' + idUserja);
+    console.log("nas sestavljen link je: " + '/sporocanje/' + idUserja + "?idPrejemnika=" + req.query.idPrejemnika);
+    res.redirect("/sporocanje/" + idUserja + "?idPrejemnika=" + req.query.idPrejemnika);
   })
   .catch((napaka) => {
     prikaziNapako(req, res, napaka);

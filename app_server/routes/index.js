@@ -53,5 +53,10 @@ router
   .route('/sporocanje/:idUserja')
   .post(ctrlMain.shraniSporocilo);
 
+  /* PUT sporocilo */
+// router
+// .route('/sporocanje/:idUserja')
+// .put(ctrlMain.posodobiSporocilo);
+
 
 module.exports = router;

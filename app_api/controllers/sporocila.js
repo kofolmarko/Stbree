@@ -4,6 +4,9 @@ const User = mongoose.model('User');
 
 //////////////////////// g e t  s p o r o c i l a ////////////////////////
 const naloziSporocilo = (req, res) => {
+  console.log("id userja::::" + req.params.idUserja);
+  console.log("id prejemika::::" + req.query.idPrejemnika);
+
   User
   .find({ $or:
     [
@@ -20,7 +23,7 @@ const naloziSporocilo = (req, res) => {
         return res.status(500).json(napaka);
       }
       
-      // console.log("v bazi smo nasli:\n", users);
+      console.log("v bazi smo nasli:\n", users);
       console.log("prvi user jeeeee:\n", users[0]);
       console.log("drugi user jeeeee\n", users[1]);
     res.status(200).json({
@@ -39,33 +42,63 @@ const naloziSporocilo = (req, res) => {
 
 //////////////////////// d o d a j  m e t o d a ////////////////////////
 const dodajSporocilo = (req, res, uporabnik) => {
+    //console.log("!!!!!!!!!!v app_api je req.body.idPrejemnika v metodi:" + req.body.prejemikSporocila);
+
+  //str = JSON.safeStringify(req);
+  //console.log(str);
+
+
+
   if (!uporabnik) {
     res.status(404).json({"sporočilo": "Ne najdem uporabnika."});
   } else {
     uporabnik.poslanaSporocila.push({
-      avtorSporocila: req.body.avtor,
-      prejemnikSporocila: "Manca",
+      //avtorSporocila: req.body.avtor,
+      prejemnikSporocila: req.body.prejemnikSporocila,
       besedilo: req.body.besedilo
     });
+
+    //str = JSON.safeStringify(uporabnik);
+    //console.log("najin nov izpis uporabnika " + str);
 
     uporabnik.save((napaka, uporabnik) => {
       if (napaka) {
         res.status(400).json(napaka);
       } else {
         const dodanoSporocilo = uporabnik.poslanaSporocila.slice(-1).pop();
-      console.log("heooooo dodanoSporocilo:" + dodanoSporocilo.besedilo);
-        res.status(201).json(dodanoSporocilo.besedilo);
+       //console.log("heooooo dodanoSporocilo: " + dodanoSporocilo.besedilo);
+      //console.log("heooooo dodanoSporocilo prejemnik: " + dodanoSporocilo.prejemikSporocila);
+      res.status(201).json(dodanoSporocilo.besedilo);
       }
     });
   }
 };
 
 
+JSON.safeStringify = (obj, indent = 2) => {
+  let cache = [];
+  const retVal = JSON.stringify(
+    obj,
+    (key, value) =>
+      typeof value === "object" && value !== null
+        ? cache.includes(value)
+          ? undefined // Duplicate reference found, discard key
+          : cache.push(value) && value // Store value in our collection
+        : value,
+    indent
+  );
+  cache = null;
+  return retVal;
+};
 
 //////////////////////// p o s t  s p o r o c i l o ////////////////////////
   const kreirajSporocilo = (req, res) => {
     const idUporabnika = req.params.idUserja;
-    console.log("znotraj post metodeeeeeeee" + idUporabnika)
+    console.log("znotraj post metodeeeeeeee in podatki so " + idUporabnika);
+
+
+    //str = JSON.safeStringify(req);
+    //console.log(str);
     if (idUporabnika) {
       User
         .findById(idUporabnika)
@@ -85,6 +118,39 @@ const dodajSporocilo = (req, res, uporabnik) => {
     }
   };
 
+//////////////////////// p u t  s p o r o c i l o ////////////////////////
+
+// const preurediSporocilo = (req, res) => {
+//   User
+//     .findById(req.params.idUserja)
+//     .select('poslanaSporocila')
+//     .exec((napaka, uporabnikovaSporocila) => {
+
+//       if(!uporabnikovaSporocila){
+//         return res.status(404).json({"sporočilo": "ne najdem uporabinka youre dumb af"});
+//       }else if(napaka){
+//         return res.status(500).json(napaka);
+//       }
+
+//       if(uporabnikovaSporocila.poslanaSporocila && uporabnikovaSporocila.poslanaSporocila.length > 0){
+//         const trenutnoSporocilo = req.body.idSporocila;
+//       }if(!trenutnoSporocilo){
+//         return res.status(404).json({"sporočilo": "Ne najdem sporocila."});
+//       }else{
+//         trenutnoSporocilo.prejemnikSporocila = req.body.prejemnikSporocila;
+//         trenutnoSporocilo.besedilo = req.body.besedilo;
+//       }
+
+//       uporabnikovaSporocila.save((napaka, uporabnikovaSporocila)=>{
+//         if(napaka){
+//           return res.status(404).json(napaka);
+//         }else{
+//           res.status(200).json(trenutnoSporocilo);
+//         }
+//       })
+      
+//     })
+// }
 
 
 

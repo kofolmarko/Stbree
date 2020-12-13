@@ -12,6 +12,8 @@ router.delete('instrukcije-dogodki/:idDogodka', ctrlInstrukcije.instrukcijeDogod
 
 router.get('/chat/:idUserja', ctrlChat.naloziSporocilo);
 router.post('/chat/:idUserja', ctrlChat.kreirajSporocilo);
+//router.put('/chat/:idUserja', ctrlChat.preurediSprocilo);
+
 
 
 

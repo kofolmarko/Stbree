@@ -36,6 +36,20 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 // )
 
 
+//  db.Users.update({
+//   ime: 'Ticica'
+// }, {
+//   $push: {
+//     poslanaSporocila: {
+//       _id: ObjectId(),
+//       prejemnikSporocila: "5fcb7bab7ebc692d6cc1b556",
+//       besedilo: "zivjo spela prticica tukaj prvic",
+//       //cas: 2020-12-04T13:01:46.372Z 
+//     }
+//   }
+// })
+
+
 // curl -X POST \
 //        -d "naziv=Donald Trump&ocena=4&komentar=Najbolje je, da v puščavi tudi prespite in si v beduinskem kampu privoščite pravo gostijo ob večernem ognju." \
 //        -H "Content-Type: application/x-www-form-urlencoded" \

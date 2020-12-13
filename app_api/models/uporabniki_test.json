@@ -1,0 +1,185 @@
+[
+    {
+        "_id": {
+            "$oid": "5fc3efca6dd5980011c89849"
+        },
+        "statusInstruktorja": true,
+        "ime": "Branko",
+        "priimek": "Muhič",
+        "email": "branemuhic@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T19:00:26.541Z"
+        },
+        "dogodki": [],
+        "Dela": [],
+        "__v": 0,
+        "opis": "Jaz sem Branko in zelo rad računam s številkami.",
+        "telefonskaStevilka": "0568200763"
+    },
+    {
+        "_id": {
+            "$oid": "5fc42824761af1001107bf5e"
+        },
+        "statusInstruktorja": true,
+        "ime": "Tomaž",
+        "priimek": "Kreft",
+        "email": "tomaz.kreft@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:00:52.240Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Sem preprost fant",
+        "telefonskaStevilka": "955036295"
+    },
+    {
+        "_id": {
+            "$oid": "5fc428c2eaf31d0011aae469"
+        },
+        "statusInstruktorja": true,
+        "ime": "Kristina",
+        "priimek": "Novak",
+        "email": "kristinanovak@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:03:30.708Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Sem preprosta punca",
+        "telefonskaStevilka": "031452920"
+    },
+    {
+        "_id": {
+            "$oid": "5fc428c2eaf31d0011aae462"
+        },
+        "statusInstruktorja": true,
+        "ime": "Maja",
+        "priimek": "Kristl",
+        "email": "majakristl@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:03:30.708Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Počasi bom obupala nad faksom :(",
+        "telefonskaStevilka": "73572956"
+    },
+    {
+        "_id": {
+            "$oid": "5fc428c2eaf31d0011aae429"
+        },
+        "statusInstruktorja": true,
+        "ime": "Feliks",
+        "priimek": "Xan",
+        "email": "feliksxan@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:03:30.708Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Obožujem računalniške igre!",
+        "telefonskaStevilka": "759275629"
+    },
+    {
+        "_id": {
+            "$oid": "5fc428c2eaf31d0011aae369"
+        },
+        "statusInstruktorja": true,
+        "ime": "Eva",
+        "priimek": "Mak",
+        "email": "evamak@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:03:30.708Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Šport je moja ljubezen",
+        "telefonskaStevilka": "759275920"
+    },
+    {
+        "_id": {
+            "$oid": "5fc428c2eaf31d0011aae469"
+        },
+        "statusInstruktorja": true,
+        "ime": "Bojan",
+        "priimek": "Berg",
+        "email": "bojanberg@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:03:30.708Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Rad hodim v hribe!",
+        "telefonskaStevilka": "285295782"
+    },
+    {
+        "_id": {
+            "$oid": "5fc428c2eaf31d0011aae569"
+        },
+        "statusInstruktorja": true,
+        "ime": "Janez",
+        "priimek": "Novak",
+        "email": "janeznovak@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:03:30.708Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Imam zelo običajno ime",
+        "telefonskaStevilka": "572958602"
+    },
+    {
+        "_id": {
+            "$oid": "5fc428c2eaf31d0011aae499"
+        },
+        "statusInstruktorja": true,
+        "ime": "Maj",
+        "priimek": "Toplak",
+        "email": "majtoplak@gmail.com",
+        "geslo": "Password",
+        "datumVpisa": {
+            "$date": "2020-11-29T23:03:30.708Z"
+        },
+        "dogodki": [],
+        "dela": [],
+        "__v": 0,
+        "opis": "Zelo rad imam testenine x)",
+        "telefonskaStevilka": "8692068739"
+    }
+   
+]
+
+
+{
+    "ime": "Maj",
+    "priimek": "Toplak",
+    "email": "majtoplak@gmail.com",
+    "geslo": "Password",
+    "datumVpisa": "2020-11-29T23:03:30.708Z",
+    "dogodki": [],
+    "dela": [],
+    "opis": "Zelo rad imam testenine x)",
+    "telefonskaStevilka": "8692068739",
+    "poslanaSporocila": [
+        {
+            "prejemnikSporocila": ""
+        }
+
+
+    ],
+}
