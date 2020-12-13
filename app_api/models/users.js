@@ -25,13 +25,7 @@ const instrukcijeDogodekShema = new mongoose.Schema({
   ura: { type: String, required: true},
   steviloProstihMest: { type: Number, required: true},
   idInstruktorja: { type: String, required: true}
-});
-
-const sporocilaShema = new mongoose.Schema({
-  prejemnikSporocila: { type: String},
-  besedilo: "String",
-  cas: { type: Date, "default": Date.now }
-});    
+});  
 
 const uporabnikZacetnoShema = new mongoose.Schema({
   ime: { type: String, required: true },

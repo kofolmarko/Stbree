@@ -92,16 +92,6 @@ const dashboard = async (req, res) => {
   }
 };
 
-/* GET user profile */
-const userProfile = (req, res) => {
-  res.render('profile-user', { title: "Moj profil" });
-};
-
-/* GET profile for viewers */
-const viewProfile = (req, res) => {
-  res.render('profile-view');
-};
-
 
 const prikaziNapako = (req, res, napaka) => {
   let naslov = "Nekaj je šlo narobe!";
@@ -298,6 +288,4 @@ module.exports = {
   db,
   bazaIzbrisi,
   bazaNapolni,
-  userProfile,
-  viewProfile
 };

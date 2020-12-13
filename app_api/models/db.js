@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 
-//var dbURI = 'mongodb://mongo-db/stbree';
-var dbURI = 'mongodb+srv://app:geslo@stbree.jftw5.mongodb.net/admin';
+var dbURI = 'mongodb://mongo-db/stbree';
+//var dbURI = 'mongodb+srv://app:geslo@stbree.jftw5.mongodb.net/admin';
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -61,5 +61,4 @@ process.on('SIGTERM', () => {
 
 require('./instructions');
 require('./jobs');
-
 require('./users');
