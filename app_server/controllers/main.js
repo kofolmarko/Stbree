@@ -112,7 +112,7 @@ const prikaziNapako = (req, res, napaka) => {
     title: naslov,
     vsebina: vsebina
 
-  })
+  });
 };
 
 /* GET chat page */
