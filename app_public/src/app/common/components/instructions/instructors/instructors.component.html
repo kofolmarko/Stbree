@@ -1,1 +1,34 @@
-<p>instructors works!</p>
+<ul class="nav container" id="ins-nav">
+    <li class="nav-item nav-item-left-border bg-info">
+        <a class="nav-link active" routerLink="/instruktorji">Inštruktorji</a>
+    </li>
+    <li class="nav-item nav-item-inactive-bg nav-item-right-border">
+        <a class="nav-link" routerLink="/instrukcije-dogodki">Dogodki</a>
+</ul>
+
+<!--S e a r c h  b a r-->
+<div class="input-group mb-3 container">
+    <input id="search" (keyup)="isci()" type="text" class="form-control" placeholder="Poišči inštruktorja..."
+        aria-label="Iskanje" aria-describedby="search-button">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary btn-info" type="button" id="search-button">Išči</button>
+    </div>
+</div>
+
+<!--I n s t r u c t o r s-->
+<div class="alert alert-warning container" style="margin-top: 2rem;" *ngIf="sporocilo">
+    {{sporocilo}}
+</div>
+
+<div id="instructors" class="container">
+    <span *ngFor="let instruktor of instruktorji">
+        <div class="card instructor" style="width: 18rem;" *ngIf="instruktor.statusInstruktorja">
+            <img class="card-img-top" src="../../../../../assets/media/thumbnails/blue.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis;">{{instruktor.ime}}
+                    {{instruktor.priimek}}</h5>
+                <a routerLink="profil/{{instruktor._id}}" class="btn btn-primary">Preveri profil</a>
+            </div>
+        </div>
+    </span>
+</div>

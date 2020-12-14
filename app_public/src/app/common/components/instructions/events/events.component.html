@@ -1,1 +1,64 @@
-<p>events works!</p>
+<ul class="nav container" id="ins-nav">
+    <li class="nav-item nav-item-left-border nav-item-inactive-bg">
+      <a class="nav-link active" routerLink="/instruktorji">Inštruktorji</a>
+    </li>
+    <li class="nav-item bg-info nav-item-right-border">
+      <a class="nav-link" routerLink="/instrukcije-dogodki">Dogodki</a>
+  </ul>
+
+  <!--F i l t e r-->
+  <div class="container" id="filter-bar">
+
+    <div class="filter-item">
+      <label for="razvrsti">Razvrsti po:</label>
+      <select name="razvrsti" id="razvrsti" class="form-control">
+        <option value="">Izberi filter...</option>
+        <option value="datum">Datumu (bližnji najprej)</option>
+        <option value="REVdatum">Datumu (kasnejši najprej)</option>
+        <option value="steviloProstihMest">Številu prostih mest (najmanj najprej)</option>
+        <option value="REVsteviloProstihMest">Številu prostih mest (največ najprej)</option>
+        <option value="naziv">Imenu (A-Z)</option>
+        <option value="REVnaziv">Imenu (Z-A)</option>
+        <option value="cena">Ceni (cenejši najprej)</option>
+        <option value="REVcena">Ceni (dražji najprej)</option>
+      </select>
+    </div>
+
+    <button id="filter-btn" value="Filtriraj" class="btn btn-info">Filtriraj</button>
+
+  </div>
+
+  <!--S e a r c h  b a r-->
+  <div class="input-group mb-3 container">
+    <input id="search" (keyup)="isci()" type="text" class="form-control" placeholder="Vpiši želeno iskanje"
+      aria-label="Iskanje" aria-describedby="search-button">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary btn-info" type="button" id="search-button">Išči</button>
+    </div>
+  </div>
+
+  <!--N e w-->
+  <div class="new-job container">
+    <a routerLink="#" class="btn btn-success">Ustvari nov dogodek</a>
+  </div>
+
+  <!--E v e n t s-->
+
+  <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
+
+  <div id="instructors" class="container">
+    <div class="card instructor" style="width: 18rem;" *ngFor="let dogodek of dogodki">
+      <img class="card-img-top" src="../../../assets/media/thumbnails/green.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{dogodek.naziv}}</h5>
+        <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          {{dogodek.opis}}</p>
+        <a href="/instrukcije-dogodki/dogodek/{{dogodek._id}}" class="btn btn-primary">Podrobnosti</a>
+      </div>
+    </div>
+  </div>
+
+
+  <hr>
+
+  <!--{{> carousel_getstarted}}-->
