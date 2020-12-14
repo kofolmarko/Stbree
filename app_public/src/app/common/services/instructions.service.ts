@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../classes/user';
+import { InstructionsEvent } from '../classes/event';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,15 @@ export class InstructionsService {
     return users;
   }
 
+  public getEvents(): Promise<InstructionsEvent[]> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as InstructionsEvent[])
+      .catch(this.handleError);
+  }
+
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {
     //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error.message || error);
@@ -41,5 +51,5 @@ export class InstructionsService {
     console.error("Error in the service");
     return Promise.reject(error.error);
   }
-  
+
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { InstructionsService } from '../../../services/instructions.service';
+
+import { InstructionsEvent } from 'src/app/common/classes/event';
+
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -7,9 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private instructionsService: InstructionsService) { }
 
   ngOnInit(): void {
+    this.getEvents();
   }
 
   isci() {
@@ -33,22 +38,20 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  dogodki: Dogodek[] = [
-    {
-      naziv: "Pretep",
-      opis: "Cigoj vs Kavka"
-    },
-    {
-      naziv: "Pobotanje",
-      opis: "Pretep je bil polomija"
-    }
-  ]
+  public sporocilo: string = "";
 
-  private sporocilo: string = "";
+  public dogodki: InstructionsEvent[];
 
-}
+  private getEvents(): void {
+    this.instructionsService.getEvents()
+    .then(events => {
+      this.dogodki = events;
+      this.sporocilo = events.length > 0 ? "" : "Ne najdem nobenega dogodka :("
+    })
+    .catch(error => {
+      this.sporocilo = "Napaka API-ja pri iskanju dogodkov."
+      console.error(error);
+    });
+  }
 
-export class Dogodek {
-  naziv: string;
-  opis: string;
 }

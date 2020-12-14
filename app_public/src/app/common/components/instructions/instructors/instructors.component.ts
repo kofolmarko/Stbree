@@ -38,20 +38,19 @@ export class InstructorsComponent implements OnInit {
     }
   }
 
-  private sporocilo: string = "";
+  public sporocilo: string = "";
 
   public instruktorji: User[];
 
   private getInstructors(): void {
     this.instructionsService.getInstructors()
     .then(users => {
-      console.log(users);
       this.instruktorji = users;
       this.sporocilo = users.length > 0 ? "" : "Ne najdem nobenega inštruktorja :("
     })
     .catch(error => {
       this.sporocilo = "Napaka API-ja pri iskanju inštruktorjev."
-      console.log(error);
+      console.error(error);
     });
   }
   
