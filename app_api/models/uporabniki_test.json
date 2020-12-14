@@ -160,6 +160,26 @@
         "__v": 0,
         "opis": "Zelo rad imam testenine x)",
         "telefonskaStevilka": "8692068739"
-    },
+    }
    
 ]
+
+
+// {
+//     "ime": "Maj",
+//     "priimek": "Toplak",
+//     "email": "majtoplak@gmail.com",
+//     "geslo": "Password",
+//     "datumVpisa": "2020-11-29T23:03:30.708Z",
+//     "dogodki": [],
+//     "dela": [],
+//     "opis": "Zelo rad imam testenine x)",
+//     "telefonskaStevilka": "8692068739",
+//     "poslanaSporocila": [
+//         {
+//             "prejemnikSporocila": ""
+//         }
+
+
+//     ],
+// }

@@ -335,6 +335,12 @@ const izbrisiUporabnika = (req, res) => {
     } else if (napaka) {
       return res.status(500).json(napaka);
     }
+    InstrukcijeDogodek.deleteMany({idInstruktorja: idUporabnika})
+    .then()
+    .catch();
+    Delo.deleteMany({idPonudnika: idUporabnika})
+    .then()
+    .catch();
     res.status(204).json(uporabnik); //neli e 204
   });
 };

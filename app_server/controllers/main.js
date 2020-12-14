@@ -92,62 +92,76 @@ const dashboard = async (req, res) => {
   }
 };
 
-/* GET user profile */
-const userProfile = (req, res) => {
-  res.render('profile-user', { title: "Moj profil" });
-};
 
-/* GET profile for viewers */
-const viewProfile = (req, res) => {
-  res.render('profile-view');
+const prikaziNapako = (req, res, napaka) => {
+  let naslov = "Nekaj je šlo narobe!";
+  let vsebina = napaka.isAxiosError ?
+    "Napaka pri dostopu do oddaljenega vira preko REST API dostopa!" :
+    undefined;
+  vsebina = (
+    vsebina != undefined &&
+    napaka.response && napaka.response.data["sporočilo"]
+  ) ? napaka.response.data["sporočilo"] : vsebina;
+  vsebina = (
+    vsebina != undefined &&
+    napaka.response && napaka.response.data["message"]
+  ) ? napaka.response.data["message"] : vsebina;
+  vsebina = (vsebina == undefined) ?
+    "Nekaj nekje očitno ne deluje." : vsebina;
+  res.render('genericno-besedilo', {
+    title: naslov,
+    vsebina: vsebina
+
+  });
 };
 
 /* GET chat page */
 const chat = (req, res) => {
   axios
-    .get(apiParametri.streznik + '/api/chat/' + req.params.idUserja, {
-      params: {
-        idPrejemnika: "5fc3f5a8abd8100011de120d",
-      }
-    })
-    .then((odgovor) => {
-      //let nimasPogovora = (odgovor.data.komentar.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
-      //console.log("nimaspogovora je:" + nimasPogovora);
+  .get('http://localhost:3000/api/chat/' +  req.params.idUserja,{
+    params: {
+      idPrejemnika: req.query.idPrejemnika,
+    }
+  })
+  .then((odgovor) => {
+    //let nimasPogovora = (odgovor.data.komentar.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
+    //console.log("nimaspogovora je:" + nimasPogovora);
       console.log("znotraj then in podatki so" + odgovor.data);
       prikaziChat(req, res, odgovor.data);
     })
     .catch((napaka) => {
-      prikaziNapako(req, res, napaka);
-    });
+    prikaziNapako(req, res, napaka);
+  });
 };
 
 const prikaziChat = (req, res, pridobljeniPodatki) => {
-
-  var matchingSporocila = new Array((pridobljeniPodatki.prviUser.poslanaSporocila.length + pridobljeniPodatki.drugiUser.poslanaSporocila.length));
-
+  
+  var matchingSporocila = new Array();
+  
   var stevec = 0;
-  for (var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++) {
-    if (pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser.ime) {
+  for(var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++){
+    if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser._id){
       matchingSporocila[stevec] = pridobljeniPodatki.prviUser.poslanaSporocila[i];
       stevec++;
     }
   }
   var nimasPogovora = (matchingSporocila.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
 
-  for (var j = 0; j < pridobljeniPodatki.drugiUser.poslanaSporocila.length; j++) {
-    if (pridobljeniPodatki.drugiUser.poslanaSporocila[j].prejemnikSporocila == pridobljeniPodatki.prviUser.ime) {
-      matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[j];
+  for(var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++){
+    if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser._id){
+      matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
       stevec++;
     }
   }
-
+  
   sortedSporocila = matchingSporocila.sort((a, b) => b.cas - a.cas);
-
-  res.render('chat', {
+  
+  res.render('chat', { 
     title: "",
+    
     sortedSporocilaa: sortedSporocila,
-    mojeIme: pridobljeniPodatki.mojeIme,
-    // kolegovooIme: kolegovoIme,
+    mojId: pridobljeniPodatki.prviUser._id,
+    kolegovId: pridobljeniPodatki.drugiUser._id,
     nimasPogovora: nimasPogovora,
 
     contacts: [{
@@ -164,7 +178,7 @@ const prikaziChat = (req, res, pridobljeniPodatki) => {
     }
     ],
 
-    contactChosen: {
+    contactChosen:{ 
       sporocila: [
         {
           ime: "Billa Jobs",
@@ -191,49 +205,58 @@ const prikaziChat = (req, res, pridobljeniPodatki) => {
 };
 
 
-const prikaziNapako = (req, res, napaka) => {
-  let naslov = "Nekaj je šlo narobe!";
-  let vsebina = napaka.isAxiosError ?
-    "Napaka pri dostopu do oddaljenega vira preko REST API dostopa!" :
-    undefined;
-  vsebina = (
-    vsebina != undefined &&
-    napaka.response && napaka.response.data["sporočilo"]
-  ) ? napaka.response.data["sporočilo"] : vsebina;
-  vsebina = (
-    vsebina != undefined &&
-    napaka.response && napaka.response.data["message"]
-  ) ? napaka.response.data["message"] : vsebina;
-  vsebina = (vsebina == undefined) ?
-    "Nekaj nekje očitno ne deluje." : vsebina;
-  res.render('genericno-besedilo', {
-    title: naslov,
-    vsebina: vsebina
-  });
+//za debuganje http requestov
+
+JSON.safeStringify = (obj, indent = 2) => {
+  let cache = [];
+  const retVal = JSON.stringify(
+    obj,
+    (key, value) =>
+      typeof value === "object" && value !== null
+        ? cache.includes(value)
+          ? undefined // Duplicate reference found, discard key
+          : cache.push(value) && value // Store value in our collection
+        : value,
+    indent
+  );
+  cache = null;
+  return retVal;
 };
+
 
 
 // shrani poslano sporocilo
 
 const shraniSporocilo = (req, res) => {
-  const idUserja = req.params.idUserja;
-  console.log("v metodi shrani sporocilo sid userja je:" + idUserja);
-  axios({
-    method: 'post',
-    url: apiParametri.streznik + '/api/chat/' + idUserja,
-    data: {
-      besedilo: req.body.besedilo,
-      prejemnikSporocila: "Manca",
-      cas: Date.now()
-    }
-  })
+    //console.log("v metodi shrani sporocilo sid userja je:"+ idUserja);
+    console.log("v metodi shrani sporocilo id userja je:"+ idUserja);
+    console.log("v metodi shrani req je:"+ req.query.idPrejemnika);
+    //str = JSON.safeStringify(req);
+    // str = JSON.stringify(req, null, 4); // (Optional) beautiful indented output.
+    //console.log(str); // Logs output to dev tools console.
+    //alert(str); // Displays output using window.alert()
+  
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/api/chat/' + idUserja,
+      data: {
+        besedilo: req.body.besedilo,
+        prejemnikSporocila: req.query.idPrejemnika,
+        cas: Date.now()
+      }
+    })
     .then(() => {
-      res.redirect('/sporocanje/' + idUserja);
+      console.log("nas sestavljen link je: " + '/sporocanje/' + idUserja + "?idPrejemnika=" + req.query.idPrejemnika);
+      res.redirect("/sporocanje/" + idUserja + "?idPrejemnika=" + req.query.idPrejemnika);
     })
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
 };
+
+
+
+
 
 const db = (req, res) => {
   res.render('db');
@@ -264,5 +287,5 @@ module.exports = {
   shraniSporocilo,
   db,
   bazaIzbrisi,
-  bazaNapolni
+  bazaNapolni,
 };

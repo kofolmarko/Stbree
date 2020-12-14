@@ -45,6 +45,11 @@ router.get('/db/delete', ctrlMain.bazaIzbrisi);
 router.get('/db/post', ctrlMain.bazaNapolni);
 
 
+  /* PUT sporocilo */
+// router
+// .route('/sporocanje/:idUserja')
+// .put(ctrlMain.posodobiSporocilo);
+
 
 //ROUTER export
 module.exports = router;
