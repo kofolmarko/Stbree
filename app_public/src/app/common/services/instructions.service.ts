@@ -44,6 +44,15 @@ export class InstructionsService {
       .catch(this.handleError);
   }
 
+  public getEventInfo(eventID: string): Promise<InstructionsEvent> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/${eventID}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as InstructionsEvent)
+      .catch(this.handleError);
+  }
+
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {
     //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error.message || error);

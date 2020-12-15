@@ -1,1 +1,52 @@
-<p>event-info works!</p>
+<div class="return container-fluid" style="margin-top: 1rem;">
+    <a routerLink="/instrukcije-dogodki" class="btn btn-info d-inline">Nazaj na seznam dogodkov</a>
+
+    <!-- <button class="btn btn-warning d-ilblock" id="edit-btn" (click)="uredi()"><i class="fas fa-edit"></i></button> -->
+    <button id="save-btn" value="save" class="btn btn-success d-none"><i class="fas fa-check"></i></button>
+    <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
+</div>
+
+<div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
+
+<div class="card event" *ngIf="dogodek">
+    <img class="card-img-top event-header" src="../../../../../assets/media/thumbnails/green.png" alt="Card image cap">
+    <div class="card-body event-body">
+      <h5 class="card-title" id="naziv">{{dogodek.naziv}}</h5>
+      <hr>
+      <p class="card-text" id="opis">{{dogodek.opis}}</p>
+      <hr>
+      <h6>Datum</h6>
+      <p id="datum">{{dogodek.datum}}</p>
+      <hr>
+      <h6>Čas</h6>
+      <p id="ura">{{dogodek.ura}}</p>
+      <hr>
+      <h6>Število prostih mest</h6>
+      <p id="steviloProstihMest">{{dogodek.steviloProstihMest}}</p>
+      <hr>
+      <h6>Cena</h6>
+      <p>
+        <scope id="cena">{{dogodek.cena}}</scope>
+        <scope id="eur">€</scope>
+      </p>
+
+      <!-- {{else if prijavljen}} -->
+      <hr>
+
+      <h6>Prijavi se na dogodek</h6>
+      <button type="button" class="btn btn-success" disabled>Na dogodek ste prijavljeni</button>
+
+      <!-- {{#zapolnjeno steviloProstihMest}} -->
+      <hr>
+      <div class="alert alert-warning container" style="margin-top: 2rem">Žal ni več razpoložljivih mest :(</div>
+
+      <hr>
+      <h6>Prijavi se na dogodek</h6>
+      <a (click)="prijavi()" class="btn btn-success">Prijava</a>
+
+    </div>
+  </div>
+
+  <h1 (click)="izpis()">Izpis</h1>
+
+<!--{{> carousel_getstarted}}-->

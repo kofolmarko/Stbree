@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
+import { InstructionsService } from '../../../services/instructions.service';
+
+import { InstructionsEvent } from '../../../classes/event';
 
 @Component({
   selector: 'app-event-info',
@@ -7,9 +13,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private instructionsService: InstructionsService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.getEventInfo();
+  }
+
+  public sporocilo: string = "sporocilo";
+
+  dogodek: any;
+
+  private getEventInfo(): void {
+    this.route.paramMap
+      .pipe(
+        switchMap((params: ParamMap) => {
+          let eventID = params.get('idDogodka');
+          return this.instructionsService.getEventInfo(eventID);
+        })
+      )
+      .subscribe((event: any) => {
+        this.dogodek = event;
+        this.sporocilo = event ? "tukaj je dogodek" : "Dogodek ne obstaja :("
+        console.log(this.dogodek);
+      })    
+  }
+
+  public izpis(): void {
+    console.log(this.dogodek);
   }
 
 }

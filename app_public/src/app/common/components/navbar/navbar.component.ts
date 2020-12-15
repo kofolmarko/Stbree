@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {/*
     // console.log(window.location.href);
     // if (window.location.href != 'http://localhost:4200/' && window.location.href != 'http://localhost:4200/prijava' && window.location.href != 'http://localhost:4200/registracija') {
     //   document.getElementById('fixing-navbar').classList.remove("fixed-top");
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
       document.getElementById('fixing-navbar').classList.add("fixed-top");
       document.getElementById('fixing-navbar').classList.remove("bg-dark");
       document.getElementById('fixing-navbar').classList.add("bg-transparent");
-    //}
+    //}*/
   }
 
 }
