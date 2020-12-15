@@ -42,7 +42,7 @@ import { ProfileComponent } from './common/components/profile/profile.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [MainComponent]

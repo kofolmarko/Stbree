@@ -35,7 +35,7 @@ export class EventInfoComponent implements OnInit {
         })
       )
       .subscribe((event: any) => {
-        this.dogodek = event;
+        this.dogodek = event[0];
         this.sporocilo = event ? "tukaj je dogodek" : "Dogodek ne obstaja :("
         console.log(this.dogodek);
       })    

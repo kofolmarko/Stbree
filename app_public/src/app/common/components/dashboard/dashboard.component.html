@@ -1,1 +1,11 @@
 <p>dashboard works!</p>
+
+<!-- <div class="container">
+    <h2 *ngFor="let covid of covidInfo">Skupno število okužb z Covid-19 v Sloveniji: {{ covid.Cases }}</h2>
+</div> -->
+
+<div *ngIf="chart">
+    <canvas id="canvas">
+        {{ chart }}
+    </canvas>
+</div>
