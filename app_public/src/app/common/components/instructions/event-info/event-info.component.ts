@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { InstructionsService } from '../../../services/instructions.service';
 
 import { InstructionsEvent } from '../../../classes/event';
+import { User } from '../../../classes/user';
 
 @Component({
   selector: 'app-event-info',
@@ -22,9 +23,13 @@ export class EventInfoComponent implements OnInit {
     this.getEventInfo();
   }
 
-  public sporocilo: string = "sporocilo";
+  public sporocilo: string = "Ups, nekaj je šlo narobe!";
 
-  dogodek: any;
+  public dogodek: InstructionsEvent;
+
+  public gostitelj: User;
+
+  public editState: boolean = false;
 
   private getEventInfo(): void {
     this.route.paramMap
@@ -34,15 +39,49 @@ export class EventInfoComponent implements OnInit {
           return this.instructionsService.getEventInfo(eventID);
         })
       )
-      .subscribe((event: any) => {
-        this.dogodek = event[0];
-        this.sporocilo = event ? "tukaj je dogodek" : "Dogodek ne obstaja :("
-        console.log(this.dogodek);
-      })    
+      .subscribe((event: InstructionsEvent) => {
+        this.dogodek = event;
+        this.sporocilo = event ? "" : "Dogodek ne obstaja :("
+        event ? this.getEventHost() : null;
+      })
   }
 
-  public izpis(): void {
-    console.log(this.dogodek);
+  private getEventHost(): void {
+    this.instructionsService.getEventHost(this.dogodek.idInstruktorja)
+      .then(host => {
+        this.gostitelj = host;
+        this.sporocilo = host ? "" : "Ne najdem gostitelja dogodka :("
+      })
+      .catch(error => {
+        this.sporocilo = "Napaka API-ja pri iskanju gostitelja dogodka."
+        console.error(error);
+      });
+  }
+
+  editEventInfo(): void {
+    this.editCSS(true);
+    this.editState = true;
+  }
+
+  saveEventInfo(): void {
+    this.editCSS(false);
+    this.editState = false;
+  }
+
+  private editCSS(isEdit): void {
+    if (isEdit) {
+      document.getElementById("edit-btn").classList.remove("d-ilblock");
+      document.getElementById("edit-btn").classList.add("d-none");
+      document.getElementById("save-btn").classList.remove("d-none");
+      document.getElementById("save-btn").classList.add("d-ilblock");
+      document.getElementById("eur").style.display = "none";
+    } else {
+      document.getElementById("edit-btn").classList.remove("d-none");
+      document.getElementById("edit-btn").classList.add("d-ilblock");
+      document.getElementById("save-btn").classList.remove("d-ilblock");
+      document.getElementById("save-btn").classList.add("d-none");
+      document.getElementById("eur").style.display = "inline";
+    }
   }
 
 }

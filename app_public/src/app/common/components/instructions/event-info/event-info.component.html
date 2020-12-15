@@ -1,52 +1,96 @@
 <div class="return container-fluid" style="margin-top: 1rem;">
-    <a routerLink="/instrukcije-dogodki" class="btn btn-info d-inline">Nazaj na seznam dogodkov</a>
+  <a routerLink="/instrukcije-dogodki" class="btn btn-info d-inline">Nazaj na seznam dogodkov</a>
 
-    <!-- <button class="btn btn-warning d-ilblock" id="edit-btn" (click)="uredi()"><i class="fas fa-edit"></i></button> -->
-    <button id="save-btn" value="save" class="btn btn-success d-none"><i class="fas fa-check"></i></button>
-    <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
+  <button class="btn btn-warning d-ilblock" id="edit-btn" (click)="editEventInfo()"><i class="fas fa-edit"></i></button>
+  <button id="save-btn" value="save" class="btn btn-success d-none" (click)="saveEventInfo()"><i
+      class="fas fa-check"></i></button>
+  <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
 </div>
 
 <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
 
-<div class="card event" *ngIf="dogodek">
+<div class="card event" *ngIf="dogodek&&!editState else editMode">
+  <img class="card-img-top event-header" src="../../../../../assets/media/thumbnails/green.png" alt="Card image cap">
+  <div class="card-body event-body">
+    <h5 class="card-title" id="naziv">{{dogodek.naziv}}</h5>
+    <hr>
+    <p class="card-text" id="opis">{{dogodek.opis}}</p>
+    <hr>
+    <h6>Datum</h6>
+    <p id="datum">{{dogodek.datum}}</p>
+    <hr>
+    <h6>Ura</h6>
+    <p id="ura">{{dogodek.ura}}</p>
+    <hr>
+    <h6>Število prostih mest</h6>
+    <p id="steviloProstihMest">{{dogodek.steviloProstihMest}}</p>
+    <hr>
+    <h6>Cena</h6>
+    <p>
+      <scope id="cena">{{dogodek.cena}}</scope>
+      <scope id="eur"> €</scope>
+    </p>
+
+    <!-- {{else if prijavljen}} -->
+
+    <!-- <h6>Prijavi se na dogodek</h6>
+      <button type="button" class="btn btn-success" disabled>Na dogodek ste prijavljeni</button> -->
+
+    <hr>
+    <h6>Prijavi se na dogodek</h6>
+    <div class="alert alert-warning container" style="margin-top: 2rem"
+      *ngIf="dogodek.steviloProstihMest === 0; else prijava">Žal ni več razpoložljivih mest :(</div>
+    <ng-template #prijava><a (click)="prijavi()" class="btn btn-success">Prijava</a></ng-template>
+
+  </div>
+</div>
+
+<ng-template #editMode>
+  <div class="card event" *ngIf="editState">
     <img class="card-img-top event-header" src="../../../../../assets/media/thumbnails/green.png" alt="Card image cap">
     <div class="card-body event-body">
-      <h5 class="card-title" id="naziv">{{dogodek.naziv}}</h5>
+      <input [(ngModel)]="dogodek.naziv" id="naziv" class="form-control form-control-md" name="naziv"
+        required="required" type="text">
       <hr>
-      <p class="card-text" id="opis">{{dogodek.opis}}</p>
+      <input [(ngModel)]="dogodek.opis" id="opis" class="form-control form-control-md" name="opis" required="required"
+        type="text">
       <hr>
       <h6>Datum</h6>
-      <p id="datum">{{dogodek.datum}}</p>
+      <input [(ngModel)]="dogodek.datum" id="datum" class="form-control form-control-md" name="datum"
+        required="required" type="date">
       <hr>
-      <h6>Čas</h6>
-      <p id="ura">{{dogodek.ura}}</p>
+      <h6>Ura</h6>
+      <input [(ngModel)]="dogodek.ura" id="ura" class="form-control form-control-md" name="ura" required="required"
+        type="time">
       <hr>
       <h6>Število prostih mest</h6>
-      <p id="steviloProstihMest">{{dogodek.steviloProstihMest}}</p>
+      <input [(ngModel)]="dogodek.steviloProstihMest" id="steviloProstihMest" class="form-control form-control-md"
+        name="steviloProstihMest" required="required" type="number" step="1" min="1" value="1"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
       <hr>
       <h6>Cena</h6>
-      <p>
-        <scope id="cena">{{dogodek.cena}}</scope>
-        <scope id="eur">€</scope>
-      </p>
-
-      <!-- {{else if prijavljen}} -->
-      <hr>
-
-      <h6>Prijavi se na dogodek</h6>
-      <button type="button" class="btn btn-success" disabled>Na dogodek ste prijavljeni</button>
-
-      <!-- {{#zapolnjeno steviloProstihMest}} -->
-      <hr>
-      <div class="alert alert-warning container" style="margin-top: 2rem">Žal ni več razpoložljivih mest :(</div>
-
-      <hr>
-      <h6>Prijavi se na dogodek</h6>
-      <a (click)="prijavi()" class="btn btn-success">Prijava</a>
-
+      <div class="input-group mb-3">
+        <input [(ngModel)]="dogodek.cena" class="form-control" aria-label="Recipient's username"
+          aria-describedby="basic-addon2" type="number" step="0.10" min="0"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+        <div class="input-group-append">
+          <span class="input-group-text" id="eur">€</span>
+        </div>
+      </div>
     </div>
   </div>
+</ng-template>
 
-  <h1 (click)="izpis()">Izpis</h1>
+<div class="card profile" *ngIf="gostitelj">
+  <div class="card-body profile-body">
+    <h5>Inštruktor</h5>
+    <a routerLink="/profil/ogled">
+      <h3 class="profile-body-item">{{ gostitelj.ime }} {{ gostitelj.priimek }}</h3>
+    </a>
+    <hr>
+    <h5>Opis uporabnika</h5>
+    <h4>{{ gostitelj.opis }}</h4>
+  </div>
+</div>
 
 <!--{{> carousel_getstarted}}-->

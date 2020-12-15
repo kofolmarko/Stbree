@@ -45,11 +45,20 @@ export class InstructionsService {
   }
 
   public getEventInfo(eventID: string): Promise<InstructionsEvent> {
-    const url: string = `${this.apiUrl}/instrukcije-dogodki/${eventID}`;
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${eventID}`;
     return this.http
       .get(url)
       .toPromise()
       .then(response => response as InstructionsEvent)
+      .catch(this.handleError);
+  }
+
+  public getEventHost(userID: string): Promise<User> {
+    const url: string = `${this.apiUrl}/uporabnik/${userID}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as User)
       .catch(this.handleError);
   }
 

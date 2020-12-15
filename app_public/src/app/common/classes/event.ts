@@ -4,4 +4,9 @@ export class InstructionsEvent {
     _id: string;
     naziv: string;
     opis: string;
+    cena: number;
+    datum: Date;
+    ura: string;
+    steviloProstihMest: number;
+    idInstruktorja: string;
 }
