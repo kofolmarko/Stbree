@@ -12,6 +12,7 @@ import { EventInfoComponent } from 'src/app/common/components/instructions/event
 import { OffersComponent } from 'src/app/common/components/jobs/offers/offers.component';
 import { OfferInfoComponent } from 'src/app/common/components/jobs/offer-info/offer-info.component';
 import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
+import { EventNewComponent } from 'src/app/common/components/instructions/event-new/event-new.component';
 
 const poti: Routes = [
   {
@@ -41,6 +42,10 @@ const poti: Routes = [
   {
     path: 'instrukcije-dogodki/dogodek/:idDogodka',
     component: EventInfoComponent
+  },
+  {
+    path: 'instrukcije-dogodki/dodaj',
+    component: EventNewComponent
   },
   {
     path: 'ponudba-del',

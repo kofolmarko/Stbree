@@ -23,7 +23,7 @@ export class EventInfoComponent implements OnInit {
     this.getEventInfo();
   }
 
-  public sporocilo: string = "Ups, nekaj je šlo narobe!";
+  public sporocilo: string = "";
 
   public dogodek: InstructionsEvent;
 
@@ -43,7 +43,7 @@ export class EventInfoComponent implements OnInit {
         this.dogodek = event;
         this.sporocilo = event ? "" : "Dogodek ne obstaja :("
         event ? this.getEventHost() : null;
-      })
+      });
   }
 
   private getEventHost(): void {
@@ -66,6 +66,14 @@ export class EventInfoComponent implements OnInit {
   saveEventInfo(): void {
     this.editCSS(false);
     this.editState = false;
+    this.instructionsService.editEventInfo(this.dogodek)
+      .then(event => {
+        event ? this.dogodek = event : this.sporocilo = "Napaka pri posdabljanju dogodka."
+      })
+      .catch(error => {
+        this.sporocilo = "Napaka API-ja pri posodabljanju dogodka."
+        console.error(error);
+      });
   }
 
   private editCSS(isEdit): void {
@@ -82,6 +90,18 @@ export class EventInfoComponent implements OnInit {
       document.getElementById("save-btn").classList.add("d-none");
       document.getElementById("eur").style.display = "inline";
     }
+  }
+
+  deleteEvent() {
+    let eventID = this.route.snapshot.paramMap.get('idDogodka');
+    this.instructionsService.deleteEvent(eventID)
+    .subscribe(
+      () => {
+        this.dogodek = null;
+        this.sporocilo = "Dogodek uspešno izbrisan."
+      },
+      (error) => console.error(error)
+    );
   }
 
 }

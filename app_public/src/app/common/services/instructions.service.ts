@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../classes/user';
 import { InstructionsEvent } from '../classes/event';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +55,31 @@ export class InstructionsService {
       .catch(this.handleError);
   }
 
+  public postNewEvent(event: InstructionsEvent): Promise<any> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki`;
+    return this.http
+      .post(url, event)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
+  public editEventInfo(event: InstructionsEvent): Promise<InstructionsEvent> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${event._id}`;
+    return this.http
+      .put(url, event)
+      .toPromise()
+      .then(response => response as InstructionsEvent)
+      .catch(this.handleError);
+  }
+
+  public deleteEvent(eventID: string): Observable<void> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${eventID}`;
+    return this.http
+      .delete<void>(url)
+      .pipe(catchError(this.handleError));
+  }
+
   public getEventHost(userID: string): Promise<User> {
     const url: string = `${this.apiUrl}/uporabnik/${userID}`;
     return this.http
@@ -67,7 +94,7 @@ export class InstructionsService {
     //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error.message || error);
     //return Promise.reject(error.error["sporočilo"] || error.error.errmsg || error.message || error);
     console.error("Error in the service");
-    return Promise.reject(error.error);
+    return;
   }
 
 }

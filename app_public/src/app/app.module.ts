@@ -16,6 +16,7 @@ import { MessagingComponent } from './common/components/messaging/messaging.comp
 import { InstructorsComponent } from './common/components/instructions/instructors/instructors.component';
 import { EventsComponent } from './common/components/instructions/events/events.component';
 import { EventInfoComponent } from './common/components/instructions/event-info/event-info.component';
+import { EventNewComponent } from './common/components/instructions/event-new/event-new.component';
 import { OffersComponent } from './common/components/jobs/offers/offers.component';
 import { OfferInfoComponent } from './common/components/jobs/offer-info/offer-info.component';
 import { ProfileComponent } from './common/components/profile/profile.component';
@@ -33,6 +34,7 @@ import { ProfileComponent } from './common/components/profile/profile.component'
     InstructorsComponent,
     EventsComponent,
     EventInfoComponent,
+    EventNewComponent,
     OffersComponent,
     OfferInfoComponent,
     ProfileComponent

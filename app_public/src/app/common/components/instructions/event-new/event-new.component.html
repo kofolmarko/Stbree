@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row" style="padding-top: 30px;">
+        <div class="col">
+            <h1>Objavi oglas za inštrukcijski dogodek</h1>
+            <p><i>Izpolnite spodnje podatke in objavite oglas za inštrukcije, s katerimi lahko širite svoje
+                    znanje.</i></p>
+            <hr>
+            <form id="instructionsEventNewPost" action="" role="form">
+
+                <div class="form-group">
+                    <label for="naziv">Ime dogodka</label>
+                    <input [(ngModel)]="novDogodek.naziv" id="naziv" name="naziv" type="text" class="form-control"
+                        placeholder="Poimenujte vaš dogodek...">
+                </div>
+                <div class="form-group">
+                    <label for="opis">Opis dogodka</label>
+                    <textarea [(ngModel)]="novDogodek.opis" class="form-control" id="opis" name="opis" rows="5"
+                        placeholder="Vnesite dodatne informacije o dogodku..."></textarea>
+                </div>
+
+                <label for="cena">Cena dogodka</label>
+                <div class="form-group input-group">
+                    <input [(ngModel)]="novDogodek.cena" id="cena" name="cena" type="number" class="form-control" value="0" step="any" min="0">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">€</span>
+                    </div>
+                </div>
+                <p><i>Plačljivi dogodki oziroma inštrukcije se plačajo po dogovoru. V primeru zlorabe bomo proti kršitelju ustrezno ukrepali.</i></p>
+
+                <div class="form-group">
+                    <label for="datum">Datum dogodka</label>
+                    <input [(ngModel)]="novDogodek.datum" type="date" class="form-control" id="datum" name="datum">
+                </div>
+
+                <div class="form-group">
+                    <label for="ura">Ura dogodka</label>
+                    <input [(ngModel)]="novDogodek.ura" type="time" class="form-control" id="ura" name="ura">
+                </div>
+
+                <div class="form-group">
+                    <label for="steviloProstihMest">Maksimalno število udeležencev</label>
+                    <input [(ngModel)]="novDogodek.steviloProstihMest" id="steviloProstihMest" name="steviloProstihMest" type="number" class="form-control"
+                        placeholder="Vnesite celo število" step="1" min="1" value="1"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                </div>
+
+                <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{ sporocilo }} <a routerLink="/instrukcije-dogodki">Vrni se na seznam dogodkov.</a></div>
+
+                <button class="btn btn-primary" (click)="postNewEvent()">Objavi</button>
+                <hr>
+            </form>
+        </div>
+    </div>
+</div>
