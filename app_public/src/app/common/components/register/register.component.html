@@ -1,1 +1,75 @@
-<p>register works!</p>
+<div id="hero">
+    <!--VideoBG-->
+    <video loop muted autoplay poster="../../../../assets/media/backgrounds/welcome_poster.png" id="bg-video">
+        <source src="../../../../assets/media/backgrounds/welcome_video.mp4" type="video/mp4">
+    </video>
+
+    <!--Overlay-->
+    <div id="overlay"></div>
+
+    <!--Signin Form-->
+    <div class="container form-container" id="signing-form-container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="formSign form" data-aos="zoom-in">
+                    <div class="logo mb-3">
+                        <div class="col-md-12 text-center">
+                            <h1>Registracija uporabnika</h1>
+                        </div>
+                    </div>
+                    <form id="registerNewUser" (submit)="submitRegisterData()" autocomplete="off">
+                        <!--Warning-->
+                        <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{ sporocilo }}</div>
+
+                        <div class="row container-fluid">
+                            <div class="col">
+                                <label for="ime">Ime</label>
+                                <input [(ngModel)]="newUserData.ime" id="ime" name="ime" type="text" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label for="priimek">Priimek</label>
+                                <input [(ngModel)]="newUserData.priimek" id="priimek" name="priimek" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input [(ngModel)]="newUserData.email" type="email" name="email" class="form-control" id="email"
+                                aria-describedby="emailHelp" placeholder="uporabnik@domena.si">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="geslo">Geslo</label>
+                            <input [(ngModel)]="newUserData.geslo" type="password" name="geslo" id="geslo" class="form-control"
+                                placeholder="Geslo mora biti dolgo vsaj 8 znakov">
+                        </div>
+                        <div class="form-group">
+                            <label for="gesloPotrdi">Potrdi geslo</label>
+                            <input [(ngModel)]="gesloPotrdi" type="password" name="gesloPotrdi" id="gesloPotrdi" class="form-control">
+                        </div>
+                        <hr>
+                        <span>
+                            <input [(ngModel)]="newUserData.statusInstruktorja" (change)="becomeAnInstructor(newUserData.statusInstruktorja?true:false)" type="checkbox" id="statusInstruktorja" name="statusInstruktorja" checked="true"
+                                value="true">
+                            <label for="statusInstruktorja"> Želim postati inštruktor (to lahko storite
+                                kasneje)</label>
+                        </span>
+
+                        <hr>
+                        <div class="col-md-12 text-center ">
+                            <button type="submit" class="btn btn-block mybtn btn-primary">Registriraj</button>
+                        </div>
+                        <div class="col-md-12 ">
+                            <hr>
+                        </div>
+
+                        <div class="form-group">
+                            <p class="text-center">Že registriran? <a routerLink="/prijava" id="signin">Prijavi se
+                                    tukaj.</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

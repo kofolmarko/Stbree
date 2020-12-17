@@ -2,6 +2,9 @@
 const mongoose = require('mongoose');
 mongoose.set('returnOriginal', false);
 
+//IMPORT passport
+const passport = require('passport');
+
 //IMPORT user model
 const Uporabnik = mongoose.model('User');
 const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
@@ -371,12 +374,44 @@ const nastaviStatus = (req, res) => {
 };
 */
 
+const registracija = (req, res) => {
+  if (!req.body.ime || !req.body.email || !req.body.geslo) {
+    return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
+  }
+  const uporabnik = new Uporabnik();
+  uporabnik.ime = req.body.ime;
+  uporabnik.email = req.body.email;
+  uporabnik.nastaviGeslo(req.body.geslo);
+  uporabnik.save(napaka => {
+    if (napaka) {
+      res.status(500).json(napaka);
+    } else {
+      res.status(200).json({"žeton": uporabnik.generirajJwt()});
+    }
+  });
+};
+
+const prijava = (req, res) => {
+  if (!req.body.email || !req.body.geslo) {
+    return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
+  }
+  passport.authenticate('local', (napaka, uporabnik, informacije) => {
+    if (napaka)
+      return res.status(500).json(napaka);
+    if (uporabnik) {
+      res.status(200).json({"žeton": uporabnik.generirajJwt()});
+    } else {
+      res.status(401).json(informacije);
+    }
+  })(req, res);
+};
+
 //EXPORT functions
 module.exports = {
   uporabniki,
   najdiUporabnika,
-  registrirajUporabnika,
-  prijaviUporabnika,
+  //registrirajUporabnika,
+  //prijaviUporabnika,
   prijavaNaDogodek,
   odjavaOdDogodka,
   prijavaNaDelo,
@@ -385,5 +420,7 @@ module.exports = {
   posodobiGeslo,
   posodobiOcena,
   izbrisiUporabnika,
+  registracija,
+  prijava
   //nastaviStatus,
 };
