@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../classes/user';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router  
+  ) { }
 
   ngOnInit(): void {/*
     // console.log(window.location.href);
@@ -20,6 +26,21 @@ export class NavbarComponent implements OnInit {
       document.getElementById('fixing-navbar').classList.remove("bg-dark");
       document.getElementById('fixing-navbar').classList.add("bg-transparent");
     //}*/
+  }
+
+  public logout(): void {
+    this.authenticationService.logout();
+    this.router.navigateByUrl('/');
+  }
+
+  public isLoggedIn(): boolean {
+    console.log(this.authenticationService.isLoggedIn());
+    return this.authenticationService.isLoggedIn();
+  }
+
+  public getUser(): string {
+    const uporabnik: User = this.authenticationService.getCurrentUser();
+    return uporabnik ? uporabnik.ime : 'Gost';
   }
 
 }

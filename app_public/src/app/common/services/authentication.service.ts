@@ -21,7 +21,7 @@ export class AuthenticationService {
     return this
       .authenticateLogin(user)
       .then((AuthenticationResult: AuthenticationResult) => {
-        this.setToken(AuthenticationResult["token"])
+        this.setToken(AuthenticationResult["token"]);
       });
   }
 
@@ -68,7 +68,9 @@ export class AuthenticationService {
     const token: string = this.getToken();
     if (token) {
       const usefulContents = JSON.parse(atob(token.split('.')[1]));
-      return usefulContents.expDate > (Date.now() / 1000);
+      console.log(usefulContents);
+      console.log(Date.now() / 1000);
+      return usefulContents.exp > (Date.now() / 1000);
     } else {
       return false;
     }
