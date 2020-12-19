@@ -224,6 +224,7 @@ const odjavaOdDela = (req, res) => {
  const posodobiUporabnika = (req, res) => {
   console.log("Inside controllers on the API!");
   console.log(req.body.email);
+  console.log(req.params.idUporabnika);
   Uporabnik
     .findByIdAndUpdate(req.params.idUporabnika,
       {
@@ -239,10 +240,8 @@ const odjavaOdDela = (req, res) => {
             "Dogodek ne obstaja."
         });
       } else if (napaka) {
-        console.log(napaka.data);
         return res.status(500).json(napaka);
-      }
-      console.log(uporabnik.data);
+      } 
       res.status(200).json(uporabnik);
     });
 };
@@ -272,6 +271,7 @@ const posodobiGeslo = (req, res) => {
  /*PUT update user grade*/
  const posodobiOcena = (req, res) => {
   console.log("Inside controllers on the API!");
+  console.log("ocena poslana je" + req.body.ocena);
   var novaOcena = Number(req.body.ocena);//?
   Uporabnik
     .findById(req.params.idUporabnika)
@@ -286,11 +286,17 @@ const posodobiGeslo = (req, res) => {
         return res.status(500).json(napaka);
       }
       var ocen = uporabnik.ocen;
+      
       ocen[ocen.length] = novaOcena;
       var zbir = 0;
       for(var i = 0 ; i < ocen.length; i++) {
+        console.log("Zbir vo loop " + i + " e " + zbir);
         zbir = zbir + ocen[i];
+        console.log("Ocen [" + i + "] e " + ocen[i]);
+        console.log("Zbir posle loop " + i + " e " + zbir);
       }
+      console.log("Zbir " + zbir);
+      console.log("Ocen.length " + ocen.length);
       var ocena2 = zbir / ocen.length;
       console.log("Ocena 2 je: " + ocena2);
       Uporabnik
@@ -306,10 +312,10 @@ const posodobiGeslo = (req, res) => {
               "Uporabnik ne obstaja."
           });
         } else if (napaka) {
-          console.log(napaka.data);
+          //console.log(napaka.data);
           return res.status(500).json(napaka);
         }
-        console.log(uporabnik.data);
+        //console.log(uporabnik.data);
         res.status(200).json(uporabnik);
       });
     });
@@ -341,7 +347,7 @@ const izbrisiUporabnika = (req, res) => {
     Delo.deleteMany({idPonudnika: idUporabnika})
     .then()
     .catch();
-    res.status(204).json(uporabnik); //neli e 204
+    res.status(200).json(uporabnik); //neli e 204
   });
 };
 

@@ -4,23 +4,24 @@
   {{else}}
   <div class="container">
     <h1 id="profile-naslov">{{profileDetails.ime}} {{profileDetails.priimek}}</h1>
+    
+    {{!-- BUTTONS TO EDIT --}}
     {{#if profileDetails.isAdmin}}
     <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
+    <button id="save-btn" value="save" class="btn btn-success d-none"><i class="fas fa-check"></i></button>
     <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button>
     {{/if}}
     <hr>
 
+    {{!-- DESCRIPTION AND PROFILE PIC --}}
     <div class="row">
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
-
         <form>
           <div class="form-group">
             <label for="opisProfila">Opis:</label>
             <p class="card-text" id="opis">{{profileDetails.opis}}</p>
           </div>
         </form>
-
-
       </div>
       <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
         <img src="/assets/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
@@ -28,7 +29,7 @@
       </div>
     </div>
 
-
+    {{!-- MAIN DATA ABOUT USER --}}
     <div class="row">
       <div class="table-responsive">
         <hr>
@@ -57,49 +58,26 @@
               <td id="status">Ne</td>
               {{/if}}
             </tr>
-              {{!-- <tr id="spremeni-sliko" style="display: none;">
-                <th class="thPodatki" scope="row">Spremeni profilno sliko:</th>
-                <td>
-                  <form>
-                    <div class="form-group">
-                      <input type="file" class="form-control-file" id="profilna-slika">
-                    </div>
-                  </form>
-                </td>
-                </tr> --}}
             </tbody>
         </table>
-              
-
-    {{#if profileDetails.isAdmin}}
-    {{!-- <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button> --}}
-    {{!-- <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button> --}}
-    {{!-- <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()">Spremeni</button> --}}
-    <button id="save-btn" value="save" class="btn btn-success d-none">Shrani</i></button>
-    {{/if}}
-    <!--
-        <hr>
-        <h4 id="profile-podnaslov">Dodatno:</h4>
-        -->
-</div>
+      </div>
     </div>
 
+    {{!-- ADDITIONAL OPTIONS --}}
+
+    {{!-- ADDITIONAL OPTIONS ADMIN --}}
     {{#if profileDetails.isAdmin}}
     <div class="tab pb-5">
       <button class="tablinks" onclick="openCity(event, 'kronologija')">Seznam objav</button>
-      <!--
-      <button class="tablinks" onclick="openCity(event, 'obvestila')">Obvestila<span class="znacka">1</span></button>
-      <button class="tablinks" onclick="openCity(event, 'moja-ocena')">Moja ocena</button>-->
-
       <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
     </div>
 
+    {{!-- LIST OF POSTS --}}
     <div id="kronologija" class="tabcontent">
       <div class="col d-flex justify-content-center">
         <table class="table">
           <thead>
             <tr class="trTabelaKrono">
-
             </tr>
           </thead>
           {{#each profileDetails.naziviObjav}}
@@ -107,7 +85,6 @@
             <tr>
               <th scope="row">{{inc @index}}</th>
               <td>{{this}}</td>
-
             </tr>
           </tbody>
           {{/each}}
@@ -115,16 +92,16 @@
       </div>
     </div>
 
-    <div id="moja-ocena" class="tabcontent">
+    {{!-- <div id="moja-ocena" class="tabcontent">
       <div class="row">
         <div class="col d-flex justify-content-center">
           <p style="margin: 0;">Moja ocena:</p>
           {{{zvezdice profileDetails.ocena}}}
         </div>
       </div>
-    </div>
+    </div> --}}
 
-    <div id="obvestila" class="tabcontent">
+    {{!-- <div id="obvestila" class="tabcontent">
       <div class="col d-flex justify-content-center">
         <table class="table">
 
@@ -140,12 +117,13 @@
           {{/each}}
         </table>
       </div>
-    </div>
+    </div> --}}
 
+    {{!-- CHANGE PASSWORD --}}
 
     <div id="spremeni-geslo" class="tabcontent">
       <div class="col d-flex justify-content-center">
-
+        <form>
         <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
         <div class="form-group">
           <label for="name">Novo geslo:</label>
@@ -154,18 +132,18 @@
           <input type="password" id="passwordResetConfirm">
         </div>
         <button id="resetPassword" class="btn btn-success">Potrdi</button>
-
+        <br><br>
+        </form>
       </div>
     </div>
-
+    {{!-- ADDITIONAL OPTIONS NOT ADMIN --}}
     {{else}}
-
     <div class="tab pb-5">
       <button class="tablinks" onclick="openCity(event, 'moja-dela')">Seznam objav</button>
       <button class="tablinks" onclick="openCity(event, 'oceni-me')">Oceni me!</button>
     </div>
 
-
+    {{!-- LIST OF POSTS --}}
     <div id="moja-dela" class="tabcontent">
       <div class="col d-flex justify-content-center">
         <table class="table">
@@ -185,7 +163,7 @@
       </div>
     </div>
 
-    <div id="moje-instrukcije" class="tabcontent">
+    {{!-- <div id="moje-instrukcije" class="tabcontent">
       <div class="col d-flex justify-content-center">
         <table class="table">
           <thead>
@@ -208,8 +186,9 @@
           {{/each}}
         </table>
       </div>
-    </div>
+    </div> --}}
 
+    {{!-- GRADE ME --}}
     <div id="oceni-me" class="tabcontent">
       <div class="row">
         <div class="col d-flex justify-content-center">
@@ -217,7 +196,6 @@
             <tr>
               <th class="thPodatki" scope="row">Dodaj oceno:</th>
               <td>
-
                 <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
                   <option>5</option>
                   <option>4</option>
@@ -230,15 +208,12 @@
                 <form>
                   <button id="add-button" class="btn btn-success" style="margin-left: 20px;">Potrdi</button>
                 </form>
-
               </td>
-              <br><br><br>
             </tr>
           </table>
         </div>
       </div>
     </div>
-
     {{/if}}
   </div>
   {{/if}}
@@ -252,22 +227,36 @@
       var saveBtn = document.getElementById('save-btn');
       if (saveBtn != null) {
         saveBtn.addEventListener('click', () => {
+
           console.log("Save button has been clicked!")
-          var url = window.location.href.split('/');
-          var id = url[url.length - 1];
-          console.log(id);
+
+          var uporabnik = JSON.stringify(shrani());
+
           var asinhronaZahteva = new XMLHttpRequest();
+
           asinhronaZahteva.open(
-            "PUT",
-            "http://localhost:3000/api/uporabnik/" + id,//current url
+            "PUT", //method
+            window.location.href, //current url
             true
           )
 
-          asinhronaZahteva.addEventListener("load", function () {
-          });
+          asinhronaZahteva.setRequestHeader('Content-type','application/json; charset=utf-8'); 
+          //i dont think i need this, we are only getting the json stuff anyways
 
-          asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-          asinhronaZahteva.send(JSON.stringify(shrani()));
+          asinhronaZahteva.onload = () => {
+            console.log("done with zi request", this.responseText)
+          } //responseText e undefined, izgleda dek e put metoda, ko ce e get imame veke neso
+          /*asinhronaZahteva.addEventListener("load", function () { //onliad callback?
+          });*/
+
+          asinhronaZahteva.onerror = () => {
+            console.log("error occured, awesome :)")
+          }
+
+          console.log(uporabnik);
+
+          //asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          asinhronaZahteva.send(uporabnik); //za get e samo .send()
         });
       }
 
@@ -275,24 +264,29 @@
       var savePass = document.getElementById('resetPassword');
       if (savePass != null) {
         savePass.addEventListener('click', () => {
+
           console.log("Save button has been clicked!")
-          var url = window.location.href.split('/');
-          var id = url[url.length - 1];
-          console.log(id);
+
           var asinhronaZahteva = new XMLHttpRequest();
+         
+          asinhronaZahteva.onload = () => {
+            console.log("done with zi request", this.responseText)
+          } 
+
+          asinhronaZahteva.onerror = () => {
+            console.log("error occured, awesome :)")
+          }
+          
           asinhronaZahteva.open(
             "PUT",
-            "http://localhost:3000/api/uporabnik/geslo/" + id,//current url
+            window.location.href,
             true
           )
 
-          asinhronaZahteva.addEventListener("load", function () {
-
-          });
-
           asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          
           var geslo = novoGeslo();
-          console.log("Geslo" + geslo);
+          
           if (geslo != "") {
             asinhronaZahteva.send(JSON.stringify({ geslo: geslo }));
           }
@@ -302,62 +296,52 @@
       var saveGrade = document.getElementById('add-button');
       if (saveGrade != null) {
         saveGrade.addEventListener('click', () => {
-          console.log("Add grade button has been clicked!");
-          var url = window.location.href.split('/');
-          var id = url[url.length - 1];
-
+         
           var asinhronaZahteva = new XMLHttpRequest();
+
+          asinhronaZahteva.onload = () => {
+            console.log("done with zi request", this.responseText)
+          }
+
+          asinhronaZahteva.onerror = () => {
+            console.log("error occured, awesome :)")
+          }
+
           asinhronaZahteva.open(
             "PUT",
-            "http://localhost:3000/api/uporabnik/ocena/" + id,//current url
+            window.location.href,
             true
           )
 
-          asinhronaZahteva.addEventListener("load", function () {
-
-          });
-
           asinhronaZahteva.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+          
           var ocena = shraniOceno();
           console.log("ocena: " + ocena);
           asinhronaZahteva.send(JSON.stringify({ ocena: ocena }));
-
         });
       }
 
       var deleteBtn = document.getElementById('delete-btn');
       if(deleteBtn != null) {
           deleteBtn.addEventListener('click', () => {
-            console.log('clicked');
-          console.log("Delete button has been clicked!")
-
-          var url = window.location.href.split('/');
-          var id = url[url.length - 1];
 
           var asinhronaZahteva = new XMLHttpRequest();
+          
+          asinhronaZahteva.onload = () => {
+            console.log("done with zi request", this.responseText)
+          }
+
+          asinhronaZahteva.onerror = () => {
+            console.log("errir occured, awesome :)")
+          }
+          
           asinhronaZahteva.open(
             "DELETE",
-            "http://localhost:3000/api/uporabnik/" + id,
+            window.location.href,
+            //"http://localhost:3000/api/uporabnik/" + id,
             true
           )
-
-          asinhronaZahteva.send(null);
-
-           asinhronaZahteva.open (
-            "PUT",
-            '/odjava',
-            true
-        )
-          /*
-          .then((odgovor) => odgovor.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
-          */
-          //asinhronaZahteva.addEventListener("load", function () {
-            //var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
-            //console.log("rez se" + jsonRezultati);
-          //});
-
+ 
           window.location = "/";
           asinhronaZahteva.send(null);
         });
@@ -365,20 +349,12 @@
 
     });
 
-    var d = new Date();
-    var listOfEl = document.getElementsByName("kdaj")
-      .forEach(element => element.innerHTML = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear());
-
     function shraniOceno() {
       var dodana = document.getElementById("ocena").value;
       console.log("Ocena: " + dodana);
 
       return dodana;
     }
-
-    {{!-- function izbrisiUporabnik() {
-
-    } --}}
 
     function novoGeslo() {
       var password1 = document.getElementById("passwordReset");
@@ -425,7 +401,12 @@
 
     function shrani() {
 
-      var email_novi = "";
+      var email_novi = document.getElementById("email_text").value;
+      var phone_novi = document.getElementById("phone_text").value;
+      var opis_novi = document.getElementById("opis_text").value;
+      var status_novi = document.getElementById("statusInstruktorja").checked;
+
+      {{!-- var email_novi = "";
       var email_element = document.getElementById("email").firstChild;
       if (email_element != null) {
         console.log("Email1:" + email_element.value);
@@ -446,14 +427,16 @@
       var status_element = document.getElementById("status").firstChild;
       if (status_element != null) {
         status_novi = status_element.checked;
-      }
+      }--}}
       console.log("Phone:" + phone_novi);
       console.log("Email:" + email_novi);
-      console.log("Opis:" + opis_novi);
+      console.log("Opis:" + opis_novi); 
 
       document.getElementById("email").innerHTML = email_novi;
       document.getElementById("phone").innerHTML = phone_novi;
       document.getElementById("opis").innerHTML = opis_novi;
+      document.getElementById("status").innerHTML = status_novi;
+  
 
       document.getElementById("edit-btn").classList.remove("d-none");
       document.getElementById("edit-btn").classList.add("d-ilblock");
@@ -493,7 +476,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-  <script src="../controllers/profile.js" type="text/javascript"></script>
 
   <script>
     $(window).scroll(function () {
