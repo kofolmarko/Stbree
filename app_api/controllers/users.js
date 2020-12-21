@@ -40,11 +40,33 @@ const uporabniki = (req, res) => {
     });
 };
 
+/*
 //GET user by id
 const najdiUporabnika = (req, res) => {
   //console.log("API IŠČE INŠTRUUKTORJAAAA");
   Uporabnik
     .findById(req.params.idUporabnika)
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Uporabnik ne obstaja."
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      //console.log("API je našel uporabnika s podanim ID-jem: " + JSON.stringify(uporabnik));
+      //var uporabnikOBJ = JSON.parse(JSON.stringify(uporabnik));
+      res.status(200).json(uporabnik);
+    });
+};
+*/
+
+//GET user by email
+const najdiUporabnika = (req, res) => {
+  //console.log("API IŠČE INŠTRUUKTORJAAAA");
+  Uporabnik
+    .findOne(req.params.email)
     .exec((napaka, uporabnik) => {
       if (!uporabnik) {
         return res.status(404).json({
@@ -377,11 +399,12 @@ const nastaviStatus = (req, res) => {
 */
 
 const registracija = (req, res) => {
-  if (!req.body.ime || !req.body.email || !req.body.geslo) {
+  if (!req.body.ime || !req.body.email || !req.body.geslo || !req.body.priimek) {
     return res.status(400).json({ "sporočilo": "Zahtevani so vsi podatki" });
   }
   const uporabnik = new Uporabnik();
   uporabnik.ime = req.body.ime;
+  uporabnik.priimek = req.body.priimek;
   uporabnik.email = req.body.email;
   uporabnik.nastaviGeslo(req.body.geslo);
   uporabnik.save(napaka => {

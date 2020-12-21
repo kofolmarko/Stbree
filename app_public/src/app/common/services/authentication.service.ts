@@ -27,6 +27,7 @@ export class AuthenticationService {
 
   public async register(user: User): Promise<any> {
     console.log("auth service");
+    console.log(user);
     return this
       .authenticateRegister(user)
       .then((AuthenticationResult: AuthenticationResult) => {
@@ -48,6 +49,7 @@ export class AuthenticationService {
   }
 
   private authentication(subUrl: string, user: User): Promise<AuthenticationResult> {
+    console.log(user);
     const url: string = `${this.apiUrl}/${subUrl}`;
     return this.http
       .post(url, user)
@@ -67,9 +69,7 @@ export class AuthenticationService {
   public isLoggedIn(): boolean {
     const token: string = this.getToken();
     if (token) {
-      const usefulContents = JSON.parse(atob(token.split('.')[1]));
-      console.log(usefulContents);
-      console.log(Date.now() / 1000);
+      const usefulContents = JSON.parse(this.b64Utf8(token.split('.')[1]));
       return usefulContents.exp > (Date.now() / 1000);
     } else {
       return false;
@@ -79,10 +79,24 @@ export class AuthenticationService {
   public getCurrentUser(): User {
     if (this.isLoggedIn()) {
       const token: string = this.getToken();
-      const { email, ime } = JSON.parse(atob(token.split('.')[1]));
-      return { email, ime } as User;
+      const { email, ime, priimek } = JSON.parse(this.b64Utf8(token.split('.')[1]));
+      console.log(JSON.parse(this.b64Utf8(token.split('.')[1])));
+      return { email, ime, priimek } as User;
     }
   }
+
+  private b64Utf8(string: string): string {
+    return decodeURIComponent(
+      Array.prototype.map
+        .call(
+          atob(string),
+          (character: string) => {
+            return '%' + ('00' + character.charCodeAt(0).toString(16)).slice(-2);
+          }
+        )
+        .join('')
+    );
+  };
 
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {

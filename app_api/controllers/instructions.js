@@ -46,8 +46,33 @@ const instruktorji = (req, res) => {
     });
 };
 
+//CREATE new event Angular version
+const instructionsEventCreate = (req, res) => {
+    InstrukcijeDogodek.create({
+      naziv: req.body.naziv,
+      opis: req.body.opis,
+      cena: req.body.cena,
+      datum: req.body.datum,
+      ura: req.body.ura,
+      steviloProstihMest: req.body.steviloProstihMest,
+      emailInstruktorja: req.body.emailInstruktorja
+    }, (napaka, instrukcijeDogodek) => {
+      console.log(napaka);
+      console.log(instrukcijeDogodek);
+      res.status(201).json(instrukcijeDogodek);
+      /*
+      if (napaka) {
+        res.status(400).json(napaka);
+      } else {
+        res.status(201).json(instrukcijeDogodek);
+      }
+      */
+    });
+};
+
 //CREATE new instructions event
 const instrukcijeDogodekKreiraj = (req, res) => {
+  console.log("is this problem=?");
   vrniAvtorja(req, res, (req, res, idUporabnika) => {
     console.log("pridem do kreacije");
     console.log(req.body);
@@ -231,5 +256,6 @@ module.exports = {
   instrukcijeDogodkiOrder,
   instrukcijeDogodekPreberi,
   instrukcijeDogodekPosodobi,
-  instrukcijeDogodekIzbrisi
+  instrukcijeDogodekIzbrisi,
+  instructionsEventCreate
 };

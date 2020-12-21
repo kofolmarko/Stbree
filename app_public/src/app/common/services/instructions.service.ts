@@ -5,13 +5,17 @@ import { User } from '../classes/user';
 import { InstructionsEvent } from '../classes/event';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { BROWSER_CACHE } from '../classes/cache';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstructionsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(BROWSER_CACHE) private cache: Storage  
+  ) { }
 
   private apiUrl: string = "http://localhost:3000/api";
 
@@ -57,10 +61,15 @@ export class InstructionsService {
 
   public postNewEvent(event: InstructionsEvent): Promise<any> {
     const url: string = `${this.apiUrl}/instrukcije-dogodki`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
     return this.http
-      .post(url, event)
+      .post(url, event, httpProperties)
       .toPromise()
-      .then(response => response as any)
+      .then(response => {console.log("response is here: "); console.log(response); return response as any;})
       .catch(this.handleError);
   }
 
@@ -80,8 +89,8 @@ export class InstructionsService {
       .pipe(catchError(this.handleError));
   }
 
-  public getEventHost(userID: string): Promise<User> {
-    const url: string = `${this.apiUrl}/uporabnik/${userID}`;
+  public getEventHost(userEmail: string): Promise<User> {
+    const url: string = `${this.apiUrl}/uporabnik/${userEmail}`;
     return this.http
       .get(url)
       .toPromise()

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+
 import { User } from '../../classes/user';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -12,7 +14,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router  
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnInit(): void {/*
@@ -34,13 +37,23 @@ export class NavbarComponent implements OnInit {
   }
 
   public isLoggedIn(): boolean {
-    console.log(this.authenticationService.isLoggedIn());
     return this.authenticationService.isLoggedIn();
   }
 
   public getUser(): string {
     const uporabnik: User = this.authenticationService.getCurrentUser();
     return uporabnik ? uporabnik.ime : 'Gost';
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (!this.authenticationService.isLoggedIn()) {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById('fixing-navbar').classList.add('scrolled');
+      } else {
+        document.getElementById('fixing-navbar').classList.remove('scrolled');
+      }
+    }
   }
 
 }

@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
     statusInstruktorja: false,
     opis: "Novo pečeni uporabnik.",
     telefonskaStevilka: null,
-    dogodki: null,
-    datumVpisa: null
+    dogodki: null
+    //datumVpisa: null
   }
 
   public gesloPotrdi = "";
@@ -43,10 +43,14 @@ export class RegisterComponent implements OnInit {
   public submitRegisterData(): void {
     if (
       !this.newUserData.ime ||
+      !this.newUserData.priimek||
       !this.newUserData.email ||
-      !this.newUserData.geslo
+      !this.newUserData.geslo ||
+      !this.gesloPotrdi
     ) {
       this.sporocilo = "Zahtevani so vsi podatki, prosim poskusite znova!";
+    } else if (this.newUserData.geslo !== this.gesloPotrdi) {
+      this.sporocilo = "Vneseni gesli se ne ujemata!";
     } else {
       this.executeRegister();
     }

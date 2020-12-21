@@ -47,7 +47,7 @@ export class EventInfoComponent implements OnInit {
   }
 
   private getEventHost(): void {
-    this.instructionsService.getEventHost(this.dogodek.idInstruktorja)
+    this.instructionsService.getEventHost(this.dogodek.emailInstruktorja)
       .then(host => {
         this.gostitelj = host;
         this.sporocilo = host ? "" : "Ne najdem gostitelja dogodka :("

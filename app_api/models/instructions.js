@@ -7,7 +7,7 @@ const instrukcijeDogodekShema = new mongoose.Schema({
   datum: { type: Date, required: true },
   ura: { type: String, required: true},
   steviloProstihMest: { type: Number, required: true},
-  idInstruktorja: { type: String, required: true}
+  emailInstruktorja: { type: String, required: true}
 });
 
 mongoose.model('InstrukcijeDogodek', instrukcijeDogodekShema, 'InstrukcijeDogodki');

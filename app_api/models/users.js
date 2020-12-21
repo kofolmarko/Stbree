@@ -31,7 +31,7 @@ const instrukcijeDogodekShema = new mongoose.Schema({
 
 const uporabnikZacetnoShema = new mongoose.Schema({
   ime: { type: String, required: true },
-  priimek: { type: String },
+  priimek: { type: String, reuired: true },
   email: { type: String, unique: true, required: true },
   zgoscenaVrednost: {type: String, required: true},
   nakljucnaVrednost: {type: String, required: true},
@@ -60,14 +60,15 @@ uporabnikZacetnoShema.methods.preveriGeslo = function(geslo) {
   return this.zgoscenaVrednost == zgoscenaVrednost;
 };
 
-uporabnikZacetnoShema.methods.generirajJwt = () => {
+uporabnikZacetnoShema.methods.generirajJwt = function() {
   const datumPoteka = new Date();
   datumPoteka.setDate(datumPoteka.getDate() + 7);
+  console.log(this);
 
   return jwt.sign({
-    _id: this._id,
     email: this.email,
     ime: this.ime,
+    priimek: this.priimek,
     exp: parseInt(datumPoteka.getTime() / 1000, 10)
   }, process.env.JWT_GESLO);
 };
