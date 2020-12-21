@@ -6,6 +6,7 @@ import { InstructionsService } from '../../../services/instructions.service';
 
 import { InstructionsEvent } from '../../../classes/event';
 import { User } from '../../../classes/user';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-event-info',
@@ -16,7 +17,8 @@ export class EventInfoComponent implements OnInit {
 
   constructor(
     private instructionsService: InstructionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,8 @@ export class EventInfoComponent implements OnInit {
 
   public editState: boolean = false;
 
+  public isAdmin: boolean = false;
+
   private getEventInfo(): void {
     this.route.paramMap
       .pipe(
@@ -41,6 +45,11 @@ export class EventInfoComponent implements OnInit {
       )
       .subscribe((event: InstructionsEvent) => {
         this.dogodek = event;
+        if(this.authenticationService.isLoggedIn()) {
+          if(this.dogodek.emailInstruktorja === this.authenticationService.getCurrentUser().email) {
+            this.isAdmin = true;
+          }
+        }
         this.sporocilo = event ? "" : "Dogodek ne obstaja :("
         event ? this.getEventHost() : null;
       });

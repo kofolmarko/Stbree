@@ -27,7 +27,7 @@ const uporabniki = (req, res) => {
               "ime": uporabnik.ime,
               "priimek": uporabnik.priimek,
               "email": uporabnik.email,
-              "geslo": uporabnik.geslo,
+              "opis": uporabnik.opis,
               "statusInstruktorja": uporabnik.statusInstruktorja,
               "statusPrijave": uporabnik.statusPrijave,
               "dogodki": uporabnik.dogodki,
@@ -406,6 +406,7 @@ const registracija = (req, res) => {
   uporabnik.ime = req.body.ime;
   uporabnik.priimek = req.body.priimek;
   uporabnik.email = req.body.email;
+  uporabnik.opis = req.body.opis;
   uporabnik.nastaviGeslo(req.body.geslo);
   uporabnik.save(napaka => {
     if (napaka) {

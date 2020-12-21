@@ -26,8 +26,6 @@ export class AuthenticationService {
   }
 
   public async register(user: User): Promise<any> {
-    console.log("auth service");
-    console.log(user);
     return this
       .authenticateRegister(user)
       .then((AuthenticationResult: AuthenticationResult) => {
@@ -44,12 +42,10 @@ export class AuthenticationService {
   }
 
   private authenticateRegister(user: User): Promise<AuthenticationResult> {
-    console.log("authenticare regi");
     return this.authentication('registracija', user);
   }
 
   private authentication(subUrl: string, user: User): Promise<AuthenticationResult> {
-    console.log(user);
     const url: string = `${this.apiUrl}/${subUrl}`;
     return this.http
       .post(url, user)
@@ -80,7 +76,6 @@ export class AuthenticationService {
     if (this.isLoggedIn()) {
       const token: string = this.getToken();
       const { email, ime, priimek } = JSON.parse(this.b64Utf8(token.split('.')[1]));
-      console.log(JSON.parse(this.b64Utf8(token.split('.')[1])));
       return { email, ime, priimek } as User;
     }
   }
@@ -100,9 +95,9 @@ export class AuthenticationService {
 
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {
-    //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error.message || error);
-    //return Promise.reject(error.error["sporočilo"] || error.error.errmsg || error.message || error);
-    console.error("Error in the service");
-    return;
+    //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error);
+    return Promise.reject(error.error["sporočilo"] || error.error.errmsg || error);
+    // console.error("Error in the service");
+    // return;
   }
 }

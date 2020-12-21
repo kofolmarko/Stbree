@@ -69,14 +69,19 @@ export class InstructionsService {
     return this.http
       .post(url, event, httpProperties)
       .toPromise()
-      .then(response => {console.log("response is here: "); console.log(response); return response as any;})
+      .then(response => response as any)
       .catch(this.handleError);
   }
 
   public editEventInfo(event: InstructionsEvent): Promise<InstructionsEvent> {
     const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${event._id}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
     return this.http
-      .put(url, event)
+      .put(url, event, httpProperties)
       .toPromise()
       .then(response => response as InstructionsEvent)
       .catch(this.handleError);
@@ -84,8 +89,13 @@ export class InstructionsService {
 
   public deleteEvent(eventID: string): Observable<void> {
     const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${eventID}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
     return this.http
-      .delete<void>(url)
+      .delete<void>(url, httpProperties)
       .pipe(catchError(this.handleError));
   }
 
@@ -100,10 +110,10 @@ export class InstructionsService {
 
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {
-    //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error.message || error);
-    //return Promise.reject(error.error["sporočilo"] || error.error.errmsg || error.message || error);
-    console.error("Error in the service");
-    return;
+    //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error);
+    return Promise.reject(error.error["sporočilo"] || error.error.errmsg || error);
+    // console.error("Error in the service");
+    // return;
   }
 
 }

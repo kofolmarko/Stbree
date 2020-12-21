@@ -30,10 +30,10 @@ router.post('/instrukcije-dogodki', avtentikacija, ctrlInstrukcije.instructionsE
 router.get('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstrukcije.instrukcijeDogodekPreberi);
 
 //UPDATE instructions event by id (CURRENTLY NOT IN USE)
-router.put('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstrukcije.instrukcijeDogodekPosodobi);
+router.put('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInstrukcije.instrukcijeDogodekPosodobi);
 
 //DELETE instructions event by id
-router.delete('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstrukcije.instrukcijeDogodekIzbrisi);
+router.delete('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInstrukcije.instrukcijeDogodekIzbrisi);
 
 //POST filter
 //router.post('/instrukcije-dogodki/:filter', ctrlInstrukcije.instrukcijeDogodki);

@@ -15,16 +15,16 @@ passport.use(
           (napaka, uporabnik) => {
             if (napaka)
               return pkKoncano(napaka);
-            if (!uporabnik) {
+            if (!uporabnik || !uporabnik.preveriGeslo(geslo)) {
               return pkKoncano(null, false, {
-                "sporočilo": "Napačno uporabniško ime"
+                "sporočilo": "Napačno uporabniško ime ali geslo."
               });
             }
-            if (!uporabnik.preveriGeslo(geslo)) {
-              return pkKoncano(null, false, {
-                "sporočilo": "Napačno geslo"
-              });
-            }
+            // if (!uporabnik.preveriGeslo(geslo)) {
+            //   return pkKoncano(null, false, {
+            //     "sporočilo": "Napačno geslo"
+            //   });
+            // }
             return pkKoncano(null, uporabnik);
           }
         );

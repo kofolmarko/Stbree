@@ -27,7 +27,8 @@
             <div class="card-body">
                 <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis;">{{instruktor.ime}}
                     {{instruktor.priimek}}</h5>
-                <a routerLink="profil/{{instruktor._id}}" class="btn btn-primary">Preveri profil</a>
+                <p class="card-text"> {{instruktor.opis}} </p>
+                <a routerLink="profil/{{instruktor.email}}" class="btn btn-primary">Preveri profil</a>
             </div>
         </div>
     </span>

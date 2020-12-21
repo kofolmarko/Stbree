@@ -37,7 +37,6 @@ export class EventNewComponent implements OnInit {
   };
 
   postNewEvent(): void {
-    console.log(this.authenticationService.getCurrentUser().email);
     this.novDogodek.emailInstruktorja = this.authenticationService.getCurrentUser().email;
 
     if(!this.novDogodek.naziv || 
@@ -52,15 +51,18 @@ export class EventNewComponent implements OnInit {
       .then(event => {
         this.novDogodek = event;
         this.sporocilo = event ? "Dogodek uspešno objavljen :)" : "Napaka pri objavi dogodka :("
-        console.log(event);
         this.router.navigateByUrl('/instrukcije-dogodki/dogodek/' + this.novDogodek._id);
         alert("Dogodek uspešno objavljen!");
       })
       .catch(error => {
         this.sporocilo = "Napaka API-ja pri objavi dogodka."
-        console.error(error);
+        //console.error(error);
       });
     } 
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
   }
 
 }
