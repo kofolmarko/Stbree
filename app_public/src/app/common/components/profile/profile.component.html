@@ -1,1 +1,169 @@
-<p>profile works!</p>
+<!-- <body> -->
+    <!-- {{#if sporocilo}}
+    <div class="alert alert-warning">{{sporocilo}}</div>
+    {{else}} -->
+    <div class="container">
+      
+      <h1 id="profile-naslov">{{uporabnik.ime}} {{uporabnik.priimek}}</h1>
+    
+    <!-- {{!-- BUTTONS TO EDIT --}} -->
+    <!-- {{#if profileDetails.isAdmin}} -->
+    <button class="btn btn-danger d-inline" id="delete-btn"><i class="fas fa-trash-alt"></i></button>
+    <button id="save-btn" value="save" class="btn btn-success d-none"><i class="fas fa-check"></i></button>
+    <button class="btn btn-warning d-ilblock" id="edit-btn" onclick="uredi()"><i class="fas fa-edit"></i></button>
+    <!-- {{/if}} -->
+    <hr>
+
+    <!-- {{!-- DESCRIPTION AND PROFILE PIC --}} -->
+    <div class="row">
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
+        <form>
+          <div class="form-group">
+            <label for="opisProfila">Opis:</label>
+            <p class="card-text" id="opis">{{uporabnik.opis}}</p>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
+        <img src="/assets/media/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
+          style="width: 200px; height:200px">
+      </div>
+    </div>
+
+    <!-- {{!-- MAIN DATA ABOUT USER --}} -->
+    <div class="row">
+      <div class="table-responsive">
+        <hr>
+        <table class="table table-borderless" id="tabela-podatkov">
+          <tbody>
+            <h4 id="profile-podnaslov">Podatki:</h4>
+            <tr>
+              <th class="thPodatki" scope="row">Email naslov:</th>
+              <td id="email">{{uporabnik.email}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Telefonska številka:</th>
+              <td id="phone">{{uporabnik.telefonskaStevilka}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Ocena uporabnika:</th>
+              <td>
+                {{uporabnik.ocena}}
+              </td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Status inštruktorja:</th>
+              <!-- {{#if profileDetails.statusInstruktorja}}
+              <td id="status">Da</td>
+              {{else}}
+              <td id="status">Ne</td>
+              {{/if}} -->
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- {{!-- ADDITIONAL OPTIONS --}} -->
+
+    <!-- {{!-- ADDITIONAL OPTIONS ADMIN --}} -->
+    <!-- {{#if profileDetails.isAdmin}} -->
+    <div class="tab pb-5">
+      <button class="tablinks" onclick="openCity(event, 'kronologija')">Seznam objav</button>
+      <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
+    </div>
+
+    <!-- {{!-- LIST OF POSTS --}} -->
+    <div id="kronologija" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+            </tr>
+          </thead>
+          
+          <tbody *ngFor="let nazivi as uporabnik.dogodki">
+            <tr>
+              <th scope="row"></th>
+              <td>{{nazivi.naziv}}</td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+
+    <!-- {{!-- CHANGE PASSWORD --}} -->
+
+    <div id="spremeni-geslo" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <form>
+        <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
+        <div class="form-group">
+          <label for="name">Novo geslo:</label>
+          <input type="password" id="passwordReset"><br>
+          <label for="surname">Potrdi novo geslo: </label>
+          <input type="password" id="passwordResetConfirm">
+        </div>
+        <button id="resetPassword" class="btn btn-success">Potrdi</button>
+        <br><br>
+        </form>
+      </div>
+    </div>
+
+    <!-- {{!-- ADDITIONAL OPTIONS NOT ADMIN --}} -->
+    <!-- {{else}} -->
+    <div class="tab pb-5">
+      <button class="tablinks" onclick="openCity(event, 'moja-dela')">Seznam objav</button>
+      <button class="tablinks" onclick="openCity(event, 'oceni-me')">Oceni me!</button>
+    </div>
+
+    <!-- {{!-- LIST OF POSTS --}} -->
+    <div id="moja-dela" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+          <thead>
+            <tr class="trTabelaKrono">
+            </tr>
+          </thead>
+          
+          <tbody *ngFor="let nazivi of uporabnik.dogodki">
+            <tr>
+              <th scope="row">1</th>
+              <td>{{naziv.naziv}}</td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+
+    <!-- {{!-- GRADE ME --}} -->
+    <div id="oceni-me" class="tabcontent">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <table>
+            <tr>
+              <th class="thPodatki" scope="row">Dodaj oceno:</th>
+              <td>
+                <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </td>
+              <td>
+                <form>
+                  <button id="add-button" class="btn btn-success" style="margin-left: 20px;">Potrdi</button>
+                </form>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- {{/if}} -->
+  </div>
+  <!-- {{/if}} -->
