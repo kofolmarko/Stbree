@@ -407,6 +407,7 @@ const registracija = (req, res) => {
   uporabnik.priimek = req.body.priimek;
   uporabnik.email = req.body.email;
   uporabnik.opis = req.body.opis;
+  uporabnik.statusInstruktorja = req.body.statusInstruktorja;
   uporabnik.nastaviGeslo(req.body.geslo);
   uporabnik.save(napaka => {
     if (napaka) {

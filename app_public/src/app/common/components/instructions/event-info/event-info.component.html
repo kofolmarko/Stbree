@@ -35,7 +35,7 @@
 
     <hr>
 
-    <div *ngIf="!isAdmin&&dogodek.steviloProstihMest>0">
+    <div *ngIf="!isAdmin&&dogodek.steviloProstihMest>0&&isLoggedIn">
       <h6>Prijavi se na dogodek</h6>
       <div *ngIf="!signedStatus else prijavljen"><a (click)="signUp()" class="btn btn-success">Prijava</a></div>
       <ng-template #prijavljen><button type="button" class="btn btn-success" disabled>Na dogodek ste

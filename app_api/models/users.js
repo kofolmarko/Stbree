@@ -69,6 +69,7 @@ uporabnikZacetnoShema.methods.generirajJwt = function() {
     email: this.email,
     ime: this.ime,
     priimek: this.priimek,
+    statusInstruktorja: this.statusInstruktorja,
     exp: parseInt(datumPoteka.getTime() / 1000, 10)
   }, process.env.JWT_GESLO);
 };

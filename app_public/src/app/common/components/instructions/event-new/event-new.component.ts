@@ -6,6 +6,7 @@ import { InstructionsEvent } from '../../../classes/event';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { Router } from '@angular/router';
 import { ThemeService } from 'ng2-charts';
+import { User } from 'src/app/common/classes/user';
 
 @Component({
   selector: 'app-event-new',
@@ -63,6 +64,18 @@ export class EventNewComponent implements OnInit {
 
   public isLoggedIn(): boolean {
     return this.authenticationService.isLoggedIn();
+  }
+
+  public isInstructor(): boolean {
+    if(this.getCurrentUser().statusInstruktorja) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public getCurrentUser(): User {
+    return(this.authenticationService.getCurrentUser());
   }
 
 }

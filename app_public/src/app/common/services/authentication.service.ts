@@ -75,8 +75,8 @@ export class AuthenticationService {
   public getCurrentUser(): User {
     if (this.isLoggedIn()) {
       const token: string = this.getToken();
-      const { email, ime, priimek } = JSON.parse(this.b64Utf8(token.split('.')[1]));
-      return { email, ime, priimek } as User;
+      const { email, ime, priimek, statusInstruktorja } = JSON.parse(this.b64Utf8(token.split('.')[1]));
+      return { email, ime, priimek, statusInstruktorja } as User;
     }
   }
 
