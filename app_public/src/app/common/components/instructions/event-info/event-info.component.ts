@@ -21,8 +21,9 @@ export class EventInfoComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) { }
 
-  ngOnInit(): void {
-    this.getEventInfo();
+  async ngOnInit(): Promise<void> {
+    await this.getEventInfo();
+    this.isSignedUp();
   }
 
   public sporocilo: string = "";
@@ -35,7 +36,9 @@ export class EventInfoComponent implements OnInit {
 
   public isAdmin: boolean = false;
 
-  private getEventInfo(): void {
+  public signedStatus: boolean = false;
+
+  private async getEventInfo(): Promise<void> {
     this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
@@ -43,7 +46,7 @@ export class EventInfoComponent implements OnInit {
           return this.instructionsService.getEventInfo(eventID);
         })
       )
-      .subscribe((event: InstructionsEvent) => {
+      .subscribe(async (event: InstructionsEvent) => {
         this.dogodek = event;
         if(this.authenticationService.isLoggedIn()) {
           if(this.dogodek.emailInstruktorja === this.authenticationService.getCurrentUser().email) {
@@ -52,6 +55,7 @@ export class EventInfoComponent implements OnInit {
         }
         this.sporocilo = event ? "" : "Dogodek ne obstaja :("
         event ? this.getEventHost() : null;
+        
       });
   }
 
@@ -81,7 +85,7 @@ export class EventInfoComponent implements OnInit {
       })
       .catch(error => {
         this.sporocilo = "Napaka API-ja pri posodabljanju dogodka."
-        console.error(error);
+        //console.error(error);
       });
   }
 
@@ -109,8 +113,37 @@ export class EventInfoComponent implements OnInit {
         this.dogodek = null;
         this.sporocilo = "Dogodek uspešno izbrisan."
       },
-      (error) => console.error(error)
+      (error) => this.sporocilo = "Napaka API-ja pri brisanju dogodka."
+      //console.error(error)
     );
+  }
+
+  signUp() {
+    if(this.dogodek.steviloProstihMest > 0) {
+      let eventID = this.route.snapshot.paramMap.get('idDogodka');
+      this.instructionsService.signUp(eventID)
+      .then(response => {
+        alert("Uspešno ste se prijavili na dogodek!");
+        this.signedStatus = true;
+      })
+      .catch(error => this.sporocilo = error);
+    } else {
+      window.scroll(0, 0);
+      this.sporocilo = "Prišlo je do napake, dogodek je že zapolnjen. Prosimo osvežite stran."
+    }
+  }
+
+  private async isSignedUp(): Promise<void> {
+    let currentUserEmail = this.authenticationService.getCurrentUser().email
+    await this.authenticationService.getUser(currentUserEmail)
+    .then(user => {
+      user.dogodki.forEach(dogodek => {
+        if(this.dogodek._id == dogodek._id) {
+          this.signedStatus = true;
+        }
+      });
+    })
+    .catch(error => console.log(error));
   }
 
 }

@@ -66,7 +66,7 @@ const najdiUporabnika = (req, res) => {
 const najdiUporabnika = (req, res) => {
   //console.log("API IŠČE INŠTRUUKTORJAAAA");
   Uporabnik
-    .findOne(req.params.email)
+    .findOne({email: req.params.emailUporabnika})
     .exec((napaka, uporabnik) => {
       if (!uporabnik) {
         return res.status(404).json({

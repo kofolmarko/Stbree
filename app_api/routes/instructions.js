@@ -38,6 +38,8 @@ router.delete('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInst
 //POST filter
 //router.post('/instrukcije-dogodki/:filter', ctrlInstrukcije.instrukcijeDogodki);
 
+//POST sign up for an event
+router.post('/instrukcije-dogodki/dogodek/:idDogodka/prijava', avtentikacija, ctrlInstrukcije.prijavaNaDogodek);
 
 //ROUTER export
 module.exports = router;

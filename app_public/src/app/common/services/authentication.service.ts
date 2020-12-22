@@ -93,6 +93,15 @@ export class AuthenticationService {
     );
   };
 
+  public getUser(email: string): Promise<User> {
+    const url: string = `${this.apiUrl}/uporabnik/${email}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as User)
+      .catch(this.handleError);
+  }
+
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {
     //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error);

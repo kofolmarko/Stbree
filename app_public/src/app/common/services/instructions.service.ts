@@ -6,6 +6,7 @@ import { InstructionsEvent } from '../classes/event';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BROWSER_CACHE } from '../classes/cache';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class InstructionsService {
 
   constructor(
     private http: HttpClient,
+    private authenticationService: AuthenticationService,
     @Inject(BROWSER_CACHE) private cache: Storage  
   ) { }
 
@@ -97,6 +99,21 @@ export class InstructionsService {
     return this.http
       .delete<void>(url, httpProperties)
       .pipe(catchError(this.handleError));
+  }
+
+  public signUp(eventID: string): Promise<any> {
+    const currentUserEmail = this.authenticationService.getCurrentUser().email;
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${eventID}/prijava`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
+    return this.http
+    .post(url, {currentUserEmail}, httpProperties)
+    .toPromise()
+    .then(response => response as any)
+    .catch(this.handleError);
   }
 
   public getEventHost(userEmail: string): Promise<User> {

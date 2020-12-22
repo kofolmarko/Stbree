@@ -1,5 +1,6 @@
 //IMPORT mongoose
 const mongoose = require('mongoose');
+mongoose.set('returnOriginal', false);
 
 //IMPORT object model
 const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
@@ -8,16 +9,16 @@ const User = mongoose.model('User');
 const vrniAvtorja = (req, res, pkOdgovor) => {
   if (req.payload && req.payload.email) {
     User
-      .findOne({email: req.payload.email})
+      .findOne({ email: req.payload.email })
       .exec((napaka, uporabnik) => {
         if (!uporabnik)
-          return res.status(404).json({"sporočilo": "Ne najdem uporabnika"});
+          return res.status(404).json({ "sporočilo": "Ne najdem uporabnika" });
         else if (napaka)
           return res.status(500).json(napaka);
         pkOdgovor(req, res, uporabnik._id);
       });
   } else {
-    return res.status(400).json({"sporočilo": "Ni podatka o uporabniku"});
+    return res.status(400).json({ "sporočilo": "Ni podatka o uporabniku" });
   }
 };
 
@@ -48,26 +49,26 @@ const instruktorji = (req, res) => {
 
 //CREATE new event Angular version
 const instructionsEventCreate = (req, res) => {
-    InstrukcijeDogodek.create({
-      naziv: req.body.naziv,
-      opis: req.body.opis,
-      cena: req.body.cena,
-      datum: req.body.datum,
-      ura: req.body.ura,
-      steviloProstihMest: req.body.steviloProstihMest,
-      emailInstruktorja: req.body.emailInstruktorja
-    }, (napaka, instrukcijeDogodek) => {
-      console.log(napaka);
-      console.log(instrukcijeDogodek);
+  InstrukcijeDogodek.create({
+    naziv: req.body.naziv,
+    opis: req.body.opis,
+    cena: req.body.cena,
+    datum: req.body.datum,
+    ura: req.body.ura,
+    steviloProstihMest: req.body.steviloProstihMest,
+    emailInstruktorja: req.body.emailInstruktorja
+  }, (napaka, instrukcijeDogodek) => {
+    console.log(napaka);
+    console.log(instrukcijeDogodek);
+    res.status(201).json(instrukcijeDogodek);
+    /*
+    if (napaka) {
+      res.status(400).json(napaka);
+    } else {
       res.status(201).json(instrukcijeDogodek);
-      /*
-      if (napaka) {
-        res.status(400).json(napaka);
-      } else {
-        res.status(201).json(instrukcijeDogodek);
-      }
-      */
-    });
+    }
+    */
+  });
 };
 
 //CREATE new instructions event
@@ -238,13 +239,50 @@ const instrukcijeDogodekIzbrisi = (req, res) => {
     });
     */
     .exec((napaka, dogodek) => {
-      console.log("tukaj dogodek:" + dogodek, " tukaj napaka: " + napaka);
       if (!dogodek) {
         return res.status(404).json({ "sporočilo": "Ne najdem Dogodka." });
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
       res.status(200).json(dogodek);
+    });
+};
+
+//POST sign up for an event
+const prijavaNaDogodek = (req, res) => {
+  const { idDogodka } = req.params;
+  InstrukcijeDogodek
+    .findByIdAndUpdate(idDogodka)
+    .exec((napaka, dogodek) => {
+      if (dogodek) {
+        User
+          .findOneAndUpdate({ email: req.body.currentUserEmail },
+            {
+              $addToSet: { dogodki: dogodek }
+            })
+          .exec((napaka, uporabnik) => {
+          });
+      } else {
+        return res.status(404).json({ "sporočilo": "Ne najdem Dogodka." });
+      }
+    });
+  InstrukcijeDogodek
+    .findByIdAndUpdate(idDogodka,
+      {
+        $inc: { steviloProstihMest: -1 }
+      })
+    .exec((napaka, dogodek) => {
+      if (dogodek) {
+        if (dogodek.steviloProstihMest >= 0) {
+          return res.status(200).json({ "sporočilo": "Uspešno ste prijavljeni na dogodek :)" });
+        } else {
+          return res.status(400).json({ "sporočilo": "Dogodek je že v celoti zaseden :(" });
+        }
+      } else {
+        console.log("ena napakica");
+        return res.status(400).json(napaka);
+      }
+
     });
 };
 
@@ -257,5 +295,6 @@ module.exports = {
   instrukcijeDogodekPreberi,
   instrukcijeDogodekPosodobi,
   instrukcijeDogodekIzbrisi,
-  instructionsEventCreate
+  instructionsEventCreate,
+  prijavaNaDogodek
 };

@@ -1,10 +1,12 @@
 <div class="return container-fluid" style="margin-top: 1rem;">
   <a routerLink="/instrukcije-dogodki" class="btn btn-info d-inline">Nazaj na seznam dogodkov</a>
 
-  <button *ngIf="dogodek&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editEventInfo()"><i class="fas fa-edit"></i></button>
-  <button *ngIf="dogodek&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none" (click)="saveEventInfo()"><i
-      class="fas fa-check"></i></button>
-  <button *ngIf="dogodek&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteEvent()"><i class="fas fa-trash-alt"></i></button>
+  <button *ngIf="dogodek&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editEventInfo()"><i
+      class="fas fa-edit"></i></button>
+  <button *ngIf="dogodek&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none"
+    (click)="saveEventInfo()"><i class="fas fa-check"></i></button>
+  <button *ngIf="dogodek&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteEvent()"><i
+      class="fas fa-trash-alt"></i></button>
 </div>
 
 <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
@@ -31,16 +33,20 @@
       <scope id="eur"> €</scope>
     </p>
 
-    <!-- {{else if prijavljen}} -->
-
-    <!-- <h6>Prijavi se na dogodek</h6>
-      <button type="button" class="btn btn-success" disabled>Na dogodek ste prijavljeni</button> -->
-
     <hr>
-    <h6>Prijavi se na dogodek</h6>
-    <div class="alert alert-warning container" style="margin-top: 2rem"
-      *ngIf="dogodek.steviloProstihMest === 0; else prijava">Žal ni več razpoložljivih mest :(</div>
-    <ng-template #prijava><a (click)="prijavi()" class="btn btn-success">Prijava</a></ng-template>
+
+    <div *ngIf="!isAdmin&&dogodek.steviloProstihMest>0">
+      <h6>Prijavi se na dogodek</h6>
+      <div *ngIf="!signedStatus else prijavljen"><a (click)="signUp()" class="btn btn-success">Prijava</a></div>
+      <ng-template #prijavljen><button type="button" class="btn btn-success" disabled>Na dogodek ste
+          prijavljeni</button></ng-template>
+    </div>
+
+    <div *ngIf="dogodek.steviloProstihMest <= 0">
+      <div *ngIf="signedStatus"><button type="button" class="btn btn-success" disabled>Na dogodek ste
+        prijavljeni</button></div>
+      <div class="alert alert-warning container" style="margin-top: 2rem">Žal ni več razpoložljivih mest :(</div>
+    </div>
 
   </div>
 </div>
