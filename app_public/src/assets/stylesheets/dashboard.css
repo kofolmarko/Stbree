@@ -25,11 +25,11 @@
     margin-bottom: 0.5rem;
     padding: 2rem; 
     border-radius: 0.5rem; 
-    background-image: url('../assets/thumbnails/white.png');
+    background-image: url('../media/thumbnails/white.png');
 }
 
 #covid {
-    background-image: url('../assets/thumbnails/red.png');
+    background-image: url('../media/thumbnails/red.png');
     border-radius: 0.5rem;
     
     text-align: center;

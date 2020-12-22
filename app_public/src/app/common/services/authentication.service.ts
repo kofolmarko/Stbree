@@ -98,7 +98,10 @@ export class AuthenticationService {
     return this.http
       .get(url)
       .toPromise()
-      .then(response => response as User)
+      .then(response => {
+        let { email, ime, priimek, statusInstruktorja, dogodki }: any = response;
+        return { email, ime, priimek, statusInstruktorja, dogodki } as User;
+      })
       .catch(this.handleError);
   }
 
