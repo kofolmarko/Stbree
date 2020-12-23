@@ -6,6 +6,7 @@ import { InstructionsService } from '../../../services/instructions.service';
 
 import { InstructionsEvent } from '../../../classes/event';
 import { User } from '../../../classes/user';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-event-info',
@@ -16,11 +17,13 @@ export class EventInfoComponent implements OnInit {
 
   constructor(
     private instructionsService: InstructionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService
   ) { }
 
-  ngOnInit(): void {
-    this.getEventInfo();
+  async ngOnInit(): Promise<void> {
+    await this.getEventInfo();
+    this.isSignedUp();
   }
 
   public sporocilo: string = "";
@@ -31,7 +34,13 @@ export class EventInfoComponent implements OnInit {
 
   public editState: boolean = false;
 
-  private getEventInfo(): void {
+  public isLoggedIn: boolean = this.authenticationService.isLoggedIn();
+
+  public isAdmin: boolean = false;
+
+  public signedStatus: boolean = false;
+
+  private async getEventInfo(): Promise<void> {
     this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
@@ -39,15 +48,21 @@ export class EventInfoComponent implements OnInit {
           return this.instructionsService.getEventInfo(eventID);
         })
       )
-      .subscribe((event: InstructionsEvent) => {
+      .subscribe(async (event: InstructionsEvent) => {
         this.dogodek = event;
+        if (this.authenticationService.isLoggedIn()) {
+          if (this.dogodek.emailInstruktorja === this.authenticationService.getCurrentUser().email) {
+            this.isAdmin = true;
+          }
+        }
         this.sporocilo = event ? "" : "Dogodek ne obstaja :("
         event ? this.getEventHost() : null;
+
       });
   }
 
   private getEventHost(): void {
-    this.instructionsService.getEventHost(this.dogodek.idInstruktorja)
+    this.instructionsService.getEventHost(this.dogodek.emailInstruktorja)
       .then(host => {
         this.gostitelj = host;
         this.sporocilo = host ? "" : "Ne najdem gostitelja dogodka :("
@@ -72,7 +87,7 @@ export class EventInfoComponent implements OnInit {
       })
       .catch(error => {
         this.sporocilo = "Napaka API-ja pri posodabljanju dogodka."
-        console.error(error);
+        //console.error(error);
       });
   }
 
@@ -95,13 +110,44 @@ export class EventInfoComponent implements OnInit {
   deleteEvent() {
     let eventID = this.route.snapshot.paramMap.get('idDogodka');
     this.instructionsService.deleteEvent(eventID)
-    .subscribe(
-      () => {
-        this.dogodek = null;
-        this.sporocilo = "Dogodek uspešno izbrisan."
-      },
-      (error) => console.error(error)
-    );
+      .subscribe(
+        () => {
+          this.dogodek = null;
+          this.sporocilo = "Dogodek uspešno izbrisan."
+        },
+        (error) => this.sporocilo = "Napaka API-ja pri brisanju dogodka."
+        //console.error(error)
+      );
+  }
+
+  signUp() {
+    if (this.dogodek.steviloProstihMest > 0) {
+      let eventID = this.route.snapshot.paramMap.get('idDogodka');
+      this.instructionsService.signUp(eventID)
+        .then(response => {
+          alert("Uspešno ste se prijavili na dogodek!");
+          this.signedStatus = true;
+        })
+        .catch(error => this.sporocilo = error);
+    } else {
+      window.scroll(0, 0);
+      this.sporocilo = "Prišlo je do napake, dogodek je že zapolnjen. Prosimo osvežite stran."
+    }
+  }
+
+  private async isSignedUp(): Promise<void> {
+    if (this.isLoggedIn) {
+      let currentUserEmail = this.authenticationService.getCurrentUser().email
+      await this.authenticationService.getUser(currentUserEmail)
+        .then(user => {
+          user.dogodki.forEach(dogodek => {
+            if (this.dogodek._id == dogodek._id) {
+              this.signedStatus = true;
+            }
+          });
+        })
+        .catch(error => console.log(error));
+    }
   }
 
 }

@@ -23,7 +23,8 @@ router.get('/instrukcije-dogodki', ctrlInstrukcije.instrukcijeDogodki);
 router.get('/instrukcije-dogodki/:parameter', ctrlInstrukcije.instrukcijeDogodkiOrder);
 
 //POST new instructions event
-router.post('/instrukcije-dogodki', avtentikacija, ctrlInstrukcije.instrukcijeDogodekKreiraj);
+//router.post('/instrukcije-dogodki', ctrlInstrukcije.instrukcijeDogodekKreiraj);
+router.post('/instrukcije-dogodki', avtentikacija, ctrlInstrukcije.instructionsEventCreate);
 
 //GET instructions event by id
 router.get('/instrukcije-dogodki/dogodek/:idDogodka', ctrlInstrukcije.instrukcijeDogodekPreberi);
@@ -37,6 +38,8 @@ router.delete('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInst
 //POST filter
 //router.post('/instrukcije-dogodki/:filter', ctrlInstrukcije.instrukcijeDogodki);
 
+//POST sign up for an event
+router.post('/instrukcije-dogodki/dogodek/:idDogodka/prijava', avtentikacija, ctrlInstrukcije.prijavaNaDogodek);
 
 //ROUTER export
 module.exports = router;

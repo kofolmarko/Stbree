@@ -20,6 +20,7 @@ import { EventNewComponent } from './common/components/instructions/event-new/ev
 import { OffersComponent } from './common/components/jobs/offers/offers.component';
 import { OfferInfoComponent } from './common/components/jobs/offer-info/offer-info.component';
 import { ProfileComponent } from './common/components/profile/profile.component';
+import { GetStartedComponent } from './common/components/get-started/get-started.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProfileComponent } from './common/components/profile/profile.component'
     EventNewComponent,
     OffersComponent,
     OfferInfoComponent,
-    ProfileComponent
+    ProfileComponent,
+    GetStartedComponent
   ],
   imports: [
     BrowserModule,

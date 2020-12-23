@@ -8,5 +8,5 @@ export class InstructionsEvent {
     datum: Date;
     ura: string;
     steviloProstihMest: number;
-    idInstruktorja: string;
+    emailInstruktorja: string;
 }

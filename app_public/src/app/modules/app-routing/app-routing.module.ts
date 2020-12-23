@@ -13,6 +13,7 @@ import { OffersComponent } from 'src/app/common/components/jobs/offers/offers.co
 import { OfferInfoComponent } from 'src/app/common/components/jobs/offer-info/offer-info.component';
 import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
 import { EventNewComponent } from 'src/app/common/components/instructions/event-new/event-new.component';
+import { MessagingComponent } from 'src/app/common/components/messaging/messaging.component';
 
 const poti: Routes = [
   {
@@ -58,6 +59,10 @@ const poti: Routes = [
   {
     path: 'profil/:idUporabnika',
     component: ProfileComponent
+  },
+  {
+    path: 'sporocanje',
+    component: MessagingComponent
   }
 ];
 

@@ -10,7 +10,7 @@ hbs.registerHelper('naslovi', (stNaslovov) => {
 hbs.registerHelper('krajsanjeBesedila', (besedilo) => {
   var dolzina = besedilo.length;
   if (dolzina > 20) {
-    var okrajsano = besedilo.substring(0, 20)
+    var okrajsano = besedilo.substring(0, 20);
     okrajsano += ' ...';
     return okrajsano;
   }

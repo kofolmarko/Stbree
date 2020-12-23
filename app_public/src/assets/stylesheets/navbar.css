@@ -72,3 +72,7 @@ button {
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
+
+.dropdown-item:hover {
+  background-color: rgb(133, 133, 133);
+}

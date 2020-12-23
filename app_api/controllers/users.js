@@ -27,7 +27,7 @@ const uporabniki = (req, res) => {
               "ime": uporabnik.ime,
               "priimek": uporabnik.priimek,
               "email": uporabnik.email,
-              "geslo": uporabnik.geslo,
+              "opis": uporabnik.opis,
               "statusInstruktorja": uporabnik.statusInstruktorja,
               "statusPrijave": uporabnik.statusPrijave,
               "dogodki": uporabnik.dogodki,
@@ -40,11 +40,33 @@ const uporabniki = (req, res) => {
     });
 };
 
+/*
 //GET user by id
 const najdiUporabnika = (req, res) => {
   //console.log("API IŠČE INŠTRUUKTORJAAAA");
   Uporabnik
     .findById(req.params.idUporabnika)
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Uporabnik ne obstaja."
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      //console.log("API je našel uporabnika s podanim ID-jem: " + JSON.stringify(uporabnik));
+      //var uporabnikOBJ = JSON.parse(JSON.stringify(uporabnik));
+      res.status(200).json(uporabnik);
+    });
+};
+*/
+
+//GET user by email
+const najdiUporabnika = (req, res) => {
+  //console.log("API IŠČE INŠTRUUKTORJAAAA");
+  Uporabnik
+    .findOne({email: req.params.emailUporabnika})
     .exec((napaka, uporabnik) => {
       if (!uporabnik) {
         return res.status(404).json({
@@ -131,13 +153,13 @@ const prijavaNaDogodek = (req, res) => {
         })
         .exec((uporabnik) => {
           //console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
-          
+
         });
 
     });
   InstrukcijeDogodek
     .findByIdAndUpdate(req.params.idDogodka, {
-      $inc: { steviloProstihMest: -1 } 
+      $inc: { steviloProstihMest: -1 }
     })
     .exec((napaka, dogodek) => {
       res.status(200).json(dogodek);
@@ -149,23 +171,24 @@ const odjavaOdDogodka = (req, res) => {
   console.log("api odjava od dogodka");
   console.log(req.params.loginID);
   InstrukcijeDogodek
-  .findById(req.params.idDogodka)
-  .exec((napaka, dogodek) => {
-    console.log("Api najde dogodek: " + dogodek);
-    Uporabnik
-      .findByIdAndUpdate(req.params.loginID, {
-        $pull: { dogodki: { dogodek: dogodek._id } }}, { safe: true, multi:true }, function(err, obj) {
-         //console.log(dogodki);
+    .findById(req.params.idDogodka)
+    .exec((napaka, dogodek) => {
+      console.log("Api najde dogodek: " + dogodek);
+      Uporabnik
+        .findByIdAndUpdate(req.params.loginID, {
+          $pull: { dogodki: { dogodek: dogodek._id } }
+        }, { safe: true, multi: true }, function (err, obj) {
+          //console.log(dogodki);
           console.log(obj.dogodki);
-         
-         console.log(err);
-        })
-      .exec((uporabnik) => {
-        console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
-        res.status(200).json(uporabnik);
-      });
 
-  });
+          console.log(err);
+        })
+        .exec((uporabnik) => {
+          console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
+          res.status(200).json(uporabnik);
+        });
+
+    });
 };
 
 
@@ -186,7 +209,7 @@ const prijavaNaDelo = (req, res) => {
         })
         .exec((uporabnik) => {
           //console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
-          
+
         });
 
     });
@@ -204,27 +227,28 @@ const odjavaOdDela = (req, res) => {
   console.log("api odjava od dogodka");
   console.log(req.params.loginID);
   InstrukcijeDogodek
-  .findById(req.params.idDela)
-  .exec((napaka, delo) => {
-    console.log("Api najde dogodek: " + delo);
-    Uporabnik
-      .findByIdAndUpdate(req.params.loginID, {
-        $pull: { dela: { delo: delo._id } }}, { safe: true, multi:true }, function(err, obj) {
-         //console.log(dogodki);
+    .findById(req.params.idDela)
+    .exec((napaka, delo) => {
+      console.log("Api najde dogodek: " + delo);
+      Uporabnik
+        .findByIdAndUpdate(req.params.loginID, {
+          $pull: { dela: { delo: delo._id } }
+        }, { safe: true, multi: true }, function (err, obj) {
+          //console.log(dogodki);
           console.log(obj.dela);
-         
-         console.log(err);
-        })
-      .exec((uporabnik) => {
-        console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
-        res.status(200).json(uporabnik);
-      });
 
-  });
+          console.log(err);
+        })
+        .exec((uporabnik) => {
+          console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
+          res.status(200).json(uporabnik);
+        });
+
+    });
 };
 
- /*PUT update user*/
- const posodobiUporabnika = (req, res) => {
+/*PUT update user*/
+const posodobiUporabnika = (req, res) => {
   console.log("Inside controllers on the API!");
   console.log(req.body.email);
   console.log(req.params.idUporabnika);
@@ -271,8 +295,8 @@ const posodobiGeslo = (req, res) => {
     });
 };
 
- /*PUT update user grade*/
- const posodobiOcena = (req, res) => {
+/*PUT update user grade*/
+const posodobiOcena = (req, res) => {
   console.log("Inside controllers on the API!");
   console.log("ocena poslana je" + req.body.ocena);
   var novaOcena = Number(req.body.ocena);//?
@@ -329,11 +353,11 @@ const izbrisiUporabnika = (req, res) => {
   console.log('izbrisi uporabnik v api');
   const idUporabnika = req.params.idUporabnika;
   console.log(idUporabnika);
-  if(!idUporabnika) {
+  if (!idUporabnika) {
     return res.status(404).json({
       "sporocilo": "Ne najdem identifikatorja"
     });
-  } 
+  }
   Uporabnik
   .findByIdAndDelete(idUporabnika)
   .exec((napaka, uporabnik) => {
@@ -381,31 +405,38 @@ const nastaviStatus = (req, res) => {
 */
 
 const registracija = (req, res) => {
-  if (!req.body.ime || !req.body.email || !req.body.geslo) {
-    return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
+  if (!req.body.ime || !req.body.email || !req.body.geslo || !req.body.priimek) {
+    return res.status(400).json({ "sporočilo": "Zahtevani so vsi podatki" });
   }
   const uporabnik = new Uporabnik();
   uporabnik.ime = req.body.ime;
+  uporabnik.priimek = req.body.priimek;
   uporabnik.email = req.body.email;
+  uporabnik.opis = req.body.opis;
+  uporabnik.statusInstruktorja = req.body.statusInstruktorja;
   uporabnik.nastaviGeslo(req.body.geslo);
   uporabnik.save(napaka => {
     if (napaka) {
-      res.status(500).json(napaka);
+      if (napaka.code == 11000) {
+        res.status(400).json({ "sporočilo": "Uporabnik s tem elektronskim naslovom je že registriran" });
+      } else {
+        res.status(500).json(napaka);
+      }
     } else {
-      res.status(200).json({"žeton": uporabnik.generirajJwt()});
+      res.status(200).json({ "token": uporabnik.generirajJwt() });
     }
   });
 };
 
 const prijava = (req, res) => {
   if (!req.body.email || !req.body.geslo) {
-    return res.status(400).json({"sporočilo": "Zahtevani so vsi podatki"});
+    return res.status(400).json({ "sporočilo": "Zahtevani so vsi podatki" });
   }
   passport.authenticate('local', (napaka, uporabnik, informacije) => {
     if (napaka)
       return res.status(500).json(napaka);
     if (uporabnik) {
-      res.status(200).json({"žeton": uporabnik.generirajJwt()});
+      res.status(200).json({ "token": uporabnik.generirajJwt() });
     } else {
       res.status(401).json(informacije);
     }

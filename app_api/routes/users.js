@@ -11,8 +11,9 @@ const ctrlUporabniki = require('../controllers/users');
 //GET get user info for login authentication
 //router.get('/uporabniki/:email', ctrlUporabniki.prijaviUporabnika);
 
-//GET get user by id
-router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
+//GET get user by id -----> now by EMAIL because of jwt (it's safer)
+//router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
+router.get('/uporabnik/:emailUporabnika', ctrlUporabniki.najdiUporabnika);
 
 /*PUT registered users*/
 router.put('/uporabnik/:idUporabnika', ctrlUporabniki.posodobiUporabnika);

@@ -16,7 +16,7 @@ export class CovidService {
       .get(url)
       .toPromise()
       .then(response => {
-        console.log(response);
+        //console.log(response);
         return response as any;
       })
       .catch(this.handleError);
@@ -25,7 +25,9 @@ export class CovidService {
   private handleError(error: any): Promise<any> {
     //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error.message || error);
     //return Promise.reject(error.error["sporočilo"] || error.error.errmsg || error.message || error);
-    console.error("Error in the service");
-    return Promise.reject(error.error);
+    return Promise.reject(error.error["sporočilo"] || error.error.errmsg || error);
+    // console.error("Error in the service");
+    // console.log(error);
+    // return Promise.reject(error.error);
   }
 }
