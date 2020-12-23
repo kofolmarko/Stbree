@@ -13,9 +13,6 @@ router.get('/', ctrlLanding.landing);
 /* GET dashboard */
 router.get('/my', ctrlMain.dashboard);
 
-/* GET view-only profile page */
-//router.get('/profil/ogled', ctrlMain.viewProfile);
-
 /* GET chat page */
 router.get('/sporocanje/:idUserja', ctrlMain.chat);
 
@@ -33,7 +30,7 @@ router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
 router.get('/profil-my', ctrlProfile.redirectMyProfile);
 
 /* GET new info for user profile page */
-router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
+router.put('/profil/:idUporabnika', ctrlProfile.updateProfile); 
 
 /*DELETE user*/
 router.delete('/profil/:idUporabnika', ctrlProfile.deleteProfile); 

@@ -9,6 +9,8 @@ export class User {
     email: string;
     //geslo: string;
     datumVpisa: Date;
+    ocena: number;
+    //datumVpisa: Date;
     dogodki: InstructionsEvent[];
     // dela: Job[];
     // poslanaSporocila: Message[];

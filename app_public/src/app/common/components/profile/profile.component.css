@@ -1,0 +1,183 @@
+#profile-naslov {
+    padding-top: 50px;
+    font-size: 40px;
+  }
+  
+  #profile-podnaslov {
+    padding-left: 12px;
+  }
+  
+  .form-control {
+    resize: none;
+    width: 100%;
+  }
+  
+  #moznostiKontakta {
+    font-size: 20px
+  }
+  
+  
+  /* Style the tab */
+  
+  .tab {
+    justify-content: space-between;
+    display: flex;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .tab {
+      justify-content: space-between;
+      display: flex;
+    }
+    /* Style the buttons inside the tab */
+    .tab button {
+      padding: 10px 10px;
+      transition: 0.3s;
+      font-size: 17px;
+      background-color: white;
+      border: none;
+    }
+    #resetPassword {
+      margin-bottom: 1rem;
+    }
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      border-bottom: solid black;
+    }
+    /* Create an active/current tablink class */
+    .tab button.active {
+      border-bottom: solid black;
+    }
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+    }
+    /* Značka */
+    .znacka {
+      font-size: 12px;
+      margin-left: 5px;
+      position: relative;
+      padding: 1px 6px;
+      border-radius: 50%;
+      background: red;
+      color: white;
+    }
+    /* Footer style*/
+    footer {
+      background-color: #292b2c;
+      position: absolute;
+      margin-top: 100px;
+      width: 100%;
+    }
+    footer p {
+      margin-bottom: 0;
+    }
+    #footer-icons {
+      margin-top: 20px;
+    }
+    #footer-icons li {
+      margin: 10px;
+    }
+    /* MODIFIED BOOTSTRAP */
+    .d-inline {
+      margin: 10px;
+    }
+    .pb-5,
+    .py-5 {
+      padding-bottom: 1rem!important;
+    }
+    .text-uppercase {
+      margin-bottom: 25px;
+    }
+    .checked {
+      color: orange;
+      display: block;
+    }
+  }
+  
+  
+  /* Style the buttons inside the tab */
+  
+  .tab button {
+    padding: 10px 10px;
+    transition: 0.3s;
+    font-size: 17px;
+    background-color: white;
+    border: none;
+  }
+  
+  
+  /* Change background color of buttons on hover */
+  
+  .tab button:hover {
+    border-bottom: solid black;
+  }
+  
+  
+  /* Create an active/current tablink class */
+  
+  .tab button.active {
+    border-bottom: solid black;
+  }
+  
+  
+  /* Style the tab content */
+  
+  .tabcontent {
+    display: none;
+  }
+  
+  
+  /* Značka */
+  
+  .znacka {
+    font-size: 12px;
+    margin-left: 5px;
+    position: relative;
+    padding: 1px 6px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+  }
+  
+  
+  /* Footer style*/
+  
+  footer {
+    background-color: #292b2c;
+    position: absolute;
+    margin-top: 100px;
+    width: 100%;
+  }
+  
+  footer p {
+    margin-bottom: 0;
+  }
+  
+  #footer-icons {
+    margin-top: 20px;
+  }
+  
+  #footer-icons li {
+    margin: 10px;
+  }
+  
+  
+  /* MODIFIED BOOTSTRAP */
+  
+  .d-inline {
+    margin: 10px;
+  }
+  
+  .pb-5,
+  .py-5 {
+    padding-bottom: 1rem!important;
+  }
+  
+  .text-uppercase {
+    margin-bottom: 25px;
+  }
+  
+  .checked {
+    color: orange;
+  }
