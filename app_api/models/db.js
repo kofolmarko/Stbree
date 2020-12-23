@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 
 
+// var dbURI = 'mongodb+srv://stbree-app:mongo-atlas-27@stbree.ws0gv.mongodb.net/stbree?retryWrites=true&w=majority';
 var dbURI = 'mongodb://mongo-db/stbree';
 //var dbURI = 'mongodb+srv://app:geslo@stbree.jftw5.mongodb.net/admin';
 
 
 if (process.env.NODE_ENV === 'production') {
     //dbURI = process.env.MONGODB_CLOUD_URI;
+    dbURI = "mongodb+srv://stbree-app:mongo-atlas-27@stbree.ws0gv.mongodb.net/stbree?retryWrites=true&w=majority";
 }
 
 
