@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination'
+import { OrderModule } from 'ngx-order-pipe'
 
 import { AppRoutingModule} from './modules/app-routing/app-routing.module';
 
@@ -21,6 +23,7 @@ import { OffersComponent } from './common/components/jobs/offers/offers.componen
 import { OfferInfoComponent } from './common/components/jobs/offer-info/offer-info.component';
 import { ProfileComponent } from './common/components/profile/profile.component';
 import { GetStartedComponent } from './common/components/get-started/get-started.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { GetStartedComponent } from './common/components/get-started/get-started
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [MainComponent]

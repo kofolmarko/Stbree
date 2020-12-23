@@ -17,6 +17,16 @@ export class EventsComponent implements OnInit {
     this.getEvents();
   }
 
+  public sporocilo: string = "";
+
+  public dogodki: InstructionsEvent[];
+
+  public page: Number = 1;
+
+  public key: string = 'id';
+
+  public reverse: boolean = false;
+
   isci() {
     var filter, list, a, txtValue, search;
 
@@ -38,20 +48,28 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  public sporocilo: string = "";
-
-  public dogodki: InstructionsEvent[];
-
   private getEvents(): void {
     this.instructionsService.getEvents()
     .then(events => {
-      this.dogodki = events;
+      this.dogodki = events.reverse();
       this.sporocilo = events.length > 0 ? "" : "Ne najdem nobenega dogodka :("
     })
     .catch(error => {
       this.sporocilo = "Napaka API-ja pri iskanju dogodkov."
       console.error(error);
     });
+  }
+
+  sort() {
+    this.key = this.getSelectValue();
+  }
+
+  reverseSet() {
+    this.reverse = !this.reverse;
+  }
+
+  private getSelectValue(): string {
+    return (<HTMLSelectElement>document.getElementById('razvrsti')).value;
   }
 
 }

@@ -30,7 +30,8 @@ export class RegisterComponent implements OnInit {
     statusInstruktorja: false,
     opis: "Novo pečeni uporabnik.",
     telefonskaStevilka: null,
-    dogodki: null
+    dogodki: null,
+    ocena: null
     //datumVpisa: null
   }
 
