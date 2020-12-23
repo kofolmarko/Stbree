@@ -21,7 +21,9 @@
 </div>
 
 <div id="instructors" class="container">
-    <span *ngFor="let instruktor of instruktorji">
+    <span *ngFor="let instruktor of instruktorji | paginate: {
+        id: 'pagination', itemsPerPage: 10, currentPage: page
+      }">
         <div class="card instructor" style="width: 18rem;" *ngIf="instruktor.statusInstruktorja">
             <img class="card-img-top" src="../../../../../assets/media/thumbnails/blue.png" alt="Card image cap">
             <div class="card-body">
@@ -32,6 +34,11 @@
             </div>
         </div>
     </span>
+</div>
+
+<div>
+    <pagination-controls id="pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+    </pagination-controls>
 </div>
 
 <hr>

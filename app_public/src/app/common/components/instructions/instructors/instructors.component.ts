@@ -42,6 +42,8 @@ export class InstructorsComponent implements OnInit {
 
   public instruktorji: User[];
 
+  public page: Number = 1;
+
   private getInstructors(): void {
     this.instructionsService.getInstructors()
     .then(users => {

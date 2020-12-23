@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     statusInstruktorja: false,
     opis: "",
     telefonskaStevilka: null,
-    dogodki: null
+    dogodki: null,
+    ocena: null
     //datumVpisa: null
   }
 

@@ -13,18 +13,24 @@
       <label for="razvrsti">Razvrsti po:</label>
       <select name="razvrsti" id="razvrsti" class="form-control">
         <option value="">Izberi filter...</option>
-        <option value="datum">Datumu (bližnji najprej)</option>
-        <option value="REVdatum">Datumu (kasnejši najprej)</option>
-        <option value="steviloProstihMest">Številu prostih mest (najmanj najprej)</option>
-        <option value="REVsteviloProstihMest">Številu prostih mest (največ najprej)</option>
-        <option value="naziv">Imenu (A-Z)</option>
-        <option value="REVnaziv">Imenu (Z-A)</option>
-        <option value="cena">Ceni (cenejši najprej)</option>
-        <option value="REVcena">Ceni (dražji najprej)</option>
+        <option value="datum">Datumu</option>
+        <!-- <option value="REVdatum">Datumu (kasnejši najprej)</option> -->
+        <option value="steviloProstihMest">Številu prostih mest</option>
+        <!-- <option value="REVsteviloProstihMest">Številu prostih mest (največ najprej)</option> -->
+        <option value="naziv">Imenu</option>
+        <!-- <option value="REVnaziv">Imenu (Z-A)</option> -->
+        <option value="cena">Ceni</option>
+        <!-- <option value="REVcena">Ceni (dražji najprej)</option> -->
       </select>
     </div>
 
-    <button id="filter-btn" value="Filtriraj" class="btn btn-info">Filtriraj</button>
+    <button class="btn btn-secondary" style="cursor: pointer;" (click)="reverseSet()">
+      <i class="fas fa-long-arrow-alt-up" *ngIf="reverse"></i>
+      <i class="fas fa-long-arrow-alt-down" *ngIf="!reverse"></i>
+    </button>
+    
+
+    <button id="filter-btn" value="Filtriraj" class="btn btn-info" (click)="sort()">Filtriraj</button>
 
   </div>
 
@@ -47,7 +53,9 @@
   <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
 
   <div id="instructors" class="container">
-    <div class="card instructor" style="width: 18rem;" *ngFor="let dogodek of dogodki">
+    <div class="card instructor" style="width: 18rem;" *ngFor="let dogodek of dogodki | orderBy: key: reverse | paginate: {
+      id: 'pagination', itemsPerPage: 10, currentPage: page
+    }">
       <img class="card-img-top" src="../../../assets/media/thumbnails/green.png" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{dogodek.naziv}}</h5>
@@ -58,6 +66,9 @@
     </div>
   </div>
 
+  <div>
+    <pagination-controls id="pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+  </div>
 
   <hr>
 
