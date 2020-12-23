@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';// pridobimo trenutno
 import { User } from '../../classes/user';
 import { ProfilService } from '../../services/profil.service'
 import { switchMap } from 'rxjs/operators'; //za pridobitev vrednosti iz URL parametrov ter uporabi pri API klicu
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-profile',// we can make this as an attribute, '[app-profile]' and then in html refference it as such ex. <div app-profile></div>
@@ -14,19 +15,29 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private profilService: ProfilService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService
     ) { }
 
   public sporocilo: string = "";
 
   public uporabnik: User;
 
+  public isLoggedIn: boolean = this.authenticationService.isLoggedIn();
+
+  public isAdmin: boolean = false;
+
+  public signedStatus: boolean = false;
+
+  // let currentUserEmail = this.authenticationService.getCurrentUser().email
+  //     await this.authenticationService.getUser(currentUserEmail)
+
   private getUserInfo(): void {
     this.route.paramMap
     .pipe(
       switchMap((params: ParamMap) => {
-        let idUporabnika = params.get('idUporabnika');
-        return this.profilService.getUser(idUporabnika);
+        let emailUporabnika = params.get('emailUporabnika');
+        return this.authenticationService.getUser(emailUporabnika);
       })
     )
     .subscribe((user: User) => {

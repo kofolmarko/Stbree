@@ -72,10 +72,13 @@ export class AuthenticationService {
     }
   }
 
+  //dodaj isAdmin
+
   public getCurrentUser(): User {
     if (this.isLoggedIn()) {
       const token: string = this.getToken();
       const { email, ime, priimek, statusInstruktorja } = JSON.parse(this.b64Utf8(token.split('.')[1]));
+      console.log(JSON.parse(this.b64Utf8(token.split('.')[1])))
       return { email, ime, priimek, statusInstruktorja } as User;
     }
   }
@@ -99,11 +102,12 @@ export class AuthenticationService {
       .get(url)
       .toPromise()
       .then(response => {
-        let { email, ime, priimek, statusInstruktorja, dogodki }: any = response;
-        return { email, ime, priimek, statusInstruktorja, dogodki } as User;
+        let { email, ime, priimek, opis, statusInstruktorja, telefonskaStevilka, dogodki }: any = response;
+        return { email, ime, priimek, opis, statusInstruktorja, telefonskaStevilka, dogodki } as User;
       })
       .catch(this.handleError);
   }
+
 
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {
