@@ -5,6 +5,8 @@ import { User } from '../classes/user';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BROWSER_CACHE } from '../classes/cache';
+import { environment } from '../../../environments/environment';
+
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({
@@ -18,7 +20,7 @@ export class ProfilService {
     @Inject(BROWSER_CACHE) private cache: Storage
     ) { }
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = environment.apiUrl;
 
 
   // public editUserInfo(user: User): Promise<User> {

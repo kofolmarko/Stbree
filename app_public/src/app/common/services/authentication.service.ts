@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BROWSER_CACHE } from '../classes/cache';
+import { environment } from '../../../environments/environment';
 
 import { User } from '../classes/user';
 import { AuthenticationResult } from '../classes/authentication-result';
@@ -15,7 +16,7 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
 
-  private apiUrl: string = "http://localhost:3000/api";
+  private apiUrl: string = environment.apiUrl;
 
   public async login(user: User): Promise<any> {
     return this
@@ -78,7 +79,7 @@ export class AuthenticationService {
     if (this.isLoggedIn()) {
       const token: string = this.getToken();
       const { email, ime, priimek, statusInstruktorja } = JSON.parse(this.b64Utf8(token.split('.')[1]));
-      console.log(JSON.parse(this.b64Utf8(token.split('.')[1])))
+      //console.log(JSON.parse(this.b64Utf8(token.split('.')[1])))
       return { email, ime, priimek, statusInstruktorja } as User;
     }
   }

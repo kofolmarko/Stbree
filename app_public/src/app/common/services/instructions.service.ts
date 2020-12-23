@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 import { User } from '../classes/user';
 import { InstructionsEvent } from '../classes/event';
@@ -19,7 +20,7 @@ export class InstructionsService {
     @Inject(BROWSER_CACHE) private cache: Storage  
   ) { }
 
-  private apiUrl: string = "http://localhost:3000/api";
+  private apiUrl: string = environment.apiUrl;
 
   public getInstructors(): Promise<User[]> {
     const url: string = `${this.apiUrl}/uporabniki`;
