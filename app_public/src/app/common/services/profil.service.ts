@@ -1,41 +1,58 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; //podobno kot axios
+import { Injectable, Inject } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; //podobno kot axios
 
 import { User } from '../classes/user';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { BROWSER_CACHE } from '../classes/cache';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfilService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService,
+    @Inject(BROWSER_CACHE) private cache: Storage
+    ) { }
 
   private apiUrl = 'http://localhost:3000/api';
 
-  public getUser(userID: string): Promise<User> {
-    const url: string = `${this.apiUrl}/uporabnik/${userID}` //dodaj ID
-    return this.http
-      .get(url)
-      .toPromise()
-      .then(response => response as User)
-      .catch(this.handleError);
-  }
 
-  public editUserInfo(user: User): Promise<User> {
+  // public editUserInfo(user: User): Promise<User> {
+  //   const url: string = `${this.apiUrl}/uporabnik/${user._id}`;
+  //   return this.http
+  //     .put(url, user)
+  //     .toPromise()
+  //     .then(response => response as User)
+  //     .catch(this.handleError);
+  // }
+
+  public editUser(user: User): Promise<User> {
     const url: string = `${this.apiUrl}/uporabnik/${user._id}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
     return this.http
-      .put(url, user)
+      .put(url, user, httpProperties)
       .toPromise()
       .then(response => response as User)
       .catch(this.handleError);
   }
 
-  public deleteUser(userID: string): Observable<void> {
-    const url: string = `${this.apiUrl}/uporabnik/${userID}`;
+  public deleteUser(user: User): Observable<void> {
+    const url: string = `${this.apiUrl}/uporabnik/${user._id}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
     return this.http
-      .delete<void>(url)
+      .delete<void>(url, httpProperties)
       .pipe(catchError(this.handleError));
   }
 

@@ -57,7 +57,7 @@ const poti: Routes = [
     component: OfferInfoComponent
   },
   {
-    path: 'profil/:idUporabnika',
+    path: 'profil/:emailUporabnika',
     component: ProfileComponent
   },
   {

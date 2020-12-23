@@ -9,7 +9,7 @@ export class User {
     telefonskaStevilka: number;
     email: string;
     //geslo: string;
-    ocena: number;
+    //ocena: number;
     //datumVpisa: Date;
     dogodki: InstructionsEvent[];
     // dela: Job[];
