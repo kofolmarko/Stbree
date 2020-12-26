@@ -12,6 +12,6 @@ export class User {
     //ocena: number;
     //datumVpisa: Date;
     dogodki: InstructionsEvent[];
-    // dela: Job[];
+    dela: Job[];
     // poslanaSporocila: Message[];
 }

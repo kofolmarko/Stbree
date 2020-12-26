@@ -17,6 +17,16 @@ export class OffersComponent implements OnInit {
     this.getJobs();
   }
 
+  public sporocilo: string = "";
+
+  public dela: Job[];
+
+  public page: Number = 1;
+  
+  public key: string = 'id';
+
+  public reverse: boolean = false;
+
   isci() {
     var filter, list, a ,txtValue, search;
 
@@ -38,10 +48,6 @@ export class OffersComponent implements OnInit {
     }
   }
 
-  public sporocilo: string = "";
-
-  public dela: Job[];
-
   private getJobs(): void {
     this.jobsService.getJobs()
     .then(jobs => {
@@ -52,6 +58,18 @@ export class OffersComponent implements OnInit {
       this.sporocilo = "Napaka API-ja pri iskanju del."
       console.error(error);
     })
+  }
+
+  sort() {
+    this.key = this.getSelectValue();
+  }
+
+  reverseSet() {
+    this.reverse = !this.reverse;
+  }
+
+  private getSelectValue(): string {
+    return (<HTMLSelectElement>document.getElementById('razvrsti')).value;
   }
 
 }

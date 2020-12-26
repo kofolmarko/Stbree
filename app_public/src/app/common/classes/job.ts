@@ -1,10 +1,10 @@
 export class Job {
     _id: string;
-    naziv: String;
-    opis: String;
-    cena: Number;
+    naziv: string;
+    opis: string;
+    cena: number;
     datum: Date;
-    idPonudnika: String;
+    emailPonudnika: string;
     zasedeno: Boolean;
 }
 

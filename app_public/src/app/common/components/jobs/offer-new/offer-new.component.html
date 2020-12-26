@@ -1,1 +1,47 @@
-<p>offer-new works!</p>
+<div style="margin-top: 2rem;" class="alert alert-info container" role="alert" *ngIf="!isLoggedIn()">
+  Za objavo dogodka se prosim <a routerLink="/prijava">prijavite</a>.
+</div>
+
+<ng-template #obrazec>
+  <div class="container">
+    <div class="row" style="padding-top: 30px;">
+      <div class="col">
+        <h1>Objavi oglas za delo</h1>
+        <p><i>Izpolni spodnje podatke in objavi oglas za delo, na katerega se bodo lahko prijavili ustrezni
+            kandidati. </i></p>
+        <hr>
+        <form id="jobNewPost" method="post" action="" role="form">
+          <div class="form-group">
+            <label for="naziv">Naziv dela</label>
+            <input [(ngModel)]="novoDelo.naziv" id="naziv" name="naziv" type="text" class="form-control"
+              placeholder="Kakšno delo ponujaš?">
+          </div>
+          <div class="form-group">
+            <label for="opis">Opis dela</label>
+            <textarea [(ngModel)]="novoDelo.opis" id="opis" name="opis" class="form-control" rows="5"
+              placeholder="Napiši informacije o delu"></textarea>
+          </div>
+          <label for="cena">Plačilo, ki ga ponujam</label>
+          <div class="form-group input-group">
+            <input [(ngModel)]="novoDelo.cena" id="cena" name="cena" type="number" class="form-control" value="0"
+              step="0.1" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">€</span>
+            </div>
+          </div>
+          <p><i>Plačljiva dela se plačajo po dogovoru. V primeru zlorabe bomo proti kršitelju ustrezno ukrepali.</i></p>
+          <div class="form-group">
+            <label for="datum">Datum</label>
+            <input [(ngModel)]="novDogodek.datum"  id="datum" name="datum" type="date" class="form-control">
+          </div>
+          
+          <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{ sporocilo
+          }} <a routerLink="/ponudba-del">Vrni se na seznam dogodkov.</a></div>
+          
+          <button class="btn btn-primary" (click)="postNewJob()">Objavi</button>
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
