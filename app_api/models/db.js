@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 
 
-var dbURI = 'mongodb://mongo-db/stbree';
+var dbURI = 'mongodb://localhost/stbree'    //nodemon, izklopi stbree-node-js v dockerju, rabis samo stbree-mongodb
 //var dbURI = 'mongodb+srv://app:geslo@stbree.jftw5.mongodb.net/admin';
+
+if(process.env.NODE_ENV === 'docker'){
+    dbURI = 'mongodb://mongo-db/stbree';    //docker-compose up
+}
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -24,7 +28,7 @@ mongoose.connection.on('connected', () => {
 });
 
 mongoose.connection.on('error', napaka => {
-    console.log('Mongoose napaka pri povezavi: ', napaka);
+    console.log('Mongoose napaka pri povezavi: ', dbURI);
 });
 
 mongoose.connection.on('disconnected', () => {

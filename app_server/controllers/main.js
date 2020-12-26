@@ -115,139 +115,55 @@ const prikaziNapako = (req, res, napaka) => {
   });
 };
 
-/* GET chat page */
+
+
+/* GET chat page kontakti */
 const chat = (req, res) => {
+  var profileID = require('./signing').loginID.val;
   axios
-  .get('http://localhost:3000/api/chat/' +  req.params.idUserja,{
-    params: {
-      idPrejemnika: req.query.idPrejemnika,
-    }
-  })
+  .get('http://localhost:3000/api/chat/' +  profileID)
   .then((odgovor) => {
-    //let nimasPogovora = (odgovor.data.komentar.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
-    //console.log("nimaspogovora je:" + nimasPogovora);
-      console.log("znotraj then in podatki so" + odgovor.data);
-      prikaziChat(req, res, odgovor.data);
+    prikaziChatPagePrvic(req, res, odgovor.data);
     })
     .catch((napaka) => {
     prikaziNapako(req, res, napaka);
   });
 };
 
-const prikaziChat = (req, res, pridobljeniPodatki) => {
-  
-  var matchingSporocila = new Array();
-  
-  var stevec = 0;
-  for(var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++){
-    if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser._id){
-      matchingSporocila[stevec] = pridobljeniPodatki.prviUser.poslanaSporocila[i];
-      stevec++;
-    }
-  }
-  var nimasPogovora = (matchingSporocila.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
-
-  for(var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++){
-    if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser._id){
-      matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
-      stevec++;
-    }
-  }
-  
-  sortedSporocila = matchingSporocila.sort((a, b) => b.cas - a.cas);
-  
-  res.render('chat', { 
-    title: "",
-    
-    sortedSporocilaa: sortedSporocila,
-    mojId: pridobljeniPodatki.prviUser._id,
-    kolegovId: pridobljeniPodatki.drugiUser._id,
-    nimasPogovora: nimasPogovora,
-
-    contacts: [{
-      ime: "Steve Gates",
-      slika: "/assets/pics/instruktor1.jpg"
-    },
-    {
-      ime: "Billa Jobs",
-      slika: "/assets/pics/instruktor3.jpg"
-    },
-    {
-      ime: "Mark Zuki",
-      slika: "/assets/pics/instruktor1.jpg"
-    }
-    ],
-
-    contactChosen:{ 
-      sporocila: [
-        {
-          ime: "Billa Jobs",
-          slika: "/assets/pics/instruktor3.jpg",
-          besedilo: "besedilo sporocila 1",
-          cas: "16:20 | Nov 15"
-        },
-        {
-          ime: "Billa Jobs",
-          slika: "/assets/pics/instruktor3.jpg",
-          besedilo: "besedilo sporocila 2",
-          cas: "16:23 | Nov 15"
-        },
-        {
-          ime: "Billa Jobs",
-          slika: "/assets/pics/instruktor3.jpg",
-          besedilo: "besedilo sporocila 3",
-          cas: "16:26 | Nov 15"
-        }
-      ]
-    },
-
-  });
+const prikaziChatPagePrvic = (req, res, pridobljeniPodatki) => {
+    res.render('chat', {
+      prvic: pridobljeniPodatki.prvic,
+      pridobljeniKontakti: pridobljeniPodatki.pridobljeniKontakti
+    })
 };
 
+/* GET sporocila dolocenega kontakta */
+const pridobiKontakt = (req, res) => {
+  var profileID = require('./signing').loginID.val; 
+  axios
+      .get("http://localhost:3000/api/chat/" + profileID + "/" + req.params.idPrejemnika)
+      .then((odgovor) => {
+        res.send(odgovor.data)
+      })
+      .catch((napaka) => {
+        prikaziNapako(req, res, napaka);
+      })
+}
 
-//za debuganje http requestov
-
-JSON.safeStringify = (obj, indent = 2) => {
-  let cache = [];
-  const retVal = JSON.stringify(
-    obj,
-    (key, value) =>
-      typeof value === "object" && value !== null
-        ? cache.includes(value)
-          ? undefined // Duplicate reference found, discard key
-          : cache.push(value) && value // Store value in our collection
-        : value,
-    indent
-  );
-  cache = null;
-  return retVal;
-};
-
-
-
-// shrani poslano sporocilo
-
+/* POST poslano spococilo */
 const shraniSporocilo = (req, res) => {
-    //console.log("v metodi shrani sporocilo sid userja je:"+ idUserja);
-    console.log("v metodi shrani sporocilo id userja je:"+ idUserja);
-    console.log("v metodi shrani req je:"+ req.query.idPrejemnika);
-    //str = JSON.safeStringify(req);
-    // str = JSON.stringify(req, null, 4); // (Optional) beautiful indented output.
-    //console.log(str); // Logs output to dev tools console.
-    //alert(str); // Displays output using window.alert()
+    var profileID = require('./signing').loginID.val; 
   
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/chat/' + idUserja,
+      url: 'http://localhost:3000/api/chat/' + profileID,
       data: {
         besedilo: req.body.besedilo,
-        prejemnikSporocila: req.query.idPrejemnika,
-        cas: Date.now()
+        prejemnikSporocila: req.params.idPrejemnika,
       }
     })
     .then(() => {
-      console.log("nas sestavljen link je: " + '/sporocanje/' + idUserja + "?idPrejemnika=" + req.query.idPrejemnika);
-      res.redirect("/sporocanje/" + idUserja + "?idPrejemnika=" + req.query.idPrejemnika);
+      res.redirect('/sporocanje')
     })
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
@@ -284,6 +200,7 @@ const bazaNapolni = (req, res) => {
 module.exports = {
   dashboard,
   chat,
+  pridobiKontakt,
   shraniSporocilo,
   db,
   bazaIzbrisi,

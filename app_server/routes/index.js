@@ -16,14 +16,14 @@ router.get('/my', ctrlMain.dashboard);
 /* GET view-only profile page */
 //router.get('/profil/ogled', ctrlMain.viewProfile);
 
-/* GET chat page */
-router.get('/sporocanje/:idUserja', ctrlMain.chat);
+/* GET chat page kontakti */
+router.get('/sporocanje', ctrlMain.chat);
+
+/* GET dolocen kontakt */
+router.get('/sporocanje/:idPrejemnika', ctrlMain.pridobiKontakt);
 
 /* POST sporocilo */
-router
-  .route('/sporocanje/:idUserja')
-  .post(ctrlMain.shraniSporocilo);
-
+router.post('/sporocanje/:idPrejemnika', ctrlMain.shraniSporocilo);
 
 /* GET info for user profile page */
 router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
@@ -38,18 +38,10 @@ router.put('/profil/:idUporabnika', ctrlProfile.renderProfile);
 /*DELETE user*/
 router.delete('/profil/:idUporabnika', ctrlProfile.deleteProfile); 
 
+/* GET baza*/
 router.get('/db', ctrlMain.db);
-
 router.get('/db/delete', ctrlMain.bazaIzbrisi);
-
 router.get('/db/post', ctrlMain.bazaNapolni);
-
-
-  /* PUT sporocilo */
-// router
-// .route('/sporocanje/:idUserja')
-// .put(ctrlMain.posodobiSporocilo);
-
 
 //ROUTER export
 module.exports = router;
