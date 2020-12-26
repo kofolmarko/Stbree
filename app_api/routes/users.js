@@ -2,19 +2,18 @@
 const express = require('express');
 const router = express.Router();
 
-
 //Controller constant to access functions
 const ctrlUporabniki = require('../controllers/users');
 
-
 //POST register a new user
-router.post('/uporabniki/', ctrlUporabniki.registrirajUporabnika);
+//router.post('/uporabniki/', ctrlUporabniki.registrirajUporabnika);
 
 //GET get user info for login authentication
-router.get('/uporabniki/:email', ctrlUporabniki.prijaviUporabnika);
+//router.get('/uporabniki/:email', ctrlUporabniki.prijaviUporabnika);
 
-//GET get user by id
-router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
+//GET get user by id -----> now by EMAIL because of jwt (it's safer)
+//router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
+router.get('/uporabnik/:emailUporabnika', ctrlUporabniki.najdiUporabnika);
 
 /*PUT registered users*/
 router.put('/uporabnik/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
@@ -46,6 +45,10 @@ router.put('/uporabniki/:loginID/delo/odjava/:idDela', ctrlUporabniki.odjavaOdDe
 /*OBSOLETE
 router.put('/uporabniki/:email', ctrlUporabniki.nastaviStatus);
 */
+
+/* Avtentikacija */
+router.post('/registracija', ctrlUporabniki.registracija);
+router.post('/prijava', ctrlUporabniki.prijava);
 
 //ROUTER export
 module.exports = router;

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 
 //const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 //const Job = mongoose.model('Job');
@@ -29,9 +31,10 @@ const instrukcijeDogodekShema = new mongoose.Schema({
 
 const uporabnikZacetnoShema = new mongoose.Schema({
   ime: { type: String, required: true },
-  priimek: { type: String, required: true },
-  email: { type: String, required: true },
-  geslo: { type: String, required: true },
+  priimek: { type: String, reuired: true },
+  email: { type: String, unique: true, required: true },
+  zgoscenaVrednost: {type: String, required: true},
+  nakljucnaVrednost: {type: String, required: true},
   statusInstruktorja: { type: Boolean, "default": false },
   datumVpisa: { type: Date, "default": Date.now },
   opis: {type: String, "default": "Vnesite opis"},
@@ -44,6 +47,33 @@ const uporabnikZacetnoShema = new mongoose.Schema({
   kontakti: [{type: String}]
 });
 
+uporabnikZacetnoShema.methods.nastaviGeslo = function(geslo) {
+  this.nakljucnaVrednost = crypto.randomBytes(16).toString('hex');
+  this.zgoscenaVrednost = crypto
+    .pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, 'sha512')
+    .toString('hex');
+};
+
+uporabnikZacetnoShema.methods.preveriGeslo = function(geslo) {
+  let zgoscenaVrednost = crypto
+    .pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, 'sha512')
+    .toString('hex');
+  return this.zgoscenaVrednost == zgoscenaVrednost;
+};
+
+uporabnikZacetnoShema.methods.generirajJwt = function() {
+  const datumPoteka = new Date();
+  datumPoteka.setDate(datumPoteka.getDate() + 7);
+  console.log(this);
+
+  return jwt.sign({
+    email: this.email,
+    ime: this.ime,
+    priimek: this.priimek,
+    statusInstruktorja: this.statusInstruktorja,
+    exp: parseInt(datumPoteka.getTime() / 1000, 10)
+  }, process.env.JWT_GESLO);
+};
 
 mongoose.model('User', uporabnikZacetnoShema, 'Users');
 

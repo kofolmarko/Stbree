@@ -60,7 +60,7 @@ const registerNewUser = (req, res) => {
 
 //GLOBAL LOGIN VARIABLES
 let loginStatus = { val: false };
-let loginID = { val: null };
+let loginID = { val: "henlo" };
 let loginName = { val: null };
 
 //IMPORT navbar switcher

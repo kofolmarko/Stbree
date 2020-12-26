@@ -33,7 +33,7 @@ router.get('/profil/:idUporabnika', ctrlProfile.renderProfile);
 router.get('/profil-my', ctrlProfile.redirectMyProfile);
 
 /* GET new info for user profile page */
-router.put('/profil/:idUporabnika', ctrlProfile.renderProfile); 
+router.put('/profil/:idUporabnika', ctrlProfile.updateProfile); 
 
 /*DELETE user*/
 router.delete('/profil/:idUporabnika', ctrlProfile.deleteProfile); 

@@ -1,6 +1,5 @@
 //API connection
 const axios = require('axios');
-const { prikaziNapako } = require('./job');
 
 //API local parameters
 var apiParametri = {
@@ -14,6 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const loginID = require('./signing').loginID;
 console.log("some juicy id: " + loginID);
+
 const renderProfileNav = (req, res) => {
   axios.get(apiParametri.streznik + "/api/uporabnik/" + loginID.val)
     .then(({ data }, err) => {
@@ -93,8 +93,8 @@ const redirectMyProfile = (req, res) => {
 };
 
 const renderProfile = (req, res) => {
-  axios.get(apiParametri.streznik + "/api/uporabnik/" + req.params.idUporabnika)
-    .then(({ data }, err) => {
+  axios.get(apiParametri.streznik + "/api/uporabnik/" + req.params.idUporabnika) //we are sending the url we need to use, where is the data?
+    .then(({ data }, err) => {//we have gotten the response from the (API) server
       axios.get(apiParametri.streznik + '/api/instrukcije-dogodki')
         .then((dogodki) => {
           console.log("then po dogodkih");
@@ -127,7 +127,7 @@ const renderProfile = (req, res) => {
               console.log(naziviObjav);
 
               console.log(data);
-              const profileDetails = {
+              const profileDetails = {//we can map it in order to show it
                 ime: data.ime,
                 priimek: data.priimek,
                 opis: data.opis, //ne
@@ -137,7 +137,7 @@ const renderProfile = (req, res) => {
                 email: data.email,
                 statusInstruktorja: data.statusInstruktorja, //ne
                 dogodki: data.dogodki, //
-                dela: data.dela,//
+                dela: data.dela,//you can also take the url of the logged in person:)
                 isAdmin: req.params.idUporabnika === loginID.val,
                 naziviObjav: naziviObjav //
               };
@@ -175,14 +175,70 @@ const renderProfile = (req, res) => {
     });
 };
 
+const updateProfile = (req, res) => {
+  console.log('Use Axios to perform PUT for user');
+  console.log(req.body.email);
+  console.log(req.body.ocena);
+  if (req.body.email != undefined) {
+    axios
+    .put(apiParametri.streznik + '/api/uporabnik/' + req.params.idUporabnika, 
+    {
+      email: req.body.email,
+      opis: req.body.opis,
+      telefonskaStevilka: req.body.telefonskaStevilka,
+      statusInstruktorja: req.body.statusInstruktorja
+    })
+    .then((profil) => { //you can do it without the additional parenthasies
+      //console.log(profil);
+      res.status(200).json(profil);
+    })
+    .catch((napaka) => {
+      console.log("Nasa greska meska: " + napaka);
+      prikaziNapako(req, res, napaka);
+    });
+  } else if (req.body.ocena == undefined){
+    axios
+    .put(apiParametri.streznik + '/api/uporabnik/geslo/' + req.params.idUporabnika, 
+    {
+      geslo: req.body.geslo
+    })
+    .then((profil) => { 
+      res.status(200).json(profil);
+    })
+    .catch((napaka) => {
+      console.log("Nasa greska meska: " + napaka);
+      prikaziNapako(req, res, napaka);
+    });
+  } else {
+    axios
+    .put(apiParametri.streznik + '/api/uporabnik/ocena/' + req.params.idUporabnika, 
+    {
+      ocena: req.body.ocena
+    })
+    .then((profil) => { 
+      res.status(200).json(profil);
+    })
+    .catch((napaka) => {
+      console.log("Nasa greska meska: " + napaka);
+      prikaziNapako(req, res, napaka);
+    });
+  } 
+};
+
+
+//IMPORT navbar switcher
+const navbarToggle = require('../../public/javascripts/navbar-toggle');
+
 /*DELETE user*/
-const deleteProfile = (res, req) => {
-  console.log('use axios to delete user');
+const deleteProfile = (req, res) => { //you can handle these so that you use an async function, and await keyword which makes sure we wait till the first promise
+  console.log('use axios to delete user');//is handled to continue on :)
+  console.log(req.params);
   axios
-    .delete(apiParametri + '/api/uporabnik/' + req.params.idUporabnika)
-    .then((profil) => {
-      console.log("Deleted the following profile" + profil.data);
-      res.status(204).json(profil);
+    .delete(apiParametri.streznik + '/api/uporabnik/' + req.params.idUporabnika) //we are sending the url we need to use, where is the data?
+    .then((profil) => { //we have gotten the response from the (API) server
+      console.log("Deleted the following profile" + profil.data); //we can map it in order to show it, why tf profil.data exactly?
+      navbarToggle(false);
+      res.status(200).json(profil);
       res.redirect('/');
     })
     .catch((napaka) => {
@@ -190,9 +246,31 @@ const deleteProfile = (res, req) => {
     });
 };
 
+/* ERROR MESSAGE */
+const prikaziNapako = (req, res, napaka) => {
+  let naslov = "Nekaj je šlo narobe!";
+  let vsebina = "Nekaj ne deluje pravilno";
+  if (!napaka) {
+    //res.redirect(
+    //'/instrukcije-dogodki/dodaj?napaka=vrednost'
+    //);
+    console.log("izpolni vsa polja");
+  } else {
+    res.render('error', {
+      message: naslov,
+      error: {
+        status: vsebina,
+        stack: "404 - user declared"
+      }
+    });
+  }
+};
+
 
 module.exports = {
+
   renderProfile,
+  updateProfile,
   renderProfileNav,
   redirectMyProfile,
   deleteProfile,
