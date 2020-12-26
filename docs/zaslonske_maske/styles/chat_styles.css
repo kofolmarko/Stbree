@@ -115,6 +115,8 @@
     text-align: start;
 }
 
+
+
 .sent-span {
     background-color: rgb(247, 247, 247);
 }
@@ -268,14 +270,16 @@
 
 
     .posameznoSporocilo{
+        font-size: 1rem; 
         margin-top: 0;
-        margin-bottom: 1rem;
-        padding-left: 1rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        border-radius: 30px;
-        color: white;
-        background-color: #18a2b8;
+        margin-bottom: 0.4rem; 
+        padding-left: 1rem; 
+        padding-top: 0.5rem; 
+        padding-bottom: 0.5rem; 
+        border-radius: 30px; 
+        color: white; 
+        background-color: #18a2b8; 
+        box-shadow: 1px 3px 3px #7b7b7b"
     }
 
     #active-contact {
