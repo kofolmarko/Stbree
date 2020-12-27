@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../classes/user';
@@ -17,7 +17,7 @@ export class JobsService {
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService,
-    @inject(BROWSER_CACHE) private cache: Storage  
+    @Inject(BROWSER_CACHE) private cache: Storage  
   ) { }
 
   private apiUrl: string = environment.apiUrl;

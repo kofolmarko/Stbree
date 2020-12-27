@@ -30,7 +30,7 @@ export class OfferInfoComponent implements OnInit {
 
   public delo: Job;
 
-  public gostitelj: User;
+  public ponudnik: User;
 
   public editState: boolean = false;
 
@@ -41,7 +41,7 @@ export class OfferInfoComponent implements OnInit {
   public signedStatus: boolean = false;
 
   private async getJobInfo(): Promise<void> {
-    this.route.ParamMap
+    this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
           let jobID = params.get('idDela');
@@ -62,7 +62,7 @@ export class OfferInfoComponent implements OnInit {
   private getJobHost(): void {
     this.JobsService.getJobHost(this.delo.emailPonudnika)
       .then(host => {
-        this.gostitelj = host;
+        this.ponudnik = host;
         this.sporocilo = host ? "" : "Ne najdem gostitelja dela :("
       })
       .catch(error => {

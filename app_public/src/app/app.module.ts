@@ -24,6 +24,7 @@ import { OfferInfoComponent } from './common/components/jobs/offer-info/offer-in
 import { ProfileComponent } from './common/components/profile/profile.component';
 import { GetStartedComponent } from './common/components/get-started/get-started.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    OrderModule
+    OrderModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [MainComponent]

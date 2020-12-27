@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
     opis: "Novo pečeni uporabnik.",
     telefonskaStevilka: null,
     dogodki: null,
+    dela: null,
     ocena: null
     //datumVpisa: null
   }

@@ -14,6 +14,7 @@ import { OfferInfoComponent } from 'src/app/common/components/jobs/offer-info/of
 import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
 import { EventNewComponent } from 'src/app/common/components/instructions/event-new/event-new.component';
 import { MessagingComponent } from 'src/app/common/components/messaging/messaging.component';
+import { OfferNewComponent } from 'src/app/common/components/jobs/offer-new/offer-new.component';
 
 const poti: Routes = [
   {
@@ -55,6 +56,10 @@ const poti: Routes = [
   {
     path: 'ponudba-del/delo/:idDela',
     component: OfferInfoComponent
+  },
+  {
+    path: 'ponudba-del/dodaj',
+    component: OfferNewComponent
   },
   {
     path: 'profil/:emailUporabnika',

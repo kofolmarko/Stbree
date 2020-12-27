@@ -1,4 +1,5 @@
 import { InstructionsEvent } from "./event";
+import { Job } from "./job";
 
 export class User {
     _id: string;

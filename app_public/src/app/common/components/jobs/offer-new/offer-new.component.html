@@ -1,6 +1,13 @@
-<div style="margin-top: 2rem;" class="alert alert-info container" role="alert" *ngIf="!isLoggedIn()">
+<div style="margin-top: 2rem;" class="alert alert-info container" role="alert" *ngIf="!isLoggedIn() else jeInstruktor">
   Za objavo dogodka se prosim <a routerLink="/prijava">prijavite</a>.
 </div>
+
+<ng-template #jeInstruktor>
+  <div style="margin-top: 2rem;" class="alert alert-info container" role="alert" *ngIf="!isInstructor() else obrazec">
+    Za objavo dogodka morate imeti status inštruktorja. Za pridobitev le-tega, pojdite na vaš <a
+      routerLink="/profil/{{ getCurrentUser().email }}">profil</a>.
+  </div>
+</ng-template>
 
 <ng-template #obrazec>
   <div class="container">
