@@ -6,6 +6,43 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport');
+var swaggerJsdoc = require('swagger-jsdoc');
+var swaggerUi = require('swagger-ui-express');
+
+var swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "stbree",
+      version: "1.0.0",
+      description: "stbree REST API"
+    },
+    license: {
+      name: "GNU LGPLv3",
+      url: "https://choosealicense.com/licenses/lgpl-3.0"
+    },
+    contact: {
+      name: "Skupina-27",
+      url: "#",
+      email: "#"
+    },
+    servers: [
+      { url: "http://localhost:3000/api" },
+      { url: "mongodb://mongo-db/stbree" },
+      { url: "https://stbree.herokuapp.com/api" }
+    ]
+  },
+  apis: [
+    "./app_api/models/instructions.js",
+    "./app_api/models/jobs.js", 
+    "./app_api/models/users.js", 
+    "./app_api/routes/index.js",
+    "./app_api/routes/instructions.js",
+    "./app_api/routes/jobs.js",
+    "./app_api/routes/users.js",
+  ]
+};
+const swaggerDocument = swaggerJsdoc(swaggerOptions);
 
 console.log(process.env.MONGODB_CLOUD_URI);
 require('./app_api/models/db');
@@ -59,6 +96,11 @@ app.use('/api', (req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   next();
+});
+
+indexApi.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+indexApi.get("/swagger.json", (req, res) => {
+  res.status(200).json(swaggerDocument);
 });
 
 app.use('/', indexRouter);

@@ -44,7 +44,7 @@
 <!--J o b s-->
 <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
 
-<div id="instructors" class="container">
+<div id="instructors" class="container" *ngIf="dela">
   <div class="card instructor" style="width: 18rem;" *ngFor="let delo od dela | orderBy: key: reverse | paginate: {
     id: 'pagination', itemsPerPage: 10, currentPage: page
   }">
