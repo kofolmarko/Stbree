@@ -2,7 +2,8 @@
 <!-- {{#if sporocilo}}
     <div class="alert alert-warning">{{sporocilo}}</div>
     {{else}} -->
-    <div class="container">
+    <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
+    <div *ngIf="uporabnik" class="container">
 
       <h1 id="profile-naslov">{{uporabnik.ime}} {{uporabnik.priimek}}</h1>
     

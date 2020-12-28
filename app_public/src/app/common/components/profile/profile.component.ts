@@ -4,6 +4,7 @@ import { User } from '../../classes/user';
 import { ProfilService } from '../../services/profil.service'
 import { switchMap } from 'rxjs/operators'; //za pridobitev vrednosti iz URL parametrov ter uporabi pri API klicu
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',// we can make this as an attribute, '[app-profile]' and then in html refference it as such ex. <div app-profile></div>
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private profileService: ProfilService,
     private route: ActivatedRoute,
+    private router: Router,
     private authenticationService: AuthenticationService
     ) { }
 
@@ -90,7 +92,10 @@ export class ProfileComponent implements OnInit {
     this.profileService.deleteUser(userEmail)
       .subscribe(
         () => {
+          this.signedStatus = false;
           this.uporabnik = null;
+          this.authenticationService.logout();
+          this.router.navigateByUrl('/');
           this.sporocilo = "Dogodek uspešno izbrisan."
         },
         (error) => this.sporocilo = "Napaka API-ja pri brisanju dogodka."
@@ -98,8 +103,18 @@ export class ProfileComponent implements OnInit {
       );
   }
 
+  private async isSignedUp(): Promise<void> {
+    if (this.isLoggedIn) {
+      let currentUserEmail = this.authenticationService.getCurrentUser().email
+      await this.authenticationService.getUser(currentUserEmail)
+        .then(user => this.signedStatus = true)
+        .catch(error => console.log(error));
+    }
+  }
+
   ngOnInit(): void {
     this.getUserInfo();
+    this.isSignedUp();
   }
 
 }
