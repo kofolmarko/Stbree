@@ -15,7 +15,7 @@ const deloKreiraj = (req, res) => {
     opis: req.body.opis,
     cena: req.body.cena,
     datum: req.body.datum,
-    idPonudnika: req.body.idPonudnika
+    emailPonudnika: req.body.emailPonudnika
   }, (napaka, delo) => {
     console.log(napaka);
     console.log(delo);
@@ -46,7 +46,7 @@ const dela = (req, res) => {
               "opis": delo.opis,
               "cena": delo.cena,
               "datum": delo.datum,
-              "idPonudnika": delo.idPonudnika
+              "emailPonudnika": delo.emailPonudnika
             };
           })
         );
@@ -82,7 +82,7 @@ const deloUredi = (req, res) => {
         opis: req.body.opis,
         cena: req.body.cena,
         datum: req.body.cena,
-        idPonudnika: req.body.idPonudnika
+        emailPonudnika: req.body.emailPonudnika
       })
     .exec((napaka, delo) => {
       if (!delo) {
@@ -163,7 +163,7 @@ const delaOrder = (req, res) => {
               "opis": delo.opis,
               "cena": delo.cena,
               "datum": delo.datum,
-              "idPonudnika": delo.idInstruktorja,
+              "emailPondniika": delo.emailPonudnika,
               "zasedeno": delo.zasedeno
             };
           })
