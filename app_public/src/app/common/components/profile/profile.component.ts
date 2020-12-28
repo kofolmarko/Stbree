@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';// pridobimo trenutno pot v okviru komponente
 import { User } from '../../classes/user';
 import { ProfilService } from '../../services/profil.service'
@@ -14,7 +14,7 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 export class ProfileComponent implements OnInit {
 
   constructor(
-    private profilService: ProfilService,
+    private profileService: ProfilService,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService
     ) { }
@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
 
   public isLoggedIn: boolean = this.authenticationService.isLoggedIn();
 
+  public editState: boolean = false;
+  
   public isAdmin: boolean = false;
 
   public signedStatus: boolean = false;
@@ -40,10 +42,60 @@ export class ProfileComponent implements OnInit {
         return this.authenticationService.getUser(emailUporabnika);
       })
     )
-    .subscribe((user: User) => {
+    .subscribe(async (user: User) => {
         this.uporabnik = user;
+        if (this.authenticationService.isLoggedIn()) {
+          if (this.uporabnik.email === this.authenticationService.getCurrentUser().email) {
+            this.isAdmin = true;
+          }
+        }
         this.sporocilo = user ? "" : "Uporabnik ne obstaja :(";
     });
+  }
+
+  editUserInfo(): void {
+    this.editCSS(true);
+    this.editState = true;
+  }
+
+  saveUserInfo(): void {
+    this.editCSS(false);
+    this.editState = false;
+    this.profileService.editUserInfo(this.uporabnik)
+      .then(user => {
+        user ? this.uporabnik = user : this.sporocilo = "Napaka pri posdabljanju uporabnika."
+      })
+      .catch(error => {
+        this.sporocilo = "Napaka API-ja pri posodabljanju uporabnika."
+        //console.error(error);
+      });
+  }
+
+  private editCSS(isEdit): void {
+    if (isEdit) {
+      document.getElementById("edit-btn").classList.remove("d-ilblock");
+      document.getElementById("edit-btn").classList.add("d-none");
+      document.getElementById("save-btn").classList.remove("d-none");
+      document.getElementById("save-btn").classList.add("d-ilblock");
+    } else {
+      document.getElementById("edit-btn").classList.remove("d-none");
+      document.getElementById("edit-btn").classList.add("d-ilblock");
+      document.getElementById("save-btn").classList.remove("d-ilblock");
+      document.getElementById("save-btn").classList.add("d-none");
+    }
+  }
+
+  deleteUser() {
+    let userEmail = this.route.snapshot.paramMap.get('emailUporabnika');
+    this.profileService.deleteUser(userEmail)
+      .subscribe(
+        () => {
+          this.uporabnik = null;
+          this.sporocilo = "Dogodek uspešno izbrisan."
+        },
+        (error) => this.sporocilo = "Napaka API-ja pri brisanju dogodka."
+        //console.error(error)
+      );
   }
 
   ngOnInit(): void {
