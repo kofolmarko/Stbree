@@ -5,8 +5,6 @@ import { User } from '../classes/user';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BROWSER_CACHE } from '../classes/cache';
-import { environment } from '../../../environments/environment';
-
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({
@@ -20,7 +18,7 @@ export class ProfilService {
     @Inject(BROWSER_CACHE) private cache: Storage
     ) { }
 
-  private apiUrl = environment.apiUrl;
+  private apiUrl = 'http://localhost:3000/api';
 
 
   // public editUserInfo(user: User): Promise<User> {
@@ -32,8 +30,8 @@ export class ProfilService {
   //     .catch(this.handleError);
   // }
 
-  public editUser(user: User): Promise<User> {
-    const url: string = `${this.apiUrl}/uporabnik/${user._id}`;
+  public editUserInfo(user: User): Promise<User> {
+    const url: string = `${this.apiUrl}/uporabnik/${user.email}`;
     const httpProperties = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
@@ -46,8 +44,8 @@ export class ProfilService {
       .catch(this.handleError);
   }
 
-  public deleteUser(user: User): Observable<void> {
-    const url: string = `${this.apiUrl}/uporabnik/${user._id}`;
+  public deleteUser(userEmail: string): Observable<void> {
+    const url: string = `${this.apiUrl}/uporabnik/${userEmail}`;
     const httpProperties = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`

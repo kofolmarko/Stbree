@@ -11,12 +11,17 @@ const ctrlUporabniki = require('../controllers/users');
 //GET get user info for login authentication
 //router.get('/uporabniki/:email', ctrlUporabniki.prijaviUporabnika);
 
-//GET get user by id -----> now by EMAIL because of jwt (it's safer)
+//GET  EXPRESS get user by id
 //router.get('/uporabnik/:idUporabnika', ctrlUporabniki.najdiUporabnika);
-router.get('/uporabnik/:emailUporabnika', ctrlUporabniki.najdiUporabnika);
 
-/*PUT registered users*/
-router.put('/uporabnik/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
+//GET ANGULAR get user by id -----> now by EMAIL because of jwt (it's safer)
+router.get('/uporabnik/:emailUporabnika', ctrlUporabniki.najdiUporabnik);
+
+/*PUT EXPRESS registered users*/
+//router.put('/uporabnik/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
+
+/*PUT ANGULAR registered users*/
+router.put('/uporabnik/:emailUporabnika', ctrlUporabniki.posodobiUporabnik);
 
 /*PUT geslo*/
 router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiGeslo);
@@ -24,8 +29,11 @@ router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiGeslo);
 /*PUT ocena*/
 router.put('/uporabnik/ocena/:idUporabnika', ctrlUporabniki.posodobiOcena);
 
-/*DELETE user*/
-router.delete('/uporabnik/:idUporabnika', ctrlUporabniki.izbrisiUporabnika);
+/*DELETE EXPRESS user*/
+//router.delete('/uporabnik/:idUporabnika', ctrlUporabniki.izbrisiUporabnika);
+
+/*DELETE ANGULAR user*/
+router.delete('/uporabnik/:emailUporabnika', ctrlUporabniki.izbrisiUporabnik);
 
 //GET list of all registered users
 router.get('/uporabniki', ctrlUporabniki.uporabniki);

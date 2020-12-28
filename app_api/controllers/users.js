@@ -40,8 +40,7 @@ const uporabniki = (req, res) => {
     });
 };
 
-/*
-//GET user by id
+//GET EXPRESS user by id
 const najdiUporabnika = (req, res) => {
   //console.log("API IŠČE INŠTRUUKTORJAAAA");
   Uporabnik
@@ -60,10 +59,10 @@ const najdiUporabnika = (req, res) => {
       res.status(200).json(uporabnik);
     });
 };
-*/
+
 
 //GET user by email
-const najdiUporabnika = (req, res) => {
+const najdiUporabnik = (req, res) => {
   //console.log("API IŠČE INŠTRUUKTORJAAAA");
   Uporabnik
     .findOne({email: req.params.emailUporabnika})
@@ -247,13 +246,39 @@ const odjavaOdDela = (req, res) => {
     });
 };
 
-/*PUT update user*/
+/*PUT EXPRESS update user*/
 const posodobiUporabnika = (req, res) => {
   console.log("Inside controllers on the API!");
   console.log(req.body.email);
   console.log(req.params.idUporabnika);
   Uporabnik
     .findByIdAndUpdate(req.params.idUporabnika,
+      {
+        email: req.body.email,
+        telefonskaStevilka: req.body.telefonskaStevilka,
+        opis: req.body.opis,
+        statusInstruktorja: req.body.statusInstruktorja
+      })
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporočilo":
+            "Dogodek ne obstaja."
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      } 
+      res.status(200).json(uporabnik);
+    });
+};
+
+/*PUT ANGULAR update user*/
+const posodobiUporabnik = (req, res) => {
+  console.log("Inside controllers on the API!");
+  console.log(req.body.email);
+  console.log(req.params.idUporabnika);
+  Uporabnik
+    .findOneAndUpdate({email: req.params.emailUporabnika},
       {
         email: req.body.email,
         telefonskaStevilka: req.body.telefonskaStevilka,
@@ -348,7 +373,7 @@ const posodobiOcena = (req, res) => {
     });
 };
 
-/*DELETE user*/
+/*DELETE EXPRESS user*/
 const izbrisiUporabnika = (req, res) => {
   console.log('izbrisi uporabnik v api');
   const idUporabnika = req.params.idUporabnika;
@@ -374,6 +399,36 @@ const izbrisiUporabnika = (req, res) => {
     Delo.deleteMany({idPonudnika: idUporabnika})
     .then()
     .catch();
+    res.status(200).json(uporabnik); //neli e 204
+  });
+};
+
+/*DELETE ANGULAR user*/
+const izbrisiUporabnik = (req, res) => {
+  console.log('izbrisi uporabnik v api');
+  const emailUporabnika = req.params.emailUporabnika;
+  console.log(emailUporabnika);
+  if (!emailUporabnika) {
+    return res.status(404).json({
+      "sporocilo": "Ne najdem emaila uporabnika"
+    });
+  }
+  Uporabnik
+  .findOneAndDelete({email: emailUporabnika})
+  .exec((napaka, uporabnik) => {
+    if(!uporabnik) {
+      return res.status(404).json({
+        "sporocilo": "Ne najdem uporabnika"
+      });
+    } else if (napaka) {
+      return res.status(500).json(napaka);
+    }
+    // InstrukcijeDogodek.deleteMany({emailInstruktorja: emailUporabnika})
+    // .then()
+    // .catch();
+    // Delo.deleteMany({idPonudnika: idUporabnika})
+    // .then()
+    // .catch();
     res.status(200).json(uporabnik); //neli e 204
   });
 };
@@ -447,6 +502,7 @@ const prijava = (req, res) => {
 module.exports = {
   uporabniki,
   najdiUporabnika,
+  najdiUporabnik,
   //registrirajUporabnika,
   //prijaviUporabnika,
   prijavaNaDogodek,
@@ -454,9 +510,11 @@ module.exports = {
   prijavaNaDelo,
   odjavaOdDela,
   posodobiUporabnika,
+  posodobiUporabnik,
   posodobiGeslo,
   posodobiOcena,
   izbrisiUporabnika,
+  izbrisiUporabnik,
   registracija,
   prijava
   //nastaviStatus,
