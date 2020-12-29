@@ -203,7 +203,7 @@ const prijavaNaDelo = (req, res) => {
       if (delo) {
         return res.status(200).json({ "sporočilo": "Uspešno ste prijavljeni na delo :)"});
       } else {
-        return res.status(421).json(napaka);
+        return res.status(400).json(napaka);
       }    
   })
 }

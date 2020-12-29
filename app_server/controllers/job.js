@@ -16,7 +16,6 @@ const jobList = (req, res) => {
   axios
     .get(apiParametri.streznik + '/api/ponudba-del')
     .then((odgovor) => {
-      //console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega dela :(";
       jobsList(req, res, odgovor.data, sporocilo);
     })
@@ -55,7 +54,6 @@ const getJob = async (req, res, povratniKlic) => {
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
     });
-
   if (result) {
     console.log(result.data);
     povratniKlic(req, res, result.data);
@@ -71,23 +69,16 @@ const renderJob = (req, res, delo, ponudnik) => {
   if (loginID == delo.idPonudnika) {
     isAdmin = true;
   }
-
   gettingInsID = { idInstruktorja: loginID };
-
   require('./instructions').getInstructor(req, res, gettingInsID, (req, res, loggedInUser) => {
-
-    console.log("rendering");
     console.log(delo);
-    console.log(loggedInUser);
     var isSignedUp = false;
     for (i = 0; i < loggedInUser.dela.length; i++) {
       if (delo._id == loggedInUser.dela[i]._id) {
-        console.log("found a match");
         isSignedUp = true;
         break;
       }
     }
-
     res.render('job', {
       naziv: delo.naziv,
       opis: delo.opis,
@@ -119,9 +110,7 @@ const jobNewPost = (req, res) => {
   if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum) {
     console.log("izpolni vsa polja");
   } else {
-    //console.log("posting to: " + apiParametri.streznik);
     const idPrijavljenega = require('./signing').loginID.val;
-    console.log("idPrijavljenega: " + idPrijavljenega);
     axios({
       method: "post",
       url: apiParametri.streznik + "/api/ponudba-del",
@@ -133,8 +122,7 @@ const jobNewPost = (req, res) => {
         idPonudnika: idPrijavljenega
       }
     }).then((delo) => {
-      //console.log("posted");
-      //console.log(delo.data);
+      console.log("Novo delo '" + req.body.naziv + "' je bilo dodano!");
       res.redirect('/ponudba-del');
     }).catch((napaka) => {
       prikaziNapako(req, res, napaka);
@@ -144,9 +132,11 @@ const jobNewPost = (req, res) => {
 
 /* PUT job page (edit) */
 const jobEdit = (req, res) => {
-  console.log("Inside controllers on server-side!");
   console.log(req.body);
-  axios
+  if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum) {
+    console.log("izpolni vsa polja");
+  } else {
+    axios
     .put(apiParametri.streznik + '/api/ponudba-del/delo/' + req.params.idDela,
       {
         naziv: req.body.naziv,
@@ -164,11 +154,11 @@ const jobEdit = (req, res) => {
       console.log(napaka);
       prikaziNapako(req, res, napaka);
     });
+  }
 };
 
 /* DELETE job page*/
 const jobDelete = (req, res) => {
-  console.log("Using axios to access local database...");
   axios
     .delete(apiParametri.streznik + '/api/ponudba-del/delo/' + req.params.idDela)
     .then((delo) => {
@@ -189,9 +179,6 @@ const jobSignup = (req, res) => {
   console.log(req.params);
   axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/delo/" + req.params.idDela)
     .then((uporabnik) => {
-      console.log("Nazaj na serverju: " + uporabnik);
-      //console.log("List od user jobs: " + uporabnik.dela);
-
       res.redirect('/ponudba-del');
     })
     .catch((napaka) => {
@@ -206,8 +193,6 @@ const jobLeave = (req, res) => {
   axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/delo/odjava/" + req.params.idDela)
     .then((uporabnik) => {
       console.log("Nazaj na serverju: " + uporabnik);
-      //console.log("List od user jobs: " + uporabnik.dela);
-
       res.redirect('/ponudba-del');
     })
     .catch((napaka) => {
@@ -217,25 +202,18 @@ const jobLeave = (req, res) => {
 
 //POST filter
 const filter = (req, res) => {
-  console.log("filtriram dela v app server");
-
   console.log(req.params.parameter);
   axios
     .get(apiParametri.streznik + '/api/ponudba-del/' + req.params.parameter)
     .then((dela) => {
       console.log("filtering by " + req.params.parameter);
-
-
       if (req.params.parameter.substring(0, 3) == "REV") {
         dela.data = dela.data.reverse();
       }
-
       console.log(dela.data);
-
       res.render('jobs-list', {
         dela: dela.data
       });
-
     })
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
@@ -248,9 +226,6 @@ const prikaziNapako = (req, res, napaka) => {
     napaka.response.data["sporočilo"] : (napaka.response.data["message"] ?
       napaka.response.data["message"] : "Nekaj nekje očitno ne deluje.");
   if (napaka.response.data["_message"] == "Lokacija validation failed") {
-    //res.redirect(
-    //'/instrukcije-dogodki/dodaj?napaka=vrednost'
-    //);
     console.log("izpolni vsa polja");
   } else {
     res.render('error', {

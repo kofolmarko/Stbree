@@ -53,7 +53,7 @@ export class OfferNewComponent implements OnInit {
         alert("Dogodek uspešno objavljen!");
       })
       .catch(error => {
-        this.sporocilo = "Napaka API-ja pri objavi dela."
+        this.sporocilo = "Napaka API-ja pri objavi dela.";
       });
     }
   }
