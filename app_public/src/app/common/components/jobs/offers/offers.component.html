@@ -45,10 +45,10 @@
 <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
 
 <div id="instructors" class="container">
-  <div class="card instructor" style="width: 18rem;" *ngFor="let delo od dela | orderBy: key: reverse | paginate: {
+  <div class="card instructor" style="width: 18rem;" *ngFor="let delo of dela | orderBy: key: reverse | paginate: {
     id: 'pagination', itemsPerPage: 10, currentPage: page
   }">
-    <img class="card-img-top" src="../../../assets/thumbnails/red.png" alt="Card image cap">
+  <img class="card-img-top" src="../../../assets/media/thumbnails/green.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{delo.naziv}}</h5>
       <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -64,6 +64,8 @@
 </div>
 
 <hr>
+
+<get-started></get-started>
 
 <script>
   let filterBtn = document.getElementById("filter-btn");

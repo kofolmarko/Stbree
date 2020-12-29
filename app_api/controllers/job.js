@@ -1,9 +1,10 @@
 /* Import Mongoose */
 const mongoose = require('mongoose');
+mongoose.set('returnOriginal', false);
 
 /* Import object model */
 const Delo = mongoose.model('Delo');
-//const User = mongoose.model('User');
+const User = mongoose.model('User');
 
 /* Create new job */
 const deloKreiraj = (req, res) => {
@@ -173,11 +174,44 @@ const delaOrder = (req, res) => {
   
 };
 
+const prijavaNaDelo = (req, res) => {
+  const { idDela } = req.params;
+  Delo
+    .findByIdAndUpdate(idDela)
+    .exec((napaka, delo) => {
+      if (delo) {
+        User
+          .findOneAndUpdate({ email: req.body.currentUserEmail },
+            {
+              $addToSet: { dela: delo }
+            })
+          .exec((napaka, uporabnik) => {
+
+          });
+      } else {
+        return res.status(404).json({ "sporočilo": "Ne najdem dela."});
+      }
+    });
+  Delo
+    .findByIdAndUpdate(idDela, 
+      {
+        $inc: { zasedeno: true }
+      })
+    .exec((napaka, delo) => {
+      if (delo) {
+        return res.status(200).json({ "sporočilo": "Uspešno ste prijavljeni na delo :)"});
+      } else {
+        return res.status(400).json(napaka);
+      }    
+  })
+}
+
 module.exports = {
   deloKreiraj,
   dela,
   deloPreberi,
   deloUredi,
   deloIzbrisi,
-  delaOrder
+  delaOrder,
+  prijavaNaDelo
 };
