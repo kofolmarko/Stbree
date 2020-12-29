@@ -56,6 +56,7 @@ export class OfferInfoComponent implements OnInit {
           }
         }
         this.sporocilo = job ? "" : "Delo ne obstaja :("
+        job ? this.getJobHost() : null;
       })
   }
 

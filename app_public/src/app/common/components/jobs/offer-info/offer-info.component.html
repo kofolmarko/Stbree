@@ -1,5 +1,5 @@
 <div class="return container-fluid" style="margin-top: 1rem;">
-  <a href="/ponudba-del" class="btn btn-info">Nazaj na ponudbo del</a>
+  <a routerLink="/ponudba-del" class="btn btn-info">Nazaj na ponudbo del</a>
 
   <button *ngIf="delo&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editJobInfo()"><i
       class="fas fa-edit"></i></button>
@@ -12,7 +12,7 @@
 
 <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
 
-<div class="card event" *ngIg="dogodek&&!editState else editMode">
+<div class="card event" *ngIf="delo&&!editState else editMode">
   <img class="card-img-top event-header" src="../../../../../assets/media/thumbnails/red.png" alt="Card image cap">
   <div class="card-body event-body">
     <h5 class="card-title" id="naziv">{{delo.naziv}}</h5>
@@ -26,7 +26,7 @@
     </p>
     <hr>
     <h6>Datum</h6>
-    <p id="datum">{{delo.datum}}</p>
+    <p id="datum">{{delo.datum | date:'d. M. yyyy'}}</p>
 
     <hr>
     <div *ngIf="!isAdmin&&delo.zasedeno==false&&isLoggedIn">
@@ -72,11 +72,11 @@
   </div>
 </ng-template>
 
-<div class="card profile" *ngIf="ponudnik&&delo">
-  <div class="card-body profile-body">
+<div class="card profile">
+  <div class="card-body profile-body" *ngIf="delo">
     <h5>Ponudnik</h5>
-    <a href="/profil/ogled">
-      <h3 class="profile-body-item">{{ ponudnik.ime }}</h3>
+    <a routerLink="/profil/ogled">
+      <h3 class="profile-body-item">{{ ponudnik.ime }} {{ ponudnik.priimek }}</h3>
     </a>
     <hr>
     <h5>Opis uporabnika</h5>

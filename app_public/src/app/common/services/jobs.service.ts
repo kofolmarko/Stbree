@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 import { User } from '../classes/user';
 import { Job } from '../classes/job';
@@ -7,7 +8,6 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BROWSER_CACHE } from '../classes/cache';
 import { AuthenticationService } from './authentication.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +48,7 @@ export class JobsService {
       })
     };
     return this.http
-      .post(url, job)
+      .post(url, job, httpProperties)
       .toPromise()
       .then(response => response as any)
       .catch(this.handleError);
@@ -62,7 +62,7 @@ export class JobsService {
       })
     };
     return this.http
-      .put(url, job)
+      .put(url, job, httpProperties)
       .toPromise()
       .then(response => response as Job)
       .catch(this.handleError);
@@ -76,7 +76,7 @@ export class JobsService {
       })
     };
     return this.http
-      .delete<void>(url)
+      .delete<void>(url, httpProperties)
       .pipe(catchError(this.handleError));
   }
 

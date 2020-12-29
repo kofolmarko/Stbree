@@ -21,10 +21,10 @@ import { EventInfoComponent } from './common/components/instructions/event-info/
 import { EventNewComponent } from './common/components/instructions/event-new/event-new.component';
 import { OffersComponent } from './common/components/jobs/offers/offers.component';
 import { OfferInfoComponent } from './common/components/jobs/offer-info/offer-info.component';
+import { OfferNewComponent } from "./common/components/jobs/offer-new/offer-new.component";
 import { ProfileComponent } from './common/components/profile/profile.component';
 import { GetStartedComponent } from './common/components/get-started/get-started.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
 import { KomentarjiSeznamComponent } from './common/components/komentarji/komentarji-seznam/komentarji-seznam.component';
 
 @NgModule({
@@ -43,9 +43,10 @@ import { KomentarjiSeznamComponent } from './common/components/komentarji/koment
     EventNewComponent,
     OffersComponent,
     OfferInfoComponent,
+    OfferNewComponent,
     ProfileComponent,
     GetStartedComponent,
-    KomentarjiSeznamComponent,
+    KomentarjiSeznamComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +56,7 @@ import { KomentarjiSeznamComponent } from './common/components/komentarji/koment
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    OrderModule,
-    CommonModule
+    OrderModule
   ],
   providers: [],
   bootstrap: [MainComponent]

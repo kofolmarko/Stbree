@@ -24,6 +24,9 @@ html {
 }
 
 /* CONTENT */
+#motto {
+    margin: auto;
+}
 
 .welcome-content {
     background: linear-gradient(45deg, rgba(56, 10, 10, 0.5) 0%,rgba(35, 138, 163, 0.5) 100%);
@@ -72,14 +75,32 @@ h1 {
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.898);
     background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.6);
-    border-radius: 0.9rem;
+    box-shadow: 0 0 0.5rem rgb(255, 255, 255);
+    border-radius: 0.5rem;
     outline: 0;
     max-width: 500px;
 }
 
 html {
     overflow-x: hidden;
+}
+
+.link {
+    height: 7rem;
+    cursor: pointer;
+}
+
+.link h1{
+    transform: translateY(70%);
+}
+
+.linkBox {
+    padding: 0;
+    
+}
+
+.label {
+    margin: 2rem;
 }

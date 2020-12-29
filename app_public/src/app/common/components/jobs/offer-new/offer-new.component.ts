@@ -49,7 +49,8 @@ export class OfferNewComponent implements OnInit {
       .then(job => {
         this.novoDelo = job;
         this.sporocilo = job ? "Delo uspešno objavljeno!" : "Napaka pri objavi dela :("
-        this.router.navigateByUrl('ponudba-del/delo/' + this.novoDelo._id);
+        console.log(this.novoDelo._id)
+        this.router.navigateByUrl('/ponudba-del/delo/' + this.novoDelo._id);
         alert("Dogodek uspešno objavljen!");
       })
       .catch(error => {

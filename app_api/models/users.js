@@ -5,9 +5,108 @@ const jwt = require('jsonwebtoken');
 //const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 //const Job = mongoose.model('Job');
 
+/**
+ * ShemeUporabnika
+ * @swagger
+ * components:
+ *  schemas:
+ *   User:
+ *    type: object
+ *    properties:
+ *     ime:
+ *      type: string
+ *     priimek:
+ *      type: string
+ *     email:
+ *      type: string
+ *     zgoscenaVrednost:
+ *      type: string
+ *     nakljucnaVrednost:
+ *      type: string
+ *     statusInstruktorja:
+ *      type: boolean
+ *     datumVpisa:
+ *      type: date
+ *     opis:
+ *      type: string
+ *     telefonskaStevilka:
+ *      type: number
+ *     ocena:
+ *      type: number
+ *     ocen:
+ *      type: array
+ *      items: 
+ *        type: Ocena
+ *     dogodki:
+ *      type: array
+ *      items: 
+ *        type: InstrukcijeDogodek
+ *     dela:
+ *      type: array
+ *      items: 
+ *        type: Delo
+ *     poslanaSporocila:
+ *      type: array
+ *      items: 
+ *        type: Sporocila
+ *     kontakti:
+ *      type: array
+ *      items:
+ *        type: string
+ *    required:
+ *     - ime
+ *     - priimek
+ *     - email
+ *     - zgoscenaVrednost
+ *     - nakljucnaVrednost
+ *   InstrukcijeDogodek:
+ *    type: object
+ *    properties:
+ *     naziv:
+ *      type: string
+ *     opis:
+ *      type: string
+ *     cena:
+ *      type: number
+ *     datum:
+ *      type: date
+ *     ura:
+ *      type: string
+ *     steviloProstihMest:
+ *      type: number
+ *     emailInstruktorja:
+ *      type: string
+ *    required:
+ *     - naziv
+ *     - opis
+ *     - datum
+ *     - ura
+ *     - steviloProstihMest
+ *     - emailInstruktorja
+ *   Delo:
+ *      type: object
+ *      properties:
+ *        naziv:
+ *          type: string
+ *        opis:
+ *          type: string
+ *        cena:
+ *          type: number
+ *        datum:
+ *          type: date
+ *        emailPonudnika:
+ *          type: string
+ *        zasedeno:
+ *          type: boolean
+ *      required:
+ *        - naziv
+ *        - opis
+ *        - datum
+ *        - emailPonudnika
+ */
 
 const sporocilaShema = new mongoose.Schema({
-  prejemnikSporocila: { type: String},
+  prejemnikSporocila: { type: String },
   besedilo: "String",
   cas: { type: Date, "default": Date.now }
 });
@@ -15,53 +114,55 @@ const sporocilaShema = new mongoose.Schema({
 const deloShema = new mongoose.Schema({
   naziv: { type: String, required: true },
   opis: { type: String, required: true },
-  cena: Number,
-  datum: { type: Date, required: true }
+  cena: { type: Number, "default": 0 },
+  datum: { type: Date, required: true },
+  emailPonudnika: { type: String, required: true },
+  zasedeno: { type: Boolean, "defauld": false }
 });
 
 const instrukcijeDogodekShema = new mongoose.Schema({
   naziv: { type: String, required: true },
   opis: { type: String, required: true },
-  cena: { type: Number, "default": 0},
+  cena: { type: Number, "default": 0 },
   datum: { type: Date, required: true },
-  ura: { type: String, required: true},
-  steviloProstihMest: { type: Number, required: true},
-  idInstruktorja: { type: String, required: true}
-});  
+  ura: { type: String, required: true },
+  steviloProstihMest: { type: Number, required: true },
+  emailInstruktorja: { type: String, required: true }
+});
 
 const uporabnikZacetnoShema = new mongoose.Schema({
   ime: { type: String, required: true },
   priimek: { type: String, reuired: true },
   email: { type: String, unique: true, required: true },
-  zgoscenaVrednost: {type: String, required: true},
-  nakljucnaVrednost: {type: String, required: true},
+  zgoscenaVrednost: { type: String, required: true },
+  nakljucnaVrednost: { type: String, required: true },
   statusInstruktorja: { type: Boolean, "default": false },
   datumVpisa: { type: Date, "default": Date.now },
-  opis: {type: String, "default": "Vnesite opis"},
-  telefonskaStevilka: {type: Number, "default": 0},
-  ocena: {type: Number, "default": 0},
-  ocen: {type: Array, "default": []},
+  opis: { type: String, "default": "Vnesite opis" },
+  telefonskaStevilka: { type: Number, "default": 0 },
+  ocena: { type: Number, "default": 0 },
+  ocen: { type: Array, "default": [] },
   dogodki: [instrukcijeDogodekShema],
   dela: [deloShema],
   poslanaSporocila: [sporocilaShema],
-  kontakti: [{type: String}]
+  kontakti: [{ type: String }]
 });
 
-uporabnikZacetnoShema.methods.nastaviGeslo = function(geslo) {
+uporabnikZacetnoShema.methods.nastaviGeslo = function (geslo) {
   this.nakljucnaVrednost = crypto.randomBytes(16).toString('hex');
   this.zgoscenaVrednost = crypto
     .pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, 'sha512')
     .toString('hex');
 };
 
-uporabnikZacetnoShema.methods.preveriGeslo = function(geslo) {
+uporabnikZacetnoShema.methods.preveriGeslo = function (geslo) {
   let zgoscenaVrednost = crypto
     .pbkdf2Sync(geslo, this.nakljucnaVrednost, 1000, 64, 'sha512')
     .toString('hex');
   return this.zgoscenaVrednost == zgoscenaVrednost;
 };
 
-uporabnikZacetnoShema.methods.generirajJwt = function() {
+uporabnikZacetnoShema.methods.generirajJwt = function () {
   const datumPoteka = new Date();
   datumPoteka.setDate(datumPoteka.getDate() + 7);
   console.log(this);

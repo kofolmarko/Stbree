@@ -19,7 +19,7 @@
     <p class="card-text" id="opis">{{dogodek.opis}}</p>
     <hr>
     <h6>Datum</h6>
-    <p id="datum">{{dogodek.datum}}</p>
+    <p id="datum">{{dogodek.datum | date:'d. M. yyyy'}}</p>
     <hr>
     <h6>Ura</h6>
     <p id="ura">{{dogodek.ura}}</p>
@@ -87,7 +87,7 @@
   </div>
 </ng-template>
 
-<div class="card profile" *ngIf="gostitelj&&dogodek">
+<div class="card profile">
   <div class="card-body profile-body">
     <h5>Inštruktor</h5>
     <a routerLink="/profil/ogled">

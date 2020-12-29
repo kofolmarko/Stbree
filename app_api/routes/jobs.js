@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const ctrlDela = require('../controllers/job');
-
 //Authentication
 const jwt = require('express-jwt');
 const avtentikacija = jwt({
@@ -10,6 +8,8 @@ const avtentikacija = jwt({
   userProperty: 'payload',
   algorithms: ['HS256']
 });
+
+const ctrlDela = require('../controllers/job');
 
 /**
  * Kategorije dostopnih točk
@@ -32,7 +32,7 @@ const avtentikacija = jwt({
  */
 
 /**
- * /dela:
+ * /Dela:
  *  get:
  *    summary: Seznam ponudbe del
  *    description: Pridobitev **seznama ponudbe del**
@@ -53,7 +53,7 @@ const avtentikacija = jwt({
 router.get('/ponudba-del', ctrlDela.dela);
 
 /**
- * /dela:
+ * /Dela:
  *  post:
  *     summary: Dodajanje novega dela
  *       description: Dodajanje novega dela s podatki o nazivu, opisu, ceni, datumu in 
@@ -72,5 +72,8 @@ router.delete('/ponudba-del/delo/:idDela', avtentikacija, ctrlDela.deloIzbrisi);
 
 //GET ordered by params
 router.get('/ponudba-del/:parameter', ctrlDela.delaOrder);
+
+//POST sign up for a job
+router.post('/ponudba-del/delo/:idDela/prijava', avtentikacija, ctrlDela.prijavaNaDelo)
 
 module.exports = router;
