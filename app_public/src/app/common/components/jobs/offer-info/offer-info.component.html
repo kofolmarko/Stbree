@@ -26,7 +26,7 @@
     </p>
     <hr>
     <h6>Datum</h6>
-    <p id="datum">{{delo.datum}}</p>
+    <p id="datum">{{delo.datum | date:'d. M. yyyy'}}</p>
 
     <hr>
     <div *ngIf="!isAdmin&&delo.zasedeno==false&&isLoggedIn">

@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
       this.getCurrentUser();
     }
   }
-
+ 
   public sporocilo: string = "";
 
   public covidInfo: any;

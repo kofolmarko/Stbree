@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
  * components:
  *  schemas:
  *    Delo:
- *      type:object
+ *      type: object
  *      properties:
  *        naziv:
  *          type: string

@@ -32,7 +32,7 @@ const avtentikacija = jwt({
  */
 
 /**
- * /dela:
+ * /Dela:
  *  get:
  *    summary: Seznam ponudbe del
  *    description: Pridobitev **seznama ponudbe del**
@@ -53,7 +53,7 @@ const avtentikacija = jwt({
 router.get('/ponudba-del', ctrlDela.dela);
 
 /**
- * /dela:
+ * /Dela:
  *  post:
  *     summary: Dodajanje novega dela
  *       description: Dodajanje novega dela s podatki o nazivu, opisu, ceni, datumu in 

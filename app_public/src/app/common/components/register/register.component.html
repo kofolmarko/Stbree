@@ -14,47 +14,51 @@
                 <div class="formSign form" data-aos="zoom-in">
                     <div class="logo mb-3">
                         <div class="col-md-12 text-center">
-                            <h1>Registracija uporabnika</h1>
+                            <h1>Registracija</h1>
                         </div>
                     </div>
                     <form id="registerNewUser" (submit)="submitRegisterData()" autocomplete="off">
                         <!--Warning-->
-                        <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{ sporocilo }}</div>
+                        <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{
+                            sporocilo }}</div>
 
                         <div class="row container-fluid">
                             <div class="col">
                                 <label for="ime">Ime</label>
-                                <input [(ngModel)]="newUserData.ime" id="ime" name="ime" type="text" class="form-control">
+                                <input [(ngModel)]="newUserData.ime" id="ime" name="ime" type="text"
+                                    class="form-control">
                             </div>
                             <div class="col">
                                 <label for="priimek">Priimek</label>
-                                <input [(ngModel)]="newUserData.priimek" id="priimek" name="priimek" type="text" class="form-control">
+                                <input [(ngModel)]="newUserData.priimek" id="priimek" name="priimek" type="text"
+                                    class="form-control">
                             </div>
                         </div>
                         <hr>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input [(ngModel)]="newUserData.email" type="email" name="email" class="form-control" id="email"
-                                aria-describedby="emailHelp" placeholder="uporabnik@domena.si">
+                            <input [(ngModel)]="newUserData.email" type="email" name="email" class="form-control"
+                                id="email" aria-describedby="emailHelp" placeholder="uporabnik@domena.si">
                         </div>
                         <hr>
                         <div class="form-group">
                             <label for="geslo">Geslo</label>
-                            <input [(ngModel)]="newUserData.geslo" type="password" name="geslo" id="geslo" class="form-control"
-                                placeholder="Geslo mora biti dolgo vsaj 8 znakov">
+                            <input [(ngModel)]="newUserData.geslo" type="password" name="geslo" id="geslo"
+                                class="form-control" placeholder="Geslo mora biti dolgo vsaj 8 znakov">
                         </div>
                         <div class="form-group">
                             <label for="gesloPotrdi">Potrdi geslo</label>
-                            <input [(ngModel)]="gesloPotrdi" type="password" name="gesloPotrdi" id="gesloPotrdi" class="form-control">
+                            <input [(ngModel)]="gesloPotrdi" type="password" name="gesloPotrdi" id="gesloPotrdi"
+                                class="form-control">
                         </div>
                         <hr>
-                        <span>
-                            <input [(ngModel)]="newUserData.statusInstruktorja" (change)="becomeAnInstructor(newUserData.statusInstruktorja?true:false)" type="checkbox" id="statusInstruktorja" name="statusInstruktorja" checked="true"
-                                value="true">
-                            <label for="statusInstruktorja"> Želim postati inštruktor (to lahko storite
-                                kasneje)</label>
-                        </span>
-
+                        <label class="control control-checkbox">
+                            <input [(ngModel)]="newUserData.statusInstruktorja"
+                                (change)="becomeAnInstructor(newUserData.statusInstruktorja?true:false)" type="checkbox"
+                                id="statusInstruktorja" name="statusInstruktorja" checked="true" value="true">
+                            <h5> Želim postati inštruktor (to lahko storite kasneje)</h5>
+                            <div class="control_indicator"></div>
+                        </label>
                         <hr>
                         <div class="col-md-12 text-center ">
                             <button type="submit" class="btn btn-block mybtn btn-primary">Registriraj</button>
