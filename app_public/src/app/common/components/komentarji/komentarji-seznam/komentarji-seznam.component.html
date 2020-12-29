@@ -4,17 +4,17 @@
     <hr>
     <div class="komentarji-nov m-3"> 
         <div *ngIf="obrazecPrikazan">
-          <form id="dodajKomentar" action="" method="post" role="form">
+          <form (ngSubmit)="postNewComment()">
             <div class="form-group row">
               <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="naziv">Naziv</label>
               <div class="col-12 col-sm-10">
-                <input [(ngModel)]="novKomentar.naziv" id="naziv" class="form-control form-control-sm" name="naziv" required="required">
+                <input [(ngModel)]="newComment.avtor" id="avtor" class="form-control form-control-sm" name="avtor" required="required">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="ocena">Ocena</label>
               <div class="col-12 col-sm-2">
-                <select [(ngModel)]="novKomentar.ocena" id="ocena" name="ocena" class="form-control form-control-sm">
+                <select [(ngModel)]="newComment.ocena" id="ocena" name="ocena" class="form-control form-control-sm">
                   <option [ngValue]="5">5</option>
                   <option [ngValue]="4">4</option>
                   <option [ngValue]="3">3</option>
@@ -26,13 +26,13 @@
             <div class="form-group row">
               <label class="col-sm-2 col-form-label col-form-label-sm" for="komentar">Komentar</label>
               <div class="col-sm-10">
-                <textarea [(ngModel)]="novKomentar.komentar" id="komentar" class="form-control form-control-sm" name="komentar" rows="5"></textarea>
+                <textarea [(ngModel)]="newComment.besediloKomentarja" id="besediloKomentarja" class="form-control form-control-sm" name="besediloKomentarja" rows="5"></textarea>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-12">
                 <button (click)="obrazecPrikazan=false" class="btn btn-primary btn-sm float-right ml-3">Prekliči</button>
-                <button class="btn btn-primary btn-sm float-right">Dodaj moj komentar</button>
+                <button class="btn btn-primary btn-sm float-right" (click)="postNewEvent()">Dodaj moj komentar</button>
               </div>
             </div>
           </form>
