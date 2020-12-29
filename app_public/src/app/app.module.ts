@@ -25,6 +25,7 @@ import { OfferNewComponent } from "./common/components/jobs/offer-new/offer-new.
 import { ProfileComponent } from './common/components/profile/profile.component';
 import { GetStartedComponent } from './common/components/get-started/get-started.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { KomentarjiSeznamComponent } from './common/components/komentarji/komentarji-seznam/komentarji-seznam.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OfferInfoComponent,
     OfferNewComponent,
     ProfileComponent,
-    GetStartedComponent
+    GetStartedComponent,
+    KomentarjiSeznamComponent
   ],
   imports: [
     BrowserModule,
