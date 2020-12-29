@@ -127,7 +127,7 @@ const prikaziChatPagePrvic = (req, res, pridobljeniPodatki) => {
   res.render('chat', {
     prvic: pridobljeniPodatki.prvic,
     pridobljeniKontakti: pridobljeniPodatki.pridobljeniKontakti
-  })
+  });
 };
 
 /* GET sporocila dolocenega kontakta */
@@ -136,12 +136,12 @@ const pridobiKontakt = (req, res) => {
   axios
     .get("http://localhost:3000/api/chat/" + profileID + "/" + req.params.idPrejemnika)
     .then((odgovor) => {
-      res.send(odgovor.data)
+      res.send(odgovor.data);
     })
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
-    })
-}
+    });
+};
 
 /* POST poslano spococilo */
 const shraniSporocilo = (req, res) => {
@@ -156,7 +156,7 @@ const shraniSporocilo = (req, res) => {
     }
   })
     .then(() => {
-      res.redirect('/sporocanje')
+      res.redirect('/sporocanje');
     })
     .catch((napaka) => {
       prikaziNapako(req, res, napaka);
