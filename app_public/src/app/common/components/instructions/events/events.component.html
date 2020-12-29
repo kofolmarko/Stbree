@@ -1,0 +1,77 @@
+<ul class="nav container" id="ins-nav">
+  <li class="nav-item nav-item-left-border nav-item-inactive-bg">
+    <a class="nav-link active" routerLink="/instruktorji">Inštruktorji</a>
+  </li>
+  <li class="nav-item bg-info nav-item-right-border">
+    <a class="nav-link" routerLink="/instrukcije-dogodki">Dogodki</a>
+</ul>
+
+<!--F i l t e r-->
+<div class="container" id="filter-bar">
+
+  <div class="filter-item">
+    <label for="razvrsti"><h5>Razvrsti po:</h5></label>
+    <select name="razvrsti" id="razvrsti" class="form-control">
+      <option value="">Izberi filter...</option>
+      <option value="datum">Datumu</option>
+      <!-- <option value="REVdatum">Datumu (kasnejši najprej)</option> -->
+      <option value="steviloProstihMest">Številu prostih mest</option>
+      <!-- <option value="REVsteviloProstihMest">Številu prostih mest (največ najprej)</option> -->
+      <option value="naziv">Imenu</option>
+      <!-- <option value="REVnaziv">Imenu (Z-A)</option> -->
+      <option value="cena">Ceni</option>
+      <!-- <option value="REVcena">Ceni (dražji najprej)</option> -->
+    </select>
+  </div>
+
+  
+  <button id="filter-btn" value="Filtriraj" class="btn btn-light" (click)="sort()">Filtriraj</button>
+
+  <button class="btn btn-light btn-order" style="cursor: pointer;" (click)="reverseSet()">
+    <i class="fas fa-long-arrow-alt-up" *ngIf="reverse"></i>
+    <i class="fas fa-long-arrow-alt-down" *ngIf="!reverse"></i>
+  </button>
+
+
+
+</div>
+
+<!--S e a r c h  b a r-->
+<div class="input-group mb-3 container">
+  <input id="search" (keyup)="isci()" type="text" class="form-control" placeholder="Vpiši želeno iskanje"
+    aria-label="Iskanje" aria-describedby="search-button">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary btn-info" type="button" id="search-button" (click)="isci()">Išči</button>
+  </div>
+</div>
+
+<!--N e w-->
+<div class="new-job container">
+  <a routerLink="dodaj" class="btn btn-success">Ustvari nov dogodek</a>
+</div>
+
+<!--E v e n t s-->
+<div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
+
+<div id="instructors" class="container">
+  <div class="card instructor" style="width: 18rem;" *ngFor="let dogodek of dogodki | orderBy: key: reverse | paginate: {
+      id: 'pagination', itemsPerPage: 10, currentPage: page
+    }">
+    <img class="card-img-top" src="../../../assets/media/thumbnails/red.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{dogodek.naziv}}</h5>
+      <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+        {{dogodek.opis}}</p>
+      <a href="/instrukcije-dogodki/dogodek/{{dogodek._id}}" class="btn btn-primary">Podrobnosti</a>
+    </div>
+  </div>
+</div>
+
+<div>
+  <pagination-controls class="pagination" id="pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+  </pagination-controls>
+</div>
+
+<hr>
+
+<get-started></get-started>

@@ -1,0 +1,109 @@
+<div id="job-header" class="container">
+  <h2 class="bg-info">Seznam ponudbe del</h2>
+</div>
+
+<!--F i l t e r-->
+<div class="container" id="filter-bar">
+
+  <div class="filter-item">
+    <label for="razvrsti"><h5>Razvrsti po:</h5></label>
+    <select name="razvrsti" id="razvrsti" class="form-control">
+      <option value="">Izberi filter...</option>
+      <option value="datum">Datumu)</option>
+      <!--<option value="REVdatum">Datumu (kasnejši najprej)</option>-->
+      <option value="naziv">Imenu</option>
+      <!--<option value="REVnaziv">Imenu (Z-A)</option>-->
+      <option value="cena">Ceni</option>
+      <!--<option value="REVcena">Ceni (dražji najprej)</option>-->
+    </select>
+  </div>
+
+  <button id="filter-btn" value="Filtriraj" class="btn btn-light" click="sort()">Filtriraj</button>
+
+  <button class="btn btn-light btn-order" style="cursor: pointer;" (click)="reverseSet()">
+    <i class="fas fa-long-arrow-alt-up" *ngIf="reverse"></i>
+    <i class="fas fa-long-arrow-alt-down" *ngIf="!reverse"></i>
+  </button>
+
+  
+
+</div>
+
+<!--S e a r c h  b a r-->
+<div class="input-group mb-3 container">
+  <input id="search" (keyup)="isci()" type="text" class="form-control" placeholder="Vpiši želeno iskanje"
+    aria-label="Iskanje" aria-describedby="search-button">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary btn-info" type="button" id="search-button">Išči</button>
+  </div>
+</div>
+
+<!--N e w-->
+<div class="new-job container">
+  <a routerLink="dodaj" class="btn btn-success">Ustvari novo ponudbo</a>
+</div>
+
+<!--J o b s-->
+<div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
+
+<div id="instructors" class="container" *ngIf="dela">
+  <div class="card instructor" style="width: 18rem;" *ngFor="let delo of dela | orderBy: key: reverse | paginate: {
+    id: 'pagination', itemsPerPage: 10, currentPage: page
+  }">
+  <img class="card-img-top" src="../../../assets/media/thumbnails/green.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{delo.naziv}}</h5>
+      <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+        {{delo.opis}}</p>
+      <a routerLink="/ponudba-del/delo/{{delo._id}}" class="btn btn-primary">Podrobnosti</a>
+    </div>
+  </div>
+</div>
+
+<div>
+  <pagination-controls class="pagination" id="pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+  </pagination-controls>
+</div>
+
+<hr>
+
+<get-started></get-started>
+
+<script>
+  let filterBtn = document.getElementById("filter-btn");
+  filterBtn.addEventListener('click', function () {
+    console.log("Filter button has been clicked!");
+
+    var razvrsti = document.getElementById("razvrsti").value;
+
+    console.log(razvrsti);
+
+    window.location = "/ponudba-del/" + razvrsti;
+
+  });
+
+  function isci() {
+    // Declare variables
+    var filter, list, a, txtValue, search;
+
+
+    //ul = document.getElementById("myUL");
+    //li = ul.getElementsByTagName('li');
+
+    search = document.getElementById("search");
+    list = document.getElementsByClassName("card");
+
+    filter = search.value.toUpperCase();
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < list.length; i++) {
+      a = list[i].getElementsByClassName("card-title")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        list[i].style.display = "";
+      } else {
+        list[i].style.display = "none";
+      }
+    }
+  }
+</script>

@@ -8,9 +8,9 @@
                         znanje.</i></p>
                 <hr>
                 <form id="instructionsEventNewPost" action="" method="post" role="form">
-                    {{#ujemanjeNiza napaka "vrednost"}}
-                        <div class="alert alert-danger">Prosim izpolnite polja!</div>
-                    {{/ujemanjeNiza}}
+                    {{#if sporocilo}}
+                    <div class="alert alert-warning container" style="margin-top: 2rem">{{sporocilo}}</div>
+                    {{/if}}
                     <div class="form-group">
                         <label for="naziv">Ime dogodka</label>
                         <input id="naziv" name="naziv" type="text" class="form-control"
@@ -29,9 +29,16 @@
                             <span class="input-group-text" id="basic-addon2">€</span>
                         </div>
                     </div>
+                    <p><i>Plačljivi dogodki oziroma inštrukcije se plačajo po dogovoru. V primeru zlorabe bomo proti kršitelju ustrezno ukrepali.</i></p>
+
                     <div class="form-group">
                         <label for="datum">Datum dogodka</label>
                         <input type="date" class="form-control" id="datum" name="datum">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ura">Ura dogodka</label>
+                        <input type="time" class="form-control" id="ura" name="ura">
                     </div>
 
                     <div class="form-group">
@@ -41,17 +48,31 @@
                             onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     </div>
 
-                    <div class="form-group">
-                        <label for="naslovnaSlikaInstrukcije">Dodaj naslovno fotografijo (neobvezno)</label>
-                        <input type="file" class="form-control-file" id="naslovnaSlikaInstrukcije">
-                    </div>
+                
 
-                    <button class="btn btn-primary">Objavi</button>
+                    <button class="btn btn-primary" onclick="return preveriFormo()">Objavi</button>
                     <hr>
                 </form>
             </div>
         </div>
     </div>
 
-    {{> carousel}}
+    {{> carousel_getstarted}}
+
+
+    <script>
+        function preveriFormo() {
+            var naziv = document.getElementById('naziv').value;
+            var opis = document.getElementById('opis').value;
+            var cena = document.getElementById('cena').value;
+            var datum = document.getElementById('datum').value;
+            var ura = document.getElementById('ura').value;
+            var steviloProstihMest = document.getElementById('steviloProstihMest').value;
+
+            if (naziv == "" || opis == "" || cena == "" || datum == "" || ura == "" || steviloProstihMest == "") {
+                alert("Izpolnite vsa polja!");
+                return false;
+            }
+        }
+    </script>
 </body>

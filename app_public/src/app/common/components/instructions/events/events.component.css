@@ -1,0 +1,243 @@
+h2{
+    text-align: center;
+  }
+
+.myCol{
+    text-align: center;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+  
+  .img-responsive{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    transition: 0.2s ease-in-out;
+    transform: scale(1.00);
+  }
+
+  .card-title, .card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .predmetText{
+    display: inline-block; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%,-50%);
+    padding: 0px 5px;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    font-size: 27px;
+    color: black;
+    font-family: 'Work Sans', sans-serif;
+    }
+    
+  a:hover .list-thumbnail {
+    transition: 0.2s ease-in-out;
+    transform: scale(1.05);
+  }
+  
+  .predmetText:hover{
+    background-color: rgba(255,255,255,0.2);
+    transition: 0.2s ease-in-out;
+  }
+
+  #check-event-list {
+    margin-left: 50%;
+    transform: translate(-50%);
+  }
+
+  #filter-bar {
+    background-color: rgb(158, 214, 255);
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  #razvrsti {
+    margin: 0;
+    height: 3rem;
+    margin-right: 0.5rem;
+  }
+
+  #filter-bar button {
+    margin: 0.5rem;
+    transform: translateY(-1px);
+  }
+
+  #filter-btn {
+    height: 3rem;
+    margin-left: 1rem !important;
+  }
+  
+  .btn-order {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .filter-item {
+    display: inline-block;
+    width: 33%;
+  }
+
+  select {
+    width: 100%;
+    margin-bottom: 7px;
+  }
+
+  #search-bar {
+    padding: 0;
+  }
+
+  .instructor {
+    display: inline-block;
+    width: 30% !important;
+    margin: 0.8rem;
+  }
+
+  .instructor img {
+    height: 5rem;
+    object-fit: cover;
+  }
+
+  #instructors {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0;
+  }
+
+#tab {
+  background-color: aliceblue;
+  text-align: center;
+  height: 3rem;
+  width: 100%;
+  padding: 0;
+}
+
+#tab h4 {
+  display: inline-block;
+  width: 49%;
+  background-color: antiquewhite;
+}
+
+#ins-nav {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-right: 0;
+}
+
+#ins-nav .nav-item {
+  width: 50%;
+  padding: 1rem;
+}
+
+#ins-nav .nav-item-left-border {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+#ins-nav .nav-item-right-border {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+#ins-nav .nav-item-inactive-bg {
+  background-color: rgb(226, 226, 226);
+}
+
+#ins-nav .nav-item .nav-link {
+  font-size: x-large;
+  color: white;
+}
+
+#ins-nav .nav-item-inactive-bg:hover {
+  background-color: rgb(102, 102, 102);
+}
+
+#job-header h2, #job-header a {
+  margin: 1rem;
+}
+
+#job-header h2 {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  color: white;
+  margin: 0;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+#job-header {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.load-more {
+  display: table;
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 2rem;
+}
+
+.load-more h3:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+@media only screen and (max-width: 992px) {
+  .filter-item {
+      width: 49%;
+  }
+  
+  .instructor {
+    width: 46% !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .instructor {
+    width: 95% !important;
+    margin: 0;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #ins-nav .nav-item-right-border, #ins-nav .nav-item-left-border {
+    border-radius: 0 0 0 0;
+  }
+
+  #ins-nav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  #filter-bar {
+    border-radius: 0;
+  }
+
+  #job-header {
+    padding: 0;
+    width: 100%;
+  }
+
+  #job-header h2 {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
+  }
+}

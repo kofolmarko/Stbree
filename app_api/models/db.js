@@ -1,28 +1,37 @@
 const mongoose = require('mongoose');
 
 
+//var dbURI = 'mongodb://localhost/stbree'    //nodemon, izklopi stbree-node-js v dockerju, rabis samo stbree-mongodb
+// var dbURI = 'mongodb+srv://stbree-app:mongo-atlas-27@stbree.ws0gv.mongodb.net/stbree?retryWrites=true&w=majority';
 var dbURI = 'mongodb://mongo-db/stbree';
+//var dbURI = 'mongodb+srv://app:geslo@stbree.jftw5.mongodb.net/admin';
 
-
-if (process.env.NODE_ENV === 'production') {
-    dbURI = process.env.MONGODB_CLOUD_URI;
+if(process.env.NODE_ENV === 'docker'){
+    dbURI = 'mongodb://mongo-db/stbree';    //docker-compose up
 }
 
 
-mongoose.connect(dbURI, { 
-  useNewUrlParser: true, 
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
+if (process.env.NODE_ENV === 'production') {
+    //dbURI = process.env.MONGODB_CLOUD_URI;
+    dbURI = "mongodb+srv://stbree-app:mongo-atlas-27@stbree.ws0gv.mongodb.net/stbree?retryWrites=true&w=majority";
+}
+
+
+mongoose.connect(dbURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose je povezan na ${dbURI}.`);
+
 });
 
 mongoose.connection.on('error', napaka => {
-    console.log('Mongoose napaka pri povezavi: ', napaka);
+    console.log('Mongoose napaka pri povezavi: ', dbURI);
 });
 
 mongoose.connection.on('disconnected', () => {
@@ -57,5 +66,6 @@ process.on('SIGTERM', () => {
     });
 });
 
-
 require('./instructions');
+require('./jobs');
+require('./users');

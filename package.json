@@ -11,16 +11,28 @@
   },
   "dependencies": {
     "axios": "*",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "cookie-parser": "*",
+    "dateformat": "*",
     "debug": "*",
-    "express": "*",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-validator": "^6.7.0",
     "handlebars": "*",
     "hbs": "*",
     "heroku": "*",
     "highlight.js": "*",
     "http-errors": "*",
-    "mongoose": "*",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.15",
     "morgan": "*",
-    "nodemon": "*"
+    "nodemon": "*",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "request": "^2.88.2",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }

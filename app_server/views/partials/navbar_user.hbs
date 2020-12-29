@@ -19,6 +19,9 @@
                 <a class="nav-link text-light" href="/instruktorji">Inštrukcije</a>
             </li>
             <li class="nav-item mx-auto">
+                <a class="nav-link text-light" href="/instrukcije-dogodki">Dogodki</a>
+            </li>
+            <li class="nav-item mx-auto">
                 <a class="nav-link text-light" href="/ponudba-del">Delo</a>
             </li>
             <li class="nav-item mx-auto">
@@ -35,11 +38,65 @@
                     </svg>
                 </button>
                 <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/profil/uporabnik">Profil<span class="znacka">1</span></a>
+                    <a class="dropdown-item" id="profileBtn">Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="/"><b>Odjava</b></a>
+                    <a id="logout-btn" class="dropdown-item text-danger"><b>Odjava</b></a>
                 </div>
             </li>
         </ul>
     </div>
 </nav>
+
+<style>
+    #logout-btn:hover {
+        cursor: pointer;
+    }
+
+    #profileBtn:hover {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+
+    // Changes the login variables and redirects to landing page
+    let logoutBtn = document.getElementById("logout-btn");
+    logoutBtn.addEventListener('click', function () {
+
+        var asinhronaZahteva = new XMLHttpRequest();
+
+        asinhronaZahteva.open(
+            "PUT",
+            '/odjava',
+            true
+        )
+        /*
+                asinhronaZahteva.addEventListener("load", function () {
+                    var jsonRezultati = JSON.parse(asinhronaZahteva.responseText);
+                    console.log(jsonRezultati);
+                });
+        */
+        window.location = "/";
+
+        asinhronaZahteva.send(null);
+    });
+
+
+    // Endpoint for getting loginID and redirecting to user profile
+    let profileBtn = document.getElementById("profileBtn");
+    profileBtn.addEventListener('click', function () {
+        window.location = "/profil-my";
+    });
+
+    // Manual dropdown menu fix
+    let ddMenu = document.getElementById("dropdown-menu");
+    let ddBtn = document.getElementById("navbarDropdown");
+    ddBtn.addEventListener("click", function() {
+        if(ddMenu.classList.contains("show")) {
+            ddMenu.classList.remove("show");
+        } else {
+            ddMenu.classList.add("show");
+        }
+    });
+
+</script>

@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* HERO */
+
+#hero {
+    position: relative;
+    height: 100vh;
+}
+
+#hero video {
+    height: 100vh;
+    width: 100%;
+    background-position: absolute;
+    z-index: 1;
+    object-fit: cover;
+}
+
+/* CONTENT */
+
+.welcome-content {
+    background: linear-gradient(45deg, rgba(56, 10, 10, 0.5) 0%,rgba(35, 138, 163, 0.5) 100%);
+    height: 100vh;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+}
+
+.middle-content {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(43,17,33,1) 50%, rgba(18,70,83,1) 100%);
+}
+
+/* MODIFIED BOOTSTRAP */
+
+.d-inline {
+    margin: 10px;
+}
+
+.row {
+    padding: 10px;
+    margin: 0px;
+}
+
+.row p, button {
+    margin: 20px;
+}
+
+.text-uppercase {
+    margin-bottom: 25px;
+}
+
+.formSign{
+    margin: auto;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.6);
+    border-radius: 0.9rem;
+    outline: 0;
+    max-width: 500px;
+}
+
+html {
+    overflow-x: hidden;
+}

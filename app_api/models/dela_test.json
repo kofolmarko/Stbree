@@ -1,0 +1,54 @@
+[
+    {
+        "_id": {
+            "$oid": "5fc3f3596dd5980011c8984b"
+        },
+        "cena": 10,
+        "naziv": "Seminarska naloga pri biologiji",
+        "opis": "Nujno rabim pomoč pri seminarski nalogi pri biologiji, ker nebi rada zaostala",
+        "datum": {
+            "$date": "2020-11-30T00:00:00.000Z"
+        },
+        "idPonudnika": "5fc3efca6dd5980511c89849",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fc45f574322180011efc460"
+        },
+        "cena": 3,
+        "naziv": "Domača naloga pri fiziki",
+        "opis": "Nujno rabim pomoč pri domači nalogi pri fiziki, saj dobim bonus točke!!!",
+        "datum": {
+            "$date": "2020-12-02T00:00:00.000Z"
+        },
+        "idPonudnika": "5fc42824761a11001107bf5e",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fc45f574322180011efc461"
+        },
+        "cena": 5,
+        "naziv": "Program",
+        "opis": "Za lažje računanje bi rabil program ki mi izračuna korene",
+        "datum": {
+            "$date": "2020-12-05T00:00:00.000Z"
+        },
+        "idPonudnika": "5fc428c2eaf31d0611aae469",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "5fc45f574322180011efc467"
+        },
+        "cena": 0,
+        "naziv": "Vprašalnik",
+        "opis": "Za maturitetno nalogo bi vas prosila da izpolnite moj vprašalnik! HVALA:)",
+        "datum": {
+            "$date": "2020-12-25T00:00:00.000Z"
+        },
+        "idPonudnika": "5fc428c2eaf3150011aae462",
+        "__v": 0
+    }
+]

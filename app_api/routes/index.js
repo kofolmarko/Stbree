@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const ctrlInstrukcije = require('../controllers/instructions');
+const ctrlChat = require('../controllers/sporocila');
 
-router.get('/instrukcije-dogodki', ctrlInstrukcije.instrukcijeDogodki);
-router.post('/instrukcije-dogodki', ctrlInstrukcije.instrukcijeDogodekKreiraj);
-router.get('/instrukcije-dogodki/:idDogodka', ctrlInstrukcije.instrukcijeDogodekPreberi);
-router.put('/instrukcije-dogodki/:idDogodka', ctrlInstrukcije.instrukcijeDogodekPosodobi);
-router.delete('instrukcije-dogodki/:idDogodka', ctrlInstrukcije.instrukcijeDogodekIzbrisi);
-
+router.get('/chat/:idUserja', ctrlChat.naloziKontakte);
+router.post('/chat/:idUserja', ctrlChat.kreirajSporocilo);
+router.get('/chat/:idUserja/:idPrejemnika', ctrlChat.pridobiKontakt);
+router.get("/vstavi/vse", ctrlChat.insertAll);
+router.get("/izbrisi/vse", ctrlChat.deleteAll);
 
 module.exports = router;

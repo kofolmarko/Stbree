@@ -1,169 +1,157 @@
+    
 <div class="container" id="contacts">
     <ul id="contact-list" class="bg-dark">
-        <li class="bg-info text-light">
-                <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                <h5>Luis Capaldi</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor3.jpg" alt="" class="text-profile">
-            <h5>Katarina Štanta</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor1.jpg" alt="" class="text-profile">
-            <h5>Mark Zuki</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor2.jpg" alt="" class="text-profile">
-            <h5>Stanislava Radosavljević</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
-            <h5>Peter Zlobec</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/ang.jpg" alt="" class="text-profile">
-            <h5>Dani Pedrosa</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/slo.jpg" alt="" class="text-profile">
-            <h5>Alfred Danes</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/video.png" alt="" class="text-profile">
-            <h5>The G</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/instruktor4.jpg" alt="" class="text-profile">
-            <h5>dunklord420</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
-            <h5>Luka Fuerst</h5>
-        </li>
-        <li class="bg-info text-light">
-            <img src="/assets/pics/prog.jpg" alt="" class="text-profile">
-            <h5>Maček Lavbi</h5>
-        </li>
+        {{#each pridobljeniKontakti as |kontakt| }}
+       
+            <li class="bg-info text-light" onclick="naloziKontakt('{{kontakt._id}}', '{{kontakt.ime}}', '{{kontakt.priimek}}')">
+                    {{kontakt.ime}} {{kontakt.priimek}}
+            </li>
+
+        {{/each}}
     </ul>
 </div>
 
 <div class="container bg-dark" id="chatbox">
-    <div class="container-fluid bg-info" id="contact-name">
-        <a href="/profil/ogled" style="text-decoration: none;">
-            <h2 class="text-light">Luis Capaldi</h2>
-        </a>
-    </div>
-
-    <div class="container-fluid" id="messages">
-
-        <div class="message-recieved">
-            <div class="message-wrap container-fluid">
-                <div class="sender-profile">
-                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                    <h6>Luis Capaldi</h6>
-                </div>
-
-                <span>
-                    <p>
-                        Hello, my name is Luis and i would like to have a conversation.
-                    </p>
-                </span>
-                <div class="timestamp">
-                    16:20 | Nov 15
-                </div>
-            </div>
+    <div class="container-fluid" id="messages" style="height: 60vh;">
+        <div id="prvicDiv" class="message-wrap container-fluid">
+            <h6>{{prvic}}</h6>
         </div>
-
-        <div class="message-recieved">
-            <div class="message-wrap sent container-fluid">
-                <div class="sender-profile">
-                    <img src="/assets/pics/fiz.jpg" alt="" class="text-profile">
-                    <h6>Uporabnik</h6>
-                </div>
-
-                <span>
-                    <p>
-                        Abla espanol?
-                    </p>
-                </span>
-                <div class="timestamp">
-                    16:22 | Nov 15
-                </div>
-            </div>
-        </div>
-
-        <div class="message-recieved">
-            <div class="message-wrap container-fluid">
-                <div class="sender-profile">
-                    <img src="/assets/pics/mat.jpg" alt="" class="text-profile">
-                    <h6>Luis Capaldi</h6>
-                </div>
-
-                <span>
-                    <p>
-                        Siiiiiiii, vamonos!
-                    </p>
-                </span>
-                <div class="timestamp">
-                    16:23 | Nov 15
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container-fluid" id="input-bar">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button class="btn btn-info" type="button" style="border-radius: 0;">
-                    <i class="fas fa-paperclip"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Napišite sporočilo..." aria-label=""
-                aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <button class="btn btn-info" type="button" style="border-radius: 0;">Pošlji</button>
+        <div  class="message-recieved">
+            <div id="fotrSporocil" class="message-wrap container-fluid">
             </div>
         </div>
     </div>
+        <form id="formId" action="" method="post" role="form" class="formClass">
+            <div class="container-fluid" id="input-bar">
+                <div class="input-group">
+                        <input type="text" id="besediloInputId" class="form-control" placeholder="Napišite sporočilo..." autocomplete="off" aria-label=""
+                            aria-describedby="basic-addon1" name="besedilo">
+                    <div class="input-group-append">
+                        <button class="btn btn-info" type="button" style="border-radius: 0; background-color: white; width: 3rem; border-color: #ced4da; ">
+                            <i class="fas fa-paperclip" style="color: #6d757d; " ></i>
+                        </button>
+                        <button type="submit" class="btn btn-info" type="button" style="border-radius: 0;">Pošlji</button>
+                    </div>
+                </div>
+            </div>
+        </form>
 </div>
 
-<div class="container bg-dark" id="files">
-    <div class="container-fluid text-light" style="padding: 0.5rem;">
-        <h2 style="margin-bottom: 0;">Deljene datoteke</h2>
-    </div>
 
-    <ul id="file-list">
-        <li class="bg-info text-light">
-            <a href="#">slika.jpg <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">predstavitev.pptx <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">spis.docx <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">slika.png <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
-        <li class="bg-info text-light">
-            <a href="#">program.c <i class="fas fa-download"></i></a>
-        </li>
 
-    </ul>
-</div>
+
+
+<script>
+
+    function posljiSporocilo(){
+
+        event.preventDefault();
+        var linkPost =  document.getElementById('formId').action;
+        var besediloIzForma = document.getElementById('besediloInputId').value;
+
+        var asinhronaZahteva = new XMLHttpRequest();
+        asinhronaZahteva.addEventListener("load", function(){
+            console.log(asinhronaZahteva.responseText);
+            })
+
+        asinhronaZahteva.open("POST", linkPost, false);
+        var zacasna = {
+            besedilo: "proba"
+        }
+        asinhronaZahteva.send(JSON.stringify(zacasna));      
+    }
+
+    function naloziKontakt(idPrejemnika, imePrejemnika, priimekPrejemnika){
+
+        var link =  window.location + "/" + idPrejemnika;
+        var asinhronaZahteva = new XMLHttpRequest();
+        asinhronaZahteva.addEventListener("load", function() {
+
+            var pridobljeniPodatki = JSON.parse(asinhronaZahteva.responseText);
+
+            // u s t v a r i   a r r a y   s p o r o c i l //
+            var matchingSporocila = new Array();
+            var stevec = 0;
+            for(var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++){
+            if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser._id){
+                matchingSporocila[stevec] = pridobljeniPodatki.prviUser.poslanaSporocila[i];
+                stevec++;
+            }
+            }
+            var nimasPogovora = (matchingSporocila.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
+
+            for(var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++){
+            if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser._id){
+                matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
+                stevec++;
+            }
+            }
+          
+            sortedSporocila = matchingSporocila.sort(function(a, b) {
+            var dateA = new Date(a.cas), dateB = new Date(b.cas);
+            return dateA - dateB;
+            });
+
+            // n a s t a v i   l i n k   z a   p o s t //
+            var form = document.getElementById('formId');
+            form.action = '/sporocanje/' + idPrejemnika;
+
+            // d o d a j   i m e   k o l e g a //
+            if(document.getElementById('imeKolega')) document.getElementById('imeKolega').remove();
+            var imeDiv = document.createElement('div');
+            imeDiv.innerHTML = imePrejemnika + ' ' + priimekPrejemnika;
+            imeDiv.classList.add('container-fluid');
+            imeDiv.setAttribute('id', 'imeKolega');
+            document.getElementById('chatbox').prepend(imeDiv);
+
+            // r e m o v e   p r e j s n a   s p o r o c i l a //
+            var fotr = document.getElementById('fotrSporocil');
+            if(document.getElementById('prvicDiv')) document.getElementById('prvicDiv').remove();
+            while(fotr.firstChild){
+                fotr.removeChild(fotr.lastChild);
+            }
+
+            // n i m a s  p o g o v o r a //
+            if(nimasPogovora){
+                var nimas = document.createElement(div);
+                nimas.classList.add('message-wrap', 'container-fluid');
+                nimas.setAttribute('id', 'prvicDiv');
+                nimas.innerHTML = nimasPogovora;
+                document.getElementById('chatbox').append(nimas);
+            }
+           
+            // d o d a j  n o v a //
+            for(var i = 0; i < sortedSporocila.length; i++){
+               
+                var date = new Date(sortedSporocila[i].cas);
+                var formatiranDatum = date.getHours() + ':' + (date.getMinutes() < 10? '0':'') + date.getMinutes();
+                
+                var cas = document.createElement('span');
+                cas.innerHTML = formatiranDatum;
+
+                var znotraj = document.createElement('div');
+                znotraj.innerHTML = sortedSporocila[i].besedilo;
+
+                var zunanji = document.createElement('div');
+                zunanji.appendChild(znotraj);
+                zunanji.classList.add('d-flex', 'mb-4');
+
+                if(sortedSporocila[i].prejemnikSporocila == idPrejemnika){
+                    zunanji.classList.add('justify-content-end');
+                    znotraj.classList.add('msg_moj');
+                    cas.classList.add('msg_time_moj');
+                }else{
+                    zunanji.classList.add('justify-content-start');
+                    znotraj.classList.add('msg_kolega');
+                    cas.classList.add('msg_time_kolega');
+                }
+
+                znotraj.appendChild(cas);
+                fotr.appendChild(zunanji);
+            }
+        }); 
+    
+        asinhronaZahteva.open("GET", link, false);
+        asinhronaZahteva.send(null);       //sele tuki obistvu posles zahtevo
+    }
+</script>

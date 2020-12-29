@@ -1,0 +1,71 @@
+<!-- navBar -->
+
+<nav *ngIf="isLoggedIn() else guest" class="navbar navbar-expand-md navbar-dark bg-custom">
+    <a class="navbar-brand mr-auto" routerLink="/my"><img src="../../../../assets/media/icons/stbree_logo_white.png"
+            height="53px" width="94px" alt="stbree_logo"></a>
+
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target=".menu-collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 menu-collapse order-0">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" routerLink="/my">Pregledna plošča</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" routerLink="/sporocanje">Sporočanje</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" routerLink="/instruktorji">Inštrukcije</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" routerLink="/instrukcije-dogodki">Dogodki</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <a class="nav-link text-light" routerLink="/ponudba-del">Delo</a>
+            </li>
+            <li class="nav-item mx-auto">
+                <div class="dropdown show">
+                    <button class="btn nav-link btn mx-auto bg-transparent" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                        </svg>
+                        {{ getUser() }} 
+                    </button>
+                  
+                    <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="profileBtn" style="cursor: pointer;">Profil</a>
+                        <div class="dropdown-divider"></div>
+                        <a (click)="logout()" id="logout-btn" class="dropdown-item text-danger" style="cursor: pointer;"><b>Odjava</b></a>
+                    </div>
+                  </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<ng-template #guest>
+    <nav id="fixing-navbar" class="navbar navbar-expand bg-transparent fixed-top">
+        <a routerLink="/"><img class="mr-auto" src="../../../../assets/media/icons/stbree_logo_white.png" height="53px"
+                width="94px"></a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-light" routerLink="/prijava">Prijava</a>
+            </li>
+            <li class="nav-item nav-item-signup">
+                <a class="nav-link text-light" routerLink="/registracija">Registracija</a>
+            </li>
+        </ul>
+    </nav>
+</ng-template>
+
+
+<!-- <script>
+    $(window).scroll(function () {
+        $('nav').toggleClass('scrolled', $(this).scrollTop() > 50);
+    });
+</script> -->
