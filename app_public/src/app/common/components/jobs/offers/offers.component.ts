@@ -28,9 +28,9 @@ export class OffersComponent implements OnInit {
   public reverse: boolean = false;
 
   isci() {
-    var filter, list, a ,txtValue, search;
+    var filter, list, a, txtValue, search;
 
-    search = document.getElementById("serach");
+    search = document.getElementById("search");
     list = document.getElementsByClassName("card");
 
     filter = search.value.toUpperCase();
@@ -51,13 +51,13 @@ export class OffersComponent implements OnInit {
   private getJobs(): void {
     this.jobsService.getJobs()
     .then(jobs => {
-      this.dela = jobs;
-      this.sporocilo = jobs.length > 0 ? "" : "Ne najde nobenega dela :("
+      this.dela = jobs.reverse();
+      this.sporocilo = jobs.length > 0 ? "" : "Ne najdem nobenega dela :("
     })
     .catch(error => {
       this.sporocilo = "Napaka API-ja pri iskanju del."
       console.error(error);
-    })
+    });
   }
 
   sort() {
