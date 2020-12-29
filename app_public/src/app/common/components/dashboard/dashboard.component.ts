@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
 import { InstructionsEvent } from '../../classes/event';
+import { Job } from '../../classes/job';
 import { User } from '../../classes/user';
 import { AuthenticationService } from '../../services/authentication.service';
 
 import { CovidService } from '../../services/covid.service';
 import { InstructionsService } from '../../services/instructions.service';
+import { JobsService } from '../../services/jobs.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +22,7 @@ export class DashboardComponent implements OnInit {
     private covidService: CovidService,
     private authenticationService: AuthenticationService,
     private instructionsService: InstructionsService,
+    private jobsService: JobsService,
     private router: Router
     //private chart: Chart
   ) { }
@@ -45,7 +48,7 @@ export class DashboardComponent implements OnInit {
 
   public featuredEvents: InstructionsEvent[] = this.getFeatured("events");
 
-  public featuredOffers: any[] = this.getFeatured("offers");
+  public featuredOffers: Job[] = this.getFeatured("offers");
 
   private getCovidInfo(): void {
     this.covidService.getCovidInfo()
@@ -148,7 +151,6 @@ export class DashboardComponent implements OnInit {
           }
         })
         .catch(error => console.log(error));
-        
         break;
       }
       case 'events': {
@@ -164,6 +166,15 @@ export class DashboardComponent implements OnInit {
         break;
       }
       case 'offers': {
+        this.jobsService.getJobs()
+        .then(offers => {
+          for(let i = 1; i < 4; i++) {
+            if(offers[offers.length - 1]) {
+              featured.push(offers[offers.length - i]);
+            }
+          }
+        })
+        .catch(error => console.log(error));
         break;
       }
     }
