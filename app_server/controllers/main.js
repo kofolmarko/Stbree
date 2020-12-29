@@ -23,7 +23,6 @@ const dashboard = async (req, res) => {
     axios
       .get(apiParametri.streznik + '/api/uporabnik/' + uporabnikID)
       .then((uporabnik) => {
-        //console.log(uporabnik);
         loggedInUser = uporabnik.data;
         console.log(loggedInUser);
       })
@@ -35,11 +34,9 @@ const dashboard = async (req, res) => {
       .get(apiParametri.streznik + '/api/instruktorji')
       .then((uporabniki) => {
 
-
         axios
           .get(apiParametri.streznik + '/api/instrukcije-dogodki')
           .then((dogodki) => {
-
 
             axios
               .get(apiParametri.streznik + '/api/ponudba-del')
@@ -60,8 +57,6 @@ const dashboard = async (req, res) => {
                 }
 
                 var loginName = require('./signing').loginName.val;
-                console.log(loginName);
-
                 res.render('dashboard', {
                   f1: { ime: uporabniki.data[uporabniki.data.length - 1].ime, predmeti: uporabniki.data[uporabniki.data.length - 1].email, u1: uporabniki.data[uporabniki.data.length - 1] },
                   f2: { ime: uporabniki.data[uporabniki.data.length - 2].ime, predmeti: uporabniki.data[uporabniki.data.length - 2].email, u2: uporabniki.data[uporabniki.data.length - 2] },
@@ -77,16 +72,14 @@ const dashboard = async (req, res) => {
 
                   dogodki: loggedInUser.dogodki,
                   imePrijavljenega: loginName
-                  //dela: uporabnik.data.dela
                 });
-
               })
               .catch((err) => {
-                console.log("err in dela search");
+                console.log(err);
               });
           })
           .catch((err) => {
-            console.log("err in dogodki search");
+            console.log(err);
           });
       });
   }
@@ -121,47 +114,47 @@ const prikaziNapako = (req, res, napaka) => {
 const chat = (req, res) => {
   var profileID = require('./signing').loginID.val;
   axios
-  .get('http://localhost:3000/api/chat/' +  profileID)
-  .then((odgovor) => {
-    prikaziChatPagePrvic(req, res, odgovor.data);
+    .get('http://localhost:3000/api/chat/' + profileID)
+    .then((odgovor) => {
+      prikaziChatPagePrvic(req, res, odgovor.data);
     })
     .catch((napaka) => {
-    prikaziNapako(req, res, napaka);
-  });
+      prikaziNapako(req, res, napaka);
+    });
 };
 
 const prikaziChatPagePrvic = (req, res, pridobljeniPodatki) => {
-    res.render('chat', {
-      prvic: pridobljeniPodatki.prvic,
-      pridobljeniKontakti: pridobljeniPodatki.pridobljeniKontakti
-    })
+  res.render('chat', {
+    prvic: pridobljeniPodatki.prvic,
+    pridobljeniKontakti: pridobljeniPodatki.pridobljeniKontakti
+  })
 };
 
 /* GET sporocila dolocenega kontakta */
 const pridobiKontakt = (req, res) => {
-  var profileID = require('./signing').loginID.val; 
+  var profileID = require('./signing').loginID.val;
   axios
-      .get("http://localhost:3000/api/chat/" + profileID + "/" + req.params.idPrejemnika)
-      .then((odgovor) => {
-        res.send(odgovor.data)
-      })
-      .catch((napaka) => {
-        prikaziNapako(req, res, napaka);
-      })
+    .get("http://localhost:3000/api/chat/" + profileID + "/" + req.params.idPrejemnika)
+    .then((odgovor) => {
+      res.send(odgovor.data)
+    })
+    .catch((napaka) => {
+      prikaziNapako(req, res, napaka);
+    })
 }
 
 /* POST poslano spococilo */
 const shraniSporocilo = (req, res) => {
-    var profileID = require('./signing').loginID.val; 
-  
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/api/chat/' + profileID,
-      data: {
-        besedilo: req.body.besedilo,
-        prejemnikSporocila: req.params.idPrejemnika,
-      }
-    })
+  var profileID = require('./signing').loginID.val;
+
+  axios({
+    method: 'post',
+    url: 'http://localhost:3000/api/chat/' + profileID,
+    data: {
+      besedilo: req.body.besedilo,
+      prejemnikSporocila: req.params.idPrejemnika,
+    }
+  })
     .then(() => {
       res.redirect('/sporocanje')
     })
@@ -180,16 +173,16 @@ const db = (req, res) => {
 
 const bazaIzbrisi = (req, res) => {
   console.log("Server function.");
-  
+
   axios
-  .get(apiParametri.streznik + '/api/db/delete')
-  .then((baza) => {
-    console.log("Celotna baza pobrisana!");
-  })
-  .catch((napaka) => {
-    console.log("Med brisanjem je prišlo do napake!");
-    console.log(napaka);
-  });
+    .get(apiParametri.streznik + '/api/db/delete')
+    .then((baza) => {
+      console.log("Celotna baza pobrisana!");
+    })
+    .catch((napaka) => {
+      console.log("Med brisanjem je prišlo do napake!");
+      console.log(napaka);
+    });
 };
 
 const bazaNapolni = (req, res) => {

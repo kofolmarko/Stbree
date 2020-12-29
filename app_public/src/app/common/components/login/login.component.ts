@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
     //datumVpisa: null
   }
 
+  public passwordResetEmail = "";
+
   public submitLoginData(): void {
     if (
       !this.loginData.email ||
@@ -56,5 +58,4 @@ export class LoginComponent implements OnInit {
         this.sporocilo = error
       });
   }
-
 }

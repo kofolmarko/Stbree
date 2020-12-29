@@ -1,9 +1,9 @@
 <div class="return container-fluid" style="margin-top: 1rem;">
-  <a routerLink="/ponudba-del" class="btn btn-info">Nazaj na ponudbo del</a>
+  <a routerLink="/ponudba-del" class="btn btn-info" style="margin-right: 10px">Nazaj na ponudbo del</a>
 
-  <button *ngIf="delo&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editJobInfo()"><i
+  <button *ngIf="delo&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editJobInfo()" style="margin-right: 10px"><i
       class="fas fa-edit"></i></button>
-  <button *ngIf="delo&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none" (click)="saveJobInfo()"><i
+  <button *ngIf="delo&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none" (click)="saveJobInfo()" style="margin-right: 10px"><i
       class="fas fa-check"></i></button>
   <button *ngIf="delo&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteJob()"><i
       class="fas fa-trash-alt"></i></button>
@@ -72,7 +72,7 @@
   </div>
 </ng-template>
 
-<div class="card profile">
+<div class="card profile" *ngIf="ponudnik">
   <div class="card-body profile-body" *ngIf="delo">
     <h5>Ponudnik</h5>
     <a routerLink="/profil/ogled">

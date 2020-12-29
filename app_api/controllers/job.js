@@ -10,7 +10,7 @@ const User = mongoose.model('User');
 const deloKreiraj = (req, res) => {
   console.log("delo se kreira");
   console.log(req.body);
-  res.status(200).json({ "status": "uspešno" });
+  //res.status(200).json({ "status": "uspešno" });
   Delo.create({
     naziv: req.body.naziv,
     opis: req.body.opis,
@@ -20,6 +20,7 @@ const deloKreiraj = (req, res) => {
   }, (napaka, delo) => {
     console.log(napaka);
     console.log(delo);
+    res.status(201).json(delo);
     /*
     if (napaka) {
       res.status(400).json(napaka);
@@ -28,6 +29,7 @@ const deloKreiraj = (req, res) => {
     }
     */
   });
+  
 };
 
 /* GET job list */
@@ -186,7 +188,6 @@ const prijavaNaDelo = (req, res) => {
               $addToSet: { dela: delo }
             })
           .exec((napaka, uporabnik) => {
-
           });
       } else {
         return res.status(404).json({ "sporočilo": "Ne najdem dela."});
@@ -195,9 +196,10 @@ const prijavaNaDelo = (req, res) => {
   Delo
     .findByIdAndUpdate(idDela, 
       {
-        $inc: { zasedeno: true }
+        zasedeno: true
       })
     .exec((napaka, delo) => {
+      console.log(delo);
       if (delo) {
         return res.status(200).json({ "sporočilo": "Uspešno ste prijavljeni na delo :)"});
       } else {

@@ -145,7 +145,7 @@ const uporabnikZacetnoShema = new mongoose.Schema({
   dogodki: [instrukcijeDogodekShema],
   dela: [deloShema],
   poslanaSporocila: [sporocilaShema],
-  kontakti: [{ type: String }]
+  kontakti: [{ type: String }],
 });
 
 uporabnikZacetnoShema.methods.nastaviGeslo = function (geslo) {

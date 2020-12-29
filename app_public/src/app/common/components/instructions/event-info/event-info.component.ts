@@ -140,11 +140,13 @@ export class EventInfoComponent implements OnInit {
       let currentUserEmail = this.authenticationService.getCurrentUser().email
       await this.authenticationService.getUser(currentUserEmail)
         .then(user => {
-          user.dogodki.forEach(dogodek => {
-            if (this.dogodek._id == dogodek._id) {
-              this.signedStatus = true;
-            }
-          });
+          if (user) {
+            user.dogodki.forEach(dogodek => {
+              if (this.dogodek._id == dogodek._id) {
+                this.signedStatus = true;
+              }
+            });
+          }
         })
         .catch(error => console.log(error));
     }

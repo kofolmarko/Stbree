@@ -48,13 +48,12 @@ export class OfferNewComponent implements OnInit {
       this.jobsService.postNewJob(this.novoDelo)
       .then(job => {
         this.novoDelo = job;
-        this.sporocilo = job ? "Delo uspešno objavljeno!" : "Napaka pri objavi dela :("
-        console.log(this.novoDelo._id)
+        this.sporocilo = job ? "Delo uspešno objavljeno!" : "Napaka pri objavi dela :(";
         this.router.navigateByUrl('/ponudba-del/delo/' + this.novoDelo._id);
         alert("Dogodek uspešno objavljen!");
       })
       .catch(error => {
-        this.sporocilo = "Napaka API-ja pri objavi dela."
+        this.sporocilo = "Napaka API-ja pri objavi dela.";
       });
     }
   }
