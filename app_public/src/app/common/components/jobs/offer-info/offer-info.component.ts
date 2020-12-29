@@ -137,14 +137,15 @@ export class OfferInfoComponent implements OnInit {
       let currentUserEmail = this.authenticationService.getCurrentUser().email
       await this.authenticationService.getUser(currentUserEmail)
         .then(user => {
-          user.dela.forEach(delo => {
-            if (this.delo._id = delo._id) {
-              this.signedStatus = true;
-            }
-          });
+          if(user) {
+            user.dela.forEach(delo => {
+              if (this.delo._id = delo._id) {
+                this.signedStatus = true;
+              }
+            });
+          }
         })
         .catch(error => console.log(error));
     }
   }
-
 }

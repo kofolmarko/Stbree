@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
     this.authenticationService
       .register(this.newUserData)
       .then(() => {
-        this.router.navigateByUrl("/prijava")
+        this.router.navigateByUrl("/my")
       })
       .catch(error => {
         this.sporocilo = error
