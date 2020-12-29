@@ -1,1 +1,49 @@
-<p>komentarji-seznam works!</p>
+<div class="komentarji-seznam m-3">
+    <button (click)="obrazecPrikazan=true" class="btn btn-primary btn-sm float-right">Dodaj komentar</button>
+    <h4>Komentarji Uporabnikov</h4>
+    <hr>
+    <div class="komentarji-nov m-3"> 
+        <div *ngIf="obrazecPrikazan">
+          <form id="dodajKomentar" action="" method="post" role="form">
+            <div class="form-group row">
+              <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="naziv">Naziv</label>
+              <div class="col-12 col-sm-10">
+                <input [(ngModel)]="novKomentar.naziv" id="naziv" class="form-control form-control-sm" name="naziv" required="required">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="ocena">Ocena</label>
+              <div class="col-12 col-sm-2">
+                <select [(ngModel)]="novKomentar.ocena" id="ocena" name="ocena" class="form-control form-control-sm">
+                  <option [ngValue]="5">5</option>
+                  <option [ngValue]="4">4</option>
+                  <option [ngValue]="3">3</option>
+                  <option [ngValue]="2">2</option>
+                  <option [ngValue]="1">1</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label col-form-label-sm" for="komentar">Komentar</label>
+              <div class="col-sm-10">
+                <textarea [(ngModel)]="novKomentar.komentar" id="komentar" class="form-control form-control-sm" name="komentar" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-12">
+                <button (click)="obrazecPrikazan=false" class="btn btn-primary btn-sm float-right ml-3">Prekliči</button>
+                <button class="btn btn-primary btn-sm float-right">Dodaj moj komentar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    <div class="row komentar" *ngFor="let komentar of komentarji">
+        <div class="col-12 rounded">
+        <small class="komentar-datum float-right">{{komentar.datum}}</small>
+        <h5 class="komentar-avtor">{{komentar.avtor}}</h5>
+        <div class="komentar-ocena">{{komentar.ocena}}/5</div>
+        <div class="komentar-besedilo">{{komentar.besediloKomentarja}}</div>
+        </div>
+    </div> 
+</div>

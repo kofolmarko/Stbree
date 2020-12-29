@@ -26,7 +26,6 @@ import { GetStartedComponent } from './common/components/get-started/get-started
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { KomentarjiSeznamComponent } from './common/components/komentarji/komentarji-seznam/komentarji-seznam.component';
-import { KomentarjiNovKomentarComponent } from './common/components/komentarji/komentarji-nov-komentar/komentarji-nov-komentar.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,6 @@ import { KomentarjiNovKomentarComponent } from './common/components/komentarji/k
     ProfileComponent,
     GetStartedComponent,
     KomentarjiSeznamComponent,
-    KomentarjiNovKomentarComponent
   ],
   imports: [
     BrowserModule,
