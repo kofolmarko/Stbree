@@ -1,219 +1,210 @@
-<!-- <body> -->
-<!-- {{#if sporocilo}}
-    <div class="alert alert-warning">{{sporocilo}}</div>
-    {{else}} -->
-    <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
-    <div *ngIf="uporabnik" class="container">
+<div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
 
-      <h1 id="profile-naslov">{{uporabnik.ime}} {{uporabnik.priimek}}</h1>
-    
-      <!-- {{!-- BUTTONS TO EDIT --}} -->
-      <!--*ngIf="uporabnik&&isAdmin"-->
-      <button class="btn btn-danger d-inline" id="delete-btn" (click)="deleteUser()"><i
-          class="fas fa-trash-alt"></i></button>
-      <button id="save-btn" value="save" class="btn btn-success d-none" (click)="saveUserInfo()"><i
-          class="fas fa-check"></i></button>
-      <button class="btn btn-warning d-ilblock" id="edit-btn" (click)="editUserInfo()"><i class="fas fa-edit"></i></button>
-      <hr>
-    
-      <!-- {{!-- DESCRIPTION AND PROFILE PIC --}} -->
-      <div *ngIf="!editState else editMode">
-        <div class="row">
-          <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
-            <form>
-              <div class="form-group">
-                <label for="opisProfila">Opis:</label>
-                <p class="card-text" id="opis">{{uporabnik.opis}}</p>
-              </div>
-            </form>
+<div *ngIf="uporabnik" class="container">
+
+  <h1 id="profile-naslov">{{uporabnik.ime}} {{uporabnik.priimek}}</h1>
+
+  <!-- {{!-- BUTTONS TO EDIT --}} -->
+  <button *ngIf="uporabnik&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteUser()"><i
+      class="fas fa-trash-alt"></i></button>
+  <button *ngIf="uporabnik&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none"
+    (click)="saveUserInfo()"><i class="fas fa-check"></i></button>
+  <button *ngIf="uporabnik&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editUserInfo()"><i
+      class="fas fa-edit"></i></button>
+  <hr>
+
+  <!-- {{!-- DESCRIPTION AND PROFILE PIC --}} -->
+  <div *ngIf="!editState else editMode">
+    <div class="row">
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
+        <form>
+          <div class="form-group">
+            <label for="opisProfila">Opis:</label>
+            <p class="card-text" id="opis">{{uporabnik.opis}}</p>
           </div>
-          <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
-            <img src="/assets/media/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
-              style="width: 200px; height:200px">
-          </div>
-        </div>
-    
-        <!-- {{!-- MAIN DATA ABOUT USER --}} -->
-        <div class="row">
-          <div class="table-responsive">
-            <hr>
-            <table class="table table-borderless" id="tabela-podatkov">
-              <tbody>
-                <h4 id="profile-podnaslov">Podatki:</h4>
-                <tr>
-                  <th class="thPodatki" scope="row">Email naslov:</th>
-                  <td id="email">{{uporabnik.email}}</td>
-                </tr>
-                <tr>
-                  <th class="thPodatki" scope="row">Telefonska številka:</th>
-                  <td id="phone">{{uporabnik.telefonskaStevilka}}</td>
-                </tr>
-                <!-- <tr>
+        </form>
+      </div>
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
+        <img src="/assets/media/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
+          style="width: 200px; height:200px">
+      </div>
+    </div>
+
+    <!-- {{!-- MAIN DATA ABOUT USER --}} -->
+    <div class="row">
+      <div class="table-responsive">
+        <hr>
+        <table class="table table-borderless" id="tabela-podatkov">
+          <tbody>
+            <h4 id="profile-podnaslov">Podatki:</h4>
+            <tr>
+              <th class="thPodatki" scope="row">Email naslov:</th>
+              <td id="email">{{uporabnik.email}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Telefonska številka:</th>
+              <td id="phone">{{uporabnik.telefonskaStevilka}}</td>
+            </tr>
+            <!-- <tr>
                   <th class="thPodatki" scope="row">Ocena uporabnika:</th>
                   <td>
                     {{uporabnik.ocena}}
                   </td>
                 </tr> -->
-                <tr>
-                  <th class="thPodatki" scope="row">Status inštruktorja:</th>
-                  <!-- {{#if profileDetails.statusInstruktorja}}
-                  <td id="status">Da</td>
-                  {{else}}
-                  <td id="status">Ne</td>
-                  {{/if}} -->
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <tr>
+              <th class="thPodatki" scope="row">Status inštruktorja:</th>
+              <td *ngIf="uporabnik.statusInstruktorja" id="status">Da</td>
+              <td *ngIf="!uporabnik.statusInstruktorja" id="status">Ne</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!--  MAIN DATA ABOUT USER EDIT  -->
+  <ng-template #editMode>
+    <div class="row">
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
+        <div class="form-group">
+          <label for="opisProfila">Opis:</label>
+          <input [(ngModel)]="uporabnik.opis" class="card-text form-control form-control-md" id="opis" name="opis"
+            type="text">
         </div>
       </div>
-    
-      <!--  MAIN DATA ABOUT USER EDIT  -->
-      <ng-template #editMode>
-        <div class="row">
-          <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center flex-column">
-            <div class="form-group">
-              <label for="opisProfila">Opis:</label>
-              <input [(ngModel)]="uporabnik.opis" class="card-text form-control form-control-md" id="opis" name="opis"
-                type="text">
-            </div>
-          </div>
-          <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
-            <img src="/assets/media/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
-              style="width: 200px; height:200px">
-          </div>
-        </div>
-    
-        <div class="row">
-          <div class="table-responsive">
-            <hr>
-            <table class="table table-borderless" id="tabela-podatkov">
-              <tbody>
-                <h4 id="profile-podnaslov">Podatki:</h4>
-                <tr>
-                  <th class="thPodatki" scope="row">Email naslov:</th>
-                  <td id="email">{{uporabnik.email}}</td>
-                </tr>
-                <tr>
-                  <th class="thPodatki" scope="row">Telefonska številka:</th>
-                  <input input [(ngModel)]="uporabnik.telefonskaStevilka" id="phone" class="form-control form-control-md"
-                    name="telefonskaStevilka" type="number">
-                </tr>
-                <tr>
-                  <th class="thPodatki" scope="row">Status inštruktorja:</th>
-                  <!-- {{#if profileDetails.statusInstruktorja}}
-                  <td id="status">Da</td>
-                  {{else}}
-                  <td id="status">Ne</td>
-                  {{/if}} -->
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </ng-template>
-    
-      <!-- {{!-- ADDITIONAL OPTIONS --}} -->
-    
-      <!-- {{!-- ADDITIONAL OPTIONS ADMIN --}} -->
-      <!--*ngIf="uporabnik&&isAdmin"-->
-      <div *ngIf="uporabnik&&isAdmin">
-        <div class="tab pb-5">
-          <button class="tablinks" onclick="openCity(event, 'kronologija')">Seznam objav</button>
-          <button class="tablinks" onclick="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
-        </div>
-    
-        <!-- {{!-- LIST OF POSTS --}} -->
-        <div id="kronologija" class="tabcontent">
-          <div class="col d-flex justify-content-center">
-            <table class="table">
-              <thead>
-                <tr class="trTabelaKrono">
-                </tr>
-              </thead>
-    
-              <tbody *ngFor="let nazivi as uporabnik.dogodki">
-                <tr>
-                  <th scope="row"></th>
-                  <td>{{nazivi.naziv}}</td>
-                </tr>
-              </tbody>
-    
-            </table>
-          </div>
-        </div>
-    
-        <!-- {{!-- CHANGE PASSWORD --}} -->
-    
-        <div id="spremeni-geslo" class="tabcontent">
-          <div class="col d-flex justify-content-center">
-            <form>
-              <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
-              <div class="form-group">
-                <label for="name">Novo geslo:</label>
-                <input type="password" id="passwordReset"><br>
-                <label for="surname">Potrdi novo geslo: </label>
-                <input type="password" id="passwordResetConfirm">
+      <div class="col-12 col-xl-6 col-lg-6 col-md-6 d-flex justify-content-center">
+        <img src="/assets/media/pics/profile_picture.png" alt="ProfilnaSlika" class="img-responsive"
+          style="width: 200px; height:200px">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="table-responsive">
+        <hr>
+        <table class="table table-borderless" id="tabela-podatkov">
+          <tbody>
+            <h4 id="profile-podnaslov">Podatki:</h4>
+            <tr>
+              <th class="thPodatki" scope="row">Email naslov:</th>
+              <td id="email">{{uporabnik.email}}</td>
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Telefonska številka:</th>
+              <input [(ngModel)]="uporabnik.telefonskaStevilka" id="phone" class="form-control form-control-md"
+                name="telefonskaStevilka" type="number">
+            </tr>
+            <tr>
+              <th class="thPodatki" scope="row">Status inštruktorja:</th>
+              <div class="radio">
+                <label><input type="radio" [(ngModel)]="uporabnik.statusInstruktorja" [value]="true" name="status"
+                    checked>Da</label> <br>
+                <label><input type="radio" [(ngModel)]="!uporabnik.statusInstruktorja" [value]="false"
+                    name="status">Ne</label>
               </div>
-              <button id="resetPassword" class="btn btn-success">Potrdi</button>
-              <br><br>
-            </form>
-          </div>
-        </div>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    
-      <!-- {{!-- ADDITIONAL OPTIONS NOT ADMIN --}} -->
-      <div *ngIf="uporabnik&&!isAdmin">
-        <div class="tab pb-5">
-          <button class="tablinks" onclick="openCity(event, 'moja-dela')">Seznam objav</button>
-          <button class="tablinks" onclick="openCity(event, 'oceni-me')">Oceni me!</button>
-        </div>
-    
-        <!-- {{!-- LIST OF POSTS --}} -->
-        <div id="moja-dela" class="tabcontent">
-          <div class="col d-flex justify-content-center">
-            <table class="table">
-              <thead>
-                <tr class="trTabelaKrono">
-                </tr>
-              </thead>
-    
-              <tbody *ngFor="let nazivi of uporabnik.dogodki">
-                <tr>
-                  <th scope="row">1</th>
-                  <td>{{naziv.naziv}}</td>
-                </tr>
-              </tbody>
-    
-            </table>
+    </div>
+  </ng-template>
+
+  <!-- {{!-- ADDITIONAL OPTIONS ADMIN --}} -->
+  <div *ngIf="uporabnik&&isAdmin">
+    <div class="tab pb-5">
+      <button *ngIf="uporabnik.statusInstruktorja" class="tablinks" (click)="openCity(event, 'kronologija')">Seznam objav</button>
+      <button class="tablinks" (click)="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
+    </div>
+
+    <!-- {{!-- LIST OF POSTS --}} -->
+    <div id="kronologija" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <table class="table">
+
+          <div *ngIf="uporabnik.dogodki else niObveznosti">
+            <tr *ngFor="let dogodek of uporabnik.dogodki">
+              <th scope="row">{{ dogodek.datum }}</th>
+              <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
+              <th scope="row"><a routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{ dogodek.naziv}}</a></th>
+            </tr>
           </div>
-        </div>
-    
-        <!-- {{!-- GRADE ME --}} -->
-        <div id="oceni-me" class="tabcontent">
-          <div class="row">
-            <div class="col d-flex justify-content-center">
-              <table>
-                <tr>
-                  <th class="thPodatki" scope="row">Dodaj oceno:</th>
-                  <td>
-                    <select id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
-                      <option>5</option>
-                      <option>4</option>
-                      <option>3</option>
-                      <option>2</option>
-                      <option>1</option>
-                    </select>
-                  </td>
-                  <td>
-                    <form>
-                      <button id="add-button" class="btn btn-success" style="margin-left: 20px;">Potrdi</button>
-                    </form>
-                  </td>
-                </tr>
-              </table>
-            </div>
+
+          <ng-template #niObveznosti>
+            <th scope="row" colspan="3">Nimate še obveznosti. Prijavite se na dogodek ali delo.</th>
+          </ng-template>
+
+        </table>
+      </div>
+    </div>
+
+    <!-- {{!-- CHANGE PASSWORD --}} -->
+    <div id="spremeni-geslo" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        <form>
+          <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
+          <div class="form-group">
+            <label for="name">Novo geslo:</label>
+            <input type="password" id="passwordReset"><br>
+            <label for="surname">Potrdi novo geslo: </label>
+            <input type="password" id="passwordResetConfirm">
           </div>
+          <button id="resetPassword" class="btn btn-success" (click)="changePass()">Potrdi</button>
+          <br><br>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- {{!-- ADDITIONAL OPTIONS NOT ADMIN --}} -->
+  <div *ngIf="uporabnik&&!isAdmin">
+    <div class="tab pb-5">
+      <button *ngIf="uporabnik.statusInstruktorja" class="tablinks" (click)="openCity(event, 'moja-dela')">Seznam objav</button>
+      <!-- <button class="tablinks" (click)="openCity(event, 'oceni-me')">Oceni me!</button> -->
+    </div>
+
+    <!-- {{!-- LIST OF POSTS --}} -->
+    <div id="moja-dela" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+
+        <div *ngIf="uporabnik.dogodki else niObveznosti">
+          <tr *ngFor="let dogodek of uporabnik.dogodki">
+            <th scope="row">{{ dogodek.datum }}</th>
+            <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
+            <th scope="row"><a routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{ dogodek.naziv}}</a></th>
+          </tr>
+        </div>
+
+        <ng-template #niObveznosti>
+          <th scope="row" colspan="3">Nimajo še obveznosti.</th>
+        </ng-template>
+
+      </div>
+    </div>
+
+    <!-- {{!-- GRADE ME --}} -->
+    <div id="oceni-me" class="tabcontent">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <table>
+            <tr>
+              <th class="thPodatki" scope="row">Dodaj oceno:</th>
+              <td>
+                <select [(ngModel)]="uporabnik.ocen" id="ocena" name="ocena" class="form-control" style="margin-bottom: 0; margin-left: 10px;">
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </td>
+              <td>
+                <form>
+                  <button id="add-button" class="btn btn-success" style="margin-left: 20px;" (click)="grade()">Potrdi</button>
+                </form>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
+  </div>
+</div>

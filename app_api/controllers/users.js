@@ -10,7 +10,6 @@ const Uporabnik = mongoose.model('User');
 const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 const Delo = mongoose.model('Delo');
 
-
 //GET registered users list
 const uporabniki = (req, res) => {
   Uporabnik
@@ -298,18 +297,41 @@ const posodobiUporabnik = (req, res) => {
     });
 };
 
+// const posodobiGeslo = (req, res) => {
+//   console.log("Inside controllers on the API!");
+//   Uporabnik
+//     .findByIdAndUpdate(req.params.idUporabnika,
+//       {
+//         geslo: req.body.geslo
+//       })
+//     .exec((napaka, uporabnik) => {
+//       if (!uporabnik) {
+//         return res.status(404).json({
+//           "sporočilo":
+//             "Dogodek ne obstaja."
+//         });
+//       } else if (napaka) {
+//         console.log(napaka.data);
+//         return res.status(500).json(napaka);
+//       }
+//       console.log(uporabnik.data);
+//       res.status(200).json(uporabnik);
+//     });
+// };
+
 const posodobiGeslo = (req, res) => {
   console.log("Inside controllers on the API!");
   Uporabnik
-    .findByIdAndUpdate(req.params.idUporabnika,
+    .findOneAndUpdate({email: req.params.emailUporabnika},
       {
         geslo: req.body.geslo
+        //this.nastaviGeslo(req.body.geslo);
       })
     .exec((napaka, uporabnik) => {
       if (!uporabnik) {
         return res.status(404).json({
           "sporočilo":
-            "Dogodek ne obstaja."
+            "Ne"
         });
       } else if (napaka) {
         console.log(napaka.data);
@@ -319,6 +341,26 @@ const posodobiGeslo = (req, res) => {
       res.status(200).json(uporabnik);
     });
 };
+
+// const posodobiGeslo = (req, res) => {
+//   console.log("Inside controllers on the API!");
+//   Uporabnik
+//     .findOne({email: req.params.emailUporabnika})
+//     .exec((napaka, uporabnik) => {
+//       if (!uporabnik || !uporabnik.preveriGeslo()) {
+//         return res.status(404).json({
+//           "sporočilo":
+//             "Ne"
+//         });
+//       } else if (napaka) {
+//         console.log(napaka.data);
+//         return res.status(500).json(napaka);
+//       }
+//       console.log(uporabnik.data);
+//       uporabnik.nastaviGeslo(req.body.geslo);
+//       res.status(200).json(uporabnik);
+//     });
+// };
 
 /*PUT update user grade*/
 const posodobiOcena = (req, res) => {
