@@ -43,10 +43,10 @@ router.delete('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInst
 router.post('/instrukcije-dogodki/dogodek/:idDogodka/prijava', avtentikacija, ctrlInstrukcije.prijavaNaDogodek);
 
 /* Komentarji */
-router.post('/instrukcije-dogodki/dogodek/:idDogodka/komentarji', ctrlKomentarji.komentarjiKreiraj);
+router.post('/instrukcije-dogodki/dogodek/:idDogodka/komentarji', avtentikacija, ctrlKomentarji.komentarjiKreiraj);
 router.get('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', ctrlKomentarji.komentarjiPreberiIzbranega);
-router.put('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', ctrlKomentarji.komentarjiPosodobiIzbranega);
-router.delete('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', ctrlKomentarji.komentarjiIzbrisiIzbranega);
+router.put('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiPosodobiIzbranega);
+router.delete('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiIzbrisiIzbranega);
 
 
 //ROUTER export

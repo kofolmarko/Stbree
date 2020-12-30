@@ -9,6 +9,7 @@ import { User } from '../../../classes/user';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { CommentsService } from 'src/app/common/services/comments.service';
+import { Komentar } from '../../../classes/comment'
 
 
 @Component({
@@ -23,8 +24,7 @@ export class KomentarjiSeznamComponent implements OnInit {
     avtor: '',
     ocena: null,
     datum: '',
-    besediloKomentarja: '',
-    emailUporabnika: ''
+    besediloKomentarja: ''
   };
   
   constructor(
@@ -43,11 +43,70 @@ export class KomentarjiSeznamComponent implements OnInit {
 
   public sporocilo: string = "";
 
-  private dogodek;
+  public dogodek;
 
   public gostitelj: User;
 
   public isAdmin: boolean = false;
+
+  public editState = false;
+
+  postNewComment(): void {
+    this.newComment.avtor = this.authenticationService.getCurrentUser().email;
+
+    if(!this.newComment.avtor || 
+      !this.newComment.ocena || 
+      !this.newComment.besediloKomentarja) {
+      this.sporocilo = "Prosimo izpolnite vsa polja!"
+    } else {
+      console.log("Pošiljam podatke v service...");
+      this.commentsService.postNewComment(this.dogodek, this.newComment)
+      .then(comment => {
+        console.log("Uspešno prejeti podatki iz servica!");
+        this.newComment = comment;
+        this.sporocilo = comment ? "Komentar uspešno objavljen :)" : "Napaka pri objavi komentarja :("
+        location.reload();
+        //this.router.navigateByUrl('/instrukcije-dogodki/dogodek/${event._id}');
+        alert("Komentar uspešno objavljen!");
+      })
+      .catch(error => {
+        this.sporocilo = "Napaka API-ja pri objavi dogodka."
+        //console.error(error);
+      });
+    } 
+  }
+
+  editEventInfo(): void {
+    this.editCSS(true);
+    this.editState = true;
+  }
+
+  saveEventInfo(): void {
+    this.editCSS(false);
+    this.editState = false;
+    this.instructionsService.editEventInfo(this.dogodek)
+      .then(event => {
+        event ? this.dogodek = event : this.sporocilo = "Napaka pri posdabljanju dogodka."
+      })
+      .catch(error => {
+        this.sporocilo = "Napaka API-ja pri posodabljanju dogodka."
+        //console.error(error);
+      });
+  }
+
+  private editCSS(isEdit): void {
+    if (isEdit) {
+      document.querySelector("edit-btn").classList.remove("d-ilblock");
+      document.querySelector("edit-btn").classList.add("d-none");
+      document.querySelector("save-btn").classList.remove("d-none");
+      document.querySelector("save-btn").classList.add("d-ilblock");
+    } else {
+      document.querySelector("edit-btn").classList.remove("d-none");
+      document.querySelector("edit-btn").classList.add("d-ilblock");
+      document.querySelector("save-btn").classList.remove("d-ilblock");
+      document.querySelector("save-btn").classList.add("d-none");
+    }
+  }
 
   private async getEventInfo(): Promise<void> {
     this.route.paramMap
@@ -59,6 +118,7 @@ export class KomentarjiSeznamComponent implements OnInit {
       )
       .subscribe(async (event: InstructionsEvent) => {
         this.dogodek = event;
+        console.log(this.dogodek);
         if (this.authenticationService.isLoggedIn()) {
           if (this.dogodek.emailInstruktorja === this.authenticationService.getCurrentUser().email) {
             this.isAdmin = true;
@@ -82,58 +142,5 @@ export class KomentarjiSeznamComponent implements OnInit {
       });
   }
 
-  postNewComment(): void {
-    this.newComment.emailUporabnika = this.authenticationService.getCurrentUser().email;
-
-    if(!this.newComment.avtor || 
-      !this.newComment.ocena || 
-      !this.newComment.besediloKomentarja) {
-      this.sporocilo = "Prosimo izpolnite vsa polja!"
-    } else {
-      this.commentsService.postNewComment(this.dogodek,this.newComment)
-      .then(comment => {
-        this.newComment = comment;
-        this.sporocilo = comment ? "Komentar uspešno objavljen :)" : "Napaka pri objavi komentarja :("
-        this.router.navigateByUrl('/instrukcije-dogodki/dogodek/${event._id}' + this.newComment._id);
-        alert("Komentar uspešno objavljen!");
-      })
-      .catch(error => {
-        this.sporocilo = "Napaka API-ja pri objavi dogodka."
-        //console.error(error);
-      });
-    } 
-  }
-
-  /* Testni podatki */
-  
-  komentarji: Komentar[] = [{
-    _id: "5fea45311d48a83b6b8dd016",
-    avtor: "Anton Karlič",
-    ocena: 4,
-    besediloKomentarja: "Zelo jasna razlaga, bravo.",
-    datum: "27.12.2020"
-  },
-  {
-    _id: "bf39bux29n1e10mia2ms1dn3",
-    avtor: "Anja Simonič",
-    ocena: 2,
-    besediloKomentarja: "Sploh mi ni bilo jasno, saj je veliko snovi obravnaval v kratkem času.",
-    datum: "23.12.2020"
-  },
-  {
-    _id: "nqbi9dqhd1nc10djw10smx2v",
-    avtor: "Jurij Petje",
-    ocena: 3,
-    besediloKomentarja: "Zanimivo in originalno, a ponekod pomanjkljivo.",
-    datum: "30.12.2020"
-  }]
-
 }
 
-export class Komentar {
-  _id: string;
-  avtor: string;
-  ocena: number;
-  besediloKomentarja: string;
-  datum: string;
-}

@@ -11,27 +11,45 @@ const dodajKomentar = (req, res, dogodek) => {
     if (!dogodek) {
       res.status(404).json({"sporočilo": "Ne najdem dogodka."});
     } else {
-      dogodek.komentarji.push({
+      Komentar.create({
         avtor: req.body.avtor,
         ocena: req.body.ocena,
         besediloKomentarja: req.body.besediloKomentarja
-      });
-      dogodek.save((napaka, dogodek) => {
+      }, (napaka, komentar) => {
+        console.log(napaka);
+        console.log(komentar);
+        
         if (napaka) {
-          res.status(400).json(napaka);
-        } else {
-          const dodaniKomentar = dogodek.komentarji.slice(-1).pop();
-          res.status(201).json(dodaniKomentar);
+          res.status(400).json({"sporočilo": "Napaka API-ja pri kreaciji komentarja."});
+        } else if(komentar) {
+          InstrukcijeDogodek
+          .findByIdAndUpdate(dogodek._id,{
+            $addToSet: { komentarji: komentar }
+          })
+          .exec((napaka, instrukcijeDogodek) => {
+            if (!instrukcijeDogodek) {
+              return res.status(404).json({
+                "sporočilo":
+                  "Dogodek ne obstaja."
+              });
+            } else if (napaka) {
+              return res.status(500).json(napaka);
+            }
+          });
+          res.status(201).json(komentar);
+        }
+        else {
+          res.status(404).json({"sporočilo": "Komentar ne obstaja."});
         }
       });
     }
-  };  
+};  
 
 const komentarjiKreiraj = (req, res) => {
     const id = req.params.idDogodka;
-    if (idDogodka) {
+    if (id) {
       InstrukcijeDogodek
-        .findById(idDogodka)
+        .findById(id)
         .select('komentarji')
         .exec((napaka, dogodek) => {
           if (napaka) {

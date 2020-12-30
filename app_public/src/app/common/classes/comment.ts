@@ -4,5 +4,4 @@ export class Komentar {
     ocena: any;
     besediloKomentarja: string;
     datum: string;
-    emailUporabnika: string;
   }

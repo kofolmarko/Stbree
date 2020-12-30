@@ -5,12 +5,12 @@
     <div class="komentarji-nov m-3"> 
         <div *ngIf="obrazecPrikazan">
           <form (ngSubmit)="postNewComment()">
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="naziv">Naziv</label>
               <div class="col-12 col-sm-10">
                 <input [(ngModel)]="newComment.avtor" id="avtor" class="form-control form-control-sm" name="avtor" required="required">
               </div>
-            </div>
+            </div> -->
             <div class="form-group row">
               <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="ocena">Ocena</label>
               <div class="col-12 col-sm-2">
@@ -32,18 +32,28 @@
             <div class="form-group row">
               <div class="col-12">
                 <button (click)="obrazecPrikazan=false" class="btn btn-primary btn-sm float-right ml-3">Prekliči</button>
-                <button class="btn btn-primary btn-sm float-right" (click)="postNewEvent()">Dodaj moj komentar</button>
+                <button class="btn btn-primary btn-sm float-right">Dodaj moj komentar</button>
               </div>
             </div>
           </form>
         </div>
       </div>
-    <div class="row komentar" *ngFor="let komentar of komentarji">
-        <div class="col-12 rounded">
-        <small class="komentar-datum float-right">{{komentar.datum}}</small>
-        <h5 class="komentar-avtor">{{komentar.avtor}}</h5>
-        <div class="komentar-ocena">{{komentar.ocena}}/5</div>
-        <div class="komentar-besedilo">{{komentar.besediloKomentarja}}</div>
-        </div>
-    </div> 
+      <div *ngIf="dogodek">
+        <div class="row komentar" *ngFor="let komentar of dogodek.komentarji">
+          <div class="col-12 rounded">
+          
+          <small class="komentar-datum float-right">{{komentar.datum}}</small>
+          <button *ngIf="dogodek&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editEventInfo()"
+    style="margin-right: 10px"><i class="fas fa-edit"></i></button>
+  <button *ngIf="dogodek&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none" (click)="saveEventInfo()"
+    style="margin-right: 10px"><i class="fas fa-check"></i></button>
+  <button *ngIf="dogodek&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteEvent()"
+    style="margin-right: 10px"><i class="fas fa-trash-alt"></i></button>
+          <h5 class="komentar-avtor">{{komentar.avtor}}</h5>
+          <div class="komentar-ocena">{{komentar.ocena}}/5</div>
+          <div class="komentar-besedilo">{{komentar.besediloKomentarja}}</div>
+          </div>
+      </div> 
+      </div>
+    
 </div>

@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { InstructionsEvent } from '../classes/event';
 import { BROWSER_CACHE } from '../classes/cache';
 import { AuthenticationService } from './authentication.service';
-import { Komentar } from '../components/komentarji/komentarji-seznam/komentarji-seznam.component';
+import { Komentar } from '../../common/classes/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,10 @@ export class  CommentsService {
 
   /* Nov komentar */
   public postNewComment(event: InstructionsEvent, comment: Komentar): Promise<any> {
-    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${event._id}`;
+    console.log("Podatki so prišli v service, in sicer so naslednji:");
+    console.log(event);
+    console.log(comment);
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${event._id}/komentarji`;
     const httpProperties = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
@@ -31,7 +34,7 @@ export class  CommentsService {
     return this.http
       .post(url, comment, httpProperties)
       .toPromise()
-      .then(response => response as any)
+      .then(response => {console.log("Uspešno smo se vrnili iz API-ja"); return response as any;})
       .catch(this.handleError);
   }
 
