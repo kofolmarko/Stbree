@@ -10,7 +10,7 @@
 <div class="container" id="filter-bar">
 
   <div class="filter-item">
-    <label for="razvrsti">Razvrsti po:</label>
+    <label for="razvrsti"><h5>Razvrsti po:</h5></label>
     <select name="razvrsti" id="razvrsti" class="form-control">
       <option value="">Izberi filter...</option>
       <option value="datum">Datumu</option>
@@ -24,13 +24,15 @@
     </select>
   </div>
 
-  <button class="btn btn-secondary" style="cursor: pointer;" (click)="reverseSet()">
+  
+  <button id="filter-btn" value="Filtriraj" class="btn btn-light" (click)="sort()">Filtriraj</button>
+
+  <button class="btn btn-light btn-order" style="cursor: pointer;" (click)="reverseSet()">
     <i class="fas fa-long-arrow-alt-up" *ngIf="reverse"></i>
     <i class="fas fa-long-arrow-alt-down" *ngIf="!reverse"></i>
   </button>
 
 
-  <button id="filter-btn" value="Filtriraj" class="btn btn-info" (click)="sort()">Filtriraj</button>
 
 </div>
 
@@ -55,7 +57,7 @@
   <div class="card instructor" style="width: 18rem;" *ngFor="let dogodek of dogodki | orderBy: key: reverse | paginate: {
       id: 'pagination', itemsPerPage: 10, currentPage: page
     }">
-    <img class="card-img-top" src="../../../assets/media/thumbnails/green.png" alt="Card image cap">
+    <img class="card-img-top" src="../../../assets/media/thumbnails/red.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{dogodek.naziv}}</h5>
       <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -66,7 +68,7 @@
 </div>
 
 <div>
-  <pagination-controls id="pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
+  <pagination-controls class="pagination" id="pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event">
   </pagination-controls>
 </div>
 

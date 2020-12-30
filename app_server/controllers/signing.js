@@ -164,7 +164,6 @@ const prikaziNapako = (req, res, napaka) => {
   }
 };
 
-
 //EXPORT functions
 module.exports = {
   signup,
@@ -174,5 +173,5 @@ module.exports = {
   loginStatus,
   loginID,
   loginName,
-  signout
+  signout,
 };

@@ -21,10 +21,10 @@ import { EventInfoComponent } from './common/components/instructions/event-info/
 import { EventNewComponent } from './common/components/instructions/event-new/event-new.component';
 import { OffersComponent } from './common/components/jobs/offers/offers.component';
 import { OfferInfoComponent } from './common/components/jobs/offer-info/offer-info.component';
+import { OfferNewComponent } from "./common/components/jobs/offer-new/offer-new.component";
 import { ProfileComponent } from './common/components/profile/profile.component';
 import { GetStartedComponent } from './common/components/get-started/get-started.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { CommonModule } from '@angular/common';
     EventNewComponent,
     OffersComponent,
     OfferInfoComponent,
+    OfferNewComponent,
     ProfileComponent,
     GetStartedComponent
   ],
@@ -53,8 +54,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    OrderModule,
-    CommonModule
+    OrderModule
   ],
   providers: [],
   bootstrap: [MainComponent]

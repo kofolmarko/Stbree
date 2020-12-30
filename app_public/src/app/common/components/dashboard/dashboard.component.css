@@ -1,0 +1,154 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100%, 100%;
+  color: black;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  z-index: 50;
+}
+
+/* za dat puščice v črno: filter: invert(100%); */
+.carousel-item {
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.432);
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#car {
+  overflow: hidden;
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 200px;
+}
+
+#dashboard-featured {
+  text-align: center;
+}
+
+.carousel-caption a {
+  color: white;
+}
+
+.featured-carousel {
+  display: inline-block;
+
+}
+
+.featured-controls {
+  height: 15%;
+  width: 15%;
+  top: 58%;
+  z-index: 50;
+}
+
+.featured-controls-icons {
+  filter: invert(1);
+}
+
+.featured-carousel-inner {
+  box-shadow: 0 0 0.5rem black;
+  border-radius: 0.5rem;
+  width: 20rem;
+  margin: 1rem;
+}
+
+.featured-instructor {
+  width: 100%;
+  height: 20rem;
+  left: 50%;
+  transform: translate(-50%);
+  border: none;
+}
+
+.featured-instructor img {
+  border-radius: 0;
+  height: 8rem;
+  object-fit: cover;
+}
+
+.carousel h4 {
+  margin-top: 0.5rem;
+}
+
+.featured-card-body {
+  border-radius: 0;
+  border: 0;
+}
+
+/* dashboard */
+#moja-opravila {
+    width: 100%;
+    margin-top: 1rem;
+    
+}
+
+#moja-opravila h1 {
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: 0;
+}
+
+#api-container {
+    background-color: antiquewhite;
+    width: 20%;
+    height: 100%;
+    top: 0;
+}
+
+#welcome-sign {
+    text-align: center;
+    margin: auto; 
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 2rem; 
+    border-radius: 0.5rem; 
+    background-image: url('../../../../assets/media/thumbnails/white.png');
+}
+
+#covid {
+    background-image: url('../../../../assets/media/thumbnails/red.png');
+    border-radius: 0.5rem;
+    
+    text-align: center;
+}
+
+#covid-info {
+    padding: 3rem;
+    color: white;
+}
+
+#todo-list {
+    width: 100%;
+}
+
+#todo-list a {
+    color: black;
+}
+
+#dashboard-featured .card {
+  height: 17rem;
+}
+
+#dashboard-featured h5, #dashboard-featured p {
+  margin: auto;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

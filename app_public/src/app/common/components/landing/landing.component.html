@@ -4,7 +4,7 @@
     </video>
 
     <div class="welcome-content d-flex align-items-center">
-        <div class="container text-light text-center">
+        <div class="container text-light text-center" id="motto">
             <h4>Povežimo znanje</h4>
             <br>
             <h1>Svet stoji na mladih, ampak tudi ti potrebujejo podporo</h1>
@@ -22,12 +22,19 @@
 </div>
 
 <div class="container-fluid text-light text-center middle-content">
-    <div class="row">
+    <div class="row container-fluid linkBox" >
         <div class="col">
-            <p>Potrebuješ pomoč pri učenju težjega predmeta? Preveri seznam dosegljivih inštruktorjev in se dogovori
-                za
-                pomoč.</p>
-            <button routerLink="instruktorji" class="btn btn-info">Inštrukcije</button>
+
+            <div class="container-fluid bg-info link" routerLink="instruktorji">
+                <h1>Inštrukcije</h1>
+            </div>
+            <div class="label">
+                <h5>Potrebuješ pomoč pri učenju težjega predmeta? Preveri seznam dosegljivih inštruktorjev in se
+                    dogovori
+                    za
+                    pomoč.</h5>
+            </div>
+
         </div>
     </div>
 </div>
@@ -42,6 +49,7 @@
                         <p>Obvladaš katerega izmed šolskih predmetov, si pripravljen deliti svoje znanje ter
                             pomagati drugim?</p>
                         <hr>
+                        <br>
                         <img src="../../../assets/media/pics/instruktor.png" class="mx-auto d-block"
                             style="width: 50%; padding-bottom: 15px;">
                         <p>Vse kar moraš narediti je, da se registriraš (označiš da želiš biti inštruktor) in si
@@ -49,7 +57,7 @@
                             profil,
                             da bodo ostali lahko videli katere predmete obvladaš. Nato objaviš ponudbo, v katero
                             dodaš link do svoje Zoom konference in počakaš učence, da se prijavijo
-                            na tvojo inštrukcijo. Na svoji ponudbi lahko nastaviš ceno, seveda pa lahko pomagaš
+                            na tvoje inštrukcije. Na svoji ponudbi lahko nastaviš ceno, seveda pa lahko pomagaš
                             brezplačno.
                         </p>
                         <hr>
@@ -67,6 +75,7 @@
                         <p>Imaš težave v šoli in bi rad dobil dodatno razlago snovi, ali želiš izvedeti še več o tem
                             področju?</p>
                         <hr>
+                        <br>
                         <img src="../../../assets/media/pics/ucenec.png" class="mx-auto d-block"
                             style="width: 50%; padding-bottom: 15px;">
                         <p>Si zaradi aktualnega virusa zaostal za snovjo v šoli? So ti Arnesove težave s serverji
@@ -88,12 +97,19 @@
     </div>
 </div>
 
-<div class="container-fluid text-light text-center middle-content">
+<div class="container-fluid text-light text-center middle-content" >
     <div class="row">
         <div class="col">
-            <p>Iščeš zaslužek ali želiš pomagati s svojim znanjem? Preglej si ponudbo del in dogovori se s
-                ponudnikom.</p>
-            <button routerLink="ponudba-del" class="btn btn-info">Ponudba del</button>
+            
+            
+            <div class="container-fluid bg-info link" routerLink="ponudba-del">
+                <h1>Ponudba del</h1>
+            </div>
+
+            <div class="label">
+                <h5>Iščeš zaslužek ali želiš pomagati s svojim znanjem? Preglej si ponudbo del in dogovori se s
+                    ponudnikom.</h5>
+            </div>
         </div>
     </div>
 </div>
@@ -107,6 +123,7 @@
                         <h1>Sodeluj v projektih</h1>
                         <p>Iščeš dodaten zaslužek ali nove izzive?</p>
                         <hr>
+                        <br>
                         <img src="../../../assets/media/pics/delo.png" class="mx-auto d-block"
                             style="width: 50%; padding-bottom: 15px;">
                         <p>Podjetja in posamezniki v Sloveniji iščejo ljudi, ki bi jim pomagail izpeljati razne
