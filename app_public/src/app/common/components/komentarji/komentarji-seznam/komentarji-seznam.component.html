@@ -42,14 +42,14 @@
         <div class="row komentar" *ngFor="let komentar of dogodek.komentarji">
           <div class="col-12 rounded">
           
-          <small class="komentar-datum float-right">{{komentar.datum}}</small>
+          <small class="komentar-datum float-right">{{komentar.datum | date:'short'}}</small>
           <button *ngIf="dogodek&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editEventInfo()"
     style="margin-right: 10px"><i class="fas fa-edit"></i></button>
   <button *ngIf="dogodek&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none" (click)="saveEventInfo()"
     style="margin-right: 10px"><i class="fas fa-check"></i></button>
-  <button *ngIf="dogodek&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteEvent()"
+  <button *ngIf="dogodek&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteComment(komentar._id)"
     style="margin-right: 10px"><i class="fas fa-trash-alt"></i></button>
-          <h5 class="komentar-avtor">{{komentar.avtor}}</h5>
+          <h5 class="komentar-avtor mt-3">{{komentar.avtor}}</h5>
           <div class="komentar-ocena">{{komentar.ocena}}/5</div>
           <div class="komentar-besedilo">{{komentar.besediloKomentarja}}</div>
           </div>

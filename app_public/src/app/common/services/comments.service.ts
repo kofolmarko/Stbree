@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment';
 
 import { InstructionsEvent } from '../classes/event';
 import { BROWSER_CACHE } from '../classes/cache';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from './authentication.service';
 import { Komentar } from '../../common/classes/comment';
 
@@ -36,6 +38,18 @@ export class  CommentsService {
       .toPromise()
       .then(response => {console.log("Uspešno smo se vrnili iz API-ja"); return response as any;})
       .catch(this.handleError);
+  }
+
+  public deleteComment(eventID: string, commentID: string): Observable<void> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${eventID}/komentarji/${commentID}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
+    return this.http
+      .delete<void>(url, httpProperties)
+      .pipe(catchError(this.handleError));
   }
 
   /* P O P R A V I ! ! ! */
