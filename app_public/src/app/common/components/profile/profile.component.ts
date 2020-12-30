@@ -65,6 +65,7 @@ export class ProfileComponent implements OnInit {
   //   this.editState = true;
   // }
 
+  
   //DOSREDI
   openCity(evt, cityName): void {
     if(!this.viewResponsibilities){
@@ -80,6 +81,7 @@ export class ProfileComponent implements OnInit {
       }
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
+  
     } else {
       this.viewResponsibilities=false;
       var i, tabcontent, tablinks;

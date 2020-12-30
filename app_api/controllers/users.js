@@ -465,12 +465,12 @@ const izbrisiUporabnik = (req, res) => {
     } else if (napaka) {
       return res.status(500).json(napaka);
     }
-    // InstrukcijeDogodek.deleteMany({emailInstruktorja: emailUporabnika})
-    // .then()
-    // .catch();
-    // Delo.deleteMany({idPonudnika: idUporabnika})
-    // .then()
-    // .catch();
+    InstrukcijeDogodek.deleteMany({emailInstruktorja: emailUporabnika})
+    .then()
+    .catch();
+    Delo.deleteMany({emailPonudnika: emailUporabnika})
+    .then()
+    .catch();
     res.status(200).json(uporabnik); //neli e 204
   });
 };
