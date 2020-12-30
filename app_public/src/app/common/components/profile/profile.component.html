@@ -111,28 +111,68 @@
   <!-- {{!-- ADDITIONAL OPTIONS ADMIN --}} -->
   <div *ngIf="uporabnik&&isAdmin">
     <div class="tab pb-5">
-      <button *ngIf="uporabnik.statusInstruktorja" class="tablinks" (click)="openCity(event, 'kronologija')">Seznam objav</button>
+      <button *ngIf="uporabnik.statusInstruktorja" class="tablinks" (click)="openCity(event, 'kronologija')">Seznam objav (Instruktor)</button>
+      <button class="tablinks" (click)="openCity(event, 'dela')">Seznam objav (Ponudnik)</button>
       <button class="tablinks" (click)="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
     </div>
 
     <!-- {{!-- LIST OF POSTS --}} -->
     <div id="kronologija" class="tabcontent">
       <div class="col d-flex justify-content-center">
-        <table class="table">
-
-          <div *ngIf="uporabnik.dogodki else niObveznosti">
-            <tr *ngFor="let dogodek of uporabnik.dogodki">
-              <th scope="row">{{ dogodek.datum }}</th>
-              <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
-              <th scope="row"><a routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{ dogodek.naziv}}</a></th>
+        <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik">
+          <thead class="thead-dark" id="featuredEvents" *ngIf="uporabnik.statusInstruktorja">
+            <tr>
+              <th scope="col">Datum</th>
+              <th scope="col" class="hour-column">Ura</th>
+              <th scope="col">Opravilo</th>
             </tr>
-          </div>
+          </thead>
+          <tbody *ngFor="let event of featuredEvents">
+            <tr *ngIf="event.emailInstruktorja == uporabnik.email">
+              <!-- <div *ngIf="event.emailInstruktorja == uporabnik.email"> -->
+                <th scope="row">{{ event.datum | date:'d. M. yyyy' }}</th>
+                <th scope="row" class="hour-column">{{ event.ura }}</th>
+                <th scope="row"><a *ngIf="event._id"
+                    routerLink="/instrukcije-dogodki/dogodek/{{ event._id }}">{{event.naziv}}</a>
+                </th>
+              <!-- </div> -->
+            </tr>
+          </tbody>
+        </table>
 
           <ng-template #niObveznosti>
-            <th scope="row" colspan="3">Nimate še obveznosti. Prijavite se na dogodek ali delo.</th>
+            <th scope="row" colspan="3">Nimate še obveznosti. Postanite instruktorja.</th>
           </ng-template>
 
-        </table>
+      </div>
+    </div>
+
+     <!-- {{!-- LIST OF JOBS --}} -->
+     <div id="dela" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+        
+          <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik">
+            <thead class="thead-dark" id="featuredJobs">
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Opravilo</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let offer of featuredOffers">
+              <tr *ngIf="offer.emailPonudnika == uporabnik.email">
+                <!-- <div *ngIf="event.emailInstruktorja == uporabnik.email"> -->
+                <th scope="row">{{ offer.datum | date:'d. M. yyyy' }}</th>
+                <!-- <th scope="row" class="hour-column">{{ offer.ura }}</th> -->
+                <th scope="row"><a *ngIf="offer._id" routerLink="/ponudba-del/delo/{{ offer._id }}">{{offer.naziv}}</a></th>
+                <!-- </div> -->
+              </tr>
+            </tbody>
+          </table>
+
+          <ng-template #niObveznosti>
+            <th scope="row" colspan="3">Nimate še obveznosti. Postanite instruktorja.</th>
+          </ng-template>
+
       </div>
     </div>
 
@@ -147,7 +187,7 @@
             <label for="surname">Potrdi novo geslo: </label>
             <input type="password" id="passwordResetConfirm">
           </div>
-          <button id="resetPassword" class="btn btn-success" (click)="changePass()">Potrdi</button>
+          <button id="resetPassword" class="btn btn-success">Potrdi</button>
           <br><br>
         </form>
       </div>
@@ -157,25 +197,67 @@
   <!-- {{!-- ADDITIONAL OPTIONS NOT ADMIN --}} -->
   <div *ngIf="uporabnik&&!isAdmin">
     <div class="tab pb-5">
-      <button *ngIf="uporabnik.statusInstruktorja" class="tablinks" (click)="openCity(event, 'moja-dela')">Seznam objav</button>
+      <button *ngIf="uporabnik.statusInstruktorja" class="tablinks" (click)="openCity(event, 'moje-instrukcije')">Seznam objav (Instruktor)</button>
+      <button class="tablinks" (click)="openCity(event, 'moja-dela')">Seznam objav (Ponudnik)</button>
       <!-- <button class="tablinks" (click)="openCity(event, 'oceni-me')">Oceni me!</button> -->
     </div>
 
     <!-- {{!-- LIST OF POSTS --}} -->
-    <div id="moja-dela" class="tabcontent">
+    <div id="moje-instrukcije" class="tabcontent">
       <div class="col d-flex justify-content-center">
-
-        <div *ngIf="uporabnik.dogodki else niObveznosti">
-          <tr *ngFor="let dogodek of uporabnik.dogodki">
-            <th scope="row">{{ dogodek.datum }}</th>
-            <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
-            <th scope="row"><a routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{ dogodek.naziv}}</a></th>
-          </tr>
-        </div>
+        <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik">
+          <thead class="thead-dark" id="featuredEvents" *ngIf="uporabnik.statusInstruktorja">
+            <tr>
+              <th scope="col">Datum</th>
+              <th scope="col" class="hour-column">Ura</th>
+              <th scope="col">Opravilo</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let event of featuredEvents">
+            <tr *ngIf="event.emailInstruktorja == uporabnik.email">
+              <!-- <div *ngIf="event.emailInstruktorja == uporabnik.email"> -->
+                <th scope="row">{{ event.datum | date:'d. M. yyyy' }}</th>
+                <th scope="row" class="hour-column">{{ event.ura }}</th>
+                <th scope="row"><a *ngIf="event._id"
+                    routerLink="/instrukcije-dogodki/dogodek/{{ event._id }}">{{event.naziv}}</a>
+                </th>
+              <!-- </div> -->
+            </tr>
+          </tbody>
+        </table>
 
         <ng-template #niObveznosti>
           <th scope="row" colspan="3">Nimajo še obveznosti.</th>
         </ng-template>
+
+      </div>
+    </div>
+
+     <!-- {{!-- LIST OF JOBS --}} -->
+     <div id="moja-dela" class="tabcontent">
+      <div class="col d-flex justify-content-center">
+
+          <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik">
+            <thead class="thead-dark" id="featuredJobs">
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Opravilo</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let offer of featuredOffers">
+              <tr *ngIf="offer.emailPonudnika == uporabnik.email">
+                <!-- <div *ngIf="event.emailInstruktorja == uporabnik.email"> -->
+                <th scope="row">{{ offer.datum | date:'d. M. yyyy' }}</th>
+                <!-- <th scope="row" class="hour-column">{{ offer.ura }}</th> -->
+                <th scope="row"><a *ngIf="offer._id" routerLink="/ponudba-del/delo/{{ offer._id }}">{{offer.naziv}}</a></th>
+                <!-- </div> -->
+              </tr>
+            </tbody>
+          </table>
+
+          <ng-template #niObveznosti>
+            <th scope="row" colspan="3">Nimate še obveznosti. Postanite instruktorja.</th>
+          </ng-template>
 
       </div>
     </div>
