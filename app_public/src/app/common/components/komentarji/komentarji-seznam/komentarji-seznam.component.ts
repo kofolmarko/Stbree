@@ -47,9 +47,13 @@ export class KomentarjiSeznamComponent implements OnInit {
 
   public gostitelj: User;
 
-  public isAdmin: boolean = false;
+  public currentUserEmail: string = "";
 
   public editState = false;
+
+  public editID = "";
+
+  public mojiKomentarji = [];
 
   postNewComment(): void {
     this.newComment.avtor = this.authenticationService.getCurrentUser().email;
@@ -76,35 +80,39 @@ export class KomentarjiSeznamComponent implements OnInit {
     } 
   }
 
-  editEventInfo(): void {
-    this.editCSS(true);
+  editComment(comment: Komentar): void {
+    this.editCSS(true, comment._id);
+    this.editID = comment._id;
+    console.log(this.editID);
     this.editState = true;
   }
 
-  saveEventInfo(): void {
-    this.editCSS(false);
+  saveComment(comment: Komentar): void {
+    console.log(comment);
+    this.editCSS(false, comment._id);
+    this.editID = "";
     this.editState = false;
-    this.instructionsService.editEventInfo(this.dogodek)
-      .then(event => {
-        event ? this.dogodek = event : this.sporocilo = "Napaka pri posdabljanju dogodka."
+    this.commentsService.editComment(comment, this.dogodek)
+      .then(comment => {
+        comment ? alert("Uspešno posodobljen komentar!") : alert("Napaka pri posdabljanju komentarja.")
       })
       .catch(error => {
-        this.sporocilo = "Napaka API-ja pri posodabljanju dogodka."
+        alert("Napaka API-ja pri posodabljanju komentarja. Poskusite znova kasneje.");
         //console.error(error);
       });
   }
 
-  private editCSS(isEdit): void {
+  private editCSS(isEdit: boolean, comment: string): void {
     if (isEdit) {
-      document.querySelector("edit-btn").classList.remove("d-ilblock");
-      document.querySelector("edit-btn").classList.add("d-none");
-      document.querySelector("save-btn").classList.remove("d-none");
-      document.querySelector("save-btn").classList.add("d-ilblock");
+      document.getElementById("edit-btn-" + comment).classList.remove("d-ilblock");
+      document.getElementById("edit-btn-" + comment).classList.add("d-none");
+      document.getElementById("save-btn-" + comment).classList.remove("d-none");
+      document.getElementById("save-btn-" + comment).classList.add("d-ilblock");
     } else {
-      document.querySelector("edit-btn").classList.remove("d-none");
-      document.querySelector("edit-btn").classList.add("d-ilblock");
-      document.querySelector("save-btn").classList.remove("d-ilblock");
-      document.querySelector("save-btn").classList.add("d-none");
+      document.getElementById("edit-btn-" + comment).classList.remove("d-none");
+      document.getElementById("edit-btn-" + comment).classList.add("d-ilblock");
+      document.getElementById("save-btn-" + comment).classList.remove("d-ilblock");
+      document.getElementById("save-btn-" + comment).classList.add("d-none");
     }
   }
 
@@ -120,9 +128,7 @@ export class KomentarjiSeznamComponent implements OnInit {
         this.dogodek = event;
         console.log(this.dogodek);
         if (this.authenticationService.isLoggedIn()) {
-          if (this.dogodek.emailInstruktorja === this.authenticationService.getCurrentUser().email) {
-            this.isAdmin = true;
-          }
+          this.currentUserEmail = this.authenticationService.getCurrentUser().email;
         }
         this.sporocilo = event ? "" : "Dogodek ne obstaja :("
         event ? this.getEventHost() : null;

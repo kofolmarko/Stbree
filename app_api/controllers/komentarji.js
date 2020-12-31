@@ -130,6 +130,8 @@ const komentarjiKreiraj = (req, res) => {
               if (napaka) {
                 res.status(404).json(napaka);
               } else {
+                console.log("we go here but nothing interesting happened");
+                console.log(trenutniKomentar);
                 res.status(200).json(trenutniKomentar);
               }
             });

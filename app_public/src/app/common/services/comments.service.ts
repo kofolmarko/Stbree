@@ -38,6 +38,20 @@ export class  CommentsService {
       .catch(this.handleError);
   }
 
+  public editComment(comment: Komentar, event: InstructionsEvent): Promise<Komentar> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${event._id}/komentarji/${comment._id}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
+    return this.http
+      .put(url, comment, httpProperties)
+      .toPromise()
+      .then(response => {console.log("Uspešno smo se vrnili iz API-ja"); return response as any;})
+      .catch(this.handleError);
+  }
+
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {
     //console.error('Error in the service.', error.error["sporočilo"] || error.error.errmsg || error);
