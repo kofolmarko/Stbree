@@ -99,17 +99,31 @@ const komentarjiKreiraj = (req, res) => {
           });
         }
       });
-  };  
-  
+  }; 
+
   const komentarjiPosodobiIzbranega = (req, res) => {
-    console.log("Vstopili smo v API metodo komentarjeiPosodobi");
-    if (!req.params.idDogodka || !req.params.idKomentarja) {
-      return res.status(404).json({
-        "sporočilo": 
-          "Ne najdem dogodka oz. komentarja, " +
-          "idDogodka in idKomentarja sta obvezna parametra."
+    console.log(req.params.idKomentarja);
+    Komentar
+      .findByIdAndUpdate(req.params.idKomentarja,
+        {
+          ocena: req.body.ocena,
+          besediloKomentarja: req.body.besediloKomentarja
+  
+        })
+      .exec((napaka, komentar) => {
+        if (!komentar) {
+          return res.status(404).json({
+            "sporočilo":
+              "Dogodek ne obstaja."
+          });
+        } else if (napaka) {
+          console.log(napaka.data);
+          return res.status(500).json(napaka);
+        }
+        console.log(komentar.data);
+        res.status(200).json(komentar);
       });
-    }
+    /*
     InstrukcijeDogodek
       .findById(req.params.idDogodka)
       .select('komentarji')
@@ -121,24 +135,24 @@ const komentarjiKreiraj = (req, res) => {
         }
         if (dogodek.komentarji && dogodek.komentarji.length > 0) {
           const trenutniKomentar = dogodek.komentarji.id(req.params.idKomentarja);
+          console.log(trenutniKomentar);
           if (!trenutniKomentar) {
             res.status(404).json({"sporočilo": "Ne najdem komentarja."});
           } else {
-            trenutniKomentar.avtor = req.body.naziv;
+            trenutniKomentar.avtor = req.body.avtor;
             trenutniKomentar.ocena = req.body.ocena;
-            trenutniKomentar.besediloKomentarja = req.body.komentar;
-            dogodek.save((napaka, dogodek) => {
+            console.log(trenutniKomentar.ocena);
+            trenutniKomentar.besediloKomentarja = req.body.besediloKomentarja;
+            dogodek.save((napaka) => {
               if (napaka) {
                 res.status(404).json(napaka);
               } else {
-                console.log("we go here but nothing interesting happened");
-                console.log(trenutniKomentar);
                 res.status(200).json(trenutniKomentar);
               }
             });
           }
         }
-      });
+      }); */
   };
   
   const komentarjiIzbrisiIzbranega = (req, res) => {

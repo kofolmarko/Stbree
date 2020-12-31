@@ -102,42 +102,26 @@ const komentarjiKreiraj = (req, res) => {
   };  
   
   const komentarjiPosodobiIzbranega = (req, res) => {
-    console.log("Vstopili smo v API metodo komentarjeiPosodobi");
-    if (!req.params.idDela || !req.params.idKomentarja) {
-      return res.status(404).json({
-        "sporočilo": 
-          "Ne najdem dela oz. komentarja, " +
-          "idDela in idKomentarja sta obvezna parametra."
-      });
-    }
-    Delo
-      .findById(req.params.idDela)
-      .select('komentarji')
-      .exec((napaka, delo) => {
-        if (!delo) {
-          return res.status(404).json({"sporočilo": "Ne najdem dela."});
+    console.log(req.params.idKomentarja);
+    Komentar
+      .findByIdAndUpdate(req.params.idKomentarja,
+        {
+          ocena: req.body.ocena,
+          besediloKomentarja: req.body.besediloKomentarja
+  
+        })
+      .exec((napaka, komentar) => {
+        if (!komentar) {
+          return res.status(404).json({
+            "sporočilo":
+              "Dogodek ne obstaja."
+          });
         } else if (napaka) {
+          console.log(napaka.data);
           return res.status(500).json(napaka);
         }
-        if (delo.komentarji && delo.komentarji.length > 0) {
-          const trenutniKomentar = delo.komentarji.id(req.params.idKomentarja);
-          if (!trenutniKomentar) {
-            res.status(404).json({"sporočilo": "Ne najdem komentarja."});
-          } else {
-            trenutniKomentar.avtor = req.body.naziv;
-            trenutniKomentar.ocena = req.body.ocena;
-            trenutniKomentar.besediloKomentarja = req.body.komentar;
-            delo.save((napaka, delo) => {
-              if (napaka) {
-                res.status(404).json(napaka);
-              } else {
-                console.log("we go here but nothing interesting happened");
-                console.log(trenutniKomentar);
-                res.status(200).json(trenutniKomentar);
-              }
-            });
-          }
-        }
+        console.log(komentar.data);
+        res.status(200).json(komentar);
       });
   };
   
