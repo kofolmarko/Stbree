@@ -169,7 +169,7 @@ export class DashboardComponent implements OnInit {
         this.jobsService.getJobs()
         .then(offers => {
           for(let i = 1; i < 4; i++) {
-            if(offers[offers.length - 1]) {
+            if(offers[offers.length - i]) {
               featured.push(offers[offers.length - i]);
             }
           }
