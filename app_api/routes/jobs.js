@@ -10,6 +10,7 @@ const avtentikacija = jwt({
 });
 
 const ctrlDela = require('../controllers/job');
+const ctrlKomentarji = require('../controllers/komentarji-del');
 
 /**
  * Kategorije dostopnih točk
@@ -74,6 +75,12 @@ router.delete('/ponudba-del/delo/:idDela', avtentikacija, ctrlDela.deloIzbrisi);
 router.get('/ponudba-del/:parameter', ctrlDela.delaOrder);
 
 //POST sign up for a job
-router.post('/ponudba-del/delo/:idDela/prijava', avtentikacija, ctrlDela.prijavaNaDelo)
+router.post('/ponudba-del/delo/:idDela/prijava', avtentikacija, ctrlDela.prijavaNaDelo);
+
+/* Komentarji */
+router.post('/ponudba-del/delo/:idDela/komentarji', avtentikacija, ctrlKomentarji.komentarjiKreiraj);
+router.get('/ponudba-del/delo/:idDela/komentarji/:idKomentarja', ctrlKomentarji.komentarjiPreberiIzbranega);
+router.put('/ponudba-del/delo/:idDela/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiPosodobiIzbranega);
+router.delete('/ponudba-del/delo/:idDela/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiIzbrisiIzbranega);
 
 module.exports = router;
