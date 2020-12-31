@@ -119,7 +119,7 @@ const instrukcijeDogodki = (req, res) => {
               "datum": instrukcijeDogodek.datum,
               "ura": instrukcijeDogodek.ura,
               "steviloProstihMest": instrukcijeDogodek.steviloProstihMest,
-              "idInstruktorja": instrukcijeDogodek.idInstruktorja
+              "emailInstruktorja": instrukcijeDogodek.emailInstruktorja
             };
           })
         );

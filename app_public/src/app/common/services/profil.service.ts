@@ -44,6 +44,35 @@ export class ProfilService {
       .catch(this.handleError);
   }
 
+  // public gradeUser(userEmail: string): Promise<any> {
+  //   const currentUserEmail = this.authenticationService.getCurrentUser().email;
+  //   const url: string = `${this.apiUrl}/uporabnik/ocena/${userEmail}`;
+  //   const httpProperties = {
+  //     headers: new HttpHeaders({
+  //       'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+  //     })
+  //   };
+  //   return this.http
+  //   .post(url, {currentUserEmail}, httpProperties)
+  //   .toPromise()
+  //   .then(response => response as any)
+  //   .catch(this.handleError);
+  // }
+
+  // public editUserPassword(user: User): Promise<User> {
+  //   const url: string = `${this.apiUrl}/uporabnik/${user.email}`;
+  //   const httpProperties = {
+  //     headers: new HttpHeaders({
+  //       'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+  //     })
+  //   };
+  //   return this.http
+  //     .put(url, user, httpProperties)
+  //     .toPromise()
+  //     .then(response => response as User)
+  //     .catch(this.handleError);
+  // }
+
   public deleteUser(userEmail: string): Observable<void> {
     const url: string = `${this.apiUrl}/uporabnik/${userEmail}`;
     const httpProperties = {

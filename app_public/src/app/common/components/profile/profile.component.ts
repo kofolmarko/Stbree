@@ -1,10 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';// pridobimo trenutno pot v okviru komponente
 import { User } from '../../classes/user';
+import { Job } from '../../classes/job';
+import { InstructionsEvent } from '../../classes/event';
 import { ProfilService } from '../../services/profil.service'
 import { switchMap } from 'rxjs/operators'; //za pridobitev vrednosti iz URL parametrov ter uporabi pri API klicu
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { InstructionsService } from '../../services/instructions.service';
+import { JobsService } from '../../services/jobs.service';
+
 
 @Component({
   selector: 'app-profile',// we can make this as an attribute, '[app-profile]' and then in html refference it as such ex. <div app-profile></div>
@@ -18,6 +23,8 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfilService,
     private route: ActivatedRoute,
     private router: Router,
+    private jobsService: JobsService,
+    private instructionsService: InstructionsService,
     private authenticationService: AuthenticationService
     ) { }
 
@@ -28,10 +35,18 @@ export class ProfileComponent implements OnInit {
   public isLoggedIn: boolean = this.authenticationService.isLoggedIn();
 
   public editState: boolean = false;
+
+  //public hasGraded: boolean = false;
+
+  public viewResponsibilities: boolean = false;
   
   public isAdmin: boolean = false;
 
   public signedStatus: boolean = false;
+
+  public featuredEvents: InstructionsEvent[] = this.getFeatured("events");
+
+  public featuredOffers: Job[] = this.getFeatured("offers");
 
   // let currentUserEmail = this.authenticationService.getCurrentUser().email
   //     await this.authenticationService.getUser(currentUserEmail)
@@ -55,10 +70,118 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  
+
+  // viewExtra(): void {
+  //   this.viewResponsibilities=true;
+  //   this.openCity()
+  //   this.editState = true;
+  // }
+
+  private getFeatured(type: string): any[] {
+    let featured: any[] = [];
+    switch (type) {
+      case 'events': {
+        this.instructionsService.getEvents()
+          .then(events => {
+            for (let i = 1; i < 4; i++) {
+              if (events[events.length - i]) {
+                featured.push(events[events.length - i]);
+              }
+            }
+          })
+          .catch(error => console.log(error));
+        break;
+      }
+      case 'offers': {
+        this.jobsService.getJobs()
+        .then(offers => {
+          for(let i = 1; i < 4; i++) {
+            if(offers[offers.length - 1]) {
+              featured.push(offers[offers.length - i]);
+            }
+          }
+        })
+        .catch(error => console.log(error));
+        break;
+      }
+    }
+    return featured;
+  }
+  
+  //DOSREDI
+  openCity(evt, cityName): void {
+    //if(!this.viewResponsibilities){
+      this.viewResponsibilities = true;
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+  
+    // } else {
+    //   this.viewResponsibilities=false;
+    //   var i, tabcontent, tablinks;
+    //   tabcontent = document.getElementsByClassName("tabcontent");
+    //   for (i = 0; i < tabcontent.length; i++) {
+    //     tabcontent[i].style.display = "none";
+    //   }
+    //   tablinks = document.getElementsByClassName("tablinks");
+    //   for (i = 0; i < tablinks.length; i++) {
+    //     tablinks[i].className = tablinks[i].className.replace(" active", "");
+    //   }
+    //   document.getElementById(cityName).style.display = "none";
+    //   evt.currentTarget.className += " active";
+    // }
+  }
+
   editUserInfo(): void {
     this.editCSS(true);
     this.editState = true;
   }
+
+  // spremeniOceno(): void {
+  //   this.editGradeCSS(true);
+  //   this.editGrade = true;
+  // }
+
+  // private editGradeCSS(isEdit): void {
+  //   if(isEdit) {
+
+  //   } else {
+  //     document.getElementById("add-btn").classList.remove("d-ilblock");
+  //     document.getElementById("add-btn").classList.add("d-none");
+  //   }
+  // }
+
+  // saveGrade(): void {
+  //   this.editCSS(false);
+  //   this.editState = false;
+  //   this.profileService.editUserInfo(this.uporabnik)
+  //     .then(user => {
+  //       user ? this.uporabnik = user : this.sporocilo = "Napaka pri posdabljanju uporabnika."
+  //     })
+  //     .catch(error => {
+  //       this.sporocilo = "Napaka API-ja pri posodabljanju uporabnika."
+  //       //console.error(error);
+  //     });
+  // }
+
+  // grade() {
+  //   let userEmail = this.route.snapshot.paramMap.get('emailUporabnika');
+  //   this.profileService.gradeUser(userEmail)
+  //     .then(response => {
+  //       alert("Uspešno ste ocenili uporabnika!");
+  //       this.hasGraded = true;
+  //     })
+  //     .catch(error => this.sporocilo = error);
+  // }
 
   saveUserInfo(): void {
     this.editCSS(false);
