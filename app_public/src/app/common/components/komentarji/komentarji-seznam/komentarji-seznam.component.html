@@ -47,7 +47,7 @@
           (click)="editComment(komentar)" style="margin-right: 10px"><i class="fas fa-edit"></i></button>
         <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" id="save-btn-{{komentar._id}}" value="save" class="btn btn-success d-none"
           (click)="saveComment(komentar)" style="margin-right: 10px"><i class="fas fa-check"></i></button>
-        <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteEvent()"
+        <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteComment(komentar._id)"
           style="margin-right: 10px"><i class="fas fa-trash-alt"></i></button>
         <h5 class="komentar-avtor">{{komentar.avtor}}</h5>
         <div *ngIf="!editState&&editID!==komentar._id else edit">
