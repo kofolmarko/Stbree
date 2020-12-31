@@ -45,6 +45,8 @@ export class KomentarjiSeznamComponent implements OnInit {
 
   public dogodek;
 
+  public  komentar: Komentar;
+
   public gostitelj: User;
 
   public currentUserEmail: string = "";
@@ -84,7 +86,22 @@ export class KomentarjiSeznamComponent implements OnInit {
     this.editCSS(true, comment._id);
     this.editID = comment._id;
     console.log(this.editID);
-    this.editState = true;
+  }
+  
+  deleteComment(commentID: string) {
+    let eventID = this.route.snapshot.paramMap.get('idDogodka');
+    console.log(commentID);
+    this.commentsService.deleteComment(eventID,commentID)
+      .subscribe(
+        () => {
+          this.komentar = null;
+          this.sporocilo = "Komentar uspešno izbrisan."
+          location.reload();
+          alert("Komentar uspešno zbrisan!");
+        },
+        (error) => this.sporocilo = "Napaka API-ja pri brisanju komentarja."
+        //console.error(error)
+      );
   }
 
   saveComment(comment: Komentar): void {

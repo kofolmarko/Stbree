@@ -4,18 +4,20 @@ import { environment } from '../../../environments/environment';
 
 import { InstructionsEvent } from '../classes/event';
 import { BROWSER_CACHE } from '../classes/cache';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from './authentication.service';
 import { Komentar } from '../../common/classes/comment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class  CommentsService {
+export class CommentsService {
 
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService,
-    @Inject(BROWSER_CACHE) private cache: Storage 
+    @Inject(BROWSER_CACHE) private cache: Storage
   ) { }
 
   private apiUrl: string = environment.apiUrl;
@@ -34,7 +36,7 @@ export class  CommentsService {
     return this.http
       .post(url, comment, httpProperties)
       .toPromise()
-      .then(response => {console.log("Uspešno smo se vrnili iz API-ja"); return response as any;})
+      .then(response => { console.log("Uspešno smo se vrnili iz API-ja"); return response as any; })
       .catch(this.handleError);
   }
 
@@ -48,8 +50,20 @@ export class  CommentsService {
     return this.http
       .put(url, comment, httpProperties)
       .toPromise()
-      .then(response => {console.log("Uspešno smo se vrnili iz API-ja"); return response as any;})
+      .then(response => { console.log("Uspešno smo se vrnili iz API-ja"); return response as any; })
       .catch(this.handleError);
+  }
+
+  public deleteComment(eventID: string, commentID: string): Observable<void> {
+    const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${eventID}/komentarji/${commentID}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
+    return this.http
+      .delete<void>(url, httpProperties)
+      .pipe(catchError(this.handleError));
   }
 
   /* P O P R A V I ! ! ! */
