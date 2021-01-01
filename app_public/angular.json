@@ -149,5 +149,8 @@
       }
     }
   },
-  "defaultProject": "Stbree"
+  "defaultProject": "Stbree",
+  "cli": {
+    "analytics": "a54fc980-7409-4fdd-b2e3-56133cd4a820"
+  }
 }

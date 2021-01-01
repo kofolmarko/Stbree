@@ -25,6 +25,10 @@ import { ProfileComponent } from './common/components/profile/profile.component'
 import { GetStartedComponent } from './common/components/get-started/get-started.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { KontaktiComponent } from './common/components/chat/kontakti/kontakti.component';
+import { SporocilaComponent } from './common/components/chat/sporocila/sporocila.component';
+import { SortirajSporocilaPipe } from './common/pipes/sortiraj-sporocila.pipe';
+import { CasPipe } from './common/pipes/cas.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { CommonModule } from '@angular/common';
     OffersComponent,
     OfferInfoComponent,
     ProfileComponent,
-    GetStartedComponent
+    GetStartedComponent,
+    KontaktiComponent,
+    SporocilaComponent,
+    SortirajSporocilaPipe,
+    CasPipe
   ],
   imports: [
     BrowserModule,

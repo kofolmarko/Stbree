@@ -1,0 +1,28 @@
+    
+<div class="container" id="contacts">
+
+        <ul id="contact-list" class="bg-dark">
+            <div *ngIf="podatkiKontakti.pridobljeniKontakti.length === 0">
+                <li class="bg-info text-light" > 
+                    Nimaš nobenih kontaktov.
+                </li>
+            </div>
+                <div *ngFor="let kontakt of podatkiKontakti.pridobljeniKontakti" >
+
+                    <li (click)="kliciPridobiSporocila(kontakt._id)" class="bg-info text-light" > 
+                                    {{kontakt.ime}} {{kontakt.priimek}}
+                    </li>
+                </div>
+        </ul>
+
+        <div class="container bg-dark" id="chatbox">
+                <div *ngIf = "podatkiSporocila">
+                    <app-sporocila [sporocila] = "podatkiSporocila"></app-sporocila>
+                </div>
+        </div>
+</div>
+
+
+
+
+

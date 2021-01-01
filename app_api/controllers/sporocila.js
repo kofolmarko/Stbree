@@ -6,7 +6,7 @@ const User = mongoose.model('User');
 
 const naloziKontakte = (req, res) => {
     User
-      .findById(req.params.idUserja)
+      .findOne({ email: req.params.emailUporabnika })
       .exec((napaka, user) => {
         if(!user) {
           return res.status(404).json({
@@ -18,7 +18,7 @@ const naloziKontakte = (req, res) => {
         }else {
           User.find().where('_id').in(user.kontakti)
           .exec((napaka, pridobljeniKontakti) => {
-
+            
             if (!pridobljeniKontakti) {
               return res.status(404).json({
                 "sporočilo": 
@@ -39,27 +39,36 @@ const naloziKontakte = (req, res) => {
 
 //////////////////////// g e t  s p o r o c i l a ////////////////////////
 
-const pridobiKontakt = (req, res) => {
-
+const naloziSporocilaKontakta = (req, res) => {
   User
        .find({ $or:
       [
-        { _id: req.params.idUserja},
+        { email: req.params.emailUporabnika},
         { _id: req.params.idPrejemnika}
       ]})
       .exec((napaka, users) => {
-    
-        //jaz sem users[0]
-        if(users[0]._id == req.params.idUserja) {   
-          res.status(200).json({
-          "prviUser":users[0],
-          "drugiUser": users[1]
-          })
-        }else{    //jaz sem users[1]
-          res.status(200).json({
-            "prviUser":users[1],
-            "drugiUser": users[0]
+        if(!users) {
+          return res.status(404).json({
+            "sporočilo": 
+            "Ne najdem kliknenega kontakta."
+          });
+        }else if(napaka) {
+          return res.status(500).json(napaka);
+        }else {
+
+          //jaz sem users[0]
+          if(users[0]._id == req.params.idUserja) {   
+            res.status(200).json({
+            "prviUser":users[0],
+            "drugiUser": users[1]
             })
+          }else{    //jaz sem users[1]
+            res.status(200).json({
+              "prviUser":users[1],
+              "drugiUser": users[0]
+              })
+          }
+
         }
         })
 }
@@ -67,7 +76,9 @@ const pridobiKontakt = (req, res) => {
 //////////////////////// d o d a j  m e t o d a ////////////////////////
 
 const dodajSporocilo = (req, res, uporabnik) => {
-
+  console.log("req.body.prejemnikSporocila " + req.body.prejemnikSporocila);
+  console.log("req.body.besedilo " + req.body.besedilo);
+  console.log("uporabnik****" + uporabnik);
   if (!uporabnik) {
     res.status(404).json({"sporočilo": "Ne najdem uporabnika."});
   } else {
@@ -88,35 +99,23 @@ const dodajSporocilo = (req, res, uporabnik) => {
 };
 
 
-JSON.safeStringify = (obj, indent = 2) => {
-  let cache = [];
-  const retVal = JSON.stringify(
-    obj,
-    (key, value) =>
-      typeof value === "object" && value !== null
-        ? cache.includes(value)
-          ? undefined // Duplicate reference found, discard key
-          : cache.push(value) && value // Store value in our collection
-        : value,
-    indent
-  );
-  cache = null;
-  return retVal;
-};
-
 //////////////////////// p o s t  s p o r o c i l o ////////////////////////
 
   const kreirajSporocilo = (req, res) => {
-    const idUporabnika = req.params.idUserja;
-    if (idUporabnika) {
+    const idEmail = req.params.emailUporabnika;
+    console.log("idEmail " + idEmail);
+    console.log("req.body.besedilo " + req.body.besedilo);
+
+    if (idEmail) {
       User
-        .findById(idUporabnika)
-        .select('poslanaSporocila')
+        .findOne({ email: idEmail })
+        //.findById(req.params.emailUporabnika)
+        //.select('poslanaSporocila')
         .exec((napaka, uporabnik) => {
           if (napaka) {
             res.status(400).json(napaka);
           } else {
-            dodajSporocilo(req, res, uporabnik);
+           dodajSporocilo(req, res, uporabnik);
           }
         });
     } else {
@@ -292,7 +291,7 @@ const deleteAll = (req, res) => {
 module.exports = {
     naloziKontakte,
     kreirajSporocilo,
-    pridobiKontakt,
+    naloziSporocilaKontakta,
     insertAll,
     deleteAll
 }

@@ -15,6 +15,7 @@ import { ProfileComponent } from 'src/app/common/components/profile/profile.comp
 import { EventNewComponent } from 'src/app/common/components/instructions/event-new/event-new.component';
 import { MessagingComponent } from 'src/app/common/components/messaging/messaging.component';
 import { OfferNewComponent } from 'src/app/common/components/jobs/offer-new/offer-new.component';
+import { KontaktiComponent } from 'src/app/common/components/chat/kontakti/kontakti.component';
 
 const poti: Routes = [
   {
@@ -67,7 +68,7 @@ const poti: Routes = [
   },
   {
     path: 'sporocanje',
-    component: MessagingComponent
+    component: KontaktiComponent
   }
 ];
 

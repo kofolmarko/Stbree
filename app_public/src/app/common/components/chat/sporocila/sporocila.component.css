@@ -1,0 +1,79 @@
+#chatbox {
+    border: 1px transparent solid;
+    border-radius: 0 0 0.5rem 0.5rem;
+    position: relative;
+}
+
+.message-wrap {
+    width: 100%;
+    margin-left: 0;
+    background-color: aliceblue;
+    padding: 1rem;
+    text-align: center;
+}
+
+#messages {
+    height: 20rem;
+    overflow-y: auto;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    position: relative;
+}
+
+.msg_moj{
+    font-size: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: #82ccdd;
+    padding: 10px;
+    position: relative;
+    color: black;
+    text-align: end;
+}
+
+.msg_dobljen{
+    font-size: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: #78e08f;
+    padding: 10px;
+    position: relative;
+    color: black;
+}
+
+.msg_time_moj{
+    font-size: 10px;
+    color: rgb(192, 192, 192);
+    margin-right: 10px;
+}
+
+.msg_time_dobljen{
+    font-size: 10px;
+    color: rgb(192, 192, 192);
+    margin-left: 10px;
+}
+
+.msg_moj_zunanji{
+    text-align: end; 
+    margin-right: 5px;
+    margin-top: 0.5rem;
+}
+
+.msg_dobljen_zunanji{
+    margin-left: 5px;
+    margin-top: 0.5rem;
+}
+
+.formClass {
+    width: 100%; 
+}
+
+#input-bar {
+    width: 100%;
+    padding: 0;
+}

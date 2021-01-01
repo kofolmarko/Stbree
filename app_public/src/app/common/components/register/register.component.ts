@@ -32,8 +32,10 @@ export class RegisterComponent implements OnInit {
     telefonskaStevilka: null,
     dogodki: null,
     dela: null,
-    ocena: null
-    //datumVpisa: null
+    ocena: null,
+    //datumVpisa: null,
+    poslanaSporocila: null,
+    kontakti: null
   }
 
   public gesloPotrdi = "";

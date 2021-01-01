@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     telefonskaStevilka: null,
     dogodki: null,
     dela: null,
-    ocena: null
+    ocena: null,
+    poslanaSporocila: null,
+    kontakti: null
     //datumVpisa: null
   }
 

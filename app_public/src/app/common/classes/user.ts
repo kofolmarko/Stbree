@@ -1,6 +1,11 @@
 import { InstructionsEvent } from "./event";
 import { Job } from "./job";
 
+export class Sporocila{
+    prejemnikSporocila: String;
+    besedilo: String;
+    cas: Date;
+}
 export class User {
     _id: string;
     ime: string;
@@ -14,5 +19,6 @@ export class User {
     //datumVpisa: Date;
     dogodki: InstructionsEvent[];
     dela: Job[];
-    // poslanaSporocila: Message[];
+    poslanaSporocila: Sporocila[];
+    kontakti: String[]
 }

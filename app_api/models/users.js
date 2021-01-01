@@ -81,45 +81,33 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 // db.Users.save({
 //     ime : "Sara",
 //     email : "sara@gmail.com",
-//     geslo : "sara123"
+//     geslo : "12345678"
 //   }
 // )
 
 // db.Users.update({
-//   ime: 'Tine'
+//   ime: 'Nejc'
 // }, {
 //   $push: {
 //     kontakti: 
-//       "5fdb9c490108009c21fa0c01"
+//       "5fe9cb2f2143640012e45367"
 //   }
 // })
 
+
+
+// db.Users.update({ime: "Nejc"}, {$unset: {poslanaSporocila:1}}, false, true);
+
 // db.Users.update({
-//   ime: 'Tine'
+//   ime: 'Nejc'
 // }, {
 //   $push: {
-//     poslanaSporocila: [{
+//     poslanaSporocila: {
 //       _id: ObjectId(),
-//       prejemnikSporocila: "5fdb8e3aad6eda4266f989c0",
-//       besedilo: "zivjo irena danes sem pisal petko!",
-//       cas: "2018-12-12T13:45:00.000Z"
-//     }, 
-//     {_id: ObjectId(),
-//     prejemnikSporocila: "5fdb8e3aad6eda4266f989c0",
-//     besedilo: "ne nisi manca nehi me zajebavat irena!!",
-//     cas: "2018-12-15T13:45:00.000Z"
-//     }, 
-//     {_id: ObjectId(),
-//     prejemnikSporocila: "5fdb8e3aad6eda4266f989c0",
-//     besedilo: "hey irenca nisem tako mislil, prid nazaj i miss you",
-//     cas: "2018-12-16T13:45:00.000Z"
-//     },
-//     {_id: ObjectId(),
-//       prejemnikSporocila: "5fdb92a2ad6eda4266f989c1",
-//       besedilo: "manca pogresam te...",
-//       cas: "2018-12-16T13:45:00.000Z"
-//       }
-//   ]
+//       prejemnikSporocila: "5feb41f231351f0012aa1ee0",
+//       besedilo: "zivjo sara, nejc tuki!",
+//       cas: "2018-12-17T13:45:00.000Z"
+//     }
 //   }
 // })
 
@@ -173,7 +161,7 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 
 
 // db.Users.deleteOne(
-//   { ime : "Irena" } 
+//   { ime : "Sara" } 
 // )
 
 //db.inventory.deleteOne( { status: "D" } )
