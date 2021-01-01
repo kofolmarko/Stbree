@@ -9,34 +9,18 @@
                 <th scope="col">Opravilo</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- {{#if dogodki}}
-                {{#each dogodki as |dogodek|}} -->
-            <div *ngIf="uporabnik.dogodki else niObveznosti">
+        <tbody *ngIf="uporabnik.dogodki.length else niObveznosti">
                 <tr *ngFor="let dogodek of uporabnik.dogodki">
-                    <th scope="row">{{ dogodek.datum }}</th>
+                    <th scope="row">{{ dogodek.datum | date:'d. M. yyyy' }}</th>
                     <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
-                    <th scope="row"><a routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{ dogodek.naziv
-                            }}</a></th>
+                    <th scope="row"><a class="text-primary" routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{ dogodek.naziv }}</a></th>
                 </tr>
-            </div>
-
-            <!-- {{/each}}
-                {{else}} -->
-            <ng-template #niObveznosti>
-                <th scope="row" colspan="3">Nimate še obveznosti. Prijavite se na dogodek ali delo.</th>
-            </ng-template>
-
-            <!-- {{/if}} -->
-
-            <!-- {{#each dela as |delo|}}
-                <tr>
-                    <th scope="row">{{pretvoriDatum delo.datum}}</th>
-                    <th scope="row" class="hour-column">{{delo.ura}}</th>
-                    <th>{{{generirajPovezavoZaDelo delo}}}</th>
-                </tr>
-                {{/each}} -->
         </tbody>
+        <ng-template #niObveznosti>
+            <tbody>
+                <th scope="row" colspan="3">Nimate še obveznosti. Prijavite se na dogodek ali delo.</th>
+            </tbody>    
+        </ng-template>
     </table>
 </div>
 

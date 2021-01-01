@@ -5,6 +5,14 @@ const router = express.Router();
 //Controller constant to access functions
 const ctrlUporabniki = require('../controllers/users');
 
+//Authentication
+const jwt = require('express-jwt');
+const avtentikacija = jwt({
+  secret: process.env.JWT_GESLO,
+  userProperty: 'payload',
+  algorithms: ['HS256']
+});
+
 //POST register a new user
 //router.post('/uporabniki/', ctrlUporabniki.registrirajUporabnika);
 
@@ -21,10 +29,13 @@ router.get('/uporabnik/:emailUporabnika', ctrlUporabniki.najdiUporabnik);
 //router.put('/uporabnik/:idUporabnika', ctrlUporabniki.posodobiUporabnika);
 
 /*PUT ANGULAR registered users*/
-router.put('/uporabnik/:emailUporabnika', ctrlUporabniki.posodobiUporabnik);
+router.put('/uporabnik/:emailUporabnika', avtentikacija, ctrlUporabniki.posodobiUporabnik);
 
 /*PUT geslo*/
-router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiGeslo);
+//router.put('/uporabnik/geslo/:idUporabnika', ctrlUporabniki.posodobiGeslo);
+
+/*PUT ANGULAR geslo*/
+router.put('/uporabnik/geslo/:emailUporabnika',  ctrlUporabniki.posodobiGeslo);
 
 /*PUT ocena*/
 router.put('/uporabnik/ocena/:idUporabnika', ctrlUporabniki.posodobiOcena);
@@ -33,7 +44,7 @@ router.put('/uporabnik/ocena/:idUporabnika', ctrlUporabniki.posodobiOcena);
 //router.delete('/uporabnik/:idUporabnika', ctrlUporabniki.izbrisiUporabnika);
 
 /*DELETE ANGULAR user*/
-router.delete('/uporabnik/:emailUporabnika', ctrlUporabniki.izbrisiUporabnik);
+router.delete('/uporabnik/:emailUporabnika', avtentikacija, ctrlUporabniki.izbrisiUporabnik);
 
 //GET list of all registered users
 router.get('/uporabniki', ctrlUporabniki.uporabniki);

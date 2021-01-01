@@ -25,6 +25,5 @@ router.put('/odjava', ctrlSigning.signout);
 //GET all registered users (only available via API)
 //router.get('/uporabniki', ctrlSigning.users);
 
-
 //ROUTER export
 module.exports = router;

@@ -44,6 +44,9 @@ export class RegisterComponent implements OnInit {
     this.newUserData.statusInstruktorja = statusInstruktorja;
   }
 
+  public crkeReg = new RegExp("^[a-zA-ZčžćšđČŽĆŠĐ\s]+$");
+  public gesloReg = new RegExp("^.{8,20}$");
+
   public submitRegisterData(): void {
     if (
       !this.newUserData.ime ||
@@ -55,6 +58,10 @@ export class RegisterComponent implements OnInit {
       this.sporocilo = "Zahtevani so vsi podatki, prosim poskusite znova!";
     } else if (this.newUserData.geslo !== this.gesloPotrdi) {
       this.sporocilo = "Vneseni gesli se ne ujemata!";
+    } else if (!this.crkeReg.test(this.newUserData.ime) || !this.crkeReg.test(this.newUserData.priimek)) {
+      this.sporocilo = "Ime in priimek lahko vsebujeta le črke!"
+    } else if (!this.gesloReg.test(this.newUserData.geslo)) {
+      this.sporocilo = "Geslo mora vsebovati 8 do 20 znakov!"
     } else {
       this.executeRegister();
     }
@@ -64,11 +71,10 @@ export class RegisterComponent implements OnInit {
     this.authenticationService
       .register(this.newUserData)
       .then(() => {
-        this.router.navigateByUrl("/prijava")
+        this.router.navigateByUrl("/my")
       })
       .catch(error => {
         this.sporocilo = error
       });
   }
-
 }

@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 
 const ctrlChat = require('../controllers/sporocila');
@@ -10,6 +9,5 @@ router.post('/chat/:emailUporabnika', ctrlChat.kreirajSporocilo);
 
 router.get("/vstavi/vse", ctrlChat.insertAll);
 router.get("/izbrisi/vse", ctrlChat.deleteAll);
-
 
 module.exports = router;
