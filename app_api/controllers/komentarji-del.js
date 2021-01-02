@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 mongoose.set('returnOriginal', false);
 
 //IMPORT object model
-const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
+const Delo = mongoose.model('Delo');
 const User = mongoose.model('User');
-const Komentar = mongoose.model('Komentar');
+const KomentarDel = mongoose.model('KomentarDel');
 
-const dodajKomentar = (req, res, dogodek) => {
-    if (!dogodek) {
-      res.status(404).json({"sporočilo": "Ne najdem dogodka."});
+const dodajKomentar = (req, res, delo) => {
+    if (!delo) {
+      res.status(404).json({"sporočilo": "Ne najdem dela."});
     } else {
-      Komentar.create({
+      KomentarDel.create({
         avtor: req.body.avtor,
         ocena: req.body.ocena,
         besediloKomentarja: req.body.besediloKomentarja
@@ -22,15 +22,15 @@ const dodajKomentar = (req, res, dogodek) => {
         if (napaka) {
           res.status(400).json({"sporočilo": "Napaka API-ja pri kreaciji komentarja."});
         } else if(komentar) {
-          InstrukcijeDogodek
-          .findByIdAndUpdate(dogodek._id,{
+          Delo
+          .findByIdAndUpdate(delo._id,{
             $addToSet: { komentarji: komentar }
           })
-          .exec((napaka, instrukcijeDogodek) => {
-            if (!instrukcijeDogodek) {
+          .exec((napaka, deloDogodek) => {
+            if (!deloDogodek) {
               return res.status(404).json({
                 "sporočilo":
-                  "Dogodek ne obstaja."
+                  "Delo ne obstaja."
               });
             } else if (napaka) {
               return res.status(500).json(napaka);
@@ -46,46 +46,46 @@ const dodajKomentar = (req, res, dogodek) => {
 };  
 
 const komentarjiKreiraj = (req, res) => {
-    const id = req.params.idDogodka;
+    const id = req.params.idDela;
     if (id) {
-      InstrukcijeDogodek
+      Delo
         .findById(id)
         .select('komentarji')
-        .exec((napaka, dogodek) => {
+        .exec((napaka, delo) => {
           if (napaka) {
             res.status(400).json(napaka);
           } else {
-            dodajKomentar(req, res, dogodek);
+            dodajKomentar(req, res, delo);
           }
         });
     } else {
       res.status(400).json({
         "sporočilo": 
-          "Ne najdem dogodka, idDogodka je obvezen parameter."
+          "Ne najdem dela, idDela je obvezen parameter."
       });
     }
   };
   
   
   const komentarjiPreberiIzbranega = (req, res) => {
-    InstrukcijeDogodek
-      .findById(req.params.idDogodka)
+    Delo
+      .findById(req.params.idDela)
       .select('komentarji')
-      .exec((napaka, dogodek) => {
-        if (!dogodek) {
+      .exec((napaka, delo) => {
+        if (!delo) {
           return res.status(404).json({
             "sporočilo": 
-              "Ne najdem dogodka s podanim enoličnim identifikatorjem idDogodka."
+              "Ne najdem dela s podanim enoličnim identifikatorjem idDela."
           });
         } else if (napaka) {
           return res.status(500).json(napaka);
         }
-        if (dogodek.komentarji && dogodek.komentarji.length > 0) {
-          const komentar = dogodek.komentarji.id(req.params.idKomentarja);
+        if (delo.komentarji && delo.komentarji.length > 0) {
+          const komentar = delo.komentarji.id(req.params.idKomentarja);
           if (!komentar) {
             return res.status(404).json({
               "sporočilo": 
-                "Ne najdem komentarja s podanim enoličnim identifikatorjem idDogodka."
+                "Ne najdem komentarja s podanim enoličnim identifikatorjem idDela."
             });
           } else {
             res.status(200).json({
@@ -99,8 +99,8 @@ const komentarjiKreiraj = (req, res) => {
           });
         }
       });
-  }; 
-
+  };  
+  
   const komentarjiPosodobiIzbranega = (req, res) => {
     console.log(req.params.idKomentarja);
     Komentar
@@ -123,63 +123,33 @@ const komentarjiKreiraj = (req, res) => {
         console.log(komentar.data);
         res.status(200).json(komentar);
       });
-    /*
-    InstrukcijeDogodek
-      .findById(req.params.idDogodka)
-      .select('komentarji')
-      .exec((napaka, dogodek) => {
-        if (!dogodek) {
-          return res.status(404).json({"sporočilo": "Ne najdem dogodka."});
-        } else if (napaka) {
-          return res.status(500).json(napaka);
-        }
-        if (dogodek.komentarji && dogodek.komentarji.length > 0) {
-          const trenutniKomentar = dogodek.komentarji.id(req.params.idKomentarja);
-          console.log(trenutniKomentar);
-          if (!trenutniKomentar) {
-            res.status(404).json({"sporočilo": "Ne najdem komentarja."});
-          } else {
-            trenutniKomentar.avtor = req.body.avtor;
-            trenutniKomentar.ocena = req.body.ocena;
-            console.log(trenutniKomentar.ocena);
-            trenutniKomentar.besediloKomentarja = req.body.besediloKomentarja;
-            dogodek.save((napaka) => {
-              if (napaka) {
-                res.status(404).json(napaka);
-              } else {
-                res.status(200).json(trenutniKomentar);
-              }
-            });
-          }
-        }
-      }); */
   };
   
   const komentarjiIzbrisiIzbranega = (req, res) => {
-    const {idDogodka, idKomentarja} = req.params;
-    if (!idDogodka || !idKomentarja) {
+    const {idDela, idKomentarja} = req.params;
+    if (!idDela || !idKomentarja) {
       return res.status(404).json({
         "sporočilo": 
-          "Ne najdem dogodka oz. komentarja, " + 
-          "idDogodka in idKomentarja sta obvezna parametra."
+          "Ne najdem dela oz. komentarja, " + 
+          "idDela in idKomentarja sta obvezna parametra."
       });
     }
-    InstrukcijeDogodek
-      .findById(idDogodka)
+    Delo
+      .findById(idDela)
       .select('komentarji')
-      .exec((napaka, dogodek) => {
-        if (!dogodek) {
-          return res.status(404).json({"sporočilo": "Ne najdem dogodka."});
+      .exec((napaka, delo) => {
+        if (!delo) {
+          return res.status(404).json({"sporočilo": "Ne najdem dela."});
         } else if (napaka) {
           return res.status(500).json(napaka);
         }
-        console.log(dogodek.komentarji);
-        if (dogodek.komentarji && dogodek.komentarji.length > 0) {
-          if (!dogodek.komentarji.id(idKomentarja)) {
+        console.log(delo.komentarji);
+        if (delo.komentarji && delo.komentarji.length > 0) {
+          if (!delo.komentarji.id(idKomentarja)) {
             return res.status(404).json({"sporočilo": "Ne najdem komentarja."});
           } else {
-            dogodek.komentarji.id(idKomentarja).remove();
-            dogodek.save((napaka) => {
+            delo.komentarji.id(idKomentarja).remove();
+            delo.save((napaka) => {
               if (napaka) {
                 return res.status(500).json(napaka);
               } else {

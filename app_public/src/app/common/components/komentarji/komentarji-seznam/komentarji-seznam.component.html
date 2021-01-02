@@ -42,7 +42,7 @@
   <div *ngIf="dogodek">
     <div class="row komentar" *ngFor="let komentar of dogodek.komentarji">
       <div class="col-12 rounded">
-        <small class="komentar-datum float-right">{{komentar.datum}}</small>
+        <small class="komentar-datum float-right">{{komentar.datum | date:'short'}}</small>
         <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-warning d-ilblock" id="edit-btn-{{komentar._id}}"
           (click)="editComment(komentar)" style="margin-right: 10px"><i class="fas fa-edit"></i></button>
         <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" id="save-btn-{{komentar._id}}" value="save" class="btn btn-success d-none"

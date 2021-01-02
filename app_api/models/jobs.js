@@ -26,13 +26,22 @@ const mongoose = require('mongoose');
  *        - emailPonudnika
  */
 
+const komentarjiDelShema = new mongoose.Schema({
+  avtor: {type: String, required: true},
+  ocena: {type: Number, required: true, min: 0, max: 5},
+  besediloKomentarja: {type: String, required: true},
+  datum: {type: Date, "default": Date.now}
+});
+
 const deloShema = new mongoose.Schema({
   naziv: { type: String, required: true },
   opis: { type: String, required: true },
   cena: { type: Number, "default": 0 },
   datum: { type: Date, required: true },
   emailPonudnika: { type: String, required: true },
-  zasedeno: { type: Boolean, "default": false }
+  zasedeno: { type: Boolean, "default": false },
+  komentarji: [komentarjiDelShema]
 });
 
 mongoose.model('Delo', deloShema, 'Dela');
+mongoose.model('KomentarDel', komentarjiDelShema, 'KomentarjiDel');
