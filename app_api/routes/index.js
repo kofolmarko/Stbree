@@ -9,4 +9,6 @@ router.get('/chat/:idUserja/:idPrejemnika', ctrlChat.pridobiKontakt);
 router.get("/vstavi/vse", ctrlChat.insertAll);
 router.get("/izbrisi/vse", ctrlChat.deleteAll);
 
+//router.get('/db', ctrl)
+
 module.exports = router;

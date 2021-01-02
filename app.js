@@ -87,8 +87,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'app_public', 'build')));
+app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'app_public', 'build')));
 app.use(passport.initialize());
 
 app.use('/api', (req, res, next) => {

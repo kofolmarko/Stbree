@@ -102,6 +102,7 @@ const komentarjiKreiraj = (req, res) => {
   };  
   
   const komentarjiPosodobiIzbranega = (req, res) => {
+    console.log("Začetek api metode...");
     if (!req.params.idDogodka || !req.params.idKomentarja) {
       return res.status(404).json({
         "sporočilo": 
