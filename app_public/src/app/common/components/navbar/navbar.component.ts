@@ -56,6 +56,11 @@ export class NavbarComponent implements OnInit {
     return uporabnik ? uporabnik.ime + " " + uporabnik.priimek : 'Gost';
   }
 
+  public getProfileUrl(): string {
+    const uporabnik: User = this.authenticationService.getCurrentUser();
+    return uporabnik ? uporabnik.email : 'gost';
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     

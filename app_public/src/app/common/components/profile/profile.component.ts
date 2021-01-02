@@ -36,8 +36,6 @@ export class ProfileComponent implements OnInit {
 
   public editState: boolean = false;
 
-  //public hasGraded: boolean = false;
-
   public viewResponsibilities: boolean = false;
   
   public isAdmin: boolean = false;
@@ -47,9 +45,6 @@ export class ProfileComponent implements OnInit {
   public featuredEvents: InstructionsEvent[] = this.getFeatured("events");
 
   public featuredOffers: Job[] = this.getFeatured("offers");
-
-  // let currentUserEmail = this.authenticationService.getCurrentUser().email
-  //     await this.authenticationService.getUser(currentUserEmail)
 
   private getUserInfo(): void {
     this.route.paramMap
@@ -69,14 +64,6 @@ export class ProfileComponent implements OnInit {
         this.sporocilo = user ? "" : "Uporabnik ne obstaja :(";
     });
   }
-
-  
-
-  // viewExtra(): void {
-  //   this.viewResponsibilities=true;
-  //   this.openCity()
-  //   this.editState = true;
-  // }
 
   private getFeatured(type: string): any[] {
     let featured: any[] = [];
@@ -112,7 +99,6 @@ export class ProfileComponent implements OnInit {
   
   //DOSREDI
   openCity(evt, cityName): void {
-    //if(!this.viewResponsibilities){
       this.viewResponsibilities = true;
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -126,64 +112,12 @@ export class ProfileComponent implements OnInit {
       document.getElementById(cityName).style.display = "block";
       if(evt)
       evt.currentTarget.className += " active";
-  
-    // } else {
-    //   this.viewResponsibilities=false;
-    //   var i, tabcontent, tablinks;
-    //   tabcontent = document.getElementsByClassName("tabcontent");
-    //   for (i = 0; i < tabcontent.length; i++) {
-    //     tabcontent[i].style.display = "none";
-    //   }
-    //   tablinks = document.getElementsByClassName("tablinks");
-    //   for (i = 0; i < tablinks.length; i++) {
-    //     tablinks[i].className = tablinks[i].className.replace(" active", "");
-    //   }
-    //   document.getElementById(cityName).style.display = "none";
-    //   evt.currentTarget.className += " active";
-    // }
   }
 
   editUserInfo(): void {
     this.editCSS(true);
     this.editState = true;
   }
-
-  // spremeniOceno(): void {
-  //   this.editGradeCSS(true);
-  //   this.editGrade = true;
-  // }
-
-  // private editGradeCSS(isEdit): void {
-  //   if(isEdit) {
-
-  //   } else {
-  //     document.getElementById("add-btn").classList.remove("d-ilblock");
-  //     document.getElementById("add-btn").classList.add("d-none");
-  //   }
-  // }
-
-  // saveGrade(): void {
-  //   this.editCSS(false);
-  //   this.editState = false;
-  //   this.profileService.editUserInfo(this.uporabnik)
-  //     .then(user => {
-  //       user ? this.uporabnik = user : this.sporocilo = "Napaka pri posdabljanju uporabnika."
-  //     })
-  //     .catch(error => {
-  //       this.sporocilo = "Napaka API-ja pri posodabljanju uporabnika."
-  //       //console.error(error);
-  //     });
-  // }
-
-  // grade() {
-  //   let userEmail = this.route.snapshot.paramMap.get('emailUporabnika');
-  //   this.profileService.gradeUser(userEmail)
-  //     .then(response => {
-  //       alert("Uspešno ste ocenili uporabnika!");
-  //       this.hasGraded = true;
-  //     })
-  //     .catch(error => this.sporocilo = error);
-  // }
 
   saveUserInfo(): void {
     this.editCSS(false);
@@ -241,5 +175,4 @@ export class ProfileComponent implements OnInit {
     this.getUserInfo();
     this.isSignedUp();
   }
-
 }
