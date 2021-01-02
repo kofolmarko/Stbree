@@ -102,8 +102,12 @@ const komentarjiKreiraj = (req, res) => {
   };  
   
   const komentarjiPosodobiIzbranega = (req, res) => {
-    console.log(req.params.idKomentarja);
-    Komentar
+    console.log(req.body);
+    console.log(req.params);
+    if(!req.body.besediloKomentarja || !req.body.ocena) {
+      return res.status(400).json({"sporočilo": "Potrebno je izpolniti vsa polja."});
+    }
+    KomentarDel
       .findByIdAndUpdate(req.params.idKomentarja,
         {
           ocena: req.body.ocena,

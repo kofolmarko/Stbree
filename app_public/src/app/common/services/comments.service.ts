@@ -36,7 +36,7 @@ export class CommentsService {
     return this.http
       .post(url, comment, httpProperties)
       .toPromise()
-      .then(response => { console.log("Uspešno smo se vrnili iz API-ja"); return response as any; })
+      .then(response => response as any)
       .catch(this.handleError);
   }
 

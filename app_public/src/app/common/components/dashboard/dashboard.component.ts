@@ -129,7 +129,7 @@ export class DashboardComponent implements OnInit {
   public getCurrentUser(): void {
     let currentUserEmail = this.authenticationService.getCurrentUser().email;
     this.authenticationService.getUser(currentUserEmail)
-    .then(user => this.uporabnik = user)
+    .then(user => {this.uporabnik = user; console.log(this.uporabnik)})
     .catch(error => console.log(error));
   }
 

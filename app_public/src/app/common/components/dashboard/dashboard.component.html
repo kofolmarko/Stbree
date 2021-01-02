@@ -9,12 +9,18 @@
                 <th scope="col">Opravilo</th>
             </tr>
         </thead>
-        <tbody *ngIf="uporabnik.dogodki.length else niObveznosti">
+        <tbody *ngIf="uporabnik.dogodki.length||uporabnik.dela.length else niObveznosti">
             <tr *ngFor="let dogodek of uporabnik.dogodki">
                 <th scope="row">{{ dogodek.datum | date:'d. M. yyyy' }}</th>
                 <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
                 <th scope="row"><a class="text-primary" routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{
                         dogodek.naziv }}</a></th>
+            </tr>
+            <tr *ngFor="let delo of uporabnik.dela">
+                <th scope="row">{{ delo.datum | date:'d. M. yyyy' }}</th>
+                <th scope="row" class="hour-column">-</th>
+                <th scope="row"><a class="text-primary" routerLink="/ponudba-del/delo/{{ delo._id }}">{{
+                        delo.naziv }}</a></th>
             </tr>
         </tbody>
         <ng-template #niObveznosti>
@@ -49,7 +55,8 @@
 
 <div id="dashboard-featured">
 
-    <div id="featuredInstructors" class="carousel slide featured-carousel" data-ride="carousel" *ngIf="featuredInstructors.length>0">
+    <div id="featuredInstructors" class="carousel slide featured-carousel" data-ride="carousel"
+        *ngIf="featuredInstructors.length>0">
 
         <div class="carousel-inner featured-carousel-inner bg-dark">
             <h4 class="text-light">Novi inštruktorji</h4>
@@ -79,7 +86,8 @@
         </div>
     </div>
 
-    <div id="featuredEvents" class="carousel slide featured-carousel" data-ride="carousel" *ngIf="featuredEvents.length>0">
+    <div id="featuredEvents" class="carousel slide featured-carousel" data-ride="carousel"
+        *ngIf="featuredEvents.length>0">
         <div class="carousel-inner featured-carousel-inner bg-dark">
             <h4 class="text-light">Prihajajoči dogodki</h4>
             <div class="carousel-item" *ngFor="let event of featuredEvents; let isFirst = first"
@@ -108,7 +116,8 @@
     </div>
 
 
-    <div id="featuredJobs" class="carousel slide featured-carousel" data-ride="carousel" *ngIf="featuredOffers.length>0">
+    <div id="featuredJobs" class="carousel slide featured-carousel" data-ride="carousel"
+        *ngIf="featuredOffers.length>0">
         <div class="carousel-inner featured-carousel-inner bg-dark">
             <h4 class="text-light">Promovirane ponudbe</h4>
             <div class="carousel-item" *ngFor="let offer of featuredOffers; let isFirst = first"

@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit {
       case 'events': {
         this.instructionsService.getEvents()
           .then(events => {
-            for (let i = 1; i < 4; i++) {
+            for (let i = 1; i < 50; i++) {
               if (events[events.length - i]) {
                 featured.push(events[events.length - i]);
               }
@@ -96,8 +96,8 @@ export class ProfileComponent implements OnInit {
       case 'offers': {
         this.jobsService.getJobs()
         .then(offers => {
-          for(let i = 1; i < 4; i++) {
-            if(offers[offers.length - 1]) {
+          for(let i = 1; i < 50; i++) {
+            if(offers[offers.length - i]) {
               featured.push(offers[offers.length - i]);
             }
           }
@@ -106,6 +106,7 @@ export class ProfileComponent implements OnInit {
         break;
       }
     }
+    console.log(featured);
     return featured;
   }
   
@@ -123,6 +124,7 @@ export class ProfileComponent implements OnInit {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
       }
       document.getElementById(cityName).style.display = "block";
+      if(evt)
       evt.currentTarget.className += " active";
   
     // } else {

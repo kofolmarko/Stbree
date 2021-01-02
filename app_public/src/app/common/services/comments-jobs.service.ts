@@ -50,7 +50,7 @@ export class CommentsJobsService {
     return this.http
       .put(url, comment, httpProperties)
       .toPromise()
-      .then(response => { console.log("Uspešno smo se vrnili iz API-ja"); return response as any; })
+      .then(response => response as any)
       .catch(this.handleError);
   }
 

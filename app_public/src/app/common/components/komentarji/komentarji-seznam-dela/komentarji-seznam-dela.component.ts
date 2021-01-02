@@ -49,7 +49,7 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
 
   public ponudnik: User;
 
-  public  komentar: Komentar;
+  public komentar: Komentar;
 
   public obrazecPrikazan: boolean = false;
 
@@ -59,29 +59,34 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
 
   public editID = "";
 
+  public editInfo = {
+    besediloKomentarja: "",
+    ocena: 5
+  }
+
   postNewComment(): void {
     this.newComment.avtor = this.authenticationService.getCurrentUser().email;
 
-    if(!this.newComment.avtor || 
-      !this.newComment.ocena || 
+    if (!this.newComment.avtor ||
+      !this.newComment.ocena ||
       !this.newComment.besediloKomentarja) {
       this.sporocilo = "Prosimo izpolnite vsa polja!"
     } else {
       console.log("Pošiljam podatke v service...");
       this.commentsJobsService.postNewComment(this.delo, this.newComment)
-      .then(comment => {
-        console.log("Uspešno prejeti podatki iz servica!");
-        this.newComment = comment;
-        this.sporocilo = comment ? "Komentar uspešno objavljen :)" : "Napaka pri objavi komentarja :("
-        location.reload();
-        //this.router.navigateByUrl('/instrukcije-dogodki/dogodek/${event._id}');
-        alert("Komentar uspešno objavljen!");
-      })
-      .catch(error => {
-        this.sporocilo = "Napaka API-ja pri objavi dogodka."
-        //console.error(error);
-      });
-    } 
+        .then(comment => {
+          console.log("Uspešno prejeti podatki iz servica!");
+          this.newComment = comment;
+          this.sporocilo = comment ? "Komentar uspešno objavljen :)" : "Napaka pri objavi komentarja :("
+          location.reload();
+          //this.router.navigateByUrl('/instrukcije-dogodki/dogodek/${event._id}');
+          alert("Komentar uspešno objavljen!");
+        })
+        .catch(error => {
+          this.sporocilo = "Napaka API-ja pri objavi dogodka."
+          //console.error(error);
+        });
+    }
   }
 
   editComment(comment: Komentar): void {
@@ -93,7 +98,7 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
   deleteComment(commentID: string) {
     let jobID = this.route.snapshot.paramMap.get('idDela');
     console.log(commentID);
-    this.commentsJobsService.deleteComment(jobID,commentID)
+    this.commentsJobsService.deleteComment(jobID, commentID)
       .subscribe(
         () => {
           this.komentar = null;
@@ -107,18 +112,23 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
   }
 
   saveComment(comment: Komentar): void {
-    console.log(comment);
-    this.editCSS(false, comment._id);
-    this.editID = "";
-    this.editState = false;
-    this.commentsJobsService.editComment(comment, this.delo)
-      .then(comment => {
-        comment ? alert("Uspešno posodobljen komentar!") : alert("Napaka pri posdabljanju komentarja.")
-      })
-      .catch(error => {
-        alert("Napaka API-ja pri posodabljanju komentarja. Poskusite znova kasneje.");
-        //console.error(error);
-      });
+    if (!this.editInfo.besediloKomentarja || !this.editInfo.ocena) {
+      alert("Prosim izpolnite vsa polja, preden shranite komentar!");
+    } else {
+      this.editCSS(false, comment._id);
+      this.editID = "";
+      this.editState = false;
+      comment.besediloKomentarja = this.editInfo.besediloKomentarja;
+      comment.ocena = this.editInfo.ocena;
+      this.commentsJobsService.editComment(comment, this.delo)
+        .then(comment => {
+          comment ? alert("Uspešno posodobljen komentar!") : alert("Napaka pri posdabljanju komentarja.")
+        })
+        .catch(error => {
+          alert("Napaka API-ja pri posodabljanju komentarja. Poskusite znova kasneje.");
+          //console.error(error);
+        });
+    }
   }
 
   private editCSS(isEdit: boolean, comment: string): void {

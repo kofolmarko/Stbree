@@ -103,8 +103,8 @@ export class AuthenticationService {
       .get(url)
       .toPromise()
       .then(response => {
-        let { email, ime, priimek, opis, statusInstruktorja, telefonskaStevilka, dogodki }: any = response;
-        return { email, ime, priimek, opis, statusInstruktorja, telefonskaStevilka, dogodki } as User;
+        let { email, ime, priimek, opis, statusInstruktorja, telefonskaStevilka, dogodki, dela }: any = response;
+        return { email, ime, priimek, opis, statusInstruktorja, telefonskaStevilka, dogodki, dela } as User;
       })
       .catch(this.handleError);
   }

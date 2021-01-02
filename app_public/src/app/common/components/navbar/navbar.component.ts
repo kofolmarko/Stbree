@@ -38,6 +38,10 @@ export class NavbarComponent implements OnInit {
   
   private currentRoute: string = "";
 
+  public getCurrentUserEmail(): string {
+    return this.authenticationService.getCurrentUser().email;
+  }
+
   public logout(): void {
     this.authenticationService.logout();
     this.router.navigateByUrl('/');

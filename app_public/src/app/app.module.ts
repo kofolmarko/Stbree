@@ -31,6 +31,7 @@ import { SortirajSporocilaPipe } from './common/pipes/sortiraj-sporocila.pipe';
 import { CasPipe } from './common/pipes/cas.pipe';
 import { KomentarjiSeznamComponent } from './common/components/komentarji/komentarji-seznam/komentarji-seznam.component';
 import { KomentarjiSeznamDelaComponent } from './common/components/komentarji/komentarji-seznam-dela/komentarji-seznam-dela.component';
+import { DbComponent } from './common/components/db/db.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { KomentarjiSeznamDelaComponent } from './common/components/komentarji/ko
     SortirajSporocilaPipe,
     CasPipe,
     KomentarjiSeznamComponent,
-    KomentarjiSeznamDelaComponent
+    KomentarjiSeznamDelaComponent,
+    DbComponent
   ],
   imports: [
     BrowserModule,

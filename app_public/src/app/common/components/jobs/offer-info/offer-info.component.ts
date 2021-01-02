@@ -139,7 +139,7 @@ export class OfferInfoComponent implements OnInit {
         .then(user => {
           if(user) {
             user.dela.forEach(delo => {
-              if (this.delo._id = delo._id) {
+              if (this.delo._id == delo._id) {
                 this.signedStatus = true;
               }
             });

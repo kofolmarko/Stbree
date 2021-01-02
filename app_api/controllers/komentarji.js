@@ -102,13 +102,14 @@ const komentarjiKreiraj = (req, res) => {
   }; 
 
   const komentarjiPosodobiIzbranega = (req, res) => {
-    console.log(req.params.idKomentarja);
+    if(!req.body.besediloKomentarja || !req.body.ocena) {
+      return res.status(400).json({"sporočilo": "Potrebno je izpolniti vsa polja."});
+    }
     Komentar
       .findByIdAndUpdate(req.params.idKomentarja,
         {
           ocena: req.body.ocena,
           besediloKomentarja: req.body.besediloKomentarja
-  
         })
       .exec((napaka, komentar) => {
         if (!komentar) {
@@ -120,8 +121,9 @@ const komentarjiKreiraj = (req, res) => {
           console.log(napaka.data);
           return res.status(500).json(napaka);
         }
+        console.log("posodobljen komentar:");
         console.log(komentar.data);
-        res.status(200).json(komentar);
+        res.status(201).json(komentar);
       });
     /*
     InstrukcijeDogodek
