@@ -10,6 +10,10 @@
     "npm": "*"
   },
   "dependencies": {
+    "@angular/common": "^11.0.5",
+    "@angular/core": "^11.0.5",
+    "@angular/forms": "^11.0.5",
+    "@angular/platform-browser": "^11.0.5",
     "axios": "*",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -28,6 +32,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.15",
     "morgan": "*",
+    "ngx-order-pipe": "^2.1.1",
+    "ngx-pagination": "^5.0.0",
     "nodemon": "*",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
