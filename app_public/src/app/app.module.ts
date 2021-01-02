@@ -30,6 +30,9 @@ import { SporocilaComponent } from './common/components/chat/sporocila/sporocila
 import { SortirajSporocilaPipe } from './common/pipes/sortiraj-sporocila.pipe';
 import { CasPipe } from './common/pipes/cas.pipe';
 import { LettersPipe } from './common/pipes/letters.pipe';
+import { KomentarjiSeznamComponent } from './common/components/komentarji/komentarji-seznam/komentarji-seznam.component';
+import { KomentarjiSeznamDelaComponent } from './common/components/komentarji/komentarji-seznam-dela/komentarji-seznam-dela.component';
+import { DbComponent } from './common/components/db/db.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { LettersPipe } from './common/pipes/letters.pipe';
     SporocilaComponent,
     SortirajSporocilaPipe,
     CasPipe,
-    LettersPipe
+    LettersPipe,
+    KomentarjiSeznamComponent,
+    KomentarjiSeznamDelaComponent,
+    DbComponent
   ],
   imports: [
     BrowserModule,

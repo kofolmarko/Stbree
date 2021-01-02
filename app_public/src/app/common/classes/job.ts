@@ -1,3 +1,5 @@
+import { Komentar } from './comment'
+
 export class Job {
     _id: string;
     naziv: string;
@@ -6,5 +8,6 @@ export class Job {
     datum: Date;
     emailPonudnika: string;
     zasedeno: Boolean;
+    komentarji: Komentar[];
 }
 

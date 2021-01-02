@@ -129,7 +129,7 @@ export class DashboardComponent implements OnInit {
   public getCurrentUser(): void {
     let currentUserEmail = this.authenticationService.getCurrentUser().email;
     this.authenticationService.getUser(currentUserEmail)
-    .then(user => this.uporabnik = user)
+    .then(user => {this.uporabnik = user; console.log(this.uporabnik)})
     .catch(error => console.log(error));
   }
 
@@ -169,7 +169,7 @@ export class DashboardComponent implements OnInit {
         this.jobsService.getJobs()
         .then(offers => {
           for(let i = 1; i < 4; i++) {
-            if(offers[offers.length - 1]) {
+            if(offers[offers.length - i]) {
               featured.push(offers[offers.length - i]);
             }
           }

@@ -33,7 +33,8 @@ export class OfferNewComponent implements OnInit {
     cena: null,
     datum: null,
     emailPonudnika: "",
-    zasedeno: false
+    zasedeno: false,
+    komentarji: null
   }
 
   postNewJob(): void {

@@ -108,6 +108,7 @@
     </div>
   </ng-template>
 
+  <hr>
   <!-- {{!-- ADDITIONAL OPTIONS ADMIN --}} -->
   <div *ngIf="uporabnik&&isAdmin">
     <div class="tab pb-5">
@@ -119,7 +120,7 @@
     <!-- {{!-- LIST OF POSTS --}} -->
     <div id="kronologija" class="tabcontent">
       <div class="col d-flex justify-content-center">
-        <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik">
+        <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik&&featuredEvents else niObveznosti">
           <thead class="thead-dark" id="featuredEvents" *ngIf="uporabnik.statusInstruktorja">
             <tr>
               <th scope="col">Datum</th>
@@ -140,10 +141,6 @@
           </tbody>
         </table>
 
-          <ng-template #niObveznosti>
-            <th scope="row" colspan="3">Nimate še obveznosti. Postanite instruktorja.</th>
-          </ng-template>
-
       </div>
     </div>
 
@@ -151,7 +148,7 @@
      <div id="dela" class="tabcontent">
       <div class="col d-flex justify-content-center">
         
-          <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik">
+          <table class="table table-hover container-fluid" id="todo-list" *ngIf="uporabnik&&featuredOffers else niObveznosti">
             <thead class="thead-dark" id="featuredJobs">
               <tr>
                 <th scope="col">Datum</th>
@@ -159,18 +156,18 @@
               </tr>
             </thead>
             <tbody *ngFor="let offer of featuredOffers">
-              <tr *ngIf="offer.emailPonudnika == uporabnik.email">
-                <!-- <div *ngIf="event.emailInstruktorja == uporabnik.email"> -->
-                <th scope="row">{{ offer.datum | date:'d. M. yyyy' }}</th>
-                <!-- <th scope="row" class="hour-column">{{ offer.ura }}</th> -->
-                <th scope="row"><a *ngIf="offer._id" routerLink="/ponudba-del/delo/{{ offer._id }}">{{offer.naziv}}</a></th>
-                <!-- </div> -->
-              </tr>
+                <tr *ngIf="offer.emailPonudnika===uporabnik.email">
+                  <!-- <div *ngIf="event.emailInstruktorja == uporabnik.email"> -->
+                  <th scope="row">{{ offer.datum | date:'d. M. yyyy' }}</th>
+                  <!-- <th scope="row" class="hour-column">{{ offer.ura }}</th> -->
+                  <th scope="row"><a *ngIf="offer._id" routerLink="/ponudba-del/delo/{{ offer._id }}">{{offer.naziv}}</a></th>
+                  <!-- </div> -->
+                </tr>
             </tbody>
           </table>
 
           <ng-template #niObveznosti>
-            <th scope="row" colspan="3">Nimate še obveznosti. Postanite instruktorja.</th>
+            <th scope="row" colspan="3">Nimate še obveznosti.</th>
           </ng-template>
 
       </div>
@@ -263,7 +260,7 @@
     </div>
 
     <!-- {{!-- GRADE ME --}} -->
-    <div id="oceni-me" class="tabcontent">
+    <!-- <div id="oceni-me" class="tabcontent">
       <div class="row">
         <div class="col d-flex justify-content-center">
           <table>
@@ -287,6 +284,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
+
   </div>
 </div>

@@ -12,6 +12,7 @@ const avtentikacija = jwt({
 
 //Controller constant to access functions
 const ctrlInstrukcije = require('../controllers/instructions');
+const ctrlKomentarji = require('../controllers/komentarji');
 
 //GET instructors list
 router.get('/instruktorji', ctrlInstrukcije.instruktorji);
@@ -40,6 +41,13 @@ router.delete('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInst
 
 //POST sign up for an event
 router.post('/instrukcije-dogodki/dogodek/:idDogodka/prijava', avtentikacija, ctrlInstrukcije.prijavaNaDogodek);
+
+/* Komentarji */
+router.post('/instrukcije-dogodki/dogodek/:idDogodka/komentarji', avtentikacija, ctrlKomentarji.komentarjiKreiraj);
+router.get('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', ctrlKomentarji.komentarjiPreberiIzbranega);
+router.put('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiPosodobiIzbranega);
+router.delete('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiIzbrisiIzbranega);
+
 
 //ROUTER export
 module.exports = router;

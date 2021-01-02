@@ -1,4 +1,5 @@
 //Ime Event je rezervirano s strany JavaScripta
+import { Komentar } from './comment'
 
 export class InstructionsEvent {
     _id: string;
@@ -9,4 +10,5 @@ export class InstructionsEvent {
     ura: string;
     steviloProstihMest: number;
     emailInstruktorja: string;
+    komentarji: Komentar[];
 }

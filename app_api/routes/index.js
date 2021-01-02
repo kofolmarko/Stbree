@@ -11,4 +11,6 @@ router.post('/chat/:emailUporabnika/:emailKontakta', ctrlChat.kreirajKontakt);
 router.get("/vstavi/vse", ctrlChat.insertAll);
 router.get("/izbrisi/vse", ctrlChat.deleteAll);
 
+//router.get('/db', ctrl)
+
 module.exports = router;
