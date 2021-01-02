@@ -51,6 +51,7 @@ Potrebno je podpreti funkcionalnost sporočanja, komentiranja in opredeliti ter 
 Dinamična spletna aplikacija z logiko na strani strežnika
 
 8% Datoteka README.md vsebuje seznam dovoljenih vnosov za vsa uporabniška vnosna polja
+
 -> Registracija 
     1. Posameznik mora ispolnit vsa polja
     2. Email mora imeti @ 
@@ -73,19 +74,62 @@ Dinamična spletna aplikacija z logiko na strani strežnika
 
 Dinamična spletna aplikacija s podatkovno bazo
 
-4% Povezava, ki je navedena, kaže na delujočo spletno aplikacijo na Heroku in privzeto se odpre ustrezna spletna stran: -> https://stbree.herokuapp.com
+4% Povezava, ki je navedena, kaže na delujočo spletno aplikacijo na Heroku in privzeto se odpre ustrezna spletna stran: 
+    -> https://stbree.herokuapp.com
 
 12% Datoteka README.md vsebuje pravilna navodila in podatke za namestitev in zagon aplikacije.
-npm install
-npm install dateformat
-docker-compose up
+    npm install
+    npm install dateformat
+    docker-compose up
 
 
 ## 4. LP
 
-SPA aplikacija na eni strani
+V datoteki README.md vključite vse ukaze, ki jih je treba izvesti, da se lahko vašo aplikacijo zažene lokalno.
 
+    EXPRESS
+        -> npm install
+        -> npm start (oz. docker-compose build, docker-compose up)
+
+    ANGULAR
+        -> cd app_public
+        -> npm install
+        -> ng serve --open
 
 ## 5. LP
 
-Varnostno zaščitena progresivna aplikacija
+V datoteko README.md morajo biti glede na zahteve naloge dodatno vključeni naslednjih podatki:
+
+    ·opisane razlike med uporabniki aplikacije,
+
+            -> uporabnik ki ni prijavljen
+                · Navbar ima možnosti: prijava, registracija
+                · Začetna stran vabi uporabnika k registraciji
+            
+            -> uporabnik ki je prijavljen
+                · Navbar ima možnosti: Pregledna plošča, Sporočanje, Inštrukcije, Dogodki, Delo
+                · Začetna stran predstavlja Pregledno Ploščo uporabnika
+                · Uporabnik se lahko:
+                    - prijavi na dogodek
+                    - komentira na dogodek
+                    - ustvari novo ponudbo
+                    - prijavi na ponudbo del
+                    - komentrira na ponudbo del
+            
+            -> uporabnik ki je prijavljen IN ima status inštruktojra
+                · Enako kot uporabnik ki je prijavljen z dodano funkcijo:
+                    - uporabnik lahko ustvari nov dogodek
+
+    ·(opcijsko) argumentiranje, zakaj niste odpravili vseh varnostnih tveganj.
+
+
+V datoteki README.md prav tako vključite vse ukaze, ki jih je treba izvesti, da se lahko vašo aplikacijo zažene lokalno.
+
+    EXPRESS
+        -> npm install
+        -> npm start (oz. docker-compose build, docker-compose up)
+
+    ANGULAR
+        -> cd app_public
+        -> npm install
+        -> ng serve --open
