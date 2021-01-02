@@ -1,0 +1,21 @@
+  [{
+    "_id": "",
+    "naziv": "Program v Javi",
+    "opis": "Nujno potrebujem program v javi do navedenega roka. Pišite na chat prosim.",
+    "cena": 15,
+    "datestring": "2021-05-14",
+    "datum": null,
+    "emailPonudnika": "janja@ferfic.com",
+    "zasedeno": false,
+    "komentarji": null
+  }, {
+    "_id": "",
+    "naziv": "Prevod iz angleščine v slovenščino",
+    "opis": "Tekst dajem v priponko, hvala.",
+    "cena": 20,
+    "datestring": "2021-06-10",
+    "datum": null,
+    "emailPonudnika": "peter@soban.com",
+    "zasedeno": false,
+    "komentarji": null
+  }]

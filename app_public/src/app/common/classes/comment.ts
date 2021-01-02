@@ -1,7 +1,7 @@
 export class Komentar {
     _id: string;
     avtor: string;
-    ocena: any;
+    ocena: number;
     besediloKomentarja: string;
-    datum: string;
+    datum: Date;
   }
