@@ -29,6 +29,8 @@ import { KontaktiComponent } from './common/components/chat/kontakti/kontakti.co
 import { SporocilaComponent } from './common/components/chat/sporocila/sporocila.component';
 import { SortirajSporocilaPipe } from './common/pipes/sortiraj-sporocila.pipe';
 import { CasPipe } from './common/pipes/cas.pipe';
+import { KomentarjiSeznamComponent } from './common/components/komentarji/komentarji-seznam/komentarji-seznam.component';
+import { KomentarjiSeznamDelaComponent } from './common/components/komentarji/komentarji-seznam-dela/komentarji-seznam-dela.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { CasPipe } from './common/pipes/cas.pipe';
     KontaktiComponent,
     SporocilaComponent,
     SortirajSporocilaPipe,
-    CasPipe
+    CasPipe,
+    KomentarjiSeznamComponent,
+    KomentarjiSeznamDelaComponent
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,8 @@ export class EventNewComponent implements OnInit {
     datum: null,
     ura: "",
     steviloProstihMest: null,
-    emailInstruktorja: ""
+    emailInstruktorja: "",
+    komentarji: null
   };
 
   postNewEvent(): void {

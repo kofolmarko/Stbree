@@ -1,0 +1,78 @@
+<div class="komentarji-seznam m-3">
+  <button (click)="obrazecPrikazan=true" class="btn btn-primary btn-sm float-right">Dodaj komentar</button>
+  <h4>Komentarji Uporabnikov</h4>
+  <hr>
+  <div class="komentarji-nov m-3">
+    <div *ngIf="obrazecPrikazan">
+      <form (ngSubmit)="postNewComment()">
+        <!-- <div class="form-group row">
+              <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="naziv">Naziv</label>
+              <div class="col-12 col-sm-10">
+                <input [(ngModel)]="newComment.avtor" id="avtor" class="form-control form-control-sm" name="avtor" required="required">
+              </div>
+            </div> -->
+        <div class="form-group row">
+          <label class="col-10 col-sm-2 col-form-label col-form-label-sm" for="ocena">Ocena</label>
+          <div class="col-12 col-sm-2">
+            <select [(ngModel)]="newComment.ocena" id="ocena" name="ocena" class="form-control form-control-sm">
+              <option [ngValue]="5">5</option>
+              <option [ngValue]="4">4</option>
+              <option [ngValue]="3">3</option>
+              <option [ngValue]="2">2</option>
+              <option [ngValue]="1">1</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm" for="komentar">Komentar</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="newComment.besediloKomentarja" id="besediloKomentarja"
+              class="form-control form-control-sm" name="besediloKomentarja" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12">
+            <button (click)="obrazecPrikazan=false" class="btn btn-primary btn-sm float-right ml-3">Prekliči</button>
+            <button class="btn btn-primary btn-sm float-right">Dodaj moj komentar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="dogodek">
+    <div class="row komentar" *ngFor="let komentar of dogodek.komentarji">
+      <div class="col-12 rounded">
+        <small class="komentar-datum float-right">{{komentar.datum | date:'short'}}</small>
+        <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-warning d-ilblock" id="edit-btn-{{komentar._id}}"
+          (click)="editComment(komentar)" style="margin-right: 10px"><i class="fas fa-edit"></i></button>
+        <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" id="save-btn-{{komentar._id}}" value="save" class="btn btn-success d-none"
+          (click)="saveComment(komentar)" style="margin-right: 10px"><i class="fas fa-check"></i></button>
+        <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteComment(komentar._id)"
+          style="margin-right: 10px"><i class="fas fa-trash-alt"></i></button>
+        <h5 class="komentar-avtor">{{komentar.avtor}}</h5>
+        <div *ngIf="!editState&&editID!==komentar._id else edit">
+          <div class="komentar-ocena" id="ocena-{{komentar._id}}">{{komentar.ocena}}/5</div>
+          <div class="komentar-besedilo" id="besedilo-{{komentar._id}}">{{komentar.besediloKomentarja}}</div>
+        </div>
+        <ng-template #edit>
+          <div *ngIf="komentar._id===editID else notEdit">
+            <select [(ngModel)]="newComment.ocena" id="ocena" name="ocena" class="form-control form-control-sm">
+              <option [ngValue]="5">5</option>
+              <option [ngValue]="4">4</option>
+              <option [ngValue]="3">3</option>
+              <option [ngValue]="2">2</option>
+              <option [ngValue]="1">1</option>
+            </select>
+            <textarea [(ngModel)]="komentar.besedilo" id="besedilo-{{komentar._id}}"
+            class="form-control form-control-sm" name="besediloKomentarja" rows="5" placeholder="{{komentar.besediloKomentarja}}"></textarea>
+          </div>
+        </ng-template>
+        <ng-template #notEdit>
+          <div class="komentar-ocena" id="ocena-{{komentar._id}}">{{komentar.ocena}}/5</div>
+          <div class="komentar-besedilo" id="besedilo-{{komentar._id}}">{{komentar.besediloKomentarja}}</div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -10,16 +10,17 @@
             </tr>
         </thead>
         <tbody *ngIf="uporabnik.dogodki.length else niObveznosti">
-                <tr *ngFor="let dogodek of uporabnik.dogodki">
-                    <th scope="row">{{ dogodek.datum | date:'d. M. yyyy' }}</th>
-                    <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
-                    <th scope="row"><a class="text-primary" routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{ dogodek.naziv }}</a></th>
-                </tr>
+            <tr *ngFor="let dogodek of uporabnik.dogodki">
+                <th scope="row">{{ dogodek.datum | date:'d. M. yyyy' }}</th>
+                <th scope="row" class="hour-column">{{ dogodek.ura }}</th>
+                <th scope="row"><a class="text-primary" routerLink="/instrukcije-dogodki/dogodek/{{ dogodek._id }}">{{
+                        dogodek.naziv }}</a></th>
+            </tr>
         </tbody>
         <ng-template #niObveznosti>
             <tbody>
                 <th scope="row" colspan="3">Nimate še obveznosti. Prijavite se na dogodek ali delo.</th>
-            </tbody>    
+            </tbody>
         </ng-template>
     </table>
 </div>
@@ -28,8 +29,8 @@
     <div id="covid" class="container">
         <h2 id="covid-info">Skupno število okužb z Covid-19 v Sloveniji: {{ getCasesToday() }}</h2>
     </div>
-    
-    
+
+
 </div>
 
 <div *ngIf="chart" class="container">
@@ -48,15 +49,18 @@
 
 <div id="dashboard-featured">
 
-    <div id="featuredInstructors" class="carousel slide featured-carousel" data-ride="carousel">
+    <div id="featuredInstructors" class="carousel slide featured-carousel" data-ride="carousel" *ngIf="featuredInstructors.length>0">
 
         <div class="carousel-inner featured-carousel-inner bg-dark">
             <h4 class="text-light">Novi inštruktorji</h4>
-            <div class="carousel-item"  *ngFor="let instructor of featuredInstructors; let isFirst = first" [class.active]="isFirst">
+            <div class="carousel-item" *ngFor="let instructor of featuredInstructors; let isFirst = first"
+                [class.active]="isFirst">
                 <div class="card featured-instructor">
                     <img class="card-img-top" src="../../../../assets/media/thumbnails/blue.png" alt="Card image cap">
                     <div class="card-body featured-card-body">
-                        <h5 class="card-title"><a *ngIf="instructor.email" routerLink="/profil/{{ instructor.email }}">{{ instructor.ime }} {{ instructor.priimek }}</a></h5>
+                        <h5 class="card-title"><a *ngIf="instructor.email"
+                                routerLink="/profil/{{ instructor.email }}">{{ instructor.ime }} {{ instructor.priimek
+                                }}</a></h5>
                         <p class="card-text">{{ instructor.opis }}</p>
 
                     </div>
@@ -75,14 +79,16 @@
         </div>
     </div>
 
-    <div id="featuredEvents" class="carousel slide featured-carousel" data-ride="carousel">
+    <div id="featuredEvents" class="carousel slide featured-carousel" data-ride="carousel" *ngIf="featuredEvents.length>0">
         <div class="carousel-inner featured-carousel-inner bg-dark">
             <h4 class="text-light">Prihajajoči dogodki</h4>
-            <div class="carousel-item"  *ngFor="let event of featuredEvents; let isFirst = first" [class.active]="isFirst">
+            <div class="carousel-item" *ngFor="let event of featuredEvents; let isFirst = first"
+                [class.active]="isFirst">
                 <div class="card featured-instructor">
                     <img class="card-img-top" src="../../../../assets/media/thumbnails/green.png" alt="Card image cap">
                     <div class="card-body featured-card-body">
-                        <h5 class="card-title"><a *ngIf="event._id" routerLink="/instrukcije-dogodki/dogodek/{{ event._id }}">{{ event.naziv }}</a></h5>
+                        <h5 class="card-title"><a *ngIf="event._id"
+                                routerLink="/instrukcije-dogodki/dogodek/{{ event._id }}">{{ event.naziv }}</a></h5>
                         <p class="card-text">{{ event.opis }}</p>
 
                     </div>
@@ -102,26 +108,27 @@
     </div>
 
 
-    <div id="featuredJobs" class="carousel slide featured-carousel" data-ride="carousel">
+    <div id="featuredJobs" class="carousel slide featured-carousel" data-ride="carousel" *ngIf="featuredOffers.length>0">
         <div class="carousel-inner featured-carousel-inner bg-dark">
             <h4 class="text-light">Promovirane ponudbe</h4>
-            <div class="carousel-item"  *ngFor="let offer of featuredOffers; let isFirst = first" [class.active]="isFirst">
+            <div class="carousel-item" *ngFor="let offer of featuredOffers; let isFirst = first"
+                [class.active]="isFirst">
                 <div class="card featured-instructor">
                     <img class="card-img-top" src="../../../../assets/media/thumbnails/red.png" alt="Card image cap">
                     <div class="card-body featured-card-body">
-                        <h5 class="card-title"><a *ngIf="offer._id" routerLink="/ponudba-del/delo/{{ offer._id }}">{{ offer.naziv }}</a></h5>
+                        <h5 class="card-title"><a *ngIf="offer._id" routerLink="/ponudba-del/delo/{{ offer._id }}">{{
+                                offer.naziv }}</a></h5>
                         <p class="card-text">{{ offer.opis }}</p>
-
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev featured-controls featured-controls-prev" href="#featuredJobs"
-                role="button" data-slide="prev">
+            <a class="carousel-control-prev featured-controls featured-controls-prev" href="#featuredJobs" role="button"
+                data-slide="prev">
                 <span class="carousel-control-prev-icon featured-controls-icons" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next featured-controls featured-controls-next" href="#featuredJobs"
-                role="button" data-slide="next">
+            <a class="carousel-control-next featured-controls featured-controls-next" href="#featuredJobs" role="button"
+                data-slide="next">
                 <span class="carousel-control-next-icon featured-controls-icons" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>

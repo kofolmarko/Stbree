@@ -1,0 +1,32 @@
+.komentarji-seznam {
+    border: 2px solid #ababab;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.komentar {
+    margin-right: 0px; 
+    margin-left: 0px;
+    margin-bottom: 0.5em;
+  }
+  .komentar > div {
+    padding:0.5em;
+  }
+  .komentar > div:first-child {
+    margin-top:1em;
+    background-color: #98e2f5;
+  }
+  .komentar-avtor {
+    margin-left:0.5em;
+  }
+  .komentar-datum {
+    margin-left:1em;
+  }
+
+  .komentar-ocena {
+    display: inline-block;
+    border: 2px solid #ababab;
+    border-radius: 4px;
+    width: 40px;    
+    text-align: center;
+  }
