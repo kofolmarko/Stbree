@@ -16,21 +16,67 @@ export class KontaktiComponent implements OnInit {
 
   public podatkiKontakti: any;
   public podatkiSporocila: any;
+  public showForm: boolean = false;
+
+  public novKontakt: any = {
+    emailKontakta: ''
+  }
+
+  public onClickForm(): void {
+    this.showForm = true;
+  }
+
+  public dodajNovKontakt(): void {
+    this.obrazecNapaka = "";
+    if (this.soPodatkiUstrezni()) {
+      
+      console.log("this.novKontakt.emailKontakta" + this.novKontakt.emailKontakta);
+      this.chatStoritev
+        .posljiKontakt(this.authenticationService.getCurrentUser().email, this.novKontakt)
+        .then(kontakt => {
+          console.log("Kontakt shranjen", kontakt);
+
+          // this.podatkiKontakti.push(this.novoSporocilo.besedilo);
+          this.novKontakt.emailKontakta = '';
+          this.kliciPridobiKontakte();
+        })
+        .catch(napaka => this.obrazecNapaka = napaka);
+    } else {
+      this.obrazecNapaka = "Prosim vnesite sporočilo";
+    }
+  }
+
+  public obrazecNapaka: string;
+
+  private soPodatkiUstrezni(): boolean {
+    if (this.novKontakt.emailKontakta) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   private kliciPridobiKontakte(): void {
     this.chatStoritev
         .pridobiKontakte(this.authenticationService.getCurrentUser().email)
-        .then(servicePodatki => this.podatkiKontakti = servicePodatki);
-  }
-
-  public kliciPridobiSporocila(idPrejmenika: string): void {
-    this.chatStoritev
+        .then(servicePodatki => {this.podatkiKontakti = servicePodatki
+          for(var i = 0; i < this.podatkiKontakti.pridobljeniKontakti.length; i++){
+            console.log("kontakt " + i + " " + this.podatkiKontakti.pridobljeniKontakti[i].ime)
+          }
+      });
+        
+      }
+      
+      public kliciPridobiSporocila(idPrejmenika: string): void {
+        this.chatStoritev
         .pridobiSporocila(this.authenticationService.getCurrentUser().email, idPrejmenika)
         .then(servicePodatki => this.podatkiSporocila = servicePodatki);
-  }
-
-  ngOnInit(): void {
-    this.kliciPridobiKontakte()
-  }
+      }
+      
+      ngOnInit(): void {
+        this.kliciPridobiKontakte()
+        
+      }
 
 }

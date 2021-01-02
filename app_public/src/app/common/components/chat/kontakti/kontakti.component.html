@@ -1,7 +1,20 @@
-    
-<div class="container" id="contacts">
 
-        <ul id="contact-list" class="bg-dark">
+<div class="row" style=" height: 100vh; margin-right: 0; margin-left: 0;" id="contacts">
+    <div class="col-sm-3" style="padding: 0;">
+
+
+        <ul class="bg-dark list-group">
+            <li  (click)="onClickForm()" class="posamezniKontakt" style="border-style: none; text-align: center; font-size: medium;" class="list-group-item list-group-item-action" >
+                +
+            </li>      
+
+            <form (ngSubmit)="dodajNovKontakt()" method="post" *ngIf="showForm">
+            Dodaj kontakt z elektronsko pošto: <input [(ngModel)]="novKontakt.emailKontakta" type="text" name="emailKontakta">
+            <button type="submit">Dodaj</button>
+            </form>
+
+
+            
             <div *ngIf="podatkiKontakti.pridobljeniKontakti.length === 0">
                 <li class="bg-info text-light" > 
                     Nimaš nobenih kontaktov.
@@ -9,13 +22,19 @@
             </div>
                 <div *ngFor="let kontakt of podatkiKontakti.pridobljeniKontakti" >
 
-                    <li (click)="kliciPridobiSporocila(kontakt._id)" class="bg-info text-light" > 
-                                    {{kontakt.ime}} {{kontakt.priimek}}
+                    <li class="posamezniKontakt" style="border-style: none;" (click)="kliciPridobiSporocila(kontakt._id)" class="list-group-item list-group-item-action" > 
+                        <div class="krogec">{{kontakt.ime | letters}}</div>
+
+                        {{kontakt.ime}} {{kontakt.priimek}}
                     </li>
                 </div>
         </ul>
 
-        <div class="container bg-dark" id="chatbox">
+
+
+    </div>
+
+        <div class="col-sm-9 bg-dark"  style="padding: 0;  height: 100vh;" id="chatbox">
                 <div *ngIf = "podatkiSporocila">
                     <app-sporocila [sporocila] = "podatkiSporocila"></app-sporocila>
                 </div>

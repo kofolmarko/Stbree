@@ -36,9 +36,9 @@ export class SporocilaComponent implements OnChanges {
       this.chatStoritev
         .posljiSporocilo(this.authenticationService.getCurrentUser().email, this.novoSporocilo)
         .then(sporocilo => {
-          console.log("Komentar shranjen", sporocilo);
+          console.log("Sporocilo shranjeno", sporocilo);
           if(this.sporocila === 'Z osebo še nimate pogovora. Pošli novo sporočilo.') this.sporocila = null;
-          this.sporocila.push(this.novoSporocilo.besedilo);
+          //this.sporocila.push(this.novoSporocilo.besedilo);
           this.novoSporocilo.besedilo = '';
           this.kontaktiComponent.kliciPridobiSporocila(this.idPrejemnika);
         })

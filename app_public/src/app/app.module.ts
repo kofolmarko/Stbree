@@ -29,6 +29,7 @@ import { KontaktiComponent } from './common/components/chat/kontakti/kontakti.co
 import { SporocilaComponent } from './common/components/chat/sporocila/sporocila.component';
 import { SortirajSporocilaPipe } from './common/pipes/sortiraj-sporocila.pipe';
 import { CasPipe } from './common/pipes/cas.pipe';
+import { LettersPipe } from './common/pipes/letters.pipe';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CasPipe } from './common/pipes/cas.pipe';
     KontaktiComponent,
     SporocilaComponent,
     SortirajSporocilaPipe,
-    CasPipe
+    CasPipe,
+    LettersPipe
   ],
   imports: [
     BrowserModule,

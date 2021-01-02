@@ -37,7 +37,7 @@
     </div>
         
     
-        <form (ngSubmit)="dodajNovoSporocilo()" method="post" class="formClass">
+        <form (ngSubmit)="dodajNovoSporocilo()" style="position: fixed; bottom: 0;"method="post" class="formClass">
             <div class="container-fluid" id="input-bar">
                 <div class="input-group">
                         <input [(ngModel)]="novoSporocilo.besedilo" type="text"  class="form-control" placeholder="Napišite sporočilo..." autocomplete="off" aria-label=""

@@ -43,6 +43,16 @@ export class ChatService {
     .catch(this.obdelajNapako)
   }
 
+  public posljiKontakt(emailUporabnika: string, podatkiObrazca: any): Promise<any> {
+    const url: string = `${this.apiUrl}/chat/${emailUporabnika}/${podatkiObrazca.emailKontakta}`;
+
+    return this.http
+    .post(url, podatkiObrazca)
+    .toPromise()
+    .then(odgovor => odgovor)
+    .catch(this.obdelajNapako)
+  }
+
   private obdelajNapako(napaka: any): Promise<any> {
     console.error('Prišlo je do napake', napaka);
     return Promise.reject(napaka.message || napaka);

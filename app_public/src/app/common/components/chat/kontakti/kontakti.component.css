@@ -1,19 +1,46 @@
 #contacts {
-    padding: 0;
-    margin-top: 2rem;
+    /* padding: 0;
+    margin-top: 2rem; */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.posamezniKontakt {
+    border: 1px solid #272727;
+    cursor: pointer;
+}
+
+.krogec {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 0.7rem;
+    background: #e4c0ff;
+    display: inline-block;
+    margin-right: 0.4rem;
+}
+
+li:hover {
+    background-color: #c3c3c3;
+    cursor: pointer;
 }
 
 #contact-list li {
     background-color: aliceblue;
     display: inline-block;
-    width: 15rem;
-    height: 4rem;
     border-radius: 0.2rem;
     margin: 0.5rem;
     overflow: hidden;
     margin-top: 1rem;
     padding: 1rem;
     text-align: center;
+    width: 100%;
 }
 
 #contact-list li:hover {
@@ -22,7 +49,7 @@
 }
 
 #contact-list {
-    overflow-x: auto;
+    /* overflow-x: auto; */
     white-space: nowrap;
     border-radius: 0.5rem;
     margin-bottom: 0;

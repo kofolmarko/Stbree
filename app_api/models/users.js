@@ -191,10 +191,10 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 // }, {
 //   $push: {
 //     kontakti: 
-//       "5fe9cb2f2143640012e45367"
+//       "5fefc949a623e75c9d35be29"
+      
 //   }
 // })
-
 
 
 // db.Users.update({ime: "Nejc"}, {$unset: {poslanaSporocila:1}}, false, true);

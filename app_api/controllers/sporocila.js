@@ -73,7 +73,7 @@ const naloziSporocilaKontakta = (req, res) => {
         })
 }
 
-//////////////////////// d o d a j  m e t o d a ////////////////////////
+//////////////////////// d o d a j  s p o r o c i l o  m e t o d a ////////////////////////
 
 const dodajSporocilo = (req, res, uporabnik) => {
   console.log("req.body.prejemnikSporocila " + req.body.prejemnikSporocila);
@@ -125,6 +125,72 @@ const dodajSporocilo = (req, res, uporabnik) => {
       });
     }
   };
+
+//////////////////////// d o d a j  k o n t a k t  m e t o d a ////////////////////////
+const dodajKontakt = (req, res, uporabnik) => {
+ 
+  if (!uporabnik) {
+    res.status(404).json({"sporočilo": "Ne najdem uporabnika."});
+  } else if(req.params.emailKontakta){
+    User
+    .findOne({ email: req.params.emailKontakta })
+    .exec((napaka, kontakt) => {
+      if (napaka) {
+        res.status(400).json(napaka);
+      } else {
+   
+        uporabnik.kontakti.unshift(
+          kontakt._id
+         );
+     
+         uporabnik.save((napaka, uporabnik) => {
+           if (napaka) {
+             res.status(400).json(napaka);
+           } else {
+            //const dodanKontakt = uporabnik.kontakti.slice(-1).pop();
+            const dodanKontakt = uporabnik.kontakti.shift();
+             res.status(201).json(dodanKontakt);
+           }
+         });
+      }
+
+    });
+  } else {
+    res.status(400).json({
+      "sporočilo": 
+        "Ne najdem kontakta, emailKontakta je obvezen parameter."
+    });
+  }
+};
+
+//////////////////////// p o s t  k o n t a k t ////////////////////////
+
+const kreirajKontakt = (req, res) => {
+  const idEmail = req.params.emailUporabnika;
+
+  console.log("idEmail " + idEmail);
+  console.log("req.params.emailKontakta" + req.params.emailKontakta);
+
+  if (idEmail) {
+    User
+      .findOne({ email: idEmail })
+
+      .exec((napaka, uporabnik) => {
+        if (napaka) {
+          res.status(400).json(napaka);
+        } else {
+         
+         dodajKontakt(req, res, uporabnik);
+        }
+      });
+  } else {
+    res.status(400).json({
+      "sporočilo": 
+        "Ne najdem uporabnika, emailUporabnika je obvezen parameter."
+    });
+  }
+};
+
 
 //////////////////////// p u t  s p o r o c i l o ////////////////////////
 
@@ -292,6 +358,7 @@ module.exports = {
     naloziKontakte,
     kreirajSporocilo,
     naloziSporocilaKontakta,
+    kreirajKontakt,
     insertAll,
     deleteAll
 }
