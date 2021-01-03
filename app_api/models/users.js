@@ -197,7 +197,8 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
 // })
 
 
-// db.Users.update({ime: "Nejc"}, {$unset: {poslanaSporocila:1}}, false, true);
+ //db.Users.update({ime: "Oli"}, {$unset: {poslanaSporocila:1}}, false, true);
+ //db.Users.update({ime: "Oli"}, {$unset: {kontakti:1}}, false, true);
 
 // db.Users.update({
 //   ime: 'Nejc'

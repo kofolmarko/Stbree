@@ -4,19 +4,30 @@
 
 
         <ul class="bg-dark list-group">
-            <li  (click)="onClickForm()" class="posamezniKontakt" style="border-style: none; text-align: center; font-size: medium;" class="list-group-item list-group-item-action" >
-                +
-            </li>      
-
-            <form (ngSubmit)="dodajNovKontakt()" method="post" *ngIf="showForm">
-            Dodaj kontakt z elektronsko pošto: <input [(ngModel)]="novKontakt.emailKontakta" type="text" name="emailKontakta">
-            <button type="submit">Dodaj</button>
-            </form>
+            <div style="    border: 3px;
+            border-color: #343a40;
+            border-style: solid">
 
 
-            
+                <li [ngClass]="{'radiusToggle' : showForm == true}" (click)="onClickForm()" class="posamezniKontakt" style="border-radius: 17px; border-style: none; text-align: center; font-size: medium;" class="list-group-item list-group-item-action" >
+                    +
+                </li>      
+    
+                <form style="background: white;
+                border-radius: 0px 0px 17px 17px;"(ngSubmit)="dodajNovKontakt()" method="post" *ngIf="showForm" class="formZaKontakte">
+                Dodaj kontakt z elektronsko pošto: 
+                
+                <input [(ngModel)]="novKontakt.emailKontakta" type="text" name="emailKontakta"  placeholder=" Vnesi email" autocomplete="off">
+                <button style="margin-left: 0.5rem;" class="btn btn-info" type="submit">Dodaj</button>
+                </form>
+
+
+            </div>
+
+
+        
             <div *ngIf="podatkiKontakti.pridobljeniKontakti.length === 0">
-                <li class="bg-info text-light" > 
+                <li class="posamezniKontakt" style="border-style: none; background: #ffdd78;" class="list-group-item list-group-item-action" > 
                     Nimaš nobenih kontaktov.
                 </li>
             </div>

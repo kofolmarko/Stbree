@@ -35,10 +35,9 @@ export class KontaktiComponent implements OnInit {
         .posljiKontakt(this.authenticationService.getCurrentUser().email, this.novKontakt)
         .then(kontakt => {
           console.log("Kontakt shranjen", kontakt);
-
-          // this.podatkiKontakti.push(this.novoSporocilo.besedilo);
           this.novKontakt.emailKontakta = '';
           this.kliciPridobiKontakte();
+          this.showForm = false;
         })
         .catch(napaka => this.obrazecNapaka = napaka);
     } else {
@@ -61,9 +60,9 @@ export class KontaktiComponent implements OnInit {
     this.chatStoritev
         .pridobiKontakte(this.authenticationService.getCurrentUser().email)
         .then(servicePodatki => {this.podatkiKontakti = servicePodatki
-          for(var i = 0; i < this.podatkiKontakti.pridobljeniKontakti.length; i++){
-            console.log("kontakt " + i + " " + this.podatkiKontakti.pridobljeniKontakti[i].ime)
-          }
+          // for(var i = 0; i < this.podatkiKontakti.pridobljeniKontakti.length; i++){
+          //   console.log("kontakt " + i + " " + this.podatkiKontakti.pridobljeniKontakti[i].ime)
+          // }
       });
         
       }
