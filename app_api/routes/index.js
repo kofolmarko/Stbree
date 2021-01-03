@@ -16,6 +16,8 @@ const ctrlChat = require('../controllers/sporocila');
  * tags:
  *  - name: Sporocila
  *    description: Obvladovanje sporocil
+ *  - name: db
+ *    description: Obvladovanje podatkov v bazi
  */
 
 
@@ -38,6 +40,8 @@ router.route('/chat/:emailUporabnika')
  *    summary: Nalozi seznam kontaktov
  *    description: Pridobitev **seznama kontaktov**, glede na **trenutnega uporabnika**.
  *    tags: [Sporocila]
+ *    security:
+ *      - jwt: []
  *    parameters:
  *     - in: path
  *       name: emailUporabnika
@@ -55,6 +59,15 @@ router.route('/chat/:emailUporabnika')
  *         type: array
  *         items:
  *          $ref: "#/components/schemas/KontaktiBranje"
+ *     "401":
+ *       description: Napaka pri dostopu.
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Napaka"
+ *           examples:
+ *             ni zetona:
+ *               $ref: "#/components/examples/NiZetona"
  *     "500":
  *      description: Napaka na strežniku pri dostopu do podatkovne baze.
  */
@@ -91,6 +104,15 @@ router.route('/chat/:emailUporabnika')
  *       application/json:
  *        schema:
  *          $ref: "#/components/schemas/SporocanjeAzuriranjePovzetekOdgovor"
+ *     "401":
+ *       description: Napaka pri dostopu.
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Napaka"
+ *           examples:
+ *             ni zetona:
+ *               $ref: "#/components/examples/NiZetona"
  *     "500":
  *      description: Napaka na strežniku pri dostopu do podatkovne baze.
  */
@@ -101,35 +123,45 @@ router.route('/chat/:emailUporabnika')
  * @swagger
  *  /chat/{emailUporabnika}/{idPrejemnika}:
  *  get:
- *    summary: Nalozi sporocila kontakta.
- *    description: Nalozi sporocila, ki jih imas z izbranim kontaktom.
- *    tags: [Sporocila]
- *    parameters:
- *      - in: path
- *        name: emailUporabnika
- *        description: Enolični email uporabnika.
- *        schema:
- *          type: string
- *        required: true
- *        example: nejc@gmail.com
- *      - in: path
- *        name: idPrejemnika
- *        description: Enolični identifikator uporabnika.
- *        schema:
- *          type: string
- *        required: true
- *        example: 5ff0fb88879cc87a850bca40
- *    responses:
- *      "200":
- *        description: Uspešna zahteva s sporocili v odgovoru.
- *        content:
- *          application/json:
- *            schema:
- *              $ref: "#/components/schemas/SporocilaBranje"
- *      "500":
- *        description: Napaka na strežniku pri dostopu do podatkovne baze.
- */
-    
+ *   summary: Nalozi sporocila kontakta.
+ *   description: Nalozi sporocila, ki jih imas z izbranim kontaktom.
+ *   tags: [Sporocila]
+ *   security:
+ *     - jwt: []
+ *   parameters:
+ *     - in: path
+ *       name: emailUporabnika
+ *       description: Enolični email uporabnika.
+ *       schema:
+ *         type: string
+ *       required: true
+ *       example: nejc@gmail.com
+ *     - in: path
+ *       name: idPrejemnika
+ *       description: Enolični identifikator uporabnika.
+ *       schema:
+ *         type: string
+ *       required: true
+ *       example: 5ff0fb88879cc87a850bca40
+ *   responses:
+ *     "200":
+ *       description: Uspešna zahteva s sporocili v odgovoru.
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/SporocilaBranje"
+ *     "401":
+ *      description: Napaka pri dostopu.
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: "#/components/schemas/Napaka"
+ *          examples:
+ *            ni zetona:
+ *              $ref: "#/components/examples/NiZetona"
+ *     "500":
+ *       description: Napaka na strežniku pri dostopu do podatkovne baze.
+ */    
     router.get('/chat/:emailUporabnika/:idPrejemnika', ctrlChat.naloziSporocilaKontakta);
 
 /**
@@ -163,6 +195,15 @@ router.route('/chat/:emailUporabnika')
  *       application/json:
  *        schema:
  *          $ref: "#/components/schemas/KontaktAzuriranjePovzetekOdgovor"
+ *     "401":
+ *       description: Napaka pri dostopu.
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/Napaka"
+ *           examples:
+ *             ni zetona:
+ *               $ref: "#/components/examples/NiZetona"
  *     "500":
  *      description: Napaka na strežniku pri dostopu do podatkovne baze.
  */
@@ -173,6 +214,24 @@ const ctrlDB = require('../controllers/db');
 //router.get("/vstavi/vse", ctrlChat.insertAll);
 //router.get("/izbrisi/vse", ctrlChat.deleteAll);
 
+/**
+ * @swagger
+ *  /db:
+ *  get:
+ *   summary: Izbris podatkov
+ *   description: Izbris začetnih podatkv v/iz podatkovne baze
+ *   tags: [db]
+ *   security:
+ *    - jwt: []
+ *   responses:
+ *    "200": 
+ *      description: Baza je bila uspešno izbrisana.
+ *    "404":
+ *      description: Baze ni bilo mogoče najti.
+ *    "500":
+ *      description: Napaka na strežniku pri dostopu do podatkovne baze.
+ *    
+ */
 router.get('/db/dropDB', ctrlDB.bazaIzbrisi);
 
 module.exports = router;

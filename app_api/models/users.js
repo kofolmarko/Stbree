@@ -69,9 +69,9 @@ const jwt = require('jsonwebtoken');
  *        geslo:
  *          type: string
  *          format: password
- *        example: test
+ *          example: test
  *      required:
- *        - email
+ *        - elektronskiNaslov
  *        - geslo
  *    UporabnikRegistracija:
  *      type: object
@@ -79,12 +79,12 @@ const jwt = require('jsonwebtoken');
  *      properties:
  *        ime:
  *          type: string
- *          description: ime in priimek
+ *          description: ime
  *          writeOnly: true
  *          example: Harry
  *        priiimek:
  *          type: string
- *          description: ime in priimek
+ *          description: priimek
  *          writeOnly: true
  *          example: Potter
  *        email:
@@ -122,6 +122,7 @@ const jwt = require('jsonwebtoken');
  *      description: Podatki profila pri branju
  *      type: object
  *      properties:
+ *        type: object
  *        _id: 
  *          type: string
  *          format: uuid
@@ -150,34 +151,7 @@ const jwt = require('jsonwebtoken');
  *          example: 073345554
  *        ocena:
  *          type: number
- *          example: 5
- *        ocen:
- *          type: array
- *          items: 
- *            type: Ocena
- *            example:
- *              - 5
- *              - 4
- *        dogodki:
- *          type: array
- *          items: 
- *            type: InstrukcijeDogodek
- *        dela:
- *          type: array
- *          items: 
- *            type: Delo
- *        poslanaSporocila:
- *          type: array
- *          items: 
- *            type: Sporocila
- *        kontakti:
- *          type: array
- *        items:
- *          type: string
- *      required:
- *        - ime
- *        - priimek
- *        - email
+ *          example: 3
  *    ProfilAzuriranjePovzetekZahteva:
  *      type: object
  *      properties:
@@ -606,4 +580,16 @@ mongoose.model('User', uporabnikZacetnoShema, 'Users');
  *     summary: ni JWT žetona
  *     value:
  *      sporočilo: "UnauthorizedError: No authorization token was found."
+ *    NeNajdemKomentarja:
+ *      summary: ni komentarja
+ *      value:
+ *        sporočilo: Ne najdem komentarja.
+ *    NiNobenegaKomentarja:
+ *      summary:
+ *      value:
+ *        sporočilo: Ne najdem nobenega komentarja
+ *    NeNajdemProfila:
+ *      summary: ni profila
+ *      value:
+ *        sporočila: Ne najdem profila.
  */

@@ -18,10 +18,10 @@ const ctrlKomentarji = require('../controllers/komentarji');
  * Kategorije dostopnih točk
  * @swagger
  * tags:
- *  - name: Inštrukcije
+ *  - name: Instrukcije-dogodki
  *    description: Obvladovanje inštrukcij
  *  - name: Komentarji
- *    description: Obvladovanje komentarjev v okviru dogodkov
+ *    description: Obvladovanje komentarjev
  */
 
  /**
@@ -359,7 +359,7 @@ router.route('/instrukcije-dogodki/:idDogodka/komentarji')
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
  *         ne najdem dogodka:
- *          $ref: "#/components/examples/NeNajdemDogodka"
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
  */
   .post(ctrlKomentarji.komentarjiKreiraj);
 router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
@@ -401,7 +401,7 @@ router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
  *         ne najdem dogodka:
- *           $ref: "#/components/examples/NeNajdemDogodka"
+ *           $ref: "#/components/examples/NeNajdemInstrukcije"
  *         ne najdem komentarja:
  *           $ref: "#/components/examples/NeNajdemKomentarja"
  *         ni nobenega komentarja:
@@ -464,7 +464,7 @@ router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
  *         ne najdem dogodka:
- *          $ref: "#/components/examples/NeNajdemDogodka"
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
  *         ne najdem komentarja:
  *          $ref: "#/components/examples/NeNajdemKomentarja"
  *     "500":
@@ -512,8 +512,8 @@ router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
  *        schema:
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
- *         ne najdem dogodka
- *          $ref: "#/components/examples/NeNajdemDogodka"
+ *         ne najdem dogodka:
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
  *         ne najdem komentarja:
  *          $ref: "#/components/examples/NeNajdemKomentarja"
  *     "500":
