@@ -33,22 +33,23 @@ const ctrlKomentarji = require('../controllers/komentarji-del');
  */
 
 /**
- * /Dela:
- *  get:
- *    summary: Seznam ponudbe del
- *    description: Pridobitev **seznama ponudbe del**
- *    tags: [Dela]
+ * @swagger
+ *  /ponudba-del:
+ *    get:
+ *      summary: Seznam ponudbe del
+ *      description: Pridobitev **seznama ponudbe del**
+ *      tags: [Dela]
  *      responses:
- *      "200":
- *        description: Uspešna zahteva s seznamom najdenih ponudb del.
- *        content:
- *          application/json:
- *            schema:
- *            type: array
- *            items: 
- *              $ref: "#/components/jobs/offers"
- *      "500":
- *        description: Napaka na strežniku pri dostopu do podatkovne baze.
+ *        "200":
+ *          description: Uspešna zahteva s seznamom najdenih ponudb del.
+ *          content:
+ *            application/json:
+ *              schema:
+ *              type: array
+ *              items: 
+ *                $ref: "#/components/jobs/offers"
+ *        "500":
+ *          description: Napaka na strežniku pri dostopu do podatkovne baze.
  */
 /* GET job list */
 router.get('/ponudba-del', ctrlDela.dela);
@@ -56,8 +57,22 @@ router.get('/ponudba-del', ctrlDela.dela);
 /**
  * /Dela:
  *  post:
- *     summary: Dodajanje novega dela
- *       description: Dodajanje novega dela s podatki o nazivu, opisu, ceni, datumu in 
+ *    summary: Dodajanje novega dela
+ *    description: Dodajanje novega dela s podatki o nazivu, opisu, ceni in datumu.
+ *    tags: [Dela]
+ *    security:
+ *      - jwt: []
+ *    parameters:
+ *      - in: path
+ *        name: idDela
+ *        description: Enolični identifikator Dela.
+ *        schema:
+ *          type: string
+ *        required: true
+ *        example: 
+ *    requestBody:
+ * 
+ *      
  */
 /* POST new job */
 router.post('/ponudba-del', avtentikacija, ctrlDela.deloKreiraj);
@@ -68,7 +83,34 @@ router.get('/ponudba-del/delo/:idDela', ctrlDela.deloPreberi);
 /* PUT job by ID */
 router.put('/ponudba-del/delo/:idDela', avtentikacija, ctrlDela.deloUredi);
 
-/* DELETE job by ID */
+/**
+ * @swagger
+ *  /ponudba-del/delo/{idDela}:
+ *    delete:
+ *      summary: Brisanje izbranega dela
+ *      description: Brisanje **izbranega dela**.
+ *      tags: [Dela]
+ *      security:
+ *        - jwt: []
+ *      parameters:
+ *        - in: path
+ *          name: idDela
+ *          description: enolični identifikator dela
+ *          schema:
+ *            type: string
+ *          required: true
+ *      responses:
+ *        "204":
+ *          description: Uspešno izbrisano delo.
+ *        "404":
+ *          description: Napaka zahteve, zahtevanega dela ni mogoče najti.
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: "#/components/schemas/Napaka"
+ *        "500":
+ *          description: Napaka pri brisanju lokacije.
+ */
 router.delete('/ponudba-del/delo/:idDela', avtentikacija, ctrlDela.deloIzbrisi);
 
 //GET ordered by params

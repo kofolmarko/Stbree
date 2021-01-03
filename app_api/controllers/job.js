@@ -10,7 +10,6 @@ const User = mongoose.model('User');
 const deloKreiraj = (req, res) => {
   console.log("delo se kreira");
   console.log(req.body);
-  //res.status(200).json({ "status": "uspešno" });
   Delo.create({
     naziv: req.body.naziv,
     opis: req.body.opis,
@@ -18,18 +17,12 @@ const deloKreiraj = (req, res) => {
     datum: req.body.datum,
     emailPonudnika: req.body.emailPonudnika
   }, (napaka, delo) => {
-    console.log(napaka);
-    console.log(delo);
-    res.status(201).json(delo);
-    /*
     if (napaka) {
       res.status(400).json(napaka);
     } else {
       res.status(201).json(delo);
     }
-    */
   });
-  
 };
 
 /* GET job list */
@@ -116,11 +109,6 @@ const deloIzbrisi = (req, res) => {
   }
   Delo
     .findByIdAndDelete(idDela)
-    /*
-    .then((delo) => {
-      console.log(delo);
-    });
-    */
     .exec((napaka, delo) => {
       console.log("tukaj dogodek:" + delo, " tukaj napaka: " + napaka);
       if (!delo) {
@@ -128,7 +116,7 @@ const deloIzbrisi = (req, res) => {
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
-      res.status(200).json(delo);
+      res.status(204).json(delo);
     });
 };
 
