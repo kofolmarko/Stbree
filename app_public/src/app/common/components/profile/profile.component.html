@@ -104,7 +104,7 @@
     <div class="tab pb-5">
       <button class="tablinks" (click)="openCity(event, 'kronologija')">Seznam objav</button>
       <!-- <button class="tablinks" (click)="openCity(event, 'dela')">Seznam objav</button> -->
-      <button class="tablinks" (click)="openCity(event, 'spremeni-geslo')">Spremeni geslo</button>
+      <button class="tablinks" (click)="open(content)">Spremeni geslo</button>
     </div>
 
     <!-- {{!-- LIST OF POSTS --}} -->
@@ -157,22 +157,30 @@
     </div>
 
     <!-- {{!-- CHANGE PASSWORD --}} -->
-    <div id="spremeni-geslo" class="tabcontent">
-      <div class="col d-flex justify-content-center">
+  </div>
+
+  <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Spremeni moje geslo</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
         <form>
-          <p><b>Spremeni geslo:</b><br><i><small>Vpišite novo geslo, ki naj bo dolgo vsaj 8 znakov!</small></i></p>
+          <p>Vpišite novo geslo, ki naj bo dolgo 8 do 20 znakov!</p>
           <div class="form-group">
-            <label for="name">Novo geslo:</label>
-            <input type="password" id="passwordReset"><br>
-            <label for="surname">Potrdi novo geslo: </label>
+            <label for="name">Novo geslo:</label><br>
+            <input type="password" id="passwordReset"><br><br>
+            <label for="surname">Potrdi novo geslo: </label><br>
             <input type="password" id="passwordResetConfirm">
           </div>
-          <button id="resetPassword" class="btn btn-success">Potrdi</button>
-          <br><br>
         </form>
       </div>
-    </div>
-  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Potrdi</button>
+      </div>
+    </ng-template>
 
   <!-- {{!-- ADDITIONAL OPTIONS NOT ADMIN --}} -->
   <div *ngIf="uporabnik&&!isAdmin">

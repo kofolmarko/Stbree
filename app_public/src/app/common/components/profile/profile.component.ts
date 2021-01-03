@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 import { NavigationEnd, Router } from '@angular/router';
 import { InstructionsService } from '../../services/instructions.service';
 import { JobsService } from '../../services/jobs.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -25,8 +26,11 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private jobsService: JobsService,
     private instructionsService: InstructionsService,
-    private authenticationService: AuthenticationService
-    ) { }
+    private authenticationService: AuthenticationService,
+    private modalService: NgbModal
+  ) { }
+
+  closeResult = '';
 
   public sporocilo: string = "";
 
@@ -37,7 +41,7 @@ export class ProfileComponent implements OnInit {
   public editState: boolean = false;
 
   public viewResponsibilities: boolean = false;
-  
+
   public isAdmin: boolean = false;
 
   public signedStatus: boolean = false;
@@ -48,13 +52,13 @@ export class ProfileComponent implements OnInit {
 
   private getUserInfo(): void {
     this.route.paramMap
-    .pipe(
-      switchMap((params: ParamMap) => {
-        let emailUporabnika = params.get('emailUporabnika');
-        return this.authenticationService.getUser(emailUporabnika);
-      })
-    )
-    .subscribe(async (user: User) => {
+      .pipe(
+        switchMap((params: ParamMap) => {
+          let emailUporabnika = params.get('emailUporabnika');
+          return this.authenticationService.getUser(emailUporabnika);
+        })
+      )
+      .subscribe(async (user: User) => {
         this.uporabnik = user;
         if (this.authenticationService.isLoggedIn()) {
           if (this.uporabnik.email === this.authenticationService.getCurrentUser().email) {
@@ -62,7 +66,7 @@ export class ProfileComponent implements OnInit {
           }
         }
         this.sporocilo = user ? "" : "Uporabnik ne obstaja :(";
-    });
+      });
   }
 
   private getFeatured(type: string): any[] {
@@ -82,35 +86,35 @@ export class ProfileComponent implements OnInit {
       }
       case 'offers': {
         this.jobsService.getJobs()
-        .then(offers => {
-          for(let i = 1; i < 50; i++) {
-            if(offers[offers.length - i]) {
-              featured.push(offers[offers.length - i]);
+          .then(offers => {
+            for (let i = 1; i < 50; i++) {
+              if (offers[offers.length - i]) {
+                featured.push(offers[offers.length - i]);
+              }
             }
-          }
-        })
-        .catch(error => console.log(error));
+          })
+          .catch(error => console.log(error));
         break;
       }
     }
     console.log(featured);
     return featured;
   }
-  
+
   //DOSREDI
   openCity(evt, cityName): void {
-      this.viewResponsibilities = true;
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(cityName).style.display = "block";
-      if(evt)
+    this.viewResponsibilities = true;
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    if (evt)
       evt.currentTarget.className += " active";
   }
 
@@ -122,7 +126,7 @@ export class ProfileComponent implements OnInit {
   saveUserInfo(): void {
     this.editCSS(false);
     this.editState = false;
-    if (this.isInstructor() && !this.uporabnik.statusInstruktorja){
+    if (this.isInstructor() && !this.uporabnik.statusInstruktorja) {
       alert("Če še vedno imate prihajajoče dogodke, jih prosimo dokončajte ali ustrezno izbrišite. Odjavite se in se znova prijavite, da izgubite pravico do ustvarjanja dogodkov");
     } else if (!this.isInstructor() && this.uporabnik.statusInstruktorja) {
       alert("Če želite začeti ustvarjati dogodke, se prosimo odjavite in znova prijavite!");
@@ -178,7 +182,7 @@ export class ProfileComponent implements OnInit {
   }
 
   public isInstructor(): boolean {
-    if(this.getCurrentUser().statusInstruktorja) {
+    if (this.getCurrentUser().statusInstruktorja) {
       return true;
     } else {
       return false;
@@ -186,11 +190,29 @@ export class ProfileComponent implements OnInit {
   }
 
   public getCurrentUser(): User {
-    return(this.authenticationService.getCurrentUser());
+    return (this.authenticationService.getCurrentUser());
   }
 
   ngOnInit(): void {
     this.getUserInfo();
     this.isSignedUp();
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
