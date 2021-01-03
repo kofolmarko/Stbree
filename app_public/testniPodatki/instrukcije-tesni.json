@@ -1,0 +1,79 @@
+[{
+    "_id": "",
+    "naziv": "Predavanje filozofije",
+    "opis": "Filozofija 19. stoletja v eni uri",
+    "cena": 6,
+    "datestring": "2021-03-03",
+    "datum": null,
+    "ura": "12:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "simon@antonic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Andrej Rustja",
+      "ocena": 4,
+      "besediloKomentarja": "Zelo zanimiva razlaga.",
+      "datestring": "2021-04-12",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Peter Soban",
+      "ocena": 2,
+      "besediloKomentarja": "Dobra, a ponekod pomanjkljiva razlaga.",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Učenje matematike",
+    "opis": "Linearna algebra, kot jo nisi nikoli prej spoznal.",
+    "cena": 5,
+    "datestring": "2021-11-20",
+    "datum": null,
+    "ura": "10:00",
+    "steviloProstihMest": 10,
+    "emailInstruktorja": "rudi@bobnič.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 2,
+      "besediloKomentarja": "Nič mi ni bilo jasno",
+      "datestring": "2021-12-01",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Miha Kovic",
+      "ocena": 1,
+      "besediloKomentarja": "Še sam je bil zmeden...",
+      "datestring": "2021-11-23",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Kitajska književnost",
+    "opis": "Kitajska književnost od začetkov do danes",
+    "cena": 6,
+    "datestring": "2021-03-03",
+    "datum": null,
+    "ura": "12:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "simon@antonic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 4,
+      "besediloKomentarja": "Všeč mi je bilo!",
+      "datestring": "2021-04-12",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Peter Soban",
+      "ocena": 1,
+      "besediloKomentarja": "Nekako površno..",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }]
