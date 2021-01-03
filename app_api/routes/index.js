@@ -233,5 +233,6 @@ const ctrlDB = require('../controllers/db');
  *    
  */
 router.get('/db/dropDB', ctrlDB.bazaIzbrisi);
+router.get('/db/dropUsers', ctrlDB.dropUsers);
 
 module.exports = router;

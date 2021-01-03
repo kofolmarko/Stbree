@@ -27,7 +27,7 @@ const jobList = (req, res) => {
 
 /* Render job list */
 const jobsList = (req, res, dela, sporocilo) => {
-  console.log(dela);
+  // console.log(dela);
   res.render('jobs-list', {
     dela: dela,
     sporocilo: sporocilo
@@ -55,7 +55,7 @@ const getJob = async (req, res, povratniKlic) => {
       prikaziNapako(req, res, napaka);
     });
   if (result) {
-    console.log(result.data);
+    // console.log(result.data);
     povratniKlic(req, res, result.data);
   } else {
     prikaziNapako(req, res, result);
@@ -71,7 +71,7 @@ const renderJob = (req, res, delo, ponudnik) => {
   }
   gettingInsID = { idInstruktorja: loginID };
   require('./instructions').getInstructor(req, res, gettingInsID, (req, res, loggedInUser) => {
-    console.log(delo);
+    // console.log(delo);
     var isSignedUp = false;
     for (i = 0; i < loggedInUser.dela.length; i++) {
       if (delo._id == loggedInUser.dela[i]._id) {
@@ -96,7 +96,7 @@ const renderJob = (req, res, delo, ponudnik) => {
 /* GET ponudnik data */
 const getPonudnik = async (req, res, delo, povratniKlic) => {
   const result = await axios.get(apiParametri.streznik + '/api/uporabnik/' + delo.idPonudnika);
-  console.log(result.data);
+  // console.log(result.data);
   povratniKlic(req, res, result.data);
 };
 
@@ -122,7 +122,7 @@ const jobNewPost = (req, res) => {
         idPonudnika: idPrijavljenega
       }
     }).then((delo) => {
-      console.log("Novo delo '" + req.body.naziv + "' je bilo dodano!");
+      // console.log("Novo delo '" + req.body.naziv + "' je bilo dodano!");
       res.redirect('/ponudba-del');
     }).catch((napaka) => {
       prikaziNapako(req, res, napaka);
@@ -132,7 +132,7 @@ const jobNewPost = (req, res) => {
 
 /* PUT job page (edit) */
 const jobEdit = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   if (!req.body.naziv || !req.body.opis || !req.body.cena || !req.body.datum) {
     console.log("izpolni vsa polja");
   } else {
@@ -147,11 +147,11 @@ const jobEdit = (req, res) => {
       }
     )
     .then((delo) => {
-      console.log(delo);
+      // console.log(delo);
       res.status(200).json(delo);
     })
     .catch((napaka) => {
-      console.log(napaka);
+      // console.log(napaka);
       prikaziNapako(req, res, napaka);
     });
   }
@@ -162,8 +162,8 @@ const jobDelete = (req, res) => {
   axios
     .delete(apiParametri.streznik + '/api/ponudba-del/delo/' + req.params.idDela)
     .then((delo) => {
-      console.log("Deleted the following event:");
-      console.log(delo.data);
+      // console.log("Deleted the following event:");
+      // console.log(delo.data);
       res.status(200).json(delo);
       res.redirect('/ponudba-del');
     })
@@ -175,8 +175,8 @@ const jobDelete = (req, res) => {
 
 const jobSignup = (req, res) => {
   var loginID = require('./signing').loginID.val;
-  console.log(loginID);
-  console.log(req.params);
+  // console.log(loginID);
+  // console.log(req.params);
   axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/delo/" + req.params.idDela)
     .then((uporabnik) => {
       res.redirect('/ponudba-del');
@@ -188,11 +188,11 @@ const jobSignup = (req, res) => {
 
 const jobLeave = (req, res) => {
   var loginID = require('./signing').loginID.val;
-  console.log(loginID);
-  console.log(req.params);
+  // console.log(loginID);
+  // console.log(req.params);
   axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/delo/odjava/" + req.params.idDela)
     .then((uporabnik) => {
-      console.log("Nazaj na serverju: " + uporabnik);
+      // console.log("Nazaj na serverju: " + uporabnik);
       res.redirect('/ponudba-del');
     })
     .catch((napaka) => {
@@ -202,15 +202,15 @@ const jobLeave = (req, res) => {
 
 //POST filter
 const filter = (req, res) => {
-  console.log(req.params.parameter);
+  // console.log(req.params.parameter);
   axios
     .get(apiParametri.streznik + '/api/ponudba-del/' + req.params.parameter)
     .then((dela) => {
-      console.log("filtering by " + req.params.parameter);
+      // console.log("filtering by " + req.params.parameter);
       if (req.params.parameter.substring(0, 3) == "REV") {
         dela.data = dela.data.reverse();
       }
-      console.log(dela.data);
+      // console.log(dela.data);
       res.render('jobs-list', {
         dela: dela.data
       });

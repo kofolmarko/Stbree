@@ -58,8 +58,8 @@ const instructionsEventCreate = (req, res) => {
     steviloProstihMest: req.body.steviloProstihMest,
     emailInstruktorja: req.body.emailInstruktorja
   }, (napaka, instrukcijeDogodek) => {
-    console.log(napaka);
-    console.log(instrukcijeDogodek);
+    // console.log(napaka);
+    // console.log(instrukcijeDogodek);
     res.status(201).json(instrukcijeDogodek);
     /*
     if (napaka) {
@@ -73,10 +73,10 @@ const instructionsEventCreate = (req, res) => {
 
 //CREATE new instructions event
 const instrukcijeDogodekKreiraj = (req, res) => {
-  console.log("is this problem=?");
+  // console.log("is this problem=?");
   vrniAvtorja(req, res, (req, res, idUporabnika) => {
-    console.log("pridem do kreacije");
-    console.log(req.body);
+    // console.log("pridem do kreacije");
+    // console.log(req.body);
     res.status(200).json({ "status": "uspešno" });
     InstrukcijeDogodek.create({
       naziv: req.body.naziv,
@@ -87,8 +87,8 @@ const instrukcijeDogodekKreiraj = (req, res) => {
       steviloProstihMest: req.body.steviloProstihMest,
       idInstruktorja: idUporabnika
     }, (napaka, instrukcijeDogodek) => {
-      console.log(napaka);
-      console.log(instrukcijeDogodek);
+      // console.log(napaka);
+      // console.log(instrukcijeDogodek);
       /*
       if (napaka) {
         res.status(400).json(napaka);
@@ -129,19 +129,19 @@ const instrukcijeDogodki = (req, res) => {
 
 //ORDER BY PARAMETER
 const instrukcijeDogodkiOrder = (req, res) => {
-  console.log("INSIDE API");
-  console.log(req.params.parameter);
+  // console.log("INSIDE API");
+  // console.log(req.params.parameter);
 
   let { parameter } = req.params;
-  console.log(parameter.substring(0, 3));
-  console.log(parameter.substring(3));
+  // console.log(parameter.substring(0, 3));
+  // console.log(parameter.substring(3));
 
   if (parameter.substring(0, 3) == "REV") {
-    console.log("We have a reverse!");
+    // console.log("We have a reverse!");
     parameter = parameter.substring(3);
   }
 
-  console.log(parameter);
+  // console.log(parameter);
 
   InstrukcijeDogodek
     .aggregate()
@@ -151,7 +151,7 @@ const instrukcijeDogodkiOrder = (req, res) => {
       if (napaka) {
         res.status(500).json(napaka);
       } else {
-        console.log("RETURNING OBJECTS FROM API");
+        // console.log("RETURNING OBJECTS FROM API");
         res.status(200).json(
           instrukcijeDogodki.map(instrukcijeDogodek => {
             return {
@@ -184,14 +184,14 @@ const instrukcijeDogodekPreberi = (req, res) => {
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
-      console.log(instrukcijeDogodek.data);
+      // console.log(instrukcijeDogodek.data);
       res.status(200).json(instrukcijeDogodek);
     });
 };
 
 //PUT update instructions event (CURRENTLY NOT IN USE)
 const instrukcijeDogodekPosodobi = (req, res) => {
-  console.log("Inside controllers on the API!");
+  // console.log("Inside controllers on the API!");
   InstrukcijeDogodek
     .findByIdAndUpdate(req.params.idDogodka,
       {
@@ -211,19 +211,19 @@ const instrukcijeDogodekPosodobi = (req, res) => {
             "Dogodek ne obstaja."
         });
       } else if (napaka) {
-        console.log(napaka.data);
+        // console.log(napaka.data);
         return res.status(500).json(napaka);
       }
-      console.log(instrukcijeDogodek.data);
+      // console.log(instrukcijeDogodek.data);
       res.status(200).json(instrukcijeDogodek);
     });
 };
 
 //DELETE instructons event by id
 const instrukcijeDogodekIzbrisi = (req, res) => {
-  console.log("izbris");
+  // console.log("izbris");
   const { idDogodka } = req.params;
-  console.log(idDogodka);
+  // console.log(idDogodka);
   if (!idDogodka) {
     return res.status(404).json({
       "sporočilo":
@@ -235,7 +235,7 @@ const instrukcijeDogodekIzbrisi = (req, res) => {
     .findByIdAndDelete(idDogodka)
     /*
     .then((dogodek) => {
-      console.log(dogodek);
+      // console.log(dogodek);
     });
     */
     .exec((napaka, dogodek) => {
@@ -279,7 +279,7 @@ const prijavaNaDogodek = (req, res) => {
           return res.status(400).json({ "sporočilo": "Dogodek je že v celoti zaseden :(" });
         }
       } else {
-        console.log("ena napakica");
+        // console.log("ena napakica");
         return res.status(400).json(napaka);
       }
 

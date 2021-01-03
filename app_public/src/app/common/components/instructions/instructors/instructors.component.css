@@ -9,6 +9,12 @@ h2{
     padding-right: 10px;
     padding-bottom: 10px;
 }
+
+.card-title, .card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
   
   .img-responsive{
     width: 100%;

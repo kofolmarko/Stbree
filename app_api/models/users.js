@@ -348,7 +348,7 @@ uporabnikZacetnoShema.methods.preveriGeslo = function (geslo) {
 uporabnikZacetnoShema.methods.generirajJwt = function () {
   const datumPoteka = new Date();
   datumPoteka.setDate(datumPoteka.getDate() + 7);
-  console.log(this);
+  // console.log(this);
 
   return jwt.sign({
     email: this.email,

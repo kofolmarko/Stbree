@@ -16,8 +16,8 @@ const dodajKomentar = (req, res, dogodek) => {
         ocena: req.body.ocena,
         besediloKomentarja: req.body.besediloKomentarja
       }, (napaka, komentar) => {
-        console.log(napaka);
-        console.log(komentar);
+        // console.log(napaka);
+        // console.log(komentar);
         
         if (napaka) {
           res.status(400).json({"sporočilo": "Napaka API-ja pri kreaciji komentarja."});
@@ -118,11 +118,11 @@ const komentarjiKreiraj = (req, res) => {
               "Dogodek ne obstaja."
           });
         } else if (napaka) {
-          console.log(napaka.data);
+          // console.log(napaka.data);
           return res.status(500).json(napaka);
         }
-        console.log("posodobljen komentar:");
-        console.log(komentar.data);
+        // console.log("posodobljen komentar:");
+        // console.log(komentar.data);
         res.status(201).json(komentar);
       });
     /*
@@ -175,7 +175,7 @@ const komentarjiKreiraj = (req, res) => {
         } else if (napaka) {
           return res.status(500).json(napaka);
         }
-        console.log(dogodek.komentarji);
+        // console.log(dogodek.komentarji);
         if (dogodek.komentarji && dogodek.komentarji.length > 0) {
           if (!dogodek.komentarji.id(idKomentarja)) {
             return res.status(404).json({"sporočilo": "Ne najdem komentarja."});

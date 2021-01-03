@@ -44,14 +44,14 @@ var swaggerOptions = {
 };
 const swaggerDocument = swaggerJsdoc(swaggerOptions);
 
-console.log(process.env.MONGODB_CLOUD_URI);
+//console.log(process.env.MONGODB_CLOUD_URI);
 require('./app_api/models/db');
 require('./app_api/konfiguracija/passport');
 
-var indexRouter = require('./app_server/routes/index');
-var usersRouter = require('./app_server/routes/users');
-var instructionsRouter = require('./app_server/routes/instructions');
-var jobsRouter = require('./app_server/routes/jobs');
+// var indexRouter = require('./app_server/routes/index');
+// var usersRouter = require('./app_server/routes/users');
+// var instructionsRouter = require('./app_server/routes/instructions');
+// var jobsRouter = require('./app_server/routes/jobs');
 var indexApi = require('./app_api/routes/index');
 var usersApi = require('./app_api/routes/users');
 var instructionsApi = require('./app_api/routes/instructions');
@@ -87,8 +87,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static(path.join(__dirname, 'app_public', 'build')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app_public', 'build')));
 app.use(passport.initialize());
 
 app.use('/api', (req, res, next) => {
@@ -103,14 +103,18 @@ indexApi.get("/swagger.json", (req, res) => {
   res.status(200).json(swaggerDocument);
 });
 
-app.use('/', indexRouter);
-app.use('/', usersRouter);
-app.use('/', instructionsRouter);
-app.use('/', jobsRouter);
+// app.use('/', indexRouter);
+// app.use('/', usersRouter);
+// app.use('/', instructionsRouter);
+// app.use('/', jobsRouter);
 app.use('/api', indexApi);
 app.use('/api', usersApi);
 app.use('/api', instructionsApi);
 app.use('/api', jobsApi);
+
+app.get(/(\/prijava)|(\/registracija)|(\/my)|(\/instruktorji)|(\/odjava)|(\/db)|(\/db\/dropDB)|(\/sporocanje)|(\/profil\/[a-z0-9]{24})|(\/instrukcije-dogodki)|(\/instrukcije-dogodki\/dodaj)|(\/ponudba-del)|(\/ponudba-del\/dodaj)|(\/instrukcije-dogodki\/dogodek\/[a-z0-9]{24})|(\/ponudba-del\/delo\/[a-z0-9]{24})/, (req, res, next) => {
+  res.sendFile(path.join(__dirname, 'app_public', 'build', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
