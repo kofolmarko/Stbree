@@ -327,20 +327,34 @@ const jwt = require('jsonwebtoken');
  *     - steviloProstihMest
  *     - emailInstruktorja
  *   Delo:
+ *    InstruktorjiBranjePovzetek:
  *      type: object
  *      properties:
- *        naziv:
+ *        _id:
  *          type: string
+ *          format: uuid
+ *          description: enolični identifikator
+ *          example: 5ff1beb7383e3e0012d0f38c
+ *        ime:
+ *          type: string
+ *          example: Janez
+ *        priimek:
+ *          type: string
+ *          example: Novak
+ *        email: 
+ *          type: email
+ *          example: janez.novak@gmail.com
+ *        statusInstruktorja:
+ *          type: boolean
+ *          example: true
  *        opis:
  *          type: string
- *        cena:
+ *          example: Sem instruktor
+ *        telefonskaStevilka:
  *          type: number
- *        datum:
- *          type: date
- *        emailPonudnika:
- *          type: string
- *        zasedeno:
- *          type: boolean
+ *          exmple: 123123123
+ *        dogodki:
+ *          type: array
  *      required:
  *        - naziv
  *        - opis
@@ -356,6 +370,15 @@ const jwt = require('jsonwebtoken');
  *         type: string
  *      example:
  *        sporočilo: Parametri so obvezni.
+ *   Sporocila:
+ *      type: object
+ *      properties:
+ *        prejemnikSporocila:
+ *          type: string
+ *        besedilo:
+ *          type: string
+ *        cas:
+ *          type: date
  */
 
 const sporocilaShema = new mongoose.Schema({
