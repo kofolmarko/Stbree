@@ -219,12 +219,12 @@ const ctrlDB = require('../controllers/db');
  *  /db:
  *  get:
  *   summary: Izbris podatkov
- *   description: Izbris začetnih podatkv v/iz podatkovne baze
+ *   description: Izbris začetnih podatkv iz podatkovne baze
  *   tags: [db]
  *   security:
  *    - jwt: []
  *   responses:
- *    "200": 
+ *    "201": 
  *      description: Baza je bila uspešno izbrisana.
  *    "404":
  *      description: Baze ni bilo mogoče najti.
@@ -233,6 +233,24 @@ const ctrlDB = require('../controllers/db');
  *    
  */
 router.get('/db/dropDB', ctrlDB.bazaIzbrisi);
+/**
+ * @swagger
+ *  /db:
+ *  get:
+ *   summary: Izbris uporabnikov
+ *   description: Izbris začetnih uporabnikov iz podatkovne baze
+ *   tags: [db]
+ *   security:
+ *    - jwt: []
+ *   responses:
+ *    "201": 
+ *      description: Uporabniki so bili uspešno izbrisani.
+ *    "404":
+ *      description: Uporabnikov ni bilo mogoče najti.
+ *    "500":
+ *      description: Napaka na strežniku pri dostopu do podatkovne baze.
+ *    
+ */
 router.get('/db/dropUsers', ctrlDB.dropUsers);
 
 module.exports = router;

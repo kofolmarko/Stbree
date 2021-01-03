@@ -513,11 +513,7 @@ router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
  *         ne najdem dogodka:
-<<<<<<< HEAD
  *          $ref: "#/components/examples/NeNajdemInstrukcije"
-=======
- *          $ref: "#/components/examples/NeNajdemDogodka"
->>>>>>> 3caed103ce34363c6707924de2bc01856ada7c1c
  *         ne najdem komentarja:
  *          $ref: "#/components/examples/NeNajdemKomentarja"
  *     "500":
