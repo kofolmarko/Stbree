@@ -174,6 +174,92 @@ const jwt = require('jsonwebtoken');
  *        telefonskaStevilka:
  *          type: number
  *          example: 073345554
+ *   KontaktiBranje:
+ *    type: object
+ *    properties:
+ *     pridobljeniKontakti:
+ *      type: array
+ *      items:
+ *       type: User
+ *      example:
+ *       - statusInstruktorja: false
+ *         opis: Novo pečeni uporabnik.
+ *         telefonskaStevilka: 0
+ *         ocena: 0
+ *         ocen: []
+ *         kontakti: []
+ *         id: 5fe9cb2f2143640012e45367
+ *         datumVpisa: 2020-12-28T12:10:23.533Z
+ *         dogodki: []
+ *         dela: []
+ *         poslanaSporocila: []
+ *         ime: Irena
+ *         priimek: Novak
+ *         email: irena@gmail.com 
+ *         nakljucnaVrednost: 0eca1450e9c809df3086ea2c42058ab2
+ *         zgoscenaVrednost: b0bee9de817af7c3813abe1b3e55aa47c19f5f8490dd1c78eaaafcf3a4b66226d10d0dd389a04b20215dd9e62889bd164617d7c19196ed8732acd0951b90f81f
+ *   SporocanjeAzuriranjePovzetekZahteva:
+ *    type: object
+ *    properties:
+ *     prejemnikSporocila:
+ *      type: string
+ *      example: 5ff0fb88879cc87a850bca40
+ *     besedilo:
+ *      type: string
+ *      example: Zivjo Lana, kako si?
+ *   SporocanjeAzuriranjePovzetekOdgovor:
+ *      type: object
+ *      properties:
+ *        besedilo:
+ *          type: string
+ *          example: Zivjo Lana, kako si?
+ *   SporocilaBranje:
+ *      type: object
+ *      properties:
+ *        prviUser:
+ *          type: User
+ *          example:
+ *           - statusInstruktorja: false
+ *             opis: Novo pečeni uporabnik.
+ *             telefonskaStevilka: 0
+ *             ocena: 0
+ *             ocen: []
+ *             kontakti: []
+ *             id: 5fe9cb2f2143640012e45367
+ *             datumVpisa: 2020-12-28T12:10:23.533Z
+ *             dogodki: []
+ *             dela: []
+ *             poslanaSporocila: []
+ *             ime: Irena
+ *             priimek: Novak
+ *             email: irena@gmail.com 
+ *             nakljucnaVrednost: 0eca1450e9c809df3086ea2c42058ab2
+ *             zgoscenaVrednost: b0bee9de817af7c3813abe1b3e55aa47c19f5f8490dd1c78eaaafcf3a4b66226d10d0dd389a04b20215dd9e62889bd164617d7c19196ed8732acd0951b90f81f
+ *        drugiUser:
+ *          type: User
+ *          example:
+ *           - statusInstruktorja: false
+ *             opis: Novo pečeni uporabnik.
+ *             telefonskaStevilka: 0
+ *             ocena: 0
+ *             ocen: []
+ *             kontakti: []
+ *             id: 5fe9cb2f2143640012e45367
+ *             datumVpisa: 2020-12-28T12:10:23.533Z
+ *             dogodki: []
+ *             dela: []
+ *             poslanaSporocila: []
+ *             ime: Spela
+ *             priimek: Ahlin
+ *             email: spela@gmail.com 
+ *             nakljucnaVrednost: 3142808586fb46fdc239990a2c21b0a7
+ *             zgoscenaVrednost: aa40d868f6a6e7c435c610ff65d0d05ab33a23ab6e4340f09efb77db579b032310344c2ed1746528e1e12c03e9c2dd822fc1b671f6217441c5e958b88efd971b
+ *   KontaktAzuriranjePovzetekOdgovor:
+ *      type: object
+ *      properties:
+ *        kontakt:
+ *          type: string
+ *          example: 5ff0deac3c71c55cd8206bf6
  */
 
 const sporocilaShema = new mongoose.Schema({

@@ -39,7 +39,7 @@ router.route('/chat/:emailUporabnika')
  *    description: Pridobitev **seznama kontaktov**, glede na **trenutnega uporabnika**.
  *    tags: [Sporocila]
  *    parameters:
-*     - in: path
+ *     - in: path
  *       name: emailUporabnika
  *       description: enolični identifikator uporabnika
  *       schema:
@@ -54,26 +54,122 @@ router.route('/chat/:emailUporabnika')
  *        schema:
  *         type: array
  *         items:
- *          $ref: "#/components/chat/LokacijaBranjePovzetek"
- *     "400":
- *      description: Napaka zahteve, manjkajo obvezni parametri.
- *      content:
- *       application/json:
- *        schema:
- *         $ref: "#/components/schemas/Napaka"
- *        example:
- *         sporočilo: Parametra lng in lat sta obvezna.
+ *          $ref: "#/components/schemas/KontaktiBranje"
  *     "500":
  *      description: Napaka na strežniku pri dostopu do podatkovne baze.
  */
 
     .get(ctrlChat.naloziKontakte)
+/**
+ * @swagger
+ *  /chat/{emailUporabnika}:
+ *   post:
+ *    summary: Dodajanje novega sporocila
+ *    description: Posiljanje novega sporocila izbranemu kontaktu.
+ *    tags: [Sporocila]
+ *    security:
+ *      - jwt: []
+ *    parameters:
+ *     - in: path
+ *       name: emailUporabnika
+ *       description: enolični identifikator uporabnika
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: nejc@gmail.com
+ *    requestBody:
+ *        description: Podatki o dodanem sporocilu
+ *        required: true
+ *        content:
+ *          application/x-www-form-urlencoded:
+ *            schema:
+ *              $ref: "#/components/schemas/SporocanjeAzuriranjePovzetekZahteva"
+ *    responses:
+ *     "201":
+ *      description: Uspešno dodano novo sporocilo.
+ *      content:
+ *       application/json:
+ *        schema:
+ *          $ref: "#/components/schemas/SporocanjeAzuriranjePovzetekOdgovor"
+ *     "500":
+ *      description: Napaka na strežniku pri dostopu do podatkovne baze.
+ */
     .post(avtentikacija, ctrlChat.kreirajSporocilo);
+
+
+/**
+ * @swagger
+ *  /chat/{emailUporabnika}/{idPrejemnika}:
+ *  get:
+ *    summary: Nalozi sporocila kontakta.
+ *    description: Nalozi sporocila, ki jih imas z izbranim kontaktom.
+ *    tags: [Sporocila]
+ *    parameters:
+ *      - in: path
+ *        name: emailUporabnika
+ *        description: Enolični email uporabnika.
+ *        schema:
+ *          type: string
+ *        required: true
+ *        example: nejc@gmail.com
+ *      - in: path
+ *        name: idPrejemnika
+ *        description: Enolični identifikator uporabnika.
+ *        schema:
+ *          type: string
+ *        required: true
+ *        example: 5ff0fb88879cc87a850bca40
+ *    responses:
+ *      "200":
+ *        description: Uspešna zahteva s sporocili v odgovoru.
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: "#/components/schemas/SporocilaBranje"
+ *      "500":
+ *        description: Napaka na strežniku pri dostopu do podatkovne baze.
+ */
+    
+    router.get('/chat/:emailUporabnika/:idPrejemnika', ctrlChat.naloziSporocilaKontakta);
+
+/**
+ * @swagger
+ *  /chat/{emailUporabnika}/{emailKontakta}:
+ *   post:
+ *    summary: Dodajanje novega kontakta
+ *    description: Dodajanje novega kontakta v bazo.
+ *    tags: [Sporocila]
+ *    security:
+ *      - jwt: []
+ *    parameters:
+ *     - in: path
+ *       name: emailUporabnika
+ *       description: enolični email uporabnika
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: nejc@gmail.com
+ *     - in: path
+ *       name: emailKontakta
+ *       description: enolični email kontakta
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: spela@gmail.com
+ *    responses:
+ *     "201":
+ *      description: Uspešno dodan kontakt.
+ *      content:
+ *       application/json:
+ *        schema:
+ *          $ref: "#/components/schemas/KontaktAzuriranjePovzetekOdgovor"
+ *     "500":
+ *      description: Napaka na strežniku pri dostopu do podatkovne baze.
+ */
+    router.post('/chat/:emailUporabnika/:emailKontakta',avtentikacija, ctrlChat.kreirajKontakt);
+    
+
 const ctrlDB = require('../controllers/db');
-
-router.get('/chat/:emailUporabnika/:idPrejemnika', ctrlChat.naloziSporocilaKontakta);
-router.post('/chat/:emailUporabnika/:emailKontakta',avtentikacija, ctrlChat.kreirajKontakt);
-
 //router.get("/vstavi/vse", ctrlChat.insertAll);
 //router.get("/izbrisi/vse", ctrlChat.deleteAll);
 
