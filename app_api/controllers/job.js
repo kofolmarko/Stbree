@@ -131,7 +131,6 @@ const delaOrder = (req, res) => {
   console.log(parameter.substring(3));
 
   if(parameter.substring(0,3) == "REV") {
-    console.log("We have a reverse!");
     parameter = parameter.substring(3);
   }
 

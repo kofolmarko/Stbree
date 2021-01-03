@@ -24,6 +24,77 @@ const mongoose = require('mongoose');
  *        - opis
  *        - datum
  *        - emailPonudnika
+ *    DeloBranjePovzetek:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *          format: uuid
+ *          description: enolični identifikator
+ *          example: 5ff1beb7383e3e0012d0f38b
+ *        naziv:
+ *          type: string
+ *          example: Programiranje
+ *        opis:
+ *          type: string
+ *          example: Pomagaj mi sprogramirati program za seštevanje v javi!
+ *        cena:
+ *          type: number
+ *          example: 3
+ *        datum:
+ *          type: date
+ *          example: 2021-11-08
+ *        emailPonudnika:
+ *          type: email
+ *          example: anamarija@gmail.com
+ *      required:
+ *        - _id
+ *        - naziv
+ *        - opis
+ *        - datum
+ *        - emailPonudnika
+ *    DeloAzuriranjePovzetekZahteva:
+ *      type: object
+ *      properties:
+ *        naziv:
+ *          type: string
+ *          example: Programiranje
+ *        opis:
+ *          type: string
+ *          example: Pomagaj mi sprogramirati program za seštevanje v javi!
+ *        cena:
+ *          type: number
+ *          example: 3
+ *        datum:
+ *          type: date
+ *          example: 2021-11-08
+ *        emailPonudnika:
+ *          type: email
+ *          example: anamarija@gmail.com
+ *      required:
+ *        - _id
+ *        - naziv
+ *        - opis
+ *        - datum
+ *        - emailPonudnika
+ *    DeloAzuriranjePovzetekOdgovor:
+ *      type: object
+ *      properties:
+ *        naziv:
+ *          type: string
+ *          example: Programiranje
+ *        opis:
+ *          type: string
+ *          example: Pomagaj mi sprogramirati program za seštevanje v javi!
+ *        cena:
+ *          type: number
+ *          example: 3
+ *        datum:
+ *          type: date
+ *          example: 2021-11-08
+ *        emailPonudnika:
+ *          type: email
+ *          example: anamarija@gmail.com
  */
 
 const komentarjiDelShema = new mongoose.Schema({
