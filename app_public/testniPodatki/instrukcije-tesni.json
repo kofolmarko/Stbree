@@ -33,7 +33,7 @@
     "datum": null,
     "ura": "10:00",
     "steviloProstihMest": 10,
-    "emailInstruktorja": "rudi@bobnič.com",
+    "emailInstruktorja": "rudi@bobnic.com",
     "komentarji": [{
       "_id": "",
       "avtor": "Jernej Tomsič",
@@ -54,7 +54,7 @@
     "_id": "",
     "naziv": "Kitajska književnost",
     "opis": "Kitajska književnost od začetkov do danes",
-    "cena": 6,
+    "cena": 3,
     "datestring": "2021-03-03",
     "datum": null,
     "ura": "12:00",
@@ -74,6 +74,188 @@
       "ocena": 1,
       "besediloKomentarja": "Nekako površno..",
       "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Osnove Microsoft paketa",
+    "opis": "Word, Excel in Powerpoint za začetnike v treh urah",
+    "cena": 13,
+    "datestring": "2021-04-15",
+    "datum": null,
+    "ura": "17:00",
+    "steviloProstihMest": 10,
+    "emailInstruktorja": "stefan@partljic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Rudi Bobnič",
+      "ocena": 2,
+      "besediloKomentarja": "Površno, zelo malo snovi..",
+      "datestring": "2021-04-18",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Andrej Rustja",
+      "ocena": 1,
+      "besediloKomentarja": "Že res, da sem začetnik, ampak menim, da je to res premalo snovi..",
+      "datestring": "2021-04-20",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Angleška literatura",
+    "opis": "Angleška literatura, snov za zadnji letnik srednje šole",
+    "cena": 5,
+    "datestring": "2021-02-25",
+    "datum": null,
+    "ura": "11:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "sanja@vogric.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Simon Antonič",
+      "ocena": "Pretežka snov, nič mi ni bilo koristno.",
+      "besediloKomentarja": "",
+      "datestring": "2021-02-27",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Domen Poljanc",
+      "ocena": 3,
+      "besediloKomentarja": "Dobro znanje, a slabe pedagoške kompetence..",
+      "datestring": "2021-03-03",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Tečaj informatike",
+    "opis": "Kaj več potrebujemo kot vsaj osnovno poznavanje informatike danes?",
+    "cena": 12,
+    "datestring": "2021-04-12",
+    "datum": null,
+    "ura": "14:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "zala@dornik.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Peter Soban",
+      "ocena": 4,
+      "besediloKomentarja": "Všeč mi je bilo!",
+      "datestring": "2021-04-14",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 1,
+      "besediloKomentarja": "Zelo koristno!",
+      "datestring": "2021-04-15",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Programiranje v Javi",
+    "opis": "Osnove programiranja v Javi v dveh urah",
+    "cena": 15,
+    "datestring": "2021-2-17",
+    "datum": null,
+    "ura": "10:00",
+    "steviloProstihMest": 7,
+    "emailInstruktorja": "domen@poljanc.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 4,
+      "besediloKomentarja": "Kakovostno predavanje",
+      "datestring": "2021-02-20",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Janja Ferfič",
+      "ocena": 2,
+      "besediloKomentarja": "Ni začel iz osnove.. težko razumljivo..",
+      "datestring": "2021-02-21",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Prevajanje iz nemščine v slovenščino",
+    "opis": "Prevajanje, kot ga nisi spoznal nikoli prej!",
+    "cena": 7,
+    "datestring": "2021-03-20",
+    "datum": null,
+    "ura": "15:00",
+    "steviloProstihMest": 4,
+    "emailInstruktorja": "miha@kovic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 4,
+      "besediloKomentarja": "Veliko novega sem se naučil!",
+      "datestring": "2021-03-24",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Peter Soban",
+      "ocena": 2,
+      "besediloKomentarja": "Nejasna razlaga, popolnoma nekoristno.",
+      "datestring": "2021-03-26",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Triki geometrije",
+    "opis": "Učenje težkih formul na pamet? Ne hvala!",
+    "cena": 4,
+    "datestring": "2021-05-03",
+    "datum": null,
+    "ura": "12:00",
+    "steviloProstihMest": 9,
+    "emailInstruktorja": "domen@poljanc.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Zala Dornik",
+      "ocena": 5,
+      "besediloKomentarja": "Preprosto: wow!",
+      "datestring": "2021-05-04",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Andrej Rustja",
+      "ocena": 5,
+      "besediloKomentarja": "To, kar sem skozi celo osnovno šolo potreboval!",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Osnove SQL-a",
+    "opis": "Kako ustvariti in delovati na podatkovnih bazah",
+    "cena": 11,
+    "datestring": "2021-03-15",
+    "datum": null,
+    "ura": "10:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "simon@antonic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Rudi Bobnič",
+      "ocena": 3,
+      "besediloKomentarja": "Zanimivo, a ponekod pomanjkljivo.",
+      "datestring": "2021-03-18",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Zala Dornik",
+      "ocena": 4,
+      "besediloKomentarja": "Vse jasno povedano!",
+      "datestring": "2021-03-20",
       "datum": null
     }]
   }]

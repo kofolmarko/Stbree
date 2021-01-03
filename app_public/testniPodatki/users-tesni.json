@@ -89,4 +89,56 @@
     "ocena": 3,
     "poslanaSporočila": null,
     "kontakti": null
+  }, {
+    "_id": "",
+    "ime": "Domen",
+    "priimek": "Poljanc",
+    "email": "domen@poljanc.com",
+    "geslo": "semdomen33",
+    "statusInstruktorja": true,
+    "opis": "V prostem času rade volje pomagam",
+    "telefonskaStevilka": "070454134",
+    "dogodki": null,
+    "ocena": 4,
+    "poslanaSporočila": null,
+    "kontakti": null
+  }, {
+    "_id": "",
+    "ime": "Zala",
+    "priimek": "Dornik",
+    "email": "zala@dornik.com",
+    "geslo": "semzala33",
+    "statusInstruktorja": true,
+    "opis": "Študentka na Univerzi v Ljubljani",
+    "telefonskaStevilka": "070164347",
+    "dogodki": null,
+    "ocena": 3,
+    "poslanaSporočila": null,
+    "kontakti": null
+  }, {
+    "_id": "",
+    "ime": "Sanja",
+    "priimek": "Vogrič",
+    "email": "sanja@vogric.com",
+    "geslo": "sanjasanja33",
+    "statusInstruktorja": true,
+    "opis": "Všeč mi je spoznati nove veščine preko spleta!",
+    "telefonskaStevilka": "030251194",
+    "dogodki": null,
+    "ocena": 2,
+    "poslanaSporočila": null,
+    "kontakti": null
+  }, {
+    "_id": "",
+    "ime": "Štefan",
+    "priimek": "Partljič",
+    "email": "stefan@partljic.com",
+    "geslo": "stefan33",
+    "statusInstruktorja": true,
+    "opis": "Dobro poznam matematiko, rad učim ostale :)",
+    "telefonskaStevilka": "070462746",
+    "dogodki": null,
+    "ocena": 3,
+    "poslanaSporočila": null,
+    "kontakti": null
   }]
