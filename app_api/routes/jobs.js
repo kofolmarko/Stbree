@@ -446,7 +446,7 @@ router.route('/ponudba-del/delo/:idDela/komentarji/:idKomentarja')
   .put(avtentikacija, ctrlKomentarji.komentarjiPosodobiIzbranega)
 /**
  * @swagger
- *  /ponudba-del/delo/{idLDogodka}/komentarji/{idKomentarja}:
+ *  /ponudba-del/delo/{idDela}/komentarji/{idKomentarja}:
  *   delete:
  *    summary: Brisanje izbranega komentarja določenega dela
  *    description: Brisanje **komentarja izbranega dela**.
