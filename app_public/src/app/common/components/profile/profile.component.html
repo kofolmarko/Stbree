@@ -4,8 +4,27 @@
   <h1 id="profile-naslov">{{uporabnik.ime}} {{uporabnik.priimek}}</h1>
 
   <!-- {{!-- BUTTONS TO EDIT --}} -->
-  <button *ngIf="uporabnik&&isAdmin&&isLoggedIn" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteUser()"><i
+  <button *ngIf="uporabnik&&isAdmin&&isLoggedIn" class="btn btn-danger d-inline" id="delete-btn" (click)="assure(delete)"><i
       class="fas fa-trash-alt"></i></button>
+
+      <ng-template #delete let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Izbriši profil</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <p>Ali ste prepričani, da želite izbrisati svoj profil?</p>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Prekliči</button> -->
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Potrdi</button>
+        </div>
+      </ng-template>
+
   <button *ngIf="uporabnik&&isAdmin&&isLoggedIn" id="save-btn" value="save" class="btn btn-success d-none"
     (click)="saveUserInfo()"><i class="fas fa-check"></i></button>
   <button *ngIf="uporabnik&&isAdmin&&isLoggedIn" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editUserInfo()"><i
