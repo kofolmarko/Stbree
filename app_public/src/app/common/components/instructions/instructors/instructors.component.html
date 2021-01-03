@@ -30,7 +30,7 @@
                 <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis;">{{instruktor.ime}}
                     {{instruktor.priimek}}</h5>
                 <p class="card-text"> {{instruktor.opis}} </p>
-                <a routerLink="/profil/{{instruktor.email}}" class="btn btn-primary">Preveri profil</a>
+                <a routerLink="/profil/{{instruktor.email}}" class="btn btn-primary" [disabled]="!jePovezava()">Preveri profil</a>
             </div>
         </div>
     </span>

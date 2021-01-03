@@ -216,7 +216,7 @@ const ctrlDB = require('../controllers/db');
 
 /**
  * @swagger
- *  /db:
+ *  /db/dropDB:
  *  get:
  *   summary: Izbris podatkov
  *   description: Izbris začetnih podatkv iz podatkovne baze
@@ -235,7 +235,7 @@ const ctrlDB = require('../controllers/db');
 router.get('/db/dropDB', ctrlDB.bazaIzbrisi);
 /**
  * @swagger
- *  /db:
+ *  /db/dropUsers:
  *  get:
  *   summary: Izbris uporabnikov
  *   description: Izbris začetnih uporabnikov iz podatkovne baze

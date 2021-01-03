@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { PovezavaService } from '../../services/povezava.service';
 
 @Component({
   selector: 'app-register',
@@ -10,9 +11,14 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class RegisterComponent implements OnInit {
 
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private povezavaStoritev: PovezavaService
   ) { }
 
   ngOnInit(): void {

@@ -11,8 +11,7 @@ import { CommentsJobsService } from 'src/app/common/services/comments-jobs.servi
 import { Komentar } from '../../../classes/comment'
 import { Job } from '../../../classes/job';
 import { User } from '../../../classes/user';
-
-
+import { PovezavaService } from '../../../services/povezava.service';
 
 @Component({
   selector: 'app-komentarji-seznam-dela',
@@ -20,6 +19,10 @@ import { User } from '../../../classes/user';
   styleUrls: ['./komentarji-seznam-dela.component.css']
 })
 export class KomentarjiSeznamDelaComponent implements OnInit {
+
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
 
   public newComment = {
     _id: '',
@@ -34,7 +37,8 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
     private JobsService: JobsService,
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private povezavaStoritev: PovezavaService
   ) { }
 
   ngOnInit(): void {

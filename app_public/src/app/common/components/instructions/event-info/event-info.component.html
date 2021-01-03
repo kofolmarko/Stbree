@@ -3,11 +3,11 @@
     dogodkov</a>
 
   <button *ngIf="dogodek&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editEventInfo()"
-    style="margin-right: 10px"><i class="fas fa-edit"></i></button>
+    style="margin-right: 10px" [disabled]="!jePovezava()"><i class="fas fa-edit"></i></button>
   <button *ngIf="dogodek&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none" (click)="saveEventInfo()"
-    style="margin-right: 10px"><i class="fas fa-check"></i></button>
+    style="margin-right: 10px" [disabled]="!jePovezava()"><i class="fas fa-check"></i></button>
   <button *ngIf="dogodek&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteEvent()"
-    style="margin-right: 10px"><i class="fas fa-trash-alt"></i></button>
+    style="margin-right: 10px" [disabled]="!jePovezava()"><i class="fas fa-trash-alt"></i></button>
 </div>
 
 <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
@@ -38,7 +38,7 @@
 
     <div *ngIf="!isAdmin&&dogodek.steviloProstihMest>0&&isLoggedIn">
       <h6>Prijavi se na dogodek</h6>
-      <div *ngIf="!signedStatus else prijavljen"><a (click)="signUp()" class="btn btn-success">Prijava</a></div>
+      <div *ngIf="!signedStatus else prijavljen"><a (click)="signUp()" class="btn btn-success" [disabled]="!jePovezava()">Prijava</a></div>
       <ng-template #prijavljen><button type="button" class="btn btn-success" disabled>Na dogodek ste
           prijavljeni</button></ng-template>
     </div>
@@ -91,7 +91,7 @@
 <div class="card profile" *ngIf="gostitelj">
   <div class="card-body profile-body">
     <h5>Inštruktor</h5>
-    <a routerLink="/profil/ogled">
+    <a routerLink="/profil/ogled" [disabled]="!jePovezava()">
       <h3 class="profile-body-item">{{ gostitelj.ime }} {{ gostitelj.priimek }}</h3>
     </a>
     <hr>

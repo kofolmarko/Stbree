@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InstructionsService } from '../../../services/instructions.service';
+import { PovezavaService } from '../../../services/povezava.service';
 
 import { User } from '../../../classes/user';
 
@@ -11,7 +12,14 @@ import { User } from '../../../classes/user';
 })
 export class InstructorsComponent implements OnInit {
 
-  constructor(private instructionsService: InstructionsService) { }
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
+  constructor(
+    private instructionsService: InstructionsService,
+    private povezavaStoritev: PovezavaService
+  ) { }
 
   ngOnInit(): void {
     this.getInstructors();
@@ -46,14 +54,14 @@ export class InstructorsComponent implements OnInit {
 
   private getInstructors(): void {
     this.instructionsService.getInstructors()
-    .then(users => {
-      this.instruktorji = users.reverse();
-      this.sporocilo = users.length > 0 ? "" : "Ne najdem nobenega inštruktorja :("
-    })
-    .catch(error => {
-      this.sporocilo = "Napaka API-ja pri iskanju inštruktorjev."
-      console.error(error);
-    });
+      .then(users => {
+        this.instruktorji = users.reverse();
+        this.sporocilo = users.length > 0 ? "" : "Ne najdem nobenega inštruktorja :("
+      })
+      .catch(error => {
+        this.sporocilo = "Napaka API-ja pri iskanju inštruktorjev."
+        console.error(error);
+      });
   }
-  
+
 }

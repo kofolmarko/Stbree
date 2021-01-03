@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { JobsService } from '../../../services/jobs.service';
+import { PovezavaService } from '../../../services/povezava.service';
 
 import { Job } from 'src/app/common/classes/job';
 
@@ -10,8 +11,15 @@ import { Job } from 'src/app/common/classes/job';
   styleUrls: ['./offers.component.css']
 })
 export class OffersComponent implements OnInit {
+  
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
 
-  constructor(private jobsService: JobsService) { }
+  constructor(
+    private jobsService: JobsService,
+    private povezavaStoritev: PovezavaService
+  ) { }
 
   ngOnInit(): void {
     this.getJobs();

@@ -10,6 +10,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { CovidService } from '../../services/covid.service';
 import { InstructionsService } from '../../services/instructions.service';
 import { JobsService } from '../../services/jobs.service';
+import { PovezavaService } from '../../services/povezava.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,12 +19,17 @@ import { JobsService } from '../../services/jobs.service';
 })
 export class DashboardComponent implements OnInit {
 
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
   constructor(
     private covidService: CovidService,
     private authenticationService: AuthenticationService,
     private instructionsService: InstructionsService,
     private jobsService: JobsService,
-    private router: Router
+    private router: Router,
+    private povezavaStoritev: PovezavaService
     //private chart: Chart
   ) { }
 

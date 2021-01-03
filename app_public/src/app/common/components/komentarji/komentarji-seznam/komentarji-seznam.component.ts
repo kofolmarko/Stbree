@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { CommentsService } from 'src/app/common/services/comments.service';
 import { Komentar } from '../../../classes/comment'
+import { PovezavaService } from '../../../services/povezava.service';
 
 
 @Component({
@@ -18,6 +19,10 @@ import { Komentar } from '../../../classes/comment'
   styleUrls: ['./komentarji-seznam.component.css']
 })
 export class KomentarjiSeznamComponent implements OnInit {
+
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
 
   public newComment = {
     _id: '',
@@ -32,7 +37,8 @@ export class KomentarjiSeznamComponent implements OnInit {
     private instructionsService: InstructionsService,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private povezavaStoritev: PovezavaService
   ) { }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 <div class="komentarji-seznam m-3">
-  <button (click)="obrazecPrikazan=true" class="btn btn-primary btn-sm float-right">Dodaj komentar</button>
+  <button (click)="obrazecPrikazan=true" class="btn btn-primary btn-sm float-right" [disabled]="!jePovezava()">Dodaj komentar</button>
   <h4>Komentarji Uporabnikov</h4>
   <hr>
   <div class="komentarji-nov m-3">
@@ -33,7 +33,7 @@
         <div class="form-group row">
           <div class="col-12">
             <button (click)="obrazecPrikazan=false" class="btn btn-primary btn-sm float-right ml-3">Prekliči</button>
-            <button class="btn btn-primary btn-sm float-right">Dodaj moj komentar</button>
+            <button class="btn btn-primary btn-sm float-right" [disabled]="!jePovezava()">Dodaj moj komentar</button>
           </div>
         </div>
       </form>
@@ -44,11 +44,11 @@
       <div class="col-12 rounded">
         <small class="komentar-datum float-right">{{komentar.datum | date:'short'}}</small>
         <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-warning btn-sm float-right d-ilblock" id="edit-btn-{{komentar._id}}"
-          (click)="editComment(komentar)" style="margin-right: 10px"><i class="fas fa-edit"></i></button>
+          (click)="editComment(komentar)" style="margin-right: 10px" [disabled]="!jePovezava()"><i class="fas fa-edit"></i></button>
         <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" id="save-btn-{{komentar._id}}" value="save" class="btn btn-success btn-sm float-right d-none"
-          (click)="saveComment(komentar)" style="margin-right: 10px"><i class="fas fa-check"></i></button>
+          (click)="saveComment(komentar)" style="margin-right: 10px" [disabled]="!jePovezava()"><i class="fas fa-check"></i></button>
         <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-danger btn-sm float-right d-inline" id="delete-btn" (click)="deleteComment(komentar._id)"
-          style="margin-right: 10px"><i class="fas fa-trash-alt"></i></button>
+          style="margin-right: 10px" [disabled]="!jePovezava()"><i class="fas fa-trash-alt"></i></button>
         <h5 class="komentar-avtor"><a routerLink="/profil/{{komentar.avtor}}">{{komentar.avtor}}</a></h5>
         <div *ngIf="!editState&&editID!==komentar._id else edit">
           <div class="komentar-ocena" id="ocena-{{komentar._id}}">{{komentar.ocena}}/5</div>

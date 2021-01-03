@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 
 import { User } from '../../classes/user';
 import { AuthenticationService } from '../../services/authentication.service';
+import { PovezavaService } from '../../services/povezava.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
+    private povezavaService: PovezavaService,
     private router: Router,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -37,6 +39,10 @@ export class NavbarComponent implements OnInit {
   }
   
   private currentRoute: string = "";
+
+  public jePovezava(): boolean {
+    return this.povezavaService.jePovezava;
+  }
 
   public getCurrentUserEmail(): string {
     return this.authenticationService.getCurrentUser().email;

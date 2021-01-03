@@ -33,6 +33,8 @@ import { LettersPipe } from './common/pipes/letters.pipe';
 import { KomentarjiSeznamComponent } from './common/components/komentarji/komentarji-seznam/komentarji-seznam.component';
 import { KomentarjiSeznamDelaComponent } from './common/components/komentarji/komentarji-seznam-dela/komentarji-seznam-dela.component';
 import { DbComponent } from './common/components/db/db.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,8 @@ import { DbComponent } from './common/components/db/db.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    OrderModule
+    OrderModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [MainComponent]
