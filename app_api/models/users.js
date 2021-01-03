@@ -87,6 +87,20 @@ const jwt = require('jsonwebtoken');
  *          exmple: 123123123
  *        dogodki:
  *          type: array
+ *      required:
+ *        - naziv
+ *        - opis
+ *        - datum
+ *        - emailPonudnika
+ *   Sporocila:
+ *      type: object
+ *      properties:
+ *        prejemnikSporocila:
+ *          type: string
+ *        besedilo:
+ *          type: string
+ *        cas:
+ *          type: date
  */
 
 const sporocilaShema = new mongoose.Schema({

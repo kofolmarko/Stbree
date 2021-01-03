@@ -1,6 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, Inject } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+
 import { User, Sporocila } from '../classes/user';
+
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { BROWSER_CACHE } from '../classes/cache';
+import { AuthenticationService } from './authentication.service';
 
 
 @Injectable({
@@ -8,9 +15,13 @@ import { User, Sporocila } from '../classes/user';
 })
 export class ChatService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService,
+    @Inject(BROWSER_CACHE) private cache: Storage  
+    ) { }
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl: string = environment.apiUrl;
 
   public pridobiKontakte(email: string): Promise<any> {
    
@@ -36,8 +47,14 @@ export class ChatService {
   public posljiSporocilo(email: string, podatkiObrazca: any): Promise<any> {
     const url: string = `${this.apiUrl}/chat/${email}`;
 
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
+
     return this.http
-    .post(url, podatkiObrazca)
+    .post(url, podatkiObrazca, httpProperties)
     .toPromise()
     .then(odgovor => odgovor)
     .catch(this.obdelajNapako)
@@ -45,9 +62,14 @@ export class ChatService {
 
   public posljiKontakt(emailUporabnika: string, podatkiObrazca: any): Promise<any> {
     const url: string = `${this.apiUrl}/chat/${emailUporabnika}/${podatkiObrazca.emailKontakta}`;
+    const httpProperties = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cache.getItem('stbree-token')}`
+      })
+    };
 
     return this.http
-    .post(url, podatkiObrazca)
+    .post(url, podatkiObrazca, httpProperties)
     .toPromise()
     .then(odgovor => odgovor)
     .catch(this.obdelajNapako)
