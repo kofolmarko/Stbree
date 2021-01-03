@@ -112,7 +112,7 @@ app.use('/api', usersApi);
 app.use('/api', instructionsApi);
 app.use('/api', jobsApi);
 
-app.get('*', (req, res, next) => {
+app.get(/(\/prijava)|(\/registracija)|(\/my)|(\/instruktorji)|(\/odjava)|(\/db)|(\/db\/dropDB)|(\/sporocanje)|(\/profil\/[a-z0-9]{24})|(\/instrukcije-dogodki)|(\/instrukcije-dogodki\/dodaj)|(\/ponudba-del)|(\/ponudba-del\/dodaj)|(\/instrukcije-dogodki\/dogodek\/[a-z0-9]{24})|(\/ponudba-del\/delo\/[a-z0-9]{24})/, (req, res, next) => {
   res.sendFile(path.join(__dirname, 'app_public', 'build', 'index.html'));
 });
 

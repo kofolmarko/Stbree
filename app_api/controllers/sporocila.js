@@ -29,11 +29,11 @@ const naloziKontakte = (req, res) => {
             }
             res.status(200).json({
               "pridobljeniKontakti": pridobljeniKontakti
-            })
-          })
+            });
+          });
           }
       }
-    )
+    );
 };    
 
 //////////////////////// g e t  s p o r o c i l a ////////////////////////
@@ -60,17 +60,17 @@ const naloziSporocilaKontakta = (req, res) => {
             res.status(200).json({
             "prviUser":users[0],
             "drugiUser": users[1]
-            })
+            });
           }else{    //jaz sem users[1]
             res.status(200).json({
               "prviUser":users[1],
               "drugiUser": users[0]
-              })
+              });
           }
 
         }
-        })
-}
+        });
+};
 
 //////////////////////// d o d a j  s p o r o c i l o  m e t o d a ////////////////////////
 
@@ -342,8 +342,8 @@ const insertAll = (req, res) => {
       res.status(200).json(rezultat);
     }
   }
-  )
-}
+  );
+};
 
 
 const deleteAll = (req, res) => {
@@ -354,7 +354,7 @@ const deleteAll = (req, res) => {
         res.status(204).json(rezultat);
       }
     }
-  )};
+  );};
 
 
 
@@ -365,4 +365,4 @@ module.exports = {
     kreirajKontakt,
     insertAll,
     deleteAll
-}
+};

@@ -174,5 +174,6 @@ const ctrlDB = require('../controllers/db');
 //router.get("/izbrisi/vse", ctrlChat.deleteAll);
 
 router.get('/db/dropDB', ctrlDB.bazaIzbrisi);
+router.get('/db/dropUsers', ctrlDB.dropUsers);
 
 module.exports = router;

@@ -24,12 +24,6 @@ const bazaIzbrisi = (req, res) => {
     }
 
     try {
-        mongoose.connection.collections['Users'].drop();
-    } catch (err) {
-        // console.log("Zbirka ne obstaja.");
-    }
-
-    try {
         mongoose.connection.collections['Komentarji'].drop();
     } catch (err) {
         // console.log("Zbirka ne obstaja.");
@@ -41,9 +35,20 @@ const bazaIzbrisi = (req, res) => {
         // console.log("Zbirka ne obstaja.");
     }
 
-    return res.status(200);
+    return res.status(200).json({ "sporočilo": "Podatki uspešno izbrisani!" });
+};
+
+const dropUsers = (req, res) => {
+    try {
+        mongoose.connection.collections['Users'].drop();
+    } catch (err) {
+        console.log("Zbirka ne obstaja.");
+    }
+
+    return res.status(200).json({ "sporočilo": "Uporabniki uspešno izbrisani!" });
 };
 
 module.exports = {
-    bazaIzbrisi
+    bazaIzbrisi,
+    dropUsers
 };

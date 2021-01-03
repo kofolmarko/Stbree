@@ -27,6 +27,7 @@ export class DbComponent implements OnInit {
   users = users;
   events = events;
   offers = offers;
+  sporocilo = "";
 
   ngOnInit(): void {
   }
@@ -86,12 +87,27 @@ export class DbComponent implements OnInit {
         console.log("Logged out!");
       }
     }
+    location.reload();
+    alert("Vsi testni podatki so bili uspešno vneseni!");
   };
 
   public dropDB = () => {
     console.log("Dropping DB...");
     this.authenticationService.dropDB()
-    .then((response) => console.log(response))
+    .then((response) => this.sporocilo = response.sporočilo)
     .catch((error) => console.log(error));
   };
+
+  public dropUsers = () => {
+    console.log("Dropping DB...");
+    this.authenticationService.dropUsers()
+    .then((response) => this.sporocilo = response.sporočilo)
+    .catch((error) => console.log(error));
+  };
+
+  public refreshPage(): void {
+    location.reload();
+    window.stop();
+    location.reload();
+  }
 }

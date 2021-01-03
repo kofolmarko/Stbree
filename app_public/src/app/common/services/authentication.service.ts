@@ -121,6 +121,18 @@ export class AuthenticationService {
   public dropDB():Promise<any> {
     console.log("Reached the service...");
     const url: string = `${this.apiUrl}/db/dropDB`;
+    console.log(url);
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
+  public dropUsers():Promise<any> {
+    console.log("Reached the service...");
+    const url: string = `${this.apiUrl}/db/dropUsers`;
+    console.log(url);
     return this.http
       .get(url)
       .toPromise()
