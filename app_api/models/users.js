@@ -103,6 +103,15 @@ const jwt = require('jsonwebtoken');
  *        - opis
  *        - datum
  *        - emailPonudnika
+ *   Sporocila:
+ *      type: object
+ *      properties:
+ *        prejemnikSporocila:
+ *          type: string
+ *        besedilo:
+ *          type: string
+ *        cas:
+ *          type: date
  */
 
 const sporocilaShema = new mongoose.Schema({
