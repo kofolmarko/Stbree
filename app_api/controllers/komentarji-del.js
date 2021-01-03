@@ -174,3 +174,5 @@ const komentarjiKreiraj = (req, res) => {
     komentarjiPosodobiIzbranega,
     komentarjiIzbrisiIzbranega
   };
+
+

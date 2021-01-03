@@ -28,7 +28,6 @@ const naloziKontakte = (req, res) => {
               return res.status(500).json(napaka);
             }
             res.status(200).json({
-              "prvic": "Klikni na prijatelja in začni pogovor!",
               "pridobljeniKontakti": pridobljeniKontakti
             })
           })
@@ -79,6 +78,9 @@ const dodajSporocilo = (req, res, uporabnik) => {
   // console.log("req.body.prejemnikSporocila " + req.body.prejemnikSporocila);
   // console.log("req.body.besedilo " + req.body.besedilo);
   // console.log("uporabnik****" + uporabnik);
+  //console.log("req.body.prejemnikSporocila " + req.body.prejemnikSporocila);
+  //console.log("req.body.besedilo " + req.body.besedilo);
+  //console.log("uporabnik****" + uporabnik);
   if (!uporabnik) {
     res.status(404).json({"sporočilo": "Ne najdem uporabnika."});
   } else {
@@ -105,6 +107,8 @@ const dodajSporocilo = (req, res, uporabnik) => {
     const idEmail = req.params.emailUporabnika;
     // console.log("idEmail " + idEmail);
     // console.log("req.body.besedilo " + req.body.besedilo);
+    //console.log("idEmail " + idEmail);
+    //console.log("req.body.besedilo " + req.body.besedilo);
 
     if (idEmail) {
       User

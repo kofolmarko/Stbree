@@ -24,6 +24,87 @@ const mongoose = require('mongoose');
  *        - opis
  *        - datum
  *        - emailPonudnika
+ *    DeloBranjePovzetek:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *          format: uuid
+ *          description: enolični identifikator
+ *          example: 5ff1beb7383e3e0012d0f38b
+ *        naziv:
+ *          type: string
+ *          example: Programiranje
+ *        opis:
+ *          type: string
+ *          example: Pomagaj mi sprogramirati program za seštevanje v javi!
+ *        cena:
+ *          type: number
+ *          example: 3
+ *        datum:
+ *          type: date
+ *          example: 2021-11-08
+ *        emailPonudnika:
+ *          type: email
+ *          example: anamarija@gmail.com
+ *      required:
+ *        - _id
+ *        - naziv
+ *        - opis
+ *        - datum
+ *        - emailPonudnika
+ *    DeloAzuriranjePovzetekZahteva:
+ *      type: object
+ *      properties:
+ *        naziv:
+ *          type: string
+ *          example: Programiranje
+ *        opis:
+ *          type: string
+ *          example: Pomagaj mi sprogramirati program za seštevanje v javi!
+ *        cena:
+ *          type: number
+ *          example: 3
+ *        datum:
+ *          type: date
+ *          example: 2021-11-08
+ *        emailPonudnika:
+ *          type: email
+ *          example: anamarija@gmail.com
+ *      required:
+ *        - _id
+ *        - naziv
+ *        - opis
+ *        - datum
+ *        - emailPonudnika
+ *    DeloAzuriranjePovzetekOdgovor:
+ *      type: object
+ *      properties:
+ *        naziv:
+ *          type: string
+ *          example: Programiranje
+ *        opis:
+ *          type: string
+ *          example: Pomagaj mi sprogramirati program za seštevanje v javi!
+ *        cena:
+ *          type: number
+ *          example: 3
+ *        datum:
+ *          type: date
+ *          example: 2021-11-08
+ *        emailPonudnika:
+ *          type: email
+ *          example: anamarija@gmail.com
+ *    Napaka:
+ *      type: object
+ *      description: Podrobnosti napake
+ *      required:
+ *        - sporočilo
+ *      properties:
+ *        sporočilo:
+ *        type: string
+ *      example:
+ *        sporočilo: Parametri so obvezni.
  */
 
 const komentarjiDelShema = new mongoose.Schema({
@@ -45,3 +126,17 @@ const deloShema = new mongoose.Schema({
 
 mongoose.model('Delo', deloShema, 'Dela');
 mongoose.model('KomentarDel', komentarjiDelShema, 'KomentarjiDel');
+
+/**
+ * @swagger
+ *  components:
+ *    examples:
+ *      NeNajdemDela:
+ *        summary: ne najdem dela
+ *        value:
+ *          sporočilo: Ne najdem dela.
+ *      NiZetona:
+ *        summary: ni JWT zetona
+ *        value:
+ *          sporočilo: "UnauthorizedError: No authorization token was found."
+ */
