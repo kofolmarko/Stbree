@@ -9,7 +9,7 @@
     "zasedeno": true,
     "komentarji": [{
       "_id": "",
-      "avtor": "Andrej Rustja",
+      "avtor": "andrej@rustja.com",
       "ocena": 3,
       "besediloKomentarja": "Prijavil sem se za tvoje delo! Lahko do jutri naredim.",
       "datestring": "2021-05-13",
@@ -17,7 +17,7 @@
     },
     {
       "_id": "",
-      "avtor": "Peter Soban",
+      "avtor": "peter@soban.com",
       "ocena": 1,
       "besediloKomentarja": "Zahteval bi kaj več kot 15e...",
       "datestring": "2021-05-12",
@@ -34,7 +34,7 @@
     "zasedeno": true,
     "komentarji": [{
       "_id": "",
-      "avtor": "Jernej Tomsič",
+      "avtor": "jernej@tomsič.com",
       "ocena": 3,
       "besediloKomentarja": "Prijavljen",
       "datestring": "2021-04-10",
@@ -42,7 +42,7 @@
     },
     {
       "_id": "",
-      "avtor": "Meta Hribar",
+      "avtor": "meta@hribar.com",
       "ocena": 2,
       "besediloKomentarja": "Žal ne morem do takrat, se moram odjaviti..",
       "datestring": "2021-04-08",
@@ -60,7 +60,7 @@
     "zasedeno": true,
     "komentarji": [{
       "_id": "",
-      "avtor": "Miha Kovic",
+      "avtor": "miha@kovic.com",
       "ocena": 2,
       "besediloKomentarja": "Prezgoden rok..",
       "datestring": "2021-05-20",
@@ -68,7 +68,7 @@
     },
     {
       "_id": "",
-      "avtor": "Janja Ferfič",
+      "avtor": "janja@ferfič.com",
       "ocena": 3,
       "besediloKomentarja": "Poskusila bom do takrat..",
       "datestring": "2021-05-19",
@@ -86,7 +86,7 @@
     "zasedeno": true,
     "komentarji": [{
       "_id": "",
-      "avtor": "Andrej Rustja",
+      "avtor": "andrej@rustja.com",
       "ocena": 4,
       "besediloKomentarja": "Takoj naredim, ni problema. Prijavljen!",
       "datestring": "2021-02-14",
@@ -104,7 +104,7 @@
     "zasedeno": false,
     "komentarji": [{
       "_id": "",
-      "avtor": "Luka Kranjec",
+      "avtor": "luka@kranjec.com",
       "ocena": 1,
       "besediloKomentarja": "Premalo za tako delo..",
       "datestring": "2021-03-03",
@@ -112,7 +112,7 @@
     },
     {
       "_id": "",
-      "avtor": "Meta Hribar",
+      "avtor": "meta@hribar.com",
       "ocena": 2,
       "besediloKomentarja": "Imaš še kake posebne zahteve pri tem?",
       "datestring": "2021-03-04",
@@ -130,7 +130,7 @@
     "zasedeno": true,
     "komentarji": [{
       "_id": "",
-      "avtor": "Andrej Rustja",
+      "avtor": "andrej@rustja.com",
       "ocena": 1,
       "besediloKomentarja": "Do jutri? Zdi se mi premalo časa..",
       "datestring": "2021-05-09",
@@ -138,7 +138,7 @@
     },
     {
       "_id": "",
-      "avtor": "Janja Ferfič",
+      "avtor": "janja@ferfic.com",
       "ocena": 4,
       "besediloKomentarja": "Poskusila bom, kot mi uspe! Prijavljena :)",
       "datestring": "2021-05-09",
@@ -156,7 +156,7 @@
     "zasedeno": true,
     "komentarji": [{
       "_id": "",
-      "avtor": "Miha Kovic",
+      "avtor": "miha@kovic.com",
       "ocena": 3,
       "besediloKomentarja": "Je to nujno do roka ali lahko še kaj dni več?",
       "datestring": "2021-04-28",
@@ -164,14 +164,14 @@
     },
     {
       "_id": "",
-      "avtor": "Meta Hribar",
+      "avtor": "meta@hribar.com",
       "ocena": 3,
       "besediloKomentarja": "Lahko tudi do 1.5., hvala.",
       "datestring": "2021-04-28",
       "datum": null
     }, {
       "_id": "",
-      "avtor": "Miha Kovic",
+      "avtor": "miha@kovic.com",
       "ocena": 3,
       "besediloKomentarja": "Super.",
       "datestring": "2021-04-28",

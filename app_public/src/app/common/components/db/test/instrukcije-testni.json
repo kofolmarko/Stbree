@@ -10,7 +10,7 @@
     "emailInstruktorja": "simon@antonic.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Andrej Rustja",
+      "avtor": "andrej@rustja.com",
       "ocena": 4,
       "besediloKomentarja": "Zelo zanimiva razlaga.",
       "datestring": "2021-04-12",
@@ -18,7 +18,7 @@
     },
     {
       "_id": "",
-      "avtor": "Peter Soban",
+      "avtor": "peter@soban.com",
       "ocena": 2,
       "besediloKomentarja": "Dobra, a ponekod pomanjkljiva razlaga.",
       "datestring": "2021-05-12",
@@ -36,7 +36,7 @@
     "emailInstruktorja": "rudi@bobnic.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Jernej Tomsič",
+      "avtor": "jernej@tomsic.com",
       "ocena": 2,
       "besediloKomentarja": "Nič mi ni bilo jasno",
       "datestring": "2021-12-01",
@@ -44,7 +44,7 @@
     },
     {
       "_id": "",
-      "avtor": "Miha Kovic",
+      "avtor": "miha@kovic.com",
       "ocena": 1,
       "besediloKomentarja": "Še sam je bil zmeden...",
       "datestring": "2021-11-23",
@@ -62,7 +62,7 @@
     "emailInstruktorja": "simon@antonic.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Jernej Tomsič",
+      "avtor": "jernej@tomsic.com",
       "ocena": 4,
       "besediloKomentarja": "Všeč mi je bilo!",
       "datestring": "2021-04-12",
@@ -70,7 +70,7 @@
     },
     {
       "_id": "",
-      "avtor": "Peter Soban",
+      "avtor": "peter@soban.com",
       "ocena": 1,
       "besediloKomentarja": "Nekako površno..",
       "datestring": "2021-05-12",
@@ -88,7 +88,7 @@
     "emailInstruktorja": "andrej@rustja.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Rudi Bobnič",
+      "avtor": "rudi@bobnic.com",
       "ocena": 4,
       "besediloKomentarja": "Zelo zanimivo!",
       "datestring": "2021-05-03",
@@ -96,7 +96,7 @@
     },
     {
       "_id": "",
-      "avtor": "Janja Ferfič",
+      "avtor": "janja@ferfic.com",
       "ocena": 5,
       "besediloKomentarja": "Težka snov, ampak preprosto razložena!",
       "datestring": "2021-05-12",
@@ -114,7 +114,7 @@
     "emailInstruktorja": "luka@kranjec.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Simon Antonič",
+      "avtor": "simon@antonic.com",
       "ocena": 4,
       "besediloKomentarja": "Zelo uporabno!",
       "datestring": "2021-03-15",
@@ -122,7 +122,7 @@
     },
     {
       "_id": "",
-      "avtor": "Meta Hribar",
+      "avtor": "meta@hribar.com",
       "ocena": 1,
       "besediloKomentarja": "Težko razumljivo, ni začel iz osnov; potrebno predznanje..",
       "datestring": "2021-03-20",
@@ -140,7 +140,7 @@
     "emailInstruktorja": "meta@hribar.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Andrej Rustja",
+      "avtor": "andrej@rustja.com",
       "ocena": 3,
       "besediloKomentarja": "Ponekod pomanjkljivo ampak v celoti dobro.",
       "datestring": "2021-04-15",
@@ -148,7 +148,7 @@
     },
     {
       "_id": "",
-      "avtor": "Janja Ferfič",
+      "avtor": "janja@ferfic.com",
       "ocena": 2,
       "besediloKomentarja": "Ni bilo zanimivo. Izpustila je veliko pomembnih podatkov.",
       "datestring": "2021-04-19",
@@ -166,7 +166,7 @@
     "emailInstruktorja": "miha@kovic.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Luka Kranjec",
+      "avtor": "luka@kranjec.com",
       "ocena": 5,
       "besediloKomentarja": "Kratko in učinkovito!",
       "datestring": "2021-02-10",
@@ -174,7 +174,7 @@
     },
     {
       "_id": "",
-      "avtor": "Simon Antonič",
+      "avtor": "simon@antonic.com",
       "ocena": 5,
       "besediloKomentarja": "Zelo dobra razlaga!",
       "datestring": "2021-02-13",
@@ -192,7 +192,7 @@
     "emailInstruktorja": "rudi@bobnic.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Jernej Tomsič",
+      "avtor": "jernej@tomsic.com",
       "ocena": 4,
       "besediloKomentarja": "Zelo mi je pomagalo!",
       "datestring": "2021-04-12",
@@ -200,7 +200,7 @@
     },
     {
       "_id": "",
-      "avtor": "Meta hribar",
+      "avtor": "meta@hribar.com",
       "ocena": 2,
       "besediloKomentarja": "Težko razumljivo, ni bilo v veliko pomoč..",
       "datestring": "2021-04-07",
@@ -218,7 +218,7 @@
     "emailInstruktorja": "rudi@bobnic.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Peter Soban",
+      "avtor": "peter@soban.com",
       "ocena": 4,
       "besediloKomentarja": "Zelo uporabno!",
       "datestring": "2021-05-31",
@@ -226,7 +226,7 @@
     },
     {
       "_id": "",
-      "avtor": "Miha Kovic",
+      "avtor": "miha@kovic.com",
       "ocena": 5,
       "besediloKomentarja": "To, kar sem skozi celo osnovno šolo hotel poznati!",
       "datestring": "2021-06-02",
@@ -244,7 +244,7 @@
     "emailInstruktorja": "janja@ferfic.com",
     "komentarji": [{
       "_id": "",
-      "avtor": "Meta Hribar",
+      "avtor": "meta@hribar.com",
       "ocena": 3,
       "besediloKomentarja": "Pričakovala sem kaj več snovi",
       "datestring": "2021-03-15",
@@ -252,7 +252,7 @@
     },
     {
       "_id": "",
-      "avtor": "Simon Antonič",
+      "avtor": "simon@antonic.com",
       "ocena": 2,
       "besediloKomentarja": "Sem začetnik, vseeno pa se mi zdi, da je bilo obravnavano relativno malo snovi.",
       "datestring": "2021-03-17",

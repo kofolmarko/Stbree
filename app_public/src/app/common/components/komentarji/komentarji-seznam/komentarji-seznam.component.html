@@ -49,7 +49,7 @@
           (click)="saveComment(komentar)" style="margin-right: 10px"><i class="fas fa-check"></i></button>
         <button *ngIf="dogodek&&komentar.avtor===currentUserEmail" class="btn btn-danger btn-sm float-right d-inline" id="delete-btn" (click)="deleteComment(komentar._id)"
           style="margin-right: 10px"><i class="fas fa-trash-alt"></i></button>
-        <h5 class="komentar-avtor">{{komentar.avtor}}</h5>
+        <h5 class="komentar-avtor"><a routerLink="/profil/{{komentar.avtor}}">{{komentar.avtor}}</a></h5>
         <div *ngIf="!editState&&editID!==komentar._id else edit">
           <div class="komentar-ocena" id="ocena-{{komentar._id}}">{{komentar.ocena}}/5</div>
           <div class="komentar-besedilo" id="besedilo-{{komentar._id}}">{{komentar.besediloKomentarja}}</div>

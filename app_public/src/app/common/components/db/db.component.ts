@@ -5,8 +5,8 @@ import { JobsService } from '../../services/jobs.service';
 import { CommentsService } from '../../services/comments.service';
 import { CommentsJobsService } from '../../services/comments-jobs.service';
 
-import users from './test/users-tesni.json'
-import events from './test/instrukcije-tesni.json';
+import users from './test/users-testni.json'
+import events from './test/instrukcije-testni.json';
 import offers from './test/dela-testni.json'
 
 @Component({
