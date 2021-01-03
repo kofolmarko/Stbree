@@ -18,10 +18,10 @@ const ctrlKomentarji = require('../controllers/komentarji');
  * Kategorije dostopnih točk
  * @swagger
  * tags:
- *  - name: Inštrukcije
+ *  - name: Instrukcije-dogodki
  *    description: Obvladovanje inštrukcij
  *  - name: Komentarji
- *    description: Obvladovanje komentarjev v okviru dogodkov
+ *    description: Obvladovanje komentarjev
  */
 
  /**
@@ -132,7 +132,7 @@ router.post('/instrukcije-dogodki', avtentikacija, ctrlInstrukcije.instructionsE
  *        example: 5ff1beb7383e3e0012d0f38b
  *    responses:
  *      "200":
- *        description: Uspešna zahteva s podrobnostmi zahtevane lokacije v rezultatu.
+ *        description: Uspešna zahteva s podrobnostmi zahtevane dogodka v rezultatu.
  *        content:
  *          application/json:
  *            schema:
@@ -242,7 +242,7 @@ router.put('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInstruk
  *                ni zetona:
  *                  $ref: "#/components/examples/NiZetona"
  *        "500":
- *          description: Napaka pri brisanju lokacije.
+ *          description: Napaka pri brisanju dogodka.
  */
 router.delete('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInstrukcije.instrukcijeDogodekIzbrisi);
 
@@ -359,7 +359,7 @@ router.route('/instrukcije-dogodki/:idDogodka/komentarji')
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
  *         ne najdem dogodka:
- *          $ref: "#/components/examples/NeNajdemDogodka"
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
  */
   .post(ctrlKomentarji.komentarjiKreiraj);
 router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
@@ -401,7 +401,7 @@ router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
  *         ne najdem dogodka:
- *           $ref: "#/components/examples/NeNajdemDogodka"
+ *           $ref: "#/components/examples/NeNajdemInstrukcije"
  *         ne najdem komentarja:
  *           $ref: "#/components/examples/NeNajdemKomentarja"
  *         ni nobenega komentarja:
@@ -464,7 +464,7 @@ router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
  *         ne najdem dogodka:
- *          $ref: "#/components/examples/NeNajdemDogodka"
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
  *         ne najdem komentarja:
  *          $ref: "#/components/examples/NeNajdemKomentarja"
  *     "500":
@@ -512,14 +512,14 @@ router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
  *        schema:
  *         $ref: "#/components/schemas/Napaka"
  *        examples:
- *         ne najdem dogodka
- *          $ref: "#/components/examples/NeNajdemDogodka"
+ *         ne najdem dogodka:
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
  *         ne najdem komentarja:
  *          $ref: "#/components/examples/NeNajdemKomentarja"
  *     "500":
  *      description: Napaka pri iskanju dogodka oz. brisanju komentarja.
  */
-  .delete(avtentikacija, ctrlKomentarji.komentarjiIzbrisiIzbranega);
+  .delete(ctrlKomentarji.komentarjiIzbrisiIzbranega);
 
 
 //ROUTER export

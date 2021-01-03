@@ -16,8 +16,8 @@ const dodajKomentar = (req, res, delo) => {
         ocena: req.body.ocena,
         besediloKomentarja: req.body.besediloKomentarja
       }, (napaka, komentar) => {
-        console.log(napaka);
-        console.log(komentar);
+        // console.log(napaka);
+        // console.log(komentar);
         
         if (napaka) {
           res.status(400).json({"sporočilo": "Napaka API-ja pri kreaciji komentarja."});
@@ -102,8 +102,8 @@ const komentarjiKreiraj = (req, res) => {
   };  
   
   const komentarjiPosodobiIzbranega = (req, res) => {
-    console.log(req.body);
-    console.log(req.params);
+    // console.log(req.body);
+    // console.log(req.params);
     if(!req.body.besediloKomentarja || !req.body.ocena) {
       return res.status(400).json({"sporočilo": "Potrebno je izpolniti vsa polja."});
     }
@@ -121,10 +121,10 @@ const komentarjiKreiraj = (req, res) => {
               "Dogodek ne obstaja."
           });
         } else if (napaka) {
-          console.log(napaka.data);
+          // console.log(napaka.data);
           return res.status(500).json(napaka);
         }
-        console.log(komentar.data);
+        // console.log(komentar.data);
         res.status(200).json(komentar);
       });
   };
@@ -147,7 +147,7 @@ const komentarjiKreiraj = (req, res) => {
         } else if (napaka) {
           return res.status(500).json(napaka);
         }
-        console.log(delo.komentarji);
+        // console.log(delo.komentarji);
         if (delo.komentarji && delo.komentarji.length > 0) {
           if (!delo.komentarji.id(idKomentarja)) {
             return res.status(404).json({"sporočilo": "Ne najdem komentarja."});

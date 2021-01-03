@@ -18,16 +18,16 @@ const dashboard = async (req, res) => {
     res.redirect('/');
   } else {
     let uporabnikID = require('./signing').loginID.val;
-    console.log(uporabnikID);
+    // console.log(uporabnikID);
     let loggedInUser;
     axios
       .get(apiParametri.streznik + '/api/uporabnik/' + uporabnikID)
       .then((uporabnik) => {
         loggedInUser = uporabnik.data;
-        console.log(loggedInUser);
+        // console.log(loggedInUser);
       })
       .catch((napaka) => {
-        console.log(napaka);
+        // console.log(napaka);
       });
 
     axios
@@ -41,8 +41,8 @@ const dashboard = async (req, res) => {
             axios
               .get(apiParametri.streznik + '/api/ponudba-del')
               .then((dela) => {
-                console.log("NAJDEM UPORABNIKE ======> " + uporabniki.data);
-                console.log("NAJDEM DOGODKE =======> " + dogodki.data);
+                // console.log("NAJDEM UPORABNIKE ======> " + uporabniki.data);
+                // console.log("NAJDEM DOGODKE =======> " + dogodki.data);
 
                 for (i = uporabniki.data.length; i < 3; i++) {
                   uporabniki.data.unshift({ ime: "Ne najdem ničesar :(", email: "Ni zanimivih inštruktorjev..." });
@@ -75,11 +75,11 @@ const dashboard = async (req, res) => {
                 });
               })
               .catch((err) => {
-                console.log(err);
+                // console.log(err);
               });
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
           });
       });
   }
@@ -168,16 +168,16 @@ const shraniSporocilo = (req, res) => {
 const mongoose = require('mongoose');
 
 const db = (req, res) => {
-  console.log("rendering...");
+  // console.log("rendering...");
   res.render('db');
 };
 
 const bazaIzbrisi = (req, res) => {
   mongoose.connection.collections['InstrukcijeDogodki'].drop((err) => {
-    console.log('InstrukcijeDogodki dropped!');
+    // console.log('InstrukcijeDogodki dropped!');
   });
   mongoose.connection.collections['Dela'].drop((err) => {
-    console.log('Dela dropped!');
+    // console.log('Dela dropped!');
   });
   res.redirect('/db');
 };
@@ -185,17 +185,19 @@ const bazaIzbrisi = (req, res) => {
 const bazaNapolni = (req, res) => {
   let testniPodatkiDogodki = require('./testni_podatki_dogodki.json');
   let testniPodatkiDela = require('./testni_podatki_dela.json');
-  
+
   for (let i = 0; i < testniPodatkiDogodki.length; i++) {
-    console.log("looping");
+    // console.log("looping");
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/instrukcije-dogodki',
       data: testniPodatkiDogodki[i]
     })
       .then((response) => {
-        if (response)
-          console.log("Event added to database!");
+        if (response) {
+          // console.log("Event added to database!");
+        }
+
       })
       .catch((napaka) => {
         console.error("Napaka pri dodajanju v bazo.");
@@ -203,15 +205,16 @@ const bazaNapolni = (req, res) => {
   }
 
   for (let i = 0; i < testniPodatkiDela.length; i++) {
-    console.log("looping");
+    // console.log("looping");
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/ponudba-del',
       data: testniPodatkiDela[i]
     })
       .then((response) => {
-        if (response)
-          console.log("Offer added to database!");
+        if (response) {
+          // console.log("Offer added to database!");
+        }
       })
       .catch((napaka) => {
         console.error("Napaka pri dodajanju v bazo.");

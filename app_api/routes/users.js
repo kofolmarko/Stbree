@@ -59,11 +59,13 @@ const avtentikacija = jwt({
  *       example: hp@hogwarts.com 
  *    responses:
  *     "200":
- *      description: Uspešna zahteva s podrobnostmi profila v rezulatu.
+ *      description: Uspešna zahteva s pridobitvijo profila v rezultatu.
  *      content:
- *       application/json:
- *        schema:
- *          $ref: "#/components/schemas/ProfilBranjePovzetek"
+ *        application/json:
+ *          schema:
+ *            type: array
+ *            items:
+ *              $ref: "#/components/schemas/ProfilBranjePovzetek"
  *     "400":
  *      description: Napaka zahteve, manjkajo obvezni parametri.
  *      content:
@@ -97,7 +99,7 @@ router.get('/uporabnik/:emailUporabnika', ctrlUporabniki.najdiUporabnik);
  *     content:
  *      application/x-www-form-urlencoded:
  *       schema:
- *        $ref: "#/components/schemas/LokacijaAzuriranjePovzetekZahteva"
+ *        $ref: "#/components/schemas/ProfilAzuriranjePovzetekZahteva"
  *    parameters:
  *     - in: path
  *       name: emailUporabnika
@@ -261,7 +263,7 @@ router.post('/registracija', ctrlUporabniki.registracija);
  *         content:
  *           application/x-www-form-urlencoded:
  *             schema:
- *               $ref: "#/components/schemas/UporabnikPrijava"
+ *                $ref: "#/components/schemas/UporabnikPrijava"
  *       responses:
  *         "200":
  *           description: Uspešna prijava uporabnika z JWT žetonom v rezultatu.
