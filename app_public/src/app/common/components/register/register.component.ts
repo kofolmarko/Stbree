@@ -47,10 +47,10 @@ export class RegisterComponent implements OnInit {
   public crkeReg = new RegExp("^[a-zA-ZčžćšđČŽĆŠĐ\s]+$");
   public gesloReg = new RegExp("^.{8,20}$");
 
-  public submitRegisterData(): void {
+  public async submitRegisterData(): Promise<void> {
     if (
       !this.newUserData.ime ||
-      !this.newUserData.priimek||
+      !this.newUserData.priimek ||
       !this.newUserData.email ||
       !this.newUserData.geslo ||
       !this.gesloPotrdi
@@ -63,7 +63,15 @@ export class RegisterComponent implements OnInit {
     } else if (!this.gesloReg.test(this.newUserData.geslo)) {
       this.sporocilo = "Geslo mora vsebovati 8 do 20 znakov!"
     } else {
-      this.executeRegister();
+      let doesUserExist = null;
+      await this.authenticationService.getUser(this.newUserData.email)
+        .then((user) => {doesUserExist = user;})
+        .catch((err) => {doesUserExist = null;});
+      if (doesUserExist != null) {
+        this.sporocilo = "Uporabnik s tem e-naslovom že obstaja."
+      } else {
+        this.executeRegister();
+      }
     }
   }
 

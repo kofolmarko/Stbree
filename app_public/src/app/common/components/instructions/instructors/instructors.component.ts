@@ -47,7 +47,7 @@ export class InstructorsComponent implements OnInit {
   private getInstructors(): void {
     this.instructionsService.getInstructors()
     .then(users => {
-      this.instruktorji = users;
+      this.instruktorji = users.reverse();
       this.sporocilo = users.length > 0 ? "" : "Ne najdem nobenega inštruktorja :("
     })
     .catch(error => {

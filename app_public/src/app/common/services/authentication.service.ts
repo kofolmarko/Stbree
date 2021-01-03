@@ -27,11 +27,20 @@ export class AuthenticationService {
   }
 
   public async register(user: User): Promise<any> {
-    return this
+    let existingEmail;
+    this.getUser(user.email)
+    .then((user) => existingEmail = user.email)
+    .catch((err) => existingEmail = null);
+
+    if(existingEmail != null) {
+      return null
+    } else {
+      return this
       .authenticateRegister(user)
       .then((AuthenticationResult: AuthenticationResult) => {
         this.setToken(AuthenticationResult["token"]);
       });
+    }
   }
 
   public logout(): void {
@@ -109,6 +118,10 @@ export class AuthenticationService {
       .catch(this.handleError);
   }
 
+  public dropDB(): void {
+    const url: string = `${this.apiUrl}/db/dropDB`;
+    window.open(url, "_blank");
+  }
 
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {

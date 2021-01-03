@@ -69,6 +69,7 @@ router.route('/chat/:emailUporabnika')
 
     .get(ctrlChat.naloziKontakte)
     .post(avtentikacija, ctrlChat.kreirajSporocilo);
+const ctrlDB = require('../controllers/db');
 
 router.get('/chat/:emailUporabnika/:idPrejemnika', ctrlChat.naloziSporocilaKontakta);
 router.post('/chat/:emailUporabnika/:emailKontakta',avtentikacija, ctrlChat.kreirajKontakt);
@@ -76,6 +77,6 @@ router.post('/chat/:emailUporabnika/:emailKontakta',avtentikacija, ctrlChat.krei
 //router.get("/vstavi/vse", ctrlChat.insertAll);
 //router.get("/izbrisi/vse", ctrlChat.deleteAll);
 
-//router.get('/db', ctrl)
+router.get('/db/dropDB', ctrlDB.bazaIzbrisi);
 
 module.exports = router;

@@ -7,4 +7,41 @@ const InstrukcijeDogodek = mongoose.model('InstrukcijeDogodek');
 const Delo = mongoose.model('Delo');
 const User = mongoose.model('User');
 
-//const napolniBazo
+//DROP DB
+const bazaIzbrisi = (req, res) => {
+    try {
+        mongoose.connection.collections['InstrukcijeDogodki'].drop();
+    } catch (err) {
+        console.log("Zbirka ne obstaja.");
+    }
+
+    try {
+        mongoose.connection.collections['Dela'].drop();
+    } catch (err) {
+        console.log("Zbirka ne obstaja.");
+    }
+
+    try {
+        mongoose.connection.collections['Users'].drop();
+    } catch (err) {
+        console.log("Zbirka ne obstaja.");
+    }
+
+    try {
+        mongoose.connection.collections['Komentarji'].drop();
+    } catch (err) {
+        console.log("Zbirka ne obstaja.");
+    }
+
+    try {
+        mongoose.connection.collections['KomentarjiDel'].drop();
+    } catch (err) {
+        console.log("Zbirka ne obstaja.");
+    }
+
+    res.render('dbDropped');
+};
+
+module.exports = {
+    bazaIzbrisi
+};
