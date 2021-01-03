@@ -58,6 +58,66 @@ const jwt = require('jsonwebtoken');
  *          - email
  *          - zgoscenaVrednost
  *          - nakljucnaVrednost
+ *    UporabnikPrijava:
+ *      type: object
+ *      description: Podatki uporabnika za prijavo
+ *      properties:
+ *        elektronskiNaslov:
+ *          type: string
+ *          description: elektronski naslov
+ *          example: dejan@lavbic.net
+ *        geslo:
+ *          type: string
+ *          format: password
+ *        example: test
+ *      required:
+ *        - email
+ *        - geslo
+ *    UporabnikRegistracija:
+ *      type: object
+ *      description: Podatki uporabnika za registracijo
+ *      properties:
+ *        ime:
+ *          type: string
+ *          description: ime in priimek
+ *          writeOnly: true
+ *          example: Harry
+ *        priiimek:
+ *          type: string
+ *          description: ime in priimek
+ *          writeOnly: true
+ *          example: Potter
+ *        email:
+ *          type: string
+ *          description: elektronski naslov
+ *          example: hp@hogwarts.com
+ *        zgoscenaVrednost:
+ *          type: string
+ *          example: 72a22c595997e002b83d2a34889f4b7a3daec18b1d6394deadd69c13854c42e4cda7dd...
+ *        nakljucnaVrednost:
+ *          type: string
+ *          example: fbdfd5a5491c65861466040212b174bd 
+ *        geslo:
+ *          type: string
+ *          format: password
+ *          example: test12345678
+ *      required:
+ *        - ime
+ *        - priimek
+ *        - email
+ *        - zgoscenaVrednost
+ *        - nakljucnaVrednost
+ *        - geslo
+ *    AvtentikacijaOdgovor:
+ *      type: object
+ *      description: Rezultat uspešne avtentikacije uporabnika
+ *      properties:
+ *        token:
+ *          type: string
+ *          description: JWT token
+ *          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGZhMjBlZDlhZGM0MzIyNmY0NjhkZjMiLCJlbGVrdHJvbnNraU5hc2xvdiI6ImRlamFuQGxhdmJpYy5uZXQiLCJpbWUiOiJEZWphbiBMYXZiacSNIiwiZGF0dW1Qb3Rla2EiOjE1Nzc5NTU2NjMsImlhdCI6MTU3NzM1MDg2M30.PgSpqjK8qD2dHUsXKwmqzhcBOJXUUwtIOHP3Xt6tbBA
+ *      required:
+ *        - token
  *    ProfilBranjePovzetek:
  *      description: Podatki profila pri branju
  *      type: object
@@ -75,13 +135,7 @@ const jwt = require('jsonwebtoken');
  *          example: Potter
  *        email:
  *          type: string
- *          example: hp@hogwarts.com
- *        zgoscenaVrednost:
- *          type: string
- *          example: 72a22c595997e002b83d2a34889f4b7a3daec18b1d6394deadd69c13854c42e4cda7dd...
- *        nakljucnaVrednost:
- *          type: string
- *          example: fbdfd5a5491c65861466040212b174bd  
+ *          example: hp@hogwarts.com 
  *        statusInstruktorja:
  *          type: boolean
  *          example: true
@@ -124,8 +178,6 @@ const jwt = require('jsonwebtoken');
  *        - ime
  *        - priimek
  *        - email
- *        - zgoscenaVrednost
- *        - nakljucnaVrednost
  *    ProfilAzuriranjePovzetekZahteva:
  *      type: object
  *      properties:
@@ -174,92 +226,6 @@ const jwt = require('jsonwebtoken');
  *        telefonskaStevilka:
  *          type: number
  *          example: 073345554
- *   KontaktiBranje:
- *    type: object
- *    properties:
- *     pridobljeniKontakti:
- *      type: array
- *      items:
- *       type: User
- *      example:
- *       - statusInstruktorja: false
- *         opis: Novo pečeni uporabnik.
- *         telefonskaStevilka: 0
- *         ocena: 0
- *         ocen: []
- *         kontakti: []
- *         id: 5fe9cb2f2143640012e45367
- *         datumVpisa: 2020-12-28T12:10:23.533Z
- *         dogodki: []
- *         dela: []
- *         poslanaSporocila: []
- *         ime: Irena
- *         priimek: Novak
- *         email: irena@gmail.com 
- *         nakljucnaVrednost: 0eca1450e9c809df3086ea2c42058ab2
- *         zgoscenaVrednost: b0bee9de817af7c3813abe1b3e55aa47c19f5f8490dd1c78eaaafcf3a4b66226d10d0dd389a04b20215dd9e62889bd164617d7c19196ed8732acd0951b90f81f
- *   SporocanjeAzuriranjePovzetekZahteva:
- *    type: object
- *    properties:
- *     prejemnikSporocila:
- *      type: string
- *      example: 5ff0fb88879cc87a850bca40
- *     besedilo:
- *      type: string
- *      example: Zivjo Lana, kako si?
- *   SporocanjeAzuriranjePovzetekOdgovor:
- *      type: object
- *      properties:
- *        besedilo:
- *          type: string
- *          example: Zivjo Lana, kako si?
- *   SporocilaBranje:
- *      type: object
- *      properties:
- *        prviUser:
- *          type: User
- *          example:
- *           - statusInstruktorja: false
- *             opis: Novo pečeni uporabnik.
- *             telefonskaStevilka: 0
- *             ocena: 0
- *             ocen: []
- *             kontakti: []
- *             id: 5fe9cb2f2143640012e45367
- *             datumVpisa: 2020-12-28T12:10:23.533Z
- *             dogodki: []
- *             dela: []
- *             poslanaSporocila: []
- *             ime: Irena
- *             priimek: Novak
- *             email: irena@gmail.com 
- *             nakljucnaVrednost: 0eca1450e9c809df3086ea2c42058ab2
- *             zgoscenaVrednost: b0bee9de817af7c3813abe1b3e55aa47c19f5f8490dd1c78eaaafcf3a4b66226d10d0dd389a04b20215dd9e62889bd164617d7c19196ed8732acd0951b90f81f
- *        drugiUser:
- *          type: User
- *          example:
- *           - statusInstruktorja: false
- *             opis: Novo pečeni uporabnik.
- *             telefonskaStevilka: 0
- *             ocena: 0
- *             ocen: []
- *             kontakti: []
- *             id: 5fe9cb2f2143640012e45367
- *             datumVpisa: 2020-12-28T12:10:23.533Z
- *             dogodki: []
- *             dela: []
- *             poslanaSporocila: []
- *             ime: Spela
- *             priimek: Ahlin
- *             email: spela@gmail.com 
- *             nakljucnaVrednost: 3142808586fb46fdc239990a2c21b0a7
- *             zgoscenaVrednost: aa40d868f6a6e7c435c610ff65d0d05ab33a23ab6e4340f09efb77db579b032310344c2ed1746528e1e12c03e9c2dd822fc1b671f6217441c5e958b88efd971b
- *   KontaktAzuriranjePovzetekOdgovor:
- *      type: object
- *      properties:
- *        kontakt:
- *          type: string
- *          example: 5ff0deac3c71c55cd8206bf6
  */
 
 const sporocilaShema = new mongoose.Schema({
@@ -289,7 +255,7 @@ const instrukcijeDogodekShema = new mongoose.Schema({
 
 const uporabnikZacetnoShema = new mongoose.Schema({
   ime: { type: String, required: true },
-  priimek: { type: String, reuired: true },
+  priimek: { type: String, required: true },
   email: { type: String, unique: true, required: true },
   zgoscenaVrednost: { type: String, required: true },
   nakljucnaVrednost: { type: String, required: true },
