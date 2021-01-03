@@ -37,51 +37,58 @@ export class DbComponent implements OnInit {
     console.log(this.offers);
     for (let i = 0; i < this.users.length; i++) {
       console.log("Registering...");
-      await this.authenticationService.register(this.users[i]);
-      let currentUserEmail = this.users[i].email;
-      console.log(currentUserEmail);
-      console.log("registered!");
-      for (let j = 0; j < this.events.length; j++) {
-        console.log(events[j].emailInstruktorja);
-        if (currentUserEmail == this.events[j].emailInstruktorja) {
-          console.log("Posting event...");
-          let date = new Date(this.events[j].datestring);
-          this.events[j].datum = date;
-          await this.instructionsService.postNewEvent(this.events[j])
-            .then((res) => {
-              if (this.events[j].komentarji) {
-                for (let g = 0; g < this.events[j].komentarji.length; g++) {
-                  this.commentsService.postNewComment(res, this.events[j].komentarji[g]);
+      let doesUserExist = null;
+      await this.authenticationService.getUser(this.users[i].email)
+        .then((user) => { doesUserExist = user; })
+        .catch((err) => { doesUserExist = null; });
+      if (doesUserExist != null) {
+        continue;
+      } else {
+        await this.authenticationService.register(this.users[i]);
+        let currentUserEmail = this.users[i].email;
+        console.log(currentUserEmail);
+        console.log("registered!");
+        for (let j = 0; j < this.events.length; j++) {
+          console.log(events[j].emailInstruktorja);
+          if (currentUserEmail == this.events[j].emailInstruktorja) {
+            console.log("Posting event...");
+            let date = new Date(this.events[j].datestring);
+            this.events[j].datum = date;
+            await this.instructionsService.postNewEvent(this.events[j])
+              .then((res) => {
+                if (this.events[j].komentarji) {
+                  for (let g = 0; g < this.events[j].komentarji.length; g++) {
+                    this.commentsService.postNewComment(res, this.events[j].komentarji[g]);
+                  }
                 }
-              }
-            });
-          console.log("Posted!");
+              });
+            console.log("Posted!");
+          }
         }
-      }
-      for (let k = 0; k < this.offers.length; k++) {
-        if (currentUserEmail == this.offers[k].emailPonudnika) {
-          console.log("Posting job...");
-          let date = new Date(this.offers[k].datestring);
-          this.offers[k].datum = date;
-          await this.jobsService.postNewJob(this.offers[k])
-            .then((res) => {
-              if (this.offers[k].komentarji) {
-                for (let g = 0; g < this.offers[k].komentarji.length; g++) {
-                  this.commentsService.postNewComment(res, this.offers[k].komentarji[g]);
+        for (let k = 0; k < this.offers.length; k++) {
+          if (currentUserEmail == this.offers[k].emailPonudnika) {
+            console.log("Posting job...");
+            let date = new Date(this.offers[k].datestring);
+            this.offers[k].datum = date;
+            await this.jobsService.postNewJob(this.offers[k])
+              .then((res) => {
+                if (this.offers[k].komentarji) {
+                  for (let g = 0; g < this.offers[k].komentarji.length; g++) {
+                    this.commentsJobsService.postNewComment(res, this.offers[k].komentarji[g]);
+                  }
                 }
-              }
-            });
-          console.log("Posted!");
+              });
+            console.log("Posted!");
+          }
         }
+        console.log("Logging out...");
+        await this.authenticationService.logout();
+        console.log("Logged out!");
       }
-      console.log("Logging out...");
-      await this.authenticationService.logout();
-      console.log("Logged out!");
     }
-
   };
 
   public dropDB = () => {
-
+    this.authenticationService.dropDB();
   };
 }

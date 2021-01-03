@@ -118,6 +118,10 @@ export class AuthenticationService {
       .catch(this.handleError);
   }
 
+  public dropDB(): void {
+    const url: string = `${this.apiUrl}/db/dropDB`;
+    window.open(url, "_blank");
+  }
 
   /* P O P R A V I ! ! ! */
   private handleError(error: any): Promise<any> {

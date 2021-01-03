@@ -106,8 +106,9 @@
     "opis": "Študent na univerzi v Ljubljani. Pripravljen pomagat, sprejemam pa tudi kritike ;).",
     "telefonskaStevilka": "070365316",
     "dogodki": null,
+    "dela": null,
     "ocena": 4,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }, {
     "_id": "",
@@ -119,7 +120,8 @@
     "opis": "Rad se naučim česa novega.",
     "telefonskaStevilka": "030241356",
     "dogodki": null,
+    "dela": null,
     "ocena": 4,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }]
