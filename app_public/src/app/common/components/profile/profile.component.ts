@@ -69,6 +69,7 @@ export class ProfileComponent implements OnInit {
         if (this.authenticationService.isLoggedIn()) {
           if (this.uporabnik.email === this.authenticationService.getCurrentUser().email) {
             this.isAdmin = true;
+            console.log("checks if admin")
           }
         }
         this.sporocilo = user ? "" : "Uporabnik ne obstaja :(";

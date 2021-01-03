@@ -554,7 +554,6 @@ const prijava = (req, res) => {
 module.exports = {
   uporabniki,
   najdiUporabnika,
-  
   najdiUporabnik,
   //registrirajUporabnika,
   //prijaviUporabnika,
