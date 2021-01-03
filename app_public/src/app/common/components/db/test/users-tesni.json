@@ -87,7 +87,7 @@
     "ime": "Janja",
     "priimek": "Ferfič",
     "email": "janja@ferfic.com",
-    "geslo": "janjajanja33",
+    "geslo": "janjasem22",
     "statusInstruktorja": true,
     "opis": "Rad pomagam in enako rada se učim :).",
     "telefonskaStevilka": "070468346",
@@ -95,5 +95,31 @@
     "dela": null,
     "ocena": 3,
     "poslanaSporocila": null,
+    "kontakti": null
+  }, {
+    "_id": "",
+    "ime": "Luka",
+    "priimek": "Kranjec",
+    "email": "luka@kranjec.com",
+    "geslo": "student21",
+    "statusInstruktorja": true,
+    "opis": "Študent na univerzi v Ljubljani. Pripravljen pomagat, sprejemam pa tudi kritike ;).",
+    "telefonskaStevilka": "070365316",
+    "dogodki": null,
+    "ocena": 4,
+    "poslanaSporočila": null,
+    "kontakti": null
+  }, {
+    "_id": "",
+    "ime": "Meta",
+    "priimek": "Hribar",
+    "email": "meta@hribar.com",
+    "geslo": "metasem33",
+    "statusInstruktorja": true,
+    "opis": "Rad se naučim česa novega.",
+    "telefonskaStevilka": "030241356",
+    "dogodki": null,
+    "ocena": 4,
+    "poslanaSporočila": null,
     "kontakti": null
   }]
