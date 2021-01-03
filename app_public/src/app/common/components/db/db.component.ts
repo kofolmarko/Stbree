@@ -89,6 +89,9 @@ export class DbComponent implements OnInit {
   };
 
   public dropDB = () => {
-    this.authenticationService.dropDB();
+    console.log("Dropping DB...");
+    this.authenticationService.dropDB()
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
   };
 }

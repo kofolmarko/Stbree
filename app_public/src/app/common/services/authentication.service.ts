@@ -118,9 +118,14 @@ export class AuthenticationService {
       .catch(this.handleError);
   }
 
-  public dropDB(): void {
+  public dropDB():Promise<any> {
+    console.log("Reached the service...");
     const url: string = `${this.apiUrl}/db/dropDB`;
-    window.open(url, "_blank");
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
   }
 
   /* P O P R A V I ! ! ! */
