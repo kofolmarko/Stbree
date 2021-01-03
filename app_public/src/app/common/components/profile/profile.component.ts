@@ -122,6 +122,11 @@ export class ProfileComponent implements OnInit {
   saveUserInfo(): void {
     this.editCSS(false);
     this.editState = false;
+    if (this.isInstructor() && !this.uporabnik.statusInstruktorja){
+      alert("Če še vedno imate prihajajoče dogodke, jih prosimo dokončajte ali ustrezno izbrišite. Odjavite se in se znova prijavite, da izgubite pravico do ustvarjanja dogodkov");
+    } else if (!this.isInstructor() && this.uporabnik.statusInstruktorja) {
+      alert("Če želite začeti ustvarjati dogodke, se prosimo odjavite in znova prijavite!");
+    }
     this.profileService.editUserInfo(this.uporabnik)
       .then(user => {
         user ? this.uporabnik = user : this.sporocilo = "Napaka pri posdabljanju uporabnika."
@@ -155,7 +160,8 @@ export class ProfileComponent implements OnInit {
           this.uporabnik = null;
           this.authenticationService.logout();
           this.router.navigateByUrl('/');
-          this.sporocilo = "Dogodek uspešno izbrisan."
+          //this.sporocilo = "Uporabnik uspešno izbrisan."
+          alert("Uporabnik uspešno izbrisan.")
         },
         (error) => this.sporocilo = "Napaka API-ja pri brisanju dogodka."
         //console.error(error)
@@ -169,6 +175,18 @@ export class ProfileComponent implements OnInit {
         .then(user => this.signedStatus = true)
         .catch(error => console.log(error));
     }
+  }
+
+  public isInstructor(): boolean {
+    if(this.getCurrentUser().statusInstruktorja) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public getCurrentUser(): User {
+    return(this.authenticationService.getCurrentUser());
   }
 
   ngOnInit(): void {
