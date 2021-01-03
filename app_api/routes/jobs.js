@@ -282,3 +282,4 @@ router.put('/ponudba-del/delo/:idDela/komentarji/:idKomentarja', avtentikacija, 
 router.delete('/ponudba-del/delo/:idDela/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiIzbrisiIzbranega);
 
 module.exports = router;
+

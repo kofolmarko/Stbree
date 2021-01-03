@@ -95,6 +95,16 @@ const mongoose = require('mongoose');
  *        emailPonudnika:
  *          type: email
  *          example: anamarija@gmail.com
+ *    Napaka:
+ *      type: object
+ *      description: Podrobnosti napake
+ *      required:
+ *        - sporočilo
+ *      properties:
+ *        sporočilo:
+ *        type: string
+ *      example:
+ *        sporočilo: Parametri so obvezni.
  */
 
 const komentarjiDelShema = new mongoose.Schema({
@@ -116,3 +126,17 @@ const deloShema = new mongoose.Schema({
 
 mongoose.model('Delo', deloShema, 'Dela');
 mongoose.model('KomentarDel', komentarjiDelShema, 'KomentarjiDel');
+
+/**
+ * @swagger
+ *  components:
+ *    examples:
+ *      NeNajdemDela:
+ *        summary: ne najdem dela
+ *        value:
+ *          sporočilo: Ne najdem dela.
+ *      NiZetona:
+ *        summary: ni JWT zetona
+ *        value:
+ *          sporočilo: "UnauthorizedError: No authorization token was found."
+ */
