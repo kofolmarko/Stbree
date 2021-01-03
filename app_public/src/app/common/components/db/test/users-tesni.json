@@ -8,8 +8,9 @@
     "opis": "Zanimajo me filozofija in književnost. Rade volje predavam.",
     "telefonskaStevilka": "030714349",
     "dogodki": null,
+    "dela": null,
     "ocena": 4,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }, {
     "_id": "",
@@ -21,8 +22,9 @@
     "opis": "Zelo mi je všeč učenje preko spleta!",
     "telefonskaStevilka": "070734359",
     "dogodki": null,
+    "dela": null,
     "ocena": 3,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }, {
     "_id": "",
@@ -34,8 +36,9 @@
     "opis": "V veselje mi je predavati in pomagati drugim, pa tudi se kaj novega naučiti",
     "telefonskaStevilka": "030814234",
     "dogodki": null,
+    "dela": null,
     "ocena": 5,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }, {
     "_id": "",
@@ -47,8 +50,9 @@
     "opis": "Matematika in fizika sta moji specialiteti! Vsi povabljeni na moja predavanja!",
     "telefonskaStevilka": "070725389",
     "dogodki": null,
+    "dela": null,
     "ocena": 4,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }, {
     "_id": "",
@@ -60,8 +64,9 @@
     "opis": "Slabo mi gre matematika, hvaležen bom vsakemu poskusu pomoči",
     "telefonskaStevilka": "030313469",
     "dogodki": null,
+    "dela": null,
     "ocena": 2,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }, {
     "_id": "",
@@ -73,8 +78,9 @@
     "opis": "Učim matematiko v gimnaziji, ampak rad tudi poslušam predavanja drugih.",
     "telefonskaStevilka": "030554294",
     "dogodki": null,
+    "dela": null,
     "ocena": 3,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }, {
     "_id": "",
@@ -86,7 +92,8 @@
     "opis": "Rad pomagam in enako rada se učim :).",
     "telefonskaStevilka": "070468346",
     "dogodki": null,
+    "dela": null,
     "ocena": 3,
-    "poslanaSporočila": null,
+    "poslanaSporocila": null,
     "kontakti": null
   }]

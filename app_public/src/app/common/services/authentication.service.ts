@@ -27,11 +27,20 @@ export class AuthenticationService {
   }
 
   public async register(user: User): Promise<any> {
-    return this
+    let existingEmail;
+    this.getUser(user.email)
+    .then((user) => existingEmail = user.email)
+    .catch((err) => existingEmail = null);
+
+    if(existingEmail != null) {
+      return null
+    } else {
+      return this
       .authenticateRegister(user)
       .then((AuthenticationResult: AuthenticationResult) => {
         this.setToken(AuthenticationResult["token"]);
       });
+    }
   }
 
   public logout(): void {

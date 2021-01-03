@@ -64,7 +64,7 @@ const najdiUporabnika = (req, res) => {
 const najdiUporabnik = (req, res) => {
   //console.log("API IŠČE INŠTRUUKTORJAAAA");
   Uporabnik
-    .findOne({email: req.params.emailUporabnika})
+    .findOne({ email: req.params.emailUporabnika })
     .exec((napaka, uporabnik) => {
       if (!uporabnik) {
         return res.status(404).json({
@@ -266,7 +266,7 @@ const posodobiUporabnika = (req, res) => {
         });
       } else if (napaka) {
         return res.status(500).json(napaka);
-      } 
+      }
       res.status(200).json(uporabnik);
     });
 };
@@ -277,7 +277,7 @@ const posodobiUporabnik = (req, res) => {
   console.log(req.body.email);
   console.log(req.params.idUporabnika);
   Uporabnik
-    .findOneAndUpdate({email: req.params.emailUporabnika},
+    .findOneAndUpdate({ email: req.params.emailUporabnika },
       {
         email: req.body.email,
         telefonskaStevilka: req.body.telefonskaStevilka,
@@ -292,7 +292,7 @@ const posodobiUporabnik = (req, res) => {
         });
       } else if (napaka) {
         return res.status(500).json(napaka);
-      } 
+      }
       res.status(200).json(uporabnik);
     });
 };
@@ -322,7 +322,7 @@ const posodobiUporabnik = (req, res) => {
 const posodobiGeslo = (req, res) => {
   console.log("Inside controllers on the API!");
   Uporabnik
-    .findOneAndUpdate({email: req.params.emailUporabnika},
+    .findOneAndUpdate({ email: req.params.emailUporabnika },
       {
         geslo: req.body.geslo
         //this.nastaviGeslo(req.body.geslo);
@@ -380,10 +380,10 @@ const posodobiOcena = (req, res) => {
         return res.status(500).json(napaka);
       }
       var ocen = uporabnik.ocen;
-      
+
       ocen[ocen.length] = novaOcena;
       var zbir = 0;
-      for(var i = 0 ; i < ocen.length; i++) {
+      for (var i = 0; i < ocen.length; i++) {
         console.log("Zbir vo loop " + i + " e " + zbir);
         zbir = zbir + ocen[i];
         console.log("Ocen [" + i + "] e " + ocen[i]);
@@ -394,24 +394,24 @@ const posodobiOcena = (req, res) => {
       var ocena2 = zbir / ocen.length;
       console.log("Ocena 2 je: " + ocena2);
       Uporabnik
-      .findByIdAndUpdate(req.params.idUporabnika,
-        {
-          ocena: ocena2,
-          ocen: ocen
-        })
-      .exec((napaka, uporabnik) => {
-        if (!uporabnik) {
-          return res.status(404).json({
-            "sporočilo":
-              "Uporabnik ne obstaja."
-          });
-        } else if (napaka) {
-          //console.log(napaka.data);
-          return res.status(500).json(napaka);
-        }
-        //console.log(uporabnik.data);
-        res.status(200).json(uporabnik);
-      });
+        .findByIdAndUpdate(req.params.idUporabnika,
+          {
+            ocena: ocena2,
+            ocen: ocen
+          })
+        .exec((napaka, uporabnik) => {
+          if (!uporabnik) {
+            return res.status(404).json({
+              "sporočilo":
+                "Uporabnik ne obstaja."
+            });
+          } else if (napaka) {
+            //console.log(napaka.data);
+            return res.status(500).json(napaka);
+          }
+          //console.log(uporabnik.data);
+          res.status(200).json(uporabnik);
+        });
     });
 };
 
@@ -426,23 +426,23 @@ const izbrisiUporabnika = (req, res) => {
     });
   }
   Uporabnik
-  .findByIdAndDelete(idUporabnika)
-  .exec((napaka, uporabnik) => {
-    if(!uporabnik) {
-      return res.status(404).json({
-        "sporocilo": "Ne najdem uporabnika"
-      });
-    } else if (napaka) {
-      return res.status(500).json(napaka);
-    }
-    InstrukcijeDogodek.deleteMany({idInstruktorja: idUporabnika})
-    .then()
-    .catch();
-    Delo.deleteMany({idPonudnika: idUporabnika})
-    .then()
-    .catch();
-    res.status(200).json(uporabnik); //neli e 204
-  });
+    .findByIdAndDelete(idUporabnika)
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporocilo": "Ne najdem uporabnika"
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      InstrukcijeDogodek.deleteMany({ idInstruktorja: idUporabnika })
+        .then()
+        .catch();
+      Delo.deleteMany({ idPonudnika: idUporabnika })
+        .then()
+        .catch();
+      res.status(200).json(uporabnik); //neli e 204
+    });
 };
 
 /*DELETE ANGULAR user*/
@@ -456,23 +456,23 @@ const izbrisiUporabnik = (req, res) => {
     });
   }
   Uporabnik
-  .findOneAndDelete({email: emailUporabnika})
-  .exec((napaka, uporabnik) => {
-    if(!uporabnik) {
-      return res.status(404).json({
-        "sporocilo": "Ne najdem uporabnika"
-      });
-    } else if (napaka) {
-      return res.status(500).json(napaka);
-    }
-    InstrukcijeDogodek.deleteMany({emailInstruktorja: emailUporabnika})
-    .then()
-    .catch();
-    Delo.deleteMany({emailPonudnika: emailUporabnika})
-    .then()
-    .catch();
-    res.status(200).json(uporabnik); //neli e 204
-  });
+    .findOneAndDelete({ email: emailUporabnika })
+    .exec((napaka, uporabnik) => {
+      if (!uporabnik) {
+        return res.status(404).json({
+          "sporocilo": "Ne najdem uporabnika"
+        });
+      } else if (napaka) {
+        return res.status(500).json(napaka);
+      }
+      InstrukcijeDogodek.deleteMany({ emailInstruktorja: emailUporabnika })
+        .then()
+        .catch();
+      Delo.deleteMany({ emailPonudnika: emailUporabnika })
+        .then()
+        .catch();
+      res.status(200).json(uporabnik); //neli e 204
+    });
 };
 
 /*OBSOLETE
@@ -504,6 +504,16 @@ const nastaviStatus = (req, res) => {
 const registracija = (req, res) => {
   if (!req.body.ime || !req.body.email || !req.body.geslo || !req.body.priimek) {
     return res.status(400).json({ "sporočilo": "Zahtevani so vsi podatki" });
+  } else {
+    Uporabnik.findOne({ email: req.body.email })
+      .then((obstojecUporabnik) => {
+        console.log(obstojecUporabnik);
+        if (obstojecUporabnik != null) {
+          res.status(409).json(obstojecUporabnik);
+        }
+      })
+      .catch((napaka) => res.status(400).json({ "sporočilo": "Napaka v API-ju pri iskanju obstoječega uporabnika." })
+      );
   }
   const uporabnik = new Uporabnik();
   uporabnik.ime = req.body.ime;

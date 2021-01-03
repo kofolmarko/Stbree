@@ -12,7 +12,7 @@ export class User {
     priimek: string;
     opis: string;
     statusInstruktorja: boolean;
-    telefonskaStevilka: number;
+    telefonskaStevilka: string;
     email: string;
     //geslo: string;
     //ocena: number;
