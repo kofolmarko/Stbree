@@ -34,7 +34,7 @@ const registerNewUser = (req, res) => {
     signup(req, res, messagetwo);
   } else {
     //console.log("Registering a new User to the database...");
-    console.log(req.body);
+    // console.log(req.body);
     axios({
       method: 'post',
       url: apiParametri.streznik + '/api/uporabniki',
@@ -46,11 +46,11 @@ const registerNewUser = (req, res) => {
         statusInstruktorja: req.body.statusInstruktorja
       }
     }).then((user) => {
-      console.log("New user registered:");
-      console.log(user.data);
+      // console.log("New user registered:");
+      // console.log(user.data);
       res.redirect('/prijava');
     }).catch((napaka) => {
-      console.log("Neuspešna registracija");
+      // console.log("Neuspešna registracija");
       var message = "Uporabnik s podanim e-naslovom že obstaja.";
       signup(req, res, message);
       //prikaziNapako(req, res, napaka);
@@ -100,8 +100,8 @@ const loginUser = (req, res) => {
         //console.log(user.data);
 
         if (user.data.geslo == reqData.geslo) {
-          console.log(user.data.id);
-          console.log(user.data.ime);
+          // console.log(user.data.id);
+          // console.log(user.data.ime);
           loginStatus.val = true;
           loginID.val = user.data._id;
           loginName.val = user.data.ime;
@@ -120,7 +120,7 @@ const loginUser = (req, res) => {
           signin(req, res, napaka);
           //prikaziNapako(req, res, napaka);
         } else {
-          console.log("cant find error");
+          // console.log("cant find error");
         }
 
       });

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-var dbURI = 'mongodb://localhost/stbree'    //nodemon, izklopi stbree-node-js v dockerju, rabis samo stbree-mongodb
+var dbURI = 'mongodb://localhost/stbree';    //nodemon, izklopi stbree-node-js v dockerju, rabis samo stbree-mongodb
 // var dbURI = 'mongodb+srv://stbree-app:mongo-atlas-27@stbree.ws0gv.mongodb.net/stbree?retryWrites=true&w=majority';
 //var dbURI = 'mongodb://mongo-db/stbree';
 //var dbURI = 'mongodb+srv://app:geslo@stbree.jftw5.mongodb.net/admin';

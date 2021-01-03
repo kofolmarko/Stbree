@@ -18,11 +18,13 @@ const ctrlKomentarji = require('../controllers/komentarji');
  * Kategorije dostopnih točk
  * @swagger
  * tags:
- *  - name: Inštrukcije
+ *  - name: Instrukcije-dogodki
  *    description: Obvladovanje inštrukcij
+ *  - name: Komentarji
+ *    description: Obvladovanje komentarjev
  */
 
-/**
+ /**
  * Varnostna shema dostopa
  * @swagger
  * components:
@@ -130,7 +132,7 @@ router.post('/instrukcije-dogodki', avtentikacija, ctrlInstrukcije.instructionsE
  *        example: 5ff1beb7383e3e0012d0f38b
  *    responses:
  *      "200":
- *        description: Uspešna zahteva s podrobnostmi zahtevane lokacije v rezultatu.
+ *        description: Uspešna zahteva s podrobnostmi zahtevane dogodka v rezultatu.
  *        content:
  *          application/json:
  *            schema:
@@ -240,7 +242,7 @@ router.put('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInstruk
  *                ni zetona:
  *                  $ref: "#/components/examples/NiZetona"
  *        "500":
- *          description: Napaka pri brisanju lokacije.
+ *          description: Napaka pri brisanju dogodka.
  */
 router.delete('/instrukcije-dogodki/dogodek/:idDogodka', avtentikacija, ctrlInstrukcije.instrukcijeDogodekIzbrisi);
 
@@ -298,11 +300,226 @@ router.get('/instrukcije-dogodki/:parameter', ctrlInstrukcije.instrukcijeDogodki
  */
 router.post('/instrukcije-dogodki/dogodek/:idDogodka/prijava', avtentikacija, ctrlInstrukcije.prijavaNaDogodek);
 
+
+
 /* Komentarji */
-router.post('/instrukcije-dogodki/dogodek/:idDogodka/komentarji', avtentikacija, ctrlKomentarji.komentarjiKreiraj);
-router.get('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', ctrlKomentarji.komentarjiPreberiIzbranega);
-router.put('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiPosodobiIzbranega);
-router.delete('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiIzbrisiIzbranega);
+//router.post('/instrukcije-dogodki/dogodek/:idDogodka/komentarji', avtentikacija, ctrlKomentarji.komentarjiKreiraj);
+//router.get('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', ctrlKomentarji.komentarjiPreberiIzbranega);
+//router.put('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiPosodobiIzbranega);
+//router.delete('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja', avtentikacija, ctrlKomentarji.komentarjiIzbrisiIzbranega);
+
+router.route('/instrukcije-dogodki/:idDogodka/komentarji')
+/**
+ * @swagger
+ *  /instrukcije-dogodki/dogodek/{idDogodka}/komentarji:
+ *   post:
+ *    summary: Dodajanje novega komentarja izbranemu dogodku
+ *    description: Dodajanje **novega komentarja** s podatki o avtorju, oceni in besedilom komentarja **izbranemu dogodku** s podanim enoličnim identifikatorjem.
+ *    tags: [Komentarji]
+ *    security:
+ *     - jwt: []
+ *    parameters:
+ *     - in: path
+ *       name: idDogodka
+ *       description: enolični identifikator dogodka
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: 5ded18eb51386c3799833191
+ *    requestBody:
+ *     description: Podatki o komentarju
+ *     required: true
+ *     content:
+ *      application/x-www-form-urlencoded:
+ *       schema:
+ *        $ref: "#/components/schemas/KomentarAzuriranje"
+ *    responses:
+ *     "201":
+ *      description: Uspešno dodan komentar, ki se vrne v rezultatu.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/KomentarBranje"
+ *     "400":
+ *      description: Napaka pri shranjevanju komentarja.
+ *     "401":
+ *      description: Napaka pri dostopu.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/Napaka"
+ *        examples:
+ *         ni zetona:
+ *          $ref: "#/components/examples/NiZetona"
+ *     "404":
+ *      description: Napaka zahteve, zahtevanega dogodka ni mogoče najti.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/Napaka"
+ *        examples:
+ *         ne najdem dogodka:
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
+ */
+  .post(ctrlKomentarji.komentarjiKreiraj);
+router.route('/instrukcije-dogodki/dogodek/:idDogodka/komentarji/:idKomentarja')
+/**
+ * @swagger
+ *  /instrukcije-dogodki/dogodek/{idDogodka}/komentarji/{idKomentarja}:
+ *   get:
+ *    summary: Podrobnost izbranega komentarja določenega dogodka
+ *    description: Pridobitev **podrobnosti komentarja določenega dogodka** s podatki o enoličnem identifikatorju, datumu, avtorju, oceni in besedilu komentarja.
+ *    tags: [Komentarji]
+ *    parameters:
+ *     - in: path
+ *       name: idDogodka
+ *       description: enolični identifikator dogodka
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: 5ded18eb51386c3799833191
+ *     - in: path
+ *       name: idKomentarja
+ *       description: enolični identifikator komentarja
+ *       schema:
+ *        type: string
+ *       required: true
+ *    responses:
+ *     "200":
+ *      description: Uspešna zahteva s podrobnostmi dogodka v rezultatu.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         type: array
+ *         items:
+ *          $ref: "#/components/schemas/KomentarDogodek"
+ *     "404":
+ *      description: Napaka zahteve, komentar ne obstaja.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/Napaka"
+ *        examples:
+ *         ne najdem dogodka:
+ *           $ref: "#/components/examples/NeNajdemInstrukcije"
+ *         ne najdem komentarja:
+ *           $ref: "#/components/examples/NeNajdemKomentarja"
+ *         ni nobenega komentarja:
+*           $ref: "#/components/examples/NiNobenegaKomentarja"
+ *     "500":
+ *      description: Napaka na strežniku pri dostopu do podatkovne baze.
+ */
+  .get(ctrlKomentarji.komentarjiPreberiIzbranega)
+/**
+ * @swagger
+ *  /instrukcije-dogodki/dogodek/{idDogodka}/komentarji/{idKomentarja}:
+ *   put:
+ *    summary: Posodabljanje izbranega komentarja določenega dogodka
+ *    description: Posodobitev **komentarja izbranega dogodka* s podatki o avtorju, oceni in besedilu komentarja.
+ *    tags: [Komentarji]
+ *    security:
+ *     - jwt: []
+ *    parameters:
+ *     - in: path
+ *       name: idDogodka
+ *       description: enolični identifikator dogodka
+ *       schema:
+ *        type: string
+ *       required: true
+ *       example: 5ded18eb51386c3799833191
+ *     - in: path
+ *       name: idKomentarja
+ *       description: enolični identifikator komentarja
+ *       schema:
+ *        type: string
+ *       required: true
+ *    requestBody:
+ *     description: Podatki o komentarju
+ *     required: true
+ *     content:
+ *      application/x-www-form-urlencoded:
+ *       schema:
+ *        $ref: "#/components/schemas/KomentarAzuriranje"
+ *    responses:
+ *     "200":
+ *      description: Uspešno spremenjen komentar, ki se vrne v rezultatu.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/KomentarBranje"
+ *     "401":
+ *      description: Napaka pri dostopu.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/Napaka"
+ *        examples:
+ *         ni zetona:
+ *          $ref: "#/components/examples/NiZetona"
+ *     "404":
+ *      description: Napaka zahteve, zahtevanega dogodka oz. komentarja ni mogoče najti.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/Napaka"
+ *        examples:
+ *         ne najdem dogodka:
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
+ *         ne najdem komentarja:
+ *          $ref: "#/components/examples/NeNajdemKomentarja"
+ *     "500":
+ *      description: Napaka pri iskanju dogodka.
+ */
+  .put(ctrlKomentarji.komentarjiPosodobiIzbranega)
+/**
+ * @swagger
+ *  /instrukcije-dogodki/dogodek/{idDogodka}/komentarji/{idKomentarja}:
+ *   delete:
+ *    summary: Brisanje izbranega komentarja določenega dogodka
+ *    description: Brisanje **komentarja izbranega dogodka**.
+ *    tags: [Komentarji]
+ *    security:
+ *     - jwt: []
+ *    parameters:
+ *     - in: path
+ *       name: idDogodka
+ *       description: enolični identifikator dogodka
+ *       schema:
+ *        type: string
+ *       required: true
+ *     - in: path
+ *       name: idKomentarja
+ *       description: enolični identifikator komentarja
+ *       schema:
+ *        type: string
+ *       required: true
+ *    responses:
+ *     "204":
+ *      description: Uspešno izbrisan komentar.
+ *     "401":
+ *      description: Napaka pri dostopu.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/Napaka"
+ *        examples:
+ *         ni zetona:
+ *          $ref: "#/components/examples/NiZetona"
+ *     "404":
+ *      description: Napaka zahteve, zahtevanega dogodka oz. komentarja ni mogoče najti.
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: "#/components/schemas/Napaka"
+ *        examples:
+ *         ne najdem dogodka:
+ *          $ref: "#/components/examples/NeNajdemInstrukcije"
+ *         ne najdem komentarja:
+ *          $ref: "#/components/examples/NeNajdemKomentarja"
+ *     "500":
+ *      description: Napaka pri iskanju dogodka oz. brisanju komentarja.
+ */
+  .delete(ctrlKomentarji.komentarjiIzbrisiIzbranega);
 
 
 //ROUTER export

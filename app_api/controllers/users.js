@@ -82,17 +82,17 @@ const najdiUporabnik = (req, res) => {
 
 //POST register a new user
 const registrirajUporabnika = (req, res) => {
-  console.log("Creating user JS object with the following data:");
-  console.log(req.body);
+  // console.log("Creating user JS object with the following data:");
+  // console.log(req.body);
   //res.status(200).json({ "status": "uspešno" });
   try {
     Uporabnik.findOne({ email: req.body.email })
       .then((uporabnik) => {
-        console.log(uporabnik);
+        // console.log(uporabnik);
         if (uporabnik != null) {
           res.status(409).json(uporabnik);
         } else {
-          console.log(req.body.statusInstruktorja);
+          // console.log(req.body.statusInstruktorja);
           Uporabnik.create({
             ime: req.body.ime,
             priimek: req.body.priimek,
@@ -102,7 +102,7 @@ const registrirajUporabnika = (req, res) => {
             datumVpisa: req.body.datumVpisa
           }, (napaka, uporabnik) => {
             if (uporabnik) {
-              console.log("User successfully registered!" + uporabnik.data);
+              console.log("User successfully registered!");
               res.status(201).json(uporabnik);
             } else {
               console.log("User not registered because of " + napaka);
@@ -111,13 +111,13 @@ const registrirajUporabnika = (req, res) => {
         }
       });
   } catch (err) {
-    console.log("Catch inside API");
+    console.log(err);
   }
 };
 
 //GET info for user login authentication
 const prijaviUporabnika = (req, res) => {
-  console.log("params:" + req.params.email);
+  // console.log("params:" + req.params.email);
   Uporabnik
     .findOne({ email: req.params.email })
     .exec((napaka, uporabnik) => {
@@ -136,10 +136,10 @@ const prijaviUporabnika = (req, res) => {
 
 //PUT prijava na dogodek
 const prijavaNaDogodek = (req, res) => {
-  console.log("We're inside API!" + req.body);
-  console.log("We're inside API!" + req.data);
-  console.log("REQUEST PARAMETERS -> " + req.params.loginID);
-  console.log("REQUEST PARAMETERS -> " + req.params.idDogodka);
+  // console.log("We're inside API!" + req.body);
+  // console.log("We're inside API!" + req.data);
+  // console.log("REQUEST PARAMETERS -> " + req.params.loginID);
+  // console.log("REQUEST PARAMETERS -> " + req.params.idDogodka);
   let stProstih;
 
   InstrukcijeDogodek
@@ -166,23 +166,23 @@ const prijavaNaDogodek = (req, res) => {
 
 //PUT odjava od dogodka
 const odjavaOdDogodka = (req, res) => {
-  console.log("api odjava od dogodka");
-  console.log(req.params.loginID);
+  // console.log("api odjava od dogodka");
+  // console.log(req.params.loginID);
   InstrukcijeDogodek
     .findById(req.params.idDogodka)
     .exec((napaka, dogodek) => {
-      console.log("Api najde dogodek: " + dogodek);
+      // console.log("Api najde dogodek: " + dogodek);
       Uporabnik
         .findByIdAndUpdate(req.params.loginID, {
           $pull: { dogodki: { dogodek: dogodek._id } }
         }, { safe: true, multi: true }, function (err, obj) {
           //console.log(dogodki);
-          console.log(obj.dogodki);
+          // console.log(obj.dogodki);
 
-          console.log(err);
+          // console.log(err);
         })
         .exec((uporabnik) => {
-          console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
+          // console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
           res.status(200).json(uporabnik);
         });
 
@@ -192,10 +192,10 @@ const odjavaOdDogodka = (req, res) => {
 
 //PUT prijava na dogodek
 const prijavaNaDelo = (req, res) => {
-  console.log("We're inside API!" + req.body);
-  console.log("We're inside API!" + req.data);
-  console.log("REQUEST PARAMETERS -> " + req.params.loginID);
-  console.log("REQUEST PARAMETERS -> " + req.params.idDela);
+  // console.log("We're inside API!" + req.body);
+  // console.log("We're inside API!" + req.data);
+  // console.log("REQUEST PARAMETERS -> " + req.params.loginID);
+  // console.log("REQUEST PARAMETERS -> " + req.params.idDela);
   let stProstih;
 
   Delo
@@ -222,23 +222,23 @@ const prijavaNaDelo = (req, res) => {
 
 //PUT odjava od dogodka
 const odjavaOdDela = (req, res) => {
-  console.log("api odjava od dogodka");
-  console.log(req.params.loginID);
+  // console.log("api odjava od dogodka");
+  // console.log(req.params.loginID);
   InstrukcijeDogodek
     .findById(req.params.idDela)
     .exec((napaka, delo) => {
-      console.log("Api najde dogodek: " + delo);
+      // console.log("Api najde dogodek: " + delo);
       Uporabnik
         .findByIdAndUpdate(req.params.loginID, {
           $pull: { dela: { delo: delo._id } }
         }, { safe: true, multi: true }, function (err, obj) {
           //console.log(dogodki);
-          console.log(obj.dela);
+          // console.log(obj.dela);
 
-          console.log(err);
+          // console.log(err);
         })
         .exec((uporabnik) => {
-          console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
+          // console.log("UPORABNIK PPRED IZHODOM IZ API-JA", uporabnik);
           res.status(200).json(uporabnik);
         });
 
@@ -247,9 +247,9 @@ const odjavaOdDela = (req, res) => {
 
 /*PUT EXPRESS update user*/
 const posodobiUporabnika = (req, res) => {
-  console.log("Inside controllers on the API!");
-  console.log(req.body.email);
-  console.log(req.params.idUporabnika);
+  // console.log("Inside controllers on the API!");
+  // console.log(req.body.email);
+  // console.log(req.params.idUporabnika);
   Uporabnik
     .findByIdAndUpdate(req.params.idUporabnika,
       {
@@ -273,9 +273,9 @@ const posodobiUporabnika = (req, res) => {
 
 /*PUT ANGULAR update user*/
 const posodobiUporabnik = (req, res) => {
-  console.log("Inside controllers on the API!");
-  console.log(req.body.email);
-  console.log(req.params.idUporabnika);
+  // console.log("Inside controllers on the API!");
+  // console.log(req.body.email);
+  // console.log(req.params.idUporabnika);
   Uporabnik
     .findOneAndUpdate({ email: req.params.emailUporabnika },
       {
@@ -320,7 +320,7 @@ const posodobiUporabnik = (req, res) => {
 // };
 
 const posodobiGeslo = (req, res) => {
-  console.log("Inside controllers on the API!");
+  // console.log("Inside controllers on the API!");
   Uporabnik
     .findOneAndUpdate({ email: req.params.emailUporabnika },
       {
@@ -334,10 +334,10 @@ const posodobiGeslo = (req, res) => {
             "Ne"
         });
       } else if (napaka) {
-        console.log(napaka.data);
+        // console.log(napaka.data);
         return res.status(500).json(napaka);
       }
-      console.log(uporabnik.data);
+      // console.log(uporabnik.data);
       res.status(200).json(uporabnik);
     });
 };
@@ -364,8 +364,8 @@ const posodobiGeslo = (req, res) => {
 
 /*PUT update user grade*/
 const posodobiOcena = (req, res) => {
-  console.log("Inside controllers on the API!");
-  console.log("ocena poslana je" + req.body.ocena);
+  // console.log("Inside controllers on the API!");
+  // console.log("ocena poslana je" + req.body.ocena);
   var novaOcena = Number(req.body.ocena);//?
   Uporabnik
     .findById(req.params.idUporabnika)
@@ -376,7 +376,7 @@ const posodobiOcena = (req, res) => {
             "Uporabnik ne obstaja."
         });
       } else if (napaka) {
-        console.log(napaka.data);
+        // console.log(napaka.data);
         return res.status(500).json(napaka);
       }
       var ocen = uporabnik.ocen;
@@ -384,15 +384,15 @@ const posodobiOcena = (req, res) => {
       ocen[ocen.length] = novaOcena;
       var zbir = 0;
       for (var i = 0; i < ocen.length; i++) {
-        console.log("Zbir vo loop " + i + " e " + zbir);
+        // console.log("Zbir vo loop " + i + " e " + zbir);
         zbir = zbir + ocen[i];
-        console.log("Ocen [" + i + "] e " + ocen[i]);
-        console.log("Zbir posle loop " + i + " e " + zbir);
+        // console.log("Ocen [" + i + "] e " + ocen[i]);
+        // console.log("Zbir posle loop " + i + " e " + zbir);
       }
-      console.log("Zbir " + zbir);
-      console.log("Ocen.length " + ocen.length);
+      // console.log("Zbir " + zbir);
+      // console.log("Ocen.length " + ocen.length);
       var ocena2 = zbir / ocen.length;
-      console.log("Ocena 2 je: " + ocena2);
+      // console.log("Ocena 2 je: " + ocena2);
       Uporabnik
         .findByIdAndUpdate(req.params.idUporabnika,
           {
@@ -417,9 +417,9 @@ const posodobiOcena = (req, res) => {
 
 /*DELETE EXPRESS user*/
 const izbrisiUporabnika = (req, res) => {
-  console.log('izbrisi uporabnik v api');
+  // console.log('izbrisi uporabnik v api');
   const idUporabnika = req.params.idUporabnika;
-  console.log(idUporabnika);
+  // console.log(idUporabnika);
   if (!idUporabnika) {
     return res.status(404).json({
       "sporocilo": "Ne najdem identifikatorja"
@@ -447,9 +447,9 @@ const izbrisiUporabnika = (req, res) => {
 
 /*DELETE ANGULAR user*/
 const izbrisiUporabnik = (req, res) => {
-  console.log('izbrisi uporabnik v api');
+  // console.log('izbrisi uporabnik v api');
   const emailUporabnika = req.params.emailUporabnika;
-  console.log(emailUporabnika);
+  // console.log(emailUporabnika);
   if (!emailUporabnika) {
     return res.status(404).json({
       "sporocilo": "Ne najdem emaila uporabnika"
@@ -507,7 +507,7 @@ const registracija = (req, res) => {
   } else {
     Uporabnik.findOne({ email: req.body.email })
       .then((obstojecUporabnik) => {
-        console.log(obstojecUporabnik);
+        // console.log(obstojecUporabnik);
         if (obstojecUporabnik != null) {
           res.status(409).json(obstojecUporabnik);
         }

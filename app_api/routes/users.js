@@ -59,11 +59,13 @@ const avtentikacija = jwt({
  *       example: hp@hogwarts.com 
  *    responses:
  *     "200":
- *      description: Uspešna zahteva s podrobnostmi profila v rezulatu.
+ *      description: Uspešna zahteva s pridobitvijo profila v rezultatu.
  *      content:
- *       application/json:
- *        schema:
- *          $ref: "#/components/schemas/ProfilBranjePovzetek"
+ *        application/json:
+ *          schema:
+ *            type: array
+ *            items:
+ *              $ref: "#/components/schemas/ProfilBranjePovzetek"
  *     "400":
  *      description: Napaka zahteve, manjkajo obvezni parametri.
  *      content:
@@ -97,7 +99,7 @@ router.get('/uporabnik/:emailUporabnika', ctrlUporabniki.najdiUporabnik);
  *     content:
  *      application/x-www-form-urlencoded:
  *       schema:
- *        $ref: "#/components/schemas/LokacijaAzuriranjePovzetekZahteva"
+ *        $ref: "#/components/schemas/ProfilAzuriranjePovzetekZahteva"
  *    parameters:
  *     - in: path
  *       name: emailUporabnika
@@ -213,7 +215,88 @@ router.put('/uporabniki/:email', ctrlUporabniki.nastaviStatus);
 */
 
 /* Avtentikacija */
+/**
+ * @swagger
+ *   /registracija:
+ *     post:
+ *       summary: Registracija novega uporabnika
+ *       description: Registracija **novega uporabnika** s podatki o imenu, elektronskem naslovu in geslu.
+ *       tags: [Avtentikacija]
+ *       requestBody:
+ *         description: Podatki za registracijo
+ *         required: true
+ *         content:
+ *           application/x-www-form-urlencoded:
+ *             schema:
+ *               $ref: "#/components/schemas/UporabnikRegistracija"
+ *       responses:
+ *         "200":
+ *           description: Uspešna registracija uporabnika z JWT žetonom v rezultatu.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: "#/components/schemas/AvtentikacijaOdgovor"
+ *         "400":
+ *           description: Napaka zahteve, pri registraciji so obvezni ime, elektronski naslov in geslo.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: "#/components/schemas/Napaka"
+ *             example:
+ *               sporočilo: Zahtevani so vsi podatki.
+ *         "500":
+ *           description: Napaka na strežniku pri registraciji uporabnika.
+ */
+
 router.post('/registracija', ctrlUporabniki.registracija);
+
+/**
+ * @swagger
+ *   /prijava:
+ *     post:
+ *       summary: Prijava obstoječega uporabnika
+ *       description: Prijava **obstoječega uporabnika** z elektronskim naslovom in geslom.
+ *       tags: [Avtentikacija]
+ *       requestBody:
+ *         description: Prijavni podatki
+ *         required: true
+ *         content:
+ *           application/x-www-form-urlencoded:
+ *             schema:
+ *                $ref: "#/components/schemas/UporabnikPrijava"
+ *       responses:
+ *         "200":
+ *           description: Uspešna prijava uporabnika z JWT žetonom v rezultatu.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: "#/components/schemas/AvtentikacijaOdgovor"
+ *         "400":
+ *           description: Napaka zahteve, pri prijavi sta obvezna elektronski naslov in geslo.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: "#/components/schemas/Napaka"
+ *               example:
+ *                 sporočilo: Zahtevani so vsi podatki.
+ *         "401":
+ *           description: Napaka pri prijavi uporabnika.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: "#/components/schemas/Napaka"
+ *               examples:
+ *                 uporabniško ime:
+ *                   value:
+ *                     sporočilo: Napačno uporabniško ime.
+ *                   summary: napačno uporabniško ime
+ *                 geslo:
+ *                   value:
+ *                     sporočilo: Napačno geslo.
+ *                   summary: napačno geslo
+ *         "500":
+ *           description: Napaka na strežniku pri preverjanju uporabnika.
+ */
 router.post('/prijava', ctrlUporabniki.prijava);
 
 //ROUTER export

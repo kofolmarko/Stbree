@@ -1,14 +1,23 @@
 <div id="db">
     <div class="buttons">
         <a class="db-btn btn btn-outline-dark" (click)="fillDB()">Uvozi podatke</a>
+        <button class="btn btn-secondary" (click)="refreshPage()">Osveži stran</button>
+        <div class="alert alert-primary" role="alert">
+            Po vsakem kliku na gumb za uvoz podatkov, prosimo osvežite stran in kliknite še enkrat,
+            dokler se vam ne prikaže obvestilo, da ste uspešno vnesli vse podatke.
+            (število potrebnih klikov bi moralo biti 4)
+        </div>
+        <div class="alert alert-success" *ngIf="sporocilo">
+            {{ sporocilo }}
+        </div>
         <a class="db-btn btn btn-outline-dark" (click)="dropDB()">Izbriši podatke</a>
+        <a class="db-btn btn btn-outline-dark" (click)="dropUsers()">Izbriši uporabnike</a>
     </div>
 
 
     <style>
-        #db {
-            background: azure;
-            height: 90vh !important;
+        body {
+            background: azure !important;
         }
 
         .buttons {
@@ -20,6 +29,11 @@
             width: 100%;
             margin-top: 5rem;
             padding: 3rem;
+        }
+
+        button {
+            margin: 0.5rem;
+            margin-left: 0;
         }
     </style>
 </div>

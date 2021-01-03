@@ -27,8 +27,8 @@ const instructorsList = (req, res) => {
 
 //RENDER instructors
 const renderInstructorsList = (req, res, instruktorji, sporocilo) => {
-  console.log("rendering....");
-  console.log(instruktorji);
+  // console.log("rendering....");
+  // console.log(instruktorji);
   res.render('instructors-list', {
     instruktorji: instruktorji,
     sporocilo: sporocilo
@@ -40,7 +40,7 @@ const eventList = (req, res) => {
   axios
     .get(apiParametri.streznik + '/api/instrukcije-dogodki')
     .then((odgovor) => {
-      //console.log(odgovor.data);
+      // console.log(odgovor.data);
       let sporocilo = odgovor.data.length ? null : "Ne najdem nobenega dogodka :(";
       instructionsEventList(req, res, odgovor.data, sporocilo);
     })
@@ -52,7 +52,7 @@ const eventList = (req, res) => {
 
 //RENDER instructions event list
 const instructionsEventList = (req, res, instrukcijeDogodki, sporocilo) => {
-  console.log("RENDERING..." + instrukcijeDogodki);
+  // console.log("RENDERING..." + instrukcijeDogodki);
   res.render('instructions-events-list', {
     instrukcijeDogodki: instrukcijeDogodki,
     sporocilo: sporocilo
@@ -80,7 +80,7 @@ const getInstructionsEvent = async (req, res, povratniKlic) => {
       prikaziNapako(req, res, napaka);
     });
   if (result) {
-    console.log(result.data);
+    // console.log(result.data);
     povratniKlic(req, res, result.data);
   } else {
     prikaziNapako(req, res, result);
@@ -89,11 +89,11 @@ const getInstructionsEvent = async (req, res, povratniKlic) => {
 
 //GET filter
 const filter = (req, res) => {
-  console.log(req.params.parameter);
+  // console.log(req.params.parameter);
   axios
     .get(apiParametri.streznik + '/api/instrukcije-dogodki/' + req.params.parameter)
     .then((dogodki) => {
-      console.log("filtering by " + req.params.parameter);
+      // console.log("filtering by " + req.params.parameter);
       if (req.params.parameter.substring(0, 3) == "REV") {
         dogodki.data = dogodki.data.reverse();
       }
@@ -103,10 +103,10 @@ const filter = (req, res) => {
       /*
       var datumi = [];
       for (i = 0; i < dogodki.data.length; i++) {
-        console.log(i);
-        console.log(dogodki.data[i]);
+        // console.log(i);
+        // console.log(dogodki.data[i]);
       }
-      console.log("Tabela datumov: ", datumi);
+      // console.log("Tabela datumov: ", datumi);
       */
     })
     .catch((napaka) => {
@@ -119,13 +119,13 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
   var loginID = require('./signing').loginID.val;
   gettingInsID = { idInstruktorja: loginID };
   getInstructor(req, res, gettingInsID, (req, res, loggedInUser) => {
-    console.log(dogodek);
-    console.log(instruktor);
-    console.log(loggedInUser);
+    // console.log(dogodek);
+    // console.log(instruktor);
+    // console.log(loggedInUser);
     var isSignedUp = false;
     for (i = 0; i < loggedInUser.dogodki.length; i++) {
       if (dogodek._id == loggedInUser.dogodki[i]._id) {
-        console.log("found a match");
+        // console.log("found a match");
         isSignedUp = true;
         break;
       }
@@ -151,10 +151,10 @@ const renderInstructionsEvent = (req, res, dogodek, instruktor) => {
 
 //GET instructor data
 const getInstructor = async (req, res, dogodek, povratniKlic) => {
-  console.log("Getting the instructor for the event");
-  console.log(dogodek);
+  // console.log("Getting the instructor for the event");
+  // console.log(dogodek);
   const result = await axios.get(apiParametri.streznik + '/api/uporabnik/' + dogodek.idInstruktorja);
-  console.log(result.data);
+  // console.log(result.data);
   povratniKlic(req, res, result.data);
 };
 
@@ -170,7 +170,7 @@ const instructionsEventNewPost = (req, res) => {
     instructionsEventNew(req, res, "Prosim izpolnite vsa polja.");
   } else {
     const idPrijavljenega = require('./signing').loginID.val;
-    console.log("idPrijavljenega: " + idPrijavljenega);
+    // console.log("idPrijavljenega: " + idPrijavljenega);
     axios({
       method: 'post',
       url: apiParametri.streznik + '/api/instrukcije-dogodki',
@@ -184,7 +184,7 @@ const instructionsEventNewPost = (req, res) => {
         idInstruktorja: idPrijavljenega
       }
     }).then((dogodek) => {
-      console.log("Nov dogodek '" + req.body.naziv + "' je bilo dodan!");
+      // console.log("Nov dogodek '" + req.body.naziv + "' je bilo dodan!");
       res.redirect('/instrukcije-dogodki');
     }).catch((napaka) => {
       prikaziNapako(req, res, napaka);
@@ -210,11 +210,11 @@ const instructionsEventEdit = (req, res) => {
         }
       )
       .then((dogodek) => {
-        console.log(dogodek);
+        // console.log(dogodek);
         res.status(200).json(dogodek);
       })
       .catch((napaka) => {
-        console.log(napaka);
+        // console.log(napaka);
         prikaziNapako(req, res, napaka);
       });
   }
@@ -225,8 +225,8 @@ const instructionsEventDelete = (req, res) => {
   axios
     .delete(apiParametri.streznik + '/api/instrukcije-dogodki/dogodek/' + req.params.idDogodka)
     .then((dogodek) => {
-      console.log("Deleted the following event:");
-      console.log(dogodek.data);
+      // console.log("Deleted the following event:");
+      // console.log(dogodek.data);
       res.status(200).json(dogodek);
     })
     .catch((napaka) => {
@@ -247,11 +247,11 @@ const instructionsEventSignup = (req, res) => {
 
 const instructionsEventLeave = (req, res) => {
   var loginID = require('./signing').loginID.val;
-  console.log(loginID);
-  console.log(req.params);
+  // console.log(loginID);
+  // console.log(req.params);
   axios.put(apiParametri.streznik + '/api/uporabniki/' + loginID + "/dogodek/odjava/" + req.params.idDogodka)
     .then((uporabnik) => {
-      console.log("Nazaj na serverju: " + uporabnik);
+      // console.log("Nazaj na serverju: " + uporabnik);
       res.redirect('/instrukcije-dogodki');
     })
     .catch((napaka) => {

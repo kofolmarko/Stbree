@@ -8,8 +8,8 @@ const User = mongoose.model('User');
 
 /* Create new job */
 const deloKreiraj = (req, res) => {
-  console.log("delo se kreira");
-  console.log(req.body);
+  // console.log("delo se kreira");
+  // console.log(req.body);
   Delo.create({
     naziv: req.body.naziv,
     opis: req.body.opis,
@@ -63,14 +63,14 @@ const deloPreberi = (req, res) => {
       } else if (napaka) {
         return res.status(500).json(napaka);
       }
-      console.log(delo.data);
+      // console.log(delo.data);
       res.status(200).json(delo);
     });
 };
 
 /* PUT update job */
 const deloUredi = (req, res) => {
-  console.log("Inside controllers on the API!");
+  // console.log("Inside controllers on the API!");
   Delo
     .findByIdAndUpdate(req.params.idDela,
       {
@@ -87,19 +87,19 @@ const deloUredi = (req, res) => {
             "Delo ne obstaja"
         });
       } else if (napaka) {
-        console.log(napaka.data);
+        // console.log(napaka.data);
         return res.status(500).json(napaka);
       }
-      console.log(delo.data);
+      // console.log(delo.data);
       res.status(200).json(delo);
     });
 };
 
 /* DELETE job by ID */
 const deloIzbrisi = (req, res) => {
-  console.log("izbris");
+  // console.log("izbris");
   const { idDela } = req.params;
-  console.log(idDela);
+  // console.log(idDela);
   if (!idDela) {
     return res.status(404).json({
       "sporočilo":
@@ -110,7 +110,7 @@ const deloIzbrisi = (req, res) => {
   Delo
     .findByIdAndDelete(idDela)
     .exec((napaka, delo) => {
-      console.log("tukaj dogodek:" + delo, " tukaj napaka: " + napaka);
+      // console.log("tukaj dogodek:" + delo, " tukaj napaka: " + napaka);
       if (!delo) {
         return res.status(404).json({ "Sporočilo": "Ne najdem dela." });
       } else if (napaka) {
@@ -123,18 +123,19 @@ const deloIzbrisi = (req, res) => {
 
 //ORDER BY PARAMETER
 const delaOrder = (req, res) => {
-  console.log("INSIDE API");
-  console.log(req.params.parameter);
+  // console.log("INSIDE API");
+  // console.log(req.params.parameter);
 
   let {parameter} = req.params;
-  console.log(parameter.substring(0,3));
-  console.log(parameter.substring(3));
+  // console.log(parameter.substring(0,3));
+  // console.log(parameter.substring(3));
 
   if(parameter.substring(0,3) == "REV") {
+    // console.log("We have a reverse!");
     parameter = parameter.substring(3);
   }
 
-  console.log(parameter);
+  // console.log(parameter);
 
     Delo
     .aggregate()
@@ -144,7 +145,7 @@ const delaOrder = (req, res) => {
       if (napaka) {
         res.status(500).json(napaka);
       } else {
-        console.log("RETURNING OBJECTS FROM API");
+        // console.log("RETURNING OBJECTS FROM API");
         res.status(200).json(
           dela.map(delo => {
             return {
@@ -186,14 +187,14 @@ const prijavaNaDelo = (req, res) => {
         zasedeno: true
       })
     .exec((napaka, delo) => {
-      console.log(delo);
+      // console.log(delo);
       if (delo) {
         return res.status(200).json({ "sporočilo": "Uspešno ste prijavljeni na delo :)"});
       } else {
         return res.status(400).json(napaka);
       }    
-  })
-}
+  });
+};
 
 module.exports = {
   deloKreiraj,

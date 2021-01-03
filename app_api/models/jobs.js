@@ -105,6 +105,29 @@ const mongoose = require('mongoose');
  *        type: string
  *      example:
  *        sporočilo: Parametri so obvezni.
+ *    KomentarDelo:
+ *      type: object
+ *      description: Podatki komentarja z nazivom in enoličnim identifikatorjem dela
+ *      properties:
+ *        delo:
+ *          type: object
+ *          properties:
+ *            id:
+ *              type: string
+ *              format: uuid
+ *              example: 5ded18eb51386c3799833191
+ *            naziv:
+ *              type: string
+ *              example: Prevod iz angleščine v slovenščino
+ *          required:
+ *            - id
+ *            - naziv
+ *        komentar:
+ *          type: object
+ *          $ref: "#/components/schemas/KomentarBranje"
+ *      required:
+ *        - delo
+ *        - komentar
  */
 
 const komentarjiDelShema = new mongoose.Schema({
