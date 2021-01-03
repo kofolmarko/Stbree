@@ -1,0 +1,261 @@
+[{
+    "_id": "",
+    "naziv": "Predavanje filozofije",
+    "opis": "Filozofija 19. stoletja v eni uri",
+    "cena": 6,
+    "datestring": "2021-03-03",
+    "datum": null,
+    "ura": "12:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "simon@antonic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Andrej Rustja",
+      "ocena": 4,
+      "besediloKomentarja": "Zelo zanimiva razlaga.",
+      "datestring": "2021-04-12",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Peter Soban",
+      "ocena": 2,
+      "besediloKomentarja": "Dobra, a ponekod pomanjkljiva razlaga.",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Učenje matematike",
+    "opis": "Linearna algebra, kot jo nisi nikoli prej spoznal.",
+    "cena": 5,
+    "datestring": "2021-11-20",
+    "datum": null,
+    "ura": "10:00",
+    "steviloProstihMest": 10,
+    "emailInstruktorja": "rudi@bobnic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 2,
+      "besediloKomentarja": "Nič mi ni bilo jasno",
+      "datestring": "2021-12-01",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Miha Kovic",
+      "ocena": 1,
+      "besediloKomentarja": "Še sam je bil zmeden...",
+      "datestring": "2021-11-23",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Kitajska književnost",
+    "opis": "Kitajska književnost od začetkov do danes",
+    "cena": 3,
+    "datestring": "2021-03-03",
+    "datum": null,
+    "ura": "12:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "simon@antonic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 4,
+      "besediloKomentarja": "Všeč mi je bilo!",
+      "datestring": "2021-04-12",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Peter Soban",
+      "ocena": 1,
+      "besediloKomentarja": "Nekako površno..",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Osnove SQLa",
+    "opis": "Naučili se bomo kar je potrebno za delo na podatkovnih bazah.",
+    "cena": 6,
+    "datestring": "2021-04-24",
+    "datum": null,
+    "ura": "15:00",
+    "steviloProstihMest": 15,
+    "emailInstruktorja": "andrej@rustja.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Rudi Bobnič",
+      "ocena": 4,
+      "besediloKomentarja": "Zelo zanimivo!",
+      "datestring": "2021-05-03",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Janja Ferfič",
+      "ocena": 5,
+      "besediloKomentarja": "Težka snov, ampak preprosto razložena!",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Tečaj informatike",
+    "opis": "V eni uri bom posredoval, kar potrebujete kot osnovno znanje:)",
+    "cena": 10,
+    "datestring": "2021-03-11",
+    "datum": null,
+    "ura": "14:00",
+    "steviloProstihMest": 10,
+    "emailInstruktorja": "luka@kranjec.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Simon Antonič",
+      "ocena": 4,
+      "besediloKomentarja": "Zelo uporabno!",
+      "datestring": "2021-03-15",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Meta Hribar",
+      "ocena": 1,
+      "besediloKomentarja": "Težko razumljivo, ni začel iz osnov; potrebno predznanje..",
+      "datestring": "2021-03-20",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Zgodovina umetnosti",
+    "opis": "18. stoletje svetovne zgodovine umetnosti",
+    "cena": 4,
+    "datestring": "2021-04-11",
+    "datum": null,
+    "ura": "14:00",
+    "steviloProstihMest": 4,
+    "emailInstruktorja": "meta@hribar.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Andrej Rustja",
+      "ocena": 3,
+      "besediloKomentarja": "Ponekod pomanjkljivo ampak v celoti dobro.",
+      "datestring": "2021-04-15",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Janja Ferfič",
+      "ocena": 2,
+      "besediloKomentarja": "Ni bilo zanimivo. Izpustila je veliko pomembnih podatkov.",
+      "datestring": "2021-04-19",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Programiranje v Javi",
+    "opis": "Kaj bolj potrebujemo kot programiranje dandanes? V dveh urah bom razložil osnove programiranja v Javi",
+    "cena": 14,
+    "datestring": "2021-02-08",
+    "datum": null,
+    "ura": "11:00",
+    "steviloProstihMest": 8,
+    "emailInstruktorja": "miha@kovic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Luka Kranjec",
+      "ocena": 5,
+      "besediloKomentarja": "Kratko in učinkovito!",
+      "datestring": "2021-02-10",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Simon Antonič",
+      "ocena": 5,
+      "besediloKomentarja": "Zelo dobra razlaga!",
+      "datestring": "2021-02-13",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Tečaj angleščine, stopnja B2",
+    "opis": "Analiza literarnega besedila, poudarek na tekoče govorjenem jeziku",
+    "cena": 10,
+    "datestring": "2021-04-01",
+    "datum": null,
+    "ura": "16:00",
+    "steviloProstihMest": 7,
+    "emailInstruktorja": "rudi@bobnic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Jernej Tomsič",
+      "ocena": 4,
+      "besediloKomentarja": "Zelo mi je pomagalo!",
+      "datestring": "2021-04-12",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Meta hribar",
+      "ocena": 2,
+      "besediloKomentarja": "Težko razumljivo, ni bilo v veliko pomoč..",
+      "datestring": "2021-04-07",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "5 zanimivih trikov v geometriji",
+    "opis": "Geometrijske formule na pamet? Ne hvala!",
+    "cena": 10,
+    "datestring": "2021-05-27",
+    "datum": null,
+    "ura": "14:00",
+    "steviloProstihMest": 11,
+    "emailInstruktorja": "rudi@bobnic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Peter Soban",
+      "ocena": 4,
+      "besediloKomentarja": "Zelo uporabno!",
+      "datestring": "2021-05-31",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Miha Kovic",
+      "ocena": 5,
+      "besediloKomentarja": "To, kar sem skozi celo osnovno šolo hotel poznati!",
+      "datestring": "2021-06-02",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Osnove Microsoft paketa",
+    "opis": "Word, Excel, Powerpoint za začetnike",
+    "cena": 13,
+    "datestring": "2021-03-04",
+    "datum": null,
+    "ura": "17:00",
+    "steviloProstihMest": 3,
+    "emailInstruktorja": "janja@ferfic.com",
+    "komentarji": [{
+      "_id": "",
+      "avtor": "Meta Hribar",
+      "ocena": 3,
+      "besediloKomentarja": "Pričakovala sem kaj več snovi",
+      "datestring": "2021-03-15",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "Simon Antonič",
+      "ocena": 2,
+      "besediloKomentarja": "Sem začetnik, vseeno pa se mi zdi, da je bilo obravnavano relativno malo snovi.",
+      "datestring": "2021-03-17",
+      "datum": null
+    }]
+  }]

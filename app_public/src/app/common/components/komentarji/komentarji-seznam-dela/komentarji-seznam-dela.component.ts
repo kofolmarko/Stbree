@@ -25,7 +25,7 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
     _id: '',
     avtor: '',
     ocena: null,
-    datum: '',
+    datum: null,
     besediloKomentarja: ''
   };
 
