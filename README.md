@@ -87,14 +87,18 @@ Dinamična spletna aplikacija s podatkovno bazo
 
 V datoteki README.md vključite vse ukaze, ki jih je treba izvesti, da se lahko vašo aplikacijo zažene lokalno.
 
-    EXPRESS
+-> cd app_public
         -> npm install
-        -> npm start (oz. docker-compose build, docker-compose up)
+        -> npm run build-docker 
+        -> docker-compose build 
+        -> docker-compose up
 
     ANGULAR
-        -> cd app_public
-        -> npm install
         -> ng serve --open
+
+    (transformacijski cevi: cas.pipe.ts, letters.pipe.ts, sortiraj-sporocila.pipe.ts, ngx-pagination, ngx-order-pipe, DatePipe (iz @angular/common))
+
+    (HEROKU: -> https://stbree.herokuapp.com)
 
 ## 5. LP
 
@@ -102,11 +106,11 @@ V datoteko README.md morajo biti glede na zahteve naloge dodatno vključeni nasl
 
     ·opisane razlike med uporabniki aplikacije,
 
-            -> uporabnik ki ni prijavljen
+            -> uporabnik, ki ni prijavljen
                 · Navbar ima možnosti: prijava, registracija
-                · Začetna stran vabi uporabnika k registraciji
+                · Začetna stran povabi uporabnika k registraciji
             
-            -> uporabnik ki je prijavljen
+            -> uporabnik, ki je prijavljen
                 · Navbar ima možnosti: Pregledna plošča, Sporočanje, Inštrukcije, Dogodki, Delo
                 · Začetna stran predstavlja Pregledno Ploščo uporabnika
                 · Uporabnik se lahko:
@@ -117,7 +121,7 @@ V datoteko README.md morajo biti glede na zahteve naloge dodatno vključeni nasl
                     - komentrira na ponudbo del
             
             -> uporabnik ki je prijavljen IN ima status inštruktojra
-                · Enako kot uporabnik ki je prijavljen z dodano funkcijo:
+                · Enako kot uporabnik, ki je prijavljen z dodano funkcijo:
                     - uporabnik lahko ustvari nov dogodek
 
     ·(opcijsko) argumentiranje, zakaj niste odpravili vseh varnostnih tveganj.
@@ -125,11 +129,13 @@ V datoteko README.md morajo biti glede na zahteve naloge dodatno vključeni nasl
 
 V datoteki README.md prav tako vključite vse ukaze, ki jih je treba izvesti, da se lahko vašo aplikacijo zažene lokalno.
 
-    EXPRESS
+-> cd app_public
         -> npm install
-        -> npm start (oz. docker-compose build, docker-compose up)
+        -> npm run build-docker 
+        -> docker-compose build 
+        -> docker-compose up
 
     ANGULAR
-        -> cd app_public
-        -> npm install
         -> ng serve --open
+
+    (HEROKU: -> https://stbree.herokuapp.com)
