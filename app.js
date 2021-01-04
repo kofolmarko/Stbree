@@ -9,16 +9,6 @@ var passport = require('passport');
 var swaggerJsdoc = require('swagger-jsdoc');
 var swaggerUi = require('swagger-ui-express');
 
-// Preusmeritev na HTTPS na Heroku
-if (process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(`https://${req.header('host')}${req.url}`);
-    else
-      next();
-  });
-}
-
 var swaggerOptions = {
   swaggerDefinition: {
     openapi: "3.0.0",
@@ -69,6 +59,16 @@ var jobsApi = require('./app_api/routes/jobs');
 
 var hbs = require('hbs');
 var app = express();
+
+// Preusmeritev na HTTPS na Heroku
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`);
+    else
+      next();
+  });
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
