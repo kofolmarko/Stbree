@@ -125,6 +125,7 @@ V datoteko README.md morajo biti glede na zahteve naloge dodatno vključeni nasl
                     - uporabnik lahko ustvari nov dogodek
 
     ·(opcijsko) argumentiranje, zakaj niste odpravili vseh varnostnih tveganj.
+    -> Preveč časa smo namenili Angularju in delu s testi, da se na koncu nismo imeli časa osredotočiti na ta del aplikacije.
 
 
 V datoteki README.md prav tako vključite vse ukaze, ki jih je treba izvesti, da se lahko vašo aplikacijo zažene lokalno.
