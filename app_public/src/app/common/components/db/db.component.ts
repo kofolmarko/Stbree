@@ -8,6 +8,7 @@ import { CommentsJobsService } from '../../services/comments-jobs.service';
 import users from './test/users-testni.json'
 import events from './test/instrukcije-testni.json';
 import offers from './test/dela-testni.json'
+import { withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-db',
@@ -109,5 +110,9 @@ export class DbComponent implements OnInit {
     location.reload();
     window.stop();
     location.reload();
+  }
+
+  public loading() {
+    this.sporocilo = "Brišem...";
   }
 }

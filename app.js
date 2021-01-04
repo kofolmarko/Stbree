@@ -130,7 +130,7 @@ app.get(/(\/prijava)|(\/registracija)|(\/my)|(\/instruktorji)|(\/odjava)|(\/db)|
 app.use(function (req, res, next) {
   res.status(404);
     res.send('404: Stran ne obstaja.');
-  // next(createError(404));
+   next(createError(404));
 });
 
 // Obvladovanje napak zaradi avtentikacije

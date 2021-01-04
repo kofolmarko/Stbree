@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1609717501536,
+  "timestamp": 1609726625739,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.5b09f1bc8dae7f9c6365.js",
+        "/main.9b352d0aba212955baaf.js",
         "/manifest.webmanifest",
         "/polyfills.6561bc8cc12920e441c0.js",
         "/runtime.359d5ee4682f20e936e9.js",
@@ -263,9 +263,9 @@
     "/assets/webfonts/Ubuntu-MediumItalic.ttf": "cda0bdfd72829725a0d7554b14d30773b04aa1ba",
     "/assets/webfonts/Ubuntu-Regular.ttf": "31b6449384c3fe8d10a483814fe68302dc05485f",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "05b6f1be36834f032e4ec5ab3eb8b84778f458a0",
-    "/main.5b09f1bc8dae7f9c6365.js": "78a7de7a42ccaa9476695ea66cb2cb6a775b3ec9",
-    "/manifest.webmanifest": "4c781bd4529a5de1fe36316a0802477d5f931ec9",
+    "/index.html": "ce00093dcca199cfc2896f2a03edc30f6b619384",
+    "/main.9b352d0aba212955baaf.js": "5058b27ef8b4747b330ed5cb6d25b210b6c5938b",
+    "/manifest.webmanifest": "d7aaf034e3284012bbd87b0393b4a5160cf15f8a",
     "/polyfills.6561bc8cc12920e441c0.js": "d2c10a9a38893a3c3b8cb1582b17cdb3920a2446",
     "/red.608c61129c640fa54250.png": "90bd134cd567ff75c7f06c94cf6a60c715e687ac",
     "/runtime.359d5ee4682f20e936e9.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",

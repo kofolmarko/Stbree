@@ -9,8 +9,8 @@
         <div class="alert alert-success" *ngIf="sporocilo">
             {{ sporocilo }}
         </div>
-        <a class="db-btn btn btn-outline-dark" (click)="dropDB()">Izbriši podatke</a>
-        <a class="db-btn btn btn-outline-dark" (click)="dropUsers()">Izbriši uporabnike</a>
+        <a class="db-btn btn btn-outline-dark" (click)="dropDB()" (click)="loading()">Izbriši podatke</a>
+        <a class="db-btn btn btn-outline-dark" (click)="dropUsers()" (click)="loading()">Izbriši uporabnike</a>
     </div>
 
 
