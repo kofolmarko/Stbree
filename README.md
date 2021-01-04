@@ -120,7 +120,7 @@ V datoteko README.md morajo biti glede na zahteve naloge dodatno vključeni nasl
                     - prijavi na ponudbo del
                     - komentrira na ponudbo del
             
-            -> uporabnik ki je prijavljen IN ima status inštruktojra
+            -> uporabnik, ki je prijavljen IN ima status inštruktojra, torej je lastnik neke ponudbe dela ali inštrukcij
                 · Enako kot uporabnik, ki je prijavljen z dodano funkcijo:
                     - uporabnik lahko ustvari nov dogodek
 
