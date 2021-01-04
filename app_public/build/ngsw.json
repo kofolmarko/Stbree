@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1609726625739,
+  "timestamp": 1609731806885,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -262,7 +262,7 @@
     "/assets/webfonts/Ubuntu-Medium.ttf": "8f9552f4661c80d13082dbf72a38ab4585d0b8a9",
     "/assets/webfonts/Ubuntu-MediumItalic.ttf": "cda0bdfd72829725a0d7554b14d30773b04aa1ba",
     "/assets/webfonts/Ubuntu-Regular.ttf": "31b6449384c3fe8d10a483814fe68302dc05485f",
-    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/favicon.ico": "1a2eaf91100929883e3bfedc0f6d49f0be5fe8a6",
     "/index.html": "ce00093dcca199cfc2896f2a03edc30f6b619384",
     "/main.9b352d0aba212955baaf.js": "5058b27ef8b4747b330ed5cb6d25b210b6c5938b",
     "/manifest.webmanifest": "d7aaf034e3284012bbd87b0393b4a5160cf15f8a",
