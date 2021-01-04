@@ -3,6 +3,7 @@ import { SortirajSporocilaPipe } from '../../../pipes/sortiraj-sporocila.pipe';
 import { ChatService } from '../../../services/chat.service'; //ubistvu importas class ChatService
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { KontaktiComponent } from '../kontakti/kontakti.component';
+import { PovezavaService } from '../../../services/povezava.service';
 
 @Component({
   selector: 'app-sporocila',
@@ -12,13 +13,18 @@ import { KontaktiComponent } from '../kontakti/kontakti.component';
 })
 export class SporocilaComponent implements OnChanges {
   
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
   @Input() sporocila: any;
   
   constructor(
     private sortirajPipe: SortirajSporocilaPipe,
     private chatStoritev: ChatService,
     private authenticationService: AuthenticationService,
-    private kontaktiComponent : KontaktiComponent
+    private kontaktiComponent : KontaktiComponent,
+    private povezavaStoritev: PovezavaService
   ) { }
   
   public nimasSporocil: boolean = false;

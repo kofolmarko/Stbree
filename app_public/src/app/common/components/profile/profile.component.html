@@ -5,7 +5,7 @@
 
   <!-- {{!-- BUTTONS TO EDIT --}} -->
   <button *ngIf="uporabnik&&isAdmin&&isLoggedIn" class="btn btn-danger d-inline" id="delete-btn" (click)="assure(delete)"><i
-      class="fas fa-trash-alt"></i></button>
+      class="fas fa-trash-alt" [disabled]="!jePovezava()"></i></button>
 
       <ng-template #delete let-modal>
         <div class="modal-header">
@@ -21,14 +21,14 @@
         </div>
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Prekliči</button> -->
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Potrdi</button>
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="!jePovezava()">Potrdi</button>
         </div>
       </ng-template>
 
   <button *ngIf="uporabnik&&isAdmin&&isLoggedIn" id="save-btn" value="save" class="btn btn-success d-none"
-    (click)="saveUserInfo()"><i class="fas fa-check"></i></button>
+    (click)="saveUserInfo()"><i class="fas fa-check" [disabled]="!jePovezava()"></i></button>
   <button *ngIf="uporabnik&&isAdmin&&isLoggedIn" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editUserInfo()"><i
-      class="fas fa-edit"></i></button>
+      class="fas fa-edit" [disabled]="!jePovezava()"></i></button>
   <hr>
 
   <!-- {{!-- DESCRIPTION AND PROFILE PIC --}} -->
@@ -197,7 +197,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Potrdi</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" [disabled]="!jePovezava()">Potrdi</button>
       </div>
     </ng-template> -->
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InstructionsService} from '../../../services/instructions.service';
+import { PovezavaService } from '../../../services/povezava.service';
 
 import { InstructionsEvent } from '../../../classes/event';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
@@ -15,10 +16,15 @@ import { User } from 'src/app/common/classes/user';
 })
 export class EventNewComponent implements OnInit {
 
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
   constructor(
     private instructionsService: InstructionsService,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private povezavaStoritev: PovezavaService
   ) { }
 
   ngOnInit(): void {

@@ -10,6 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { InstructionsService } from '../../services/instructions.service';
 import { JobsService } from '../../services/jobs.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { PovezavaService } from '../../services/povezava.service';
 
 
 @Component({
@@ -20,6 +21,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })//why is styleUrls an array? we can refference multiple stylesheets here. ex.  styleUrls: ['./profile.component.css', './notProfile.component.css'], also OR styles: [``], you can chose one method (inline or external), not combine both
 export class ProfileComponent implements OnInit {
 
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
   constructor(
     private profileService: ProfilService,
     private route: ActivatedRoute,
@@ -27,7 +32,8 @@ export class ProfileComponent implements OnInit {
     private jobsService: JobsService,
     private instructionsService: InstructionsService,
     private authenticationService: AuthenticationService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private povezavaStoritev: PovezavaService
   ) { }
 
   closeResult = '';
@@ -63,6 +69,7 @@ export class ProfileComponent implements OnInit {
         if (this.authenticationService.isLoggedIn()) {
           if (this.uporabnik.email === this.authenticationService.getCurrentUser().email) {
             this.isAdmin = true;
+            console.log("checks if admin")
           }
         }
         this.sporocilo = user ? "" : "Uporabnik ne obstaja :(";

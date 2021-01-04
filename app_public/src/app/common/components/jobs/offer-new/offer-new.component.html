@@ -37,7 +37,7 @@
         <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{ sporocilo
           }} <a routerLink="/ponudba-del">Vrni se na seznam dogodkov.</a></div>
 
-        <button class="btn btn-primary" (click)="postNewJob()">Objavi</button>
+        <button class="btn btn-primary" (click)="postNewJob()" [disabled]="!jePovezava()">Objavi</button>
         <hr>
       </form>
     </div>

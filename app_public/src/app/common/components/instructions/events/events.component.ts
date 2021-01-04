@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InstructionsService } from '../../../services/instructions.service';
+import { PovezavaService } from '../../../services/povezava.service';
 
 import { InstructionsEvent } from 'src/app/common/classes/event';
 
@@ -11,7 +12,14 @@ import { InstructionsEvent } from 'src/app/common/classes/event';
 })
 export class EventsComponent implements OnInit {
 
-  constructor(private instructionsService: InstructionsService) { }
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
+  constructor(
+    private instructionsService: InstructionsService,
+    private povezavaStoritev: PovezavaService
+  ) { }
 
   ngOnInit(): void {
     this.getEvents();

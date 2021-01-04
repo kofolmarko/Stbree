@@ -1,56 +1,55 @@
+<div *ngIf="obrazecNapaka" class="alert alert-danger" role="alert">
+  {{ obrazecNapaka }}
+</div>
 
+<div class="container-fluid" id="messages" style="height: 60vh;">
+  <div class="message-recieved">
 
-    <div *ngIf="obrazecNapaka" class="alert alert-danger" role="alert">
-        {{ obrazecNapaka }}
+    <div *ngIf="nimasSporocil" class="alert alert-secondary" role="alert">
+      Z osebo še nimate pogovora. Pošlji sporočilo.
     </div>
-    
-    <div class="container-fluid" id="messages" style="height: 60vh;">
-        <div  class="message-recieved">
-            
-            <div *ngIf="nimasSporocil"  class="alert alert-secondary" role="alert">
-                Z osebo še nimate pogovora. Pošlji sporočilo.
+    <div *ngIf="!nimasSporocil">
+      <div *ngFor="let sporocilo of sporocila">
+
+        <div *ngIf="sporocilo.prejemnikSporocila === (idPrejemnika)">
+          <div id="fotrSporocil">
+            <div class="msg_moj_zunanji">
+              <h4><span class="msg_moj"> {{sporocilo.besedilo}}</span></h4>
+              <span class="msg_time_moj">{{sporocilo.cas | cas}}</span>
             </div>
-            <div *ngIf="!nimasSporocil">
-                <div  *ngFor="let sporocilo of sporocila">
-                    
-                    <div *ngIf="sporocilo.prejemnikSporocila === (idPrejemnika)" >
-                        <div id="fotrSporocil">
-                            <div class="msg_moj_zunanji" >
-                                <h4><span class="msg_moj"> {{sporocilo.besedilo}}</span></h4>
-                                <span class="msg_time_moj" >{{sporocilo.cas | cas}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div *ngIf="sporocilo.prejemnikSporocila != (idPrejemnika)">
-                        <div id="fotrSporocil">
-                            <div class="msg_dobljen_zunanji" >
-                                <h4><span class="msg_dobljen"> {{sporocilo.besedilo}}</span></h4>
-                                <span class="msg_time_dobljen" >{{sporocilo.cas | cas}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-        
-    
-        <form (ngSubmit)="dodajNovoSporocilo()" style="position: fixed; bottom: 0;"method="post" class="formClass">
-            <div class="container-fluid" id="input-bar">
-                <div class="input-group">
-                        <input [(ngModel)]="novoSporocilo.besedilo" type="text"  class="form-control" placeholder="Napišite sporočilo..." autocomplete="off" aria-label=""
-                            aria-describedby="basic-addon1" name="besedilo">
-                    <div class="input-group-append">
-                        <button class="btn btn-info" type="button" style="border-radius: 0; background-color: white; width: 3rem; border-color: #ced4da; ">
-                            <i class="fas fa-paperclip" style="color: #6d757d; " ></i>
-                        </button>
-                        <button type="submit" class="btn btn-info" style="border-radius: 0;">Pošlji</button>
-                    </div>
-                </div>
+
+        <div *ngIf="sporocilo.prejemnikSporocila != (idPrejemnika)">
+          <div id="fotrSporocil">
+            <div class="msg_dobljen_zunanji">
+              <h4><span class="msg_dobljen"> {{sporocilo.besedilo}}</span></h4>
+              <span class="msg_time_dobljen">{{sporocilo.cas | cas}}</span>
             </div>
-        </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form (ngSubmit)="dodajNovoSporocilo()" style="position: fixed; bottom: 0;" method="post" class="formClass">
+  <div class="container-fluid" id="input-bar">
+    <div class="input-group">
+      <input [(ngModel)]="novoSporocilo.besedilo" type="text" class="form-control" placeholder="Napišite sporočilo..."
+        autocomplete="off" aria-label="" aria-describedby="basic-addon1" name="besedilo">
+      <div class="input-group-append">
+        <button class="btn btn-info" type="button"
+          style="border-radius: 0; background-color: white; width: 3rem; border-color: #ced4da; ">
+          <i class="fas fa-paperclip" style="color: #6d757d; "></i>
+        </button>
+        <button type="submit" class="btn btn-info" style="border-radius: 0;" [disabled]="!jePovezava()">Pošlji</button>
+      </div>
+    </div>
+  </div>
+</form>
 
 
 
@@ -58,116 +57,115 @@
 
 <script>
 
-        function posljiSporocilo(){
-    
-            event.preventDefault();
-            var linkPost =  document.getElementById('formId').action;
-            var besediloIzForma = document.getElementById('besediloInputId').value;
-    
-            var asinhronaZahteva = new XMLHttpRequest();
-            asinhronaZahteva.addEventListener("load", function(){
-                console.log(asinhronaZahteva.responseText);
-                })
-    
-            asinhronaZahteva.open("POST", linkPost, false);
-            var zacasna = {
-                besedilo: "proba"
-            }
-            asinhronaZahteva.send(JSON.stringify(zacasna));      
+  function posljiSporocilo() {
+
+    event.preventDefault();
+    var linkPost = document.getElementById('formId').action;
+    var besediloIzForma = document.getElementById('besediloInputId').value;
+
+    var asinhronaZahteva = new XMLHttpRequest();
+    asinhronaZahteva.addEventListener("load", function () {
+      console.log(asinhronaZahteva.responseText);
+    })
+
+    asinhronaZahteva.open("POST", linkPost, false);
+    var zacasna = {
+      besedilo: "proba"
+    }
+    asinhronaZahteva.send(JSON.stringify(zacasna));
+  }
+
+  function naloziKontakt(idPrejemnika, imePrejemnika, priimekPrejemnika) {
+
+    var link = window.location + "/" + idPrejemnika;
+    var asinhronaZahteva = new XMLHttpRequest();
+    asinhronaZahteva.addEventListener("load", function () {
+
+      var pridobljeniPodatki = JSON.parse(asinhronaZahteva.responseText);
+
+      // u s t v a r i   a r r a y   s p o r o c i l //
+      var matchingSporocila = new Array();
+      var stevec = 0;
+      for (var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++) {
+        if (pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser._id) {
+          matchingSporocila[stevec] = pridobljeniPodatki.prviUser.poslanaSporocila[i];
+          stevec++;
         }
-    
-        function naloziKontakt(idPrejemnika, imePrejemnika, priimekPrejemnika){
-    
-            var link =  window.location + "/" + idPrejemnika;
-            var asinhronaZahteva = new XMLHttpRequest();
-            asinhronaZahteva.addEventListener("load", function() {
-    
-                var pridobljeniPodatki = JSON.parse(asinhronaZahteva.responseText);
-    
-                // u s t v a r i   a r r a y   s p o r o c i l //
-                var matchingSporocila = new Array();
-                var stevec = 0;
-                for(var i = 0; i < pridobljeniPodatki.prviUser.poslanaSporocila.length; i++){
-                if(pridobljeniPodatki.prviUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.drugiUser._id){
-                    matchingSporocila[stevec] = pridobljeniPodatki.prviUser.poslanaSporocila[i];
-                    stevec++;
-                }
-                }
-                var nimasPogovora = (matchingSporocila.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
-    
-                for(var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++){
-                if(pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser._id){
-                    matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
-                    stevec++;
-                }
-                }
-              
-                var sortedSporocila = matchingSporocila.sort(function(a, b) {
-                var dateA = new Date(a.cas), dateB = new Date(b.cas);
-                return dateA - dateB;
-                });
-    
-                // n a s t a v i   l i n k   z a   p o s t //
-                var form = document.getElementById('formId');
-                form.action = '/sporocanje/' + idPrejemnika;
-    
-                // d o d a j   i m e   k o l e g a //
-                if(document.getElementById('imeKolega')) document.getElementById('imeKolega').remove();
-                var imeDiv = document.createElement('div');
-                imeDiv.innerHTML = imePrejemnika + ' ' + priimekPrejemnika;
-                imeDiv.classList.add('container-fluid');
-                imeDiv.setAttribute('id', 'imeKolega');
-                document.getElementById('chatbox').prepend(imeDiv);
-    
-                // r e m o v e   p r e j s n a   s p o r o c i l a //
-                var fotr = document.getElementById('fotrSporocil');
-                if(document.getElementById('prvicDiv')) document.getElementById('prvicDiv').remove();
-                while(fotr.firstChild){
-                    fotr.removeChild(fotr.lastChild);
-                }
-    
-                // n i m a s  p o g o v o r a //
-                if(nimasPogovora){
-                    var nimas = document.createElement(div);
-                    nimas.classList.add('message-wrap', 'container-fluid');
-                    nimas.setAttribute('id', 'prvicDiv');
-                    nimas.innerHTML = nimasPogovora;
-                    document.getElementById('chatbox').append(nimas);
-                }
-               
-                // d o d a j  n o v a //
-                for(var i = 0; i < sortedSporocila.length; i++){
-                   
-                    var date = new Date(sortedSporocila[i].cas);
-                    var formatiranDatum = date.getHours() + ':' + (date.getMinutes() < 10? '0':'') + date.getMinutes();
-                    
-                    var cas = document.createElement('span');
-                    cas.innerHTML = formatiranDatum;
-    
-                    var znotraj = document.createElement('div');
-                    znotraj.innerHTML = sortedSporocila[i].besedilo;
-    
-                    var zunanji = document.createElement('div');
-                    zunanji.appendChild(znotraj);
-                    zunanji.classList.add('d-flex', 'mb-4');
-    
-                    if(sortedSporocila[i].prejemnikSporocila == idPrejemnika){
-                        zunanji.classList.add('justify-content-end');
-                        znotraj.classList.add('msg_moj');
-                        cas.classList.add('msg_time_moj');
-                    }else{
-                        zunanji.classList.add('justify-content-start');
-                        znotraj.classList.add('msg_kolega');
-                        cas.classList.add('msg_time_kolega');
-                    }
-    
-                    znotraj.appendChild(cas);
-                    fotr.appendChild(zunanji);
-                }
-            }); 
-        
-            asinhronaZahteva.open("GET", link, false);
-            asinhronaZahteva.send(null);       //sele tuki obistvu posles zahtevo
+      }
+      var nimasPogovora = (matchingSporocila.length > 0) ? null : "Z osebo še nimate pogovora. Pošli novo sporočilo.";
+
+      for (var i = 0; i < pridobljeniPodatki.drugiUser.poslanaSporocila.length; i++) {
+        if (pridobljeniPodatki.drugiUser.poslanaSporocila[i].prejemnikSporocila == pridobljeniPodatki.prviUser._id) {
+          matchingSporocila[stevec] = pridobljeniPodatki.drugiUser.poslanaSporocila[i];
+          stevec++;
         }
-    </script>
-    
+      }
+
+      var sortedSporocila = matchingSporocila.sort(function (a, b) {
+        var dateA = new Date(a.cas), dateB = new Date(b.cas);
+        return dateA - dateB;
+      });
+
+      // n a s t a v i   l i n k   z a   p o s t //
+      var form = document.getElementById('formId');
+      form.action = '/sporocanje/' + idPrejemnika;
+
+      // d o d a j   i m e   k o l e g a //
+      if (document.getElementById('imeKolega')) document.getElementById('imeKolega').remove();
+      var imeDiv = document.createElement('div');
+      imeDiv.innerHTML = imePrejemnika + ' ' + priimekPrejemnika;
+      imeDiv.classList.add('container-fluid');
+      imeDiv.setAttribute('id', 'imeKolega');
+      document.getElementById('chatbox').prepend(imeDiv);
+
+      // r e m o v e   p r e j s n a   s p o r o c i l a //
+      var fotr = document.getElementById('fotrSporocil');
+      if (document.getElementById('prvicDiv')) document.getElementById('prvicDiv').remove();
+      while (fotr.firstChild) {
+        fotr.removeChild(fotr.lastChild);
+      }
+
+      // n i m a s  p o g o v o r a //
+      if (nimasPogovora) {
+        var nimas = document.createElement(div);
+        nimas.classList.add('message-wrap', 'container-fluid');
+        nimas.setAttribute('id', 'prvicDiv');
+        nimas.innerHTML = nimasPogovora;
+        document.getElementById('chatbox').append(nimas);
+      }
+
+      // d o d a j  n o v a //
+      for (var i = 0; i < sortedSporocila.length; i++) {
+
+        var date = new Date(sortedSporocila[i].cas);
+        var formatiranDatum = date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+
+        var cas = document.createElement('span');
+        cas.innerHTML = formatiranDatum;
+
+        var znotraj = document.createElement('div');
+        znotraj.innerHTML = sortedSporocila[i].besedilo;
+
+        var zunanji = document.createElement('div');
+        zunanji.appendChild(znotraj);
+        zunanji.classList.add('d-flex', 'mb-4');
+
+        if (sortedSporocila[i].prejemnikSporocila == idPrejemnika) {
+          zunanji.classList.add('justify-content-end');
+          znotraj.classList.add('msg_moj');
+          cas.classList.add('msg_time_moj');
+        } else {
+          zunanji.classList.add('justify-content-start');
+          znotraj.classList.add('msg_kolega');
+          cas.classList.add('msg_time_kolega');
+        }
+
+        znotraj.appendChild(cas);
+        fotr.appendChild(zunanji);
+      }
+    });
+
+    asinhronaZahteva.open("GET", link, false);
+    asinhronaZahteva.send(null);       //sele tuki obistvu posles zahtevo
+  }
+</script>

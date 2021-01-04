@@ -2,11 +2,11 @@
   <a routerLink="/ponudba-del" class="btn btn-info" style="margin-right: 10px">Nazaj na ponudbo del</a>
 
   <button *ngIf="delo&&isAdmin" class="btn btn-warning d-ilblock" id="edit-btn" (click)="editJobInfo()" style="margin-right: 10px"><i
-      class="fas fa-edit"></i></button>
+      class="fas fa-edit" [disabled]="!jePovezava()"></i></button>
   <button *ngIf="delo&&isAdmin" id="save-btn" value="save" class="btn btn-success d-none" (click)="saveJobInfo()" style="margin-right: 10px"><i
-      class="fas fa-check"></i></button>
+      class="fas fa-check" [disabled]="!jePovezava()"></i></button>
   <button *ngIf="delo&&isAdmin" class="btn btn-danger d-inline" id="delete-btn" (click)="deleteJob()"><i
-      class="fas fa-trash-alt"></i></button>
+      class="fas fa-trash-alt" [disabled]="!jePovezava()"></i></button>
 
 </div>
 
@@ -31,7 +31,7 @@
     <hr>
     <div *ngIf="!isAdmin&&delo.zasedeno==false&&isLoggedIn">
       <h6>Prijavi se na delo</h6>
-      <div *ngIf="!signedStatus else prijavljen"><a (click)="signUp()" class="btn btn-success">Prijava</a></div>
+      <div *ngIf="!signedStatus else prijavljen"><a (click)="signUp()" class="btn btn-success" [disabled]="!jePovezava()">Prijava</a></div>
       <ng-template #prijavljen><button type="button" class="btn btn-success" disabled>Na delo ste
           prijavljeni</button></ng-template>
     </div>
@@ -75,7 +75,7 @@
 <div class="card profile" *ngIf="ponudnik">
   <div class="card-body profile-body" *ngIf="delo">
     <h5>Ponudnik</h5>
-    <a routerLink="/profil/ogled">
+    <a routerLink="/profil/ogled" [disabled]="!jePovezava()">
       <h3 class="profile-body-item">{{ ponudnik.ime }} {{ ponudnik.priimek }}</h3>
     </a>
     <hr>

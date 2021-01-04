@@ -62,7 +62,7 @@
       <h5 class="card-title">{{dogodek.naziv}}</h5>
       <p class="card-text" style="height: 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
         {{dogodek.opis}}</p>
-      <a href="/instrukcije-dogodki/dogodek/{{dogodek._id}}" class="btn btn-primary">Podrobnosti</a>
+      <a href="/instrukcije-dogodki/dogodek/{{dogodek._id}}" class="btn btn-primary" [disabled]="!jePovezava()">Podrobnosti</a>
     </div>
   </div>
 </div>

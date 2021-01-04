@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { JobsService } from '../../../services/jobs.service';
+import { PovezavaService } from '../../../services/povezava.service';
 
 import { Job } from '../../../classes/job';
 import { User } from '../../../classes/user';
@@ -15,10 +16,15 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 })
 export class OfferInfoComponent implements OnInit {
 
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
   constructor(
     private JobsService: JobsService,
     private route: ActivatedRoute,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private povezavaStoritev: PovezavaService
   ) { }
 
   async ngOnInit(): Promise<void> {

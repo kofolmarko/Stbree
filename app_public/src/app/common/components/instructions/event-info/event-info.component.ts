@@ -7,6 +7,7 @@ import { InstructionsService } from '../../../services/instructions.service';
 import { InstructionsEvent } from '../../../classes/event';
 import { User } from '../../../classes/user';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { PovezavaService } from '../../../services/povezava.service';
 
 @Component({
   selector: 'app-event-info',
@@ -15,10 +16,15 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 })
 export class EventInfoComponent implements OnInit {
 
+  public jePovezava(): boolean {
+    return this.povezavaStoritev.jePovezava;
+  }
+
   constructor(
     private instructionsService: InstructionsService,
     private route: ActivatedRoute,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private povezavaStoritev: PovezavaService
   ) { }
 
   async ngOnInit(): Promise<void> {
