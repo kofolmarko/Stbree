@@ -56,7 +56,7 @@ export class EventsComponent implements OnInit {
     })
     .catch(error => {
       this.sporocilo = "Napaka API-ja pri iskanju dogodkov."
-      console.error(error);
+      // console.error(error);
     });
   }
 

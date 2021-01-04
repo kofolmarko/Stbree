@@ -118,7 +118,7 @@ export class DashboardComponent implements OnInit {
     })
     .catch(error => {
       this.sporocilo = "Trenutno ne najdem informacij, poskusite znova kasneje."
-      console.error(error);
+      // console.error(error);
     });
   }
 
@@ -129,8 +129,8 @@ export class DashboardComponent implements OnInit {
   public getCurrentUser(): void {
     let currentUserEmail = this.authenticationService.getCurrentUser().email;
     this.authenticationService.getUser(currentUserEmail)
-    .then(user => {this.uporabnik = user; console.log(this.uporabnik)})
-    .catch(error => console.log(error));
+    .then(user => {this.uporabnik = user;})
+    .catch(error => {});
   }
 
   public getCasesToday(): number {
@@ -150,7 +150,7 @@ export class DashboardComponent implements OnInit {
             }
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => {});
         break;
       }
       case 'events': {
@@ -162,7 +162,7 @@ export class DashboardComponent implements OnInit {
             }
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => {});
         break;
       }
       case 'offers': {
@@ -174,7 +174,7 @@ export class DashboardComponent implements OnInit {
             }
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => {});
         break;
       }
     }

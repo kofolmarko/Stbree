@@ -56,7 +56,7 @@ export class OffersComponent implements OnInit {
     })
     .catch(error => {
       this.sporocilo = "Napaka API-ja pri iskanju del."
-      console.error(error);
+      // console.error(error);
     });
   }
 

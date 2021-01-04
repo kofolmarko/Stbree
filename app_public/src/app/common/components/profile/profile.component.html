@@ -1,6 +1,6 @@
 <div class="alert alert-warning container" style="margin-top: 2rem" *ngIf="sporocilo">{{sporocilo}}</div>
 
-<div *ngIf="uporabnik && signedStatus" class="container">
+<div  class="container">
   <h1 id="profile-naslov">{{uporabnik.ime}} {{uporabnik.priimek}}</h1>
 
   <!-- {{!-- BUTTONS TO EDIT --}} -->
@@ -123,7 +123,7 @@
     <div class="tab pb-5">
       <button class="tablinks" (click)="openCity(event, 'kronologija')">Seznam objav</button>
       <!-- <button class="tablinks" (click)="openCity(event, 'dela')">Seznam objav</button> -->
-      <button class="tablinks" (click)="open(content)">Spremeni geslo</button>
+      <!-- <button class="tablinks" (click)="open(content)">Spremeni geslo</button> -->
     </div>
 
     <!-- {{!-- LIST OF POSTS --}} -->
@@ -178,7 +178,7 @@
     <!-- {{!-- CHANGE PASSWORD --}} -->
   </div>
 
-  <ng-template #content let-modal>
+  <!-- <ng-template #content let-modal>
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Spremeni moje geslo</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -199,7 +199,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Potrdi</button>
       </div>
-    </ng-template>
+    </ng-template> -->
 
   <!-- {{!-- ADDITIONAL OPTIONS NOT ADMIN --}} -->
   <div *ngIf="uporabnik&&!isAdmin">

@@ -52,7 +52,7 @@ export class InstructorsComponent implements OnInit {
     })
     .catch(error => {
       this.sporocilo = "Napaka API-ja pri iskanju inštruktorjev."
-      console.error(error);
+      // console.error(error);
     });
   }
   

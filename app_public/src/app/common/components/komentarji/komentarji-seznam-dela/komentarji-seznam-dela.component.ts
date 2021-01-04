@@ -72,10 +72,10 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
       !this.newComment.besediloKomentarja) {
       this.sporocilo = "Prosimo izpolnite vsa polja!"
     } else {
-      console.log("Pošiljam podatke v service...");
+      // console.log("Pošiljam podatke v service...");
       this.commentsJobsService.postNewComment(this.delo, this.newComment)
         .then(comment => {
-          console.log("Uspešno prejeti podatki iz servica!");
+          // console.log("Uspešno prejeti podatki iz servica!");
           this.newComment = comment;
           this.sporocilo = comment ? "Komentar uspešno objavljen :)" : "Napaka pri objavi komentarja :("
           location.reload();
@@ -92,12 +92,12 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
   editComment(comment: Komentar): void {
     this.editCSS(true, comment._id);
     this.editID = comment._id;
-    console.log(this.editID);
+    // console.log(this.editID);
   }
 
   deleteComment(commentID: string) {
     let jobID = this.route.snapshot.paramMap.get('idDela');
-    console.log(commentID);
+    // console.log(commentID);
     this.commentsJobsService.deleteComment(jobID, commentID)
       .subscribe(
         () => {
@@ -172,7 +172,7 @@ export class KomentarjiSeznamDelaComponent implements OnInit {
       })
       .catch(error => {
         this.sporocilo = "Napaka API-ja pri iskanju gostitelja dela."
-        console.error(error);
+        // console.error(error);
       });
   }
 }

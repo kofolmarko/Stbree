@@ -38,6 +38,8 @@ export class RegisterComponent implements OnInit {
     kontakti: null
   }
 
+  public loading = false;
+
   public gesloPotrdi = "";
 
   becomeAnInstructor(statusInstruktorja: any) {
@@ -70,6 +72,7 @@ export class RegisterComponent implements OnInit {
       if (doesUserExist != null) {
         this.sporocilo = "Uporabnik s tem e-naslovom že obstaja."
       } else {
+        this.loading = true;
         this.executeRegister();
       }
     }

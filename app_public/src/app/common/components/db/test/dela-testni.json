@@ -177,4 +177,362 @@
       "datestring": "2021-04-28",
       "datum": null
     }]
+  },{
+    "_id": "",
+    "naziv": "Program v Javi",
+    "opis": "Nujno potrebujem program v javi do navedenega roka. Pišite na chat prosim.",
+    "cena": 15,
+    "datestring": "2021-05-14",
+    "datum": null,
+    "emailPonudnika": "janja@ferfic.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "andrej@rustja.com",
+      "ocena": 3,
+      "besediloKomentarja": "Prijavil sem se za tvoje delo! Lahko do jutri naredim.",
+      "datestring": "2021-05-13",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "peter@soban.com",
+      "ocena": 1,
+      "besediloKomentarja": "Zahteval bi kaj več kot 15e...",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Prevod iz angleščine v nemščino",
+    "opis": "V priponki puščam tekst. Hvala za pomoč",
+    "cena": 10,
+    "datestring": "2021-04-13",
+    "datum": null,
+    "emailPonudnika": "luka@kranjec.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "jernej@tomsič.com",
+      "ocena": 3,
+      "besediloKomentarja": "Prijavljen",
+      "datestring": "2021-04-10",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "meta@hribar.com",
+      "ocena": 2,
+      "besediloKomentarja": "Žal ne morem do takrat, se moram odjaviti..",
+      "datestring": "2021-04-08",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Prevod iz slovenščine v francoščino",
+    "opis": "Tekst v priponki, hvala.",
+    "cena": 12,
+    "datestring": "2021-05-22",
+    "datum": null,
+    "emailPonudnika": "simon@antonic.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "miha@kovic.com",
+      "ocena": 2,
+      "besediloKomentarja": "Prezgoden rok..",
+      "datestring": "2021-05-20",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "janja@ferfič.com",
+      "ocena": 3,
+      "besediloKomentarja": "Poskusila bom do takrat..",
+      "datestring": "2021-05-19",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Popravljanje pisma",
+    "opis": "A mi kdo popravi to besedilo? Sem tuji študent in moram to pismo poslati na nek urad.",
+    "cena": 15,
+    "datestring": "2021-02-14",
+    "datum": null,
+    "emailPonudnika": "peter@soban.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "andrej@rustja.com",
+      "ocena": 4,
+      "besediloKomentarja": "Takoj naredim, ni problema. Prijavljen!",
+      "datestring": "2021-02-14",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Logo za malo podjetje",
+    "opis": "Iščem zanimive ideje za logo za moje podjetje!",
+    "cena": 50,
+    "datestring": "2021-03-10",
+    "datum": null,
+    "emailPonudnika": "rudi@bobnic.com",
+    "zasedeno": false,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "luka@kranjec.com",
+      "ocena": 1,
+      "besediloKomentarja": "Premalo za tako delo..",
+      "datestring": "2021-03-03",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "meta@hribar.com",
+      "ocena": 2,
+      "besediloKomentarja": "Imaš še kake posebne zahteve pri tem?",
+      "datestring": "2021-03-04",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Poezija o jeseni",
+    "opis": "Rabim za šolo, pa se mi ne da.. :)",
+    "cena": 4,
+    "datestring": "2021-05-10",
+    "datum": null,
+    "emailPonudnika": "simon@antonic.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "andrej@rustja.com",
+      "ocena": 1,
+      "besediloKomentarja": "Do jutri? Zdi se mi premalo časa..",
+      "datestring": "2021-05-09",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "janja@ferfic.com",
+      "ocena": 4,
+      "besediloKomentarja": "Poskusila bom, kot mi uspe! Prijavljena :)",
+      "datestring": "2021-05-09",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Prevod španščina-slovenščina",
+    "opis": "Tekst tukaj spodaj, hvala.",
+    "cena": 10,
+    "datestring": "2021-04-29",
+    "datum": null,
+    "emailPonudnika": "meta@hribar.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "miha@kovic.com",
+      "ocena": 3,
+      "besediloKomentarja": "Je to nujno do roka ali lahko še kaj dni več?",
+      "datestring": "2021-04-28",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "meta@hribar.com",
+      "ocena": 3,
+      "besediloKomentarja": "Lahko tudi do 1.5., hvala.",
+      "datestring": "2021-04-28",
+      "datum": null
+    }, {
+      "_id": "",
+      "avtor": "miha@kovic.com",
+      "ocena": 3,
+      "besediloKomentarja": "Super.",
+      "datestring": "2021-04-28",
+      "datum": null
+    }]
+  },{
+    "_id": "",
+    "naziv": "Program v Javi",
+    "opis": "Nujno potrebujem program v javi do navedenega roka. Pišite na chat prosim.",
+    "cena": 15,
+    "datestring": "2021-05-14",
+    "datum": null,
+    "emailPonudnika": "janja@ferfic.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "andrej@rustja.com",
+      "ocena": 3,
+      "besediloKomentarja": "Prijavil sem se za tvoje delo! Lahko do jutri naredim.",
+      "datestring": "2021-05-13",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "peter@soban.com",
+      "ocena": 1,
+      "besediloKomentarja": "Zahteval bi kaj več kot 15e...",
+      "datestring": "2021-05-12",
+      "datum": null
+    }]
+  }, {
+    "_id": "",
+    "naziv": "Prevod iz angleščine v nemščino",
+    "opis": "V priponki puščam tekst. Hvala za pomoč",
+    "cena": 10,
+    "datestring": "2021-04-13",
+    "datum": null,
+    "emailPonudnika": "luka@kranjec.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "jernej@tomsič.com",
+      "ocena": 3,
+      "besediloKomentarja": "Prijavljen",
+      "datestring": "2021-04-10",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "meta@hribar.com",
+      "ocena": 2,
+      "besediloKomentarja": "Žal ne morem do takrat, se moram odjaviti..",
+      "datestring": "2021-04-08",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Prevod iz slovenščine v francoščino",
+    "opis": "Tekst v priponki, hvala.",
+    "cena": 12,
+    "datestring": "2021-05-22",
+    "datum": null,
+    "emailPonudnika": "simon@antonic.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "miha@kovic.com",
+      "ocena": 2,
+      "besediloKomentarja": "Prezgoden rok..",
+      "datestring": "2021-05-20",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "janja@ferfič.com",
+      "ocena": 3,
+      "besediloKomentarja": "Poskusila bom do takrat..",
+      "datestring": "2021-05-19",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Popravljanje pisma",
+    "opis": "A mi kdo popravi to besedilo? Sem tuji študent in moram to pismo poslati na nek urad.",
+    "cena": 15,
+    "datestring": "2021-02-14",
+    "datum": null,
+    "emailPonudnika": "peter@soban.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "andrej@rustja.com",
+      "ocena": 4,
+      "besediloKomentarja": "Takoj naredim, ni problema. Prijavljen!",
+      "datestring": "2021-02-14",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Logo za malo podjetje",
+    "opis": "Iščem zanimive ideje za logo za moje podjetje!",
+    "cena": 50,
+    "datestring": "2021-03-10",
+    "datum": null,
+    "emailPonudnika": "rudi@bobnic.com",
+    "zasedeno": false,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "luka@kranjec.com",
+      "ocena": 1,
+      "besediloKomentarja": "Premalo za tako delo..",
+      "datestring": "2021-03-03",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "meta@hribar.com",
+      "ocena": 2,
+      "besediloKomentarja": "Imaš še kake posebne zahteve pri tem?",
+      "datestring": "2021-03-04",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Poezija o jeseni",
+    "opis": "Rabim za šolo, pa se mi ne da.. :)",
+    "cena": 4,
+    "datestring": "2021-05-10",
+    "datum": null,
+    "emailPonudnika": "simon@antonic.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "andrej@rustja.com",
+      "ocena": 1,
+      "besediloKomentarja": "Do jutri? Zdi se mi premalo časa..",
+      "datestring": "2021-05-09",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "janja@ferfic.com",
+      "ocena": 4,
+      "besediloKomentarja": "Poskusila bom, kot mi uspe! Prijavljena :)",
+      "datestring": "2021-05-09",
+      "datum": null
+    }]
+  },
+  {
+    "_id": "",
+    "naziv": "Prevod španščina-slovenščina",
+    "opis": "Tekst tukaj spodaj, hvala.",
+    "cena": 10,
+    "datestring": "2021-04-29",
+    "datum": null,
+    "emailPonudnika": "meta@hribar.com",
+    "zasedeno": true,
+    "komentarji": [{
+      "_id": "",
+      "avtor": "miha@kovic.com",
+      "ocena": 3,
+      "besediloKomentarja": "Je to nujno do roka ali lahko še kaj dni več?",
+      "datestring": "2021-04-28",
+      "datum": null
+    },
+    {
+      "_id": "",
+      "avtor": "meta@hribar.com",
+      "ocena": 3,
+      "besediloKomentarja": "Lahko tudi do 1.5., hvala.",
+      "datestring": "2021-04-28",
+      "datum": null
+    }, {
+      "_id": "",
+      "avtor": "miha@kovic.com",
+      "ocena": 3,
+      "besediloKomentarja": "Super.",
+      "datestring": "2021-04-28",
+      "datum": null
+    }]
   }]

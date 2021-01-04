@@ -30,11 +30,11 @@ export class KontaktiComponent implements OnInit {
     this.obrazecNapaka = "";
     if (this.soPodatkiUstrezni()) {
       
-      console.log("this.novKontakt.emailKontakta" + this.novKontakt.emailKontakta);
+      // console.log("this.novKontakt.emailKontakta" + this.novKontakt.emailKontakta);
       this.chatStoritev
         .posljiKontakt(this.authenticationService.getCurrentUser().email, this.novKontakt)
         .then(kontakt => {
-          console.log("Kontakt shranjen", kontakt);
+          // console.log("Kontakt shranjen", kontakt);
           this.novKontakt.emailKontakta = '';
           this.kliciPridobiKontakte();
           this.showForm = false;

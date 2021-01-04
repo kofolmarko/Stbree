@@ -33,11 +33,11 @@ export class DbComponent implements OnInit {
   }
 
   public fillDB = async () => {
-    console.log(this.users);
-    console.log(this.events);
-    console.log(this.offers);
+    // console.log(this.users);
+    // console.log(this.events);
+    // console.log(this.offers);
     for (let i = 0; i < this.users.length; i++) {
-      console.log("Registering...");
+      // console.log("Registering...");
       let doesUserExist = null;
       await this.authenticationService.getUser(this.users[i].email)
         .then((user) => { doesUserExist = user; })
@@ -47,12 +47,12 @@ export class DbComponent implements OnInit {
       } else {
         await this.authenticationService.register(this.users[i]);
         let currentUserEmail = this.users[i].email;
-        console.log(currentUserEmail);
-        console.log("registered!");
+        // console.log(currentUserEmail);
+        // console.log("registered!");
         for (let j = 0; j < this.events.length; j++) {
-          console.log(events[j].emailInstruktorja);
+          // console.log(events[j].emailInstruktorja);
           if (currentUserEmail == this.events[j].emailInstruktorja) {
-            console.log("Posting event...");
+            // console.log("Posting event...");
             let date = new Date(this.events[j].datestring);
             this.events[j].datum = date;
             await this.instructionsService.postNewEvent(this.events[j])
@@ -63,12 +63,12 @@ export class DbComponent implements OnInit {
                   }
                 }
               });
-            console.log("Posted!");
+            // console.log("Posted!");
           }
         }
         for (let k = 0; k < this.offers.length; k++) {
           if (currentUserEmail == this.offers[k].emailPonudnika) {
-            console.log("Posting job...");
+            // console.log("Posting job...");
             let date = new Date(this.offers[k].datestring);
             this.offers[k].datum = date;
             await this.jobsService.postNewJob(this.offers[k])
@@ -79,12 +79,12 @@ export class DbComponent implements OnInit {
                   }
                 }
               });
-            console.log("Posted!");
+            // console.log("Posted!");
           }
         }
-        console.log("Logging out...");
+        // console.log("Logging out...");
         await this.authenticationService.logout();
-        console.log("Logged out!");
+        // console.log("Logged out!");
       }
     }
     location.reload();
@@ -92,17 +92,17 @@ export class DbComponent implements OnInit {
   };
 
   public dropDB = () => {
-    console.log("Dropping DB...");
+    // console.log("Dropping DB...");
     this.authenticationService.dropDB()
     .then((response) => this.sporocilo = response.sporočilo)
-    .catch((error) => console.log(error));
+    .catch((error) => {this.sporocilo = "Napaka v API-ju."});
   };
 
   public dropUsers = () => {
-    console.log("Dropping DB...");
+    // console.log("Dropping DB...");
     this.authenticationService.dropUsers()
     .then((response) => this.sporocilo = response.sporočilo)
-    .catch((error) => console.log(error));
+    .catch((error) => {this.sporocilo = "Napaka v API-ju."});
   };
 
   public refreshPage(): void {

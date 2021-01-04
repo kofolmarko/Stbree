@@ -69,7 +69,7 @@ export class EventInfoComponent implements OnInit {
       })
       .catch(error => {
         this.sporocilo = "Napaka API-ja pri iskanju gostitelja dogodka."
-        console.error(error);
+        // console.error(error);
       });
   }
 
@@ -148,7 +148,7 @@ export class EventInfoComponent implements OnInit {
             });
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => {});
     }
   }
 

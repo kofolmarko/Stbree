@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
               }
             }
           })
-          .catch(error => console.log(error));
+          .catch(error => console.error(error));
         break;
       }
       case 'offers': {
@@ -93,11 +93,11 @@ export class ProfileComponent implements OnInit {
               }
             }
           })
-          .catch(error => console.log(error));
+          .catch(error => console.error(error));
         break;
       }
     }
-    console.log(featured);
+    // console.log(featured);
     return featured;
   }
 

@@ -70,10 +70,10 @@ export class KomentarjiSeznamComponent implements OnInit {
       !this.newComment.besediloKomentarja) {
       this.sporocilo = "Prosimo izpolnite vsa polja!"
     } else {
-      console.log("Pošiljam podatke v service...");
+      // console.log("Pošiljam podatke v service...");
       this.commentsService.postNewComment(this.dogodek, this.newComment)
         .then(comment => {
-          console.log("Uspešno prejeti podatki iz servica!");
+          // console.log("Uspešno prejeti podatki iz servica!");
           this.newComment = comment;
           this.sporocilo = comment ? "Komentar uspešno objavljen :)" : "Napaka pri objavi komentarja :("
           location.reload();
@@ -82,7 +82,7 @@ export class KomentarjiSeznamComponent implements OnInit {
         })
         .catch(error => {
           this.sporocilo = "Napaka API-ja pri objavi dogodka."
-          //console.error(error);
+          // console.error(error);
         });
     }
   }
@@ -90,12 +90,12 @@ export class KomentarjiSeznamComponent implements OnInit {
   editComment(comment: Komentar): void {
     this.editCSS(true, comment._id);
     this.editID = comment._id;
-    console.log(this.editID);
+    // console.log(this.editID);
   }
 
   deleteComment(commentID: string) {
     let eventID = this.route.snapshot.paramMap.get('idDogodka');
-    console.log(commentID);
+    // console.log(commentID);
     this.commentsService.deleteComment(eventID, commentID)
       .subscribe(
         () => {
@@ -105,7 +105,7 @@ export class KomentarjiSeznamComponent implements OnInit {
           alert("Komentar uspešno zbrisan!");
         },
         (error) => this.sporocilo = "Napaka API-ja pri brisanju komentarja."
-        //console.error(error)
+        // console.error(error)
       );
   }
 
@@ -124,7 +124,7 @@ export class KomentarjiSeznamComponent implements OnInit {
         })
         .catch(error => {
           alert("Napaka API-ja pri posodabljanju komentarja. Poskusite znova kasneje.");
-          //console.error(error);
+          // console.error(error);
         });
     }
   }
@@ -153,7 +153,7 @@ export class KomentarjiSeznamComponent implements OnInit {
       )
       .subscribe(async (event: InstructionsEvent) => {
         this.dogodek = event;
-        console.log(this.dogodek);
+        // console.log(this.dogodek);
         if (this.authenticationService.isLoggedIn()) {
           this.currentUserEmail = this.authenticationService.getCurrentUser().email;
         }
@@ -171,7 +171,7 @@ export class KomentarjiSeznamComponent implements OnInit {
       })
       .catch(error => {
         this.sporocilo = "Napaka API-ja pri iskanju gostitelja dogodka."
-        console.error(error);
+        // console.error(error);
       });
   }
 

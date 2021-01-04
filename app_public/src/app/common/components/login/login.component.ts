@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
     //datumVpisa: null
   }
 
+  public loading = false;
+
   public passwordResetEmail = "";
 
   public submitLoginData(): void {
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
     ) {
       this.sporocilo = "Zahtevani so vsi podatki, prosim poskusite znova!";
     } else {
+      this.loading = true;
       this.executeLogin();
     }
   }

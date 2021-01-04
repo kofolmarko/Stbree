@@ -24,9 +24,9 @@ export class CommentsService {
 
   /* Nov komentar */
   public postNewComment(event: InstructionsEvent, comment: Komentar): Promise<any> {
-    console.log("Podatki so prišli v service, in sicer so naslednji:");
-    console.log(event);
-    console.log(comment);
+    // console.log("Podatki so prišli v service, in sicer so naslednji:");
+    // console.log(event);
+    // console.log(comment);
     const url: string = `${this.apiUrl}/instrukcije-dogodki/dogodek/${event._id}/komentarji`;
     const httpProperties = {
       headers: new HttpHeaders({
@@ -50,7 +50,7 @@ export class CommentsService {
     return this.http
       .put(url, comment, httpProperties)
       .toPromise()
-      .then(response => { console.log("Uspešno smo se vrnili iz API-ja"); return response as any; })
+      .then(response =>  response as any)
       .catch(this.handleError);
   }
 

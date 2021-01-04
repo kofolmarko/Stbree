@@ -119,9 +119,9 @@ export class AuthenticationService {
   }
 
   public dropDB():Promise<any> {
-    console.log("Reached the service...");
+    // console.log("Reached the service...");
     const url: string = `${this.apiUrl}/db/dropDB`;
-    console.log(url);
+    // console.log(url);
     return this.http
       .get(url)
       .toPromise()
@@ -130,9 +130,9 @@ export class AuthenticationService {
   }
 
   public dropUsers():Promise<any> {
-    console.log("Reached the service...");
+    // console.log("Reached the service...");
     const url: string = `${this.apiUrl}/db/dropUsers`;
-    console.log(url);
+    // console.log(url);
     return this.http
       .get(url)
       .toPromise()
