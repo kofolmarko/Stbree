@@ -50,22 +50,22 @@
     });
 
     describe("Prijava uporabnika", function () {
-      this.timeout(30 * 1000);
+      this.timeout(50 * 1000);
       before(async function () { await brskalnik.get(aplikacijaUrl); });
 
-      it("Prijava uporabnika", async function () {
+      it("Prijava obstoječega uporabnika", async function () {
         let povezava = await brskalnik.findElement(
           By.xpath("//a[contains(text(), 'Prijava')]"));
         expect(povezava).to.not.be.empty;
         await povezava.click();
       });
 
-      context("ustreznost podatkov na prijavni strani", function() {
-        it("naslov strani za prijavo", async function() {
-          await pocakajStranNalozena(brskalnik, 1000, "//h1");
+      context("ustreznost podatkov na prijavni strani", function () {
+        it("naslov strani za prijavo", async function () {
+          await pocakajStranNalozena(brskalnik, 10, "//h1");
           let naslov = await brskalnik.findElement(By.css("h1"));
           expect(naslov).to.not.be.empty;
-          await naslov.getText().then(function(vsebina) {
+          await naslov.getText().then(function (vsebina) {
             expect(vsebina).to.be.equal("Pozdravljeni, janez");
           });
         });
@@ -110,9 +110,6 @@
         await povezava.click();
       });
 
-     
-      
-
       it("izberi inštrukcije", async function () {
         await pocakajStranNalozena(brskalnik, 1000, "//h4");
         let povezava = await brskalnik.findElement(
@@ -133,16 +130,6 @@
         expect(povezava).to.not.be.empty;
         await povezava.click();
       });
-
-      
-      /*it("podrobnosti dogodka", async function () {
-        await pocakajStranNalozena(brskalnik, 1000, "//h4");
-        
-        let povezava = await brskalnik.findElement(
-          By.xpath("//a[contains(text(), 'Podrobnosti')]"));
-        expect(povezava).to.not.be.empty;
-        await povezava.click();
-      });*/
     });
 
     describe("Delo", async function () {
@@ -159,15 +146,6 @@
 
       context("ustreznost podatkov na strani za dela", function() {
         it("naslov strani za prijavo", async function() {
-
-          brskalnik.takeScreenshot().then(result => fs.writeFile('test/data.png', result.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
-            if (err) {
-                console.log("Error saving screenshot");
-            }
-            else {
-                console.log("Screenshot saved!");
-            }
-        }));
 
           await pocakajStranNalozena(brskalnik, 1000, "//h1");
           let naslov = await brskalnik.findElement(By.css("h1"));
@@ -198,19 +176,114 @@
         let gumb = await brskalnik.findElement(By.xpath("//button[contains(text(), 'Objavi')]"));
         expect(gumb).to.not.be.empty;
         await gumb.click();
+        await brskalnik.get("https://stbree.herokuapp.com/ponudba-del/delo/5ff29616dd707b00178b9eb4");
       });
 
       it("preveri če je delo objavljeno", async function () {
         await pocakajStranNalozena(brskalnik, 15, "//a");
-        brskalnik.takeScreenshot().then(result => fs.writeFile('test/data.png', result.replace(/^data:image\/png;base64,/, ''), 'base64', function (err) {
-          if (err) {
-            console.log("Error saving screenshot");
-          }
-          else {
-            console.log("Screenshot saved!");
-          }
-        }));
+        let gumb = await brskalnik.findElement(
+          By.id("edit-btn"));
+        expect(gumb).to.not.be.empty;
       });
+
+      it("izbriši ustvarjeno delo", async function () {
+        await pocakajStranNalozena(brskalnik, 15, "//a");
+        let gumb = await brskalnik.findElement(
+          By.id("delete-btn"));
+        expect(gumb).to.not.be.empty;
+        await gumb.click();
+
+      });
+    });
+
+    describe("Odjava uporabnika", async function () {
+      this.timeout(30 * 1000);
+      before(function () { brskalnik.get(aplikacijaUrl); });
+
+      it("preveri ali je uporabnik prijavljen", async function () {
+        await brskalnik.get("https://stbree.herokuapp.com/my");
+        await pocakajStranNalozena(brskalnik, 10, "//h4");
+        let uporabnik = await brskalnik.findElement(
+          By.id('welcome-sign'));
+        expect(uporabnik).to.not.be.empty;
+      });
+
+      it("zahtevaj odjavo", async function () {
+        let uporabnik = await brskalnik.findElement(
+          By.xpath("//button[contains(text(), 'janez kranjsi')]"));
+        expect(uporabnik).to.not.be.empty;
+        await uporabnik.click();
+        let odjava = await brskalnik.findElement(
+          By.id("logout-btn"));
+        expect(odjava).to.not.be.empty;
+        await odjava.click();
+      });
+
+      it("preveri ali je uporabnik prijavljen", async function () {
+        await brskalnik.get("https://stbree.herokuapp.com/my");
+      });
+    });
+
+   describe("Registracija novega uporabnika", function () {
+      this.timeout(50 * 1000);
+      before(async function () { await brskalnik.get(aplikacijaUrl); });
+
+
+      it("prijava uporabnika", async function () {
+        let povezava = await brskalnik.findElement(
+          By.xpath("//a[contains(text(), 'Prijava')]"));
+        expect(povezava).to.not.be.empty;
+        await povezava.click();
+      });
+
+      it("izbira registracije", async function () {
+        await pocakajStranNalozena(brskalnik, 10,
+          "//button[contains(text(), 'Prijava')]");
+        let povezava = await brskalnik.findElement(
+          By.xpath("//a[contains(text(), 'Registracija')]"));
+        expect(povezava).to.not.be.empty;
+        await povezava.click();
+      });
+
+      it("vnos podatkov uporabnika", async function () {
+        await pocakajStranNalozena(brskalnik, 10,
+          "//h1[contains(text(), 'Registracija')]");
+        let ime = await brskalnik.findElement(By.id("ime"));
+        expect(ime).to.not.be.empty;
+        ime.sendKeys("Ina");
+        expect(await ime.getAttribute("value")).to.be.equal("Ina");
+
+        let priimek = await brskalnik.findElement(By.id("priimek"));
+        expect(priimek).to.not.be.empty;
+        priimek.sendKeys("Banana");
+        expect(await priimek.getAttribute("value")).to.be.equal("Banana");
+
+        let email = await brskalnik.findElement(
+          By.id("email"));
+        expect(email).to.not.be.empty;
+        email.sendKeys("ina@banana.net");
+        expect(await email.getAttribute("value")).to.be.equal("ina@banana.net");
+
+        let geslo = await brskalnik.findElement(By.id("geslo"));
+        expect(geslo).to.not.be.empty;
+        geslo.sendKeys("12345678");
+        expect(await geslo.getAttribute("value")).to.be.equal("12345678");
+
+        let gesloPotrdi = await brskalnik.findElement(By.id("gesloPotrdi"));
+        expect(gesloPotrdi).to.not.be.empty;
+        gesloPotrdi.sendKeys("12345678");
+        expect(await gesloPotrdi.getAttribute("value")).to.be.equal("12345678");
+
+        // geslo.sendKeys("5");
+
+        let btn = brskalnik.findElement(
+          By.xpath("//button[contains(text(), 'Registriraj')]"));
+        expect(btn).to.not.be.empty;
+
+        btn.click();
+
+      });
+
     });
 
     after(async () => {
